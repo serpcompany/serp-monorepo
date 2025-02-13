@@ -1,15 +1,5 @@
-# Turborepo VueJS/NuxtJS starter
+# README
 
-
-## Apps and Packages
-
-- `docs`: a [Nuxt](https://nuxt.com/) app
-- `web`: another [Vue3](https://vuejs.org/) app
-- `ui`: a stub Vue component library shared by both `web` and `docs` applications
-- [ ] `eslint-config-custom`: `eslint` configurations (includes `@nuxtjs/eslint-config-typescript` and `@vue/eslint-config-typescript`)
-- [ ] `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-## Remote Caching
 
 By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel.
 ```
