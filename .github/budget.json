@@ -1,0 +1,18 @@
+{
+  "browsertime": {
+    "iterations": 100,
+    "cacheClearRaw": true,
+    "visualMetrics": true,
+    "video": false,
+    "browser": "chrome"
+  },
+  "html": {
+    "pageSummaryMetrics": [
+      "timings.serverResponseTime",
+      "timings.backEndTime",
+      "timings.firstPaint",
+      "timings.pageLoadTime",
+      "timings.fullyLoaded"
+    ]
+  }
+}
