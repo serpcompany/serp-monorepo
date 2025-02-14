@@ -1,10 +1,11 @@
 {
-  "name": "with-vue-nuxt",
+  "name": "serp-monorepo",
   "private": true,
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "test": "vitest --coverage",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
