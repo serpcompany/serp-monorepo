@@ -11,22 +11,12 @@
     "format": "prettier -w .",
     "generate": "nuxt generate",
     "postinstall": "nuxt prepare",
-    "lh:production": "lhci autorun --config=./.lighthouserc.production.json",
-    "lh:production:desktop": "lhci autorun --collect.settings.preset=desktop --config=./.lighthouserc.production.json",
-    "lh:staging": "lhci autorun --config=./.lighthouserc.staging.json",
-    "lh:staging:desktop": "lhci autorun --collect.settings.preset=desktop --config=./.lighthouserc.staging.json",
     "lint": "prettier . --write && eslint --fix",
     "prepare": "husky install",
     "preview": "nuxt preview",
     "server": "node .output/server/index.mjs",
-    "test": "vitest --coverage",
-    "test:pre-commit": "vitest --coverage --run"
-  },
-  "lint-staged": {
-    "**/*.{js,ts,vue}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
+    "test": "vitest --coverage --run",
+    "test:watch": "vitest --coverage"
   },
   "dependencies": {
     "nuxt-multi-cache": "^3.4.0",

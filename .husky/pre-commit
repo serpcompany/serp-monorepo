@@ -1,0 +1,17 @@
+#!/bin/sh
+echo "Running pre-commit hook..."
+
+# Check staged files
+STAGED_FILES=$(git diff --cached --name-only)
+echo "Staged files: $STAGED_FILES"
+
+# Run lint
+echo "Running lint"
+pnpm lint
+
+# Run tests
+pnpm test
+
+# Run Infisical scan on staged changes with baseline
+echo "Running Infisical scan..."
+pnpm infisical scan git-changes --staged --verbose --baseline-path .reports/secrets-report.json
