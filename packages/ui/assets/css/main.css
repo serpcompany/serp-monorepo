@@ -1,0 +1,46 @@
+@import 'tailwindcss';
+@import '@nuxt/ui';
+@import './patch.css';
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --ui-radius: var(--radius-none);
+}
+
+/* Add base layer for direct element styling */
+@layer base {
+  h1 {
+    font-size: 3.75rem;
+    line-height: 1.2;
+    font-weight: 900;
+  }
+
+  h2 {
+    font-size: 3rem;
+    line-height: 1.4;
+    font-weight: 900;
+  }
+
+  h3 {
+    font-size: 2.25rem;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+}
+
+/* Keep the utility classes for when you need to apply them directly */
+@utility text-6xl {
+  font-size: 3.75rem;
+  line-height: 1.2;
+}
+
+@utility text-5xl {
+  font-size: 3rem;
+  line-height: 1.4;
+}
+
+@utility text-4xl {
+  font-size: 2.25rem;
+  line-height: 1.5;
+}

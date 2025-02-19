@@ -1,19 +1,22 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
+  extends: [
+    '@serp-monorepo/ui',
+  ],
   modules: [
-    '@nuxt/ui',
-    '@nuxtjs/html-validator',
-    '@nuxt/image',
-    '@nuxt/eslint',
+    // '@nuxt/ui', # comment out to test inheritance from @serp-monorepo/iu
+    // '@nuxtjs/html-validator',
+    // '@nuxt/image',
+    // '@nuxt/eslint',
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
     'nuxt-multi-cache',
     'nuxt-security',
-    '@nuxt/scripts',
+    // '@nuxt/scripts',
     'nuxt-link-checker'
   ],
-  css: ['~/assets/css/main.css'],
+  // css: ['~/assets/css/main.css'],
   ui: {
     colorMode: true
   },

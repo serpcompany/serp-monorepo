@@ -1,5 +1,5 @@
 {
-  "name": "serp-co",
+  "name": "@serp-monorepo/serp-co",
   "private": true,
   "type": "module",
   "scripts": {
@@ -19,6 +19,7 @@
     "test:watch": "vitest --coverage"
   },
   "dependencies": {
+    "@serp-monorepo/ui": "workspace:^",
     "nuxt-multi-cache": "^3.4.0",
     "nuxt-security": "^2.1.5",
     "papaparse": "^5.4.1"
