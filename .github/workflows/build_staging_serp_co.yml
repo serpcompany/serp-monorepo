@@ -5,7 +5,7 @@ on:
     paths:
       - packages/**
       - apps/serp_co/**
-    brancheserp-monorepo
+    branches:
       - staging
   workflow_dispatch:
 
@@ -26,4 +26,4 @@ jobs:
             cd serp-monorepo-staging/apps/serp_co
             docker compose -f docker-compose-staging.yml down
             git pull https://${{ secrets.DEVIN_GITHUB_TOKEN }}@github.com/${{github.repository}}.git ${{ github.ref_name }}
-            infisical run --domain=https://secrets.serp.co --token=${{ secrets.INFISICAL_ACCESS_TOKEN }} --projectId=${{ secrets.INFISICAL_PROJECT_ID }} -- docker compose -f docker-compose-staging.yml up --build -d
+            infisical run --domain=https://secrets.serp.co --token=${{ secrets.INFISICAL_ACCESS_TOKEN_SERP_CO }} --projectId=${{ secrets.INFISICAL_PROJECT_ID_SERP_CO }} -- docker compose -f docker-compose-staging.yml up --build -d
