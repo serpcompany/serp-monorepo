@@ -1,5 +1,5 @@
 {
-  "name": "@serp-monorepo/serp-media",
+  "name": "@serpmedia",
   "private": true,
   "type": "module",
   "scripts": {

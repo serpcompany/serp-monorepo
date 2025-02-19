@@ -1,5 +1,5 @@
 {
-  "name": "@serp-monorepo/serp-co",
+  "name": "@serpco",
   "private": true,
   "type": "module",
   "scripts": {
