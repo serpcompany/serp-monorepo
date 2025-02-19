@@ -1,0 +1,37 @@
+version: '3.9'
+
+networks:
+  web_network:
+    external: true
+  boxingundefeated-com-network:
+    external: true
+services:
+  boxingundefeated-com-app-staging:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: boxingundefeated-com-app-staging
+    restart: always
+    networks:
+      - web_network
+      - boxingundefeated-com-network
+    environment:
+      - HOST=0.0.0.0
+      - NODE_ENV=production
+      - ROBOTS_ENV=staging
+      - NUXT_SITE_ENV=staging
+      - NUXT_PUBLIC_SITE_URL=https://staging.boxingundefeated.com
+      - DATABASE_URL=${DATABASE_URL}
+      - NUXT_PUBLIC_API_URL=${NUXT_PUBLIC_API_URL}
+      - NUXT_PUBLIC_DOMAIN=${NUXT_PUBLIC_DOMAIN}
+      - NUXT_PUBLIC_SITE_NAME=${NUXT_PUBLIC_SITE_NAME}
+      - NUXT_PUBLIC_URL=${NUXT_PUBLIC_URL}
+      - REDIS_URL=redis://boxingundefeated-com-redis-staging:6379
+    depends_on:
+      - boxingundefeated-com-redis-staging
+  boxingundefeated-com-redis-staging:
+    image: redis:7.2.5
+    container_name: boxingundefeated-com-redis-staging
+    restart: always
+    networks:
+      - boxingundefeated-com-network
