@@ -1,5 +1,5 @@
 {
-  "name": "@serp-monorepo/ui",
+  "name": "@serp/ui",
   "version": "0.0.1",
   "type": "module",
   "main": "./nuxt.config.ts",

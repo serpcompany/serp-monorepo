@@ -138,7 +138,7 @@ importers:
 
   apps/serp_co:
     dependencies:
-      '@serp-monorepo/ui':
+      '@serp/ui':
         specifier: workspace:^
         version: link:../../packages/ui
       nuxt-multi-cache:

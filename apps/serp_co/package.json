@@ -19,7 +19,7 @@
     "test:watch": "vitest --coverage"
   },
   "dependencies": {
-    "@serp-monorepo/ui": "workspace:^",
+    "@serp/ui": "workspace:^",
     "nuxt-multi-cache": "^3.4.0",
     "nuxt-security": "^2.1.5",
     "papaparse": "^5.4.1"
