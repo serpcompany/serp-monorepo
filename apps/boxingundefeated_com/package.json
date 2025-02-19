@@ -14,9 +14,7 @@
     "lint": "prettier . --write && eslint --fix",
     "prepare": "husky install",
     "preview": "nuxt preview",
-    "server": "node .output/server/index.mjs",
-    "test": "vitest --coverage --run",
-    "test:watch": "vitest --coverage"
+    "server": "node .output/server/index.mjs"
   },
   "dependencies": {
     "nuxt-multi-cache": "^3.4.0",
