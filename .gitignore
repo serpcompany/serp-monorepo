@@ -13,8 +13,7 @@ coverage
 .output/
 out/
 build
-!.nuxt/
-.nuxt/*
+.nuxt/
 !.nuxt/eslint.config.mjs
 
 # misc
