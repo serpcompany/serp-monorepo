@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@serp/ui": "workspace:^",
+    "@serp/utils": "workspace:^",
     "nuxt-multi-cache": "^3.4.0",
     "nuxt-security": "^2.1.5",
     "papaparse": "^5.4.1"

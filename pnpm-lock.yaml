@@ -135,6 +135,9 @@ importers:
       '@serp/ui':
         specifier: workspace:^
         version: link:../../packages/ui
+      '@serp/utils':
+        specifier: workspace:^
+        version: link:../../packages/utils
       nuxt-multi-cache:
         specifier: ^3.4.0
         version: 3.4.0
