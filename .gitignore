@@ -9,7 +9,9 @@ node_modules
 coverage
 
 # build outputs
-.nuxt/
+!.nuxt/
+.nuxt/*
+!.nuxt/eslint.config.mjs
 .output/
 out/
 build
@@ -37,3 +39,4 @@ yarn-error.log*
 # Reports
 .lighthouseci*
 sitespeed-result/*
+
