@@ -185,15 +185,6 @@
       "#internal/nuxt-robots/*": [
         "../../../node_modules/.pnpm/@nuxtjs+robots@4.1.11_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/robots/dist/runtime/nitro/composables/*"
       ],
-      "#content/server": [
-        "../../../node_modules/.pnpm/nuxt-link-checker@3.2.0_vite@6.1.0_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime/server/composables/content-mock"
-      ],
-      "#link-checker/shared": [
-        "../../../node_modules/.pnpm/nuxt-link-checker@3.2.0_vite@6.1.0_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime/shared"
-      ],
-      "#link-checker/shared/*": [
-        "../../../node_modules/.pnpm/nuxt-link-checker@3.2.0_vite@6.1.0_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime/shared/*"
-      ],
       "#nuxt-icon-server-bundle": [
         "./nuxt-icon-server-bundle"
       ]

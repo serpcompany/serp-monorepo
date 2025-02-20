@@ -8,7 +8,7 @@ networks:
 services:
   serp-co-app-staging:
     build:
-      context: .
+      context: ../..
       dockerfile: Dockerfile
     container_name: serp-co-app-staging
     restart: always
