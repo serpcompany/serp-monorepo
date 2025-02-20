@@ -13,25 +13,11 @@
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
     "paths": {
-      "#imports": [
-        "./types/nitro-imports"
-      ],
-      "~/*": [
-        "../*",
-        "../*"
-      ],
-      "@/*": [
-        "../*",
-        "../*"
-      ],
-      "~~/*": [
-        "../*",
-        "../*"
-      ],
-      "@@/*": [
-        "../*",
-        "../*"
-      ],
+      "#imports": ["./types/nitro-imports"],
+      "~/*": ["../*", "../*"],
+      "@/*": ["../*", "../*"],
+      "~~/*": ["../*", "../*"],
+      "@@/*": ["../*", "../*"],
       "nitropack/types": [
         "../../../node_modules/.pnpm/nitropack@2.10.4_drizzle-orm@0.36.4_typescript@5.7.3/node_modules/nitropack/types"
       ],
@@ -41,12 +27,8 @@
       "nitropack": [
         "../../../node_modules/.pnpm/nitropack@2.10.4_drizzle-orm@0.36.4_typescript@5.7.3/node_modules/nitropack"
       ],
-      "defu": [
-        "../../../node_modules/.pnpm/defu@6.1.4/node_modules/defu"
-      ],
-      "h3": [
-        "../../../node_modules/.pnpm/h3@1.15.0/node_modules/h3"
-      ],
+      "defu": ["../../../node_modules/.pnpm/defu@6.1.4/node_modules/defu"],
+      "h3": ["../../../node_modules/.pnpm/h3@1.15.0/node_modules/h3"],
       "consola": [
         "../../../node_modules/.pnpm/consola@3.4.0/node_modules/consola"
       ],
@@ -77,39 +59,17 @@
       "vite/client": [
         "../../../node_modules/.pnpm/vite@6.1.0_jiti@2.4.2/node_modules/vite/client"
       ],
-      "~": [
-        "./.."
-      ],
-      "@": [
-        "./.."
-      ],
-      "~~": [
-        "./.."
-      ],
-      "@@": [
-        "./.."
-      ],
-      "#shared": [
-        "../shared"
-      ],
-      "assets": [
-        "../assets"
-      ],
-      "assets/*": [
-        "../assets/*"
-      ],
-      "public": [
-        "../public"
-      ],
-      "public/*": [
-        "../public/*"
-      ],
-      "#build": [
-        "./"
-      ],
-      "#build/*": [
-        "./*"
-      ],
+      "~": ["./.."],
+      "@": ["./.."],
+      "~~": ["./.."],
+      "@@": ["./.."],
+      "#shared": ["../shared"],
+      "assets": ["../assets"],
+      "assets/*": ["../assets/*"],
+      "public": ["../public"],
+      "public/*": ["../public/*"],
+      "#build": ["./"],
+      "#build/*": ["./*"],
       "#internal/nuxt/paths": [
         "../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/core/runtime/nitro/paths"
       ],
@@ -134,18 +94,14 @@
       "#nuxt-multi-cache/composables": [
         "../../../node_modules/.pnpm/nuxt-multi-cache@3.4.0/node_modules/nuxt-multi-cache/dist/runtime/composables/index"
       ],
-      "#multi-cache-server-options": [
-        "./multiCache.serverOptions"
-      ],
+      "#multi-cache-server-options": ["./multiCache.serverOptions"],
       "#ui": [
         "../../../node_modules/.pnpm/@nuxt+ui@3.0.0-alpha.10_embla-carousel@8.5.2_radix-vue@1.9.14_typescript@5.7.3_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/ui/dist/runtime"
       ],
       "#ui/*": [
         "../../../node_modules/.pnpm/@nuxt+ui@3.0.0-alpha.10_embla-carousel@8.5.2_radix-vue@1.9.14_typescript@5.7.3_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/ui/dist/runtime/*"
       ],
-      "#color-mode-options": [
-        "./color-mode-options"
-      ],
+      "#color-mode-options": ["./color-mode-options"],
       "#image": [
         "../../../node_modules/.pnpm/@nuxt+image@1.9.0/node_modules/@nuxt/image/dist/runtime"
       ],
@@ -161,9 +117,7 @@
       "#nuxt-scripts-utils": [
         "../../../node_modules/.pnpm/@nuxt+scripts@0.9.5_@nuxt+devtools@1.7.0_@vue+compiler-core@3.5.13_nuxt@3.15.4_postcss@8.5.2__t335bdfrtud4ayljlw7vljqa6e/node_modules/@nuxt/scripts/dist/runtime/utils"
       ],
-      "#vue-router": [
-        "./vue-router"
-      ],
+      "#vue-router": ["./vue-router"],
       "#site-config": [
         "../../../node_modules/.pnpm/nuxt-site-config@2.2.21_vite@6.1.0_vue@3.5.13/node_modules/nuxt-site-config/dist/runtime"
       ],
@@ -185,15 +139,9 @@
       "#internal/nuxt-robots/*": [
         "../../../node_modules/.pnpm/@nuxtjs+robots@4.1.11_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/robots/dist/runtime/nitro/composables/*"
       ],
-      "#nuxt-icon-server-bundle": [
-        "./nuxt-icon-server-bundle"
-      ]
+      "#nuxt-icon-server-bundle": ["./nuxt-icon-server-bundle"]
     },
-    "lib": [
-      "esnext",
-      "webworker",
-      "dom.iterable"
-    ]
+    "lib": ["esnext", "webworker", "dom.iterable"]
   },
   "include": [
     "./types/nitro-nuxt.d.ts",

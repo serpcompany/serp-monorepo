@@ -3,7 +3,6 @@ export { isVue2, isVue3 } from 'vue-demi';
 export { defineNuxtLink } from '#app/components/nuxt-link';
 export { useNuxtApp, tryUseNuxtApp, defineNuxtPlugin, definePayloadPlugin, useRuntimeConfig, defineAppConfig } from '#app/nuxt';
 export { requestIdleCallback, cancelIdleCallback } from '#app/compat/idle-callback';
-export { setInterval } from '#app/compat/interval';
 export { useAppConfig, updateAppConfig } from '#app/config';
 export { defineNuxtComponent } from '#app/composables/component';
 export { useAsyncData, useLazyAsyncData, useNuxtData, refreshNuxtData, clearNuxtData } from '#app/composables/asyncData';
@@ -116,8 +115,6 @@ export { useI18n } from '../../../node_modules/.pnpm/@nuxtjs+seo@2.0.0-rc.23_h3@
 export { useBreadcrumbItems } from '../../../node_modules/.pnpm/@nuxtjs+seo@2.0.0-rc.23_h3@1.15.0_unhead@1.11.18_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/seo/dist/runtime/nuxt/composables/useBreadcrumbItems';
 export { useDataCache } from '../../../node_modules/.pnpm/nuxt-multi-cache@3.4.0/node_modules/nuxt-multi-cache/dist/runtime/composables/useDataCache';
 export { useCachedAsyncData } from '../../../node_modules/.pnpm/nuxt-multi-cache@3.4.0/node_modules/nuxt-multi-cache/dist/runtime/composables/useCachedAsyncData';
-export { useRouteCache } from '../../../node_modules/.pnpm/nuxt-multi-cache@3.4.0/node_modules/nuxt-multi-cache/dist/runtime/composables/useRouteCache';
-export { useCDNHeaders } from '../../../node_modules/.pnpm/nuxt-multi-cache@3.4.0/node_modules/nuxt-multi-cache/dist/runtime/composables/useCDNHeaders';
 export { useColorMode } from '../../../node_modules/.pnpm/@nuxtjs+color-mode@3.5.2/node_modules/@nuxtjs/color-mode/dist/runtime/composables';
 export { useImage } from '../../../node_modules/.pnpm/@nuxt+image@1.9.0/node_modules/@nuxt/image/dist/runtime/composables';
 export { definePageMeta } from '../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/pages/runtime/composables';

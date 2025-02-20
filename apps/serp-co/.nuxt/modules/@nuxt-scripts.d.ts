@@ -2,7 +2,7 @@
 
 declare module '#app' {
   interface NuxtApp {
-    $scripts: Record<'googleTagManager' | string, Pick<(import('#nuxt-scripts').NuxtAppScript), '$script'> & Record<string, any>>
+    $scripts: Record<string, Pick<(import('#nuxt-scripts').NuxtAppScript), '$script'> & Record<string, any>>
     _scripts: Record<string, (import('#nuxt-scripts').NuxtAppScript)>
   }
   interface RuntimeNuxtHooks {
