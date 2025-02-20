@@ -8,13 +8,14 @@ node_modules
 # testing
 coverage
 
+
 # build outputs
-!.nuxt/
-.nuxt/*
-!.nuxt/eslint.config.mjs
 .output/
 out/
 build
+!.nuxt/
+.nuxt/*
+!.nuxt/eslint.config.mjs
 
 # misc
 .DS_Store
