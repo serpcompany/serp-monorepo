@@ -1,4 +1,4 @@
-import type { Category } from '@/types';
+import type { Category } from '@serp/types/types';
 
 const predefinedCategories: Category[] = [
   { id: 1, name: 'Shop', slug: 'shop' },

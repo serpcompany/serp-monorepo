@@ -106,7 +106,7 @@
 </template>
 
 <script setup lang="ts">
-import type { FooterColumn } from '@/types';
+import type { FooterColumn } from '@serp/types/types';
 
 const config = useRuntimeConfig();
 const companyName = config.public.siteName;

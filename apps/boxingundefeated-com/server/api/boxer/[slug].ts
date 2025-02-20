@@ -12,7 +12,7 @@ import type {
   RawBoxer,
   WeightClass,
   RawWeightClass
-} from '@/types';
+} from '@serp/types/types';
 
 const transformWeightClass = (weightClass: RawWeightClass): WeightClass => ({
   name: weightClass.name,

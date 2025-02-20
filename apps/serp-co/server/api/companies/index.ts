@@ -9,7 +9,7 @@ import type {
   Category,
   RawCategory,
   Pagination
-} from '@/types';
+} from '@serp/types/types';
 
 const transformCategory = (category: RawCategory): Category => ({
   id: category.id,

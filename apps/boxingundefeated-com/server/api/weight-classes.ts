@@ -1,7 +1,7 @@
 import { db } from '@/server/db';
 import { weightClassCache } from '@/server/db/schema';
 import { useDataCache } from '#nuxt-multi-cache/composables';
-import type { WeightClass, RawWeightClass } from '@/types';
+import type { WeightClass, RawWeightClass } from '@serp/types/types';
 
 const transformWeightClass = (weightClass: RawWeightClass): WeightClass => ({
   id: weightClass.id,

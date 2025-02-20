@@ -1,7 +1,7 @@
 import { db } from '@/server/db';
 import { postCategoryCache } from '@/server/db/schema';
 import { useDataCache } from '#nuxt-multi-cache/composables';
-import type { Category, RawCategory } from '@/types';
+import type { Category, RawCategory } from '@serp/types/types';
 
 const transformCategory = (category: RawCategory): Category => ({
   id: category.id,

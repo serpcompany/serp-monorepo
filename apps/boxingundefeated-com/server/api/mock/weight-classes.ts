@@ -1,4 +1,4 @@
-import type { WeightClass } from '@/types';
+import type { WeightClass } from '@serp/types/types';
 
 const predefinedWeightClasses: WeightClass[] = [
   { id: 1, name: 'Bantamweight', slug: 'bantamweight' },

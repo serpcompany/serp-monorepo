@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Category } from '@/types';
+import type { Category } from '@serp/types/types';
 
 defineProps({
   categories: {

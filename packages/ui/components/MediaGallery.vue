@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Company } from '@/types';
+import type { Company } from '@serp/types/types';
 
 defineProps<{
   company: Company;

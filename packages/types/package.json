@@ -1,0 +1,21 @@
+{
+  "name": "@serp/types",
+  "type": "module",
+  "version": "0.0.1",
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "dev": "nuxi dev .playground",
+    "dev:prepare": "nuxt prepare .playground",
+    "build": "nuxt build .playground",
+    "generate": "nuxt generate .playground",
+    "preview": "nuxt preview .playground",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "latest",
+    "eslint": "^9.20.1",
+    "nuxt": "^3.15.4",
+    "typescript": "^5.7.3",
+    "vue": "latest"
+  }
+}

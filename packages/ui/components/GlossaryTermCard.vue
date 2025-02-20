@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import type { PostIndex } from '@/types';
+import type { PostIndex } from '@serp/types/types';
 
 defineProps<{
   term: PostIndex;

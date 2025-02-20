@@ -18,12 +18,8 @@
     "test:watch": "vitest --coverage"
   },
   "dependencies": {
-    "@serp/tools": "workspace:^",
-    "@serp/ui": "workspace:^",
-    "@serp/utils": "workspace:^",
     "nuxt-multi-cache": "^3.4.0",
-    "nuxt-security": "^2.1.5",
-    "papaparse": "^5.4.1"
+    "nuxt-security": "^2.1.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
@@ -40,6 +36,10 @@
     "@nuxtjs/html-validator": "^1.8.2",
     "@nuxtjs/seo": "2.0.0-rc.23",
     "@nuxtjs/sitemap": "^7.0.0",
+    "@serp/tools": "workspace:^",
+    "@serp/types": "workspace:^",
+    "@serp/ui": "workspace:^",
+    "@serp/utils": "workspace:^",
     "@tailwindcss/typography": "^0.5.15",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/vue": "^8.1.0",
@@ -54,6 +54,7 @@
     "jsdom": "^25.0.1",
     "nuxt": "^3.14.159",
     "nuxt-link-checker": "4.0.4",
+    "papaparse": "^5.4.1",
     "playwright-core": "^1.48.2",
     "postgres": "^3.4.5",
     "prettier-plugin-packagejson": "^2.5.3",

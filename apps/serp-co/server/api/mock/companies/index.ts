@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import type { CompanyIndex, Pagination } from '@/types';
+import type { CompanyIndex, Pagination } from '@serp/types/types';
 
 const generateCompany = (): CompanyIndex => {
   const name = faker.company.name();

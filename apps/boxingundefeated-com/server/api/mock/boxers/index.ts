@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import type { BoxerIndex, Pagination } from '@/types';
+import type { BoxerIndex, Pagination } from '@serp/types/types';
 
 const weightClasses = [
   { name: 'Bantamweight', slug: 'bantamweight' },

@@ -12,7 +12,7 @@ import type {
   RawFaq,
   Category,
   RawCategory
-} from '@/types';
+} from '@serp/types/types';
 
 const transformFeature = (feature: RawFeature): Feature => ({
   id: feature.id,

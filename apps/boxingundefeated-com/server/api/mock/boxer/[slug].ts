@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import type { Boxer } from '@/types';
+import type { Boxer } from '@serp/types/types';
 
 const generateBoxer = (slug: string): Boxer => {
   const name = faker.person.fullName();

@@ -3,7 +3,7 @@ import { postCache } from '@/server/db/schema';
 import { eq } from 'drizzle-orm';
 import { useDataCache } from '#nuxt-multi-cache/composables';
 
-import type { Post, RawPost, Category, RawCategory } from '@/types';
+import type { Post, RawPost, Category, RawCategory } from '@serp/types/types';
 
 const transformCategory = (category: RawCategory): Category => ({
   id: category.id,

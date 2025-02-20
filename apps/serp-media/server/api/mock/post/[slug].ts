@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import type { Post } from '@/types';
+import type { Post } from '@serp/types/types';
 
 const generatePost = (slug: string): Post => {
   const title = faker.lorem.sentence();

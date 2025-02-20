@@ -4,3 +4,5 @@ export * from './Faq';
 export * from './FooterColumn';
 export * from './Pagination';
 export * from './Post';
+export * from './Boxer';
+export * from './WeightClass';

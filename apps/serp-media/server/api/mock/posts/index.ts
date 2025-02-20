@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import type { PostIndex, Pagination } from '@/types';
+import type { PostIndex, Pagination } from '@serp/types/types';
 
 const predefinedCategories = [
   { id: 1, name: 'Shop', slug: 'shop' },

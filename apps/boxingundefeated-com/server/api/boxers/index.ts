@@ -9,7 +9,7 @@ import type {
   WeightClass,
   RawWeightClass,
   Pagination
-} from '@/types';
+} from '@serp/types/types';
 
 const transformWeightClass = (weightClass: RawWeightClass): WeightClass => ({
   name: weightClass.name,

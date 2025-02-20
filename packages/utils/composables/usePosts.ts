@@ -1,4 +1,4 @@
-import type { Posts } from '@/types';
+import type { Posts } from '@serp/types/types';
 
 export const usePosts = async (
   page = 1,
