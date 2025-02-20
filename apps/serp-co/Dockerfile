@@ -7,15 +7,15 @@ RUN apt-get install -y git make g++ python3
 RUN npm install -g pnpm
 
 WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --shamefully-hoist && pnpm store prune
 COPY . .
-RUN pnpm run db:generate
-RUN pnpm run build
+RUN pnpm --filter @serp-co install --shamefully-hoist
+RUN pnpm --filter @serp-co store prune 
+RUN pnpm --filter @serp-co run db:generate
+RUN pnpm --filter @serp-co run build
 
 # Stage 2: Deploy
 FROM node:21-slim as deploy
-COPY --from=builder /app/.output /app/output
+COPY --from=builder /app/apps/serp-co/.output /app/output
 ENV HOST=0.0.0.0
 ENV PORT=80
 EXPOSE 80

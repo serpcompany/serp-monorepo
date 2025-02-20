@@ -60,17 +60,8 @@ declare module "nitropack/types" {
     '/__nuxt_error': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/core/runtime/nitro/renderer').default>>>>
     }
-    '/__site-config__/debug.json': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../node_modules/.pnpm/nuxt-site-config@2.2.21_vite@6.1.0_vue@3.5.13/node_modules/nuxt-site-config/dist/runtime/nitro/routes/__site-config__/debug').default>>>>
-    }
     '/robots.txt': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../node_modules/.pnpm/@nuxtjs+robots@4.1.11_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/robots/dist/runtime/nitro/server/robots-txt').default>>>>
-    }
-    '/__robots__/debug.json': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../node_modules/.pnpm/@nuxtjs+robots@4.1.11_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/robots/dist/runtime/nitro/server/__robots__/debug').default>>>>
-    }
-    '/__robots__/debug-path.json': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../node_modules/.pnpm/@nuxtjs+robots@4.1.11_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/robots/dist/runtime/nitro/server/__robots__/debug-path').default>>>>
     }
     '/sitemap_index.xml': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../node_modules/.pnpm/@nuxtjs+sitemap@6.1.5_h3@1.15.0_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/sitemap_index.xml').default>>>>
@@ -78,26 +69,11 @@ declare module "nitropack/types" {
     '/__sitemap__/**:sitemap': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../node_modules/.pnpm/@nuxtjs+sitemap@6.1.5_h3@1.15.0_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/sitemap/[sitemap].xml').default>>>>
     }
-    '/__sitemap__/debug.json': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../node_modules/.pnpm/@nuxtjs+sitemap@6.1.5_h3@1.15.0_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/__sitemap__/debug').default>>>>
-    }
     '/__sitemap__/style.xsl': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../node_modules/.pnpm/@nuxtjs+sitemap@6.1.5_h3@1.15.0_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/sitemap.xsl').default>>>>
     }
     '/sitemap.xml': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../node_modules/.pnpm/@nuxtjs+sitemap@6.1.5_h3@1.15.0_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/sitemap/dist/runtime/nitro/routes/sitemap.xml').default>>>>
-    }
-    '/__schema-org__/debug.json': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../node_modules/.pnpm/nuxt-schema-org@3.5.0_unhead@1.11.18_vite@6.1.0_vue@3.5.13/node_modules/nuxt-schema-org/dist/runtime/server/routes/__schema-org__/debug').default>>>>
-    }
-    '/__link-checker__/inspect': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../node_modules/.pnpm/nuxt-link-checker@3.2.0_vite@6.1.0_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime/server/routes/__link-checker__/inspect').default>>>>
-    }
-    '/__link-checker__/links': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../node_modules/.pnpm/nuxt-link-checker@3.2.0_vite@6.1.0_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime/server/routes/__link-checker__/links').default>>>>
-    }
-    '/__link-checker__/debug.json': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../node_modules/.pnpm/nuxt-link-checker@3.2.0_vite@6.1.0_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime/server/routes/__link-checker__/debug').default>>>>
     }
     '/api/_nuxt_icon/:collection': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../node_modules/.pnpm/@nuxt+icon@1.7.5_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/icon/dist/runtime/server/api').default>>>>

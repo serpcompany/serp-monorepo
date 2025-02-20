@@ -8,7 +8,7 @@ networks:
 services:
   serp-co-app:
     build:
-      context: .
+      context: ../..
       dockerfile: Dockerfile
     container_name: serp-co-app
     restart: always
