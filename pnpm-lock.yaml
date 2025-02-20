@@ -96,15 +96,9 @@ importers:
       happy-dom:
         specifier: ^15.11.6
         version: 15.11.7
-      husky:
-        specifier: ^9.1.6
-        version: 9.1.7
       jsdom:
         specifier: ^25.0.1
         version: 25.0.1
-      lint-staged:
-        specifier: ^15.2.10
-        version: 15.4.3
       nuxt:
         specifier: ^3.14.159
         version: 3.15.4(drizzle-orm@0.36.4)(eslint@9.20.1)(typescript@5.7.3)(vite@6.1.0)
@@ -268,6 +262,9 @@ importers:
 
   apps/serp_media:
     dependencies:
+      '@serp/ui':
+        specifier: workspace:^
+        version: link:../../packages/ui
       nuxt-multi-cache:
         specifier: ^3.4.0
         version: 3.4.0
@@ -347,15 +344,9 @@ importers:
       happy-dom:
         specifier: ^15.11.6
         version: 15.11.7
-      husky:
-        specifier: ^9.1.6
-        version: 9.1.7
       jsdom:
         specifier: ^25.0.1
         version: 25.0.1
-      lint-staged:
-        specifier: ^15.2.10
-        version: 15.4.3
       nuxt:
         specifier: ^3.14.159
         version: 3.15.4(drizzle-orm@0.36.4)(eslint@9.20.1)(typescript@5.7.3)(vite@6.1.0)

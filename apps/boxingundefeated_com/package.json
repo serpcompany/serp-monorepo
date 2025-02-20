@@ -7,14 +7,15 @@
     "db:generate": "drizzle-kit generate",
     "db:pull": "drizzle-kit pull",
     "db:studio": "drizzle-kit studio",
-    "dev": "infisical run -- nuxt dev",
+    "dev:@boxingundefeated": "infisical run -- nuxt dev",
     "format": "prettier -w .",
     "generate": "nuxt generate",
     "postinstall": "nuxt prepare",
     "lint": "prettier . --write && eslint --fix",
-    "prepare": "husky install",
     "preview": "nuxt preview",
-    "server": "node .output/server/index.mjs"
+    "server": "node .output/server/index.mjs",
+    "test": "vitest --coverage --run",
+    "test:watch": "vitest --coverage"
   },
   "dependencies": {
     "nuxt-multi-cache": "^3.4.0",
@@ -45,9 +46,7 @@
     "drizzle-orm": "^0.36.2",
     "eslint": "^9.14.0",
     "happy-dom": "^15.11.6",
-    "husky": "^9.1.6",
     "jsdom": "^25.0.1",
-    "lint-staged": "^15.2.10",
     "nuxt": "^3.14.159",
     "nuxt-link-checker": "4.0.4",
     "playwright-core": "^1.48.2",
