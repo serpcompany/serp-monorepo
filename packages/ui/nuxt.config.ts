@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     '@nuxtjs/html-validator',
     '@nuxt/image',
     '@nuxt/eslint',
-    '@nuxt/scripts',
+    '@nuxt/scripts'
   ],
-  css: ['~/assets/css/main.css'],
-})
+  css: ['~/assets/css/main.css']
+});

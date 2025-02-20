@@ -8,14 +8,17 @@ const generatePost = (slug: string): Post => {
     title,
     slug,
     content: faker.lorem.paragraphs(3),
-    categories: Array.from({ length: faker.number.int({ min: 1, max: 3 }) }, () => {
-      const catName = faker.lorem.word();
-      return {
-        id: faker.number.int(),
-        name: catName,
-        slug: faker.helpers.slugify(catName)
-      };
-    })
+    categories: Array.from(
+      { length: faker.number.int({ min: 1, max: 3 }) },
+      () => {
+        const catName = faker.lorem.word();
+        return {
+          id: faker.number.int(),
+          name: catName,
+          slug: faker.helpers.slugify(catName)
+        };
+      }
+    )
   };
 };
 

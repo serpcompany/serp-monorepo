@@ -29,10 +29,7 @@
       }
     },
     "collect": {
-      "url": [
-        "https://serp.media",
-        "https://serp.media/legal/privacy-policy/"
-      ],
+      "url": ["https://serp.media", "https://serp.media/legal/privacy-policy/"],
       "numberOfRuns": 3
     },
     "upload": {

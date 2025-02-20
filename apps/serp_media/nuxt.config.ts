@@ -84,16 +84,14 @@ export default defineNuxtConfig({
         {
           label: 'Posts',
           children: [{ label: 'Posts', to: '/posts/' }]
-        },
+        }
       ],
       footerColumns: [
         {
           title: 'Links',
           id: 1,
           slug: '',
-          items: [
-            { text: 'Posts', slug: '/posts/' },
-          ]
+          items: [{ text: 'Posts', slug: '/posts/' }]
         }
       ],
       legalLinks: [
@@ -197,7 +195,7 @@ export default defineNuxtConfig({
       },
       ['post-categories']: {
         sources: ['/api/__sitemap__/post-categories']
-      },
+      }
     }
   }
 });

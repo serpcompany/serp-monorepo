@@ -75,9 +75,7 @@ export default defineEventHandler(async (event) => {
     .limit(limitNumber)
     .offset(offset);
 
-  let totalQuery = db
-    .select({ count: sql<number>`count(*)` })
-    .from(boxerCache);
+  let totalQuery = db.select({ count: sql<number>`count(*)` }).from(boxerCache);
 
   if (weightClassSlug) {
     totalQuery = totalQuery.where(
@@ -113,7 +111,7 @@ export default defineEventHandler(async (event) => {
 
   const response = {
     boxers,
-    pagination,
+    pagination
   };
   addToCache(response, [], 60 * 60 * 24 * 7); // 1 week
   return response;

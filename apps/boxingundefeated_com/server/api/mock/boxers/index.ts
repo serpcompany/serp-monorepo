@@ -34,8 +34,10 @@ const generateBoxer = (): BoxerIndex => {
 };
 
 const TOTAL_MOCK_ITEMS = 500;
-const mockDb: BoxerIndex[] = Array.from({ length: TOTAL_MOCK_ITEMS }, generateBoxer)
-  .sort((a, b) => a.name.localeCompare(b.name));
+const mockDb: BoxerIndex[] = Array.from(
+  { length: TOTAL_MOCK_ITEMS },
+  generateBoxer
+).sort((a, b) => a.name.localeCompare(b.name));
 
 export default defineEventHandler(async (event) => {
   const { page = 1, limit = 100, weightClassSlug = '' } = getQuery(event);

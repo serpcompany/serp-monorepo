@@ -9,7 +9,9 @@ const predefinedCategories = [
 const generatePost = (): PostIndex => {
   const title = faker.lorem.sentence();
   const numCategories = faker.number.int({ min: 1, max: 2 });
-  const categories = faker.helpers.shuffle(predefinedCategories).slice(0, numCategories);
+  const categories = faker.helpers
+    .shuffle(predefinedCategories)
+    .slice(0, numCategories);
 
   return {
     id: faker.number.int(),
@@ -20,8 +22,10 @@ const generatePost = (): PostIndex => {
 };
 
 const TOTAL_MOCK_ITEMS = 500;
-const mockDb: PostIndex[] = Array.from({ length: TOTAL_MOCK_ITEMS }, generatePost)
-  .sort((a, b) => a.title.localeCompare(b.title));
+const mockDb: PostIndex[] = Array.from(
+  { length: TOTAL_MOCK_ITEMS },
+  generatePost
+).sort((a, b) => a.title.localeCompare(b.title));
 
 export default defineEventHandler(async (event) => {
   const { page = 1, limit = 100, categorySlug = '' } = getQuery(event);

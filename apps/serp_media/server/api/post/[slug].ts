@@ -3,12 +3,7 @@ import { postCache } from '@/server/db/schema';
 import { eq } from 'drizzle-orm';
 import { useDataCache } from '#nuxt-multi-cache/composables';
 
-import type {
-  Category,
-  RawCategory,
-  Post,
-  RawPost
-} from '@/types';
+import type { Category, RawCategory, Post, RawPost } from '@/types';
 
 const transformCategory = (category: RawCategory): Category => ({
   id: category.id,
@@ -21,7 +16,7 @@ const transformPost = (post: RawPost): Post => ({
   title: post.title,
   slug: post.slug,
   content: post.content,
-  categories: post.categories?.map(transformCategory),
+  categories: post.categories?.map(transformCategory)
 });
 
 export default defineEventHandler(async (event) => {
@@ -32,10 +27,7 @@ export default defineEventHandler(async (event) => {
     return value;
   }
 
-  const query = db
-    .select()
-    .from(postCache)
-    .where(eq(postCache.slug, slug));
+  const query = db.select().from(postCache).where(eq(postCache.slug, slug));
 
   const results = await query.execute();
 

@@ -21,7 +21,7 @@ const transformPost = (post: RawPostIndex): PostIndex => ({
   id: post.id,
   title: post.title,
   slug: post.slug,
-  categories: post.categories?.map(transformCategory),
+  categories: post.categories?.map(transformCategory)
 });
 
 export default defineEventHandler(async (event) => {
@@ -56,7 +56,7 @@ export default defineEventHandler(async (event) => {
       id: postCache.id,
       title: postCache.title,
       slug: postCache.slug,
-      categories: postCache.categories,
+      categories: postCache.categories
     })
     .from(postCache);
 
@@ -76,9 +76,7 @@ export default defineEventHandler(async (event) => {
     .limit(limitNumber)
     .offset(offset);
 
-  let totalQuery = db
-    .select({ count: sql<number>`count(*)` })
-    .from(postCache);
+  let totalQuery = db.select({ count: sql<number>`count(*)` }).from(postCache);
 
   if (categorySlug) {
     totalQuery = totalQuery.where(
@@ -114,7 +112,7 @@ export default defineEventHandler(async (event) => {
 
   const response = {
     posts,
-    pagination,
+    pagination
   };
   addToCache(response, [], 60 * 60 * 24 * 7); // 1 week
   return response;

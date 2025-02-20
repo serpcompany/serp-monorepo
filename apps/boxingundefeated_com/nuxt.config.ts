@@ -202,7 +202,7 @@ export default defineNuxtConfig({
       },
       ['weight-classes']: {
         sources: ['/api/__sitemap__/weight-classes']
-      },
+      }
     }
   }
 });

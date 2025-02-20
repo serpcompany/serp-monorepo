@@ -63,10 +63,7 @@ export default defineEventHandler(async (event) => {
     return value;
   }
 
-  const query = db
-    .select()
-    .from(boxerCache)
-    .where(eq(boxerCache.slug, slug));
+  const query = db.select().from(boxerCache).where(eq(boxerCache.slug, slug));
 
   const results = await query.execute();
 

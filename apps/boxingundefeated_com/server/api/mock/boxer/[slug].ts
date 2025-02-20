@@ -27,15 +27,18 @@ const generateBoxer = (slug: string): Boxer => {
     numWins: faker.number.int({ min: 0, max: 100 }),
     numDraws: faker.number.int({ min: 0, max: 50 }),
     numLosses: faker.number.int({ min: 0, max: 50 }),
-    bouts: Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, () => ({
-      date: faker.date.past().toISOString(),
-      opponent: {
-        name: faker.person.fullName(),
-        slug: faker.helpers.slugify(faker.person.fullName())
-      },
-      result: faker.helpers.arrayElement(['win', 'loss', 'draw']),
-      location: faker.location.city()
-    }))
+    bouts: Array.from(
+      { length: faker.number.int({ min: 1, max: 10 }) },
+      () => ({
+        date: faker.date.past().toISOString(),
+        opponent: {
+          name: faker.person.fullName(),
+          slug: faker.helpers.slugify(faker.person.fullName())
+        },
+        result: faker.helpers.arrayElement(['win', 'loss', 'draw']),
+        location: faker.location.city()
+      })
+    )
   };
 };
 
