@@ -65,9 +65,6 @@ defineProps<{
   data: Post;
 }>();
 
-async function play() {
-  await video.value.player.playVideo();
-}
 function stateChange(event: { data: number }) {
   isPlaying.value = event.data === 1;
 }

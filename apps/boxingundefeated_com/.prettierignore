@@ -4,3 +4,5 @@ pnpm-workspace.yaml
 node_modules/
 dist/
 build/
+.playground/
+

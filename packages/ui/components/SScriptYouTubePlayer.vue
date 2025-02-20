@@ -3,16 +3,16 @@
     <div
       ref="youtubeEl"
       style="width: 100%; height: 100%; position: absolute; top: 0; left: 0"
-    />
+    ></div>
     <slot v-if="!ready" :placeholder="placeholder" name="placeholder">
-      <img v-bind="placeholderAttrs" />
+      <img v-bind="placeholderAttrs" >
     </slot>
     <slot v-if="status === 'loading'" name="loading">
       <ScriptLoadingIndicator />
     </slot>
-    <slot v-if="status === 'awaitingLoad'" name="awaitingLoad" />
-    <slot v-else-if="status === 'error'" name="error" />
-    <slot />
+    <slot v-if="status === 'awaitingLoad'" name="awaitingLoad"></slot>
+    <slot v-else-if="status === 'error'" name="error"></slot>
+    <slot></slot>
   </div>
 </template>
 
@@ -65,7 +65,10 @@ const events: (keyof YT.Events)[] = [
 const rootEl = ref();
 const youtubeEl = ref();
 const ready = ref(false);
-const trigger = useScriptTriggerElement({ trigger: props.trigger, el: rootEl });
+const trigger = useScriptTriggerElement({
+  trigger: () => props.trigger,
+  el: rootEl
+});
 const script = useScriptYouTubePlayer({
   scriptOptions: {
     trigger
