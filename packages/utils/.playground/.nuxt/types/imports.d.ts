@@ -95,11 +95,15 @@ declare global {
   const useAppConfig: typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/config')['useAppConfig']
   const useAsyncData: typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']
   const useAttrs: typeof import('vue')['useAttrs']
+  const useCompanies: typeof import('../../../composables/useCompanies')['useCompanies']
+  const useCompany: typeof import('../../../composables/useCompany')['useCompany']
+  const useCompanyCategories: typeof import('../../../composables/useCompanyCategories')['useCompanyCategories']
   const useCookie: typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/cookie')['useCookie']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useError: typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/error')['useError']
   const useFetch: typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/fetch')['useFetch']
+  const useFetchWithCache: typeof import('../../../composables/useFetchWithCache')['default']
   const useHead: typeof import('../../../../../node_modules/.pnpm/@unhead+vue@1.11.9_vue@3.5.13/node_modules/@unhead/vue')['useHead']
   const useHeadSafe: typeof import('../../../../../node_modules/.pnpm/@unhead+vue@1.11.9_vue@3.5.13/node_modules/@unhead/vue')['useHeadSafe']
   const useHydration: typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/hydrate')['useHydration']
@@ -110,6 +114,9 @@ declare global {
   const useModel: typeof import('vue')['useModel']
   const useNuxtApp: typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/nuxt')['useNuxtApp']
   const useNuxtData: typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']
+  const usePost: typeof import('../../../composables/usePost')['usePost']
+  const usePostCategories: typeof import('../../../composables/usePostCategories')['usePostCategories']
+  const usePosts: typeof import('../../../composables/usePosts')['usePosts']
   const usePreviewMode: typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']
   const useRequestEvent: typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/ssr')['useRequestEvent']
   const useRequestFetch: typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/ssr')['useRequestFetch']
@@ -270,11 +277,15 @@ declare module 'vue' {
     readonly useAppConfig: UnwrapRef<typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/config')['useAppConfig']>
     readonly useAsyncData: UnwrapRef<typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
+    readonly useCompanies: UnwrapRef<typeof import('../../../composables/useCompanies')['useCompanies']>
+    readonly useCompany: UnwrapRef<typeof import('../../../composables/useCompany')['useCompany']>
+    readonly useCompanyCategories: UnwrapRef<typeof import('../../../composables/useCompanyCategories')['useCompanyCategories']>
     readonly useCookie: UnwrapRef<typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/cookie')['useCookie']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useError: UnwrapRef<typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/error')['useError']>
     readonly useFetch: UnwrapRef<typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/fetch')['useFetch']>
+    readonly useFetchWithCache: UnwrapRef<typeof import('../../../composables/useFetchWithCache')['default']>
     readonly useHead: UnwrapRef<typeof import('../../../../../node_modules/.pnpm/@unhead+vue@1.11.9_vue@3.5.13/node_modules/@unhead/vue')['useHead']>
     readonly useHeadSafe: UnwrapRef<typeof import('../../../../../node_modules/.pnpm/@unhead+vue@1.11.9_vue@3.5.13/node_modules/@unhead/vue')['useHeadSafe']>
     readonly useHydration: UnwrapRef<typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/hydrate')['useHydration']>
@@ -285,6 +296,9 @@ declare module 'vue' {
     readonly useModel: UnwrapRef<typeof import('vue')['useModel']>
     readonly useNuxtApp: UnwrapRef<typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/nuxt')['useNuxtApp']>
     readonly useNuxtData: UnwrapRef<typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']>
+    readonly usePost: UnwrapRef<typeof import('../../../composables/usePost')['usePost']>
+    readonly usePostCategories: UnwrapRef<typeof import('../../../composables/usePostCategories')['usePostCategories']>
+    readonly usePosts: UnwrapRef<typeof import('../../../composables/usePosts')['usePosts']>
     readonly usePreviewMode: UnwrapRef<typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']>
     readonly useRequestEvent: UnwrapRef<typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/ssr')['useRequestEvent']>
     readonly useRequestFetch: UnwrapRef<typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/composables/ssr')['useRequestFetch']>

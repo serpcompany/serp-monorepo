@@ -113,8 +113,35 @@
       "#internal/nuxt/paths": [
         "../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/core/runtime/nitro/paths"
       ],
+      "#ui": [
+        "../../../../node_modules/.pnpm/@nuxt+ui@3.0.0-alpha.10_embla-carousel@8.5.2_radix-vue@1.9.14_typescript@5.7.3_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/ui/dist/runtime"
+      ],
+      "#ui/*": [
+        "../../../../node_modules/.pnpm/@nuxt+ui@3.0.0-alpha.10_embla-carousel@8.5.2_radix-vue@1.9.14_typescript@5.7.3_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/ui/dist/runtime/*"
+      ],
+      "#color-mode-options": [
+        "./color-mode-options"
+      ],
+      "#image": [
+        "../../../../node_modules/.pnpm/@nuxt+image@1.9.0/node_modules/@nuxt/image/dist/runtime"
+      ],
+      "#image/*": [
+        "../../../../node_modules/.pnpm/@nuxt+image@1.9.0/node_modules/@nuxt/image/dist/runtime/*"
+      ],
+      "#nuxt-scripts-validator": [
+        "../../../../node_modules/.pnpm/@nuxt+scripts@0.9.5_@nuxt+devtools@1.7.0_@vue+compiler-core@3.5.13_nuxt@3.15.4_postcss@8.5.2__t335bdfrtud4ayljlw7vljqa6e/node_modules/@nuxt/scripts/dist/runtime/validation/mock"
+      ],
+      "#nuxt-scripts": [
+        "../../../../node_modules/.pnpm/@nuxt+scripts@0.9.5_@nuxt+devtools@1.7.0_@vue+compiler-core@3.5.13_nuxt@3.15.4_postcss@8.5.2__t335bdfrtud4ayljlw7vljqa6e/node_modules/@nuxt/scripts/dist/runtime/types"
+      ],
+      "#nuxt-scripts-utils": [
+        "../../../../node_modules/.pnpm/@nuxt+scripts@0.9.5_@nuxt+devtools@1.7.0_@vue+compiler-core@3.5.13_nuxt@3.15.4_postcss@8.5.2__t335bdfrtud4ayljlw7vljqa6e/node_modules/@nuxt/scripts/dist/runtime/utils"
+      ],
       "#vue-router": [
         "./vue-router"
+      ],
+      "#nuxt-icon-server-bundle": [
+        "./nuxt-icon-server-bundle"
       ]
     },
     "lib": [
@@ -125,7 +152,14 @@
   },
   "include": [
     "./types/nitro-nuxt.d.ts",
-    "../../../../node_modules/.pnpm/@nuxt+eslint@1.1.0_@vue+compiler-sfc@3.5.13_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/@nuxt/eslint/runtime/server",
+    "../../../../node_modules/.pnpm/@nuxt+eslint@0.6.2_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/@nuxt/eslint/runtime/server",
+    "../../../../node_modules/.pnpm/@nuxt+icon@1.7.5_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/icon/runtime/server",
+    "../../../../node_modules/.pnpm/@nuxt+fonts@0.10.3_vite@6.1.0/node_modules/@nuxt/fonts/runtime/server",
+    "../../../../node_modules/.pnpm/@nuxtjs+color-mode@3.5.2/node_modules/@nuxtjs/color-mode/runtime/server",
+    "../../../../node_modules/.pnpm/@nuxt+ui@3.0.0-alpha.10_embla-carousel@8.5.2_radix-vue@1.9.14_typescript@5.7.3_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/ui/runtime/server",
+    "../../../../node_modules/.pnpm/@nuxtjs+html-validator@1.8.2_vitest@2.1.9/node_modules/@nuxtjs/html-validator/runtime/server",
+    "../../../../node_modules/.pnpm/@nuxt+image@1.9.0/node_modules/@nuxt/image/runtime/server",
+    "../../../../node_modules/.pnpm/@nuxt+scripts@0.9.5_@nuxt+devtools@1.7.0_@vue+compiler-core@3.5.13_nuxt@3.15.4_postcss@8.5.2__t335bdfrtud4ayljlw7vljqa6e/node_modules/@nuxt/scripts/runtime/server",
     "../../../../node_modules/.pnpm/@nuxt+devtools@1.7.0_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/devtools/runtime/server",
     "../../../../node_modules/.pnpm/@nuxt+telemetry@2.6.5/node_modules/@nuxt/telemetry/runtime/server",
     "./types/nitro.d.ts",
@@ -137,7 +171,15 @@
     "../../../../node_modules",
     "../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/node_modules",
     "../../node_modules",
-    "../../../../node_modules/.pnpm/@nuxt+eslint@1.1.0_@vue+compiler-sfc@3.5.13_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/@nuxt/eslint/node_modules",
+    "../../../types/node_modules",
+    "../../../../node_modules/.pnpm/@nuxt+eslint@0.6.2_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/@nuxt/eslint/node_modules",
+    "../../../../node_modules/.pnpm/@nuxt+icon@1.7.5_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/icon/node_modules",
+    "../../../../node_modules/.pnpm/@nuxt+fonts@0.10.3_vite@6.1.0/node_modules/@nuxt/fonts/node_modules",
+    "../../../../node_modules/.pnpm/@nuxtjs+color-mode@3.5.2/node_modules/@nuxtjs/color-mode/node_modules",
+    "../../../../node_modules/.pnpm/@nuxt+ui@3.0.0-alpha.10_embla-carousel@8.5.2_radix-vue@1.9.14_typescript@5.7.3_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/ui/node_modules",
+    "../../../../node_modules/.pnpm/@nuxtjs+html-validator@1.8.2_vitest@2.1.9/node_modules/@nuxtjs/html-validator/node_modules",
+    "../../../../node_modules/.pnpm/@nuxt+image@1.9.0/node_modules/@nuxt/image/node_modules",
+    "../../../../node_modules/.pnpm/@nuxt+scripts@0.9.5_@nuxt+devtools@1.7.0_@vue+compiler-core@3.5.13_nuxt@3.15.4_postcss@8.5.2__t335bdfrtud4ayljlw7vljqa6e/node_modules/@nuxt/scripts/node_modules",
     "../../../../node_modules/.pnpm/@nuxt+devtools@1.7.0_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/devtools/node_modules",
     "../../../../node_modules/.pnpm/@nuxt+telemetry@2.6.5/node_modules/@nuxt/telemetry/node_modules",
     "../dist"

@@ -6,6 +6,12 @@ declare module "nitropack/types" {
     '/__nuxt_error': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/core/runtime/nitro/renderer').default>>>>
     }
+    '/api/_nuxt_icon/:collection': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../../node_modules/.pnpm/@nuxt+icon@1.7.5_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/icon/dist/runtime/server/api').default>>>>
+    }
+    '/_ipx/**': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../../../../node_modules/.pnpm/@nuxt+image@1.9.0/node_modules/@nuxt/image/dist/runtime/ipx').default>>>>
+    }
   }
 }
 export {}

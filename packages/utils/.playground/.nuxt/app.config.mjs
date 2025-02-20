@@ -15,5 +15,6 @@ if (import.meta.hot) {
 
 import cfg0 from "/Users/devin/repos/projects/serp-monorepo/packages/utils/.playground/app.config.ts"
 import cfg1 from "/Users/devin/repos/projects/serp-monorepo/packages/utils/app.config.ts"
+import cfg2 from "/Users/devin/repos/projects/serp-monorepo/packages/types/app.config.ts"
 
-export default /*@__PURE__*/ defuFn(cfg0, cfg1, inlineConfig)
+export default /*@__PURE__*/ defuFn(cfg0, cfg1, cfg2, inlineConfig)

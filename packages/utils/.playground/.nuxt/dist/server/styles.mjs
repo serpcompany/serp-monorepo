@@ -1,7 +1,10 @@
 const interopDefault = r => r.default || r || []
 export default {
+  "../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/entry.js": () => import('./_nuxt/entry-styles.Dfyb9Ax-.mjs').then(interopDefault),
+  "../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/components/welcome.vue": () => import('./_nuxt/welcome-styles.hbY3dSbz.mjs').then(interopDefault),
   "../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/components/error-404.vue": () => import('./_nuxt/error-404-styles.DU5QtV6l.mjs').then(interopDefault),
   "../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/components/error-500.vue": () => import('./_nuxt/error-500-styles.BxOcgVPR.mjs').then(interopDefault),
+  "../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/components/error-500.vue?vue&type=style&index=0&scoped=d95f05c4&lang.css": () => import('./_nuxt/error-500-styles.B5OnYdaT.mjs').then(interopDefault),
   "../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/components/error-404.vue?vue&type=style&index=0&scoped=7baf0b56&lang.css": () => import('./_nuxt/error-404-styles.E9-B2y2z.mjs').then(interopDefault),
-  "../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/components/error-500.vue?vue&type=style&index=0&scoped=d95f05c4&lang.css": () => import('./_nuxt/error-500-styles.B5OnYdaT.mjs').then(interopDefault)
+  "../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app/components/welcome.vue?vue&type=style&index=0&scoped=fe6fbae2&lang.css": () => import('./_nuxt/entry-styles.Dfyb9Ax-.mjs').then(interopDefault)
 }

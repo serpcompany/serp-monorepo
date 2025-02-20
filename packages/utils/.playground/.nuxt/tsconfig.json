@@ -102,7 +102,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/a4063044-49ec-486e-ae39-c7d4774974b2.json"
+        "./manifest/meta/0d0d61d9-376d-4890-accd-b5c32ebd330c.json"
       ],
       "#components": [
         "./components"
@@ -147,6 +147,7 @@
     "../.config/nuxt.*",
     "../**/*",
     "../../**/*",
+    "../../../types/**/*",
     "../../../../node_modules/.pnpm/@nuxt+eslint@0.6.2_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/@nuxt/eslint/runtime",
     "../../../../node_modules/.pnpm/@nuxt+eslint@0.6.2_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/@nuxt/eslint/dist/runtime",
     "../../../../node_modules/.pnpm/@nuxt+devtools@1.7.0_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/devtools/runtime",
@@ -164,6 +165,7 @@
     "../../../../node_modules",
     "../../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/node_modules",
     "../../node_modules",
+    "../../../types/node_modules",
     "../../../../node_modules/.pnpm/@nuxt+eslint@0.6.2_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/@nuxt/eslint/node_modules",
     "../../../../node_modules/.pnpm/@nuxt+devtools@1.7.0_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/devtools/node_modules",
     "../../../../node_modules/.pnpm/@nuxt+telemetry@2.6.5/node_modules/@nuxt/telemetry/node_modules",
