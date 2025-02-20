@@ -22,5 +22,5 @@ export default withNuxt({
       }
     ]
   },
-  ignores: ['**/.playground/**']
+  ignores: ['**/.playground/**', '**/.nuxt']
 });

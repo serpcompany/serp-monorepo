@@ -18,6 +18,7 @@ export default withNuxt({
   ignores: [
     '**/dist',
     '**/node_modules',
+    '**/.nuxt',
     'components/SScriptYouTubePlayer.vue'
   ],
   ...compat.extends(),

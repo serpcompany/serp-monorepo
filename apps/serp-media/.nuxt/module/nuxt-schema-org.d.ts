@@ -2,13 +2,17 @@
 
 declare module '@nuxt/schema' {
   export interface RuntimeNuxtHooks {
-    'schema-org:meta': (meta: import('../../../../node_modules/.pnpm/nuxt-schema-org@3.5.0_unhead@1.11.18_vite@6.1.0_vue@3.5.13/node_modules/nuxt-schema-org/dist/runtime/types').MetaInput) => void | Promise<void>
+    'schema-org:meta': (
+      meta: import('../../../../node_modules/.pnpm/nuxt-schema-org@3.5.0_unhead@1.11.18_vite@6.1.0_vue@3.5.13/node_modules/nuxt-schema-org/dist/runtime/types').MetaInput
+    ) => void | Promise<void>;
   }
 }
 declare module '#app' {
   export interface RuntimeNuxtHooks {
-    'schema-org:meta': (meta: import('../../../../node_modules/.pnpm/nuxt-schema-org@3.5.0_unhead@1.11.18_vite@6.1.0_vue@3.5.13/node_modules/nuxt-schema-org/dist/runtime/types').MetaInput) => void | Promise<void>
+    'schema-org:meta': (
+      meta: import('../../../../node_modules/.pnpm/nuxt-schema-org@3.5.0_unhead@1.11.18_vite@6.1.0_vue@3.5.13/node_modules/nuxt-schema-org/dist/runtime/types').MetaInput
+    ) => void | Promise<void>;
   }
 }
 
-export {}
+export {};
