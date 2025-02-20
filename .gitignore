@@ -13,8 +13,8 @@ coverage
 .output/
 out/
 build
-# !.nuxt/eslint.config.mjs
-# .nuxt/
+!.nuxt/eslint.config.mjs
+.nuxt/
 
 # misc
 .DS_Store
