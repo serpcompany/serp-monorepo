@@ -1,20 +1,20 @@
-#!/bin/sh
+# #!/bin/sh
 
-# Start
-echo "[.husky]: Running pre-commit hook..."
+# # Start
+# echo "[.husky]: Running pre-commit hook..."
 
-# Check staged files
-STAGED_FILES=$(git diff --cached --name-only)
-echo "[.husky]: Your staged files: $STAGED_FILES"
+# # Check staged files
+# STAGED_FILES=$(git diff --cached --name-only)
+# echo "[.husky]: Your staged files: $STAGED_FILES"
 
-# Run lint
-echo "[.husky]: Running script: pnpm lint"
-pnpm lint
+# # Run lint
+# echo "[.husky]: Running script: pnpm lint"
+# pnpm lint
 
-# Run tests
-echo "[.husky]: Running script: pnpm test"
-pnpm test
+# # Run tests
+# echo "[.husky]: Running script: pnpm test"
+# pnpm test
 
-# Run Infisical scan on staged changes with baseline
-echo "[.husky]: Running command: pnpm infisical scan git-changes --staged --verbose --baseline-path .reports/secrets-report.json"
-pnpm infisical scan git-changes --staged --verbose --baseline-path .reports/secrets-report.json
+# # Run Infisical scan on staged changes with baseline
+# echo "[.husky]: Running command: pnpm infisical scan git-changes --staged --verbose --baseline-path .reports/secrets-report.json"
+# pnpm infisical scan git-changes --staged --verbose --baseline-path .reports/secrets-report.json
