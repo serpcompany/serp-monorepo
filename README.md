@@ -1,5 +1,10 @@
 # README
 
+## Docs
+
+- See: `docs/`
+
+## Turbo
 
 By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel.
 ```
