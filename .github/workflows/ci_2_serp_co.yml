@@ -12,6 +12,7 @@ on:
 
 jobs:
   ci_2_serp_co:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ${{ matrix.os }}
 
     strategy:
