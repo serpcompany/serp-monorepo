@@ -1,0 +1,1 @@
+export { default } from "file:///Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/@nuxt+vite-builder@3.15.4_eslint@9.20.1_typescript@5.7.3_vue@3.5.13/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
