@@ -1,5 +1,5 @@
 import Papa from 'papaparse';
-import * as XLSX from '~/utils/tools/vendor/xlsx.full.min.js';
+import * as XLSX from './vendor/xlsx.full.min.js';
 
 export function combineCsvs(files: FileList): Promise<string> {
   return new Promise((resolve, reject) => {

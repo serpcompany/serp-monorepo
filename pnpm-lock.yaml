@@ -18,7 +18,7 @@ importers:
         specifier: ^2.4.2
         version: 2.4.2
 
-  apps/boxingundefeated_com:
+  apps/boxingundefeated-com:
     dependencies:
       nuxt-multi-cache:
         specifier: ^3.4.0
@@ -133,8 +133,11 @@ importers:
         specifier: latest
         version: 4.5.0(vue@3.5.13)
 
-  apps/serp_co:
+  apps/serp-co:
     dependencies:
+      '@serp/tools':
+        specifier: workspace:^
+        version: link:../../packages/tools
       '@serp/ui':
         specifier: workspace:^
         version: link:../../packages/ui
@@ -260,7 +263,7 @@ importers:
         specifier: latest
         version: 4.5.0(vue@3.5.13)
 
-  apps/serp_media:
+  apps/serp-media:
     dependencies:
       '@serp/ui':
         specifier: workspace:^

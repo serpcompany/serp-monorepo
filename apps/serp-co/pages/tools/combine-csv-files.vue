@@ -28,7 +28,6 @@
 </template>
 
 <script setup lang="ts">
-import { combineCsvs } from '@/utils/tools/combineCsvs';
 const toast = useToast();
 const inputFiles = ref<FileList | null>(null);
 

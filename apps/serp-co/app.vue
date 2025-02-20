@@ -11,6 +11,6 @@ const config = useRuntimeConfig();
 const url = config.public.siteUrl;
 
 useSeoMeta({
-  ogImage: `${url}/serp.png`
+  ogImage: `${url}/og-image.png`
 });
 </script>

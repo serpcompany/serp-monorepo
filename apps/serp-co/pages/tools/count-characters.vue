@@ -28,8 +28,6 @@
 </template>
 
 <script setup lang="ts">
-import countCharacters from '~/utils/tools/countCharacters';
-
 const str = ref('');
 const characterCount = ref();
 

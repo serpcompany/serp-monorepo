@@ -28,8 +28,6 @@
 </template>
 
 <script setup lang="ts">
-import countParagraphs from '~/utils/tools/countParagraphs';
-
 const str = ref('');
 const paragraphCount = ref();
 

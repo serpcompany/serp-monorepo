@@ -37,7 +37,6 @@
 </template>
 
 <script setup lang="ts">
-import { usePosts } from '@/composables/usePosts';
 const router = useRouter();
 
 const data = await usePosts(1, 100, '', 'Glossary');

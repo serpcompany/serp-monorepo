@@ -30,7 +30,6 @@
 </template>
 
 <script setup lang="ts">
-import { convertJsonToCsv } from '@/utils/tools/convertJsonToCsv';
 const jsonInput = ref('');
 const csvOutput = ref<string>('');
 
