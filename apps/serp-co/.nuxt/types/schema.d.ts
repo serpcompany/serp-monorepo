@@ -2,6 +2,10 @@ import { NuxtModule, RuntimeConfig } from '@nuxt/schema'
 declare module '@nuxt/schema' {
   interface NuxtOptions {
     /**
+     * Configuration for `@nuxt/test-utils/module`
+     */
+    ["testUtils"]: typeof import("@nuxt/test-utils/module").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
      * Configuration for `/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-site-config@2.2.21_vite@6.1.0_vue@3.5.13/node_modules/nuxt-site-config/dist/module`
      */
     ["site"]: typeof import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-site-config@2.2.21_vite@6.1.0_vue@3.5.13/node_modules/nuxt-site-config/dist/module").default extends NuxtModule<infer O> ? O : Record<string, any>
@@ -84,6 +88,10 @@ declare module '@nuxt/schema' {
   }
   interface NuxtConfig {
     /**
+     * Configuration for `@nuxt/test-utils/module`
+     */
+    ["testUtils"]?: typeof import("@nuxt/test-utils/module").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
      * Configuration for `/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-site-config@2.2.21_vite@6.1.0_vue@3.5.13/node_modules/nuxt-site-config/dist/module`
      */
     ["site"]?: typeof import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-site-config@2.2.21_vite@6.1.0_vue@3.5.13/node_modules/nuxt-site-config/dist/module").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
@@ -163,12 +171,17 @@ declare module '@nuxt/schema' {
      * Configuration for `@nuxt/telemetry`
      */
     ["telemetry"]?: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-site-config@2.2.21_vite@6.1.0_vue@3.5.13/node_modules/nuxt-site-config/dist/module", Exclude<NuxtConfig["site"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/@nuxtjs+robots@4.1.11_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/robots/dist/module", Exclude<NuxtConfig["robots"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/@nuxtjs+sitemap@6.1.5_h3@1.15.0_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/sitemap/dist/module", Exclude<NuxtConfig["sitemap"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-og-image@3.1.1_vite@6.1.0_vue@3.5.13/node_modules/nuxt-og-image/dist/module", Exclude<NuxtConfig["ogImage"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-schema-org@3.5.0_unhead@1.11.18_vite@6.1.0_vue@3.5.13/node_modules/nuxt-schema-org/dist/module", Exclude<NuxtConfig["schemaOrg"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-seo-experiments@4.0.1_vite@6.1.0_vue@3.5.13/node_modules/nuxt-seo-experiments/dist/module", Exclude<NuxtConfig["seoExperiments"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-link-checker@3.2.0_vite@6.1.0_vue@3.5.13/node_modules/nuxt-link-checker/dist/module", Exclude<NuxtConfig["linkChecker"], boolean>] | ["@nuxtjs/seo", Exclude<NuxtConfig["seo"], boolean>] | ["nuxt-multi-cache", Exclude<NuxtConfig["multiCache"], boolean>] | ["nuxt-security", Exclude<NuxtConfig["security"], boolean>] | ["@nuxt/icon", Exclude<NuxtConfig["icon"], boolean>] | ["@nuxt/fonts", Exclude<NuxtConfig["fonts"], boolean>] | ["@nuxtjs/color-mode", Exclude<NuxtConfig["colorMode"], boolean>] | ["@nuxt/ui", Exclude<NuxtConfig["ui"], boolean>] | ["@nuxtjs/html-validator", Exclude<NuxtConfig["htmlValidator"], boolean>] | ["@nuxt/image", Exclude<NuxtConfig["image"], boolean>] | ["@nuxt/eslint", Exclude<NuxtConfig["eslint"], boolean>] | ["@nuxt/scripts", Exclude<NuxtConfig["scripts"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
+    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["@nuxt/test-utils/module", Exclude<NuxtConfig["testUtils"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-site-config@2.2.21_vite@6.1.0_vue@3.5.13/node_modules/nuxt-site-config/dist/module", Exclude<NuxtConfig["site"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/@nuxtjs+robots@4.1.11_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/robots/dist/module", Exclude<NuxtConfig["robots"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/@nuxtjs+sitemap@6.1.5_h3@1.15.0_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/sitemap/dist/module", Exclude<NuxtConfig["sitemap"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-og-image@3.1.1_vite@6.1.0_vue@3.5.13/node_modules/nuxt-og-image/dist/module", Exclude<NuxtConfig["ogImage"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-schema-org@3.5.0_unhead@1.11.18_vite@6.1.0_vue@3.5.13/node_modules/nuxt-schema-org/dist/module", Exclude<NuxtConfig["schemaOrg"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-seo-experiments@4.0.1_vite@6.1.0_vue@3.5.13/node_modules/nuxt-seo-experiments/dist/module", Exclude<NuxtConfig["seoExperiments"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-link-checker@3.2.0_vite@6.1.0_vue@3.5.13/node_modules/nuxt-link-checker/dist/module", Exclude<NuxtConfig["linkChecker"], boolean>] | ["@nuxtjs/seo", Exclude<NuxtConfig["seo"], boolean>] | ["nuxt-multi-cache", Exclude<NuxtConfig["multiCache"], boolean>] | ["nuxt-security", Exclude<NuxtConfig["security"], boolean>] | ["@nuxt/icon", Exclude<NuxtConfig["icon"], boolean>] | ["@nuxt/fonts", Exclude<NuxtConfig["fonts"], boolean>] | ["@nuxtjs/color-mode", Exclude<NuxtConfig["colorMode"], boolean>] | ["@nuxt/ui", Exclude<NuxtConfig["ui"], boolean>] | ["@nuxtjs/html-validator", Exclude<NuxtConfig["htmlValidator"], boolean>] | ["@nuxt/image", Exclude<NuxtConfig["image"], boolean>] | ["@nuxt/eslint", Exclude<NuxtConfig["eslint"], boolean>] | ["@nuxt/scripts", Exclude<NuxtConfig["scripts"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
   }
 }
 declare module 'nuxt/schema' {
   interface NuxtOptions {
     /**
+     * Configuration for `@nuxt/test-utils/module`
+     * @see https://www.npmjs.com/package/@nuxt/test-utils/module
+     */
+    ["testUtils"]: typeof import("@nuxt/test-utils/module").default extends NuxtModule<infer O> ? O : Record<string, any>
+    /**
      * Configuration for `/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-site-config@2.2.21_vite@6.1.0_vue@3.5.13/node_modules/nuxt-site-config/dist/module`
      * @see https://www.npmjs.com/package//Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-site-config@2.2.21_vite@6.1.0_vue@3.5.13/node_modules/nuxt-site-config/dist/module
      */
@@ -271,6 +284,11 @@ declare module 'nuxt/schema' {
   }
   interface NuxtConfig {
     /**
+     * Configuration for `@nuxt/test-utils/module`
+     * @see https://www.npmjs.com/package/@nuxt/test-utils/module
+     */
+    ["testUtils"]?: typeof import("@nuxt/test-utils/module").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    /**
      * Configuration for `/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-site-config@2.2.21_vite@6.1.0_vue@3.5.13/node_modules/nuxt-site-config/dist/module`
      * @see https://www.npmjs.com/package//Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-site-config@2.2.21_vite@6.1.0_vue@3.5.13/node_modules/nuxt-site-config/dist/module
      */
@@ -370,7 +388,7 @@ declare module 'nuxt/schema' {
      * @see https://www.npmjs.com/package/@nuxt/telemetry
      */
     ["telemetry"]?: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-site-config@2.2.21_vite@6.1.0_vue@3.5.13/node_modules/nuxt-site-config/dist/module", Exclude<NuxtConfig["site"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/@nuxtjs+robots@4.1.11_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/robots/dist/module", Exclude<NuxtConfig["robots"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/@nuxtjs+sitemap@6.1.5_h3@1.15.0_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/sitemap/dist/module", Exclude<NuxtConfig["sitemap"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-og-image@3.1.1_vite@6.1.0_vue@3.5.13/node_modules/nuxt-og-image/dist/module", Exclude<NuxtConfig["ogImage"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-schema-org@3.5.0_unhead@1.11.18_vite@6.1.0_vue@3.5.13/node_modules/nuxt-schema-org/dist/module", Exclude<NuxtConfig["schemaOrg"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-seo-experiments@4.0.1_vite@6.1.0_vue@3.5.13/node_modules/nuxt-seo-experiments/dist/module", Exclude<NuxtConfig["seoExperiments"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-link-checker@3.2.0_vite@6.1.0_vue@3.5.13/node_modules/nuxt-link-checker/dist/module", Exclude<NuxtConfig["linkChecker"], boolean>] | ["@nuxtjs/seo", Exclude<NuxtConfig["seo"], boolean>] | ["nuxt-multi-cache", Exclude<NuxtConfig["multiCache"], boolean>] | ["nuxt-security", Exclude<NuxtConfig["security"], boolean>] | ["@nuxt/icon", Exclude<NuxtConfig["icon"], boolean>] | ["@nuxt/fonts", Exclude<NuxtConfig["fonts"], boolean>] | ["@nuxtjs/color-mode", Exclude<NuxtConfig["colorMode"], boolean>] | ["@nuxt/ui", Exclude<NuxtConfig["ui"], boolean>] | ["@nuxtjs/html-validator", Exclude<NuxtConfig["htmlValidator"], boolean>] | ["@nuxt/image", Exclude<NuxtConfig["image"], boolean>] | ["@nuxt/eslint", Exclude<NuxtConfig["eslint"], boolean>] | ["@nuxt/scripts", Exclude<NuxtConfig["scripts"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
+    modules?: (undefined | null | false | NuxtModule<any> | string | [NuxtModule | string, Record<string, any>] | ["@nuxt/test-utils/module", Exclude<NuxtConfig["testUtils"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-site-config@2.2.21_vite@6.1.0_vue@3.5.13/node_modules/nuxt-site-config/dist/module", Exclude<NuxtConfig["site"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/@nuxtjs+robots@4.1.11_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/robots/dist/module", Exclude<NuxtConfig["robots"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/@nuxtjs+sitemap@6.1.5_h3@1.15.0_vite@6.1.0_vue@3.5.13/node_modules/@nuxtjs/sitemap/dist/module", Exclude<NuxtConfig["sitemap"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-og-image@3.1.1_vite@6.1.0_vue@3.5.13/node_modules/nuxt-og-image/dist/module", Exclude<NuxtConfig["ogImage"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-schema-org@3.5.0_unhead@1.11.18_vite@6.1.0_vue@3.5.13/node_modules/nuxt-schema-org/dist/module", Exclude<NuxtConfig["schemaOrg"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-seo-experiments@4.0.1_vite@6.1.0_vue@3.5.13/node_modules/nuxt-seo-experiments/dist/module", Exclude<NuxtConfig["seoExperiments"], boolean>] | ["/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/nuxt-link-checker@3.2.0_vite@6.1.0_vue@3.5.13/node_modules/nuxt-link-checker/dist/module", Exclude<NuxtConfig["linkChecker"], boolean>] | ["@nuxtjs/seo", Exclude<NuxtConfig["seo"], boolean>] | ["nuxt-multi-cache", Exclude<NuxtConfig["multiCache"], boolean>] | ["nuxt-security", Exclude<NuxtConfig["security"], boolean>] | ["@nuxt/icon", Exclude<NuxtConfig["icon"], boolean>] | ["@nuxt/fonts", Exclude<NuxtConfig["fonts"], boolean>] | ["@nuxtjs/color-mode", Exclude<NuxtConfig["colorMode"], boolean>] | ["@nuxt/ui", Exclude<NuxtConfig["ui"], boolean>] | ["@nuxtjs/html-validator", Exclude<NuxtConfig["htmlValidator"], boolean>] | ["@nuxt/image", Exclude<NuxtConfig["image"], boolean>] | ["@nuxt/eslint", Exclude<NuxtConfig["eslint"], boolean>] | ["@nuxt/scripts", Exclude<NuxtConfig["scripts"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
   }
   interface RuntimeConfig {
    app: {
@@ -527,20 +545,6 @@ declare module 'nuxt/schema' {
             _hasSourceChunk: number,
          },
       },
-   },
-
-   "nuxt-schema-org": {
-      reactive: boolean,
-
-      minify: boolean,
-
-      scriptAttributes: {
-         id: string,
-      },
-
-      identity: string,
-
-      version: string,
    },
 
    multiCache: {
@@ -815,6 +819,20 @@ declare module 'nuxt/schema' {
    copyrightText: string,
 
    address: string,
+
+   "nuxt-schema-org": {
+      reactive: boolean,
+
+      minify: boolean,
+
+      scriptAttributes: {
+         id: string,
+      },
+
+      identity: string,
+
+      version: string,
+   },
 
    "nuxt-seo": {
       canonicalQueryWhitelist: Array<string>,
