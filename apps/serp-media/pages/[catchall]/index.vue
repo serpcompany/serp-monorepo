@@ -5,7 +5,7 @@
     <main>
       <h2 class="pb-16 text-3xl">Movies & TV Shows</h2>
       <!-- rows -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         <post-card
                    v-for="post in data.posts"
                    :key="post.id"
@@ -66,6 +66,6 @@ watch([page, limit], async ([newPage, newLimit]) => {
 });
 
 useSeoMeta({
-  title: 'Posts'
+  title: () => moduleTitle.value
 });
 </script>

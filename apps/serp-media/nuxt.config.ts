@@ -80,15 +80,11 @@ export default defineNuxtConfig({
       headerNavItems: [
         {
           label: 'Movies',
-          children: [
-            { label: 'Movies', to: '/movies/' },
-          ]
+          children: [{ label: 'Movies', to: '/movies/' }]
         },
         {
           label: 'Shop',
-          children: [
-            { label: 'Shop', to: '/shop/' }
-          ]
+          children: [{ label: 'Shop', to: '/shop/' }]
         }
       ],
       footerColumns: [
