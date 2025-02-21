@@ -2,24 +2,24 @@
   <div>
     <section-hero-one :title="moduleTitle" />
 
-    <div class="pb-20">
-      <!-- rows:  posts -->
-      <div class="space-y-4">
+    <main>
+      <h2 class="pb-16 text-3xl">Movies & TV Shows</h2>
+      <!-- rows -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <post-card
-          v-for="post in data.posts"
-          :key="post.id"
-          :post="post"
-          :base-slug="`${module}/`"
-          article-class="py-2"
-        />
+                   v-for="post in data.posts"
+                   :key="post.id"
+                   :post="post"
+                   :base-slug="`${post.module}/`"
+                   article-class="py-2" />
       </div>
 
+      <!-- pagination -->
       <s-pagination
-        v-model:page="page"
-        :total="data?.pagination?.totalItems"
-        :items-per-page="limit"
-        :sibling-count="3"
-      />
+                    v-model:page="page"
+                    :total="data?.pagination?.totalItems"
+                    :items-per-page="limit"
+                    :sibling-count="3" />
 
       <!-- <s-link-hub
         v-if="categories && categories.length"
@@ -28,7 +28,7 @@
         class="mt-20"
         base-slug="posts/category"
       /> -->
-    </div>
+    </main>
   </div>
 </template>
 

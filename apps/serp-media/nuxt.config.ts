@@ -79,9 +79,14 @@ export default defineNuxtConfig({
       ],
       headerNavItems: [
         {
-          label: 'Posts',
+          label: 'Movies',
           children: [
             { label: 'Movies', to: '/movies/' },
+          ]
+        },
+        {
+          label: 'Shop',
+          children: [
             { label: 'Shop', to: '/shop/' }
           ]
         }

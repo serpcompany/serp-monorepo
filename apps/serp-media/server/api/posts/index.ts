@@ -21,7 +21,9 @@ const transformPost = (post: RawPostIndex): PostIndex => ({
   id: post.id,
   title: post.title,
   slug: post.slug,
-  categories: post.categories?.map(transformCategory)
+  categories: post.categories?.map(transformCategory),
+  module: post.module,
+  image: post.featuredImage
 });
 
 export default defineEventHandler(async (event) => {
@@ -58,7 +60,8 @@ export default defineEventHandler(async (event) => {
       title: postCache.title,
       slug: postCache.slug,
       categories: postCache.categories,
-      module: postCache.module
+      module: postCache.module,
+      featuredImage: postCache.featuredImage
     })
     .from(postCache);
 
