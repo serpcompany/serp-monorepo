@@ -37,37 +37,37 @@ export default defineNuxtConfig({
       socialLinks: [
         {
           name: 'Twitter',
-          href: 'https://serp.ly/@serp/twitter',
+          href: 'https://serp.ly/@serpmedia/twitter',
           icon: 'i-lucide-twitter'
         },
         {
           name: 'Facebook',
-          href: 'https://serp.ly/@serp/facebook',
+          href: 'https://serp.ly/@serpmedia/facebook',
           icon: 'i-lucide-facebook'
         },
         {
           name: 'LinkedIn',
-          href: 'https://serp.ly/@serp/linkedin',
+          href: 'https://serp.ly/@serpmedia/linkedin',
           icon: 'i-lucide-linkedin'
         },
         {
           name: 'YouTube',
-          href: 'https://serp.ly/@serp/youtube',
+          href: 'https://serp.ly/@serpmedia/youtube',
           icon: 'i-lucide-youtube'
         },
         {
           name: 'Github',
-          href: 'https://serp.ly/@serpai/github',
+          href: 'https://serp.ly/@serpmedia/github',
           icon: 'i-lucide-github'
         },
         {
           name: 'Instagram',
-          href: 'https://serp.ly/@serp/instagram',
+          href: 'https://serp.ly/@serpmedia/instagram',
           icon: 'i-lucide-instagram'
         },
         {
           name: 'SoundCloud',
-          href: 'https://serp.ly/@serp/',
+          href: 'https://serp.ly/@serpai/soundcloud',
           icon: 'i-lucide-external-link'
         }
       ],
@@ -76,10 +76,6 @@ export default defineNuxtConfig({
           name: 'About',
           href: 'https://github.com/serpcompany'
         },
-        {
-          name: 'Add Your Product',
-          href: 'https://serp.ly/@serp/submit'
-        }
       ],
       headerNavItems: [
         {
@@ -102,7 +98,7 @@ export default defineNuxtConfig({
         { text: 'DMCA', slug: '/legal/dmca/' }
       ],
       copyrightText: '© SERP',
-      address: '123 Rank St. Page One City, 90210 USA'
+      address: ''
     }
   },
   app: {
