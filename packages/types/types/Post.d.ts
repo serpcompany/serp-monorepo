@@ -1,4 +1,4 @@
-import type { Category, Pagination } from '~/types';
+import type { Category, Pagination } from '@serp/types/types';
 
 export type Post = {
   id: number;

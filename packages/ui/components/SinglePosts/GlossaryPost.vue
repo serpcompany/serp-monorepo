@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Post } from '~/types';
+import type { Post } from '@serp/types/types';
 
 const isLoaded = ref(false);
 const isPlaying = ref(false);

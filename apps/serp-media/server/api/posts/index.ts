@@ -1,6 +1,6 @@
 import { db } from '@/server/db';
 import { postCache } from '@/server/db/schema';
-import { sql } from 'drizzle-orm';
+import { sql, eq, and } from 'drizzle-orm';
 import { useDataCache } from '#nuxt-multi-cache/composables';
 
 import type {
@@ -21,12 +21,14 @@ const transformPost = (post: RawPostIndex): PostIndex => ({
   id: post.id,
   title: post.title,
   slug: post.slug,
-  categories: post.categories?.map(transformCategory)
+  categories: post.categories?.map(transformCategory),
+  module: post.module,
+  image: post.featuredImage
 });
 
 export default defineEventHandler(async (event) => {
-  const { page = 1, limit = 100, categorySlug } = getQuery(event);
-  const cacheKey = `posts-${categorySlug}-${page}-${limit}`;
+  const { page = 1, limit = 100, categorySlug, module } = getQuery(event);
+  const cacheKey = `posts-${categorySlug}-${page}-${limit}-${module}`;
   const { value, addToCache } = await useDataCache(cacheKey, event);
   if (value) {
     return value;
@@ -50,44 +52,45 @@ export default defineEventHandler(async (event) => {
   }
 
   const offset = (pageNumber - 1) * limitNumber;
+  const whereConditions = [];
 
   let baseQuery = db
     .select({
       id: postCache.id,
       title: postCache.title,
       slug: postCache.slug,
-      categories: postCache.categories
+      categories: postCache.categories,
+      module: postCache.module,
+      featuredImage: postCache.featuredImage
     })
     .from(postCache);
 
   if (categorySlug) {
-    baseQuery = baseQuery.where(
+    whereConditions.push(
       sql`
-        jsonb_path_exists(
-          ${postCache.categories},
-          '$[*] ? (@.slug == $slug)'::jsonpath,
-          jsonb_build_object('slug', ${categorySlug}::text)
-        )
-      `
+            jsonb_path_exists(
+              ${postCache.categories},
+           '$[*] ? (@.slug == $slug)'::jsonpath,
+            jsonb_build_object('slug', ${categorySlug}::text)
+          )
+          `
     );
   }
+
+  if (module) {
+    whereConditions.push(eq(postCache.module, module));
+  }
+
   baseQuery = baseQuery
-    .orderBy(boxerCache.name)
+    .orderBy(postCache.title)
     .limit(limitNumber)
     .offset(offset);
 
   let totalQuery = db.select({ count: sql<number>`count(*)` }).from(postCache);
 
-  if (categorySlug) {
-    totalQuery = totalQuery.where(
-      sql`
-        jsonb_path_exists(
-          ${postCache.categories},
-          '$[*] ? (@.slug == $slug)'::jsonpath,
-          jsonb_build_object('slug', ${categorySlug}::text)
-        )
-      `
-    );
+  if (whereConditions.length > 0) {
+    baseQuery = baseQuery.where(and(...whereConditions));
+    totalQuery = totalQuery.where(and(...whereConditions));
   }
 
   const [results, [{ count: total }]] = await Promise.all([

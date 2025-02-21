@@ -7,7 +7,7 @@
     "db:generate": "drizzle-kit generate",
     "db:pull": "drizzle-kit pull",
     "db:studio": "drizzle-kit studio",
-    "dev:@serp-media": "infisical run -- nuxt dev",
+    "dev": "infisical run -- nuxt dev",
     "format": "prettier -w .",
     "generate": "nuxt generate",
     "postinstall": "nuxt prepare",

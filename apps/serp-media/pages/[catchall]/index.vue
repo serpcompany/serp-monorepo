@@ -1,12 +1,6 @@
 <template>
   <div>
-    <!-- hero -->
-    <s-hero
-      headline="SERP Media"
-      subheadline="Media, Movies & More."
-      :show-search-bar="false"
-      :show-buttons="false"
-    />
+    <section-hero-one :title="moduleTitle" />
 
     <main>
       <h2 class="pb-16 text-3xl">Movies & TV Shows</h2>
@@ -29,13 +23,13 @@
         :sibling-count="3"
       />
 
-      <!-- link hub -->
       <!-- <s-link-hub
-                  v-if="categories && categories.length"
-                  :categories="categories"
-                  headline="Categories"
-                  base-slug="reviews/best"
-                  class="mt-20" /> -->
+        v-if="categories && categories.length"
+        :categories="categories"
+        headline="Categories"
+        class="mt-20"
+        base-slug="posts/category"
+      /> -->
     </main>
   </div>
 </template>
@@ -46,9 +40,13 @@ const route = useRoute();
 
 const page = ref(Number(route.query.page) || 1);
 const limit = ref(Number(route.query.limit) || 50);
-// const categories = await useCompanyCategories();
+// const categories = await usePostCategories();
+const module = route.params.catchall as string;
+const moduleTitle = computed(
+  () => module.charAt(0).toUpperCase() + module.slice(1)
+);
 
-let data = await usePosts(page.value, limit.value);
+let data = await usePosts(page.value, limit.value, '', module);
 if (!data) {
   router.push('/404');
 }
@@ -65,11 +63,11 @@ watch([page, limit], async ([newPage, newLimit]) => {
   } else {
     delete query.limit;
   }
-  data = await usePosts(page.value, limit.value);
+  data = await usePosts(page.value, limit.value, '', module);
   router.push({ query });
 });
 
 useSeoMeta({
-  title: 'Home'
+  title: () => moduleTitle.value
 });
 </script>

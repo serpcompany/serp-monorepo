@@ -1,6 +1,6 @@
 import { db } from '@/server/db';
 import { postCache } from '@/server/db/schema';
-import { eq } from 'drizzle-orm';
+import { eq, and } from 'drizzle-orm';
 import { useDataCache } from '#nuxt-multi-cache/composables';
 
 import type { Category, RawCategory, Post, RawPost } from '@serp/types/types';
@@ -21,13 +21,17 @@ const transformPost = (post: RawPost): Post => ({
 
 export default defineEventHandler(async (event) => {
   const slug = getRouterParam(event, 'slug');
-  const cacheKey = `post-${slug}`;
+  const { module } = getQuery(event);
+  const cacheKey = `post-${slug}-${module}`;
   const { value, addToCache } = await useDataCache(cacheKey, event);
   if (value) {
     return value;
   }
 
-  const query = db.select().from(postCache).where(eq(postCache.slug, slug));
+  const query = db
+    .select()
+    .from(postCache)
+    .where(and(eq(postCache.slug, slug), eq(postCache.module, module)));
 
   const results = await query.execute();
 

@@ -113,7 +113,7 @@
         "../../../node_modules/.pnpm/vue-router@4.5.0_vue@3.5.13/node_modules/vue-router"
       ],
       "#imports": ["./imports"],
-      "#app-manifest": ["./manifest/meta/dev.json"],
+      "#app-manifest": ["./manifest/meta/dev"],
       "#components": ["./components"],
       "#build": ["."],
       "#build/*": ["./*"]
