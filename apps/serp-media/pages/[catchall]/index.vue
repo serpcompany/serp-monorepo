@@ -7,19 +7,21 @@
       <!-- rows -->
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         <post-card
-                   v-for="post in data.posts"
-                   :key="post.id"
-                   :post="post"
-                   :base-slug="`${post.module}/`"
-                   article-class="py-2" />
+          v-for="post in data.posts"
+          :key="post.id"
+          :post="post"
+          :base-slug="`${post.module}/`"
+          article-class="py-2"
+        />
       </div>
 
       <!-- pagination -->
       <s-pagination
-                    v-model:page="page"
-                    :total="data?.pagination?.totalItems"
-                    :items-per-page="limit"
-                    :sibling-count="3" />
+        v-model:page="page"
+        :total="data?.pagination?.totalItems"
+        :items-per-page="limit"
+        :sibling-count="3"
+      />
 
       <!-- <s-link-hub
         v-if="categories && categories.length"

@@ -8,8 +8,8 @@ networks:
 services:
   serp-media-app-staging:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ../..
+      dockerfile: ./apps/serp-media/Dockerfile
     container_name: serp-media-app-staging
     restart: always
     networks:

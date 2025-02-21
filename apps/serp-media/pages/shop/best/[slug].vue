@@ -11,7 +11,7 @@
 const route = useRoute();
 const slug = route.params.slug as string;
 const router = useRouter();
-const module = 'shop'
+const module = 'shop';
 
 const data = await usePost(slug, module);
 if (!data) {
