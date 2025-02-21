@@ -28,9 +28,10 @@ export default defineEventHandler(async (event) => {
     return value;
   }
 
-  const query = db.select().from(postCache).where(
-    and(eq(postCache.slug, slug), eq(postCache.module, module))
-  );
+  const query = db
+    .select()
+    .from(postCache)
+    .where(and(eq(postCache.slug, slug), eq(postCache.module, module)));
 
   const results = await query.execute();
 

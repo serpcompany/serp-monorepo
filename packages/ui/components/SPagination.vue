@@ -1,0 +1,24 @@
+<!-- eslint-disable vue/no-mutating-props -->
+<template>
+  <u-pagination
+                    v-model:page="page"
+                    :total="totalItems"
+                    :items-per-page="limit"
+                    :sibling-count="siblingCount"
+                    aria-label="pagination"
+                    class="mt-20 flex justify-center overflow-x-auto rounded-none" />
+</template>
+
+<script setup lang="ts">
+const props = withDefaults(defineProps<{
+  totalItems: number;
+  limit: number;
+  siblingCount: number;
+}>(), {
+  totalItems: 0,
+  limit: 50,
+  siblingCount: 3,
+});
+
+const page = defineModel()
+</script>

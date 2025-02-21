@@ -18,7 +18,7 @@ export const postCache = cacheSchema.table('post_cache', {
   slug: varchar('slug', { length: 255 }),
   content: text('content'),
   categories: jsonb('categories'),
-  module: varchar('module', { length: 255 }),
+  module: varchar('module', { length: 255 })
 });
 
 export const postCategoryCache = cacheSchema.table('post_category_cache', {

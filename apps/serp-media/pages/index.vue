@@ -2,38 +2,42 @@
   <div>
     <!-- hero -->
     <s-hero
-            headline="SERP Media"
-            subheadline="Media, Movies & More."
-            :show-search-bar="false"
-            :show-buttons="false" />
+      headline="SERP Media"
+      subheadline="Media, Movies & More."
+      :show-search-bar="false"
+      :show-buttons="false"
+    />
 
     <main>
       <!-- rows: companies -->
       <div class="space-y-4">
         <company-card
-                      v-for="company in data.companies"
-                      :key="company.slug"
-                      :company="company" />
+          v-for="company in data.companies"
+          :key="company.slug"
+          :company="company"
+        />
       </div>
 
       <!-- pagination -->
       <div class="mt-20 flex justify-center">
         <u-pagination
-                      v-model:page="page"
-                      :total="data?.pagination?.totalItems"
-                      :items-per-page="limit"
-                      :sibling-count="3"
-                      aria-label="pagination"
-                      class="overflow-x-auto rounded-none" />
+          v-model:page="page"
+          :total="data?.pagination?.totalItems"
+          :items-per-page="limit"
+          :sibling-count="3"
+          aria-label="pagination"
+          class="overflow-x-auto rounded-none"
+        />
       </div>
 
       <!-- link hub -->
       <s-link-hub
-                  v-if="categories && categories.length"
-                  :categories="categories"
-                  headline="Categories"
-                  base-slug="reviews/best"
-                  class="mt-20" />
+        v-if="categories && categories.length"
+        :categories="categories"
+        headline="Categories"
+        base-slug="reviews/best"
+        class="mt-20"
+      />
     </main>
   </div>
 </template>

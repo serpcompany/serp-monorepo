@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import type { Post, PostIndex } from '~/types';
+import type { Post, PostIndex } from '@serp/types/types';
 
 const generatePostIndex = (slug: string): PostIndex => {
   const title = faker.lorem.words(5);

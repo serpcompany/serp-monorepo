@@ -75,12 +75,15 @@ export default defineNuxtConfig({
         {
           name: 'About',
           href: 'https://github.com/serpcompany'
-        },
+        }
       ],
       headerNavItems: [
         {
           label: 'Posts',
-          children: [{ label: 'Posts', to: '/posts/' }]
+          children: [
+            { label: 'Movies', to: '/movies/' },
+            { label: 'Shop', to: '/shop/' },
+          ]
         }
       ],
       footerColumns: [
@@ -88,7 +91,10 @@ export default defineNuxtConfig({
           title: 'Links',
           id: 1,
           slug: '',
-          items: [{ text: 'Posts', slug: '/posts/' }]
+          items: [
+            { text: 'Movies', slug: '/movies/' },
+            { text: 'Shop', slug: '/shop/' }
+          ]
         }
       ],
       legalLinks: [
