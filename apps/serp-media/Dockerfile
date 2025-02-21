@@ -15,7 +15,7 @@ RUN pnpm --filter @serp-media run build
 
 # Stage 2: Deploy
 FROM node:21-slim as deploy
-COPY --from=builder /app/apps/serp-co/.output /app/output
+COPY --from=builder /app/apps/serp-media/.output /app/output
 ENV HOST=0.0.0.0
 ENV PORT=80
 EXPOSE 80
