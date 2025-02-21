@@ -82,7 +82,7 @@ export default defineNuxtConfig({
           label: 'Posts',
           children: [
             { label: 'Movies', to: '/movies/' },
-            { label: 'Shop', to: '/shop/' },
+            { label: 'Shop', to: '/shop/' }
           ]
         }
       ],
