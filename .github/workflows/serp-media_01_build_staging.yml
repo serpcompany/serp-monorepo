@@ -1,16 +1,16 @@
-name: build_production_serp_co
+name: build_staging_serp_media
 
 on:
   push:
     paths:
       - packages/**
-      - apps/serp-co/**
+      - apps/serp-media/**
     branches:
-      - main
+      - staging
   workflow_dispatch:
 
 jobs:
-  build_production_serp_co:
+  build_staging_serp_media:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -23,7 +23,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.FRANCIS_SERVER_SSH_PRIVATE_KEY }}
           script: |
-            cd serp-monorepo/apps/serp-co
-            docker compose -f docker-compose.yml down
+            cd serp-monorepo-staging/apps/serp-media
+            docker compose -f docker-compose-staging.yml down
             git pull https://${{ secrets.DEVIN_GITHUB_TOKEN }}@github.com/${{github.repository}}.git ${{ github.ref_name }}
-            infisical run --domain=https://secrets.serp.co --token=${{ secrets.INFISICAL_ACCESS_TOKEN_SERP_CO }} --projectId=${{ secrets.INFISICAL_PROJECT_ID_SERP_CO }} -- docker compose -f docker-compose.yml up --build -d
+            infisical run --domain=https://secrets.serp.co --token=${{ secrets.INFISICAL_ACCESS_TOKEN_SERP }} --projectId=${{ secrets.INFISICAL_PROJECT_ID_SERP_MEDIA }} -- docker compose -f docker-compose-staging.yml up --build -d
