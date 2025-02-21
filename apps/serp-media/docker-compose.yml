@@ -1,0 +1,37 @@
+version: '3.9'
+
+networks:
+  web_network:
+    external: true
+  serp-media-network:
+    external: true
+services:
+  serp-media-app:
+    build:
+      context: ../..
+      dockerfile: ./apps/serp-media/Dockerfile
+    container_name: serp-media-app
+    restart: always
+    networks:
+      - web_network
+      - serp-media-network
+    environment:
+      - HOST=0.0.0.0
+      - NODE_ENV=production
+      - ROBOTS_ENV=production
+      - NUXT_SITE_ENV=production
+      - NUXT_PUBLIC_SITE_URL=https://serp.media
+      - DATABASE_URL=${DATABASE_URL}
+      - NUXT_PUBLIC_API_URL=${NUXT_PUBLIC_API_URL}
+      - NUXT_PUBLIC_DOMAIN=${NUXT_PUBLIC_DOMAIN}
+      - NUXT_PUBLIC_SITE_NAME=${NUXT_PUBLIC_SITE_NAME}
+      - NUXT_PUBLIC_URL=${NUXT_PUBLIC_URL}
+      - REDIS_URL=redis://serp-media-redis:6379
+    depends_on:
+      - serp-media-redis
+  serp-media-redis:
+    image: redis:7.2.5
+    container_name: serp-media-redis
+    restart: always
+    networks:
+      - serp-media-network
