@@ -43,7 +43,7 @@ const module = route.params.catchall as string;
 const moduleTitle = computed(
   () => module.charAt(0).toUpperCase() + module.slice(1)
 );
-// split the title on ` Movies` and only grab/use the first part (which is the actor name)
+
 let data = await usePosts(page.value, limit.value, '', module);
 if (!data) {
   router.push('/404');
