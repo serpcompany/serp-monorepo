@@ -1,24 +1,24 @@
 import { db } from '@/server/db';
-import { postCategoryCache } from '@/server/db/schema';
+import { postCache } from '@/server/db/schema';
 import { useDataCache } from '#nuxt-multi-cache/composables';
+import { eq } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
-  const cacheKey = `post-categories-sitemap`;
+  const cacheKey = `shop-sitemap`;
   const { value, addToCache } = await useDataCache(cacheKey, event);
   if (value) {
     return value;
   }
 
-  const postCategories = await db
+  const post = await db
     .select({
-      slug: postCategoryCache.slug
+      slug: postCache.slug
     })
-    .from(postCategoryCache)
+    .from(postCache)
+    .where(eq(postCache.module, 'shop'))
     .execute();
 
-  const response = postCategories.map(
-    (postCategory) => `/posts/category/${postCategory.slug}/`
-  );
+  const response = post.map((post_) => `/shop/best/${post_.slug}/`);
 
   addToCache(response, [], 60 * 60 * 24 * 7); // 1 week
   return response;

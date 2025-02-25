@@ -194,11 +194,11 @@ export default defineNuxtConfig({
       modules: {
         includeAppSources: true
       },
-      posts: {
-        sources: ['/api/__sitemap__/posts']
+      movies: {
+        sources: ['/api/__sitemap__/movies']
       },
-      ['post-categories']: {
-        sources: ['/api/__sitemap__/post-categories']
+      shop: {
+        sources: ['/api/__sitemap__/shop']
       }
     }
   }

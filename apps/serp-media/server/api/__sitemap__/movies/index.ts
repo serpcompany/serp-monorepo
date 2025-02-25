@@ -1,9 +1,10 @@
 import { db } from '@/server/db';
 import { postCache } from '@/server/db/schema';
 import { useDataCache } from '#nuxt-multi-cache/composables';
+import { eq } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
-  const cacheKey = `post-sitemap`;
+  const cacheKey = `movies-sitemap`;
   const { value, addToCache } = await useDataCache(cacheKey, event);
   if (value) {
     return value;
@@ -14,9 +15,10 @@ export default defineEventHandler(async (event) => {
       slug: postCache.slug
     })
     .from(postCache)
+    .where(eq(postCache.module, 'movies'))
     .execute();
 
-  const response = post.map((post_) => `/posts/${post_.slug}/`);
+  const response = post.map((post_) => `/movies/${post_.slug}/`);
 
   addToCache(response, [], 60 * 60 * 24 * 7); // 1 week
   return response;
