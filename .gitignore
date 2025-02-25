@@ -41,3 +41,5 @@ yarn-error.log*
 .lighthouseci*
 sitespeed-result/*
 
+.infisical.json
+!*/.infisical.json

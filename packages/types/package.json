@@ -1,13 +1,13 @@
 {
   "name": "@serp/types",
-  "type": "module",
   "version": "0.0.1",
+  "type": "module",
   "main": "./nuxt.config.ts",
   "scripts": {
     "build": "nuxt build .playground",
     "generate": "nuxt generate .playground",
-    "preview": "nuxt preview .playground",
-    "lint": "eslint ."
+    "lint": "prettier . --write && eslint --fix",
+    "preview": "nuxt preview .playground"
   },
   "devDependencies": {
     "@nuxt/eslint": "latest",

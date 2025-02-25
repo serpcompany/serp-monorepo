@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  extends: ['@serp/ui', '@serp/types', '@serp/utils'],
+  extends: ['@serp/ui', '@serp/types', '@serp/utils', '@serp/configs'],
   modules: [
     '@nuxt/ui',
     '@nuxtjs/html-validator',
@@ -183,23 +183,23 @@ export default defineNuxtConfig({
     data: {
       enabled: true
     }
-  },
-  sitemap: {
-    defaults: {
-      lastmod: new Date().toISOString(),
-      priority: 0.5,
-      changefreq: 'weekly'
-    },
-    sitemaps: {
-      modules: {
-        includeAppSources: true
-      },
-      posts: {
-        sources: ['/api/__sitemap__/posts']
-      },
-      ['post-categories']: {
-        sources: ['/api/__sitemap__/post-categories']
-      }
-    }
   }
+  // sitemap: {
+  //   defaults: {
+  //     lastmod: new Date().toISOString(),
+  //     priority: 0.5,
+  //     changefreq: 'weekly'
+  //   },
+  //   sitemaps: {
+  //     modules: {
+  //       includeAppSources: true
+  //     },
+  //     movies: {
+  //       sources: ['/api/__sitemap__/movies']
+  //     },
+  //     shop: {
+  //       sources: ['/api/__sitemap__/shop']
+  //     }
+  //   }
+  // }
 });

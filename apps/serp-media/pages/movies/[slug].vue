@@ -1,8 +1,7 @@
 <template>
   <div>
     <main>
-      <SinglePostsGlossaryPost v-if="data.module === 'Glossary'" :data="data" />
-      <SinglePostsPost v-else :data="data" />
+      <SinglePostsPost :data="data" />
     </main>
   </div>
 </template>
@@ -11,7 +10,7 @@
 const route = useRoute();
 const slug = route.params.slug as string;
 const router = useRouter();
-const module = route.params.catchall as string;
+const module = 'movies';
 
 const data = await usePost(slug, module);
 if (!data) {

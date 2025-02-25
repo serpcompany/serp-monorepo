@@ -10,7 +10,7 @@
           v-for="post in data.posts"
           :key="post.id"
           :post="post"
-          :base-slug="`${post.module}/`"
+          base-slug="movies/"
           article-class="py-2"
         />
       </div>
@@ -41,10 +41,8 @@ const route = useRoute();
 const page = ref(Number(route.query.page) || 1);
 const limit = ref(Number(route.query.limit) || 50);
 // const categories = await usePostCategories();
-const module = route.params.catchall as string;
-const moduleTitle = computed(
-  () => module.charAt(0).toUpperCase() + module.slice(1)
-);
+const module = 'movies';
+const moduleTitle = 'Movies';
 
 let data = await usePosts(page.value, limit.value, '', module);
 if (!data) {

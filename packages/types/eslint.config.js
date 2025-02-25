@@ -1,5 +1,5 @@
-import withNuxt from './.playground/.nuxt/eslint.config.mjs'
+import withNuxt from './.playground/.nuxt/eslint.config.mjs';
 
 export default withNuxt({
-  ignores: ['**/.playground/**', '**/.nuxt'],
+  ignores: ['**/.playground/**', '**/.nuxt']
 });
