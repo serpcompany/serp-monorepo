@@ -183,7 +183,7 @@ export default defineNuxtConfig({
     data: {
       enabled: true
     }
-  },
+  }
   // sitemap: {
   //   defaults: {
   //     lastmod: new Date().toISOString(),

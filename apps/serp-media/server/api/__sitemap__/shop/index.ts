@@ -13,7 +13,8 @@ export default defineEventHandler(async (event) => {
   }
 
   if (count) {
-    const totalItems = await db.select({ count: sql<number>`count(*)` })
+    const totalItems = await db
+      .select({ count: sql<number>`count(*)` })
       .from(postCache)
       .where(eq(postCache.module, 'shop'))
       .execute();
@@ -30,10 +31,13 @@ export default defineEventHandler(async (event) => {
     })
     .from(postCache)
     .where(eq(postCache.module, 'shop'))
-    .limit(limit).offset(limit * (Number(page) - 1))
+    .limit(limit)
+    .offset(limit * (Number(page) - 1))
     .execute();
 
-  const response = post.map((post_) => `/shop/best/${encodeURIComponent(post_.slug)}/`);
+  const response = post.map(
+    (post_) => `/shop/best/${encodeURIComponent(post_.slug)}/`
+  );
 
   addToCache(response, [], 60 * 60 * 24 * 7); // 1 week
   return response;
