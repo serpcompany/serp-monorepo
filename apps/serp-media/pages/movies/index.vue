@@ -41,8 +41,8 @@ const route = useRoute();
 const page = ref(Number(route.query.page) || 1);
 const limit = ref(Number(route.query.limit) || 50);
 // const categories = await usePostCategories();
-const module = 'movies'
-const moduleTitle = 'Movies'
+const module = 'movies';
+const moduleTitle = 'Movies';
 
 let data = await usePosts(page.value, limit.value, '', module);
 if (!data) {

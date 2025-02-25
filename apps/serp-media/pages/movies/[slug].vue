@@ -10,7 +10,7 @@
 const route = useRoute();
 const slug = route.params.slug as string;
 const router = useRouter();
-const module = 'movies'
+const module = 'movies';
 
 const data = await usePost(slug, module);
 if (!data) {
