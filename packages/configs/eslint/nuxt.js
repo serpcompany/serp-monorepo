@@ -12,26 +12,32 @@ const project = resolve(process.cwd(), "tsconfig.json");
  */
 module.exports = {
   extends: [
-    "@nuxtjs/eslint-config-typescript",
-    "@vercel/style-guide/eslint/node",
-    "@vercel/style-guide/eslint/browser",
-    "turbo",
+    '@nuxtjs/eslint-config-typescript',
+    '@vercel/style-guide/eslint/node',
+    '@vercel/style-guide/eslint/browser',
+    'turbo'
   ].map(require.resolve),
   parserOptions: {
-    sourceType: "module",
+    sourceType: 'module'
   },
   settings: {
-    "import/resolver": {
+    'import/resolver': {
       typescript: {
-        project,
-      },
-    },
+        project
+      }
+    }
   },
-  ignorePatterns: ["node_modules/", "dist/", ".eslintrc.cjs", "nuxt.config.ts"],
+  ignorePatterns: [
+    'node_modules/',
+    'dist/',
+    '.eslintrc.cjs',
+    'nuxt.config.ts',
+    'eslint.config.mjs'
+  ],
   rules: {
-    "comma-dangle": "off",
-    semi: "off",
-    "no-undef": "off",
+    'comma-dangle': 'off',
+    semi: 'off',
+    'no-undef': 'off'
     // add specific rules configurations here
-  },
+  }
 };
