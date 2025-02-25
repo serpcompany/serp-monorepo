@@ -1,0 +1,37 @@
+version: '3.9'
+
+networks:
+  web_network:
+    external: true
+  serp-ai-network:
+    external: true
+services:
+  serp-ai-app:
+    build:
+      context: ../..
+      dockerfile: ./apps/serp-ai/Dockerfile
+    container_name: serp-ai-app
+    restart: always
+    networks:
+      - web_network
+      - serp-ai-network
+    environment:
+      - HOST=0.0.0.0
+      - NODE_ENV=production
+      - ROBOTS_ENV=production
+      - NUXT_SITE_ENV=production
+      - NUXT_PUBLIC_SITE_URL=https://serp.ai
+      - DATABASE_URL=${DATABASE_URL}
+      - NUXT_PUBLIC_API_URL=${NUXT_PUBLIC_API_URL}
+      - NUXT_PUBLIC_DOMAIN=${NUXT_PUBLIC_DOMAIN}
+      - NUXT_PUBLIC_SITE_NAME=${NUXT_PUBLIC_SITE_NAME}
+      - NUXT_PUBLIC_URL=${NUXT_PUBLIC_URL}
+      - REDIS_URL=redis://serp-ai-redis:6379
+    depends_on:
+      - serp-ai-redis
+  serp-ai-redis:
+    image: redis:7.2.5
+    container_name: serp-ai-redis
+    restart: always
+    networks:
+      - serp-ai-network
