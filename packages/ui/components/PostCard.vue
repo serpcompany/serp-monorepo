@@ -37,7 +37,7 @@ withDefaults(
     articleClass?: string;
   }>(),
   {
-    baseSlug: 'posts',
+    baseSlug: 'posts/',
     articleClass: 'py-16'
   }
 );
