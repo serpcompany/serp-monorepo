@@ -4,8 +4,8 @@ import { defineEventHandler } from 'h3'
 const NUXT_PUBLIC_SITE_URL = process.env.NUXT_PUBLIC_SITE_URL
 
 export default defineEventHandler(async (event) => {
-  const { numMoviePages } = await $fetch('/api/__sitemap__/movies?count=true')
-  const { numShopPages } = await $fetch('/api/__sitemap__/shop?count=true')
+  const numMoviePages = await $fetch('/api/__sitemap__/movies?count=true')
+  const numShopPages = await $fetch('/api/__sitemap__/shop?count=true')
 
   const movieSitemaps = Array.from({ length: numMoviePages }, (_, i) => ({
     loc: `${NUXT_PUBLIC_SITE_URL}/sitemap/movies/${i + 1}.xml`,

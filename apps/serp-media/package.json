@@ -8,6 +8,7 @@
     "db:pull": "drizzle-kit pull",
     "db:studio": "drizzle-kit studio",
     "dev": "infisical run -- nuxt dev",
+    "dev:docker": "nuxt dev",
     "format": "prettier -w .",
     "generate": "nuxt generate",
     "postinstall": "nuxt prepare",

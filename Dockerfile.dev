@@ -1,0 +1,27 @@
+FROM node:21-slim
+
+# Install system dependencies
+RUN apt-get update -y && apt-get upgrade -y && \
+    apt-get install -y git make g++ python3
+
+RUN npm install -g pnpm @infisical/cli
+
+WORKDIR /app
+
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
+
+COPY apps/*/package.json ./apps/
+COPY packages/*/package.json ./packages/
+
+# Install dependencies
+RUN pnpm install --shamefully-hoist
+
+COPY . .
+
+# Set environment variables for dev
+ENV CHOKIDAR_USEPOLLING=true
+ENV HOST=0.0.0.0
+ENV PORT=3000
+
+# Expose the dev server port
+EXPOSE 3000

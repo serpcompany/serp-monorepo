@@ -7,10 +7,10 @@ export default defineEventHandler(async (event) => {
   const params = getRouterParams(event)
   const page = parseInt(params['page.xml'].replace('.xml', ''))
 
-  const urls_ = await $fetch(`/api/__sitemap__/shop?page=${page}`)
+  const urls_ = await $fetch(`/api/__sitemap__/movies?page=${page}`)
 
   const urls = urls_.map(slug => ({
-    loc: `${NUXT_PUBLIC_SITE_URL}/${slug}`,
+    loc: `${NUXT_PUBLIC_SITE_URL}${slug}`,
     lastmod: new Date().toISOString()
   }))
 

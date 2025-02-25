@@ -1,0 +1,14 @@
+# Start development server for @serp-media
+python dev.py @serp-media
+
+# Run tests for @serp-media
+python dev.py @serp-media test
+
+# Rebuild the container and start dev server
+python dev.py @serp-media dev --rebuild
+
+# Skip Infisical setup
+python dev.py @serp-media dev --no-infisical
+
+# List available projects
+python dev.py

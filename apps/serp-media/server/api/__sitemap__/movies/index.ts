@@ -33,7 +33,7 @@ export default defineEventHandler(async (event) => {
     .limit(limit).offset(limit * (Number(page) - 1))
     .execute();
 
-  const response = post.map((post_) => `/movies/${post_.slug}/`);
+  const response = post.map((post_) => `/movies/${encodeURIComponent(post_.slug)}/`);
 
   addToCache(response, [], 60 * 60 * 24 * 7); // 1 week
   return response;
