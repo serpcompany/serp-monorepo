@@ -1,4 +1,4 @@
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath } from 'node:url';
 
 export default defineNuxtConfig({
   extends: ['..'],
@@ -9,4 +9,4 @@ export default defineNuxtConfig({
       rootDir: fileURLToPath(new URL('..', import.meta.url))
     }
   }
-})
+});
