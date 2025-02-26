@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
     .execute();
 
   const response = companyCategories.map(
-    (companyCategory) => `/reviews/best/${companyCategory.slug}/`
+    (companyCategory) => `/products/best/${companyCategory.slug}/`
   );
 
   addToCache(response, [], 60 * 60 * 24 * 7); // 1 week

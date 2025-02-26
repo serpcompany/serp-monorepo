@@ -33,7 +33,7 @@
         :categories="categories"
         headline="Categories"
         class="mt-20"
-        base-slug="reviews/best"
+        base-slug="products/best"
       />
     </main>
   </div>
@@ -69,6 +69,6 @@ watch([page, limit], async ([newPage, newLimit]) => {
 });
 
 useSeoMeta({
-  title: 'Discover top-rated software, tools & services.'
+  title: 'Discover the best products on the internet.'
 });
 </script>

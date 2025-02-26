@@ -88,19 +88,20 @@
 </template>
 
 <script setup lang="ts">
-const route = useRoute();
-const router = useRouter();
-const { slug } = route.params;
+import type { Company } from '@serp/types/types';
 
-const data = await useCompany(`${slug}`);
-if (!data) {
-  router.push('/404');
-}
+const isLoaded = ref(false);
+const isPlaying = ref(false);
+const video = ref();
+
+const props = defineProps<{
+  data: Company;
+}>();
 
 const faqItems = computed(() => {
-  if (!data?.faqs) return [];
+  if (!props.data?.faqs) return [];
 
-  return data?.faqs.map((faq) => ({
+  return props.data?.faqs.map((faq) => ({
     label: faq.question,
     content: faq.answer
   }));
@@ -111,25 +112,21 @@ const sections = computed(() => {
 
   sectionTitles.push('Overview');
 
-  if (data?.features) {
+  if (props.data?.features) {
     sectionTitles.push('Features');
   }
   if (faqItems.value && faqItems.value.length) {
     sectionTitles.push('FAQ');
   }
 
-  if (data?.alternatives) {
+  if (props.data?.alternatives) {
     sectionTitles.push('Alternatives');
   }
 
   return sectionTitles;
 });
 
-useSeoMeta({
-  title: computed(() =>
-    data?.name
-      ? `${data.name} - Reviews, Pricing, Features`
-      : 'Company Information'
-  )
-});
+function stateChange(event: { data: number }) {
+  isPlaying.value = event.data === 1;
+}
 </script>
