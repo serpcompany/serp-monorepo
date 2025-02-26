@@ -16,7 +16,7 @@
             'flex items-center justify-center md:ml-4'
           ]"
         >
-          <nuxt-link :to="`/reviews/${company.slug}`">
+          <nuxt-link :to="`/${baseSlug}${company.slug}/`">
             <lazy-nuxt-img
               :src="companyMainImage"
               :alt="company.name"
@@ -33,7 +33,7 @@
         >
           <div class="mb-2 md:mb-0">
             <!-- company name -->
-            <nuxt-link :to="`/reviews/${company.slug}`">
+            <nuxt-link :to="`/${baseSlug}${company.slug}/`">
               <h2 class="text-lg font-semibold">{{ company.name }}</h2>
             </nuxt-link>
 
@@ -127,6 +127,10 @@ const props = defineProps({
   showExpandedContent: {
     type: Boolean,
     default: false
+  },
+  baseSlug: {
+    type: String,
+    default: 'products/'
   }
 });
 

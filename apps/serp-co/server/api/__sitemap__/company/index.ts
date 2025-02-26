@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
     .from(companyCache)
     .execute();
 
-  const response = companies.map((company) => `/reviews/${company.slug}/`);
+  const response = companies.map((company) => `/products/${company.slug}/`);
 
   addToCache(response, [], 60 * 60 * 24 * 7); // 1 week
   return response;
