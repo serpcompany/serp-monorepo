@@ -37,5 +37,5 @@ const items = [
     label: 'Songs',
     to: '/songs'
   }
-]
+];
 </script>

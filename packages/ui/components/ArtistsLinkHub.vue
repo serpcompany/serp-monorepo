@@ -13,12 +13,12 @@
 </template>
 
 <script setup lang="ts">
-import type { ArtistBase } from '@serp/types/types'
+import type { ArtistBase } from '@serp/types/types';
 
 const props = defineProps({
   artists: {
     type: Array as () => ArtistBase[],
     required: true
   }
-})
+});
 </script>

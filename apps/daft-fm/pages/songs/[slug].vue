@@ -1,10 +1,10 @@
 <template>
   <div>
-
     <multipage-header
-                      :name="song.name"
-                      :sections="sections"
-                      class="bg-background sticky top-0 z-10 transition-all duration-300" />
+      :name="song.name"
+      :sections="sections"
+      class="bg-background sticky top-0 z-10 transition-all duration-300"
+    />
 
     <!-- Main content with grid -->
     <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
@@ -27,8 +27,7 @@
             {{ song.overview }}
           </div>
           <div class="border p-4">
-            <ul class="list-disc pl-4">
-            </ul>
+            <ul class="list-disc pl-4"></ul>
           </div>
 
           <!-- Stats Section -->
@@ -37,7 +36,7 @@
               <div v-if="genres">
                 <span>Genres: {{ genres }}</span>
               </div>
-              <br />
+              <br >
               <div v-if="tags">
                 <span>Tags: {{ tags }}</span>
               </div>
@@ -48,7 +47,9 @@
           <div class="border p-4">
             <div class="flex space-y-4">
               <div>
-                <nuxt-link to="https://serp.ly/@daftfm/amazon/music/unlimited">Amazon Music</nuxt-link>
+                <nuxt-link to="https://serp.ly/@daftfm/amazon/music/unlimited"
+                  >Amazon Music</nuxt-link
+                >
               </div>
             </div>
           </div>

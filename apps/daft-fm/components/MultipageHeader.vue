@@ -23,7 +23,7 @@
 
             <!-- info -->
             <div
-              class="flex-grow ml-4"
+              class="ml-4 flex-grow"
               :class="{ 'hidden sm:block': isScrolled }"
             >
               <h1
@@ -51,7 +51,7 @@
               v-for="section in sections"
               :key="section"
               :href="'#' + section.toLowerCase()"
-              class="sectionLinks flex-shrink-0 text-muted-foreground hover:text-primary px-1 py-2 text-sm transition-colors duration-200 sm:px-2 sm:text-base"
+              class="sectionLinks text-muted-foreground hover:text-primary flex-shrink-0 px-1 py-2 text-sm transition-colors duration-200 sm:px-2 sm:text-base"
             >
               {{ section }}
             </nuxt-link>
@@ -63,7 +63,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const props = defineProps({
   name: {
@@ -78,20 +78,20 @@ const props = defineProps({
     type: Array as () => string[],
     required: true
   }
-})
+});
 
-const header = ref(null)
-const isScrolled = ref(false)
+const header = ref(null);
+const isScrolled = ref(false);
 
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 0
-}
+  isScrolled.value = window.scrollY > 0;
+};
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
+  window.addEventListener('scroll', handleScroll);
+});
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>

@@ -1,5 +1,9 @@
 import { faker } from '@faker-js/faker';
-import type { ReleaseGroupBase, ArtistCredit, Pagination } from '@serp/types/types';
+import type {
+  ReleaseGroupBase,
+  ArtistCredit,
+  Pagination
+} from '@serp/types/types';
 
 // Helper to generate a slug from a string
 const generateSlug = (str: string): string => {

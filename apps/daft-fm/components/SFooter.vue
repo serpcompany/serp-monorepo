@@ -94,19 +94,19 @@
 </template>
 
 <script setup lang="ts">
-const config = useRuntimeConfig()
-const companyName = config.public.siteName
-const socialLinks = config.public.socialLinks
-const brandLinks = config.public.brandLinks
-const copyrightText = config.public.copyrightText
-const address = config.public.address
+const config = useRuntimeConfig();
+const companyName = config.public.siteName;
+const socialLinks = config.public.socialLinks;
+const brandLinks = config.public.brandLinks;
+const copyrightText = config.public.copyrightText;
+const address = config.public.address;
 
 const legalLinks = [
   { text: 'Privacy', url: '/legal/privacy-policy' },
   { text: 'Terms', url: '/legal/terms-conditions' },
   { text: 'Affiliate Disclosure', url: '/legal/affiliate-disclosure' },
   { text: 'DMCA', url: '/legal/dmca' }
-]
+];
 
 const footerColumns = [
   {
@@ -141,5 +141,5 @@ const footerColumns = [
   //   slug: '#',
   //   items: [{ text: 'Placeholder', slug: '#' }]
   // }
-]
+];
 </script>

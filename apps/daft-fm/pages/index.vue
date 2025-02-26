@@ -2,10 +2,11 @@
   <div>
     <!-- hero -->
     <s-hero
-            headline="DAFT FM"
-            subheadline="All Things Audible."
-            :show-search-bar="false"
-            :show-buttons="false" />
+      headline="DAFT FM"
+      subheadline="All Things Audible."
+      :show-search-bar="false"
+      :show-buttons="false"
+    />
 
     <main>
       <div>
@@ -34,11 +35,12 @@
       </nuxt-link>
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         <post-card
-                   v-for="post in shopData.posts"
-                   :key="post.id"
-                   :post="post"
-                   :base-slug="`${post.module}/best/`"
-                   article-class="py-2" />
+          v-for="post in shopData.posts"
+          :key="post.id"
+          :post="post"
+          :base-slug="`${post.module}/best/`"
+          article-class="py-2"
+        />
       </div>
     </main>
   </div>

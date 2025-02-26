@@ -56,7 +56,7 @@ const props = defineProps({
     type: Array as () => string[],
     default: () => []
   }
-})
+});
 
 // Define a computed schema that dynamically generates JSON-LD based on props
 const schemaData = computed(() => ({
@@ -86,8 +86,8 @@ const schemaData = computed(() => ({
     : undefined,
   identifier: props.identifier,
   sameAs: props.sameAs
-}))
+}));
 
 // Apply the schema to the component using useSchemaOrg
-useSchemaOrg(schemaData.value)
+useSchemaOrg(schemaData.value);
 </script>
