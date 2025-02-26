@@ -37,7 +37,6 @@ const handleFileChange = (e: Event) => {
 };
 
 const handleCombine = async () => {
-  console.log(inputFiles.value);
   if (!inputFiles.value?.length) return;
 
   try {
