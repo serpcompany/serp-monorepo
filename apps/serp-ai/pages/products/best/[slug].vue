@@ -31,7 +31,7 @@
         :categories="categories"
         headline="Categories"
         class="mt-20"
-        base-slug="reviews/best"
+        base-slug="products/best"
       />
 
       <!-- company category article -->
