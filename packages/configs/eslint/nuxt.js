@@ -32,7 +32,8 @@ module.exports = {
     'dist/',
     '.eslintrc.cjs',
     'nuxt.config.ts',
-    'eslint.config.mjs'
+    'eslint.config.mjs',
+    '.nuxt/'
   ],
   rules: {
     'comma-dangle': 'off',

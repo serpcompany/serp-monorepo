@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-  'py-6',
+      'py-6',
       company.featured
         ? 'transform border border-blue-500 shadow-lg shadow-blue-300 transition duration-300 ease-in-out hover:scale-105'
         : 'border border-gray-300'

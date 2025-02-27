@@ -8,6 +8,10 @@
     "test": "turbo run test",
     "test:watch": "turbo run test:watch"
   },
+  "lint-staged": {
+    "**/*.{js,ts,vue}": "eslint --fix",
+    "**/*.{json,md,yml}": "prettier . --write"
+  },
   "devDependencies": {
     "husky": "^9.1.6",
     "prettier": "^3.2.5",

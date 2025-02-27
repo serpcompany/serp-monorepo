@@ -44,7 +44,7 @@ const props = withDefaults(
 
 const displayTitle = computed(() => {
   if (props.post.module === 'Glossary') {
-    return props.post.keyword;
+    return props.post.keyword || props.post.title;
   }
   return props.post.title;
 });

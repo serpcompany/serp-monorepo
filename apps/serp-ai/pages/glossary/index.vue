@@ -51,11 +51,15 @@ characters.push('*');
 
 const getTermsByFirstChar = (character: string) => {
   if (character === '*') {
-    return data.posts.filter((term) => !/^[a-z]/i.test(term.keyword));
+    return data.posts.filter(
+      (term) => !/^[a-z]/i.test(term.keyword || term.title)
+    );
   }
-  return data.posts.filter((term) =>
-    term.keyword?.toLowerCase().startsWith(character.toLowerCase())
-  );
+  return data.posts.filter((term) => {
+    return term.keyword
+      ? term.keyword.toLowerCase().startsWith(character.toLowerCase())
+      : term.title.toLowerCase().startsWith(character.toLowerCase());
+  });
 };
 
 // computed property to filter characters that have terms
