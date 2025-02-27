@@ -1,5 +1,5 @@
 <template>
-  <div class="py-10">
+  <div class="pb-10">
     <!-- hero -->
     <s-hero
       headline="Products, Software & Services."

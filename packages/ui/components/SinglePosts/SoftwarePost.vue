@@ -79,7 +79,7 @@
             v-if="data.categories && data.categories.length"
             class="gap-2"
           >
-            <s-pill base-slug="reviews/best" :items="data.categories" />
+            <s-pill base-slug="products/best" :items="data.categories" />
           </section>
         </aside>
       </div>

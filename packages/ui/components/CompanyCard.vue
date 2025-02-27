@@ -1,5 +1,12 @@
 <template>
-  <div class="border p-4">
+  <div
+    :class="[
+      'p-6',
+      company.featured
+        ? 'transform border border-blue-500 shadow-lg shadow-blue-300 transition duration-300 ease-in-out hover:scale-105'
+        : 'border border-gray-300'
+    ]"
+  >
     <!-- card top half -->
     <div class="flex flex-col items-start md:flex-row">
       <!-- col 1 -->
@@ -16,7 +23,7 @@
             'flex items-center justify-center md:ml-4'
           ]"
         >
-          <nuxt-link :to="`/${baseSlug}${company.slug}/`">
+          <nuxt-link :to="`/${baseSlug}${company.slug}/reviews/`">
             <lazy-nuxt-img
               :src="companyMainImage"
               :alt="company.name"
@@ -33,8 +40,23 @@
         >
           <div class="mb-2 md:mb-0">
             <!-- company name -->
-            <nuxt-link :to="`/${baseSlug}${company.slug}/`">
+            <nuxt-link
+              class="flex"
+              :to="`/${baseSlug}${company.slug}/reviews/`"
+            >
               <h2 class="text-lg font-semibold">{{ company.name }}</h2>
+              <u-badge
+                v-if="company.featured"
+                :avatar="{
+                  src: 'https://github.com/serpcompany.png'
+                }"
+                size="md"
+                color="neutral"
+                variant="outline"
+                class="ml-4"
+              >
+                Featured
+              </u-badge>
             </nuxt-link>
 
             <!-- company oneliner -->

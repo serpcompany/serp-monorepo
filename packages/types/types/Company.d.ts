@@ -31,6 +31,8 @@ export type Company = {
   rating?: number;
   upvotes?: number;
   downvotes?: number;
+  featured?: boolean;
+  featuredOrder?: number;
 };
 
 export type CompanyIndex = {
@@ -67,6 +69,8 @@ export type RawCompany = {
   rating?: number;
   upvotes?: number;
   downvotes?: number;
+  featured?: boolean;
+  featuredOrder?: number;
 };
 
 export type RawCompanyIndex = {

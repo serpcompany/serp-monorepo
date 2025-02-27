@@ -35,7 +35,9 @@ export const companyCache = cacheSchema.table('company_cache', {
   screenshots: jsonb('screenshots'),
   rating: doublePrecision('rating'),
   upvotes: integer('upvotes'),
-  downvotes: integer('downvotes')
+  downvotes: integer('downvotes'),
+  featured: boolean('featured'),
+  featuredOrder: integer('featured_order')
 });
 
 export const companyCategoryCache = cacheSchema.table(
@@ -68,7 +70,8 @@ export const postCache = cacheSchema.table('post_cache', {
   oneLiner: text('one_liner'),
   videoId: varchar('video_id', { length: 255 }),
   relatedPosts: jsonb('related_posts'),
-  module: varchar('module', { length: 255 })
+  module: varchar('module', { length: 255 }),
+  keyword: varchar('keyword', { length: 255 })
 });
 
 export const postCategoryCache = cacheSchema.table('post_category_cache', {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="py-24">
+    <div class="py-20">
       <div>
         <div class="items-center">
           <div

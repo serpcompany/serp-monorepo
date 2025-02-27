@@ -39,7 +39,7 @@
 <script setup lang="ts">
 const router = useRouter();
 
-const data = await usePosts(1, 100, '', 'Glossary');
+const data = await usePosts(1, 1000000, '', 'Glossary');
 if (!data) {
   router.push('/404');
 }
@@ -51,10 +51,10 @@ characters.push('*');
 
 const getTermsByFirstChar = (character: string) => {
   if (character === '*') {
-    return data.posts.filter((term) => !/^[a-z]/i.test(term.title));
+    return data.posts.filter((term) => !/^[a-z]/i.test(term.keyword));
   }
   return data.posts.filter((term) =>
-    term.title?.toLowerCase().startsWith(character.toLowerCase())
+    term.keyword?.toLowerCase().startsWith(character.toLowerCase())
   );
 };
 

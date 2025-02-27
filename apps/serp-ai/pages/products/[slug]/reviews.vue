@@ -1,12 +1,13 @@
 <template>
   <div v-if="data">
     <multipage-header
-                      :name="data.name"
-                      :one-liner="data.oneLiner"
-                      :sections="sections"
-                      class="bg-background sticky top-0 z-10 transition-all duration-300"
-                      :image="data.logo"
-                      :serply_link="data.serplyLink" />
+      :name="data.name"
+      :one-liner="data.oneLiner"
+      :sections="sections"
+      class="bg-background sticky top-0 z-10 transition-all duration-300"
+      :image="data.logo"
+      :serply_link="data.serplyLink"
+    />
 
     <!-- Main content with grid -->
     <section class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
@@ -15,15 +16,17 @@
         <div class="lg:col-span-2">
           <!-- Overview Section -->
           <company-overview
-                            v-if="data.excerpt"
-                            id="overview"
-                            :company="data"
-                            class="scroll-mt-60" />
+            v-if="data.excerpt"
+            id="overview"
+            :company="data"
+            class="scroll-mt-60"
+          />
 
           <!-- Article Section -->
           <section
-                   v-if="data.article"
-                   class="prose dark:prose-invert mt-[-25px]">
+            v-if="data.article"
+            class="prose dark:prose-invert mt-[-25px]"
+          >
             <div id="article" class="mb-8" v-html="data.article"></div>
           </section>
 
@@ -59,20 +62,22 @@
 
         <!-- Sidebar (30%) -->
         <aside
-               v-if="
+          v-if="
             (data.screenshots && data.screenshots.length) ||
             (data.categories && data.categories.length)
           "
-               class="space-y-6 lg:col-span-1">
-
+          class="space-y-6 lg:col-span-1"
+        >
           <media-gallery
-                         v-if="data.screenshots && data.screenshots.length"
-                         :company="data" />
+            v-if="data.screenshots && data.screenshots.length"
+            :company="data"
+          />
 
           <!-- Categories -->
           <section
-                   v-if="data.categories && data.categories.length"
-                   class="gap-2">
+            v-if="data.categories && data.categories.length"
+            class="gap-2"
+          >
             <s-pill base-slug="products/best" :items="data.categories" />
           </section>
         </aside>

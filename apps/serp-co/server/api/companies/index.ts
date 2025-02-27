@@ -1,6 +1,6 @@
 import { db } from '@/server/db';
 import { companyCache } from '@/server/db/schema';
-import { sql } from 'drizzle-orm';
+import { sql, asc, desc } from 'drizzle-orm';
 import { useDataCache } from '#nuxt-multi-cache/composables';
 
 import type {
@@ -29,7 +29,9 @@ const transformCompany = (company: RawCompanyIndex): CompanyIndex => ({
   screenshots: company.screenshots,
   rating: company.rating,
   upvotes: company.upvotes,
-  downvotes: company.downvotes
+  downvotes: company.downvotes,
+  featured: company.featured,
+  featuredOrder: company.featuredOrder
 });
 
 export default defineEventHandler(async (event) => {
@@ -72,7 +74,9 @@ export default defineEventHandler(async (event) => {
       screenshots: companyCache.screenshots,
       rating: companyCache.rating,
       upvotes: companyCache.upvotes,
-      downvotes: companyCache.downvotes
+      downvotes: companyCache.downvotes,
+      featured: companyCache.featured,
+      featuredOrder: companyCache.featuredOrder
     })
     .from(companyCache);
 
@@ -88,7 +92,7 @@ export default defineEventHandler(async (event) => {
     );
   }
   baseQuery = baseQuery
-    .orderBy(companyCache.name)
+    .orderBy(desc(companyCache.featured), asc(companyCache.featuredOrder))
     .limit(limitNumber)
     .offset(offset);
 
