@@ -1,5 +1,5 @@
 {
-  "name": "serp-monorepo",
+  "name": "@serp/root",
   "private": true,
   "scripts": {
     "build": "turbo run build",
