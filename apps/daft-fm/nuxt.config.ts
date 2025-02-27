@@ -85,7 +85,7 @@ export default defineNuxtConfig({
             { label: 'Albums', to: '/albums/' },
             { label: 'Artists', to: '/artists/' }
           ]
-        },
+        }
       ],
       footerColumns: [
         {
@@ -97,7 +97,7 @@ export default defineNuxtConfig({
             { text: 'Artists', slug: '/artists/' },
             { text: 'Albums', slug: '/albums/' }
           ]
-        },
+        }
       ],
       legalLinks: [
         { text: 'Privacy', slug: '/legal/privacy-policy/' },
@@ -203,7 +203,7 @@ export default defineNuxtConfig({
       },
       albums: {
         sources: ['/api/__sitemap__/albums']
-      },
+      }
     }
   }
 });
