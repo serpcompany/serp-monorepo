@@ -11,7 +11,7 @@ services:
       context: ../..
       dockerfile: ./apps/serp-media/Dockerfile
     container_name: serp-media-app
-    restart: always
+    restart: unless-stopped
     networks:
       - web_network
       - serp-media-network
@@ -32,6 +32,6 @@ services:
   serp-media-redis:
     image: redis:7.2.5
     container_name: serp-media-redis
-    restart: always
+    restart: unless-stopped
     networks:
       - serp-media-network

@@ -1,4 +1,8 @@
-import type { WeightClass, RawWeightClass, Pagination } from '@serp/types/types';
+import type {
+  WeightClass,
+  RawWeightClass,
+  Pagination
+} from '@serp/types/types';
 
 export type Opponent = {
   name: string;

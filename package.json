@@ -1,17 +1,21 @@
 {
-  "name": "@serp",
+  "name": "@serp/root",
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
     "test": "turbo run test",
-    "test:watch": "turbo run test:watch",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "test:watch": "turbo run test:watch"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,vue}": "eslint --fix",
+    "**/*.{json,md,yml}": "prettier . --write"
   },
   "devDependencies": {
+    "husky": "^9.1.6",
     "prettier": "^3.2.5",
-    "turbo": "^2.4.2",
-    "husky": "^9.1.6"
+    "turbo": "^2.4.2"
   },
   "packageManager": "pnpm@8.15.6"
 }

@@ -9,33 +9,37 @@
     />
 
     <main>
-      <h2 class="pb-16 text-3xl">Movies & TV Shows</h2>
-      <!-- rows -->
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <post-card
-          v-for="post in data.posts"
-          :key="post.id"
-          :post="post"
-          :base-slug="`${post.module}/`"
-          article-class="py-2"
-        />
+      <!-- rows: movies -->
+      <div class="mb-16">
+        <nuxt-link to="/movies">
+          <h2 class="pb-16 text-3xl">Movies</h2>
+        </nuxt-link>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <post-card
+            v-for="post in movieData.posts"
+            :key="post.id"
+            :post="post"
+            :base-slug="`${post.module}/`"
+            article-class="py-2"
+          />
+        </div>
       </div>
 
-      <!-- pagination -->
-      <s-pagination
-        v-model:page="page"
-        :total="data?.pagination?.totalItems"
-        :items-per-page="limit"
-        :sibling-count="3"
-      />
-
-      <!-- link hub -->
-      <!-- <s-link-hub
-                  v-if="categories && categories.length"
-                  :categories="categories"
-                  headline="Categories"
-                  base-slug="reviews/best"
-                  class="mt-20" /> -->
+      <!-- rows: shop -->
+      <div class="mb-16">
+        <nuxt-link to="/shop">
+          <h2 class="pb-16 text-3xl">Shop</h2>
+        </nuxt-link>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <post-card
+            v-for="post in shopData.posts"
+            :key="post.id"
+            :post="post"
+            :base-slug="`${post.module}/best/`"
+            article-class="py-2"
+          />
+        </div>
+      </div>
     </main>
   </div>
 </template>
@@ -48,26 +52,15 @@ const page = ref(Number(route.query.page) || 1);
 const limit = ref(Number(route.query.limit) || 50);
 // const categories = await useCompanyCategories();
 
-let data = await usePosts(page.value, limit.value);
-if (!data) {
+const shopData = await usePosts(page.value, limit.value, '', 'shop');
+if (!shopData) {
   router.push('/404');
 }
 
-watch([page, limit], async ([newPage, newLimit]) => {
-  const query = { ...route.query };
-  if (newPage !== 1) {
-    query.page = String(newPage);
-  } else {
-    delete query.page;
-  }
-  if (newLimit !== 50) {
-    query.limit = String(newLimit);
-  } else {
-    delete query.limit;
-  }
-  data = await usePosts(page.value, limit.value);
-  router.push({ query });
-});
+const movieData = await usePosts(page.value, limit.value, '', 'movies');
+if (!movieData) {
+  router.push('/404');
+}
 
 useSeoMeta({
   title: 'Home'

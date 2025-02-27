@@ -1,5 +1,4 @@
-import type { Category, RawCategory } from '~/types/Category';
-import type { Faq, RawFaq } from '~/types/Faq';
+import type { Category, RawCategory, Faq } from '@serp/types/types';
 
 export type Feature = {
   id: number;
@@ -32,6 +31,8 @@ export type Company = {
   rating?: number;
   upvotes?: number;
   downvotes?: number;
+  featured?: boolean;
+  featuredOrder?: number;
 };
 
 export type CompanyIndex = {
@@ -68,6 +69,8 @@ export type RawCompany = {
   rating?: number;
   upvotes?: number;
   downvotes?: number;
+  featured?: boolean;
+  featuredOrder?: number;
 };
 
 export type RawCompanyIndex = {

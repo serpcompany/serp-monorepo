@@ -1,0 +1,37 @@
+version: '3.9'
+
+networks:
+  web_network:
+    external: true
+  daft-fm-network:
+    external: true
+services:
+  daft-fm-app-staging:
+    build:
+      context: ../..
+      dockerfile: ./apps/daft-fm/Dockerfile
+    container_name: daft-fm-app-staging
+    restart: unless-stopped
+    networks:
+      - web_network
+      - daft-fm-network
+    environment:
+      - HOST=0.0.0.0
+      - NODE_ENV=production
+      - ROBOTS_ENV=staging
+      - NUXT_SITE_ENV=staging
+      - NUXT_PUBLIC_SITE_URL=https://staging.daft.fm
+      - DATABASE_URL=${DATABASE_URL}
+      - NUXT_PUBLIC_API_URL=${NUXT_PUBLIC_API_URL}
+      - NUXT_PUBLIC_DOMAIN=${NUXT_PUBLIC_DOMAIN}
+      - NUXT_PUBLIC_SITE_NAME=${NUXT_PUBLIC_SITE_NAME}
+      - NUXT_PUBLIC_URL=${NUXT_PUBLIC_URL}
+      - REDIS_URL=redis://daft-fm-redis-staging:6379
+    depends_on:
+      - daft-fm-redis-staging
+  daft-fm-redis-staging:
+    image: redis:7.2.5
+    container_name: daft-fm-redis-staging
+    restart: unless-stopped
+    networks:
+      - daft-fm-network

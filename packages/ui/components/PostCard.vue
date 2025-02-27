@@ -4,13 +4,13 @@
       <lazy-nuxt-img
         v-if="post.image"
         :src="post.image"
-        :alt="post.title"
+        :alt="displayTitle"
         class="mb-6 h-64 w-full object-cover"
       />
       <!-- Title -->
-      <h3 class="mb-2 text-xl hover:underline">
-        {{ post.title }}
-      </h3>
+      <h2 class="mb-2 text-xl font-medium hover:underline">
+        {{ displayTitle }}
+      </h2>
     </nuxt-link>
 
     <p v-if="post.author" class="mb-2 italic">
@@ -30,15 +30,22 @@
 <script setup lang="ts">
 import type { PostIndex } from '@serp/types/types';
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     post: PostIndex;
     baseSlug?: string;
     articleClass?: string;
   }>(),
   {
-    baseSlug: 'posts',
+    baseSlug: 'posts/',
     articleClass: 'py-16'
   }
 );
+
+const displayTitle = computed(() => {
+  if (props.post.module === 'Glossary') {
+    return props.post.keyword || props.post.title;
+  }
+  return props.post.title;
+});
 </script>

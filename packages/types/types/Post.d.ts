@@ -15,6 +15,7 @@ export type Post = {
   oneLiner?: string;
   relatedPosts?: PostIndex[];
   module?: string;
+  keyword?: string;
 };
 
 export type RawPost = {
@@ -32,6 +33,7 @@ export type RawPost = {
   videoId?: string;
   relatedPosts?: PostIndex[];
   module?: string;
+  keyword?: string;
 };
 
 export type PostIndex = {

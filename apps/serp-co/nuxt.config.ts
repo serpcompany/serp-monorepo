@@ -78,7 +78,7 @@ export default defineNuxtConfig({
       headerNavItems: [
         {
           label: 'Companies',
-          children: [{ label: 'Companies', to: '/reviews/' }]
+          children: [{ label: 'Companies', to: '/products/' }]
         },
         {
           label: 'Tools',
@@ -105,7 +105,7 @@ export default defineNuxtConfig({
           id: 1,
           slug: '',
           items: [
-            { text: 'Companies', slug: '/reviews/' },
+            { text: 'Companies', slug: '/products/' },
             { text: 'Tools', slug: '/tools/' },
             { text: 'Posts', slug: '/posts/' },
             { text: 'Glossary', slug: '/glossary/' }
@@ -119,7 +119,7 @@ export default defineNuxtConfig({
         { text: 'DMCA', slug: '/legal/dmca/' }
       ],
       copyrightText: '© SERP',
-      address: '123 Rank St. Page One City, 90210 USA'
+      address: ''
     }
   },
   app: {

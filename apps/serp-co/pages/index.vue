@@ -35,7 +35,7 @@
         v-if="categories && categories.length"
         :categories="categories"
         headline="Categories"
-        base-slug="reviews/best"
+        base-slug="products/best"
         class="mt-20"
       />
     </main>
