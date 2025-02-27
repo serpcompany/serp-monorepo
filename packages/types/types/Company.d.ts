@@ -1,5 +1,4 @@
-import type { Category, RawCategory } from '~/types/Category';
-import type { Faq, RawFaq } from '~/types/Faq';
+import type { Category, RawCategory, Faq } from '@serp/types/types';
 
 export type Feature = {
   id: number;
