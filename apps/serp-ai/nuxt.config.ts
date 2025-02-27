@@ -78,7 +78,7 @@ export default defineNuxtConfig({
       headerNavItems: [
         {
           label: 'Companies',
-          children: [{ label: 'Companies', to: '/brands/' }]
+          children: [{ label: 'Companies', to: '/products/' }]
         },
         {
           label: 'Glossary',
@@ -95,7 +95,7 @@ export default defineNuxtConfig({
           id: 1,
           slug: '',
           items: [
-            { text: 'Companies', slug: '/brands/' },
+            { text: 'Companies', slug: '/products/' },
             { text: 'Posts', slug: '/posts/' },
             { text: 'Glossary', slug: '/glossary/' }
           ]
