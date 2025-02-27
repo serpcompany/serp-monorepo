@@ -108,7 +108,7 @@ export default defineNuxtConfig({
         { text: 'DMCA', slug: '/legal/dmca/' }
       ],
       copyrightText: '© SERP',
-      address: '123 Rank St. Page One City, 90210 USA'
+      address: ''
     }
   },
   app: {

@@ -2,7 +2,6 @@
   <div>
     <main>
       <SinglePostsGlossaryPost v-if="data.module === 'Glossary'" :data="data" />
-      <SinglePostsSoftwarePost v-if="data.module === 'Software'" :data="data" />
       <SinglePostsPost v-else :data="data" />
     </main>
   </div>

@@ -1,6 +1,6 @@
 import { db } from '@/server/db';
 import { companyCache } from '@/server/db/schema';
-import { sql } from 'drizzle-orm';
+import { sql, asc, desc } from 'drizzle-orm';
 import { useDataCache } from '#nuxt-multi-cache/composables';
 
 import type {
@@ -92,7 +92,7 @@ export default defineEventHandler(async (event) => {
     );
   }
   baseQuery = baseQuery
-    .orderBy(companyCache.name)
+    .orderBy(desc(companyCache.featured), asc(companyCache.featuredOrder))
     .limit(limitNumber)
     .offset(offset);
 

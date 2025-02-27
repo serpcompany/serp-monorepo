@@ -26,7 +26,8 @@ const transformPost = (post: RawPostIndex): PostIndex => ({
   categories: post.categories?.map(transformCategory),
   createdAt: post.createdAt,
   author: post.author,
-  module: post.module
+  module: post.module,
+  keyword: post.keyword
 });
 
 export default defineEventHandler(async (event) => {
@@ -67,7 +68,8 @@ export default defineEventHandler(async (event) => {
       categories: postCache.categories,
       createdAt: postCache.createdAt,
       author: postCache.author,
-      module: postCache.module
+      module: postCache.module,
+      keyword: postCache.keyword
     })
     .from(postCache);
 

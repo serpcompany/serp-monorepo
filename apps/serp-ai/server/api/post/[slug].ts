@@ -25,7 +25,8 @@ const transformPost = (post: RawPost): Post => ({
   videoId: post.videoId,
   oneLiner: post.oneLiner,
   relatedPosts: post.relatedPosts,
-  module: post.module
+  module: post.module,
+  keyword: post.keyword
 });
 
 export default defineEventHandler(async (event) => {
@@ -36,7 +37,7 @@ export default defineEventHandler(async (event) => {
     return value;
   }
 
-  const query = db.select().from(postCache).where(eq(postCache.slug, slug));
+  const query = db.select().from(postCache).where(eq(postCache.slug, slug as string));
 
   const results = await query.execute();
 
@@ -47,7 +48,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const post = transformPost(results[0]);
+  const post = transformPost(results[0] as RawPost);
   const response = post;
 
   addToCache(response, [], 60 * 60 * 24 * 7); // 1 week

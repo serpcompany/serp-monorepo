@@ -20,13 +20,6 @@ export default defineEventHandler(async (event) => {
 
   const results = await query.execute();
 
-  if (!results.length) {
-    throw createError({
-      statusCode: 404,
-      message: 'Not found'
-    });
-  }
-
   const categories = results.map(transformCategory);
 
   const response = categories;
