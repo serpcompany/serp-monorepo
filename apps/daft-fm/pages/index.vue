@@ -2,11 +2,10 @@
   <div>
     <!-- hero -->
     <s-hero
-      headline="DAFT FM"
-      subheadline="All Things Audible."
-      :show-search-bar="false"
-      :show-buttons="false"
-    />
+            headline="DAFT FM"
+            subheadline="All Things Audible."
+            :show-search-bar="false"
+            :show-buttons="false" />
 
     <main>
       <div>
@@ -28,20 +27,6 @@
         </nuxt-link>
         <albums-link-hub :albums="albumsData?.albums" />
       </div>
-
-      <!-- rows: shop -->
-      <nuxt-link to="/shop/">
-        <h2 class="mt-20">Shop</h2>
-      </nuxt-link>
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <post-card
-          v-for="post in shopData.posts"
-          :key="post.id"
-          :post="post"
-          :base-slug="`${post.module}/best/`"
-          article-class="py-2"
-        />
-      </div>
     </main>
   </div>
 </template>
@@ -52,11 +37,6 @@ const route = useRoute();
 
 const page = ref(Number(route.query.page) || 1);
 const limit = ref(Number(route.query.limit) || 50);
-
-const shopData = await usePosts(page.value, limit.value, '', 'shop');
-if (!shopData) {
-  router.push('/404');
-}
 
 const songsData = await useSongs(page.value, limit.value);
 if (!songsData) {

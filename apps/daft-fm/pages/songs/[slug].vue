@@ -77,7 +77,7 @@ const seoTitle = computed(() => song?.seoTitle);
 const seoDescription = computed(() => song?.seoDescription);
 
 useSeoMeta({
-  title: seoTitle,
+  title: song.name + ' - Lyrics',
   description: seoDescription
 });
 </script>
