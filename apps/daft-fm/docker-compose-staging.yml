@@ -11,7 +11,7 @@ services:
       context: ../..
       dockerfile: ./apps/daft-fm/Dockerfile
     container_name: daft-fm-app-staging
-    restart: always
+    restart: unless-stopped
     networks:
       - web_network
       - daft-fm-network
@@ -32,6 +32,6 @@ services:
   daft-fm-redis-staging:
     image: redis:7.2.5
     container_name: daft-fm-redis-staging
-    restart: always
+    restart: unless-stopped
     networks:
       - daft-fm-network

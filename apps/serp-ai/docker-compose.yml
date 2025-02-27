@@ -11,7 +11,7 @@ services:
       context: ../..
       dockerfile: ./apps/serp-ai/Dockerfile
     container_name: serp-ai-app
-    restart: always
+    restart: unless-stopped
     networks:
       - web_network
       - serp-ai-network
@@ -32,6 +32,6 @@ services:
   serp-ai-redis:
     image: redis:7.2.5
     container_name: serp-ai-redis
-    restart: always
+    restart: unless-stopped
     networks:
       - serp-ai-network

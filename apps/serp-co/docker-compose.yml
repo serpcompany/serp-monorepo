@@ -11,7 +11,7 @@ services:
       context: ../..
       dockerfile: ./apps/serp-co/Dockerfile
     container_name: serp-co-app
-    restart: always
+    restart: unless-stopped
     networks:
       - web_network
       - serp-co-network
@@ -32,6 +32,6 @@ services:
   serp-co-redis:
     image: redis:7.2.5
     container_name: serp-co-redis
-    restart: always
+    restart: unless-stopped
     networks:
       - serp-co-network
