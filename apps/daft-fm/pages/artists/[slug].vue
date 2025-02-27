@@ -115,7 +115,7 @@ const seoTitle = computed(() => artist?.seoTitle);
 const seoDescription = computed(() => artist?.seoDescription);
 
 useSeoMeta({
-  title: seoTitle,
+  title: artist.name + ' - Songs, Albums, and More',
   description: seoDescription
 });
 </script>

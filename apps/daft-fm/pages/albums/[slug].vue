@@ -101,7 +101,7 @@ const seoTitle = computed(() => album?.seoTitle);
 const seoDescription = computed(() => album?.seoDescription);
 
 useSeoMeta({
-  title: seoTitle,
+  title: album.name + ' - Album',
   description: seoDescription
 });
 </script>
