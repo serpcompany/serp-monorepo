@@ -67,7 +67,7 @@ export default defineNuxtConfig({
         },
         {
           name: 'SoundCloud',
-          href: 'https://serp.ly/@serpai/soundcloud',
+          href: 'https://serp.ly/@daftfm/soundcloud',
           icon: 'i-lucide-external-link'
         }
       ],
@@ -86,10 +86,6 @@ export default defineNuxtConfig({
             { label: 'Artists', to: '/artists/' }
           ]
         },
-        {
-          label: 'Shop',
-          children: [{ label: 'Shop', to: '/shop/' }]
-        }
       ],
       footerColumns: [
         {
@@ -102,16 +98,6 @@ export default defineNuxtConfig({
             { text: 'Albums', slug: '/albums/' }
           ]
         },
-        {
-          title: 'Links',
-          id: 2,
-          slug: '',
-          items: [
-            { text: 'Shop', slug: '/shop/' },
-            { text: 'Blog', slug: '/blog/' },
-            { text: 'Glossary', slug: '/glossary/' }
-          ]
-        }
       ],
       legalLinks: [
         { text: 'Privacy', slug: '/legal/privacy-policy/' },
@@ -218,9 +204,6 @@ export default defineNuxtConfig({
       albums: {
         sources: ['/api/__sitemap__/albums']
       },
-      shop: {
-        sources: ['/api/__sitemap__/shop']
-      }
     }
   }
 });
