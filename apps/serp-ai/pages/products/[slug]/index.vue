@@ -3,9 +3,9 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
+import { useRouter } from 'vue-router';
 
-const router = useRouter()
-const fullRoute = router.currentRoute.value.path + 'reviews/'
-router.replace({ path: fullRoute, replace: true })
+const router = useRouter();
+const fullRoute = router.currentRoute.value.path + 'reviews/';
+router.replace({ path: fullRoute, replace: true });
 </script>

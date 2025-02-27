@@ -29,7 +29,9 @@ const transformCompany = (company: RawCompanyIndex): CompanyIndex => ({
   screenshots: company.screenshots,
   rating: company.rating,
   upvotes: company.upvotes,
-  downvotes: company.downvotes
+  downvotes: company.downvotes,
+  featured: company.featured,
+  featuredOrder: company.featuredOrder
 });
 
 export default defineEventHandler(async (event) => {
@@ -72,7 +74,9 @@ export default defineEventHandler(async (event) => {
       screenshots: companyCache.screenshots,
       rating: companyCache.rating,
       upvotes: companyCache.upvotes,
-      downvotes: companyCache.downvotes
+      downvotes: companyCache.downvotes,
+      featured: companyCache.featured,
+      featuredOrder: companyCache.featuredOrder
     })
     .from(companyCache);
 

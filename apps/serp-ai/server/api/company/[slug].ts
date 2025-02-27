@@ -49,7 +49,9 @@ const transformCompany = (company: RawCompany): Company => ({
   screenshots: company.screenshots,
   rating: company.rating,
   upvotes: company.upvotes,
-  downvotes: company.downvotes
+  downvotes: company.downvotes,
+  featured: company.featured,
+  featuredOrder: company.featuredOrder
 });
 
 export default defineEventHandler(async (event) => {
@@ -63,7 +65,7 @@ export default defineEventHandler(async (event) => {
   const query = db
     .select()
     .from(companyCache)
-    .where(eq(companyCache.slug, slug));
+    .where(eq(companyCache.slug, slug as string));
 
   const results = await query.execute();
 
@@ -74,7 +76,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const company = transformCompany(results[0]);
+  const company = transformCompany(results[0] as RawCompany);
   const response = company;
 
   addToCache(response, [], 60 * 60 * 24 * 7); // 1 week
