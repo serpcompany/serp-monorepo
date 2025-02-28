@@ -2,8 +2,8 @@
   <article :class="articleClass">
     <nuxt-link :to="`/${baseSlug}${post.slug}/`">
       <lazy-nuxt-img
-        v-if="post.image"
-        :src="post.image"
+        v-if="post.featuredImage"
+        :src="post.featuredImage"
         :alt="displayTitle"
         class="mb-6 h-64 w-full object-cover"
       />

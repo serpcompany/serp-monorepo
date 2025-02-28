@@ -193,11 +193,6 @@ export default defineNuxtConfig({
   ogImage: {
     enabled: false
   },
-  multiCache: {
-    data: {
-      enabled: true
-    }
-  },
   sitemap: {
     defaults: {
       lastmod: new Date().toISOString(),

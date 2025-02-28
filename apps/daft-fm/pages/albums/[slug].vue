@@ -27,7 +27,7 @@
                 <div class="flex flex-1 items-center space-x-4">
                   <span class="w-6">{{ song.position }}</span>
                   <nuxt-link
-                    v-if="song.hasLyrics"
+                    v-if="song.has_lyrics"
                     :to="`/songs/${song.slug}/`"
                     >{{ song.name }}</nuxt-link
                   >

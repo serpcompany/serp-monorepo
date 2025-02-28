@@ -13,11 +13,21 @@ services:
       - /app/node_modules
       - /app/apps/boxingundefeated-com/node_modules
       - /app/apps/serp-co/node_modules
+      - /app/apps/serp-ai/node_modules
       - /app/apps/serp-media/node_modules
+      - /app/apps/daft-fm/node_modules
+      - /app/packages/configs/node_modules
+      - /app/packages/configs/eslint/node_modules
+      - /app/packages/configs/tsconfig/node_modules
       - /app/packages/tools/node_modules
       - /app/packages/types/node_modules
       - /app/packages/ui/node_modules
       - /app/packages/utils/node_modules
+      - /app/apps/boxingundefeated-com/.nuxt
+      - /app/apps/serp-co/.nuxt
+      - /app/apps/serp-ai/.nuxt
+      - /app/apps/serp-media/.nuxt
+      - /app/apps/daft-fm/.nuxt
     environment:
       - HOST=0.0.0.0
       - NODE_ENV=development

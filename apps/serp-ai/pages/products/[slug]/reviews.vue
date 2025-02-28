@@ -24,10 +24,10 @@
 
           <!-- Article Section -->
           <section
-            v-if="data.article"
+            v-if="data.content"
             class="prose dark:prose-invert mt-[-25px]"
           >
-            <div id="article" class="mb-8" v-html="data.article"></div>
+            <div id="article" class="mb-8" v-html="data.content"></div>
           </section>
 
           <!-- Features Section -->

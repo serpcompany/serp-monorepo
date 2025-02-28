@@ -2,10 +2,11 @@
   <div>
     <!-- hero -->
     <s-hero
-            headline="DAFT FM"
-            subheadline="All Things Audible."
-            :show-search-bar="false"
-            :show-buttons="false" />
+      headline="DAFT FM"
+      subheadline="All Things Audible."
+      :show-search-bar="false"
+      :show-buttons="false"
+    />
 
     <main>
       <div>

@@ -1,12 +1,6 @@
-import type { Category, RawCategory, Faq } from '@serp/types/types';
+import type { Category, Faq } from '@serp/types/types';
 
 export type Feature = {
-  id: number;
-  item: string;
-  description: string;
-};
-
-export type RawFeature = {
   id: number;
   item: string;
   description: string;
@@ -20,7 +14,7 @@ export type Company = {
   excerpt?: string;
   logo?: string;
   serplyLink: string;
-  article: string;
+  content: string;
   features?: Feature[];
   pros?: string[];
   cons?: string[];
@@ -44,44 +38,6 @@ export type CompanyIndex = {
   logo?: string;
   serplyLink: string;
   categories?: Category[];
-  screenshots?: string[];
-  rating?: number;
-  upvotes?: number;
-  downvotes?: number;
-};
-
-export type RawCompany = {
-  id: number;
-  name: string;
-  slug: string;
-  oneLiner?: string;
-  excerpt?: string;
-  logo?: string;
-  serplyLink: string;
-  content: string;
-  features?: RawFeature[];
-  pros?: string[];
-  cons?: string[];
-  faqs?: RawFaq[];
-  alternatives?: string[];
-  categories?: RawCategory[];
-  screenshots?: string[];
-  rating?: number;
-  upvotes?: number;
-  downvotes?: number;
-  featured?: boolean;
-  featuredOrder?: number;
-};
-
-export type RawCompanyIndex = {
-  id: number;
-  name: string;
-  slug: string;
-  oneLiner?: string;
-  excerpt?: string;
-  logo?: string;
-  serplyLink: string;
-  categories?: RawCategory[];
   screenshots?: string[];
   rating?: number;
   upvotes?: number;

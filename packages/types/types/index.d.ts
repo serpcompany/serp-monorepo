@@ -8,7 +8,6 @@ export * from './Boxer';
 export * from './WeightClass';
 export * from './Artist';
 export * from './Common';
-export * from './RawMusic';
 export * from './Recording';
 export * from './ReleaseGroup';
 export * from './SeoMeta';

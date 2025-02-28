@@ -23,7 +23,7 @@
         <!-- Sidebar (30%) -->
         <div class="space-y-6 lg:col-span-1">
           <!-- General Info Section -->
-          <div>
+          <div v-if="song.overview">
             {{ song.overview }}
           </div>
           <div class="border p-4">

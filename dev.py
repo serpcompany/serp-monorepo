@@ -40,8 +40,10 @@ def get_project_path(project):
         if os.path.isdir(path):
             return path
 
-    print(f"Error: Project {project} not found in apps or packages directories")
-    sys.exit(1)
+    print(
+        f"Project {project} not found in apps or packages directories, running in root directory"
+    )
+    return "."
 
 
 def setup_infisical(project_path):
@@ -60,7 +62,10 @@ def setup_infisical(project_path):
 
 def run_docker_command(project, command, rebuild=False):
     """Run the docker compose command with the specified project and command"""
-    docker_cmd = f"pnpm --filter {project} {command}"
+    if project == ".":
+        docker_cmd = f"pnpm {command}"
+    else:
+        docker_cmd = f"pnpm --filter {project} {command}"
     env = os.environ.copy()
     env["DOCKER_CMD"] = docker_cmd
 
@@ -116,7 +121,7 @@ def main():
     project_path = get_project_path(args.project)
 
     # Setup Infisical if not disabled
-    if not args.no_infisical:
+    if not args.no_infisical and project_path != ".":
         setup_infisical(project_path)
 
     # Run Docker command

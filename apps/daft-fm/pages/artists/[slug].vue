@@ -27,7 +27,7 @@
                   >
                     <div>
                       <lazy-nuxt-img
-                        :src="album.coverArt?.['500']"
+                        :src="album.cover_art_urls?.['500']"
                         :alt="album.name"
                       />
                       {{ album.name }}
@@ -41,7 +41,7 @@
                           <div>
                             {{ song.position }}.
                             <nuxt-link
-                              v-if="song.hasLyrics"
+                              v-if="song.has_lyrics"
                               :to="`/songs/${song.slug}/`"
                             >
                               {{ song.name }}
