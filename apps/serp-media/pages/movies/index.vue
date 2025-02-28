@@ -1,71 +1,10 @@
 <template>
-  <div>
-    <section-hero-one :title="moduleTitle" />
-
-    <main>
-      <h2 class="pb-16 text-3xl">Movies & TV Shows</h2>
-      <!-- rows -->
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <post-card
-          v-for="post in data.posts"
-          :key="post.id"
-          :post="post"
-          base-slug="movies/"
-          article-class="py-2"
-        />
-      </div>
-
-      <!-- pagination -->
-      <s-pagination
-        v-model:page="page"
-        :total="data?.pagination?.totalItems"
-        :items-per-page="limit"
-        :sibling-count="3"
-      />
-
-      <!-- <s-link-hub
-        v-if="categories && categories.length"
-        :categories="categories"
-        headline="Categories"
-        class="mt-20"
-        base-slug="posts/category"
-      /> -->
-    </main>
-  </div>
+  <SPagePostCollection
+    module="movies"
+    module-title="Movies & TV Shows"
+    base-slug="movies/"
+    seo-title="Movies"
+    :use-grid="true"
+    :no-categories="true"
+  />
 </template>
-
-<script setup lang="ts">
-const router = useRouter();
-const route = useRoute();
-
-const page = ref(Number(route.query.page) || 1);
-const limit = ref(Number(route.query.limit) || 50);
-// const categories = await usePostCategories();
-const module = 'movies';
-const moduleTitle = 'Movies';
-
-let data = await usePosts(page.value, limit.value, '', module);
-if (!data) {
-  router.push('/404');
-}
-
-watch([page, limit], async ([newPage, newLimit]) => {
-  const query = { ...route.query };
-  if (newPage !== 1) {
-    query.page = String(newPage);
-  } else {
-    delete query.page;
-  }
-  if (newLimit !== 50) {
-    query.limit = String(newLimit);
-  } else {
-    delete query.limit;
-  }
-  data = await usePosts(page.value, limit.value, '', module);
-  router.push({ query });
-});
-
-useSeoMeta({
-  title: () => moduleTitle.value
-});
-</script>

@@ -21,7 +21,7 @@
 
     <s-pill
       v-if="post.categories && post.categories.length"
-      :base-slug="`${baseSlug}/category`"
+      :base-slug="`${baseSlug}category`"
       :items="post.categories"
     />
   </article>
