@@ -1,0 +1,37 @@
+version: '3.9'
+
+networks:
+  web_network:
+    external: true
+  serp-games-network:
+    external: true
+services:
+  serp-games-app-staging:
+    build:
+      context: ../..
+      dockerfile: ./apps/serp-games/Dockerfile
+    container_name: serp-games-app-staging
+    restart: unless-stopped
+    networks:
+      - web_network
+      - serp-games-network
+    environment:
+      - HOST=0.0.0.0
+      - NODE_ENV=production
+      - ROBOTS_ENV=staging
+      - NUXT_SITE_ENV=staging
+      - NUXT_PUBLIC_SITE_URL=https://staging.serp.games
+      - DATABASE_URL=${DATABASE_URL}
+      - NUXT_PUBLIC_API_URL=${NUXT_PUBLIC_API_URL}
+      - NUXT_PUBLIC_DOMAIN=${NUXT_PUBLIC_DOMAIN}
+      - NUXT_PUBLIC_SITE_NAME=${NUXT_PUBLIC_SITE_NAME}
+      - NUXT_PUBLIC_URL=${NUXT_PUBLIC_URL}
+      - REDIS_URL=redis://serp-games-redis-staging:6379
+    depends_on:
+      - serp-games-redis-staging
+  serp-games-redis-staging:
+    image: redis:7.2.5
+    container_name: serp-games-redis-staging
+    restart: unless-stopped
+    networks:
+      - serp-games-network
