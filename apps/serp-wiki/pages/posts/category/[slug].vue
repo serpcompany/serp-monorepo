@@ -1,0 +1,3 @@
+<template>
+  <SPagePostCategoryCollection />
+</template>

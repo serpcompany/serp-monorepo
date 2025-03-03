@@ -15,7 +15,6 @@
     "@eslint/eslintrc": "^3.1.0",
     "@nuxt/eslint": "^0.6.1",
     "@nuxt/test-utils": "^3.14.4",
-    "@serp/db": "workspace:^",
     "@serp/types": "workspace:^",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/vue": "^8.1.0",

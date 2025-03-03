@@ -16,6 +16,7 @@ services:
       - /app/apps/serp-ai/node_modules
       - /app/apps/serp-media/node_modules
       - /app/apps/daft-fm/node_modules
+      - /app/apps/serp-wiki/node_modules
       - /app/packages/configs/node_modules
       - /app/packages/configs/eslint/node_modules
       - /app/packages/configs/tsconfig/node_modules
@@ -28,6 +29,7 @@ services:
       - /app/apps/serp-ai/.nuxt
       - /app/apps/serp-media/.nuxt
       - /app/apps/daft-fm/.nuxt
+      - /app/apps/serp-wiki/.nuxt
     environment:
       - HOST=0.0.0.0
       - NODE_ENV=development

@@ -1,3 +1,12 @@
+# Install
+python dev.py . install
+
+# Lint all
+python dev.py . lint
+
+# List available projects
+python dev.py
+
 # Start development server for @serp-media
 python dev.py @serp-media
 
@@ -5,13 +14,7 @@ python dev.py @serp-media
 python dev.py @serp-media test
 
 # Rebuild the container and start dev server
-python dev.py @serp-media dev:docker --rebuild
+python dev.py @serp-media dev:docker
 
 # Skip Infisical setup
 python dev.py @serp-media dev:docker --no-infisical
-
-# List available projects
-python dev.py
-
-# Lint all
-python dev.py . lint --rebuild

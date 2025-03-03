@@ -1,0 +1,32 @@
+# name: ci_2_serp_wiki
+
+# on:
+#   workflow_run:
+#     branches:
+#       - staging
+#     workflows:
+#       - build_staging_serp_wiki
+#     types:
+#       - completed
+#   workflow_dispatch:
+
+# jobs:
+#   ci_2_serp_wiki:
+#     if: ${{ github.event.workflow_run.conclusion == 'success' }}
+#     runs-on: ${{ matrix.os }}
+
+#     strategy:
+#       matrix:
+#         os: [ubuntu-latest]
+#         node: [18]
+
+#     steps:
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: ${{ matrix.node }}
+
+#       - name: checkout
+#         uses: actions/checkout@master
+
+#       - name: sitespeed.io (staging.)
+#         run: docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:35.5.0 https://staging.serp.wiki --budget.configPath .github/budget.json -n 3 --axe.enable

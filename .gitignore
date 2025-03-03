@@ -40,3 +40,7 @@ yarn-error.log*
 # Reports
 .lighthouseci*
 sitespeed-result/*
+
+.pnpm-debug.log*
+pnpm-debug.log*
+.pnpm-store/*
