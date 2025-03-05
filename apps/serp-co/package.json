@@ -39,6 +39,7 @@
     "@serp/types": "workspace:^",
     "@serp/ui": "workspace:^",
     "@serp/utils": "workspace:^",
+    "@serp/instrumentation": "workspace:^",
     "@tailwindcss/typography": "^0.5.15",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/vue": "^8.1.0",
