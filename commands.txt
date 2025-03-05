@@ -1,6 +1,9 @@
 # Install
 python dev.py . install
 
+# Update
+python dev.py . update
+
 # Lint all
 python dev.py . lint
 
