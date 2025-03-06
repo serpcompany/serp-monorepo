@@ -5,6 +5,8 @@ networks:
     external: true
   daft-fm-network:
     external: true
+  central-auth-network:
+    external: true
 services:
   daft-fm-app:
     build:
@@ -15,6 +17,7 @@ services:
     networks:
       - web_network
       - daft-fm-network
+      - central-auth-network
     environment:
       - HOST=0.0.0.0
       - NODE_ENV=production

@@ -11,3 +11,4 @@ export * from './Common';
 export * from './Recording';
 export * from './ReleaseGroup';
 export * from './SeoMeta';
+export * from './User';

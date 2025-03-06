@@ -27,6 +27,6 @@ export default defineEventHandler(async (event) => {
   const boxer = results[0] as Boxer;
   const response = boxer;
 
-  addToCache(response, [], 60 * 60 * 24 * 7); // 1 week
+  addToCache(response, [], 60 * 60 * 10); // 10 hours
   return response;
 });

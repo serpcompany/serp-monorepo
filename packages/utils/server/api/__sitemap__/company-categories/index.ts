@@ -20,6 +20,6 @@ export default defineEventHandler(async (event) => {
     (companyCategory) => `/products/best/${companyCategory.slug}/`
   );
 
-  addToCache(response, [], 60 * 60 * 24 * 7); // 1 week
+  addToCache(response, [], 60 * 60 * 10); // 10 hours
   return response;
 });

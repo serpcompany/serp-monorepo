@@ -5,6 +5,8 @@ networks:
     external: true
   serp-games-network:
     external: true
+  central-auth-network:
+    external: true
 services:
   serp-games-app:
     build:
@@ -15,6 +17,7 @@ services:
     networks:
       - web_network
       - serp-games-network
+      - central-auth-network
     environment:
       - HOST=0.0.0.0
       - NODE_ENV=production

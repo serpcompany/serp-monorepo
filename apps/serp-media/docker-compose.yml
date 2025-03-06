@@ -5,6 +5,8 @@ networks:
     external: true
   serp-media-network:
     external: true
+  central-auth-network:
+    external: true
 services:
   serp-media-app:
     build:
@@ -15,6 +17,7 @@ services:
     networks:
       - web_network
       - serp-media-network
+      - central-auth-network
     environment:
       - HOST=0.0.0.0
       - NODE_ENV=production

@@ -5,6 +5,8 @@ networks:
     external: true
   serp-wiki-network:
     external: true
+  central-auth-network:
+    external: true
 services:
   serp-wiki-app-staging:
     build:

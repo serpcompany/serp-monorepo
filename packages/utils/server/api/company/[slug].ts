@@ -30,6 +30,6 @@ export default defineEventHandler(async (event) => {
   const company = results[0] as Company;
   const response = company;
 
-  addToCache(response, [], 60 * 60 * 24 * 7); // 1 week
+  addToCache(response, [], 60 * 60 * 10); // 10 hours
   return response;
 });

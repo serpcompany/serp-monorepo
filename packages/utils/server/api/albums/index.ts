@@ -72,6 +72,6 @@ export default defineEventHandler(async (event) => {
     albums,
     pagination
   };
-  addToCache(response, [], 60 * 60 * 24 * 7); // 1 week
+  addToCache(response, [], 60 * 60 * 10); // 10 hours
   return response;
 });

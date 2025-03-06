@@ -18,6 +18,6 @@ export default defineEventHandler(async (event) => {
 
   const response = boxers.map((boxer) => `/boxers/${boxer.slug}/`);
 
-  addToCache(response, [], 60 * 60 * 24 * 7); // 1 week
+  addToCache(response, [], 60 * 60 * 10); // 10 hours
   return response;
 });

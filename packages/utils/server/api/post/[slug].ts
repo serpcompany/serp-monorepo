@@ -36,6 +36,6 @@ export default defineEventHandler(async (event) => {
   const post = results[0] as Post;
   const response = post;
 
-  addToCache(response, [], 60 * 60 * 24 * 7); // 1 week
+  addToCache(response, [], 60 * 60 * 10); // 10 hours
   return response;
 });
