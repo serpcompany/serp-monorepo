@@ -15,6 +15,14 @@ export default defineNuxtConfig({
     'nuxt-security',
     'nuxt-link-checker'
   ],
+  auth: {
+    provider: {
+      type: 'authjs',
+      trustHost: false,
+      defaultProvider: 'credentials',
+      addDefaultCallbackUrl: true
+    }
+  },
   ui: {
     colorMode: true
   },
@@ -28,6 +36,7 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig: {
+    authSecret: process.env.AUTH_SECRET,
     public: {
       otelExporterEndpoint: process.env.OTEL_EXPORTER_ENDPOINT,
       siteName: process.env.NUXT_PUBLIC_SITE_NAME,
