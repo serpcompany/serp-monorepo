@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     'nuxt-link-checker'
   ],
   auth: {
+    baseUrl: process.env.AUTH_ORIGIN + '/api/auth',
     provider: {
       type: 'authjs',
       trustHost: false,
