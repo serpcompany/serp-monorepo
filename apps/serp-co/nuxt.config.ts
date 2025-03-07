@@ -6,8 +6,7 @@ export default defineNuxtConfig({
     '@serp/utils',
     '@serp/tools',
     '@serp/types',
-    '@serp/auth',
-    '@serp/instrumentation'
+    '@serp/auth'
   ],
   modules: [
     '@nuxtjs/seo',
