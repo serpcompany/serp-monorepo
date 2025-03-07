@@ -10,7 +10,6 @@ WORKDIR /app
 COPY . .
 RUN pnpm --filter @serp-ai install --shamefully-hoist
 RUN pnpm store prune
-RUN pnpm --filter @serp-ai run db:generate
 RUN pnpm --filter @serp-ai run build
 
 # Stage 2: Deploy

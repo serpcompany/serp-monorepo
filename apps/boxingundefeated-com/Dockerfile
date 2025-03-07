@@ -10,7 +10,6 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --shamefully-hoist && pnpm store prune
 COPY . .
-RUN pnpm run db:generate
 RUN pnpm run build
 
 # Stage 2: Deploy
