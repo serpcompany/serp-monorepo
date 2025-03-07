@@ -4,8 +4,8 @@
       <nuxt-link :to="`/songs/${song.slug}/`" aria-label="song name">
         {{ song.name }} -
         <span v-for="artist in song.artists" :key="artist.slug">
-          {{ artist.creditName }}
-          <span v-if="artist.joinPhrase">{{ artist.joinPhrase }}</span>
+          {{ artist.credit_name }}
+          <span v-if="artist.join_phrase">{{ artist.join_phrase }}</span>
         </span>
       </nuxt-link>
     </div>

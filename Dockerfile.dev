@@ -8,15 +8,17 @@ RUN npm install -g pnpm @infisical/cli
 
 WORKDIR /app
 
-COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
+# COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
 
-COPY apps/*/package.json ./apps/
-COPY packages/*/package.json ./packages/
+# COPY apps/*/package.json ./apps/
+# COPY packages/*/package.json ./packages/
+
+# COPY . .
 
 # Install dependencies
-RUN pnpm install --shamefully-hoist
+# RUN pnpm install --shamefully-hoist
 
-COPY . .
+# COPY . .
 
 # Set environment variables for dev
 ENV CHOKIDAR_USEPOLLING=true

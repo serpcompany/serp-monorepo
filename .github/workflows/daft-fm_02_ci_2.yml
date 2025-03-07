@@ -28,31 +28,5 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      # - name: Setup pnpm
-      #   uses: pnpm/action-setup@v4
-
-      # - name: Use Node.js ${{ matrix.node-version }}
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: ${{ matrix.node-version }}
-      #     cache: pnpm
-
-      # - name: cache node_modules
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: node_modules
-      #     key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/pnpm-lock.yaml')) }}
-
-      # - name: Install dependencies
-      #   if: steps.cache.outputs.cache-hit != 'true'
-      #   run: pnpm install
-
       - name: sitespeed.io (staging.)
         run: docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:35.5.0 https://staging.daft.fm --budget.configPath .github/budget.json -n 3 --axe.enable
-
-      #TODO: Uncomment this block to run the Postman API tests when we have the real API
-      # - name: Install Newman
-      #   run: pnpm i -g newman
-
-      # - name: Postman API tests (real API)
-      #   run: newman run "https://api.getpostman.com/collections/19081916-015d3af5-afc6-437f-b8a2-55a3f94ca09b?apikey=${{ secrets.POSTMAN_API_KEY}}"

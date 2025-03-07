@@ -10,7 +10,6 @@ WORKDIR /app
 COPY . .
 RUN pnpm --filter @daft-fm install --shamefully-hoist
 RUN pnpm store prune
-RUN pnpm --filter @daft-fm run db:generate
 RUN pnpm --filter @daft-fm run build
 
 # Stage 2: Deploy

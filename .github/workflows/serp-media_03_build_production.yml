@@ -25,5 +25,5 @@ jobs:
           script: |
             cd serp-monorepo/apps/serp-media
             docker compose -f docker-compose.yml down
-            git pull https://${{ secrets.DEVIN_GITHUB_TOKEN }}@github.com/${{github.repository}}.git ${{ github.ref_name }}
+            git pull https://${{ secrets.DEVIN_GITHUB_TOKEN }}@github.com/${{ github.repository }}.git ${{ github.ref_name }}
             infisical run --domain=https://secrets.serp.co --token=${{ secrets.INFISICAL_ACCESS_TOKEN_SERP }} --projectId=${{ secrets.INFISICAL_PROJECT_ID_SERP_MEDIA }} -- docker compose -f docker-compose.yml up --build -d

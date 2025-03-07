@@ -1,7 +1,13 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  extends: ['@serp/ui', '@serp/utils', '@serp/tools', '@serp/types'],
+  extends: [
+    '@serp/ui',
+    '@serp/utils',
+    '@serp/tools',
+    '@serp/types',
+    '@serp/auth'
+  ],
   modules: [
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
@@ -9,6 +15,15 @@ export default defineNuxtConfig({
     'nuxt-security',
     'nuxt-link-checker'
   ],
+  auth: {
+    baseUrl: process.env.AUTH_ORIGIN,
+    provider: {
+      type: 'authjs',
+      trustHost: false,
+      defaultProvider: 'credentials',
+      addDefaultCallbackUrl: true
+    }
+  },
   ui: {
     colorMode: true
   },
@@ -22,7 +37,9 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig: {
+    authSecret: process.env.AUTH_SECRET,
     public: {
+      otelExporterEndpoint: process.env.OTEL_EXPORTER_ENDPOINT,
       siteName: process.env.NUXT_PUBLIC_SITE_NAME,
       domain: process.env.NUXT_PUBLIC_DOMAIN,
       siteUrl: process.env.NUXT_PUBLIC_URL,
@@ -176,8 +193,11 @@ export default defineNuxtConfig({
     headers: {
       contentSecurityPolicy: {
         'img-src': ["'self'", 'data:', 'https://*']
-      }
-    }
+      },
+      crossOriginResourcePolicy: false,
+      referrerPolicy: false
+    },
+    corsHandler: false
   },
   htmlValidator: {
     usePrettier: false,
@@ -192,11 +212,6 @@ export default defineNuxtConfig({
   },
   ogImage: {
     enabled: false
-  },
-  multiCache: {
-    data: {
-      enabled: true
-    }
   },
   sitemap: {
     defaults: {

@@ -5,6 +5,8 @@ networks:
     external: true
   serp-co-network:
     external: true
+  central-auth-network:
+    external: true
 services:
   serp-co-app-staging:
     build:
@@ -15,6 +17,7 @@ services:
     networks:
       - web_network
       - serp-co-network
+      - central-auth-network
     environment:
       - HOST=0.0.0.0
       - NODE_ENV=production
@@ -22,10 +25,13 @@ services:
       - NUXT_SITE_ENV=staging
       - NUXT_PUBLIC_SITE_URL=https://staging.serp.co
       - DATABASE_URL=${DATABASE_URL}
+      - AUTH_DATABASE_URL=${AUTH_DATABASE_URL}
       - NUXT_PUBLIC_API_URL=${NUXT_PUBLIC_API_URL}
       - NUXT_PUBLIC_DOMAIN=${NUXT_PUBLIC_DOMAIN}
       - NUXT_PUBLIC_SITE_NAME=${NUXT_PUBLIC_SITE_NAME}
       - NUXT_PUBLIC_URL=${NUXT_PUBLIC_URL}
+      - AUTH_ORIGIN=${NUXT_PUBLIC_URL}/api/auth
+      - AUTH_SECRET=${AUTH_SECRET}
       - REDIS_URL=redis://serp-co-redis-staging:6379
     depends_on:
       - serp-co-redis-staging
