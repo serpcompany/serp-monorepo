@@ -30,6 +30,7 @@ services:
       - NUXT_PUBLIC_SITE_NAME=${NUXT_PUBLIC_SITE_NAME}
       - NUXT_PUBLIC_URL=${NUXT_PUBLIC_URL}
       - AUTH_ORIGIN=${NUXT_PUBLIC_URL}
+      - AUTH_SECRET=${AUTH_SECRET}
       - REDIS_URL=redis://serp-media-redis:6379
     depends_on:
       - serp-media-redis
