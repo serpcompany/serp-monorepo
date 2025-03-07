@@ -28,6 +28,7 @@ services:
       - NUXT_PUBLIC_DOMAIN=${NUXT_PUBLIC_DOMAIN}
       - NUXT_PUBLIC_SITE_NAME=${NUXT_PUBLIC_SITE_NAME}
       - NUXT_PUBLIC_URL=${NUXT_PUBLIC_URL}
+      - AUTH_ORIGIN=${NUXT_PUBLIC_URL}
       - REDIS_URL=redis://serp-wiki-redis-staging:6379
     depends_on:
       - serp-wiki-redis-staging
