@@ -6,7 +6,7 @@ import { eq } from 'drizzle-orm';
 import bcrypt from 'bcrypt';
 
 export default NuxtAuthHandler({
-  secret: useRuntimeConfig().authSecret,
+  secret: process.env.AUTH_SECRET,
   providers: [
     // @ts-expect-error Use .default here for it to work during SSR.
     CredentialsProvider.default({
