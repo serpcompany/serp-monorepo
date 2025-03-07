@@ -13,9 +13,9 @@
     "**/*.{json,md,yml}": "prettier . --write"
   },
   "devDependencies": {
-    "husky": "^9.1.6",
-    "prettier": "^3.2.5",
-    "turbo": "^2.4.2"
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3",
+    "turbo": "^2.4.4"
   },
   "packageManager": "pnpm@8.15.6"
 }

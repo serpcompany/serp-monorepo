@@ -13,11 +13,27 @@ services:
       - /app/node_modules
       - /app/apps/boxingundefeated-com/node_modules
       - /app/apps/serp-co/node_modules
+      - /app/apps/serp-ai/node_modules
       - /app/apps/serp-media/node_modules
+      - /app/apps/daft-fm/node_modules
+      - /app/apps/serp-wiki/node_modules
+      - /app/apps/serp-games/node_modules
+      - /app/packages/configs/node_modules
+      - /app/packages/configs/eslint/node_modules
+      - /app/packages/configs/tsconfig/node_modules
       - /app/packages/tools/node_modules
       - /app/packages/types/node_modules
       - /app/packages/ui/node_modules
       - /app/packages/utils/node_modules
+      - /app/packages/instrumentation/node_modules
+      - /app/packages/auth/node_modules
+      - /app/apps/boxingundefeated-com/.nuxt
+      - /app/apps/serp-co/.nuxt
+      - /app/apps/serp-ai/.nuxt
+      - /app/apps/serp-media/.nuxt
+      - /app/apps/daft-fm/.nuxt
+      - /app/apps/serp-wiki/.nuxt
+      - /app/apps/serp-games/.nuxt
     environment:
       - HOST=0.0.0.0
       - NODE_ENV=development
@@ -25,7 +41,11 @@ services:
       - NUXT_SITE_ENV=development
       - NUXT_PUBLIC_SITE_URL=http://localhost:3000
       - DATABASE_URL=${DATABASE_URL}
+      - AUTH_DATABASE_URL=${AUTH_DATABASE_URL}
       - NUXT_PUBLIC_API_URL=${NUXT_PUBLIC_API_URL}
       - NUXT_PUBLIC_DOMAIN=${NUXT_PUBLIC_DOMAIN}
       - NUXT_PUBLIC_SITE_NAME=${NUXT_PUBLIC_SITE_NAME}
       - NUXT_PUBLIC_URL=${NUXT_PUBLIC_URL}
+      - AUTH_SECRET=${AUTH_SECRET}
+      - OTEL_EXPORTER_ENDPOINT=http://localhost:4318/v1/traces
+      - SERVICE_NAME=serp-monorepo-dev

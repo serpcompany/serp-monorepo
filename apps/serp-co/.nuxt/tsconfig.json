@@ -11,8 +11,12 @@
       "nitropack": [
         "../../../node_modules/.pnpm/nitropack@2.10.4_drizzle-orm@0.36.4_typescript@5.7.3/node_modules/nitropack"
       ],
-      "defu": ["../../../node_modules/.pnpm/defu@6.1.4/node_modules/defu"],
-      "h3": ["../../../node_modules/.pnpm/h3@1.15.0/node_modules/h3"],
+      "defu": [
+        "../../../node_modules/.pnpm/defu@6.1.4/node_modules/defu"
+      ],
+      "h3": [
+        "../../../node_modules/.pnpm/h3@1.15.0/node_modules/h3"
+      ],
       "consola": [
         "../../../node_modules/.pnpm/consola@3.4.0/node_modules/consola"
       ],
@@ -43,19 +47,45 @@
       "vite/client": [
         "../../../node_modules/.pnpm/vite@6.1.0_jiti@2.4.2/node_modules/vite/client"
       ],
-      "~": [".."],
-      "~/*": ["../*"],
-      "@": [".."],
-      "@/*": ["../*"],
-      "~~": [".."],
-      "~~/*": ["../*"],
-      "@@": [".."],
-      "@@/*": ["../*"],
-      "#shared": ["../shared"],
-      "assets": ["../assets"],
-      "assets/*": ["../assets/*"],
-      "public": ["../public"],
-      "public/*": ["../public/*"],
+      "~": [
+        ".."
+      ],
+      "~/*": [
+        "../*"
+      ],
+      "@": [
+        ".."
+      ],
+      "@/*": [
+        "../*"
+      ],
+      "~~": [
+        ".."
+      ],
+      "~~/*": [
+        "../*"
+      ],
+      "@@": [
+        ".."
+      ],
+      "@@/*": [
+        "../*"
+      ],
+      "#shared": [
+        "../shared"
+      ],
+      "assets": [
+        "../assets"
+      ],
+      "assets/*": [
+        "../assets/*"
+      ],
+      "public": [
+        "../public"
+      ],
+      "public/*": [
+        "../public/*"
+      ],
       "#app": [
         "../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.1.0/node_modules/nuxt/dist/app"
       ],
@@ -86,14 +116,18 @@
       "#nuxt-multi-cache/composables": [
         "../../../node_modules/.pnpm/nuxt-multi-cache@3.4.0/node_modules/nuxt-multi-cache/dist/runtime/composables/index"
       ],
-      "#multi-cache-server-options": ["./multiCache.serverOptions"],
+      "#multi-cache-server-options": [
+        "./multiCache.serverOptions"
+      ],
       "#ui": [
         "../../../node_modules/.pnpm/@nuxt+ui@3.0.0-alpha.10_embla-carousel@8.5.2_radix-vue@1.9.14_typescript@5.7.3_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/ui/dist/runtime"
       ],
       "#ui/*": [
         "../../../node_modules/.pnpm/@nuxt+ui@3.0.0-alpha.10_embla-carousel@8.5.2_radix-vue@1.9.14_typescript@5.7.3_vite@6.1.0_vue@3.5.13/node_modules/@nuxt/ui/dist/runtime/*"
       ],
-      "#color-mode-options": ["./color-mode-options.mjs"],
+      "#color-mode-options": [
+        "./color-mode-options.mjs"
+      ],
       "#image": [
         "../../../node_modules/.pnpm/@nuxt+image@1.9.0/node_modules/@nuxt/image/dist/runtime"
       ],
@@ -112,11 +146,21 @@
       "#vue-router": [
         "../../../node_modules/.pnpm/vue-router@4.5.0_vue@3.5.13/node_modules/vue-router"
       ],
-      "#imports": ["./imports"],
-      "#app-manifest": ["./manifest/meta/dev"],
-      "#components": ["./components"],
-      "#build": ["."],
-      "#build/*": ["./*"]
+      "#imports": [
+        "./imports"
+      ],
+      "#app-manifest": [
+        "./manifest/meta/dev"
+      ],
+      "#components": [
+        "./components"
+      ],
+      "#build": [
+        "."
+      ],
+      "#build/*": [
+        "./*"
+      ]
     },
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -132,7 +176,12 @@
     "noImplicitOverride": true,
     "module": "preserve",
     "noEmit": true,
-    "lib": ["ESNext", "dom", "dom.iterable", "webworker"],
+    "lib": [
+      "ESNext",
+      "dom",
+      "dom.iterable",
+      "webworker"
+    ],
     "jsx": "preserve",
     "jsxImportSource": "vue",
     "types": [],

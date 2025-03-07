@@ -6,50 +6,19 @@ export type Post = {
   slug: string;
   author?: string;
   excerpt?: string;
-  image?: string;
-  content: string;
-  categories?: Category[];
-  createdAt?: string;
-  updatedAt?: string;
-  videoId?: string;
-  oneLiner?: string;
-  relatedPosts?: PostIndex[];
-  module?: string;
-  keyword?: string;
-};
-
-export type RawPost = {
-  id: number;
-  title: string;
-  slug: string;
-  author?: string;
-  excerpt?: string;
   featuredImage?: string;
   content: string;
   categories?: Category[];
   createdAt?: string;
   updatedAt?: string;
-  oneLiner?: string;
   videoId?: string;
+  oneLiner?: string;
   relatedPosts?: PostIndex[];
   module?: string;
   keyword?: string;
 };
 
 export type PostIndex = {
-  id: number;
-  title: string;
-  slug: string;
-  author?: string;
-  excerpt?: string;
-  image?: string;
-  categories?: Category[];
-  createdAt?: string;
-  oneLiner?: string;
-  module?: string;
-};
-
-export type RawPostIndex = {
   id: number;
   title: string;
   slug: string;

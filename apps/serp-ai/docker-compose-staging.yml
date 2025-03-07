@@ -5,6 +5,8 @@ networks:
     external: true
   serp-ai-network:
     external: true
+  central-auth-network:
+    external: true
 services:
   serp-ai-app-staging:
     build:
@@ -15,6 +17,7 @@ services:
     networks:
       - web_network
       - serp-ai-network
+      - central-auth-network
     environment:
       - HOST=0.0.0.0
       - NODE_ENV=production

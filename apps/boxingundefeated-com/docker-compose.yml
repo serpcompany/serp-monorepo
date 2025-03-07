@@ -5,6 +5,8 @@ networks:
     external: true
   boxingundefeated-com-network:
     external: true
+  central-auth-network:
+    external: true
 services:
   boxingundefeated-com-app:
     build:
@@ -15,6 +17,7 @@ services:
     networks:
       - web_network
       - boxingundefeated-com-network
+      - central-auth-network
     environment:
       - HOST=0.0.0.0
       - NODE_ENV=production
