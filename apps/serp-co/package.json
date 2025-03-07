@@ -46,6 +46,7 @@
     "@types/papaparse": "^5.3.15",
     "@vitest/coverage-v8": "^2.1.5",
     "@vue/test-utils": "^2.4.6",
+    "bcrypt": "^5.1.1",
     "drizzle-kit": "^0.28.1",
     "drizzle-orm": "^0.36.2",
     "eslint": "^9.14.0",
