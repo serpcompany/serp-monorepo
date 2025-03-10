@@ -1,18 +1,9 @@
-import { db } from '@serp/utils/server/api/db';
-import { postCategoryCache } from '@serp/utils/server/api/db/schema';
-import { useDataCache } from '#nuxt-multi-cache/composables';
+import { useDrizzle } from '../../db';
+import { postCategoryCache } from '../../db/schema';
 
 export default defineEventHandler(async (event) => {
-  const cacheKey = `post-categories-sitemap`;
-  const { value, addToCache } = await useDataCache(cacheKey, event);
-  if (value) {
-    return value;
-  }
-
-  const postCategories = await db
-    .select({
-      slug: postCategoryCache.slug
-    })
+  const postCategories = await useDrizzle()
+    .select({ slug: postCategoryCache.slug })
     .from(postCategoryCache)
     .execute();
 
@@ -20,6 +11,5 @@ export default defineEventHandler(async (event) => {
     (postCategory) => `/posts/category/${postCategory.slug}/`
   );
 
-  addToCache(response, [], 60 * 60 * 10); // 10 hours
   return response;
 });
