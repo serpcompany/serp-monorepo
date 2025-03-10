@@ -1,11 +1,7 @@
 import { defineConfig } from 'drizzle-kit';
 
 export default defineConfig({
-  dialect: 'postgresql',
-  schema: './server/db/schema.ts',
-  out: './server/db/migrations',
-  dbCredentials: {
-    url: `${process.env.DATABASE_URL}`
-  },
-  schemaFilter: ['cache']
+  dialect: 'sqlite',
+  schema: '../../packages/utils-cloudflare-pages/server/api/db/schema.ts',
+  out: './server/api/db/migrations'
 });

@@ -1,7 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   // devtools: { enabled: true },
-  extends: ['@serp/types', '@serp/utils'],
+  // extends: ['@serp/types', '@serp/utils', ],
+  extends: ['@serp/types', '@serp/utils-cloudflare-pages'],
   modules: [
     '@nuxt/ui',
     '@nuxtjs/html-validator',

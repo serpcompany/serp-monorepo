@@ -21,7 +21,8 @@ export default withNuxt({
     '**/.nuxt',
     'components/SScriptYouTubePlayer.vue',
     '**/.wrangler/**',
-    '**/dist/**'
+    '**/.data/**',
+    '**/bin/**'
   ],
   ...compat.extends(),
   rules: {

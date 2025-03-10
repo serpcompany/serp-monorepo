@@ -12,3 +12,4 @@ export * from './Recording';
 export * from './ReleaseGroup';
 export * from './SeoMeta';
 export * from './User';
+export * from './extensions/index';

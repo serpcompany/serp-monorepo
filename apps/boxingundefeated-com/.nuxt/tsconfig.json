@@ -125,7 +125,7 @@
         "../../../node_modules/.pnpm/vue-router@4.5.0_vue@3.5.13/node_modules/vue-router"
       ],
       "#imports": ["./imports"],
-      "#app-manifest": ["./manifest/meta/5a9707c9-74ea-4563-896d-e9a1c66acf27"],
+      "#app-manifest": ["./manifest/meta/183a8e37-de37-4245-a9ed-359149846b81"],
       "#components": ["./components"],
       "#build": ["."],
       "#build/*": ["./*"]

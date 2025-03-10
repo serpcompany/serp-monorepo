@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  extends: ['@serp/ui', '@serp/types', '@serp/utils'],
+  extends: ['@serp/ui', '@serp/types', '@serp/utils-cloudflare-pages'],
   modules: [
     '@nuxt/ui',
     '@nuxtjs/html-validator',
@@ -12,7 +12,8 @@ export default defineNuxtConfig({
     'nuxt-multi-cache',
     'nuxt-security',
     '@nuxt/scripts',
-    'nuxt-link-checker'
+    'nuxt-link-checker',
+    '@nuxthub/core'
   ],
   nitro: {
     preset: 'cloudflare-pages',
@@ -182,20 +183,9 @@ export default defineNuxtConfig({
     data: {
       enabled: true
     }
+  },
+  hub: {
+    database: true,
+    databaseMigrationsDirs: ['server/db/migrations', 'server/api/db/migrations']
   }
-  // sitemap: {
-  //   defaults: {
-  //     lastmod: new Date().toISOString(),
-  //     priority: 0.5,
-  //     changefreq: 'weekly'
-  //   },
-  //   sitemaps: {
-  //     modules: {
-  //       includeAppSources: true
-  //     },
-  //     posts: {
-  //       sources: ['/api/__sitemap__/posts']
-  //     }
-  //   }
-  // }
 });

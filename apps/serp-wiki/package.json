@@ -18,9 +18,7 @@
     "test": "vitest --coverage --run",
     "test:watch": "vitest --coverage"
   },
-  "dependencies": {
-    "wrangler": "^3.112.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
     "@faker-js/faker": "^9.2.0",
@@ -33,13 +31,14 @@
     "@nuxt/scripts": "^0.9.5",
     "@nuxt/test-utils": "^3.14.4",
     "@nuxt/ui": "3.0.0-alpha.10",
+    "@nuxthub/core": "0.8.18",
     "@nuxtjs/html-validator": "^1.8.2",
     "@nuxtjs/seo": "^2.0.0-rc.23",
     "@nuxtjs/sitemap": "^7.0.0",
     "@serp/configs": "workspace:^",
     "@serp/types": "workspace:^",
     "@serp/ui": "workspace:^",
-    "@serp/utils": "workspace:^",
+    "@serp/utils-cloudflare-pages": "workspace:^",
     "@tailwindcss/typography": "^0.5.15",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/vue": "^8.1.0",
@@ -62,7 +61,8 @@
     "typescript": "^5.6.3",
     "vitest": "^2.1.5",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "wrangler": "^3.112.0"
   },
   "packageManager": "pnpm@8.11.0+sha512.9df87c16c98db27b4e051d787e67f2207ec47e809ccb07bf7b5ec4acdcd1613355839a38d0b900144923d6a7057700b74d2a0ccb1558beb241647a1206a9a7ab"
 }
