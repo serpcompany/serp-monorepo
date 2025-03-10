@@ -1,5 +1,5 @@
-import { useDrizzle } from '../db';
-import { companyCategoryCache } from '../db/schema';
+import { useDrizzle } from './db';
+import { companyCategoryCache } from './db/schema';
 import type { Category } from '@serp/types/types';
 
 export default defineEventHandler(async (event) => {

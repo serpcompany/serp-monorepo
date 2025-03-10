@@ -1,5 +1,5 @@
-import { useDrizzle } from '../db';
-import { weightClassCache } from '../db/schema';
+import { useDrizzle } from './db';
+import { weightClassCache } from './db/schema';
 import type { WeightClass } from '@serp/types/types';
 
 export default defineEventHandler(async (event) => {
