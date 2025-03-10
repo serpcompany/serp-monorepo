@@ -156,7 +156,8 @@ export default defineNuxtConfig({
       contentSecurityPolicy: {
         'img-src': ["'self'", 'data:', 'https://*']
       }
-    }
+  },
+  rateLimiter: false,
   },
   htmlValidator: {
     usePrettier: false,
