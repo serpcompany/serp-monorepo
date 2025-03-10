@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [
+    "/_fonts/*",
+    "/_nuxt/*",
+    "/_scripts/*",
+    "/_robots.txt",
+    "/favicon.ico",
+    "/og-image.png"
+  ]
+}

@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build": "infisical run -- nuxt build",
     "db:generate": "drizzle-kit generate",
     "db:pull": "drizzle-kit pull",
     "db:studio": "drizzle-kit studio",
@@ -17,6 +17,9 @@
     "server": "node .output/server/index.mjs",
     "test": "vitest --coverage --run",
     "test:watch": "vitest --coverage"
+  },
+  "dependencies": {
+    "wrangler": "^3.112.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",

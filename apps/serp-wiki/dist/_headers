@@ -1,0 +1,23 @@
+/_nuxt/builds/meta/*
+  cache-control: public, max-age=31536000, immutable
+/__sitemap__/style.xsl
+  Content-Type: application/xslt+xml
+/_nuxt/builds/*
+  cache-control: public, max-age=1, immutable
+/_nuxt
+  X-Robots-Tag: noindex
+/_nuxt/*
+  cache-control: public, max-age=31536000, immutable
+  X-Robots-Tag: noindex
+/_fonts/*
+  cache-control: public, max-age=31536000, immutable
+/_scripts/*
+  cache-control: public, max-age=31536000, immutable
+/*
+  Referrer-Policy: no-referrer
+  Strict-Transport-Security: max-age=15552000; includeSubDomains;
+  X-Content-Type-Options: nosniff
+  X-Download-Options: noopen
+  X-Frame-Options: SAMEORIGIN
+  X-Permitted-Cross-Domain-Policies: none
+  X-XSS-Protection: 0

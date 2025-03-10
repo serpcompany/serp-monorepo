@@ -14,6 +14,11 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     'nuxt-link-checker'
   ],
+  nitro: {
+    preset: 'cloudflare-pages',
+    node: false, // Disable features that depend on Node.js native modules
+    serveStatic: true // Configure serverless compatibility
+  },
   css: ['~/assets/css/main.css'],
   ui: {
     colorMode: true
@@ -156,8 +161,8 @@ export default defineNuxtConfig({
       contentSecurityPolicy: {
         'img-src': ["'self'", 'data:', 'https://*']
       }
-  },
-  rateLimiter: false,
+    },
+    rateLimiter: false
   },
   htmlValidator: {
     usePrettier: false,

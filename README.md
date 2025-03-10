@@ -19,7 +19,7 @@ ALL singles for everything could now go under /posts/[slug]/
 
 
 
-## EXAMPLES:
+### EXAMPLES:
 ```
 - companies: serp.co/posts/SERP/
   pages/posts/<single>/
@@ -112,3 +112,9 @@ Next, you can link your Turborepo to your Remote Cache by running the following 
 ```
 npx turbo link
 ```
+
+
+## Cloudflare Pages Development
+
+1. Build the project with `pnpm build`
+2. Preview locally with `pnpm dlx wrangler pages dev dist` 
