@@ -4,11 +4,11 @@ export default defineNuxtConfig({
   extends: ['@serp/ui', '@serp/types', '@serp/utils-cloudflare-pages'],
   modules: [
     '@nuxt/ui',
-    '@nuxtjs/html-validator',
     '@nuxt/image',
     '@nuxt/eslint',
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
+    '@nuxtjs/html-validator',
     'nuxt-multi-cache',
     'nuxt-security',
     '@nuxt/scripts',
@@ -16,9 +16,9 @@ export default defineNuxtConfig({
     '@nuxthub/core'
   ],
   nitro: {
-    preset: 'cloudflare-pages',
-    node: false, // Disable features that depend on Node.js native modules
-    serveStatic: true // Configure serverless compatibility
+    experimental: {
+      tasks: true
+    }
   },
   css: ['~/assets/css/main.css'],
   ui: {
