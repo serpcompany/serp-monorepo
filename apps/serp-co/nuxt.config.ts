@@ -193,11 +193,9 @@ export default defineNuxtConfig({
     headers: {
       contentSecurityPolicy: {
         'img-src': ["'self'", 'data:', 'https://*']
-      },
-      crossOriginResourcePolicy: false,
-      referrerPolicy: false
-    },
-    corsHandler: false
+      }
+  },
+  rateLimiter: false,
   },
   htmlValidator: {
     usePrettier: false,
