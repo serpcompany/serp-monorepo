@@ -29,6 +29,13 @@
       "when": 1741783433388,
       "tag": "0003_melted_spot",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1741796418625,
+      "tag": "0004_parallel_ogun",
+      "breakpoints": true
     }
   ]
 }
