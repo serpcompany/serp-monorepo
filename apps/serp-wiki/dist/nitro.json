@@ -1,5 +1,5 @@
 {
-  "date": "2025-03-10T13:39:01.739Z",
+  "date": "2025-03-12T13:41:07.956Z",
   "preset": "cloudflare-pages",
   "framework": {
     "name": "nuxt",
@@ -9,11 +9,12 @@
     "nitro": "2.11.3"
   },
   "commands": {
-    "preview": "npx wrangler --cwd ./ pages dev",
-    "deploy": "npx wrangler --cwd ./ pages deploy"
+    "preview": "npx nuxthub preview",
+    "deploy": "npx nuxthub deploy"
   },
   "config": {
     "cloudflare": {
+      "noWranglerDeployConfig": true,
       "nodeCompat": true
     }
   }
