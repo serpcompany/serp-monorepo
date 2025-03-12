@@ -19,7 +19,10 @@ export default withNuxt({
     '**/dist',
     '**/node_modules',
     '**/.nuxt',
-    'components/SScriptYouTubePlayer.vue'
+    'components/SScriptYouTubePlayer.vue',
+    '**/.wrangler/**',
+    '**/.data/**',
+    '**/bin/**'
   ],
   ...compat.extends(),
   rules: {

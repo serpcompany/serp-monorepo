@@ -44,3 +44,7 @@ sitespeed-result/*
 .pnpm-debug.log*
 pnpm-debug.log*
 .pnpm-store/*
+.data
+dist/
+*/dist/
+.wrangler/

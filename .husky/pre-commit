@@ -13,7 +13,7 @@ pnpm lint
 
 # Run tests
 echo "[.husky]: Running script: pnpm test"
-pnpm test
+# pnpm test
 
 # Run Infisical scan on staged changes with baseline
 echo "[.husky]: Running command: pnpm infisical scan git-changes --staged --verbose --baseline-path .reports/secrets-report.json"

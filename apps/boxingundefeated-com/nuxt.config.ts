@@ -164,7 +164,7 @@ export default defineNuxtConfig({
         'img-src': ["'self'", 'data:', 'https://*']
       }
     },
-    rateLimiter: false,
+    rateLimiter: false
   },
   htmlValidator: {
     usePrettier: false,
