@@ -4,23 +4,24 @@
 
 EXPLAINER:
 
-for each site... 
+for each site...
 
 everytime you add a new module you would create a new page under:
+
 - `pages/<module-name>/index.vue`
-- `pages/<module-name>/best/[slug]/index.vue` 
-- `pages/<module-name>/category/[slug/index.vue` 
+- `pages/<module-name>/best/[slug]/index.vue`
+- `pages/<module-name>/category/[slug/index.vue`
 
 that would simply hit that site's api endpoint to get the right data from the DB and the UI would render from the shared `packages/ui` package for the layout...and the SINGLE page for everything would just always go under /posts/ ---- exactly like we have setup for the `glossary` and `blog` on serp.co
 
 ALL singles for everything could now go under /posts/[slug]/
+
 - glossary == /posts/[slug]/
 - software == /posts/[slug]/
 
+### EXAMPLES:
 
-
-## EXAMPLES:
-```
+```yaml
 - companies: serp.co/posts/SERP/
   pages/posts/<single>/
   
@@ -37,7 +38,7 @@ ALL singles for everything could now go under /posts/[slug]/
 - movies: serp.co/posts/avengers-endgame/
 - books: serp.co/posts/the-hobbit/
 - shop: serp.co/posts/sony-playstation-4/
-````
+```
 
 ## Config
 
@@ -97,11 +98,11 @@ footerColumns: [
     }
 ```
 
-
 ## Turbo
 
 By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel.
-```
+
+```sh
 npx turbo login
 ```
 
@@ -109,6 +110,23 @@ This will authenticate the Turborepo CLI with your Vercel account
 
 Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
 
-```
+```sh
 npx turbo link
+```
+
+## Cloudflare Pages Development
+
+1. Build the project with `pnpm build`
+2. Preview locally with `pnpm dlx wrangler pages dev dist`
+
+```sh
+# run dev
+pnpm dev
+```
+
+## Nuxt Hub
+
+```bash
+# deploy to nuxt hub
+cd apps/serp-wiki && pnpx nuxthub deploy
 ```

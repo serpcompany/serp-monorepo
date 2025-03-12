@@ -1,19 +1,25 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  extends: ['@serp/ui', '@serp/types', '@serp/utils'],
+  extends: ['@serp/ui', '@serp/types', '@serp/utils-cloudflare-pages'],
   modules: [
     '@nuxt/ui',
-    '@nuxtjs/html-validator',
     '@nuxt/image',
     '@nuxt/eslint',
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
+    '@nuxtjs/html-validator',
     'nuxt-multi-cache',
     'nuxt-security',
     '@nuxt/scripts',
-    'nuxt-link-checker'
+    'nuxt-link-checker',
+    '@nuxthub/core'
   ],
+  nitro: {
+    experimental: {
+      tasks: true
+    }
+  },
   css: ['~/assets/css/main.css'],
   ui: {
     colorMode: true
@@ -156,8 +162,8 @@ export default defineNuxtConfig({
       contentSecurityPolicy: {
         'img-src': ["'self'", 'data:', 'https://*']
       }
-  },
-  rateLimiter: false,
+    },
+    rateLimiter: false
   },
   htmlValidator: {
     usePrettier: false,
@@ -177,20 +183,9 @@ export default defineNuxtConfig({
     data: {
       enabled: true
     }
+  },
+  hub: {
+    database: true,
+    databaseMigrationsDirs: ['server/db/migrations', 'server/api/db/migrations']
   }
-  // sitemap: {
-  //   defaults: {
-  //     lastmod: new Date().toISOString(),
-  //     priority: 0.5,
-  //     changefreq: 'weekly'
-  //   },
-  //   sitemaps: {
-  //     modules: {
-  //       includeAppSources: true
-  //     },
-  //     posts: {
-  //       sources: ['/api/__sitemap__/posts']
-  //     }
-  //   }
-  // }
 });

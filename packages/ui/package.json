@@ -23,6 +23,7 @@
     "@nuxtjs/html-validator": "^1.8.2",
     "@serp/types": "workspace:^",
     "@serp/utils": "workspace:^",
+    "@serp/utils-cloudflare-pages": "workspace:^",
     "@tailwindcss/typography": "^0.5.15",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/vue": "^8.1.0",
