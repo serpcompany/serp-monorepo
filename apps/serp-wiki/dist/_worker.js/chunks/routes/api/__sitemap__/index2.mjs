@@ -1,2 +1,0 @@
-import{d as o}from"../../../nitro/nitro.mjs";import{u as t}from"../index5.mjs";import{a as r}from"../db/schema.mjs";import"node:buffer";import"node:process";import"node:timers";import"node:events";import"node:net";import"node:async_hooks";import"node:assert";import"node:util";import"node:url";import"node:stream";import"node:crypto";import"node:dns";import"node:string_decoder";const e=o((async o=>(await t().select({slug:r.slug}).from(r).execute()).map((o=>`/artists/${o.slug}/`))));export{e as default};
-//# sourceMappingURL=index2.mjs.map

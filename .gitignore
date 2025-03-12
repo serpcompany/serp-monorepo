@@ -46,4 +46,5 @@ pnpm-debug.log*
 .pnpm-store/*
 .data
 dist/
+*/dist/
 .wrangler/

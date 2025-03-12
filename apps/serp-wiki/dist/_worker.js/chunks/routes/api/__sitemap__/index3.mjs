@@ -1,2 +1,0 @@
-import{d as o}from"../../../nitro/nitro.mjs";import{u as e,e as r}from"../index5.mjs";import{p as t}from"../db/schema.mjs";import"node:buffer";import"node:process";import"node:timers";import"node:events";import"node:net";import"node:async_hooks";import"node:assert";import"node:util";import"node:url";import"node:stream";import"node:crypto";import"node:dns";import"node:string_decoder";const m=o((async o=>(await e().select({slug:t.slug}).from(t).where(r(t.module,"Blog")).execute()).map((o=>`/posts/${o.slug}/`))));export{m as default};
-//# sourceMappingURL=index3.mjs.map
