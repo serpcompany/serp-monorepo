@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "infisical run -- nuxt build",
+    "build": "nuxt build",
     "build:docker": "nuxt build",
     "db:generate": "drizzle-kit generate",
     "db:pull": "drizzle-kit pull",
