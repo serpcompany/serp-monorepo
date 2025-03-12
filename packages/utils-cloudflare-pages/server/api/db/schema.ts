@@ -1,3 +1,4 @@
+import { varchar } from 'drizzle-orm/mysql-core';
 import { sqliteTable, text, integer, real } from 'drizzle-orm/sqlite-core';
 
 // Company
@@ -58,6 +59,11 @@ export const postCategoryCache = sqliteTable('post_category_cache', {
   updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().defaultNow(),
   name: text('name').notNull(),
   slug: text('slug').notNull()
+});
+
+export const postIndexCache = sqliteTable('post_index_cache', {
+  key: text('key').primaryKey(),
+  data: text('data')
 });
 
 // Boxing
