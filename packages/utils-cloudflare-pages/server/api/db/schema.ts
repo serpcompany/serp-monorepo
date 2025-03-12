@@ -37,11 +37,11 @@ export const companyCategoryCache = sqliteTable('company_category_cache', {
 
 // Post
 export const postCache = sqliteTable('post_cache', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
+  slug: text('slug').primaryKey(),
+  id: integer('id'),
   createdAt: integer('created_at', { mode: 'timestamp' }),
   updatedAt: integer('updated_at', { mode: 'timestamp' }),
   title: text('title').notNull(),
-  slug: text('slug').notNull(),
   excerpt: text('excerpt'),
   content: text('content').notNull(),
   featuredImage: text('featured_image'),
@@ -55,10 +55,10 @@ export const postCache = sqliteTable('post_cache', {
 });
 
 export const postCategoryCache = sqliteTable('post_category_cache', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
+  id: integer('id'),
   updatedAt: integer('updated_at', { mode: 'timestamp' }),
   name: text('name').notNull(),
-  slug: text('slug').notNull()
+  slug: text('slug').primaryKey()
 });
 
 export const postIndexCache = sqliteTable('post_index_cache', {
