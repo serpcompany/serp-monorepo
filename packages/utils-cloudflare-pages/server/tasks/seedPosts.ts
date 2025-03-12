@@ -3,7 +3,7 @@ import { postCache, postCategoryCache } from '../api/db/schema';
 
 export default defineTask({
   meta: {
-    name: 'db:seed',
+    name: 'db:seedPosts',
     description: 'Seed the database with sample posts and categories'
   },
   async run() {
@@ -23,7 +23,7 @@ export default defineTask({
         oneLiner: 'A warm welcome to everyone!',
         videoId: '',
         relatedPosts: '',
-        module: 'default',
+        module: 'Glossary',
         keyword: 'hello, world, blog'
       },
       {
@@ -40,6 +40,37 @@ export default defineTask({
         relatedPosts: '',
         module: 'tech',
         keyword: 'tech, trends, innovation'
+      },
+      {
+        title: 'Music Mania',
+        slug: 'music-mania',
+        excerpt: 'Explore the world of music.',
+        content: `<h1>Music Mania</h1>
+                  <p>Discover the latest hits, classic tunes, and everything in between. Let the music take you on a journey!</p>`,
+        featuredImage: 'https://example.com/images/music-mania.png',
+        author: 'Melody Maker',
+        categories: 'General',
+        oneLiner: 'Where words fail, music speaks.',
+        videoId: '',
+        relatedPosts: '',
+        module: 'music',
+        keyword: 'music, songs, melody'
+      },
+      {
+        title: 'Movies & More',
+        slug: 'movies-more',
+        excerpt: 'Lights, camera, action!',
+        content: `<h1>Movies & More</h1>
+                  <p>Explore the world of cinema, from blockbusters to indie gems. Lights, camera, action
+                  - it's showtime!</p>`,
+        featuredImage: 'https://example.com/images/movies-more.png',
+        author: 'Cinephile',
+        categories: 'General',
+        oneLiner: 'Lights, camera, action!',
+        videoId: '',
+        relatedPosts: '',
+        module: 'movies',
+        keyword: 'movies, cinema, films'
       }
     ];
 
