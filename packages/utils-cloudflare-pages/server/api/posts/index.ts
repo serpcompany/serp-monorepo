@@ -2,7 +2,32 @@ import { useDrizzle } from '../db';
 import { postIndexCache } from '../db/schema';
 import { eq } from 'drizzle-orm';
 
-import type { PostIndex, Pagination } from '@serp/types/types';
+import type { PostIndex } from '@serp/types/types';
+
+/**
+ * Format date to human-readable format
+ */
+const formatDate = (
+  dateString: string | null | undefined
+): string | undefined => {
+  if (!dateString) return undefined;
+
+  try {
+    const date = new Date(dateString);
+    // Check if the date is valid
+    if (!isNaN(date.getTime())) {
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+    return dateString;
+  } catch (error) {
+    console.error(`Error formatting date: ${error.message}`);
+    return dateString;
+  }
+};
 
 export default defineEventHandler(async (event) => {
   const { page = 1, categorySlug, module = '' } = getQuery(event);
@@ -29,9 +54,11 @@ export default defineEventHandler(async (event) => {
 
   const results = await useDrizzle()
     .select({
-      data: postIndexCache.data,
+      data: postIndexCache.data
     })
-    .from(postIndexCache).where(eq(postIndexCache.key, key)).execute();
+    .from(postIndexCache)
+    .where(eq(postIndexCache.key, key))
+    .execute();
 
   if (!results.length) {
     throw createError({
@@ -40,18 +67,36 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const posts = results.data.post((post) => {
-    return post as PostIndex;
+  // Parse the stored JSON string into a proper object
+  const parsedData = JSON.parse(results[0].data);
+  const parsedPosts = parsedData.posts.map((post: PostIndex) => {
+    let parsedCategories = [];
+    try {
+      if (post.categories) {
+        if (typeof post.categories === 'string') {
+          parsedCategories = JSON.parse(post.categories);
+        } else if (Array.isArray(post.categories)) {
+          parsedCategories = post.categories;
+        }
+      }
+    } catch (error) {
+      console.error(
+        `Error parsing categories for post ${post.id}: ${error.message}`
+      );
+    }
+
+    return {
+      ...post,
+      categories: parsedCategories,
+      createdAt: formatDate(post.createdAt),
+      updatedAt: formatDate(post.updatedAt)
+    };
   });
 
-  const pagination = results.data.pagination as Pagination;
-
-  const categoryName = results.data.categoryName as string;
-
-  const response = {
-    posts,
-    pagination,
-    categoryName
+  // Return the properly structured response
+  return {
+    posts: parsedPosts,
+    pagination: parsedData.pagination,
+    categoryName: parsedData.categoryName
   };
-  return response;
 });

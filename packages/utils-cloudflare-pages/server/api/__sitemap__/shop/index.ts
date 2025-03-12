@@ -25,6 +25,8 @@ export default defineEventHandler(async (event) => {
     .offset(limit * (Number(page) - 1))
     .execute();
 
-  const response = post.map((post_) => `/shop/best/${encodeURIComponent(post_.slug)}/`);
+  const response = post.map(
+    (post_) => `/shop/best/${encodeURIComponent(post_.slug)}/`
+  );
   return response;
 });

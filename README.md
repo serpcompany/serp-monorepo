@@ -118,3 +118,8 @@ npx turbo link
 
 1. Build the project with `pnpm build`
 2. Preview locally with `pnpm dlx wrangler pages dev dist` 
+
+```
+# run dev
+pnpm dev
+```

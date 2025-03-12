@@ -1,9 +1,9 @@
-import { varchar } from 'drizzle-orm/mysql-core';
 import { sqliteTable, text, integer, real } from 'drizzle-orm/sqlite-core';
+import { sql } from 'drizzle-orm';
 
 // Company
 export const companyCache = sqliteTable('company_cache', {
-  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().defaultNow(),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }),
   id: integer('id').primaryKey({ autoIncrement: true }),
   name: text('name').notNull(),
   slug: text('slug').notNull(),
@@ -29,7 +29,7 @@ export const companyCache = sqliteTable('company_cache', {
 });
 
 export const companyCategoryCache = sqliteTable('company_category_cache', {
-  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().defaultNow(),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }),
   id: integer('id').primaryKey({ autoIncrement: true }),
   name: text('name').notNull(),
   slug: text('slug').notNull()
@@ -38,8 +38,8 @@ export const companyCategoryCache = sqliteTable('company_category_cache', {
 // Post
 export const postCache = sqliteTable('post_cache', {
   id: integer('id').primaryKey({ autoIncrement: true }),
-  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().defaultNow(),
-  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().defaultNow(),
+  createdAt: integer('created_at', { mode: 'timestamp' }),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }),
   title: text('title').notNull(),
   slug: text('slug').notNull(),
   excerpt: text('excerpt'),
@@ -56,7 +56,7 @@ export const postCache = sqliteTable('post_cache', {
 
 export const postCategoryCache = sqliteTable('post_category_cache', {
   id: integer('id').primaryKey({ autoIncrement: true }),
-  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().defaultNow(),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }),
   name: text('name').notNull(),
   slug: text('slug').notNull()
 });
@@ -68,7 +68,7 @@ export const postIndexCache = sqliteTable('post_index_cache', {
 
 // Boxing
 export const boxerCache = sqliteTable('boxer_cache', {
-  lastUpdated: integer('last_updated', { mode: 'timestamp' }).notNull().defaultNow(),
+  lastUpdated: integer('last_updated', { mode: 'timestamp' }),
   id: integer('id').primaryKey({ autoIncrement: true }),
   name: text('name'),
   slug: text('slug'),
@@ -93,7 +93,7 @@ export const boxerCache = sqliteTable('boxer_cache', {
 });
 
 export const weightClassCache = sqliteTable('weight_class_cache', {
-  lastUpdated: integer('last_updated', { mode: 'timestamp' }).notNull().defaultNow(),
+  lastUpdated: integer('last_updated', { mode: 'timestamp' }),
   id: integer('id').primaryKey({ autoIncrement: true }),
   name: text('name'),
   slug: text('slug')

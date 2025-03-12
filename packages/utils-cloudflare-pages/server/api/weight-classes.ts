@@ -14,7 +14,9 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const weightClasses = results.map((weightClass) => weightClass as WeightClass);
+  const weightClasses = results.map(
+    (weightClass) => weightClass as WeightClass
+  );
 
   const response = weightClasses;
   return response;

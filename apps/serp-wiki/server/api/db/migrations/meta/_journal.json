@@ -8,6 +8,27 @@
       "when": 1741617032539,
       "tag": "0000_lively_alice",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1741779592944,
+      "tag": "0001_round_rocket_racer",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1741782663187,
+      "tag": "0002_tiresome_thanos",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1741783433388,
+      "tag": "0003_melted_spot",
+      "breakpoints": true
     }
   ]
 }
