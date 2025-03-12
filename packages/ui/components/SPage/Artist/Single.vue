@@ -85,7 +85,7 @@
               <div>
                 <span>Genres: {{ genres }}</span>
               </div>
-              <br />
+              <br >
               <div>
                 <span>Tags: {{ tags }}</span>
               </div>

@@ -123,3 +123,7 @@ npx turbo link
 # run dev
 pnpm dev
 ```
+
+## Nuxt Hub
+
+
