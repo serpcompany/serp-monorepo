@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
 
     const totalPages = Math.ceil(Number(totalItems[0].count) / limit);
 
-    addToCache(totalPages, [], 60 * 60 * 24 * 7); // 1 week
+    addToCache(totalPages, [], 60 * 60 * 10); // 10 hours
     return totalPages;
   }
 
