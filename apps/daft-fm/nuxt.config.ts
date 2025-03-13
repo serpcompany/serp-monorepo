@@ -186,25 +186,4 @@ export default defineNuxtConfig({
       enabled: true
     }
   },
-  sitemap: {
-    defaults: {
-      lastmod: new Date().toISOString(),
-      priority: 0.5,
-      changefreq: 'weekly'
-    },
-    sitemaps: {
-      modules: {
-        includeAppSources: true
-      },
-      songs: {
-        sources: ['/api/__sitemap__/songs']
-      },
-      artists: {
-        sources: ['/api/__sitemap__/artists']
-      },
-      albums: {
-        sources: ['/api/__sitemap__/albums']
-      }
-    }
-  }
 });

@@ -185,22 +185,4 @@ export default defineNuxtConfig({
       enabled: true
     }
   }
-  // sitemap: {
-  //   defaults: {
-  //     lastmod: new Date().toISOString(),
-  //     priority: 0.5,
-  //     changefreq: 'weekly'
-  //   },
-  //   sitemaps: {
-  //     modules: {
-  //       includeAppSources: true
-  //     },
-  //     movies: {
-  //       sources: ['/api/__sitemap__/movies']
-  //     },
-  //     shop: {
-  //       sources: ['/api/__sitemap__/shop']
-  //     }
-  //   }
-  // }
 });
