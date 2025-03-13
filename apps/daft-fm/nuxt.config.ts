@@ -185,5 +185,5 @@ export default defineNuxtConfig({
     data: {
       enabled: true
     }
-  },
+  }
 });
