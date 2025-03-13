@@ -33,15 +33,15 @@ export default defineEventHandler(async (event) => {
           <lastmod>${new Date().toISOString()}</lastmod>
         </sitemap>
       ${sitemaps
-      .map(
-        (sitemap) => `
+        .map(
+          (sitemap) => `
         <sitemap>
           <loc>${sitemap.loc}</loc>
           <lastmod>${sitemap.lastmod}</lastmod>
         </sitemap>
       `
-      )
-      .join('')}
+        )
+        .join('')}
     </sitemapindex>
   `.trim();
 

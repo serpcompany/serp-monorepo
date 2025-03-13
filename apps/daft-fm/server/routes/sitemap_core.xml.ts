@@ -40,22 +40,22 @@ export default defineEventHandler(async (event) => {
     {
       loc: `${NUXT_PUBLIC_SITE_URL}/albums`,
       lastmod: new Date().toISOString()
-    },
+    }
   ];
 
   const xml = `
     <?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       ${urls
-      .map(
-        (url) => `
+        .map(
+          (url) => `
         <url>
           <loc>${url.loc}</loc>
           <lastmod>${url.lastmod}</lastmod>
         </url>
       `
-      )
-      .join('')}
+        )
+        .join('')}
     </urlset>
   `.trim();
 
