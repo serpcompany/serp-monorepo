@@ -11,6 +11,7 @@ import {
 } from 'drizzle-orm/pg-core';
 
 export const cacheSchema = pgSchema('cache');
+export const formSchema = pgSchema('form');
 
 // Company
 export const companyCache = cacheSchema.table('company_cache', {
@@ -52,6 +53,25 @@ export const companyCategoryCache = cacheSchema.table(
     slug: varchar('slug', { length: 255 }).notNull()
   }
 );
+
+export const companySubmitForm = formSchema.table('company_submit', {
+  id: serial('id').primaryKey(),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  submittingEmail: varchar('submitting_email', { length: 255 }).notNull(),
+  name: varchar('name', { length: 255 }).notNull(),
+  domain: varchar('domain', { length: 255 }).notNull(),
+  categories: jsonb('categories'),
+  pricing: varchar('pricing', { length: 255 }),
+  tags: jsonb('tags'),
+  oneLiner: text('one_liner'),
+  description: text('description'),
+  approved: boolean('approved').notNull().default(false),
+  reviewedAt: timestamp('reviewed_at', { withTimezone: true }),
+  reviewedBy: varchar('reviewed_by', { length: 255 }),
+  reviewedNotes: text('reviewed_notes')
+});
 // End Company
 
 // Post

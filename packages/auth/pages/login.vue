@@ -1,10 +1,12 @@
 <template>
   <div>
-    <ULabel>Username</ULabel>
-    <UInput v-model="username" />
-    <ULabel>Password</ULabel>
-    <UInput v-model="password" type="password" />
-    <UButton @click="signIn('credentials', credentials)"> Sign In </UButton>
+    <UButton
+      v-for="provider in providers"
+      :key="provider.id"
+      @click="signIn(provider.id)"
+    >
+      Sign in with {{ provider.name }}
+    </UButton>
   </div>
 </template>
 
@@ -14,12 +16,6 @@ definePageMeta({
   auth: { unauthenticatedOnly: true, navigateAuthenticatedTo: '/' }
 });
 
-const { signIn } = useAuth();
-
-const username = ref();
-const password = ref();
-const credentials = computed(() => ({
-  username: username.value,
-  password: password.value
-}));
+const { signIn, getProviders } = useAuth();
+const providers = await getProviders();
 </script>

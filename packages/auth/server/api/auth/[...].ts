@@ -4,6 +4,8 @@ import { users } from '@serp/auth/server/api/dbAuth/schema';
 import { authDb } from '@serp/auth/server/api/dbAuth';
 import { eq } from 'drizzle-orm';
 import GithubProvider from 'next-auth/providers/github';
+// import RedditProvider from 'next-auth/providers/reddit';
+import GoogleProvider from 'next-auth/providers/google';
 
 export default NuxtAuthHandler({
   secret: process.env.AUTH_SECRET,
@@ -13,51 +15,43 @@ export default NuxtAuthHandler({
     GithubProvider.default({
       clientId: process.env.AUTH_GITHUB_CLIENT_ID,
       clientSecret: process.env.AUTH_GITHUB_CLIENT_SECRET
-    })
+    }),
     // @ts-expect-error Use .default here for it to work during SSR.
     // RedditProvider.default({
-    //   clientId: process.env.REDDIT_CLIENT_ID,
-    //   clientSecret: process.env.REDDIT_CLIENT_SECRET
-    // }),
+    //   clientId: process.env.AUTH_REDDIT_CLIENT_ID,
+    //   clientSecret: process.env.AUTH_REDDIT_CLIENT_SECRET
+    // }), // doesn't provide email
     // @ts-expect-error Use .default here for it to work during SSR.
-    // GoogleProvider.default({
-    //   clientId: process.env.GOOGLE_CLIENT_ID,
-    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET
-    // });
-  ]
+    GoogleProvider.default({
+      clientId: process.env.AUTH_GOOGLE_CLIENT_ID,
+      clientSecret: process.env.AUTH_GOOGLE_CLIENT_SECRET
+    })
+  ],
 
-  // providers: [
-  // @ts-expect-error Use .default here for it to work during SSR.
-  // CredentialsProvider.default({
-  //   name: 'Credentials',
-  //   credentials: {
-  //     username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
-  //     password: { label: 'Password', type: 'password' }
-  //   },
-  //   async authorize(credentials, req) {
-  //     // Fetch user by username
-  //     const results = await authDb
-  //       .select()
-  //       .from(users)
-  //       .where(eq(users.username, credentials.username))
-  //       .limit(1)
-  //       .execute();
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      const email_ = email || user?.email;
+      if (!email_ || !user) {
+        return false;
+      }
 
-  //     if (results.length) {
-  //       const user = results[0];
+      const results = await authDb
+        .select()
+        .from(users)
+        .where(eq(users.email, email_))
+        .limit(1)
+        .execute();
 
-  //       // Compare provided password with stored hash
-  //       const isValid = await bcrypt.compare(
-  //         credentials.password,
-  //         user.password
-  //       );
-  //       if (isValid) {
-  //         return user;
-  //       }
-  //     }
-  //     // Return null if user data could not be retrieved
-  //     return null;
-  //   }
-  // })
-  // ]
+      if (!results.length) {
+        await authDb
+          .insert(users)
+          .values({
+            email: email_
+          })
+          .execute();
+      }
+
+      return true;
+    }
+  }
 });

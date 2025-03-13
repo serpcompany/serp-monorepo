@@ -99,6 +99,12 @@
         "../../../node_modules/.pnpm/nuxt-multi-cache@3.4.0/node_modules/nuxt-multi-cache/dist/runtime/composables/index"
       ],
       "#multi-cache-server-options": ["./multiCache.serverOptions"],
+      "#link-checker": [
+        "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime"
+      ],
+      "#link-checker/*": [
+        "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime/*"
+      ],
       "#ui": [
         "../../../node_modules/.pnpm/@nuxt+ui@3.0.0-alpha.10_embla-carousel@8.5.2_radix-vue@1.9.17_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/@nuxt/ui/dist/runtime"
       ],
@@ -125,7 +131,7 @@
         "../../../node_modules/.pnpm/vue-router@4.5.0_vue@3.5.13/node_modules/vue-router"
       ],
       "#imports": ["./imports"],
-      "#app-manifest": ["./manifest/meta/b678311a-6142-491b-8c8b-580788b40449"],
+      "#app-manifest": ["./manifest/meta/dev"],
       "#components": ["./components"],
       "#build": ["."],
       "#build/*": ["./*"]
