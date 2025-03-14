@@ -1,5 +1,11 @@
 <template>
   <div v-if="data">
+    <UpvoteButton
+      :id="data.id"
+      endpoint="/api/company/upvote"
+      :upvotes="upvotes"
+    />
+    <CommentsContainer :id="data.id" module="company" :comments="comments" />
     <multipage-header
       :name="data.name"
       :one-liner="data.oneLiner"
@@ -96,6 +102,14 @@ const data = await useCompany(`${slug}`);
 if (!data) {
   router.push('/404');
 }
+
+// const upvotes = data.upvotes || [];
+// const comments = data.comments || [];
+
+const [upvotes, comments] = await Promise.all([
+  useCompanyUpvotes(data?.id),
+  useCompanyComments(data?.id)
+]);
 
 const faqItems = computed(() => {
   if (!data?.faqs) return [];

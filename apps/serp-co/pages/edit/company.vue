@@ -291,8 +291,7 @@ async function saveCompany() {
       headers: useRequestHeaders(['cookie']),
       body: JSON.stringify({
         ...company.value,
-        categories: getCategoryIds.value,
-        submittingEmail: data.value.user.email
+        categories: getCategoryIds.value
       })
     });
 

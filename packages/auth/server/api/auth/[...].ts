@@ -1,4 +1,3 @@
-import CredentialsProvider from 'next-auth/providers/credentials';
 import { NuxtAuthHandler } from '#auth';
 import { users } from '@serp/auth/server/api/dbAuth/schema';
 import { authDb } from '@serp/auth/server/api/dbAuth';
@@ -46,8 +45,19 @@ export default NuxtAuthHandler({
         await authDb
           .insert(users)
           .values({
-            email: email_
+            email: email_,
+            name: user.name,
+            image: user.image
           })
+          .execute();
+      } else {
+        await authDb
+          .update(users)
+          .set({
+            name: user.name,
+            image: user.image
+          })
+          .where(eq(users.email, email_))
           .execute();
       }
 

@@ -5,11 +5,27 @@ import {
   companyCategoryCache
 } from '@serp/utils/server/api/db/schema';
 import { eq, inArray } from 'drizzle-orm';
+import { getServerSession } from '#auth';
 
 export default defineEventHandler(async (event) => {
   try {
+    const session = await getServerSession(event);
+    if (!session) {
+      return {
+        status: 401,
+        message: 'Unauthorized'
+      };
+    }
+
+    const email = session.user?.email;
+    if (!email) {
+      return {
+        status: 401,
+        message: 'Unauthorized'
+      };
+    }
+
     const requiredFields = [
-      'submittingEmail',
       'name',
       'domain',
       'pricing',
@@ -90,7 +106,7 @@ export default defineEventHandler(async (event) => {
     await db
       .insert(companySubmitForm)
       .values({
-        submittingEmail: data.submittingEmail,
+        submittingEmail: email,
         name: data.name,
         domain: data.domain,
         categories: data.categories,

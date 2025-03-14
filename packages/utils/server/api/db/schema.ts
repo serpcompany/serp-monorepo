@@ -36,8 +36,9 @@ export const companyCache = cacheSchema.table('company_cache', {
   logo: text('logo'),
   screenshots: jsonb('screenshots'),
   rating: doublePrecision('rating'),
-  upvotes: integer('upvotes'),
+  upvotes: text('upvotes').array(),
   downvotes: integer('downvotes'),
+  comments: jsonb('comments'),
   featured: boolean('featured'),
   featuredOrder: integer('featured_order')
 });

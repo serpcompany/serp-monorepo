@@ -283,6 +283,8 @@ configs.append(
           'useCompanies',
           'useCompany',
           'useCompanyCategories',
+          'useCompanyComments',
+          'useCompanyUpvotes',
           'useFetchWithCache',
           'usePost',
           'usePostCategories',
