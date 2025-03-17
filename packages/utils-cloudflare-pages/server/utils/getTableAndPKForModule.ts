@@ -1,23 +1,23 @@
-import { companyCache, postCache, mbArtistMetadataCache, mbReleaseGroupCache, mbMetadataCache } from '@serp/utils/server/api/db/schema';
+import { companyCache, postCache, mbArtistMetadataCache, mbReleaseGroupCache, mbMetadataCache } from '../api/db/schema';
 
 export function getTableAndPKForModule(module: string) {
   let table;
   let field;
   if (module === 'companies' || module === 'company') {
     table = companyCache;
-    field = companyCache.id;
+    field = companyCache.slug;
   } else if (module === 'posts' || module === 'post') {
     table = postCache;
     field = postCache.slug;
   } else if (module === 'artists' || module === 'artist') {
     table = mbArtistMetadataCache;
-    field = mbArtistMetadataCache.id;
+    field = mbArtistMetadataCache.slug;
   } else if (module === 'albums' || module === 'album') {
     table = mbReleaseGroupCache;
-    field = mbReleaseGroupCache.id;
+    field = mbReleaseGroupCache.slug;
   } else if (module === 'songs' || module === 'song') {
     table = mbMetadataCache;
-    field = mbMetadataCache.id;
+    field = mbMetadataCache.slug;
   } else {
     throw new Error('Invalid module');
   }

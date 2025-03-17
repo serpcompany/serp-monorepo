@@ -1,4 +1,4 @@
-import type { Category, Pagination } from '@serp/types/types';
+import type { Category, Pagination, Comment } from '@serp/types/types';
 
 export type Post = {
   id: number;
@@ -16,6 +16,8 @@ export type Post = {
   relatedPosts?: PostIndex[];
   module?: string;
   keyword?: string;
+  comments?: Comment[];
+  upvotes?: string[];
 };
 
 export type PostIndex = {

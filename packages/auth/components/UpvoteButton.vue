@@ -24,7 +24,11 @@ const buttonColor = computed(() =>
 watch(
   () => props.upvotes,
   (newUpvotes) => {
-    localUpvotes.value = [...newUpvotes];
+    if (newUpvotes && newUpvotes.length) {
+      localUpvotes.value = [...newUpvotes];
+    } else {
+      localUpvotes.value = [];
+    }
   },
   { immediate: true }
 );

@@ -4,9 +4,9 @@ import { sql } from 'drizzle-orm';
 // Company
 export const companyCache = sqliteTable('company_cache', {
   updatedAt: integer('updated_at', { mode: 'timestamp' }),
-  id: integer('id').primaryKey({ autoIncrement: true }),
+  id: integer('id'),
   name: text('name').notNull(),
-  slug: text('slug').notNull(),
+  slug: text('slug').primaryKey(),
   oneLiner: text('one_liner'),
   excerpt: text('excerpt'),
   content: text('content'),
@@ -22,10 +22,11 @@ export const companyCache = sqliteTable('company_cache', {
   logo: text('logo'),
   screenshots: text('screenshots'),
   rating: real('rating'),
-  upvotes: integer('upvotes'),
   downvotes: integer('downvotes'),
   featured: integer('featured'),
-  featuredOrder: integer('featured_order')
+  featuredOrder: integer('featured_order'),
+  comments: text('comments', { mode: 'json' }),
+  upvotes: text('upvotes', { mode: 'json' }),
 });
 
 export const companyCategoryCache = sqliteTable('company_category_cache', {
@@ -51,7 +52,9 @@ export const postCache = sqliteTable('post_cache', {
   videoId: text('video_id'),
   relatedPosts: text('related_posts'),
   module: text('module'),
-  keyword: text('keyword')
+  keyword: text('keyword'),
+  comments: text('comments', { mode: 'json' }),
+  upvotes: text('upvotes', { mode: 'json' }),
 });
 
 export const postCategoryCache = sqliteTable('post_category_cache', {
@@ -89,7 +92,9 @@ export const boxerCache = sqliteTable('boxer_cache', {
   numWins: integer('num_wins'),
   numDraws: integer('num_draws'),
   numLosses: integer('num_losses'),
-  bouts: text('bouts')
+  bouts: text('bouts'),
+  comments: text('comments', { mode: 'json' }),
+  upvotes: text('upvotes', { mode: 'json' }),
 });
 
 export const weightClassCache = sqliteTable('weight_class_cache', {
@@ -102,7 +107,7 @@ export const weightClassCache = sqliteTable('weight_class_cache', {
 // Music
 export const mbMetadataCache = sqliteTable('mb_metadata_cache', {
   name: text('name').notNull(),
-  slug: text('slug').notNull(),
+  slug: text('slug').primaryKey(),
   artists: text('artists').notNull(),
   tags: text('tags').notNull(),
   genres: text('genres').notNull(),
@@ -127,12 +132,14 @@ export const mbMetadataCache = sqliteTable('mb_metadata_cache', {
   lyricsSync: text('lyrics_sync'),
   overview: text('overview'),
   seoDescription: text('seo_description'),
-  seoTitle: text('seo_title')
+  seoTitle: text('seo_title'),
+  comments: text('comments', { mode: 'json' }),
+  upvotes: text('upvotes', { mode: 'json' }),
 });
 
 export const mbReleaseGroupCache = sqliteTable('mb_release_group_cache', {
   name: text('name').notNull(),
-  slug: text('slug').notNull(),
+  slug: text('slug').primaryKey(),
   type: text('type').notNull(),
   secondaryTypes: text('secondary_types'),
   date: text('date').notNull(),
@@ -151,12 +158,14 @@ export const mbReleaseGroupCache = sqliteTable('mb_release_group_cache', {
   wikidata: text('wikidata'),
   overview: text('overview'),
   seoDescription: text('seo_description'),
-  seoTitle: text('seo_title')
+  seoTitle: text('seo_title'),
+  comments: text('comments', { mode: 'json' }),
+  upvotes: text('upvotes', { mode: 'json' }),
 });
 
 export const mbArtistMetadataCache = sqliteTable('mb_artist_metadata_cache', {
   name: text('name').notNull(),
-  slug: text('slug').notNull(),
+  slug: text('slug').primaryKey(),
   beginDate: text('begin_date'),
   endDate: text('end_date'),
   artistType: text('artist_type'),
@@ -177,5 +186,7 @@ export const mbArtistMetadataCache = sqliteTable('mb_artist_metadata_cache', {
   wikidata: text('wikidata'),
   overview: text('overview'),
   seoDescription: text('seo_description'),
-  seoTitle: text('seo_title')
+  seoTitle: text('seo_title'),
+  comments: text('comments', { mode: 'json' }),
+  upvotes: text('upvotes', { mode: 'json' }),
 });

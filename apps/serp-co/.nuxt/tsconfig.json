@@ -131,12 +131,6 @@
       "#multi-cache-server-options": [
         "./multiCache.serverOptions"
       ],
-      "#link-checker": [
-        "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime"
-      ],
-      "#link-checker/*": [
-        "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime/*"
-      ],
       "#ui": [
         "../../../node_modules/.pnpm/@nuxt+ui@3.0.0-alpha.10_embla-carousel@8.5.2_radix-vue@1.9.17_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/@nuxt/ui/dist/runtime"
       ],
@@ -168,7 +162,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/dev"
+        "./manifest/meta/c3afa83d-e062-4e9a-b4ae-9852f52a3521"
       ],
       "#components": [
         "./components"

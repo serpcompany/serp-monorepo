@@ -73,7 +73,7 @@
         <CommentWrapper v-for="(item, index) in displayedComments" :id="props.id" :key="item.id" :comment="item"
           :comment-background-color="commentBackgroundColor" :comment-text-color="commentTextColor"
           :user-name-color="userNameColor" :wrapper-size="wrapperSize.toString()" :module="props.module"
-          @delete-comment="deleteComment(index)" />
+          :currentIndex="getIndex(item.id)" @delete-comment="deleteComment(index)" />
         <div v-if="comments.length < 1" key="noComment" class="noCommentWrapper" @click="focusCommentBox">
           <span class="noCommentText text-primary border-primary hover:bg-primary border hover:text-white">Be the first
             to comment.</span>
@@ -148,6 +148,8 @@ function resize(event) {
   }
 }
 
+const getIndex = (id) => props.comments.findIndex((comment) => comment.id === id);
+
 async function addComment() {
   if (!data?.value?.user?.email) {
     toast.add({
@@ -187,7 +189,7 @@ async function addComment() {
           description: 'Your comment has been added successfully',
           icon: 'check-circle'
         });
-        comments.value.unshift({
+        comments.value.push({
           id: response.value.id,
           email: data.value.user.email,
           name: data.value.user.name,

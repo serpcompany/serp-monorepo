@@ -117,7 +117,8 @@
             :comment="reply" :user="user" :comment-background-color="commentBackgroundColor"
             :comment-text-color="commentTextColor" :user-name-color="userNameColor" :wrapper-size="wrapperSize"
             :depth-length="depthLength + 1" :user-data="userData" :module="props.module"
-            :parent-ids="[...parentIds, comment.id]" @delete-row="deleteReply(index)" />
+            :parent-ids="[...parentIds, comment.id]" :parent-indices="[...parentIndices, currentIndex]"
+            :currentIndex="getIndex(reply.id)" @delete-row="deleteReply(index)" />
         </transition-group>
         <div v-if="limit < comment.replies.length && showReplies" class="update-limit" @click="updateLimit">
           <span class="limit">Show more replies</span>
@@ -134,6 +135,7 @@ const props = defineProps({
   module: String,
   id: Number,
   comment: Object,
+  currentIndex: Number,
   initialMessageLimit: { type: String, default: '10' },
   maxLineLimit: { type: String, default: '40' },
   maxShowingDepth: { type: String, default: '5' },
@@ -143,8 +145,11 @@ const props = defineProps({
   commentTextColor: { type: String, default: '#1d2129' },
   userNameColor: { type: String, default: 'rgb(6, 177, 183)' },
   wrapperSize: String,
-  parentIds: { type: Array, default: () => [] }
+  parentIds: { type: Array, default: () => [] },
+  parentIndices: { type: Array, default: () => [] },
 });
+
+const getIndex = (id) => props.comment.replies.findIndex((comment) => comment.id === id);
 
 const emit = defineEmits(['delete-row']);
 
@@ -305,7 +310,9 @@ async function update() {
         headers: useRequestHeaders(['cookie']),
         body: JSON.stringify({
           commentId: props.comment.id,
+          commentIndex: props.currentIndex,
           parentIds: props.parentIds,
+          parentIndices: props.parentIndices,
           comment: updateMessage.value,
           timestamp: updatedAt.toString(),
           module: props.module
@@ -374,7 +381,9 @@ async function deleteComment() {
         headers: useRequestHeaders(['cookie']),
         body: JSON.stringify({
           commentId: props.comment.id,
+          commentIndex: props.currentIndex,
           parentIds: props.parentIds,
+          parentIndices: props.parentIndices,
           comment: '[deleted]',
           timestamp: Date.now().toString(),
           module: props.module
@@ -454,6 +463,7 @@ async function reply() {
       comment: replyMessage.value,
       timestamp: Date.now().toString(),
       parentIds: [...props.parentIds, props.comment.id],
+      parentIndices: [...props.parentIndices, props.currentIndex],
       module: props.module
     };
 
@@ -471,7 +481,7 @@ async function reply() {
     }
 
     if (response.value.message && response.value.message === 'success') {
-      props.comment.replies.unshift({
+      props.comment.replies.push({
         id: response.value.id,
         email: data.value.user.email,
         name: data.value.user.name,
