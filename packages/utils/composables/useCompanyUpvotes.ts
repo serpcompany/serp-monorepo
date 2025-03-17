@@ -1,3 +1,3 @@
 export const useCompanyUpvotes = async (id: number) => {
-  return useFetchWithCache<string[]>(`/company/upvotes/${id}`);
+  return useFetchWithCache<string[]>(`/upvotes/${id}?module=companies`);
 };

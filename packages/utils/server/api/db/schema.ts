@@ -95,7 +95,9 @@ export const postCache = cacheSchema.table('post_cache', {
   videoId: varchar('video_id', { length: 255 }),
   relatedPosts: jsonb('related_posts'),
   module: varchar('module', { length: 255 }),
-  keyword: varchar('keyword', { length: 255 })
+  keyword: varchar('keyword', { length: 255 }),
+  comments: jsonb('comments'),
+  upvotes: text('upvotes').array(),
 });
 
 export const postCategoryCache = cacheSchema.table('post_category_cache', {
@@ -176,7 +178,9 @@ export const mbMetadataCache = mappingSchema.table('mb_metadata_cache', {
   lyricsSync: jsonb('lyrics_sync'),
   overview: text('overview'),
   seoDescription: text('seo_description'),
-  seoTitle: text('seo_title')
+  seoTitle: text('seo_title'),
+  comments: jsonb('comments'),
+  upvotes: text('upvotes').array(),
 });
 
 export const mbReleaseGroupCache = mappingSchema.table(
@@ -202,7 +206,9 @@ export const mbReleaseGroupCache = mappingSchema.table(
     wikidata: jsonb('wikidata'),
     overview: text('overview'),
     seoDescription: text('seo_description'),
-    seoTitle: text('seo_title')
+    seoTitle: text('seo_title'),
+    comments: jsonb('comments'),
+    upvotes: text('upvotes').array(),
   }
 );
 
@@ -231,7 +237,9 @@ export const mbArtistMetadataCache = mappingSchema.table(
     wikidata: jsonb('wikidata'),
     overview: text('overview'),
     seoDescription: text('seo_description'),
-    seoTitle: text('seo_title')
+    seoTitle: text('seo_title'),
+    comments: jsonb('comments'),
+    upvotes: text('upvotes').array(),
   }
 );
 // End Music

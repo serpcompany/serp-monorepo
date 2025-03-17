@@ -1,7 +1,7 @@
 import { eq, sql } from 'drizzle-orm';
 import { getServerSession } from '#auth';
 import { db } from '@serp/utils/server/api/db';
-import { companyCache } from '@serp/utils/server/api/db/schema';
+import { getTableAndPKForModule } from '@serp/utils/server/utils/getTableAndPKForModule';
 
 export default defineEventHandler(async (event) => {
   try {
@@ -12,20 +12,24 @@ export default defineEventHandler(async (event) => {
     if (!email) return { status: 401, message: 'Unauthorized' };
 
     const { id } = getRouterParams(event);
-    if (!id) return { status: 400, message: 'Company ID is required' };
+    if (!id) {
+      return { status: 400, message: 'ID is required' };
+    }
 
-    const { commentId, comment, timestamp, parentIds } = await readBody(event);
-    if (!commentId || !comment || !timestamp) {
+    const { commentId, comment, timestamp, parentIds, module } = await readBody(event);
+    if (!commentId || !comment || !timestamp || !module) {
       return {
         status: 400,
-        message: 'Comment ID, comment content, and timestamp are required'
+        message: '`commentId`, `comment`, `module`, and `timestamp` are required'
       };
     }
+
+    const { table, field } = getTableAndPKForModule(module);
 
     // If no parentIds, update a top-level comment
     if (!parentIds || parentIds.length === 0) {
       const updateQuery = sql`
-                UPDATE ${companyCache}
+                UPDATE ${table}
                 SET comments = (
                     SELECT jsonb_agg(
                         CASE
@@ -39,7 +43,7 @@ export default defineEventHandler(async (event) => {
                     )
                     FROM jsonb_array_elements(comments) AS t(elem)
                 )
-                WHERE id = ${id}
+                WHERE ${field} = ${id}
                 AND EXISTS (
                     SELECT 1
                     FROM jsonb_array_elements(comments) AS t(elem)
@@ -79,7 +83,7 @@ export default defineEventHandler(async (event) => {
 
     // Update the nested comment
     const updateNestedQuery = sql`
-            UPDATE ${companyCache}
+            UPDATE ${table}
             SET comments = jsonb_set(
                 comments,
                 ${sql.raw(fullPath)},
@@ -89,7 +93,7 @@ export default defineEventHandler(async (event) => {
                 ),
                 false
             )
-            WHERE id = ${id}
+            WHERE ${field} = ${id}
             AND EXISTS (
                 SELECT 1
                 FROM jsonb_array_elements(comments #> ARRAY[${sql.raw(pathComponents.join(', '))}]::text[]) AS t(elem)

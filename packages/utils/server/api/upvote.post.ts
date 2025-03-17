@@ -1,5 +1,5 @@
 import { db } from '@serp/utils/server/api/db';
-import { companyCache } from '@serp/utils/server/api/db/schema';
+import { getTableAndPKForModule } from '@serp/utils/server/utils/getTableAndPKForModule';
 import { eq, sql } from 'drizzle-orm';
 import { getServerSession } from '#auth';
 
@@ -23,8 +23,17 @@ export default defineEventHandler(async (event) => {
 
     const data = await readBody(event);
 
+    if (!data.id || !data.module) {
+      return {
+        status: 400,
+        message: 'ID and module are required'
+      };
+    }
+
+    const { table, field } = getTableAndPKForModule(data.module);
+
     await db
-      .update(companyCache)
+      .update(table)
       .set({
         upvotes: sql`
       CASE 
@@ -34,7 +43,7 @@ export default defineEventHandler(async (event) => {
       END
     `
       })
-      .where(eq(companyCache.id, data.id))
+      .where(eq(field, data.id))
       .execute();
 
     return { status: 200, message: 'success' };

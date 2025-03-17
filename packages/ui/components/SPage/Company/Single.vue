@@ -1,19 +1,10 @@
 <template>
   <div v-if="data">
-    <UpvoteButton
-      :id="data.id"
-      endpoint="/api/company/upvote"
-      :upvotes="upvotes"
-    />
+    <UpvoteButton :id="data.id" module="company" :upvotes="upvotes" />
     <CommentsContainer :id="data.id" module="company" :comments="comments" />
-    <multipage-header
-      :name="data.name"
-      :one-liner="data.oneLiner"
-      :sections="sections"
-      class="bg-background sticky top-0 z-10 transition-all duration-300"
-      :image="data.logo"
-      :serply_link="data.serplyLink"
-    />
+    <multipage-header :name="data.name" :one-liner="data.oneLiner" :sections="sections"
+      class="bg-background sticky top-0 z-10 transition-all duration-300" :image="data.logo"
+      :serply_link="data.serplyLink" />
 
     <!-- Main content with grid -->
     <section class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
@@ -21,18 +12,10 @@
         <!-- Main Content (70%) -->
         <div class="lg:col-span-2">
           <!-- Overview Section -->
-          <company-overview
-            v-if="data.excerpt"
-            id="overview"
-            :company="data"
-            class="scroll-mt-60"
-          />
+          <company-overview v-if="data.excerpt" id="overview" :company="data" class="scroll-mt-60" />
 
           <!-- Article Section -->
-          <section
-            v-if="data.content"
-            class="prose dark:prose-invert mt-[-25px]"
-          >
+          <section v-if="data.content" class="prose dark:prose-invert mt-[-25px]">
             <div id="article" class="mb-8" v-html="data.content"></div>
           </section>
 
@@ -67,24 +50,15 @@
         </div>
 
         <!-- Sidebar (30%) -->
-        <aside
-          v-if="
-            (data.screenshots && data.screenshots.length) ||
-            (data.categories && data.categories.length)
-          "
-          class="space-y-6 lg:col-span-1"
-        >
+        <aside v-if="
+          (data.screenshots && data.screenshots.length) ||
+          (data.categories && data.categories.length)
+        " class="space-y-6 lg:col-span-1">
           <!-- Left Column: Media Gallery -->
-          <media-gallery
-            v-if="data.screenshots && data.screenshots.length"
-            :company="data"
-          />
+          <media-gallery v-if="data.screenshots && data.screenshots.length" :company="data" />
 
           <!-- Categories -->
-          <section
-            v-if="data.categories && data.categories.length"
-            class="gap-2"
-          >
+          <section v-if="data.categories && data.categories.length" class="gap-2">
             <s-pill base-slug="products/best" :items="data.categories" />
           </section>
         </aside>
@@ -103,13 +77,12 @@ if (!data) {
   router.push('/404');
 }
 
+// When not using caching at the API level, grab the upvotes and comments directly from the data object
 // const upvotes = data.upvotes || [];
 // const comments = data.comments || [];
 
-const [upvotes, comments] = await Promise.all([
-  useCompanyUpvotes(data?.id),
-  useCompanyComments(data?.id)
-]);
+// Possibly move to onMounted, but may negatively impact SEO (components currently have onMounted, investigate impact on SEO)
+const { upvotes, comments } = await useCompanyUpvotesAndComments(data?.id);
 
 const faqItems = computed(() => {
   if (!data?.faqs) return [];

@@ -1,12 +1,6 @@
 <template>
   <div>
-    <UButton
-      :color="buttonColor"
-      variant="ghost"
-      :loading="loading"
-      icon="i-lucide-arrow-up"
-      @click="upvote"
-    />
+    <UButton :color="buttonColor" variant="ghost" :loading="loading" icon="i-lucide-arrow-up" @click="upvote" />
     <UBadge>{{ localUpvotes.length }}</UBadge>
   </div>
 </template>
@@ -15,7 +9,7 @@
 const { status, data } = useAuth();
 const props = defineProps<{
   id: number;
-  endpoint: string;
+  module: string;
   upvotes: string[];
 }>();
 
@@ -44,10 +38,10 @@ async function upvote() {
         throw new Error('User not authenticated');
       }
 
-      const { data: response, error } = await useFetch(props.endpoint, {
+      const { data: response, error } = await useFetch('/api/upvote', {
         method: 'POST',
         headers: useRequestHeaders(['cookie']),
-        body: JSON.stringify({ id: props.id })
+        body: JSON.stringify({ id: props.id, module: props.module })
       });
 
       if (error.value) {
