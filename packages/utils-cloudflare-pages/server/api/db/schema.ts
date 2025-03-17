@@ -26,7 +26,7 @@ export const companyCache = sqliteTable('company_cache', {
   featured: integer('featured'),
   featuredOrder: integer('featured_order'),
   comments: text('comments', { mode: 'json' }),
-  upvotes: text('upvotes', { mode: 'json' }),
+  upvotes: text('upvotes', { mode: 'json' })
 });
 
 export const companyCategoryCache = sqliteTable('company_category_cache', {
@@ -54,7 +54,7 @@ export const postCache = sqliteTable('post_cache', {
   module: text('module'),
   keyword: text('keyword'),
   comments: text('comments', { mode: 'json' }),
-  upvotes: text('upvotes', { mode: 'json' }),
+  upvotes: text('upvotes', { mode: 'json' })
 });
 
 export const postCategoryCache = sqliteTable('post_category_cache', {
@@ -94,7 +94,7 @@ export const boxerCache = sqliteTable('boxer_cache', {
   numLosses: integer('num_losses'),
   bouts: text('bouts'),
   comments: text('comments', { mode: 'json' }),
-  upvotes: text('upvotes', { mode: 'json' }),
+  upvotes: text('upvotes', { mode: 'json' })
 });
 
 export const weightClassCache = sqliteTable('weight_class_cache', {
@@ -134,7 +134,7 @@ export const mbMetadataCache = sqliteTable('mb_metadata_cache', {
   seoDescription: text('seo_description'),
   seoTitle: text('seo_title'),
   comments: text('comments', { mode: 'json' }),
-  upvotes: text('upvotes', { mode: 'json' }),
+  upvotes: text('upvotes', { mode: 'json' })
 });
 
 export const mbReleaseGroupCache = sqliteTable('mb_release_group_cache', {
@@ -160,7 +160,7 @@ export const mbReleaseGroupCache = sqliteTable('mb_release_group_cache', {
   seoDescription: text('seo_description'),
   seoTitle: text('seo_title'),
   comments: text('comments', { mode: 'json' }),
-  upvotes: text('upvotes', { mode: 'json' }),
+  upvotes: text('upvotes', { mode: 'json' })
 });
 
 export const mbArtistMetadataCache = sqliteTable('mb_artist_metadata_cache', {
@@ -188,5 +188,5 @@ export const mbArtistMetadataCache = sqliteTable('mb_artist_metadata_cache', {
   seoDescription: text('seo_description'),
   seoTitle: text('seo_title'),
   comments: text('comments', { mode: 'json' }),
-  upvotes: text('upvotes', { mode: 'json' }),
+  upvotes: text('upvotes', { mode: 'json' })
 });

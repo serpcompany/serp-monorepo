@@ -19,6 +19,7 @@
     "test:watch": "vitest --coverage"
   },
   "devDependencies": {
+    "@bg-dev/nuxt-s3": "2.0.2",
     "@eslint/eslintrc": "^3.1.0",
     "@faker-js/faker": "^9.2.0",
     "@iconify-json/lucide": "^1.2.14",

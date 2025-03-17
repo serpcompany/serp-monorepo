@@ -1,7 +1,11 @@
 <template>
   <div>
     <UpvoteButton :id="data.slug" module="posts" :upvotes="data.upvotes" />
-    <CommentsContainer :id="data.slug" module="posts" :comments="data.comments || []" />
+    <CommentsContainer
+      :id="data.slug"
+      module="posts"
+      :comments="data.comments || []"
+    />
     <section class="mb-8">
       <section-hero-one :title="data.title" />
       <s-pill base-slug="posts/category" :items="data.categories" />

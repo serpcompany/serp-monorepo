@@ -1,6 +1,12 @@
 <template>
   <div>
-    <UButton :color="buttonColor" variant="ghost" :loading="loading" icon="i-lucide-arrow-up" @click="upvote" />
+    <UButton
+      :color="buttonColor"
+      variant="ghost"
+      :loading="loading"
+      icon="i-lucide-arrow-up"
+      @click="upvote"
+    />
     <UBadge>{{ localUpvotes.length }}</UBadge>
   </div>
 </template>

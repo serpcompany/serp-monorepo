@@ -3,36 +3,112 @@
     <div v-if="loading" class="loader">
       <svg id="loader" width="150" height="150">
         <circle fill="red">
-          <animate attributeName="cx" values="15;135;15" keyTimes="0;0.5;1" calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;" dur="3s" repeatCount="indefinite" />
-          <animate attributeName="r" values="15;7.5;2;7.5;15" keyTimes="0;0.25;0.5;0.75;1" dur="3s"
-            repeatCount="indefinite" />
-          <animate attributeName="cy" values="135;15;135" keyTimes="0;0.5;1" calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;" dur="6s" repeatCount="indefinite" />
+          <animate
+            attributeName="cx"
+            values="15;135;15"
+            keyTimes="0;0.5;1"
+            calcMode="spline"
+            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+            dur="3s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="r"
+            values="15;7.5;2;7.5;15"
+            keyTimes="0;0.25;0.5;0.75;1"
+            dur="3s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="cy"
+            values="135;15;135"
+            keyTimes="0;0.5;1"
+            calcMode="spline"
+            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+            dur="6s"
+            repeatCount="indefinite"
+          />
         </circle>
         <circle fill="green">
-          <animate attributeName="cx" values="135;15;135" keyTimes="0;0.5;1" calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;" dur="3s" repeatCount="indefinite" />
-          <animate attributeName="r" values="15;7.5;2;7.5;15" keyTimes="0;0.25;0.5;0.75;1" dur="3s"
-            repeatCount="indefinite" />
-          <animate attributeName="cy" values="15;135;15" keyTimes="0;0.5;1" calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;" dur="6s" repeatCount="indefinite" />
+          <animate
+            attributeName="cx"
+            values="135;15;135"
+            keyTimes="0;0.5;1"
+            calcMode="spline"
+            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+            dur="3s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="r"
+            values="15;7.5;2;7.5;15"
+            keyTimes="0;0.25;0.5;0.75;1"
+            dur="3s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="cy"
+            values="15;135;15"
+            keyTimes="0;0.5;1"
+            calcMode="spline"
+            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+            dur="6s"
+            repeatCount="indefinite"
+          />
         </circle>
         <circle fill="blue">
-          <animate attributeName="cx" values="15;135;15" keyTimes="0;0.5;1" calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;" dur="3s" repeatCount="indefinite" />
-          <animate attributeName="r" values="15;7.5;2;7.5;15" keyTimes="0;0.25;0.5;0.75;1" dur="3s"
-            repeatCount="indefinite" />
-          <animate attributeName="cy" values="15;135;15" keyTimes="0;0.5;1" calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;" dur="6s" repeatCount="indefinite" />
+          <animate
+            attributeName="cx"
+            values="15;135;15"
+            keyTimes="0;0.5;1"
+            calcMode="spline"
+            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+            dur="3s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="r"
+            values="15;7.5;2;7.5;15"
+            keyTimes="0;0.25;0.5;0.75;1"
+            dur="3s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="cy"
+            values="15;135;15"
+            keyTimes="0;0.5;1"
+            calcMode="spline"
+            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+            dur="6s"
+            repeatCount="indefinite"
+          />
         </circle>
         <circle fill="orange">
-          <animate attributeName="cx" values="135;15;135" keyTimes="0;0.5;1" calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;" dur="3s" repeatCount="indefinite" />
-          <animate attributeName="r" values="15;7.5;2;7.5;15" keyTimes="0;0.25;0.5;0.75;1" dur="3s"
-            repeatCount="indefinite" />
-          <animate attributeName="cy" values="135;15;135" keyTimes="0;0.5;1" calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;" dur="6s" repeatCount="indefinite" />
+          <animate
+            attributeName="cx"
+            values="135;15;135"
+            keyTimes="0;0.5;1"
+            calcMode="spline"
+            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+            dur="3s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="r"
+            values="15;7.5;2;7.5;15"
+            keyTimes="0;0.25;0.5;0.75;1"
+            dur="3s"
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="cy"
+            values="135;15;135"
+            keyTimes="0;0.5;1"
+            calcMode="spline"
+            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+            dur="6s"
+            repeatCount="indefinite"
+          />
         </circle>
       </svg>
     </div>
@@ -40,21 +116,39 @@
       <div v-if="status == 'authenticated'" class="userName">
         <div class="addComment">
           <div class="w-12 rounded-t-full" :style="styleShadow">
-            <LazyNuxtImg :src="data.user.image" alt="Avatar" class="h-12 w-12 rounded-full p-1" />
+            <LazyNuxtImg
+              :src="data.user.image"
+              alt="Avatar"
+              class="h-12 w-12 rounded-full p-1"
+            />
           </div>
           <div class="commentBox text-black dark:text-white">
-            <textarea ref="addComment" v-model="newComment" name="addComment"
-              class="addComment bg-white dark:bg-gray-800" placeholder="Add new comment" spellcheck="true"
-              aria-label="Add comment" @keyup="resize"></textarea>
-            <button aria-label="Send" :disabled="requestLoading" class="bg-primary hover:bg-primary-800"
-              @click="addComment">
+            <textarea
+              ref="addComment"
+              v-model="newComment"
+              name="addComment"
+              class="addComment bg-white dark:bg-gray-800"
+              placeholder="Add new comment"
+              spellcheck="true"
+              aria-label="Add comment"
+              @keyup="resize"
+            ></textarea>
+            <button
+              aria-label="Send"
+              :disabled="requestLoading"
+              class="bg-primary hover:bg-primary-800"
+              @click="addComment"
+            >
               <div v-if="requestLoading" class="requestLoading"></div>
               <span v-else>Send</span>
             </button>
-            <div class="remainingLetter" :class="{
-              'bg-red-500': remainingLetter < 0,
-              'bg-primary': remainingLetter >= 0
-            }">
+            <div
+              class="remainingLetter"
+              :class="{
+                'bg-red-500': remainingLetter < 0,
+                'bg-primary': remainingLetter >= 0
+              }"
+            >
               <span>{{ remainingLetter }}</span>
             </div>
             <div v-if="alert" class="alert" :class="alertClass">
@@ -64,22 +158,47 @@
         </div>
       </div>
       <div v-else class="noCommentWrapper">
-        <NuxtLink :to="`/login?redirectTo=${$route.fullPath}`" class="noCommentWrapper">
-          <span class="noCommentText text-primary border-primary hover:bg-primary border hover:text-white">Sign in to
-            comment.</span>
+        <NuxtLink
+          :to="`/login?redirectTo=${$route.fullPath}`"
+          class="noCommentWrapper"
+        >
+          <span
+            class="noCommentText text-primary border-primary hover:bg-primary border hover:text-white"
+            >Sign in to comment.</span
+          >
         </NuxtLink>
       </div>
       <TransitionGroup appear name="fade" tag="div">
-        <CommentWrapper v-for="(item, index) in displayedComments" :id="props.id" :key="item.id" :comment="item"
-          :comment-background-color="commentBackgroundColor" :comment-text-color="commentTextColor"
-          :user-name-color="userNameColor" :wrapper-size="wrapperSize.toString()" :module="props.module"
-          :currentIndex="getIndex(item.id)" @delete-comment="deleteComment(index)" />
-        <div v-if="comments.length < 1" key="noComment" class="noCommentWrapper" @click="focusCommentBox">
-          <span class="noCommentText text-primary border-primary hover:bg-primary border hover:text-white">Be the first
-            to comment.</span>
+        <CommentWrapper
+          v-for="(item, index) in displayedComments"
+          :id="props.id"
+          :key="item.id"
+          :comment="item"
+          :comment-background-color="commentBackgroundColor"
+          :comment-text-color="commentTextColor"
+          :user-name-color="userNameColor"
+          :wrapper-size="wrapperSize.toString()"
+          :module="props.module"
+          :current-index="getIndex(item.id)"
+          @delete-comment="deleteComment(index)"
+        />
+        <div
+          v-if="comments.length < 1"
+          key="noComment"
+          class="noCommentWrapper"
+          @click="focusCommentBox"
+        >
+          <span
+            class="noCommentText text-primary border-primary hover:bg-primary border hover:text-white"
+            >Be the first to comment.</span
+          >
         </div>
       </TransitionGroup>
-      <div v-if="limit < comments.length" class="updateLimit" @click="updateLimit">
+      <div
+        v-if="limit < comments.length"
+        class="updateLimit"
+        @click="updateLimit"
+      >
         <span class="limit">Show more comments</span>
       </div>
     </div>
@@ -148,7 +267,8 @@ function resize(event) {
   }
 }
 
-const getIndex = (id) => props.comments.findIndex((comment) => comment.id === id);
+const getIndex = (id) =>
+  props.comments.findIndex((comment) => comment.id === id);
 
 async function addComment() {
   if (!data?.value?.user?.email) {
@@ -250,7 +370,7 @@ onMounted(async () => {
   align-self: center;
 }
 
-.comments>>>.alert {
+.comments >>> .alert {
   grid-column: 1/3;
   display: grid;
   grid-template-columns: 1fr;
@@ -268,50 +388,50 @@ onMounted(async () => {
   text-align: center;
 }
 
-.comments>>>.alert.alert {
+.comments >>> .alert.alert {
   border-color: rgba(0, 0, 0, 0.12) !important;
 }
 
-.comments>>>.success {
+.comments >>> .success {
   background-color: #4caf50 !important;
 }
 
-.comments>>>.pass {
+.comments >>> .pass {
   border-color: #4caf50 !important;
 }
 
-.comments>>>.info {
+.comments >>> .info {
   background-color: #2196f3 !important;
 }
 
-.comments>>>.default {
+.comments >>> .default {
   border-color: #2196f3 !important;
 }
 
-.comments>>>.alert.fail {
+.comments >>> .alert.fail {
   background-color: #ff5252 !important;
 }
 
-.comments>>>.fail {
+.comments >>> .fail {
   border-color: #ff5252 !important;
 }
 
-.comments>>> ::-webkit-input-placeholder {
+.comments >>> ::-webkit-input-placeholder {
   color: #92b1b3 !important;
   text-align: center;
 }
 
-.comments>>> ::-moz-placeholder {
+.comments >>> ::-moz-placeholder {
   color: #92b1b3 !important;
   text-align: center;
 }
 
-.comments>>> :-ms-input-placeholder {
+.comments >>> :-ms-input-placeholder {
   color: #92b1b3 !important;
   text-align: center;
 }
 
-.comments>>> :-moz-placeholder {
+.comments >>> :-moz-placeholder {
   color: #92b1b3 !important;
   text-align: center;
 }
@@ -327,21 +447,21 @@ onMounted(async () => {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.comments>>>.comments {
+.comments >>> .comments {
   overflow-x: auto;
 }
 
-.comments>.innerWrapper {
+.comments > .innerWrapper {
   overflow-x: auto;
   padding: 10px 2px;
 }
 
-.comments>>>.noCommentWrapper {
+.comments >>> .noCommentWrapper {
   display: grid;
   padding-top: 15px;
 }
 
-.comments>>>.noCommentText {
+.comments >>> .noCommentText {
   cursor: pointer;
   text-align: center;
   padding: 8px 10px;
@@ -354,7 +474,7 @@ onMounted(async () => {
   -webkit-transition: linear 0.1s all;
 }
 
-.comments>>>.userName {
+.comments >>> .userName {
   grid-column: 1/3;
   display: grid;
   grid-template-columns: 1fr 0.001fr;
@@ -366,7 +486,7 @@ onMounted(async () => {
   word-break: break-word;
 }
 
-.comments>>>.userName>.logOut {
+.comments >>> .userName > .logOut {
   grid-column: 2;
   white-space: nowrap;
   color: #92b1b3;
@@ -377,22 +497,22 @@ onMounted(async () => {
   -webkit-transition: color linear 0.1s;
 }
 
-.comments>>>.userName>.logOut:hover {
+.comments >>> .userName > .logOut:hover {
   color: rgb(6, 177, 183);
 }
 
-.comments>>>.dot {
+.comments >>> .dot {
   color: #c2c6cc;
   font-size: 13px;
   white-space: nowrap;
 }
 
-.comments>>>.avatar {
+.comments >>> .avatar {
   border-top-left-radius: 22px;
   border-top-right-radius: 22px;
 }
 
-.comments>>>.avatar>svg {
+.comments >>> .avatar > svg {
   border-radius: 50%;
   height: 44px;
   width: 44px;
@@ -401,7 +521,7 @@ onMounted(async () => {
   -webkit-transition: 0.3s;
 }
 
-.comments>>>.addComment {
+.comments >>> .addComment {
   display: grid;
   grid-template-columns: 0.001fr 1fr;
   grid-auto-rows: minmax(0, auto);
@@ -409,7 +529,7 @@ onMounted(async () => {
   padding-top: 2px;
 }
 
-.comments>>>.commentBox {
+.comments >>> .commentBox {
   display: grid;
   grid-template-columns: minmax(200px, auto) 0.2fr;
   grid-auto-rows: minmax(0, -webkit-max-content);
@@ -419,7 +539,7 @@ onMounted(async () => {
   overflow: auto;
 }
 
-.comments>>>.commentBox>textarea {
+.comments >>> .commentBox > textarea {
   font-family: 'Roboto', sans-serif;
   justify-self: stretch;
   box-sizing: border-box;
@@ -440,7 +560,7 @@ onMounted(async () => {
   -webkit-transition: linear 0.1s all;
 }
 
-.comments>>>.commentBox>button {
+.comments >>> .commentBox > button {
   font-family: 'Roboto', sans-serif;
   align-self: end;
   max-height: 32px;
@@ -460,7 +580,7 @@ onMounted(async () => {
   z-index: 100;
 }
 
-.comments>>>.remainingLetter {
+.comments >>> .remainingLetter {
   justify-self: end;
   align-self: start;
   box-sizing: border-box;
@@ -474,7 +594,7 @@ onMounted(async () => {
   z-index: 99;
 }
 
-.comments>>>.remainingLetter>span {
+.comments >>> .remainingLetter > span {
   align-self: center;
   font-size: 11px;
   line-height: 11px;
@@ -482,12 +602,12 @@ onMounted(async () => {
   color: #eee;
 }
 
-.comments>>>.updateLimit {
+.comments >>> .updateLimit {
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.comments>>>.limit {
+.comments >>> .limit {
   color: rgb(6, 177, 183);
   font-weight: 700;
   justify-self: center;
@@ -502,22 +622,22 @@ onMounted(async () => {
   -webkit-transition: linear 0.1s all;
 }
 
-.comments>>>.limit:hover {
+.comments >>> .limit:hover {
   color: #fff;
   background-color: #2196f3;
 }
 
-.comments>>>.fade-enter {
+.comments >>> .fade-enter {
   opacity: 0;
 }
 
-.comments>>>.fade-enter-active {
+.comments >>> .fade-enter-active {
   transition: opacity 0.3s;
   -moz-transition: opacity 0.3s;
   -webkit-transition: opacity 0.3s;
 }
 
-.comments>>>.fade-leave-active {
+.comments >>> .fade-leave-active {
   transition: opacity 0.3s;
   -moz-transition: opacity 0.3s;
   -webkit-transition: opacity 0.3s;
@@ -525,12 +645,12 @@ onMounted(async () => {
 }
 
 @media only screen and (max-width: 480px) {
-  .comments>>>.avatar>svg {
+  .comments >>> .avatar > svg {
     height: 20px;
     width: 20px;
   }
 
-  .comments>>>.nameWrapper>.time {
+  .comments >>> .nameWrapper > .time {
     overflow: hidden;
     width: 38px;
     text-overflow: ellipsis;
@@ -538,26 +658,26 @@ onMounted(async () => {
 }
 
 @media (hover: none) {
-  .comments>>> ::-webkit-scrollbar {
+  .comments >>> ::-webkit-scrollbar {
     -webkit-appearance: none !important;
   }
 
-  .comments>>> ::-webkit-scrollbar {
+  .comments >>> ::-webkit-scrollbar {
     width: 5px !important;
     height: 5px !important;
     background-color: rgba(204, 212, 216, 0.2) !important;
   }
 
-  .comments>>> ::-webkit-scrollbar-thumb {
+  .comments >>> ::-webkit-scrollbar-thumb {
     background: rgba(204, 212, 216, 0.7) !important;
   }
 
-  .comments>>>.commentBox {
+  .comments >>> .commentBox {
     overflow: unset;
   }
 }
 
-.comments>>>.requestLoading {
+.comments >>> .requestLoading {
   display: inline-block;
   border: 4px solid transparent;
   border-left-color: #fff;

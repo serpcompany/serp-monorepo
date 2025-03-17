@@ -18,7 +18,10 @@ export default defineEventHandler(async (event) => {
 
     const { comment, timestamp, parentIds, module } = await readBody(event);
     if (!comment || !timestamp || !module) {
-      return { status: 400, message: '`comment`, `module`, and `timestamp` are required' };
+      return {
+        status: 400,
+        message: '`comment`, `module`, and `timestamp` are required'
+      };
     }
 
     const { table, field } = getTableAndPKForModule(module);

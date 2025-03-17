@@ -1,7 +1,12 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  extends: ['@serp/ui', '@serp/types', '@serp/utils-cloudflare-pages', '@serp/auth'],
+  extends: [
+    '@serp/ui',
+    '@serp/types',
+    '@serp/utils-cloudflare-pages',
+    '@serp/auth'
+  ],
   modules: [
     '@nuxt/ui',
     '@nuxt/image',

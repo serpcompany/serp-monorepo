@@ -16,11 +16,13 @@ export default defineEventHandler(async (event) => {
       return { status: 400, message: 'ID is required' };
     }
 
-    const { commentId, comment, timestamp, parentIds, module } = await readBody(event);
+    const { commentId, comment, timestamp, parentIds, module } =
+      await readBody(event);
     if (!commentId || !comment || !timestamp || !module) {
       return {
         status: 400,
-        message: '`commentId`, `comment`, `module`, and `timestamp` are required'
+        message:
+          '`commentId`, `comment`, `module`, and `timestamp` are required'
       };
     }
 

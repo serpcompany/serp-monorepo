@@ -68,6 +68,7 @@ export const companySubmitForm = formSchema.table('company_submit', {
   tags: jsonb('tags'),
   oneLiner: text('one_liner'),
   description: text('description'),
+  logo: varchar('logo', { length: 255 }),
   approved: boolean('approved').notNull().default(false),
   reviewedAt: timestamp('reviewed_at', { withTimezone: true }),
   reviewedBy: varchar('reviewed_by', { length: 255 }),
@@ -97,7 +98,7 @@ export const postCache = cacheSchema.table('post_cache', {
   module: varchar('module', { length: 255 }),
   keyword: varchar('keyword', { length: 255 }),
   comments: jsonb('comments'),
-  upvotes: text('upvotes').array(),
+  upvotes: text('upvotes').array()
 });
 
 export const postCategoryCache = cacheSchema.table('post_category_cache', {
@@ -180,7 +181,7 @@ export const mbMetadataCache = mappingSchema.table('mb_metadata_cache', {
   seoDescription: text('seo_description'),
   seoTitle: text('seo_title'),
   comments: jsonb('comments'),
-  upvotes: text('upvotes').array(),
+  upvotes: text('upvotes').array()
 });
 
 export const mbReleaseGroupCache = mappingSchema.table(
@@ -208,7 +209,7 @@ export const mbReleaseGroupCache = mappingSchema.table(
     seoDescription: text('seo_description'),
     seoTitle: text('seo_title'),
     comments: jsonb('comments'),
-    upvotes: text('upvotes').array(),
+    upvotes: text('upvotes').array()
   }
 );
 
@@ -239,7 +240,7 @@ export const mbArtistMetadataCache = mappingSchema.table(
     seoDescription: text('seo_description'),
     seoTitle: text('seo_title'),
     comments: jsonb('comments'),
-    upvotes: text('upvotes').array(),
+    upvotes: text('upvotes').array()
   }
 );
 // End Music

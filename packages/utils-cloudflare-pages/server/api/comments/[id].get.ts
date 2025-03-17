@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
       return {
         comments: result[0].comments || [],
         upvotes: result[0].upvotes || []
-      }
+      };
     }
     return result[0].comments || [];
   } catch (error) {

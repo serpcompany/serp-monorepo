@@ -1,4 +1,10 @@
-import { companyCache, postCache, mbArtistMetadataCache, mbReleaseGroupCache, mbMetadataCache } from '../api/db/schema';
+import {
+  companyCache,
+  postCache,
+  mbArtistMetadataCache,
+  mbReleaseGroupCache,
+  mbMetadataCache
+} from '../api/db/schema';
 
 export function getTableAndPKForModule(module: string) {
   let table;

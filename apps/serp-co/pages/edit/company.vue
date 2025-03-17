@@ -24,7 +24,6 @@
             <p class="mb-2 text-xs text-gray-600">
               Complete your company before launching it
             </p>
-            <!-- Completion status grid -->
             <div class="grid grid-cols-2 gap-1">
               <div
                 v-for="field in allFields"
@@ -52,7 +51,8 @@
                 slug: company.domain,
                 oneLiner: company.oneLiner,
                 categories: getCategories,
-                serplyLink: `https://${company.domain}?ref=serp.co&ref_type=adv`
+                serplyLink: `https://${company.domain}?ref=serp.co&ref_type=adv`,
+                logo: company.logo
               }"
             />
           </div>
@@ -65,8 +65,8 @@
             :loading="loading"
             :disabled="!isComplete"
             @click="saveCompany"
-            >Save Company
-          </UButton>
+            >Save Company</UButton
+          >
           <UButton variant="outline" :loading="loading" @click="previewCompany"
             >Preview Company</UButton
           >
@@ -76,18 +76,15 @@
       <!-- Right side column (Tabbed Card) -->
       <div class="col-span-2">
         <UCard>
-          <!-- Tabs with items (toggle-only) -->
           <UTabs
             v-model="activeTab"
             :items="tabs"
             :content="false"
             class="mb-3"
           />
-          <!-- Tab Content -->
           <TransitionGroup name="fade" tag="div">
             <div v-if="activeTab === 'general'">
               <form @submit.prevent="saveCompany">
-                <!-- 2-col grid for form fields -->
                 <div class="grid grid-cols-2 gap-2">
                   <UFormField
                     label="Name"
@@ -148,6 +145,21 @@
                       class="w-full"
                     />
                   </UFormField>
+
+                  <div class="col-span-2">
+                    <UFormField
+                      label="Company Logo"
+                      help="Upload your company logo (image file)"
+                      class="w-full"
+                    >
+                      <input
+                        type="file"
+                        accept="image/*"
+                        @change="onImageSelected"
+                      >
+                    </UFormField>
+                  </div>
+
                   <!-- Full-width fields -->
                   <div class="col-span-2">
                     <UFormField
@@ -167,8 +179,8 @@
                     <UFormField
                       label="Rich Description"
                       help="Detailed overview of your company"
-                      class="w-full"
                       required
+                      class="w-full"
                     >
                       <UTextarea
                         v-model="company.description"
@@ -193,7 +205,6 @@
 
 <script setup lang="ts">
 const { status, data } = useAuth();
-
 if (status.value === 'unauthenticated') {
   navigateTo('/');
 }
@@ -211,15 +222,14 @@ const company = ref({
   tags: '',
   oneLiner: '',
   description: '',
-  categories: []
+  categories: [],
+  logo: ''
 });
 
 const toast = useToast();
-
 const loading = ref(false);
 
 const categories = await useCompanyCategories();
-
 const categoryOptions = ref(categories?.map((category) => category.name));
 const pricingOptions = ref(['Free', 'Paid', 'Subscription']);
 
@@ -230,7 +240,8 @@ const allFields = [
   { key: 'pricing', label: 'Pricing' },
   { key: 'tags', label: 'Tags' },
   { key: 'oneLiner', label: 'One-Liner' },
-  { key: 'description', label: 'RichDescription' }
+  { key: 'description', label: 'RichDescription' },
+  { key: 'logo', label: 'Logo' }
 ];
 
 const requiredFields = [
@@ -242,14 +253,9 @@ const requiredFields = [
 ];
 
 function checkIfValidValue(value) {
-  // string
-  if (typeof value === 'string') {
-    return value.trim() !== '';
-  }
-  // array
-  if (Array.isArray(value)) {
-    return value.length > 0;
-  }
+  if (typeof value === 'string') return value.trim() !== '';
+  if (Array.isArray(value)) return value.length > 0;
+  return false;
 }
 
 const isComplete = computed(() =>
@@ -260,7 +266,7 @@ const isComplete = computed(() =>
 );
 
 const getCategories = computed(() => {
-  return company.value.categories.map((category) => {
+  return company.value.categories.map((category: string) => {
     // find matching category by name
     const category_ = categories.find((c) => c.name === category);
     return {
@@ -271,9 +277,42 @@ const getCategories = computed(() => {
   });
 });
 
-const getCategoryIds = computed(() => {
-  return getCategories.value.map((category) => category.id);
-});
+const getCategoryIds = computed(() =>
+  getCategories.value.map((category) => category.id)
+);
+
+const s3 = useS3Object();
+const runtimeConfig = useRuntimeConfig();
+
+// Handle the image file selection and upload
+async function onImageSelected(e: Event) {
+  const target = e.target as HTMLInputElement;
+  const file = target.files?.[0];
+  if (!file) return;
+
+  try {
+    const uploaded = await s3.upload(file, {
+      prefix: 'images',
+      meta: { purpose: 'company-logo' }
+    });
+
+    company.value.logo = `${runtimeConfig.public.cloudflareR2PublicUrl}${uploaded.replace('/api/s3/query', '')}`;
+
+    toast.add({
+      id: 'upload-success',
+      title: 'Logo Uploaded',
+      description: 'Your company logo has been uploaded successfully!',
+      icon: 'check-circle'
+    });
+  } catch (err) {
+    toast.add({
+      id: 'upload-error',
+      title: 'Upload Failed',
+      description: err.message || 'Failed to upload logo.',
+      icon: 'exclamation-circle'
+    });
+  }
+}
 
 async function saveCompany() {
   try {
@@ -281,18 +320,19 @@ async function saveCompany() {
     if (!isComplete.value) {
       throw new Error('Please fill in all required fields');
     }
-
     if (!data?.value?.user?.email) {
       throw new Error('Please login to save your company');
     }
 
+    const payload = {
+      ...company.value,
+      categories: getCategoryIds.value
+    };
+
     const { data: response, error } = await useFetch('/api/company/submit', {
       method: 'POST',
       headers: useRequestHeaders(['cookie']),
-      body: JSON.stringify({
-        ...company.value,
-        categories: getCategoryIds.value
-      })
+      body: JSON.stringify(payload)
     });
 
     if (error.value) {

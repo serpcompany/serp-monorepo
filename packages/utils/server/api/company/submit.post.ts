@@ -30,8 +30,7 @@ export default defineEventHandler(async (event) => {
       'domain',
       'pricing',
       'oneLiner',
-      'description',
-      'test'
+      'description'
     ];
 
     const data = await readBody(event);
@@ -113,7 +112,8 @@ export default defineEventHandler(async (event) => {
         pricing: data.pricing,
         tags,
         oneLiner: data.oneLiner,
-        description: data.description
+        description: data.description,
+        logo: data.logo
       })
       .execute();
 
