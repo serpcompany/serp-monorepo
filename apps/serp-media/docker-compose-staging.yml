@@ -32,6 +32,7 @@ services:
       - NUXT_PUBLIC_URL=${NUXT_PUBLIC_URL}
       - AUTH_ORIGIN=${NUXT_PUBLIC_URL}
       - AUTH_SECRET=${AUTH_SECRET}
+      - USE_AUTH=${USE_AUTH}
       - REDIS_URL=redis://serp-media-redis-staging:6379
     depends_on:
       - serp-media-redis-staging
