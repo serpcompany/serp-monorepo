@@ -36,7 +36,7 @@ jobs:
         run: pnpx nuxthub@latest ensure
 
       - name: Build application
-        run: pnpm build
+        run: infisical run --domain=https://secrets.serp.co --token=${{ secrets.INFISICAL_ACCESS_TOKEN_SERP }} --projectId=${{ secrets.INFISICAL_PROJECT_ID_SERP_WIKI }} -- pnpm build
 
       - name: Deploy to NuxtHub
         uses: nuxt-hub/action@v1
