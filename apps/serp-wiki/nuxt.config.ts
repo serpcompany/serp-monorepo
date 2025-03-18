@@ -15,6 +15,9 @@ export default defineNuxtConfig({
     'nuxt-link-checker',
     '@nuxthub/core'
   ],
+  build: {
+    transpile: ['next-auth']
+  },
   auth: {
     baseURL: "https://staging.serp-wiki.pages.dev/api/auth",  // process.env.AUTH_ORIGIN,
     provider: {
