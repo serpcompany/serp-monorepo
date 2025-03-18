@@ -21,6 +21,7 @@ export default defineNuxtConfig({
     '@nuxthub/core'
   ],
   auth: {
+    baseURL: process.env.AUTH_ORIGIN,
     provider: {
       type: 'authjs',
       trustHost: false,
