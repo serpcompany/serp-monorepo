@@ -10,6 +10,12 @@
 
 /* Add base layer for direct element styling */
 @layer base {
+  button,
+  [role="button"] {
+      @apply cursor-pointer;
+      @apply disabled:cursor-not-allowed;
+  }
+ 
   h1 {
     font-size: 3.75rem;
     line-height: 1.2;
