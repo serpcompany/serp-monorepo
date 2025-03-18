@@ -33,6 +33,10 @@ services:
       - AUTH_ORIGIN=${NUXT_PUBLIC_URL}
       - AUTH_SECRET=${AUTH_SECRET}
       - USE_AUTH=${USE_AUTH}
+      - AUTH_GITHUB_CLIENT_ID=${AUTH_GITHUB_CLIENT_ID}
+      - AUTH_GITHUB_CLIENT_SECRET=${AUTH_GITHUB_CLIENT_SECRET}
+      - AUTH_GOOGLE_CLIENT_ID=${AUTH_GOOGLE_CLIENT_ID}
+      - AUTH_GOOGLE_CLIENT_SECRET=${AUTH_GOOGLE_CLIENT_SECRET}
       - REDIS_URL=redis://serp-media-redis-staging:6379
     depends_on:
       - serp-media-redis-staging
