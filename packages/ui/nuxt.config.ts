@@ -14,5 +14,10 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/scripts'
   ],
-  css: ['~/assets/css/main.css']
+  css: ['~/assets/css/main.css'],
+  runtimeConfig: {
+    public: {
+      useAuth: process.env.USE_AUTH === 'true',
+    }
+  }
 });
