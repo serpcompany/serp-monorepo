@@ -5,7 +5,23 @@ import {
   companyCategoryCache
 } from '@serp/utils/server/api/db/schema';
 import { eq, inArray } from 'drizzle-orm';
-import { getServerSession } from '#auth';
+import { useRuntimeConfig } from '#imports';
+
+const getSession = async (event) => {
+  const config = useRuntimeConfig();
+  if (!config.public.useAuth) {
+    return { user: { email: 'system@example.com' } }; // Default when auth is disabled
+  }
+
+  try {
+    // Import auth only when needed (inside function)
+    const { getServerSession } = await import('#auth');
+    return getServerSession(event);
+  } catch (error) {
+    console.error('Error importing auth:', error);
+    return null;
+  }
+};
 
 export default defineEventHandler(async (event) => {
   try {

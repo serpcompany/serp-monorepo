@@ -1,12 +1,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  extends: [
-    '@serp/ui',
-    '@serp/types',
-    '@serp/utils-cloudflare-pages',
-    '@serp/auth'
-  ],
+  extends: ['@serp/ui', '@serp/types', '@serp/utils-cloudflare-pages'],
   modules: [
     '@nuxt/ui',
     '@nuxt/image',
@@ -25,7 +20,6 @@ export default defineNuxtConfig({
     provider: {
       type: 'authjs',
       trustHost: false,
-      defaultProvider: 'credentials',
       addDefaultCallbackUrl: true
     }
   },
@@ -51,6 +45,7 @@ export default defineNuxtConfig({
     authOrigin: process.env.AUTH_ORIGIN,
     authSecret: process.env.AUTH_SECRET,
     public: {
+      useAuth: process.env.USE_AUTH === 'true',
       siteName: process.env.NUXT_PUBLIC_SITE_NAME,
       domain: process.env.NUXT_PUBLIC_DOMAIN,
       siteUrl: process.env.NUXT_PUBLIC_URL,

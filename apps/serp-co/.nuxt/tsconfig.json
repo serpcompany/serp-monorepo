@@ -131,7 +131,7 @@
         "../../../node_modules/.pnpm/vue-router@4.5.0_vue@3.5.13/node_modules/vue-router"
       ],
       "#imports": ["./imports"],
-      "#app-manifest": ["./manifest/meta/dev"],
+      "#app-manifest": ["./manifest/meta/dev.json"],
       "#components": ["./components"],
       "#build": ["."],
       "#build/*": ["./*"]
@@ -167,7 +167,6 @@
     "../../../packages/types/**/*",
     "../../../packages/utils/**/*",
     "../../../packages/tools/**/*",
-    "../../../packages/auth/**/*",
     "../../../node_modules/.pnpm/nuxt-site-config@3.1.3_vue@3.5.13/node_modules/nuxt-site-config/dist/runtime",
     "../../../node_modules/.pnpm/nuxt-site-config@3.1.3_vue@3.5.13/node_modules/nuxt-site-config/dist/dist/runtime",
     "../../../node_modules/.pnpm/@nuxtjs+robots@5.2.5_vue@3.5.13/node_modules/@nuxtjs/robots/runtime",
@@ -230,7 +229,6 @@
     "../../../packages/types/node_modules",
     "../../../packages/utils/node_modules",
     "../../../packages/tools/node_modules",
-    "../../../packages/auth/node_modules",
     "../../../node_modules/.pnpm/nuxt-site-config@3.1.3_vue@3.5.13/node_modules/nuxt-site-config/node_modules",
     "../../../node_modules/.pnpm/@nuxtjs+robots@5.2.5_vue@3.5.13/node_modules/@nuxtjs/robots/node_modules",
     "../../../node_modules/.pnpm/nuxt-og-image@4.2.0_@unhead+vue@1.11.20_unstorage@1.15.0_vite@6.2.1_vue@3.5.13/node_modules/nuxt-og-image/node_modules",

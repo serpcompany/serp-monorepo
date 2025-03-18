@@ -1,6 +1,6 @@
 <template>
   <UDropdownMenu
-    v-if="data"
+    v-if="data?.user"
     :items="items"
     :ui="{
       content: 'w-48'

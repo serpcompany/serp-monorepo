@@ -25,8 +25,7 @@ export const options = resolveOptions({
       '../../packages/ui/pages',
       '../../packages/types/pages',
       '../../packages/utils/pages',
-      '../../packages/tools/pages',
-      '../../packages/auth/pages'
+      '../../packages/tools/pages'
     ],
     composables: [
       'composables',
@@ -38,17 +37,14 @@ export const options = resolveOptions({
       '../../packages/utils/composables',
       '../../packages/utils/utils',
       '../../packages/tools/composables',
-      '../../packages/tools/utils',
-      '../../packages/auth/composables',
-      '../../packages/auth/utils'
+      '../../packages/tools/utils'
     ],
     components: [
       'components',
       '../../packages/ui/components',
       '../../packages/types/components',
       '../../packages/utils/components',
-      '../../packages/tools/components',
-      '../../packages/auth/components'
+      '../../packages/tools/components'
     ],
     componentsPrefixed: [],
     layouts: [
@@ -56,32 +52,28 @@ export const options = resolveOptions({
       '../../packages/ui/layouts',
       '../../packages/types/layouts',
       '../../packages/utils/layouts',
-      '../../packages/tools/layouts',
-      '../../packages/auth/layouts'
+      '../../packages/tools/layouts'
     ],
     plugins: [
       'plugins',
       '../../packages/ui/plugins',
       '../../packages/types/plugins',
       '../../packages/utils/plugins',
-      '../../packages/tools/plugins',
-      '../../packages/auth/plugins'
+      '../../packages/tools/plugins'
     ],
     middleware: [
       'middleware',
       '../../packages/ui/middleware',
       '../../packages/types/middleware',
       '../../packages/utils/middleware',
-      '../../packages/tools/middleware',
-      '../../packages/auth/middleware'
+      '../../packages/tools/middleware'
     ],
     modules: [
       'modules',
       '../../packages/ui/modules',
       '../../packages/types/modules',
       '../../packages/utils/modules',
-      '../../packages/tools/modules',
-      '../../packages/auth/modules'
+      '../../packages/tools/modules'
     ],
     servers: [],
     root: [r('..')],
@@ -90,8 +82,7 @@ export const options = resolveOptions({
       '../../packages/ui',
       '../../packages/types',
       '../../packages/utils',
-      '../../packages/tools',
-      '../../packages/auth'
+      '../../packages/tools'
     ]
   }
 });
