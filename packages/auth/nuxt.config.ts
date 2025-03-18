@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig: {
+    authOrigin: process.env.AUTH_ORIGIN,
     authSecret: process.env.AUTH_SECRET
   }
 });
