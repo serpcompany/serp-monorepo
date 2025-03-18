@@ -8,7 +8,7 @@ RUN npm install -g pnpm
 
 WORKDIR /app
 COPY . .
-RUN pnpm install
+RUN pnpm --filter @serp-co install --shamefully-hoist
 RUN pnpm store prune
 RUN pnpm --filter @serp-co run build
 
