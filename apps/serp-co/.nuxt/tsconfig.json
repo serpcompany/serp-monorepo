@@ -11,8 +11,12 @@
       "nitropack": [
         "../../../node_modules/.pnpm/nitropack@2.11.6_drizzle-orm@0.36.4_typescript@5.7.3/node_modules/nitropack"
       ],
-      "defu": ["../../../node_modules/.pnpm/defu@6.1.4/node_modules/defu"],
-      "h3": ["../../../node_modules/.pnpm/h3@1.15.0/node_modules/h3"],
+      "defu": [
+        "../../../node_modules/.pnpm/defu@6.1.4/node_modules/defu"
+      ],
+      "h3": [
+        "../../../node_modules/.pnpm/h3@1.15.0/node_modules/h3"
+      ],
       "consola": [
         "../../../node_modules/.pnpm/consola@3.4.0/node_modules/consola"
       ],
@@ -43,19 +47,45 @@
       "vite/client": [
         "../../../node_modules/.pnpm/vite@6.1.0/node_modules/vite/client"
       ],
-      "~": [".."],
-      "~/*": ["../*"],
-      "@": [".."],
-      "@/*": ["../*"],
-      "~~": [".."],
-      "~~/*": ["../*"],
-      "@@": [".."],
-      "@@/*": ["../*"],
-      "#shared": ["../shared"],
-      "assets": ["../assets"],
-      "assets/*": ["../assets/*"],
-      "public": ["../public"],
-      "public/*": ["../public/*"],
+      "~": [
+        ".."
+      ],
+      "~/*": [
+        "../*"
+      ],
+      "@": [
+        ".."
+      ],
+      "@/*": [
+        "../*"
+      ],
+      "~~": [
+        ".."
+      ],
+      "~~/*": [
+        "../*"
+      ],
+      "@@": [
+        ".."
+      ],
+      "@@/*": [
+        "../*"
+      ],
+      "#shared": [
+        "../shared"
+      ],
+      "assets": [
+        "../assets"
+      ],
+      "assets/*": [
+        "../assets/*"
+      ],
+      "public": [
+        "../public"
+      ],
+      "public/*": [
+        "../public/*"
+      ],
       "#app": [
         "../../../node_modules/.pnpm/nuxt@3.15.4_drizzle-orm@0.36.4_eslint@9.20.1_typescript@5.7.3_vite@6.2.2/node_modules/nuxt/dist/app"
       ],
@@ -98,14 +128,18 @@
       "#nuxt-multi-cache/composables": [
         "../../../node_modules/.pnpm/nuxt-multi-cache@3.4.0/node_modules/nuxt-multi-cache/dist/runtime/composables/index"
       ],
-      "#multi-cache-server-options": ["./multiCache.serverOptions"],
+      "#multi-cache-server-options": [
+        "./multiCache.serverOptions"
+      ],
       "#ui": [
         "../../../node_modules/.pnpm/@nuxt+ui@3.0.0-alpha.10_embla-carousel@8.5.2_radix-vue@1.9.17_typescript@5.7.3_vite@6.2.2_vue@3.5.13/node_modules/@nuxt/ui/dist/runtime"
       ],
       "#ui/*": [
         "../../../node_modules/.pnpm/@nuxt+ui@3.0.0-alpha.10_embla-carousel@8.5.2_radix-vue@1.9.17_typescript@5.7.3_vite@6.2.2_vue@3.5.13/node_modules/@nuxt/ui/dist/runtime/*"
       ],
-      "#color-mode-options": ["./color-mode-options.mjs"],
+      "#color-mode-options": [
+        "./color-mode-options.mjs"
+      ],
       "#image": [
         "../../../node_modules/.pnpm/@nuxt+image@1.9.0/node_modules/@nuxt/image/dist/runtime"
       ],
@@ -124,11 +158,21 @@
       "#vue-router": [
         "../../../node_modules/.pnpm/vue-router@4.5.0_vue@3.5.13/node_modules/vue-router"
       ],
-      "#imports": ["./imports"],
-      "#app-manifest": ["./manifest/meta/e521f235-5e65-4e80-bbc3-99c32d1f859d"],
-      "#components": ["./components"],
-      "#build": ["."],
-      "#build/*": ["./*"]
+      "#imports": [
+        "./imports"
+      ],
+      "#app-manifest": [
+        "./manifest/meta/9c14e141-cf9a-45f5-80f4-13d9fe175966"
+      ],
+      "#components": [
+        "./components"
+      ],
+      "#build": [
+        "."
+      ],
+      "#build/*": [
+        "./*"
+      ]
     },
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -144,7 +188,12 @@
     "noImplicitOverride": true,
     "module": "preserve",
     "noEmit": true,
-    "lib": ["ESNext", "dom", "dom.iterable", "webworker"],
+    "lib": [
+      "ESNext",
+      "dom",
+      "dom.iterable",
+      "webworker"
+    ],
     "jsx": "preserve",
     "jsxImportSource": "vue",
     "types": [],
@@ -199,8 +248,8 @@
     "../../../node_modules/.pnpm/@nuxt+eslint@0.6.2_eslint@9.20.1_typescript@5.7.3_vite@6.2.2/node_modules/@nuxt/eslint/dist/runtime",
     "../../../node_modules/.pnpm/@nuxt+scripts@0.9.5_@nuxt+devtools@1.7.0_@vue+compiler-core@3.5.13_nuxt@3.15.4_postcss@8.5.3__33zpz26g476sn744ucl3jay4ky/node_modules/@nuxt/scripts/runtime",
     "../../../node_modules/.pnpm/@nuxt+scripts@0.9.5_@nuxt+devtools@1.7.0_@vue+compiler-core@3.5.13_nuxt@3.15.4_postcss@8.5.3__33zpz26g476sn744ucl3jay4ky/node_modules/@nuxt/scripts/dist/runtime",
-    "../../../node_modules/.pnpm/@sidebase+nuxt-auth@0.10.1_drizzle-orm@0.36.4_next-auth@5.0.0-beta.25_typescript@5.7.3/node_modules/@sidebase/nuxt-auth/runtime",
-    "../../../node_modules/.pnpm/@sidebase+nuxt-auth@0.10.1_drizzle-orm@0.36.4_next-auth@5.0.0-beta.25_typescript@5.7.3/node_modules/@sidebase/nuxt-auth/dist/runtime",
+    "../../../node_modules/.pnpm/@sidebase+nuxt-auth@0.10.1_drizzle-orm@0.36.4_next-auth@4.21.1_typescript@5.7.3/node_modules/@sidebase/nuxt-auth/runtime",
+    "../../../node_modules/.pnpm/@sidebase+nuxt-auth@0.10.1_drizzle-orm@0.36.4_next-auth@4.21.1_typescript@5.7.3/node_modules/@sidebase/nuxt-auth/dist/runtime",
     "../../../node_modules/.pnpm/@nuxt+devtools@1.7.0_vite@6.2.2_vue@3.5.13/node_modules/@nuxt/devtools/runtime",
     "../../../node_modules/.pnpm/@nuxt+devtools@1.7.0_vite@6.2.2_vue@3.5.13/node_modules/@nuxt/devtools/dist/runtime",
     "../../../node_modules/.pnpm/@nuxt+telemetry@2.6.5/node_modules/@nuxt/telemetry/runtime",
@@ -283,8 +332,8 @@
     "../../../node_modules/.pnpm/@nuxt+eslint@0.6.2_eslint@9.20.1_typescript@5.7.3_vite@6.2.2/node_modules/@nuxt/eslint/dist/runtime/server",
     "../../../node_modules/.pnpm/@nuxt+scripts@0.9.5_@nuxt+devtools@1.7.0_@vue+compiler-core@3.5.13_nuxt@3.15.4_postcss@8.5.3__33zpz26g476sn744ucl3jay4ky/node_modules/@nuxt/scripts/runtime/server",
     "../../../node_modules/.pnpm/@nuxt+scripts@0.9.5_@nuxt+devtools@1.7.0_@vue+compiler-core@3.5.13_nuxt@3.15.4_postcss@8.5.3__33zpz26g476sn744ucl3jay4ky/node_modules/@nuxt/scripts/dist/runtime/server",
-    "../../../node_modules/.pnpm/@sidebase+nuxt-auth@0.10.1_drizzle-orm@0.36.4_next-auth@5.0.0-beta.25_typescript@5.7.3/node_modules/@sidebase/nuxt-auth/runtime/server",
-    "../../../node_modules/.pnpm/@sidebase+nuxt-auth@0.10.1_drizzle-orm@0.36.4_next-auth@5.0.0-beta.25_typescript@5.7.3/node_modules/@sidebase/nuxt-auth/dist/runtime/server",
+    "../../../node_modules/.pnpm/@sidebase+nuxt-auth@0.10.1_drizzle-orm@0.36.4_next-auth@4.21.1_typescript@5.7.3/node_modules/@sidebase/nuxt-auth/runtime/server",
+    "../../../node_modules/.pnpm/@sidebase+nuxt-auth@0.10.1_drizzle-orm@0.36.4_next-auth@4.21.1_typescript@5.7.3/node_modules/@sidebase/nuxt-auth/dist/runtime/server",
     "../../../node_modules/.pnpm/@nuxt+devtools@1.7.0_vite@6.2.2_vue@3.5.13/node_modules/@nuxt/devtools/runtime/server",
     "../../../node_modules/.pnpm/@nuxt+devtools@1.7.0_vite@6.2.2_vue@3.5.13/node_modules/@nuxt/devtools/dist/runtime/server",
     "../../../node_modules/.pnpm/@nuxt+telemetry@2.6.5/node_modules/@nuxt/telemetry/runtime/server",
