@@ -3,6 +3,9 @@ export default defineNuxtConfig({
   // devtools: { enabled: true }
   extends: ['@serp/types'],
   modules: ['@nuxthub/core', '@sidebase/nuxt-auth'],
+  build: {
+    transpile: ['next-auth']
+  },
   hub: {
     database: true,
     databaseMigrationsDirs: ['server/db/migrations', 'server/api/db/migrations']
