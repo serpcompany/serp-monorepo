@@ -1,7 +1,17 @@
 <template>
   <div v-if="data">
-    <UpvoteButton :id="data.id" module="company" :upvotes="upvotes" />
-    <CommentsContainer :id="data.id" module="company" :comments="comments" />
+    <UpvoteButton
+      v-if="useAuth"
+      :id="data.id"
+      module="company"
+      :upvotes="upvotes"
+    />
+    <CommentsContainer
+      v-if="useAuth"
+      :id="data.id"
+      module="company"
+      :comments="comments"
+    />
     <multipage-header
       :name="data.name"
       :one-liner="data.oneLiner"
@@ -98,6 +108,9 @@ const data = await useCompany(`${slug}`);
 if (!data) {
   router.push('/404');
 }
+
+const config = useRuntimeConfig();
+const useAuth = config.public.useAuth;
 
 // When not using caching at the API level, grab the upvotes and comments directly from the data object
 // const upvotes = data.upvotes || [];

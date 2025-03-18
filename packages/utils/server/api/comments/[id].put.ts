@@ -1,4 +1,5 @@
 import { eq, sql } from 'drizzle-orm';
+import { useRuntimeConfig } from '#imports';
 import { getServerSession } from '#auth';
 import { db } from '@serp/utils/server/api/db';
 import { getTableAndPKForModule } from '@serp/utils/server/utils/getTableAndPKForModule';

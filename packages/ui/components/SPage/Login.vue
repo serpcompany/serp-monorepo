@@ -11,11 +11,11 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  middleware: 'sidebase-auth',
-  auth: { unauthenticatedOnly: true, navigateAuthenticatedTo: '/' }
-});
-
-const { signIn, getProviders } = useAuth();
+const route = useRoute();
+const redirectTo = route.query.redirectTo || '/';
+const { signIn, getProviders, status } = useAuth();
+if (status.value === 'authenticated') {
+  navigateTo(redirectTo);
+}
 const providers = await getProviders();
 </script>

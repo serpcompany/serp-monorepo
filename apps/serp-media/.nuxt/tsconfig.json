@@ -121,11 +121,17 @@
       "#nuxt-scripts-utils": [
         "../../../node_modules/.pnpm/@nuxt+scripts@0.9.5_@nuxt+devtools@1.7.0_@vue+compiler-core@3.5.13_nuxt@3.15.4_postcss@8.5.3__ybp7lesc2xuw57zg4wjhww7bn4/node_modules/@nuxt/scripts/dist/runtime/utils"
       ],
+      "#link-checker": [
+        "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime"
+      ],
+      "#link-checker/*": [
+        "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime/*"
+      ],
       "#vue-router": [
         "../../../node_modules/.pnpm/vue-router@4.5.0_vue@3.5.13/node_modules/vue-router"
       ],
       "#imports": ["./imports"],
-      "#app-manifest": ["./manifest/meta/cb3a969b-27aa-4d1d-859f-4ca5599f1074"],
+      "#app-manifest": ["./manifest/meta/dev.json"],
       "#components": ["./components"],
       "#build": ["."],
       "#build/*": ["./*"]
@@ -196,6 +202,8 @@
     "../../../node_modules/.pnpm/@nuxt+scripts@0.9.5_@nuxt+devtools@1.7.0_@vue+compiler-core@3.5.13_nuxt@3.15.4_postcss@8.5.3__ybp7lesc2xuw57zg4wjhww7bn4/node_modules/@nuxt/scripts/dist/runtime",
     "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/runtime",
     "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime",
+    "../../../node_modules/.pnpm/@sidebase+nuxt-auth@0.10.0_drizzle-orm@0.36.4_next-auth@4.21.1_typescript@5.7.3/node_modules/@sidebase/nuxt-auth/runtime",
+    "../../../node_modules/.pnpm/@sidebase+nuxt-auth@0.10.0_drizzle-orm@0.36.4_next-auth@4.21.1_typescript@5.7.3/node_modules/@sidebase/nuxt-auth/dist/runtime",
     "../../../node_modules/.pnpm/@nuxt+devtools@1.7.0_vite@6.2.1_vue@3.5.13/node_modules/@nuxt/devtools/runtime",
     "../../../node_modules/.pnpm/@nuxt+devtools@1.7.0_vite@6.2.1_vue@3.5.13/node_modules/@nuxt/devtools/dist/runtime",
     "../../../node_modules/.pnpm/@nuxt+telemetry@2.6.5/node_modules/@nuxt/telemetry/runtime",
@@ -235,6 +243,7 @@
     "../../../node_modules/.pnpm/nuxt-security@2.1.5/node_modules/nuxt-security/node_modules",
     "../../../node_modules/.pnpm/@nuxt+scripts@0.9.5_@nuxt+devtools@1.7.0_@vue+compiler-core@3.5.13_nuxt@3.15.4_postcss@8.5.3__ybp7lesc2xuw57zg4wjhww7bn4/node_modules/@nuxt/scripts/node_modules",
     "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/node_modules",
+    "../../../node_modules/.pnpm/@sidebase+nuxt-auth@0.10.0_drizzle-orm@0.36.4_next-auth@4.21.1_typescript@5.7.3/node_modules/@sidebase/nuxt-auth/node_modules",
     "../../../node_modules/.pnpm/@nuxt+devtools@1.7.0_vite@6.2.1_vue@3.5.13/node_modules/@nuxt/devtools/node_modules",
     "../../../node_modules/.pnpm/@nuxt+telemetry@2.6.5/node_modules/@nuxt/telemetry/node_modules",
     "../../../node_modules/.pnpm/@nuxt+icon@1.10.3_vite@6.2.1_vue@3.5.13/node_modules/@nuxt/icon/runtime/server",
@@ -273,6 +282,8 @@
     "../../../node_modules/.pnpm/@nuxt+scripts@0.9.5_@nuxt+devtools@1.7.0_@vue+compiler-core@3.5.13_nuxt@3.15.4_postcss@8.5.3__ybp7lesc2xuw57zg4wjhww7bn4/node_modules/@nuxt/scripts/dist/runtime/server",
     "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/runtime/server",
     "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime/server",
+    "../../../node_modules/.pnpm/@sidebase+nuxt-auth@0.10.0_drizzle-orm@0.36.4_next-auth@4.21.1_typescript@5.7.3/node_modules/@sidebase/nuxt-auth/runtime/server",
+    "../../../node_modules/.pnpm/@sidebase+nuxt-auth@0.10.0_drizzle-orm@0.36.4_next-auth@4.21.1_typescript@5.7.3/node_modules/@sidebase/nuxt-auth/dist/runtime/server",
     "../../../node_modules/.pnpm/@nuxt+devtools@1.7.0_vite@6.2.1_vue@3.5.13/node_modules/@nuxt/devtools/runtime/server",
     "../../../node_modules/.pnpm/@nuxt+devtools@1.7.0_vite@6.2.1_vue@3.5.13/node_modules/@nuxt/devtools/dist/runtime/server",
     "../../../node_modules/.pnpm/@nuxt+telemetry@2.6.5/node_modules/@nuxt/telemetry/runtime/server",

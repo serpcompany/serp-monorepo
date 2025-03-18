@@ -124,7 +124,6 @@
           </div>
           <div class="commentBox text-black dark:text-white">
             <textarea
-              ref="addComment"
               v-model="newComment"
               name="addComment"
               class="addComment bg-white dark:bg-gray-800"

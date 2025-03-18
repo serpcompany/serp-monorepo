@@ -1,7 +1,13 @@
 <template>
   <div>
-    <UpvoteButton :id="data.slug" module="posts" :upvotes="data.upvotes" />
+    <UpvoteButton
+      v-if="useAuth"
+      :id="data.slug"
+      module="posts"
+      :upvotes="data.upvotes"
+    />
     <CommentsContainer
+      v-if="useAuth"
       :id="data.slug"
       module="posts"
       :comments="data.comments || []"
@@ -64,6 +70,9 @@
 
 <script setup lang="ts">
 import type { Post } from '@serp/types/types';
+
+const config = useRuntimeConfig();
+const useAuth = config.public.useAuth;
 
 const isLoaded = ref(false);
 const isPlaying = ref(false);

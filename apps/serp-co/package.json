@@ -34,7 +34,6 @@
     "@nuxtjs/html-validator": "^1.8.2",
     "@nuxtjs/seo": "^2.0.0-rc.23",
     "@nuxtjs/sitemap": "^7.0.0",
-    "@serp/auth": "workspace:^",
     "@serp/tools": "workspace:^",
     "@serp/types": "workspace:^",
     "@serp/ui": "workspace:^",

@@ -7,6 +7,10 @@
           <nuxt-link to="/" aria-label="home"><s-logo /></nuxt-link>
         </div>
 
+        <div v-if="useAuth" class="flex lg:hidden">
+          <profile-dropdown />
+        </div>
+
         <!-- Centered navigation for larger screens -->
         <div class="hidden max-w-[700px] flex-1 justify-center lg:flex">
           <u-navigation-menu
@@ -46,8 +50,9 @@
         </div>
 
         <!-- Color mode button on right for larger screens -->
-        <div class="hidden items-center lg:flex">
+        <div class="hidden items-center space-x-2 lg:flex">
           <color-mode-button />
+          <profile-dropdown v-if="useAuth" />
         </div>
       </div>
     </div>
@@ -69,6 +74,7 @@
 <script setup>
 const config = useRuntimeConfig();
 const headerNavItems = config.public.headerNavItems;
+const useAuth = config.public.useAuth;
 
 const mobileMenuOpen = ref(false);
 

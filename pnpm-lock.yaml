@@ -446,9 +446,6 @@ importers:
       '@nuxtjs/sitemap':
         specifier: ^7.0.0
         version: 7.2.4(h3@1.15.1)(vite@6.2.1)(vue@3.5.13)
-      '@serp/auth':
-        specifier: workspace:^
-        version: link:../../packages/auth
       '@serp/tools':
         specifier: workspace:^
         version: link:../../packages/tools
@@ -842,9 +839,6 @@ importers:
       '@nuxtjs/sitemap':
         specifier: ^7.0.0
         version: 7.2.4(h3@1.15.1)(vite@6.2.1)(vue@3.5.13)
-      '@serp/auth':
-        specifier: workspace:^
-        version: link:../../packages/auth
       '@serp/configs':
         specifier: workspace:^
         version: link:../../packages/configs
@@ -935,72 +929,6 @@ importers:
       wrangler:
         specifier: ^3.112.0
         version: 3.112.0
-
-  packages/auth:
-    devDependencies:
-      '@eslint/eslintrc':
-        specifier: ^3.1.0
-        version: 3.3.0
-      '@nuxt/eslint':
-        specifier: ^0.6.1
-        version: 0.6.2(eslint@9.21.0)(typescript@5.8.2)(vite@6.2.1)
-      '@nuxt/test-utils':
-        specifier: ^3.14.4
-        version: 3.17.1(@testing-library/vue@8.1.0)(@vue/test-utils@2.4.6)(jsdom@25.0.1)(playwright-core@1.50.1)(typescript@5.8.2)(vitest@2.1.9)
-      '@serp/types':
-        specifier: workspace:^
-        version: link:../types
-      '@sidebase/nuxt-auth':
-        specifier: 0.10.0
-        version: 0.10.0(next-auth@4.21.1)(typescript@5.8.2)
-      '@testing-library/jest-dom':
-        specifier: ^6.6.3
-        version: 6.6.3
-      '@testing-library/vue':
-        specifier: ^8.1.0
-        version: 8.1.0(vue@3.5.13)
-      '@types/eslint__eslintrc':
-        specifier: ^2.1.2
-        version: 2.1.2
-      '@vitest/coverage-v8':
-        specifier: ^2.1.5
-        version: 2.1.9(vitest@2.1.9)
-      '@vue/test-utils':
-        specifier: ^2.4.6
-        version: 2.4.6
-      bcrypt:
-        specifier: ^5.1.1
-        version: 5.1.1
-      eslint:
-        specifier: ^9.20.1
-        version: 9.21.0
-      jsdom:
-        specifier: ^25.0.1
-        version: 25.0.1
-      next-auth:
-        specifier: ~4.21.1
-        version: 4.21.1(next@13.5.8)(react-dom@18.3.1)(react@18.3.1)
-      nuxt:
-        specifier: ^3.15.4
-        version: 3.15.4(drizzle-orm@0.36.4)(eslint@9.21.0)(typescript@5.8.2)(vite@6.2.1)
-      playwright-core:
-        specifier: ^1.48.2
-        version: 1.50.1
-      prettier-plugin-packagejson:
-        specifier: ^2.5.3
-        version: 2.5.10(prettier@3.5.3)
-      prettier-plugin-tailwindcss:
-        specifier: ^0.6.8
-        version: 0.6.11(prettier@3.5.3)
-      typescript:
-        specifier: ^5.7.3
-        version: 5.8.2
-      vitest:
-        specifier: ^2.1.5
-        version: 2.1.9(happy-dom@15.11.7)(jsdom@25.0.1)
-      vue:
-        specifier: latest
-        version: 3.5.13(typescript@5.8.2)
 
   packages/configs: {}
 
@@ -1256,6 +1184,9 @@ importers:
       '@serp/types':
         specifier: workspace:^
         version: link:../types
+      '@sidebase/nuxt-auth':
+        specifier: 0.10.0
+        version: 0.10.0(drizzle-orm@0.36.4)(next-auth@4.21.1)(typescript@5.7.3)
       '@testing-library/jest-dom':
         specifier: ^6.6.3
         version: 6.6.3
@@ -1271,6 +1202,9 @@ importers:
       '@vue/test-utils':
         specifier: ^2.4.6
         version: 2.4.6
+      bcrypt:
+        specifier: ^5.1.1
+        version: 5.1.1
       drizzle-kit:
         specifier: ^0.28.1
         version: 0.28.1
@@ -1283,6 +1217,9 @@ importers:
       jsdom:
         specifier: ^25.0.1
         version: 25.0.1
+      next-auth:
+        specifier: ~4.21.1
+        version: 4.21.1(next@13.5.8)(react-dom@18.3.1)(react@18.3.1)
       nuxt:
         specifier: ^3.15.4
         version: 3.15.4(drizzle-orm@0.36.4)(eslint@9.20.1)(typescript@5.7.3)(vite@6.2.1)
@@ -1325,6 +1262,9 @@ importers:
       '@serp/types':
         specifier: workspace:^
         version: link:../types
+      '@sidebase/nuxt-auth':
+        specifier: 0.10.0
+        version: 0.10.0(drizzle-orm@0.36.4)(next-auth@4.21.1)(typescript@5.8.2)
       '@testing-library/jest-dom':
         specifier: ^6.6.3
         version: 6.6.3
@@ -1340,6 +1280,9 @@ importers:
       '@vue/test-utils':
         specifier: ^2.4.6
         version: 2.4.6
+      bcrypt:
+        specifier: ^5.1.1
+        version: 5.1.1
       drizzle-kit:
         specifier: ^0.28.1
         version: 0.28.1
@@ -1352,6 +1295,9 @@ importers:
       jsdom:
         specifier: ^25.0.1
         version: 25.0.1
+      next-auth:
+        specifier: ~4.21.1
+        version: 4.21.1(next@13.5.8)(react-dom@18.3.1)(react@18.3.1)
       nuxt:
         specifier: ^3.15.4
         version: 3.15.4(drizzle-orm@0.36.4)(eslint@9.21.0)(typescript@5.8.2)(vite@6.2.1)
@@ -6763,7 +6709,7 @@ packages:
       - xml2js
     dev: true
 
-  /@sidebase/nuxt-auth@0.10.0(next-auth@4.21.1)(typescript@5.8.2):
+  /@sidebase/nuxt-auth@0.10.0(drizzle-orm@0.36.4)(next-auth@4.21.1)(typescript@5.8.2):
     resolution: {integrity: sha512-epAodLKJS7LNclKJ4l6Zs9qkxdhgASll8TourjTInOySCtC29S8nolJ00JxULy7ffBj8HSVoIzFQjPC9LnxxJg==}
     engines: {node: '>=20', pnpm: '>=9.4.0'}
     peerDependencies:
