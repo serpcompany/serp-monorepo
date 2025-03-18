@@ -49,5 +49,6 @@ services:
       - NUXT_PUBLIC_URL=${NUXT_PUBLIC_URL}
       - AUTH_ORIGIN=${NUXT_PUBLIC_URL}
       - AUTH_SECRET=${AUTH_SECRET}
+      - USE_AUTH=${USE_AUTH}
       - OTEL_EXPORTER_ENDPOINT=http://localhost:4318/v1/traces
       - SERVICE_NAME=serp-monorepo-dev
