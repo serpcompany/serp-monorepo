@@ -37,6 +37,7 @@
     "@serp/types": "workspace:^",
     "@serp/ui": "workspace:^",
     "@serp/utils": "workspace:^",
+    "@sidebase/nuxt-auth": "^0.10.0",
     "@tailwindcss/typography": "^0.5.15",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/vue": "^8.1.0",
@@ -57,7 +58,6 @@
     "prettier-plugin-packagejson": "^2.5.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "typescript": "^5.6.3",
-    "@sidebase/nuxt-auth": "0.10.0",
     "vitest": "^2.1.5",
     "vue": "latest",
     "vue-router": "latest"
