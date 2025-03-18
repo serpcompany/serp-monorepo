@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   extends: ['@serp/types'],
   modules: ['@sidebase/nuxt-auth'],
   auth: {
+    baseURL: process.env.AUTH_ORIGIN,
     provider: {
       type: 'authjs',
       trustHost: false,

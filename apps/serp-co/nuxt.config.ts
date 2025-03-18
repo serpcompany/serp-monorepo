@@ -25,6 +25,7 @@ export default defineNuxtConfig({
     secretAccessKey: process.env.CLOUDFLARE_R2_ACCESS_KEY
   },
   auth: {
+    baseURL: process.env.AUTH_ORIGIN,
     provider: {
       type: 'authjs',
       trustHost: false,
