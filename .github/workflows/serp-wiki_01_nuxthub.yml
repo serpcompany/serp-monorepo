@@ -35,11 +35,8 @@ jobs:
       - name: Ensure NuxtHub module is installed
         run: pnpx nuxthub@latest ensure
 
-      - name: Ensure Infisical CLI is installed
-        run: pnpx @infisical/cli@latest ensure
-
       - name: Build application
-        run: infisical run --domain=https://secrets.serp.co --token=${{ secrets.INFISICAL_ACCESS_TOKEN_SERP }} --projectId=${{ secrets.INFISICAL_PROJECT_ID_SERP_WIKI }} -- pnpm build
+        run: pnpx @infisical/cli@latest run --domain=https://secrets.serp.co --token=${{ secrets.INFISICAL_ACCESS_TOKEN_SERP }} --projectId=${{ secrets.INFISICAL_PROJECT_ID_SERP_WIKI }} -- pnpm build
 
       - name: Deploy to NuxtHub
         uses: nuxt-hub/action@v1
