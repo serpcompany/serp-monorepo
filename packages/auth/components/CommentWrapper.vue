@@ -92,15 +92,13 @@
           <div class="hover:text-primary" @click="handleBeforeReply">
             {{ beforeReply ? 'Never mind' : 'Reply' }}
           </div>
-          <template v-if="comment.replies.length !== 0">
+          <template v-if="localState.replies.length !== 0">
             <span class="dot">•</span>
             <div class="hover:text-primary" @click="showReply">
               {{
                 showReplies
                   ? 'Hide replies'
-                  : `Show
-              replies
-              [${comment.replies.length}]`
+                  : `Show replies [${localState.replies.length}]`
               }}
             </div>
           </template>
@@ -185,22 +183,23 @@
             :id="id"
             :key="reply.id"
             :comment="reply"
-            :user="user"
             :comment-background-color="commentBackgroundColor"
             :comment-text-color="commentTextColor"
             :user-name-color="userNameColor"
             :wrapper-size="wrapperSize"
             :depth-length="depthLength + 1"
-            :user-data="userData"
             :module="props.module"
             :parent-ids="[...parentIds, comment.id]"
             :parent-indices="[...parentIndices, currentIndex]"
             :current-index="getIndex(reply.id)"
             @delete-row="deleteReply(index)"
+            @update-comment="$emit('update-comment', $event)"
+            @add-reply="$emit('add-reply', $event)"
+            @delete-reply="$emit('delete-reply', $event)"
           />
         </transition-group>
         <div
-          v-if="limit < comment.replies.length && showReplies"
+          v-if="limit < localState.replies.length && showReplies"
           class="update-limit"
           @click="updateLimit"
         >
@@ -232,10 +231,38 @@ const props = defineProps({
   parentIndices: { type: Array, default: () => [] }
 });
 
-const getIndex = (id) =>
-  props.comment.replies.findIndex((comment) => comment.id === id);
+const localComment = computed(() => ({
+  content: filteredComment.value,
+  updatedAt: props.comment.updatedAt,
+  replies: [...props.comment.replies],
+  replyCount: props.comment.replyCount || 0
+}));
 
-const emit = defineEmits(['delete-row']);
+const localState = reactive({
+  updatedAt: null,
+  replies: [],
+  replyCount: 0
+});
+
+watch(
+  () => props.comment,
+  (newComment) => {
+    localState.replies = [...newComment.replies];
+    localState.replyCount = newComment.replyCount || 0;
+    localState.updatedAt = newComment.updatedAt;
+  },
+  { immediate: true }
+);
+
+const getIndex = (id) =>
+  localState.replies.findIndex((comment) => comment.id === id);
+
+const emit = defineEmits([
+  'delete-row',
+  'update-comment',
+  'add-reply',
+  'delete-reply'
+]);
 
 const toast = useToast();
 
@@ -267,7 +294,7 @@ const isAuthorOrAdmin = computed(
 );
 
 const displayedReplies = computed(() =>
-  props.comment.replies.slice(0, limit.value)
+  localState.replies.slice(0, limit.value)
 );
 
 const remainingUpdateLetter = computed(
@@ -280,12 +307,12 @@ const remainingLetter = computed(
 
 const isDeleted = computed(() => filteredComment.value === '[deleted]');
 const isUpdated = computed(
-  () => props.comment.updatedAt !== props.comment.createdAt
+  () => localState.updatedAt !== props.comment.createdAt
 );
 
 const getTimeDiff = computed(() => {
   const now = Date.now();
-  const commentTime = parseInt(props.comment.updatedAt);
+  const commentTime = parseInt(localState.updatedAt);
   const diff = now - commentTime;
 
   const minutes = Math.floor(diff / 60000);
@@ -363,8 +390,8 @@ async function update() {
   }
 
   if (
-    data?.value?.user?.email !== props.comment.email ||
-    data?.value?.user?.isAdmin
+    data?.value?.user?.email !== props.comment.email &&
+    !data?.value?.user?.isAdmin
   ) {
     toast.add({
       id: 'update-comment-author',
@@ -409,8 +436,15 @@ async function update() {
 
     if (response.value.message && response.value.message === 'success') {
       filteredComment.value = updateMessage.value;
-      props.comment.updatedAt = updatedAt;
+      localState.updatedAt = updatedAt;
       beforeUpdate.value = false;
+
+      emit('update-comment', {
+        id: props.comment.id,
+        updatedAt,
+        content: updateMessage.value
+      });
+
       toast.add({
         id: 'update-comment-success',
         title: 'Comment updated',
@@ -444,8 +478,8 @@ async function deleteComment() {
   }
 
   if (
-    data?.value?.user?.email !== props.comment.email ||
-    data?.value?.user?.isAdmin
+    data?.value?.user?.email !== props.comment.email &&
+    !data?.value?.user?.isAdmin
   ) {
     toast.add({
       id: 'delete-comment-author',
@@ -504,7 +538,12 @@ async function deleteComment() {
 }
 
 function deleteReply(index) {
-  props.comment.replies.splice(index, 1);
+  localState.replies.splice(index, 1);
+
+  emit('delete-reply', {
+    commentId: props.comment.id,
+    replyIndex: index
+  });
 }
 
 function updateLimit() {
@@ -565,7 +604,7 @@ async function reply() {
     }
 
     if (response.value.message && response.value.message === 'success') {
-      props.comment.replies.push({
+      const newReply = {
         id: response.value.id,
         email: data.value.user.email,
         name: data.value.user.name,
@@ -574,8 +613,16 @@ async function reply() {
         createdAt: replyObj.timestamp,
         updatedAt: replyObj.timestamp,
         replies: []
+      };
+
+      localState.replies.push(newReply);
+      localState.replyCount++;
+
+      emit('add-reply', {
+        commentId: props.comment.id,
+        reply: newReply
       });
-      props.comment.replyCount = (props.comment.replyCount || 0) + 1;
+
       replyMessage.value = '';
       beforeReply.value = false;
       if (!showReplies.value) {
