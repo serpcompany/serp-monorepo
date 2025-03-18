@@ -21,7 +21,6 @@ export default defineNuxtConfig({
     '@nuxthub/core'
   ],
   auth: {
-    baseURL: process.env.AUTH_ORIGIN,
     provider: {
       type: 'authjs',
       trustHost: false,
@@ -48,6 +47,8 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig: {
+    authOrigin: process.env.AUTH_ORIGIN,
+    authSecret: process.env.AUTH_SECRET,
     public: {
       siteName: process.env.NUXT_PUBLIC_SITE_NAME,
       domain: process.env.NUXT_PUBLIC_DOMAIN,
