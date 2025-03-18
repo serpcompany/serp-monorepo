@@ -45,11 +45,11 @@ export default defineNuxtConfig({
     authOrigin: "https://staging.serp-wiki.pages.dev/api/auth", //process.env.AUTH_ORIGIN,
     authSecret: process.env.AUTH_SECRET,
     public: {
-      useAuth: process.env.USE_AUTH === 'true',
       siteName: process.env.NUXT_PUBLIC_SITE_NAME,
       domain: process.env.NUXT_PUBLIC_DOMAIN,
       siteUrl: process.env.NUXT_PUBLIC_URL,
       apiUrl: '/api',
+      useAuth: true,
       environment: process.env.NODE_ENV,
       socialLinks: [
         {
