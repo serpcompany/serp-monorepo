@@ -26,7 +26,8 @@ export default defineNuxtConfig({
       process.env.AUTH_ORIGIN || process.env.NUXT_PUBLIC_URL + '/api/auth',
     authSecret: process.env.AUTH_SECRET,
     public: {
-      useAuth: process.env.USE_AUTH === 'true'
+      useAuth: process.env.USE_AUTH === 'true',
+      apiUrl: process.env.NUXT_PUBLIC_API_URL
     }
   }
 });
