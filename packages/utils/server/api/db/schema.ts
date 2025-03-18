@@ -11,6 +11,7 @@ import {
 } from 'drizzle-orm/pg-core';
 
 export const cacheSchema = pgSchema('cache');
+export const formSchema = pgSchema('form');
 
 // Company
 export const companyCache = cacheSchema.table('company_cache', {
@@ -35,8 +36,9 @@ export const companyCache = cacheSchema.table('company_cache', {
   logo: text('logo'),
   screenshots: jsonb('screenshots'),
   rating: doublePrecision('rating'),
-  upvotes: integer('upvotes'),
+  upvotes: text('upvotes').array(),
   downvotes: integer('downvotes'),
+  comments: jsonb('comments'),
   featured: boolean('featured'),
   featuredOrder: integer('featured_order')
 });
@@ -52,6 +54,26 @@ export const companyCategoryCache = cacheSchema.table(
     slug: varchar('slug', { length: 255 }).notNull()
   }
 );
+
+export const companySubmitForm = formSchema.table('company_submit', {
+  id: serial('id').primaryKey(),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  submittingEmail: varchar('submitting_email', { length: 255 }).notNull(),
+  name: varchar('name', { length: 255 }).notNull(),
+  domain: varchar('domain', { length: 255 }).notNull(),
+  categories: jsonb('categories'),
+  pricing: varchar('pricing', { length: 255 }),
+  tags: jsonb('tags'),
+  oneLiner: text('one_liner'),
+  description: text('description'),
+  logo: varchar('logo', { length: 255 }),
+  approved: boolean('approved').notNull().default(false),
+  reviewedAt: timestamp('reviewed_at', { withTimezone: true }),
+  reviewedBy: varchar('reviewed_by', { length: 255 }),
+  reviewedNotes: text('reviewed_notes')
+});
 // End Company
 
 // Post
@@ -74,7 +96,9 @@ export const postCache = cacheSchema.table('post_cache', {
   videoId: varchar('video_id', { length: 255 }),
   relatedPosts: jsonb('related_posts'),
   module: varchar('module', { length: 255 }),
-  keyword: varchar('keyword', { length: 255 })
+  keyword: varchar('keyword', { length: 255 }),
+  comments: jsonb('comments'),
+  upvotes: text('upvotes').array()
 });
 
 export const postCategoryCache = cacheSchema.table('post_category_cache', {
@@ -155,7 +179,9 @@ export const mbMetadataCache = mappingSchema.table('mb_metadata_cache', {
   lyricsSync: jsonb('lyrics_sync'),
   overview: text('overview'),
   seoDescription: text('seo_description'),
-  seoTitle: text('seo_title')
+  seoTitle: text('seo_title'),
+  comments: jsonb('comments'),
+  upvotes: text('upvotes').array()
 });
 
 export const mbReleaseGroupCache = mappingSchema.table(
@@ -181,7 +207,9 @@ export const mbReleaseGroupCache = mappingSchema.table(
     wikidata: jsonb('wikidata'),
     overview: text('overview'),
     seoDescription: text('seo_description'),
-    seoTitle: text('seo_title')
+    seoTitle: text('seo_title'),
+    comments: jsonb('comments'),
+    upvotes: text('upvotes').array()
   }
 );
 
@@ -210,7 +238,9 @@ export const mbArtistMetadataCache = mappingSchema.table(
     wikidata: jsonb('wikidata'),
     overview: text('overview'),
     seoDescription: text('seo_description'),
-    seoTitle: text('seo_title')
+    seoTitle: text('seo_title'),
+    comments: jsonb('comments'),
+    upvotes: text('upvotes').array()
   }
 );
 // End Music

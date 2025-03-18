@@ -13,10 +13,19 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     'nuxt-multi-cache',
     'nuxt-security',
-    'nuxt-link-checker'
+    'nuxt-link-checker',
+    '@bg-dev/nuxt-s3'
   ],
+  s3: {
+    driver: 's3',
+    bucket: process.env.CLOUDFLARE_R2_BUCKET,
+    endpoint: process.env.CLOUDFLARE_R2_ENDPOINT,
+    region: 'auto',
+    accessKeyId: process.env.CLOUDFLARE_R2_ACCESS_ID,
+    secretAccessKey: process.env.CLOUDFLARE_R2_ACCESS_KEY
+  },
   auth: {
-    baseUrl: process.env.AUTH_ORIGIN,
+    baseURL: process.env.AUTH_ORIGIN,
     provider: {
       type: 'authjs',
       trustHost: false,
@@ -39,6 +48,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     authSecret: process.env.AUTH_SECRET,
     public: {
+      cloudflareR2PublicUrl: process.env.CLOUDFLARE_R2_PUBLIC_URL,
       otelExporterEndpoint: process.env.OTEL_EXPORTER_ENDPOINT,
       siteName: process.env.NUXT_PUBLIC_SITE_NAME,
       domain: process.env.NUXT_PUBLIC_DOMAIN,

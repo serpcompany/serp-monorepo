@@ -1,4 +1,5 @@
 export * from './Category';
+export * from './Comment';
 export * from './Company';
 export * from './Faq';
 export * from './FooterColumn';

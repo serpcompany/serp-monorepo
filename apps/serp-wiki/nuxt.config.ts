@@ -1,7 +1,12 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  extends: ['@serp/ui', '@serp/types', '@serp/utils-cloudflare-pages'],
+  extends: [
+    '@serp/ui',
+    '@serp/types',
+    '@serp/utils-cloudflare-pages',
+    '@serp/auth'
+  ],
   modules: [
     '@nuxt/ui',
     '@nuxt/image',
@@ -15,6 +20,15 @@ export default defineNuxtConfig({
     'nuxt-link-checker',
     '@nuxthub/core'
   ],
+  auth: {
+    baseURL: process.env.AUTH_ORIGIN,
+    provider: {
+      type: 'authjs',
+      trustHost: false,
+      defaultProvider: 'credentials',
+      addDefaultCallbackUrl: true
+    }
+  },
   nitro: {
     experimental: {
       tasks: true

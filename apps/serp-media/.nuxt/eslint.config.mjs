@@ -283,6 +283,9 @@ configs.append(
           'useCompanies',
           'useCompany',
           'useCompanyCategories',
+          'useCompanyComments',
+          'useCompanyUpvotesAndComments',
+          'useCompanyUpvotes',
           'useFetchWithCache',
           'usePost',
           'usePostCategories',
@@ -562,7 +565,8 @@ configs.append(
           'withSiteTrailingSlash',
           'withSiteUrl',
           'getPathRobotConfig',
-          'getSiteRobotConfig'
+          'getSiteRobotConfig',
+          'getTableAndPKForModule'
         ].map((i) => [i, 'readonly'])
       )
     }

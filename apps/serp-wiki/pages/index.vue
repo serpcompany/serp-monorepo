@@ -36,7 +36,6 @@ const page = ref(Number(route.query.page) || 1);
 const limit = ref(Number(route.query.limit) || 50);
 
 const postsData = await usePosts(page.value, limit.value);
-console.log(postsData);
 if (!postsData) {
   router.push('/404');
 }

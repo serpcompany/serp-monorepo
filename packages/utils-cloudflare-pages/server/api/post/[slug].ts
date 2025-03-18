@@ -27,5 +27,9 @@ export default defineEventHandler(async (event) => {
   }
 
   const post = results[0] as Post;
+  post.comments = post.comments.map((comment) =>
+    typeof comment === 'string' ? JSON.parse(comment) : comment
+  );
+
   return post;
 });

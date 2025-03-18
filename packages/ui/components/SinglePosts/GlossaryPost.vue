@@ -1,5 +1,11 @@
 <template>
   <div>
+    <UpvoteButton :id="data.slug" module="posts" :upvotes="data.upvotes" />
+    <CommentsContainer
+      :id="data.slug"
+      module="posts"
+      :comments="data.comments || []"
+    />
     <div class="mt-10 grid grid-cols-1 lg:grid-cols-3">
       <div class="col-span-2 pb-10">
         <h1 class="text-4xl font-bold lg:text-6xl">

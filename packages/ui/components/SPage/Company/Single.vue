@@ -1,5 +1,7 @@
 <template>
   <div v-if="data">
+    <UpvoteButton :id="data.id" module="company" :upvotes="upvotes" />
+    <CommentsContainer :id="data.id" module="company" :comments="comments" />
     <multipage-header
       :name="data.name"
       :one-liner="data.oneLiner"
@@ -96,6 +98,13 @@ const data = await useCompany(`${slug}`);
 if (!data) {
   router.push('/404');
 }
+
+// When not using caching at the API level, grab the upvotes and comments directly from the data object
+// const upvotes = data.upvotes || [];
+// const comments = data.comments || [];
+
+// Possibly move to onMounted, but may negatively impact SEO (components currently have onMounted, investigate impact on SEO)
+const { upvotes, comments } = await useCompanyUpvotesAndComments(data?.id);
 
 const faqItems = computed(() => {
   if (!data?.faqs) return [];

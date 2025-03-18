@@ -99,6 +99,12 @@
         "../../../node_modules/.pnpm/nuxt-multi-cache@3.4.0/node_modules/nuxt-multi-cache/dist/runtime/composables/index"
       ],
       "#multi-cache-server-options": ["./multiCache.serverOptions"],
+      "#link-checker": [
+        "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime"
+      ],
+      "#link-checker/*": [
+        "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime/*"
+      ],
       "#ui": [
         "../../../node_modules/.pnpm/@nuxt+ui@3.0.0-alpha.10_embla-carousel@8.5.2_radix-vue@1.9.17_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/@nuxt/ui/dist/runtime"
       ],
@@ -125,7 +131,7 @@
         "../../../node_modules/.pnpm/vue-router@4.5.0_vue@3.5.13/node_modules/vue-router"
       ],
       "#imports": ["./imports"],
-      "#app-manifest": ["./manifest/meta/b678311a-6142-491b-8c8b-580788b40449"],
+      "#app-manifest": ["./manifest/meta/dev"],
       "#components": ["./components"],
       "#build": ["."],
       "#build/*": ["./*"]
@@ -182,6 +188,8 @@
     "../../../node_modules/.pnpm/nuxt-security@2.1.5/node_modules/nuxt-security/dist/runtime",
     "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/runtime",
     "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime",
+    "../../../node_modules/.pnpm/@bg-dev+nuxt-s3@2.0.2/node_modules/@bg-dev/nuxt-s3/runtime",
+    "../../../node_modules/.pnpm/@bg-dev+nuxt-s3@2.0.2/node_modules/@bg-dev/nuxt-s3/dist/runtime",
     "../../../node_modules/.pnpm/@nuxt+icon@1.10.3_vite@6.2.1_vue@3.5.13/node_modules/@nuxt/icon/runtime",
     "../../../node_modules/.pnpm/@nuxt+icon@1.10.3_vite@6.2.1_vue@3.5.13/node_modules/@nuxt/icon/dist/runtime",
     "../../../node_modules/.pnpm/@nuxt+fonts@0.10.3_vite@6.2.1/node_modules/@nuxt/fonts/runtime",
@@ -233,6 +241,7 @@
     "../../../node_modules/.pnpm/nuxt-multi-cache@3.4.0/node_modules/nuxt-multi-cache/node_modules",
     "../../../node_modules/.pnpm/nuxt-security@2.1.5/node_modules/nuxt-security/node_modules",
     "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/node_modules",
+    "../../../node_modules/.pnpm/@bg-dev+nuxt-s3@2.0.2/node_modules/@bg-dev/nuxt-s3/node_modules",
     "../../../node_modules/.pnpm/@nuxt+icon@1.10.3_vite@6.2.1_vue@3.5.13/node_modules/@nuxt/icon/node_modules",
     "../../../node_modules/.pnpm/@nuxt+fonts@0.10.3_vite@6.2.1/node_modules/@nuxt/fonts/node_modules",
     "../../../node_modules/.pnpm/@nuxtjs+color-mode@3.5.2/node_modules/@nuxtjs/color-mode/node_modules",
@@ -264,6 +273,8 @@
     "../../../node_modules/.pnpm/nuxt-security@2.1.5/node_modules/nuxt-security/dist/runtime/server",
     "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/runtime/server",
     "../../../node_modules/.pnpm/nuxt-link-checker@4.1.1_typescript@5.7.3_vite@6.2.1_vue@3.5.13/node_modules/nuxt-link-checker/dist/runtime/server",
+    "../../../node_modules/.pnpm/@bg-dev+nuxt-s3@2.0.2/node_modules/@bg-dev/nuxt-s3/runtime/server",
+    "../../../node_modules/.pnpm/@bg-dev+nuxt-s3@2.0.2/node_modules/@bg-dev/nuxt-s3/dist/runtime/server",
     "../../../node_modules/.pnpm/@nuxt+icon@1.10.3_vite@6.2.1_vue@3.5.13/node_modules/@nuxt/icon/runtime/server",
     "../../../node_modules/.pnpm/@nuxt+icon@1.10.3_vite@6.2.1_vue@3.5.13/node_modules/@nuxt/icon/dist/runtime/server",
     "../../../node_modules/.pnpm/@nuxt+fonts@0.10.3_vite@6.2.1/node_modules/@nuxt/fonts/runtime/server",
