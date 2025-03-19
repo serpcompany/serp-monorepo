@@ -21,3 +21,6 @@ python dev.py @serp-media dev:docker
 
 # Skip Infisical setup
 python dev.py @serp-media dev:docker --no-infisical
+
+# Run trufflehog scan of repo locally
+trufflehog filesystem . --json > secrets-report.json
