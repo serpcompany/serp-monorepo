@@ -1,6 +1,7 @@
 const { resolve } = require("node:path");
 
 const project = resolve(process.cwd(), "tsconfig.json");
+const baseConfig = require('./base');
 
 /*
  * This is a custom ESLint configuration for use with
@@ -23,18 +24,10 @@ module.exports = {
     React: true,
     JSX: true
   },
-  settings: {
-    'import/resolver': {
-      typescript: {
-        project
-      }
-    }
-  },
-  ignorePatterns: [
-    'node_modules/',
-    'dist/',
-    '**/.nuxt',
-    '**/eslint.config.mjs',
-    '**/tsconfig.json'
-  ]
+  settings: baseConfig.settings,
+  ignorePatterns: baseConfig.ignorePatterns,
+  rules: {
+    ...baseConfig.rules
+    // Add library-specific rules here
+  }
 };

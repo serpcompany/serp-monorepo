@@ -6,7 +6,7 @@
       content: 'w-48'
     }"
   >
-    <UAvatar :src="data?.user?.image" />
+    <UAvatar :src="data?.user?.image" role="button" />
   </UDropdownMenu>
   <UButton v-else to="/login">Login</UButton>
 </template>
