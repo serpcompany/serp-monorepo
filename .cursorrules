@@ -1,125 +1,20 @@
-// SERP Monorepo Project CursorRules
-// This file provides configuration for AI coding assistants
-
 {
-  // Project Information
   "project": {
     "name": "SERP Monorepo",
-    "description": "A monorepo containing multiple SERP (Search Engine Results Page) related applications and shared packages",
-    "repository": "serp-monorepo",
-    "type": "monorepo"
+    "description": "A monorepo containing multiple SERP related applications and shared packages."
   },
-
-  // Technology & Reference Locations
-  "technologiesAndReferences": {
-    "framework": "Nuxt 3",
-    "language": "TypeScript",
-    "packageManager": "pnpm@8.15.6",
-    "monorepoTool": "Turborepo",
-    "moduleReferences": "Check individual app's package.json for current module dependencies",
-    "configReferences": "For Nuxt configurations, check nuxt.config.ts in each app directory",
-    "workspacePackages": "Use workspace: prefix when referencing internal packages",
-    "databaseInfo": "Check schema.ts files for current Drizzle ORM schema definitions",
-    "deploymentReferences": "See deployment section for rules on determining deployment platform"
-  },
-
-  // Monorepo Structure
-  "structure": {
-    "apps": "Check pnpm-workspace.yaml for current app directories",
-    "packages": "Check pnpm-workspace.yaml for current package directories",
-    "codeExamples": "Refer to existing implementations in similar apps when creating new features"
-  },
-
-  // Code Style & Format
-  "codeStyle": {
-    "linting": {
-      "tool": "ESLint",
-      "configReferences": "Check packages/configs/eslint/ for current ESLint configurations",
-      "applicationRules": "Always follow existing patterns in the specific app you're working with"
-    },
-    "formatting": {
-      "tool": "Prettier",
-      "configReference": "Check .prettierrc at project root",
-      "semi": true,
-      "singleQuote": true,
-      "trailingComma": "none"
-    },
-    "editorConfig": {
-      "reference": "See .editorconfig at project root",
-      "indentStyle": "space",
-      "indentSize": 2
-    }
-  },
-
-  // Development Workflows
-  "workflows": {
-    "referenceLocation": "Check package.json scripts in each app for app-specific commands",
-    "secrets": "Use Infisical for secrets management",
-    "commonCommands": {
-      "dev": "infisical run -- nuxt dev",
-      "build": "turbo run build",
-      "test": "turbo run test"
-    }
-  },
-
-  // Deployment
-  "deployment": {
-    "cloudflarePages": "Only apps that extend '@serp/utils-cloudflare-pages' in their nuxt.config.ts are deployed to Cloudflare Pages",
-    "otherPlatforms": "Apps not using utils-cloudflare-pages may use alternative deployment platforms",
-    "determinePlatform": "Check nuxt.config.ts to see if it extends '@serp/utils-cloudflare-pages'"
-  },
-
-  // Component Guidelines
-  "componentGuidelines": {
-    "framework": "Vue 3 with Composition API",
-    "style": "Uses <script setup> syntax",
-    "uiLibrary": "Check existing components for examples of @nuxt/ui usage",
-    "referenceLocation": "Look at existing components in the same app for pattern matching"
-  },
-
-  // Development Preferences
-  "preferences": {
-    "useCompositionApi": true,
-    "useSetupScript": true,
-    "useTypeScript": true,
-    "useESModules": true,
-    "examplesReference": "Look at recently updated components in the same app for current patterns"
-  },
-
-  // Naming Conventions
-  "namingConventions": {
-    "components": "PascalCase.vue",
-    "composables": "camelCase.ts with use prefix (e.g., useAuth)",
-    "pages": "kebab-case.vue or index.vue",
-    "apis": "kebab-case.ts",
-    "types": "PascalCase.ts (interface/type) or kebab-case.ts (file)",
-    "referenceLocation": "Look at existing files in the app you're working in to match patterns"
-  },
-
-  // Import Conventions
-  "importConventions": {
-    "preferWorkspacePackages": true,
-    "orderPreference": [
-      "vue and nuxt core imports",
-      "third party libraries",
-      "workspace packages",
-      "local components/composables"
-    ],
-    "referenceLocation": "Look at existing files in the app you're working in for import patterns"
-  },
-
-  // Documentation Conventions
-  "documentationConventions": {
-    "jsdoc": "Use JSDoc comments for functions and components",
-    "readme": "Include README.md in each package and app",
-    "referenceLocation": "Look at existing documentation in similar apps/packages"
-  },
-
-  // Nuxt Specific Configurations
-  "nuxtConfigurations": {
-    "configReference": "Check nuxt.config.ts in the specific app you're working with",
-    "runtimeConfigReference": "Check nuxt.config.ts for runtimeConfig structure",
-    "modularization": "Always follow existing patterns in the specific app",
-    "cloudflarePages": "For apps deployed to Cloudflare Pages, check if nuxt.config.ts extends '@serp/utils-cloudflare-pages'"
-  }
+  "global_instructions": "Apply the global coding standards and project guidelines as defined in the referenced rule files.",
+  "references": [
+    "@file .cursor/rules/project-info.mdc",
+    "@file .cursor/rules/project-structure.mdc",
+    "@file .cursor/rules/code-style.mdc",
+    "@file .cursor/rules/github-workflows.mdc",
+    "@file .cursor/rules/deployments.mdc",
+    "@file .cursor/rules/ui-guidelines.mdc",
+    "@file .cursor/rules/preferences.mdc",
+    "@file .cursor/rules/naming-conventions.mdc",
+    "@file .cursor/rules/import-conventions.mdc",
+    "@file .cursor/rules/nuxt-configurations.mdc"
+  ],
+  "ai_instructions": "When generating code, first apply these global guidelines, then load and merge the additional rules from the referenced files."
 }

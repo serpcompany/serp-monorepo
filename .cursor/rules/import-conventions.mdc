@@ -1,0 +1,20 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: "Rules for import order and workspace package preferences."
+globs:
+  - "*.ts"
+  - "*.vue"
+---
+
+- **Prefer Workspace Packages:** true  
+- **Order Preference:**
+  1. Vue and Nuxt core imports  
+  2. Third party libraries  
+  3. Workspace packages  
+  4. Local components/composables
+
+- **Reference Location:** Look at existing files in the app for import patterns

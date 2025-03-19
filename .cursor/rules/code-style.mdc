@@ -1,0 +1,29 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: "Rules for code style, linting, formatting, and editor configuration."
+globs:
+  - "*.ts"
+  - "*.vue"
+---
+
+- **Linting:**
+  - Tool: ESLint  
+  - Config References: Check packages/configs/eslint/ for current ESLint configurations  
+  - Application Rules: Always follow existing patterns in the specific app you're working with
+
+- **Formatting:**
+  - Tool: Prettier  
+  - Config Reference: Check .prettierrc at project root  
+  - Settings:  
+    - Semi-colons: enabled  
+    - Single quotes: true  
+    - Trailing comma: none
+
+- **Editor Config:**
+  - Reference: See .editorconfig at project root  
+  - Indent Style: space  
+  - Indent Size: 2
