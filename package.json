@@ -5,6 +5,7 @@
     "build": "turbo run build",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
+    "lint-staged": "lint-staged",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch"
   },
@@ -14,6 +15,7 @@
   },
   "devDependencies": {
     "husky": "^9.1.7",
+    "lint-staged": "^15.2.2",
     "prettier": "^3.5.3",
     "turbo": "^2.4.4"
   },
