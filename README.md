@@ -24,7 +24,7 @@ ALL singles for everything could now go under /posts/[slug]/
 ```yaml
 - companies: serp.co/posts/SERP/
   pages/posts/<single>/
-  
+
   pages/software/index.vue
   pages/software/best/index.vue
 
