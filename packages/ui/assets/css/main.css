@@ -11,8 +11,8 @@
 /* Add base layer for direct element styling */
 @layer base {
   html {
-      font-size: 16px;
-    }
+    font-size: 16px;
+  }
   button,
   [role='button'] {
     @apply cursor-pointer;

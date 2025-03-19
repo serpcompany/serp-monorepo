@@ -1,11 +1,12 @@
 <template>
   <client-only>
     <u-button
-              :icon="isDark ? 'i-lucide-moon' : 'i-lucide-sun'"
-              color="neutral"
-              variant="ghost"
-              aria-label="Toggle color mode"
-              @click="isDark = !isDark" />
+      :icon="isDark ? 'i-lucide-moon' : 'i-lucide-sun'"
+      color="neutral"
+      variant="ghost"
+      aria-label="Toggle color mode"
+      @click="isDark = !isDark"
+    />
     <template #fallback>
       <div class="size-8"></div>
     </template>
