@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     '@nuxthub/core'
   ],
   auth: {
-    baseURL: "https://staging.serp-wiki.pages.dev/api/auth",  // process.env.AUTH_ORIGIN,
+    baseURL: 'https://staging.serp-wiki.pages.dev/api/auth', // process.env.AUTH_ORIGIN,
     provider: {
       type: 'authjs',
       trustHost: false,
@@ -42,7 +42,7 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig: {
-    authOrigin: "https://staging.serp-wiki.pages.dev/api/auth", //process.env.AUTH_ORIGIN,
+    authOrigin: 'https://staging.serp-wiki.pages.dev/api/auth', //process.env.AUTH_ORIGIN,
     authSecret: process.env.AUTH_SECRET,
     public: {
       siteName: process.env.NUXT_PUBLIC_SITE_NAME,
