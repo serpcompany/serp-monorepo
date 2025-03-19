@@ -1,12 +1,11 @@
 <template>
   <UDropdownMenu
-    v-if="data?.user"
-    :items="items"
-    :ui="{
-      content: 'w-48'
-    }"
-  >
-    <UAvatar :src="data?.user?.image" />
+                 v-if="data?.user"
+                 :items="items"
+                 :ui="{
+  content: 'w-48',
+}">
+    <UAvatar :src="data?.user?.image" role="button" />
   </UDropdownMenu>
   <UButton v-else to="/login">Login</UButton>
 </template>
