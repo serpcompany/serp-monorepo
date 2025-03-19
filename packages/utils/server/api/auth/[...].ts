@@ -69,21 +69,43 @@ export default NuxtAuthHandler({
       }
 
       // Try selecting an existing user by email.
+      const domain = process.env.NUXT_PUBLIC_DOMAIN;
       const selectSql = 'SELECT * FROM users WHERE email = ? LIMIT 1';
       const rows = await d1Query(selectSql, [email_]);
 
       if (!rows || rows.length === 0) {
         // No user found, insert a new record.
         const insertSql =
-          'INSERT INTO users (email, name, image, created_at) VALUES (?, ?, ?, ?)';
+          'INSERT INTO users (email, name, image, created_at, sites_registered) VALUES (?, ?, ?, ?, ?)';
         const createdAt = new Date().toISOString();
-        await d1Query(insertSql, [email_, user.name, user.image, createdAt]);
+        const sitesRegistered = JSON.stringify([domain]);
+        await d1Query(insertSql, [email_, user.name, user.image, createdAt, sitesRegistered]);
       } else {
         // User found, update their record.
-        const updateSql =
-          'UPDATE users SET name = ?, image = ?, updated_at = ? WHERE email = ?';
+        const updateSql = `
+          UPDATE users SET
+            name = ?,
+            image = ?,
+            sites_registered = CASE
+              WHEN EXISTS (
+                SELECT 1
+                FROM json_each(
+                  CASE WHEN sites_registered IS NULL OR sites_registered = '' THEN '[]' ELSE sites_registered END
+                )
+                WHERE json_each.value = ?
+              )
+              THEN sites_registered
+              ELSE json_insert(
+                CASE WHEN sites_registered IS NULL OR sites_registered = '' THEN '[]' ELSE sites_registered END,
+                '$[#]',
+                ?
+              )
+            END,
+            updated_at = ?
+          WHERE email = ?
+        `;
         const updatedAt = new Date().toISOString();
-        await d1Query(updateSql, [user.name, user.image, updatedAt, email_]);
+        await d1Query(updateSql, [user.name, user.image, domain, domain, updatedAt, email_]);
       }
 
       return true;
