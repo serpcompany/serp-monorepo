@@ -10,6 +10,10 @@ globs:
   - "*.vue"
 ---
 
+This is a NUXT project so most things are auto imported. 
+
+DO NOT ADD IMPORTS FOR THINGS THAT NUXT AUTO IMPORTS.
+
 - **Prefer Workspace Packages:** true  
 - **Order Preference:**
   1. Vue and Nuxt core imports  

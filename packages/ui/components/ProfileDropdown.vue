@@ -1,14 +1,13 @@
 <template>
   <UDropdownMenu
-    v-if="data?.user"
-    :items="items"
-    :ui="{
+                 v-if="data?.user"
+                 :items="items"
+                 :ui="{
       content: 'w-48'
-    }"
-  >
+}">
     <UAvatar :src="data?.user?.image" role="button" />
   </UDropdownMenu>
-  <UButton v-else to="/login">Login</UButton>
+  <NuxtLink v-else to="/login" class="text-sm font-medium hover:underline">Login</NuxtLink>
 </template>
 
 <script setup lang="ts">
@@ -20,18 +19,12 @@ const items = ref([
       type: 'label'
     }
   ],
-  // [
-  //     {
-  //         label: 'Profile',
-  //         icon: 'i-lucide-user'
-  //     },
-  // ],
   [
     {
       label: 'Logout',
       icon: 'i-lucide-log-out',
       kbds: ['shift', 'meta', 'q'],
-      onSelect(event) {
+      onSelect(event: Event) {
         event.preventDefault();
         signOut();
       }

@@ -103,7 +103,7 @@ footerColumns: [
 By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel.
 
 ```sh
-npx turbo login
+pnpx turbo login
 ```
 
 This will authenticate the Turborepo CLI with your Vercel account
