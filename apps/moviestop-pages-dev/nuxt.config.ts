@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     '@nuxthub/core'
   ],
   auth: {
-    baseURL: 'https://staging.moviestop.pages.dev/api/auth', // process.env.AUTH_ORIGIN,
+    baseURL: process.env.AUTH_ORIGIN,
     provider: {
       type: 'authjs',
       trustHost: false,
@@ -42,14 +42,14 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig: {
-    authOrigin: 'https://staging.moviestop.pages.dev/api/auth', //process.env.AUTH_ORIGIN,
+    authOrigin: process.env.AUTH_ORIGIN,
     authSecret: process.env.AUTH_SECRET,
     public: {
       siteName: process.env.NUXT_PUBLIC_SITE_NAME,
       domain: process.env.NUXT_PUBLIC_DOMAIN,
       siteUrl: process.env.NUXT_PUBLIC_URL,
       apiUrl: '/api',
-      useAuth: true,
+      useAuth: false,
       environment: process.env.NODE_ENV,
       socialLinks: [
         {

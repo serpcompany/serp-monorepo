@@ -44,15 +44,14 @@ export default NuxtAuthHandler({
   secret: process.env.AUTH_SECRET,
 
   providers: [
-    GithubProvider({
+    // @ts-expect-error Use .default here for it to work during SSR.
+    GithubProvider.default({
       clientId: process.env.AUTH_GITHUB_CLIENT_ID,
       clientSecret: process.env.AUTH_GITHUB_CLIENT_SECRET
     }),
-    // RedditProvider({
-    //   clientId: process.env.AUTH_REDDIT_CLIENT_ID,
-    //   clientSecret: process.env.AUTH_REDDIT_CLIENT_SECRET
-    // }), // doesn't provide email
-    GoogleProvider({
+
+    // @ts-expect-error Use .default here for it to work during SSR.
+    GoogleProvider.default({
       clientId: process.env.AUTH_GOOGLE_CLIENT_ID,
       clientSecret: process.env.AUTH_GOOGLE_CLIENT_SECRET
     })
@@ -76,7 +75,13 @@ export default NuxtAuthHandler({
           'INSERT INTO users (email, name, image, created_at, sites_registered) VALUES (?, ?, ?, ?, ?)';
         const createdAt = new Date().toISOString();
         const sitesRegistered = JSON.stringify([domain]);
-        await d1Query(insertSql, [email_, user.name, user.image, createdAt, sitesRegistered]);
+        await d1Query(insertSql, [
+          email_,
+          user.name,
+          user.image,
+          createdAt,
+          sitesRegistered
+        ]);
       } else {
         // User found, update their record.
         const updateSql = `
@@ -102,7 +107,14 @@ export default NuxtAuthHandler({
           WHERE email = ?
         `;
         const updatedAt = new Date().toISOString();
-        await d1Query(updateSql, [user.name, user.image, domain, domain, updatedAt, email_]);
+        await d1Query(updateSql, [
+          user.name,
+          user.image,
+          domain,
+          domain,
+          updatedAt,
+          email_
+        ]);
       }
 
       return true;
