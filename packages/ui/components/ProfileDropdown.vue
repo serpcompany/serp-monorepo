@@ -1,13 +1,16 @@
 <template>
   <UDropdownMenu
-                 v-if="data?.user"
-                 :items="items"
-                 :ui="{
+    v-if="data?.user"
+    :items="items"
+    :ui="{
       content: 'w-48'
-}">
+    }"
+  >
     <UAvatar :src="data?.user?.image" role="button" />
   </UDropdownMenu>
-  <NuxtLink v-else to="/login" class="text-sm font-medium hover:underline">Login</NuxtLink>
+  <NuxtLink v-else to="/login" class="text-sm font-medium hover:underline"
+    >Login</NuxtLink
+  >
 </template>
 
 <script setup lang="ts">
