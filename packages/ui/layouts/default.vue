@@ -2,7 +2,7 @@
 <template>
   <div class="container mx-auto">
     <s-header />
-    <u-breadcrumb class="mt-10 mb-4" :items="items" />
+    <u-breadcrumb v-if="route.path !== '/'" class="mt-10 mb-4" :items="items" />
     <slot></slot>
     <lazy-s-footer />
   </div>
