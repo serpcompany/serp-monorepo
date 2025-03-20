@@ -31,6 +31,7 @@ export type PostIndex = {
   createdAt?: string;
   oneLiner?: string;
   module?: string;
+  keyword?: string;
 };
 
 export type Posts = {

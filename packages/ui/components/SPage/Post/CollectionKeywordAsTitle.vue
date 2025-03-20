@@ -16,6 +16,7 @@
           :key="post.id"
           :post="post"
           :base-slug="props.baseSlug"
+          :title="post.keyword"
         />
       </div>
 
