@@ -33,7 +33,7 @@
 
         <div class="mb-8 items-center justify-between sm:flex md:flex-row">
           <div
-            class="flex flex-col items-center justify-between overflow-x-scroll md:flex-row"
+            class="flex flex-col items-center justify-between sm:overflow-x-auto hide-scrollbar md:flex-row"
           >
             <!-- Social Links -->
             <nav aria-label="Social Media Links" class="mb-4 flex md:mb-0">
@@ -117,3 +117,14 @@ const address = config.public.address;
 const footerColumns = config.public.footerColumns as FooterColumn[];
 const legalLinks = config.public.legalLinks;
 </script>
+
+<style>
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari and Opera */
+}
+</style>
