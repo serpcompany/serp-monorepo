@@ -113,28 +113,26 @@
             <textarea
                       v-model="newComment"
                       name="addComment"
-                      class="addComment bg-white dark:bg-gray-800"
-                      placeholder="Add new comment"
+                      class="addComment bg-white dark:bg-gray-800 border-gray-500 dark:border-gray-400"
+                      placeholder="Add a comment"
                       spellcheck="true"
                       aria-label="Add comment"
                       @keyup="resize"
                       @focus="expandTextarea"
-                      @blur="collapseTextarea"></textarea>
-            <button
-                    aria-label="Send"
-                    :disabled="requestLoading"
-                    class="bg-primary hover:bg-primary-800"
-                    @click="addComment">
-              <div v-if="requestLoading" class="requestLoading"></div>
-              <span v-else>Send</span>
-            </button>
-            <div
-                 class="remainingLetter"
-                 :class="{
-                  'bg-red-500': remainingLetter < 0,
-                  'bg-primary': remainingLetter >= 0
-}">
-              <span>{{ remainingLetter }}</span>
+                      @blur="handleBlur"></textarea>
+            <div v-if="isExpanded" class="action-buttons mt-2 flex justify-end gap-2">
+              <button
+                      class="cancel-btn px-4 py-2 rounded-full text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                      @click="cancelComment">
+                Cancel
+              </button>
+              <button
+                      class="comment-btn px-4 py-2 rounded-full bg-primary text-white hover:bg-primary-800"
+                      :disabled="!filterNewComment.length || requestLoading"
+                      @click="addComment">
+                <div v-if="requestLoading" class="request-loading"></div>
+                <span v-else>Comment</span>
+              </button>
             </div>
             <div v-if="alert" class="alert" :class="alertClass">
               {{ alertMessage }}
@@ -202,6 +200,7 @@ const alertClass = ref('');
 const alert = ref(false);
 const wrapperSize = ref('');
 const requestLoading = ref(false);
+const isExpanded = ref(false);
 
 const styleShadow = computed(() => ({
   // Remove the box-shadow
@@ -240,12 +239,31 @@ function expandTextarea(event) {
   const textarea = event.target;
   textarea.style.height = 'auto';
   textarea.style.height = `${Math.max(textarea.scrollHeight,60)}px`;
+  isExpanded.value = true;
 }
 
-function collapseTextarea(event) {
-  const textarea = event.target;
-  if (newComment.value === '') {
+function handleBlur(event) {
+  setTimeout(() => {
+    if (document.activeElement.closest('.action-buttons')) {
+      return;
+    }
+
+    if (!isExpanded.value) {
+      const textarea = event.target;
+      if (newComment.value === '') {
+        textarea.style.height = '32px';
+      }
+    }
+  },100);
+}
+
+function cancelComment() {
+  isExpanded.value = false;
+  newComment.value = '';
+  const textarea = document.querySelector('textarea.addComment');
+  if (textarea) {
     textarea.style.height = '32px';
+    textarea.blur();
   }
 }
 
@@ -271,7 +289,7 @@ async function addComment() {
     };
 
     try {
-      const { data: response, error } = await useFetch(
+      const { data: response,error } = await useFetch(
         `/api/comments/${props.id}`,
         {
           method: 'POST',
@@ -303,6 +321,7 @@ async function addComment() {
         });
         newComment.value = '';
         resize({ target: document.querySelector('textarea.addComment') });
+        isExpanded.value = false;
       } else {
         throw new Error(`Failed to add comment - ${response.value.message}`);
       }
@@ -317,12 +336,12 @@ async function addComment() {
       requestLoading.value = false;
     }
   } else {
-    setAlert("You can't send an empty comment!", 'fail');
+    setAlert("You can't send an empty comment!",'fail');
   }
 }
 
 function deleteComment(index) {
-  comments.value.splice(index, 1);
+  comments.value.splice(index,1);
 }
 
 function focusCommentBox() {
@@ -352,7 +371,7 @@ onMounted(async () => {
   align-self: center;
 }
 
-.comments >>> .alert {
+.comments>>>.alert {
   grid-column: 1/3;
   display: grid;
   grid-template-columns: 1fr;
@@ -370,314 +389,350 @@ onMounted(async () => {
   text-align: center;
 }
 
-.comments >>> .alert.alert {
+.comments>>>.alert.alert {
   border-color: rgba(0, 0, 0, 0.12) !important;
 }
 
-.comments >>> .success {
+.comments>>>.success {
   background-color: #4caf50 !important;
 }
 
-.comments >>> .pass {
+.comments>>>.pass {
   border-color: #4caf50 !important;
 }
 
-.comments >>> .info {
+.comments>>>.info {
   background-color: #2196f3 !important;
 }
 
-.comments >>> .default {
+.comments>>>.default {
   border-color: #2196f3 !important;
 }
 
-.comments >>> .alert.fail {
+.comments>>>.alert.fail {
   background-color: #ff5252 !important;
 }
 
-.comments >>> .fail {
+.comments>>>.fail {
   border-color: #ff5252 !important;
 }
 
-.comments >>> ::-webkit-input-placeholder {
-  color: #92b1b3 !important;
-  text-align: center;
-}
-
-.comments >>> ::-moz-placeholder {
-  color: #92b1b3 !important;
-  text-align: center;
-}
-
-.comments >>> :-ms-input-placeholder {
-  color: #92b1b3 !important;
-  text-align: center;
-}
-
-.comments >>> :-moz-placeholder {
-  color: #92b1b3 !important;
-  text-align: center;
-}
-
-.comments {
-  font-family: 'Roboto', sans-serif;
-  overflow: hidden;
-  border-radius: 4px;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  border: none;
-}
-
-.comments >>> .comments {
-  overflow-x: auto;
-}
-
-.comments > .innerWrapper {
-  overflow-x: auto;
-  padding: 10px 2px;
-}
-
-.comments >>> .noCommentWrapper {
-  display: grid;
-  padding-top: 15px;
-}
-
-.comments >>> .noCommentText {
-  cursor: pointer;
-  text-align: center;
-  padding: 8px 10px;
-  font-weight: 700;
-  border-radius: 18px;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 0px;
-  transition: linear 0.1s all;
-  -moz-transition: linear 0.1s all;
-  -webkit-transition: linear 0.1s all;
-}
-
-.comments >>> .userName {
-  grid-column: 1/3;
-  display: grid;
-  grid-template-columns: 1fr 0.001fr;
-  font-size: 14px;
-  line-height: 14px;
-  margin-top: 2px;
-  font-weight: 700;
-  color: rgb(6, 177, 183);
-  word-break: break-word;
-}
-
-.comments >>> .userName > .logOut {
-  grid-column: 2;
-  white-space: nowrap;
-  color: #92b1b3;
-  cursor: pointer;
-  margin-right: 10px;
-  transition: color linear 0.1s;
-  -moz-transition: color linear 0.1s;
-  -webkit-transition: color linear 0.1s;
-}
-
-.comments >>> .userName > .logOut:hover {
-  color: rgb(6, 177, 183);
-}
-
-.comments >>> .dot {
-  color: #c2c6cc;
-  font-size: 13px;
-  white-space: nowrap;
-}
-
-.comments >>> .avatar {
-  border-top-left-radius: 22px;
-  border-top-right-radius: 22px;
-}
-
-.comments >>> .avatar > svg {
-  border-radius: 50%;
-  height: 44px;
-  width: 44px;
-  transition: 0.3s;
-  -moz-transition: 0.3s;
-  -webkit-transition: 0.3s;
-}
-
-.comments >>> .addComment {
-  display: grid;
-  grid-template-columns: 0.001fr 1fr;
-  grid-auto-rows: minmax(0, auto);
-  grid-column-gap: 10px;
-  padding-top: 2px;
-}
-
-.comments >>> .commentBox {
-  display: grid;
-  grid-template-columns: minmax(200px, auto) 0.2fr;
-  grid-auto-rows: minmax(0, -webkit-max-content);
-  grid-auto-rows: minmax(0, max-content);
-  grid-auto-rows: minmax(0, -moz-max-content);
-  grid-row-gap: 10px;
-  overflow: auto;
-}
-
-.comments >>> .commentBox > textarea {
-  font-family: 'Roboto', sans-serif;
-  justify-self: stretch;
-  box-sizing: border-box;
-  height: 32px;
-  min-height: 32px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 10px;
-  padding-right: 22px;
-  font-size: 13px;
-  line-height: 16px;
-  border-radius: 18px;
-  border: 1px solid rgba(204, 212, 216, 0.8);
-  overflow: hidden;
-  resize: none;
-  outline: none;
-  transition: linear 0.1s all;
-  -moz-transition: linear 0.1s all;
-  -webkit-transition: linear 0.1s all;
-}
-
-.comments >>> .commentBox > button {
-  font-family: 'Roboto', sans-serif;
-  align-self: end;
-  max-height: 32px;
-  box-sizing: border-box;
-  height: 32px;
-  padding: 8px 10px;
-  font-size: 13px;
-  line-height: 16px;
-  font-weight: 700;
-  border-radius: 18px;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  transition: linear 0.1s all;
-  -moz-transition: linear 0.1s all;
-  -webkit-transition: linear 0.1s all;
-  z-index: 100;
-}
-
-.comments >>> .remainingLetter {
-  justify-self: end;
-  align-self: start;
-  box-sizing: border-box;
-  height: 32px;
-  display: grid;
-  border-top-left-radius: 18px;
-  padding-left: 3px;
-  padding-right: 22px;
-  margin-top: -42px;
-  margin-right: -22px;
-  z-index: 99;
-}
-
-.comments >>> .remainingLetter > span {
-  align-self: center;
-  font-size: 11px;
-  line-height: 11px;
-  padding: 3px;
-  color: #eee;
-}
-
-.comments >>> .updateLimit {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
-.comments >>> .limit {
-  color: rgb(6, 177, 183);
-  font-weight: 700;
-  justify-self: center;
-  font-size: 14px;
-  line-height: 14px;
-  box-sizing: border-box;
-  border-radius: 18px;
-  padding: 8px 10px;
-  cursor: pointer;
-  transition: linear 0.1s all;
-  -moz-transition: linear 0.1s all;
-  -webkit-transition: linear 0.1s all;
-}
-
-.comments >>> .limit:hover {
-  color: #fff;
-  background-color: #2196f3;
-}
-
-.comments >>> .fade-enter {
-  opacity: 0;
-}
-
-.comments >>> .fade-enter-active {
-  transition: opacity 0.3s;
-  -moz-transition: opacity 0.3s;
-  -webkit-transition: opacity 0.3s;
-}
-
-.comments >>> .fade-leave-active {
-  transition: opacity 0.3s;
-  -moz-transition: opacity 0.3s;
-  -webkit-transition: opacity 0.3s;
-  opacity: 0;
-}
-
-@media only screen and (max-width: 480px) {
-  .comments >>> .avatar > svg {
-    height: 20px;
-    width: 20px;
+.comments>>> ::-webkit-input-placeholder {
+  color: #4b5563 !important;
+  text-align: left;
+    font-weight: normal;
   }
 
-  .comments >>> .nameWrapper > .time {
-    overflow: hidden;
-    width: 38px;
-    text-overflow: ellipsis;
-  }
-}
-
-@media (hover: none) {
-  .comments >>> ::-webkit-scrollbar {
-    -webkit-appearance: none !important;
-  }
-
-  .comments >>> ::-webkit-scrollbar {
-    width: 5px !important;
-    height: 5px !important;
-    background-color: rgba(204, 212, 216, 0.2) !important;
-  }
-
-  .comments >>> ::-webkit-scrollbar-thumb {
-    background: rgba(204, 212, 216, 0.7) !important;
-  }
-
-  .comments >>> .commentBox {
-    overflow: unset;
-  }
-}
-
-.comments >>> .requestLoading {
-  display: inline-block;
-  border: 4px solid transparent;
-  border-left-color: #fff;
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  animation: requestLoading-spin 0.5s linear infinite;
-}
-
-@keyframes requestLoading-spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
+        .comments>>> ::-moz-placeholder {
+          color: #4b5563 !important;
+          text-align: left;
+          font-weight: normal;
+        }
+    
+        .comments>>> :-ms-input-placeholder {
+          color: #4b5563 !important;
+          text-align: left;
+          font-weight: normal;
+        }
+    
+        .comments>>> :-moz-placeholder {
+          color: #4b5563 !important;
+          text-align: left;
+          font-weight: normal;
+        }
+    
+        .comments {
+          font-family: 'Roboto', sans-serif;
+          overflow: hidden;
+          border-radius: 0;
+          -webkit-tap-highlight-color: transparent;
+          -webkit-touch-callout: none;
+          -webkit-text-size-adjust: 100%;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          border: none;
+          background-color: transparent;
+          box-shadow: none;
+        }
+    
+        .comments>>>.comments {
+          overflow-x: auto;
+          background-color: transparent;
+        }
+    
+        .comments>.innerWrapper {
+          overflow-x: auto;
+          padding: 10px 0;
+          background-color: transparent;
+          border: none;
+        }
+    
+        .comments>>>.noCommentWrapper {
+          display: grid;
+          padding-top: 15px;
+        }
+    
+        .comments>>>.noCommentText {
+          cursor: pointer;
+          text-align: center;
+          padding: 8px 10px;
+          font-weight: 700;
+          border-radius: 18px;
+          border-top-right-radius: 0;
+          border-bottom-left-radius: 0px;
+          transition: linear 0.1s all;
+          -moz-transition: linear 0.1s all;
+          -webkit-transition: linear 0.1s all;
+        }
+    
+        .comments>>>.userName {
+          grid-column: 1/3;
+          display: grid;
+          grid-template-columns: 1fr 0.001fr;
+          font-size: 14px;
+          line-height: 14px;
+          margin-top: 2px;
+          font-weight: 700;
+          color: rgb(6, 177, 183);
+          word-break: break-word;
+        }
+    
+        .comments>>>.userName>.logOut {
+          grid-column: 2;
+          white-space: nowrap;
+          color: #92b1b3;
+          cursor: pointer;
+          margin-right: 10px;
+          transition: color linear 0.1s;
+          -moz-transition: color linear 0.1s;
+          -webkit-transition: color linear 0.1s;
+        }
+    
+        .comments>>>.userName>.logOut:hover {
+          color: rgb(6, 177, 183);
+        }
+    
+        .comments>>>.dot {
+          color: #c2c6cc;
+          font-size: 13px;
+          white-space: nowrap;
+        }
+    
+        .comments>>>.avatar {
+          border-top-left-radius: 22px;
+          border-top-right-radius: 22px;
+        }
+    
+        .comments>>>.avatar>svg {
+          border-radius: 50%;
+          height: 44px;
+          width: 44px;
+          transition: 0.3s;
+          -moz-transition: 0.3s;
+          -webkit-transition: 0.3s;
+        }
+    
+        .comments>>>.addComment {
+          display: grid;
+          grid-template-columns: 0.001fr 1fr;
+          grid-auto-rows: minmax(0, auto);
+          grid-column-gap: 10px;
+          padding-top: 2px;
+          background-color: transparent;
+          border: none;
+          box-shadow: none;
+        }
+    
+        .comments>>>.commentBox {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-auto-rows: minmax(0, -webkit-max-content);
+          grid-auto-rows: minmax(0, max-content);
+          grid-auto-rows: minmax(0, -moz-max-content);
+          grid-row-gap: 10px;
+          overflow: auto;
+          background-color: transparent;
+          border: none;
+          box-shadow: none;
+        }
+    
+        .comments>>>.commentBox>textarea {
+          font-family: 'Roboto', sans-serif;
+          justify-self: stretch;
+          box-sizing: border-box;
+          height: 44px;
+          min-height: 44px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+          padding-left: 16px;
+          padding-right: 16px;
+          font-size: 14px;
+          line-height: 20px;
+          border-radius: 24px;
+          border: 1px solid #6b7280;
+          overflow: hidden;
+          resize: none;
+          outline: none;
+          transition: linear 0.1s all;
+          -moz-transition: linear 0.1s all;
+          -webkit-transition: linear 0.1s all;
+          width: 100%;
+        }
+    
+        .comments>>>.commentBox>button {
+          font-family: 'Roboto', sans-serif;
+          align-self: end;
+          max-height: 32px;
+          box-sizing: border-box;
+          height: 32px;
+          padding: 8px 10px;
+          font-size: 13px;
+          line-height: 16px;
+          font-weight: 700;
+          border-radius: 18px;
+          border: none;
+          cursor: pointer;
+          outline: none;
+          transition: linear 0.1s all;
+          -moz-transition: linear 0.1s all;
+          -webkit-transition: linear 0.1s all;
+          z-index: 100;
+        }
+    
+        .comments>>>.remainingLetter {
+          justify-self: end;
+          align-self: start;
+          box-sizing: border-box;
+          height: 32px;
+          display: grid;
+          border-top-left-radius: 18px;
+          padding-left: 3px;
+          padding-right: 22px;
+          margin-top: -42px;
+          margin-right: -22px;
+          z-index: 99;
+        }
+    
+        .comments>>>.remainingLetter>span {
+          align-self: center;
+          font-size: 11px;
+          line-height: 11px;
+          padding: 3px;
+          color: #eee;
+        }
+    
+        .comments>>>.updateLimit {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+    
+        .comments>>>.limit {
+          color: rgb(6, 177, 183);
+          font-weight: 700;
+          justify-self: center;
+          font-size: 14px;
+          line-height: 14px;
+          box-sizing: border-box;
+          border-radius: 18px;
+          padding: 8px 10px;
+          cursor: pointer;
+          transition: linear 0.1s all;
+          -moz-transition: linear 0.1s all;
+          -webkit-transition: linear 0.1s all;
+        }
+    
+        .comments>>>.limit:hover {
+          color: #fff;
+          background-color: #2196f3;
+        }
+    
+        .comments>>>.fade-enter {
+          opacity: 0;
+        }
+    
+        .comments>>>.fade-enter-active {
+          transition: opacity 0.3s;
+          -moz-transition: opacity 0.3s;
+          -webkit-transition: opacity 0.3s;
+        }
+    
+        .comments>>>.fade-leave-active {
+          transition: opacity 0.3s;
+          -moz-transition: opacity 0.3s;
+          -webkit-transition: opacity 0.3s;
+          opacity: 0;
+        }
+    
+        @media only screen and (max-width: 480px) {
+          .comments>>>.avatar>svg {
+            height: 20px;
+            width: 20px;
+          }
+    
+          .comments>>>.nameWrapper>.time {
+            overflow: hidden;
+            width: 38px;
+            text-overflow: ellipsis;
+          }
+        }
+    
+        @media (hover: none) {
+          .comments>>> ::-webkit-scrollbar {
+            -webkit-appearance: none !important;
+          }
+    
+          .comments>>> ::-webkit-scrollbar {
+            width: 5px !important;
+            height: 5px !important;
+            background-color: rgba(204, 212, 216, 0.2) !important;
+          }
+    
+          .comments>>> ::-webkit-scrollbar-thumb {
+            background: rgba(204, 212, 216, 0.7) !important;
+          }
+    
+          .comments>>>.commentBox {
+            overflow: unset;
+          }
+        }
+    
+        .comments>>>.requestLoading {
+          display: inline-block;
+          border: 4px solid transparent;
+          border-left-color: #fff;
+          border-radius: 50%;
+          width: 10px;
+          height: 10px;
+          animation: requestLoading-spin 0.5s linear infinite;
+        }
+    
+        @keyframes requestLoading-spin {
+          0% {
+            transform: rotate(0deg);
+          }
+    
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+    
+        .request-loading {
+          display: inline-block;
+          border: 4px solid transparent;
+          border-left-color: #fff;
+          border-radius: 50%;
+          width: 10px;
+          height: 10px;
+          animation: request-loading-spin 0.5s linear infinite;
+        }
+    
+        @keyframes request-loading-spin {
+          0% {
+            transform: rotate(0deg);
+          }
+    
+          100% {
+            transform: rotate(360deg);
+          }
+        }
 </style>

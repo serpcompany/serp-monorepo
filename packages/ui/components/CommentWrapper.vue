@@ -192,24 +192,24 @@
 </template>
 
 <script setup>
-const { status, data } = useAuth();
+const { status,data } = useAuth();
 
 const props = defineProps({
   module: String,
   id: Number,
   comment: Object,
   currentIndex: Number,
-  initialMessageLimit: { type: String, default: '10' },
-  maxLineLimit: { type: String, default: '40' },
-  maxShowingDepth: { type: String, default: '5' },
-  maxCommentLength: { type: String, default: '1000' },
-  depthLength: { type: Number, default: 0 },
-  commentBackgroundColor: { type: String, default: 'white' },
-  commentTextColor: { type: String, default: '#1d2129' },
-  userNameColor: { type: String, default: 'rgb(6, 177, 183)' },
+  initialMessageLimit: { type: String,default: '10' },
+  maxLineLimit: { type: String,default: '40' },
+  maxShowingDepth: { type: String,default: '5' },
+  maxCommentLength: { type: String,default: '1000' },
+  depthLength: { type: Number,default: 0 },
+  commentBackgroundColor: { type: String,default: 'white' },
+  commentTextColor: { type: String,default: '#1d2129' },
+  userNameColor: { type: String,default: 'rgb(6, 177, 183)' },
   wrapperSize: String,
-  parentIds: { type: Array, default: () => [] },
-  parentIndices: { type: Array, default: () => [] }
+  parentIds: { type: Array,default: () => [] },
+  parentIndices: { type: Array,default: () => [] }
 });
 
 const localComment = computed(() => ({
@@ -275,7 +275,7 @@ const isAuthorOrAdmin = computed(
 );
 
 const displayedReplies = computed(() =>
-  localState.replies.slice(0, limit.value)
+  localState.replies.slice(0,limit.value)
 );
 
 const remainingUpdateLetter = computed(
@@ -313,7 +313,7 @@ const getTimeDiff = computed(() => {
 
 const getTime = computed(() => {
   const date = new Date(parseInt(props.comment.timestamp));
-  return date.toLocaleString('en-US', {
+  return date.toLocaleString('en-US',{
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -341,7 +341,7 @@ function handleBeforeUpdate() {
     const updateTextarea = document.querySelector('[ref="addUpdate"]');
     if (updateTextarea) {
       updateTextarea.focus();
-      resize({ target: updateTextarea }, true);
+      resize({ target: updateTextarea },true);
     }
   });
 }
@@ -355,7 +355,7 @@ function handleBeforeDelete() {
   if (beforeDelete.value) {
     setTimeout(() => {
       beforeDelete.value = false;
-    }, 5000);
+    },5000);
   }
 }
 
@@ -395,7 +395,7 @@ async function update() {
       return;
     }
     const updatedAt = Date.now();
-    const { data: response, error } = await useFetch(
+    const { data: response,error } = await useFetch(
       `/api/comments/${props.id}`,
       {
         method: 'PUT',
@@ -420,7 +420,7 @@ async function update() {
       localState.updatedAt = updatedAt;
       beforeUpdate.value = false;
 
-      emit('update-comment', {
+      emit('update-comment',{
         id: props.comment.id,
         updatedAt,
         content: updateMessage.value
@@ -473,7 +473,7 @@ async function deleteComment() {
 
   requestDelete.value = true;
   try {
-    const { data: response, error } = await useFetch(
+    const { data: response,error } = await useFetch(
       `/api/comments/${props.id}`,
       {
         method: 'PUT',
@@ -519,9 +519,9 @@ async function deleteComment() {
 }
 
 function deleteReply(index) {
-  localState.replies.splice(index, 1);
+  localState.replies.splice(index,1);
 
-  emit('delete-reply', {
+  emit('delete-reply',{
     commentId: props.comment.id,
     replyIndex: index
   });
@@ -531,7 +531,7 @@ function updateLimit() {
   limit.value += parseInt(props.initialMessageLimit);
 }
 
-function resize(event, isUpdate = false) {
+function resize(event,isUpdate = false) {
   const textarea = event.target;
   textarea.style.height = 'auto';
   textarea.style.height = `${textarea.scrollHeight}px`;
@@ -566,12 +566,12 @@ async function reply() {
     const replyObj = {
       comment: replyMessage.value,
       timestamp: Date.now().toString(),
-      parentIds: [...props.parentIds, props.comment.id],
-      parentIndices: [...props.parentIndices, props.currentIndex],
+      parentIds: [...props.parentIds,props.comment.id],
+      parentIndices: [...props.parentIndices,props.currentIndex],
       module: props.module
     };
 
-    const { data: response, error } = await useFetch(
+    const { data: response,error } = await useFetch(
       `/api/comments/${props.id}`,
       {
         method: 'POST',
@@ -599,7 +599,7 @@ async function reply() {
       localState.replies.push(newReply);
       localState.replyCount++;
 
-      emit('add-reply', {
+      emit('add-reply',{
         commentId: props.comment.id,
         reply: newReply
       });
@@ -635,7 +635,7 @@ onMounted(() => {
   if (props.comment.lineCount > parseInt(props.maxLineLimit)) {
     const lines = props.comment.content.split('\n');
     filteredComment.value =
-      lines.slice(0, parseInt(props.maxLineLimit)).join('\n') +
+      lines.slice(0,parseInt(props.maxLineLimit)).join('\n') +
       (lines.length > parseInt(props.maxLineLimit) ? '...' : '');
   }
 
@@ -681,71 +681,75 @@ onMounted(() => {
 
 .name-wrapper {
   display: grid;
-  grid-template-columns: repeat(4, 0.001fr);
+  grid-template-columns: repeat(4, auto);
   grid-auto-columns: minmax(0, auto);
   grid-column-gap: 5px;
   line-height: 13px;
   white-space: nowrap;
   user-select: none;
-}
-
-.name {
-  font-size: 14px;
-  line-height: 14px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.time {
-  cursor: help;
-  font-size: 13px;
-  color: #92b1b3;
-  white-space: nowrap;
-  text-decoration: none;
-}
-
-.expand {
-  cursor: pointer;
-  display: grid;
-  width: 22px;
-  height: 13px;
-  border-radius: 3px;
-  box-shadow: inset 0 0 0 2px rgba(204, 212, 216, 1);
-  transition: color linear 0.1s;
-}
-
-.expand > span {
-  align-self: center;
-  justify-self: center;
-  font-size: 20px;
-}
-
-.comment {
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-word;
-  hyphens: auto;
-  font-size: 13px;
-  line-height: 16px;
-  font-kerning: normal;
-  padding: 8px 10px;
-  border-radius: 18px;
-  border: 1px solid rgba(204, 212, 216, 0.8);
-  min-width: min-content;
-  max-width: max-content;
-}
-
-.reply {
-  display: grid;
-  grid-template-columns: repeat(7, 0.001fr);
-  grid-auto-columns: minmax(0, auto);
-  grid-auto-rows: minmax(0, auto);
-  grid-column-gap: 5px;
-  font-size: 13px;
-  white-space: nowrap;
-  margin-top: -8px;
-  margin-left: 10px;
+  margin-bottom: 4px;
+    align-items: center;
+  }
+  
+  .name {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  .time {
+    cursor: help;
+    font-size: 12px;
+    color: #787c7e;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  
+  .expand {
+    cursor: pointer;
+    display: grid;
+    width: 22px;
+    height: 13px;
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 2px rgba(204, 212, 216, 1);
+    transition: color linear 0.1s;
+  }
+  
+  .expand>span {
+    align-self: center;
+    justify-self: center;
+    font-size: 20px;
+  }
+  
+  .comment {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    font-size: 14px;
+    line-height: 21px;
+    font-kerning: normal;
+    padding: 0;
+    margin-bottom: 8px;
+    border: none;
+    background: transparent;
+    min-width: min-content;
+    max-width: max-content;
+  }
+  
+  .reply {
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    grid-auto-columns: minmax(0, auto);
+    grid-auto-rows: minmax(0, auto);
+    grid-column-gap: 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    margin-top: 0;
+    margin-left: 0;
+    margin-bottom: 12px;
   transition: color linear 0.1s;
   user-select: none;
 }
