@@ -3,7 +3,7 @@
     <h1 class="py-10">Albums</h1>
     <albums-link-hub :albums="data?.albums" />
     <div class="my-20 flex w-full justify-center">
-      <u-pagination
+      <UPagination
         v-model:page="page"
         :total="data?.pagination?.totalItems"
         :items-per-page="limit"

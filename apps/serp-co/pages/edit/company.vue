@@ -156,7 +156,7 @@
                         type="file"
                         accept="image/*"
                         @change="onImageSelected"
-                      />
+                      >
                     </UFormField>
                   </div>
 
