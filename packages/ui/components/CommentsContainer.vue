@@ -113,11 +113,12 @@
       </svg>
     </div>
     <div v-else class="innerWrapper">
-      <div v-if="status == 'authenticated'" class="userName">
+      <div class="userName">
         <div class="addComment">
           <div class="w-12 rounded-t-full">
             <LazyNuxtImg
-              :src="data.user.image"
+              v-if="data?.user?.image"
+              :src="data?.user?.image"
               alt="Avatar"
               class="h-12 w-12 rounded-full p-1"
             />
@@ -160,7 +161,7 @@
           </div>
         </div>
       </div>
-      <div v-else class="noCommentWrapper">
+      <!-- <div v-else class="noCommentWrapper">
         <NuxtLink
           :to="`/login?redirectTo=${$route.fullPath}`"
           class="noCommentWrapper"
@@ -170,7 +171,7 @@
             >Sign in to comment.</span
           >
         </NuxtLink>
-      </div>
+      </div> -->
       <TransitionGroup appear name="fade" tag="div">
         <CommentWrapper
           v-for="(item, index) in displayedComments"
@@ -301,9 +302,10 @@ async function addComment() {
       id: 'comment-login',
       title: 'Login required',
       description: 'You need to login to comment',
-      icon: 'exclamation-circle'
+      icon: 'exclamation-circle',
     });
     return;
+
   }
   if (filterNewComment.value.length > 0) {
     requestLoading.value = true;
@@ -582,7 +584,8 @@ onMounted(async () => {
 }
 
 .comments >>> .commentBox > textarea {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Sys', sans-serif;
+  font-weight: normal;
   justify-self: stretch;
   box-sizing: border-box;
   height: 44px;
@@ -605,7 +608,6 @@ onMounted(async () => {
 }
 
 .comments >>> .commentBox > button {
-  font-family: 'Roboto', sans-serif;
   align-self: end;
   max-height: 32px;
   box-sizing: border-box;
