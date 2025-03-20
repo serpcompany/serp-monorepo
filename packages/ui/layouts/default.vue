@@ -2,7 +2,14 @@
 <template>
   <div class="container mx-auto">
     <s-header />
-    <u-breadcrumb v-if="route.path !== '/'" class="mt-10 mb-4" :items="items" />
+    <u-breadcrumb
+                  v-if="route.path !== '/' && !route.path.match(/^\/[^\/]+\/?$/)"
+                  class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8 mt-6 mb-2"
+                  :items="items"
+                  :ui="{
+                    link: 'text-xs font-light text-gray-800 dark:text-gray-300 min-w-0 group relative flex items-center gap-1.5 focus-visible:outline-(--ui-primary)',
+                    separatorIcon: 'shrink-0 size-4 text-gray-500 dark:text-gray-400'
+                  }" />
     <slot></slot>
     <lazy-s-footer />
   </div>
