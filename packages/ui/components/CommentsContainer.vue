@@ -302,10 +302,9 @@ async function addComment() {
       id: 'comment-login',
       title: 'Login required',
       description: 'You need to login to comment',
-      icon: 'exclamation-circle',
+      icon: 'exclamation-circle'
     });
     return;
-
   }
   if (filterNewComment.value.length > 0) {
     requestLoading.value = true;
