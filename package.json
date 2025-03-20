@@ -10,7 +10,7 @@
   },
   "lint-staged": {
     "**/*.{js,ts,vue}": "eslint --fix",
-    "**/*.{json,md,yml}": "prettier . --write"
+    "**/*.{json,md,yml,vue}": "prettier . --write"
   },
   "devDependencies": {
     "husky": "^9.1.7",
