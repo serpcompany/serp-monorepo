@@ -25,15 +25,17 @@
         <div class="lg:col-span-2">
           <!-- Overview Section -->
           <company-overview
-                            v-if="data.excerpt"
-                            id="overview"
-                            :company="data"
-                            class="scroll-mt-60" />
+            v-if="data.excerpt"
+            id="overview"
+            :company="data"
+            class="scroll-mt-60"
+          />
 
           <!-- Article Section -->
           <section
-                   v-if="data.content"
-                   class="prose dark:prose-invert mt-[-25px]">
+            v-if="data.content"
+            class="prose dark:prose-invert mt-[-25px]"
+          >
             <div id="article" class="mb-8" v-html="data.content"></div>
           </section>
 
@@ -70,30 +72,34 @@
           <section id="comments" class="mb-12">
             <h2 class="mb-6 scroll-mt-60 text-3xl font-bold">Comments</h2>
             <CommentsContainer
-                               v-if="useAuth"
-                               :id="data.id"
-                               module="company"
-                               :comments="comments"
-                               class="comments-github-style" />
+              v-if="useAuth"
+              :id="data.id"
+              module="company"
+              :comments="comments"
+              class="comments-github-style"
+            />
           </section>
         </div>
 
         <!-- Sidebar (30%) -->
         <aside
-               v-if="
+          v-if="
             (data.screenshots && data.screenshots.length) ||
             (data.categories && data.categories.length)
           "
-               class="space-y-6 lg:col-span-1">
+          class="space-y-6 lg:col-span-1"
+        >
           <!-- Left Column: Media Gallery -->
           <media-gallery
-                         v-if="data.screenshots && data.screenshots.length"
-                         :company="data" />
+            v-if="data.screenshots && data.screenshots.length"
+            :company="data"
+          />
 
           <!-- Categories -->
           <section
-                   v-if="data.categories && data.categories.length"
-                   class="gap-2">
+            v-if="data.categories && data.categories.length"
+            class="gap-2"
+          >
             <s-pill base-slug="products/best" :items="data.categories" />
           </section>
         </aside>
@@ -109,7 +115,7 @@ const route = useRoute();
 const router = useRouter();
 const { slug } = route.params;
 
-const data = await useCompany(`${slug}`) as Company;
+const data = (await useCompany(`${slug}`)) as Company;
 if (!data) {
   router.push('/404');
 }
@@ -122,12 +128,14 @@ const useAuth = config.public.useAuth;
 // const comments = data.comments || [];
 
 // Possibly move to onMounted, but may negatively impact SEO (components currently have onMounted, investigate impact on SEO)
-const { upvotes, comments } = await useCompanyUpvotesAndComments(data?.id) as { upvotes: string[], comments: Comment[]; };
+const { upvotes, comments } = (await useCompanyUpvotesAndComments(
+  data?.id
+)) as { upvotes: string[]; comments: Comment[] };
 
 const faqItems = computed(() => {
   if (!data?.faqs) return [];
 
-  return data?.faqs.map((faq: { question: string; answer: string; }) => ({
+  return data?.faqs.map((faq: { question: string; answer: string }) => ({
     label: faq.question,
     content: faq.answer
   }));

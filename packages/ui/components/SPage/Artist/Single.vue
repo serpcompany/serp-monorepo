@@ -117,7 +117,9 @@ const config = useRuntimeConfig();
 const useAuth = config.public.useAuth;
 
 // Get upvotes
-const { upvotes } = await useFetchWithCache<{ upvotes: string[] }>(`/upvotes/${artist.slug}?module=artist`) || { upvotes: [] };
+const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
+  `/upvotes/${artist.slug}?module=artist`
+)) || { upvotes: [] };
 
 const genres = computed(() => {
   return artist?.genres ? artist.genres.join(', ') : '';
