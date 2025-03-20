@@ -49,7 +49,6 @@ export default NuxtAuthHandler({
     //   clientId: process.env.AUTH_GITHUB_CLIENT_ID,
     //   clientSecret: process.env.AUTH_GITHUB_CLIENT_SECRET
     // }),
-
     // // @ts-expect-error Use .default here for it to work during SSR.
     // GoogleProvider.default({
     //   clientId: process.env.AUTH_GOOGLE_CLIENT_ID,
