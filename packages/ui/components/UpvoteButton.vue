@@ -1,13 +1,18 @@
 <template>
-  <div>
-    <UButton
-      :color="buttonColor"
-      variant="ghost"
-      :loading="loading"
-      icon="i-lucide-arrow-up"
+  <div class="flex items-center w-full sm:w-auto">
+    <button
+      class="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full border border-gray-300 dark:border-gray-600 px-4 py-2 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors disabled:opacity-75"
       @click="upvote"
-    />
-    <UBadge>{{ localUpvotes.length }}</UBadge>
+      :class="{ 'text-orange-500 dark:text-orange-400': localUpvotes.includes(data?.value?.user?.email) }"
+      :disabled="loading"
+    >
+      <span v-if="loading" class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent"></span>
+      <svg v-else class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m5 12 7-7 7 7"/>
+        <path d="M12 19V5"/>
+      </svg>
+      <span>Upvotes {{ localUpvotes.length }}</span>
+    </button>
   </div>
 </template>
 

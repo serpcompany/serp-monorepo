@@ -38,16 +38,24 @@
             </div>
           </div>
 
-          <!-- visit website button -->
-          <div class="sm:flex-end flex w-full pt-4 sm:pt-0">
-            <div class="mr-auto ml-0 sm:mr-0 sm:ml-auto">
-              <nuxt-link
-                :to="serply_link"
-                target="_blank"
-                class="border px-4 py-2"
-                >Visit Website</nuxt-link
-              >
-            </div>
+          <!-- action buttons -->
+          <div class="flex w-full flex-col sm:flex-row items-center justify-end gap-3 pt-4 sm:pt-0">
+            <!-- upvote button slot -->
+            <slot name="upvote"></slot>
+
+            <!-- visit website button -->
+            <a
+              :href="serply_link"
+              target="_blank"
+              class="w-full sm:w-auto rounded-full bg-black dark:bg-white text-white dark:text-black px-4 py-2 font-medium hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
+            >
+              Visit Website
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
           </div>
         </div>
 

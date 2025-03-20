@@ -4,7 +4,17 @@
       :name="song.name"
       :sections="sections"
       class="bg-background sticky top-0 z-10 transition-all duration-300"
-    />
+      :serply_link="getSongUrl(song.id)"
+    >
+      <template #upvote>
+        <UpvoteButton
+          v-if="useAuth"
+          :id="song.slug"
+          module="song"
+          :upvotes="upvotes"
+        />
+      </template>
+    </multipage-header>
 
     <!-- Main content with grid -->
     <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
@@ -65,6 +75,12 @@ const route = useRoute();
 const { slug } = route.params;
 const song = await useSong(slug);
 
+const config = useRuntimeConfig();
+const useAuth = config.public.useAuth;
+
+// Get upvotes
+const { upvotes } = await useFetchWithCache<{ upvotes: string[] }>(`/upvotes/${song.slug}?module=song`) || { upvotes: [] };
+
 const genres = computed(() => {
   return song?.genres ? song.genres.join(', ') : '';
 });
@@ -72,6 +88,11 @@ const genres = computed(() => {
 const tags = computed(() => {
   return song?.tags ? song.tags.join(', ') : '';
 });
+
+// Helper function to create a URL for the song
+function getSongUrl(id: string) {
+  return `https://musicbrainz.org/recording/${song.id}`;
+}
 
 const seoTitle = computed(() => song?.seoTitle);
 const seoDescription = computed(() => song?.seoDescription);

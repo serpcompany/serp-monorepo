@@ -1,17 +1,22 @@
 <template>
   <div v-if="data">
-    <UpvoteButton
-                  v-if="useAuth"
-                  :id="data.id"
-                  module="company"
-                  :upvotes="upvotes" />
     <multipage-header
-                      :name="data.name"
-                      :one-liner="data.oneLiner"
-                      :sections="sections"
-                      class="bg-background sticky top-0 z-10 transition-all duration-300"
-                      :image="data.logo"
-                      :serply_link="data.serplyLink" />
+      :name="data.name"
+      :one-liner="data.oneLiner"
+      :sections="sections"
+      class="bg-background sticky top-0 z-10 transition-all duration-300"
+      :image="data.logo"
+      :serply_link="data.serplyLink"
+    >
+      <template #upvote>
+        <UpvoteButton
+          v-if="useAuth"
+          :id="data.id"
+          module="company"
+          :upvotes="upvotes"
+        />
+      </template>
+    </multipage-header>
 
     <!-- Main content with grid -->
     <section class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
