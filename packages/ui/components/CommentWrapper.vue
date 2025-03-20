@@ -1,14 +1,16 @@
 <template>
   <div class="comment-wrapper">
     <div
-         class="wrapper"
-         @mouseenter="showHideBar = true"
-         @mouseleave="showHideBar = false">
+      class="wrapper"
+      @mouseenter="showHideBar = true"
+      @mouseleave="showHideBar = false"
+    >
       <div class="w-12 rounded-t-full">
         <LazyNuxtImg
-                     :src="comment.image"
-                     alt="Avatar"
-                     class="h-12 w-12 rounded-full p-1" />
+          :src="comment.image"
+          alt="Avatar"
+          class="h-12 w-12 rounded-full p-1"
+        />
       </div>
       <div v-if="hideMessage" class="comment-wrapper">
         <div class="name-wrapper">
@@ -16,9 +18,10 @@
           <span class="dot">•</span>
           <span class="time" :title="getTime">{{ getTimeDiff }}</span>
           <div
-               v-show="showHideBar || wrapperSize < 1024"
-               class="expand hover:text-primary"
-               @click="hideMessage = false">
+            v-show="showHideBar || wrapperSize < 1024"
+            class="expand hover:text-primary"
+            @click="hideMessage = false"
+          >
             <span title="Show Comment">+</span>
           </div>
         </div>
@@ -29,48 +32,56 @@
           <div class="name text-primary">{{ comment.name }}</div>
           <span class="dot">•</span>
           <span class="time" :title="getTime">{{ getTimeDiff }}</span>
-          <UBadge v-if="isDeleted" class="deleted" color="error">Deleted</UBadge>
+          <UBadge v-if="isDeleted" class="deleted" color="error"
+            >Deleted</UBadge
+          >
           <UBadge v-else-if="isUpdated" class="updated">Updated</UBadge>
           <div
-               v-show="showHideBar || wrapperSize < 1024"
-               class="expand hover:text-primary"
-               @click="hideMessage = true">
+            v-show="showHideBar || wrapperSize < 1024"
+            class="expand hover:text-primary"
+            @click="hideMessage = true"
+          >
             <span title="Hide Comment">−</span>
           </div>
         </div>
         <div
-             v-show="!beforeUpdate"
-             ref="comment"
-             class="comment bg-white text-black dark:bg-gray-800 dark:text-white">
+          v-show="!beforeUpdate"
+          ref="comment"
+          class="comment bg-white text-black dark:bg-gray-800 dark:text-white"
+        >
           {{ filteredComment }}
         </div>
         <div
-             v-show="beforeUpdate"
-             class="comment-box text-black dark:text-white">
+          v-show="beforeUpdate"
+          class="comment-box text-black dark:text-white"
+        >
           <div class="user-name text-primary">{{ comment.name }}</div>
           <textarea
-                    ref="addUpdate"
-                    v-model="updateMessage"
-                    name="addUpdate"
-                    class="add-comment bg-white dark:bg-gray-800"
-                    placeholder="Update message"
-                    spellcheck="false"
-                    aria-label="Add Comment"
-                    @keyup="resize($event, true)"></textarea>
+            ref="addUpdate"
+            v-model="updateMessage"
+            name="addUpdate"
+            class="add-comment bg-white dark:bg-gray-800"
+            placeholder="Update message"
+            spellcheck="false"
+            aria-label="Add Comment"
+            @keyup="resize($event, true)"
+          ></textarea>
           <button
-                  aria-label="Update"
-                  :disabled="requestLoading"
-                  class="bg-primary hover:bg-primary-800"
-                  @click="update">
+            aria-label="Update"
+            :disabled="requestLoading"
+            class="bg-primary hover:bg-primary-800"
+            @click="update"
+          >
             <div v-if="requestLoading" class="request-loading"></div>
             <span v-else>Update</span>
           </button>
           <div
-               class="remaining-letter"
-               :class="{
-                'bg-red-500': remainingUpdateLetter < 0,
-                'bg-primary': remainingUpdateLetter >= 0
-              }">
+            class="remaining-letter"
+            :class="{
+              'bg-red-500': remainingUpdateLetter < 0,
+              'bg-primary': remainingUpdateLetter >= 0
+            }"
+          >
             <span>{{ remainingUpdateLetter }}</span>
           </div>
         </div>
@@ -102,17 +113,19 @@
               <div v-if="beforeDelete" class="delete-prompt">
                 <label>Are you sure?</label>
                 <button
-                        aria-label="Yes"
-                        class="yes-prompt"
-                        :disabled="requestDelete"
-                        @click="deleteComment">
+                  aria-label="Yes"
+                  class="yes-prompt"
+                  :disabled="requestDelete"
+                  @click="deleteComment"
+                >
                   Yes
                 </button>
                 <button
-                        aria-label="No"
-                        class="no-prompt"
-                        :disabled="requestDelete"
-                        @click="beforeDelete = false">
+                  aria-label="No"
+                  class="no-prompt"
+                  :disabled="requestDelete"
+                  @click="beforeDelete = false"
+                >
                   No
                 </button>
               </div>
@@ -123,37 +136,41 @@
           <div class="add-comment">
             <div class="w-12 rounded-t-full">
               <LazyNuxtImg
-                           :src="data?.user?.image"
-                           alt="Avatar"
-                           class="h-12 w-12 rounded-full p-1" />
+                :src="data?.user?.image"
+                alt="Avatar"
+                class="h-12 w-12 rounded-full p-1"
+              />
             </div>
             <div class="comment-box text-black dark:text-white">
               <div class="user-name text-primary">
                 {{ data?.user?.name || 'Unknown' }}
               </div>
               <textarea
-                        ref="addReply"
-                        v-model="replyMessage"
-                        name="addReply"
-                        class="add-comment bg-white dark:bg-gray-800"
-                        placeholder="Add new reply"
-                        spellcheck="false"
-                        aria-label="Add Reply"
-                        @keyup="resize($event)"></textarea>
+                ref="addReply"
+                v-model="replyMessage"
+                name="addReply"
+                class="add-comment bg-white dark:bg-gray-800"
+                placeholder="Add new reply"
+                spellcheck="false"
+                aria-label="Add Reply"
+                @keyup="resize($event)"
+              ></textarea>
               <button
-                      aria-label="Reply"
-                      :disabled="requestLoading"
-                      class="bg-primary hover:bg-primary-800"
-                      @click="reply">
+                aria-label="Reply"
+                :disabled="requestLoading"
+                class="bg-primary hover:bg-primary-800"
+                @click="reply"
+              >
                 <div v-if="requestLoading" class="request-loading"></div>
                 <span v-else>Reply</span>
               </button>
               <div
-                   class="remaining-letter"
-                   :class="{
-                    'bg-red-500': remainingLetter < 0,
-                    'bg-primary': remainingLetter >= 0
-                  }">
+                class="remaining-letter"
+                :class="{
+                  'bg-red-500': remainingLetter < 0,
+                  'bg-primary': remainingLetter >= 0
+                }"
+              >
                 <span>{{ remainingLetter }}</span>
               </div>
             </div>
@@ -161,29 +178,31 @@
         </div>
         <transition-group appear name="fade" tag="div">
           <CommentWrapper
-                          v-for="(reply, index) in displayedReplies"
-                          v-show="showReplies"
-                          :id="id"
-                          :key="reply.id"
-                          :comment="reply"
-                          :comment-background-color="commentBackgroundColor"
-                          :comment-text-color="commentTextColor"
-                          :user-name-color="userNameColor"
-                          :wrapper-size="wrapperSize"
-                          :depth-length="depthLength + 1"
-                          :module="props.module"
-                          :parent-ids="[...parentIds, comment.id]"
-                          :parent-indices="[...parentIndices, currentIndex]"
-                          :current-index="getIndex(reply.id)"
-                          @delete-row="deleteReply(index)"
-                          @update-comment="$emit('update-comment', $event)"
-                          @add-reply="$emit('add-reply', $event)"
-                          @delete-reply="$emit('delete-reply', $event)" />
+            v-for="(reply, index) in displayedReplies"
+            v-show="showReplies"
+            :id="id"
+            :key="reply.id"
+            :comment="reply"
+            :comment-background-color="commentBackgroundColor"
+            :comment-text-color="commentTextColor"
+            :user-name-color="userNameColor"
+            :wrapper-size="wrapperSize"
+            :depth-length="depthLength + 1"
+            :module="props.module"
+            :parent-ids="[...parentIds, comment.id]"
+            :parent-indices="[...parentIndices, currentIndex]"
+            :current-index="getIndex(reply.id)"
+            @delete-row="deleteReply(index)"
+            @update-comment="$emit('update-comment', $event)"
+            @add-reply="$emit('add-reply', $event)"
+            @delete-reply="$emit('delete-reply', $event)"
+          />
         </transition-group>
         <div
-             v-if="limit < localState.replies.length && showReplies"
-             class="update-limit"
-             @click="updateLimit">
+          v-if="limit < localState.replies.length && showReplies"
+          class="update-limit"
+          @click="updateLimit"
+        >
           <span class="limit">Show more replies</span>
         </div>
       </div>
@@ -192,24 +211,24 @@
 </template>
 
 <script setup>
-const { status,data } = useAuth();
+const { status, data } = useAuth();
 
 const props = defineProps({
   module: String,
   id: Number,
   comment: Object,
   currentIndex: Number,
-  initialMessageLimit: { type: String,default: '10' },
-  maxLineLimit: { type: String,default: '40' },
-  maxShowingDepth: { type: String,default: '5' },
-  maxCommentLength: { type: String,default: '1000' },
-  depthLength: { type: Number,default: 0 },
-  commentBackgroundColor: { type: String,default: 'white' },
-  commentTextColor: { type: String,default: '#1d2129' },
-  userNameColor: { type: String,default: 'rgb(6, 177, 183)' },
+  initialMessageLimit: { type: String, default: '10' },
+  maxLineLimit: { type: String, default: '40' },
+  maxShowingDepth: { type: String, default: '5' },
+  maxCommentLength: { type: String, default: '1000' },
+  depthLength: { type: Number, default: 0 },
+  commentBackgroundColor: { type: String, default: 'white' },
+  commentTextColor: { type: String, default: '#1d2129' },
+  userNameColor: { type: String, default: 'rgb(6, 177, 183)' },
   wrapperSize: String,
-  parentIds: { type: Array,default: () => [] },
-  parentIndices: { type: Array,default: () => [] }
+  parentIds: { type: Array, default: () => [] },
+  parentIndices: { type: Array, default: () => [] }
 });
 
 const localComment = computed(() => ({
@@ -275,7 +294,7 @@ const isAuthorOrAdmin = computed(
 );
 
 const displayedReplies = computed(() =>
-  localState.replies.slice(0,limit.value)
+  localState.replies.slice(0, limit.value)
 );
 
 const remainingUpdateLetter = computed(
@@ -313,7 +332,7 @@ const getTimeDiff = computed(() => {
 
 const getTime = computed(() => {
   const date = new Date(parseInt(props.comment.timestamp));
-  return date.toLocaleString('en-US',{
+  return date.toLocaleString('en-US', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -341,7 +360,7 @@ function handleBeforeUpdate() {
     const updateTextarea = document.querySelector('[ref="addUpdate"]');
     if (updateTextarea) {
       updateTextarea.focus();
-      resize({ target: updateTextarea },true);
+      resize({ target: updateTextarea }, true);
     }
   });
 }
@@ -355,7 +374,7 @@ function handleBeforeDelete() {
   if (beforeDelete.value) {
     setTimeout(() => {
       beforeDelete.value = false;
-    },5000);
+    }, 5000);
   }
 }
 
@@ -395,7 +414,7 @@ async function update() {
       return;
     }
     const updatedAt = Date.now();
-    const { data: response,error } = await useFetch(
+    const { data: response, error } = await useFetch(
       `/api/comments/${props.id}`,
       {
         method: 'PUT',
@@ -420,7 +439,7 @@ async function update() {
       localState.updatedAt = updatedAt;
       beforeUpdate.value = false;
 
-      emit('update-comment',{
+      emit('update-comment', {
         id: props.comment.id,
         updatedAt,
         content: updateMessage.value
@@ -473,7 +492,7 @@ async function deleteComment() {
 
   requestDelete.value = true;
   try {
-    const { data: response,error } = await useFetch(
+    const { data: response, error } = await useFetch(
       `/api/comments/${props.id}`,
       {
         method: 'PUT',
@@ -519,9 +538,9 @@ async function deleteComment() {
 }
 
 function deleteReply(index) {
-  localState.replies.splice(index,1);
+  localState.replies.splice(index, 1);
 
-  emit('delete-reply',{
+  emit('delete-reply', {
     commentId: props.comment.id,
     replyIndex: index
   });
@@ -531,7 +550,7 @@ function updateLimit() {
   limit.value += parseInt(props.initialMessageLimit);
 }
 
-function resize(event,isUpdate = false) {
+function resize(event, isUpdate = false) {
   const textarea = event.target;
   textarea.style.height = 'auto';
   textarea.style.height = `${textarea.scrollHeight}px`;
@@ -566,12 +585,12 @@ async function reply() {
     const replyObj = {
       comment: replyMessage.value,
       timestamp: Date.now().toString(),
-      parentIds: [...props.parentIds,props.comment.id],
-      parentIndices: [...props.parentIndices,props.currentIndex],
+      parentIds: [...props.parentIds, props.comment.id],
+      parentIndices: [...props.parentIndices, props.currentIndex],
       module: props.module
     };
 
-    const { data: response,error } = await useFetch(
+    const { data: response, error } = await useFetch(
       `/api/comments/${props.id}`,
       {
         method: 'POST',
@@ -599,7 +618,7 @@ async function reply() {
       localState.replies.push(newReply);
       localState.replyCount++;
 
-      emit('add-reply',{
+      emit('add-reply', {
         commentId: props.comment.id,
         reply: newReply
       });
@@ -635,7 +654,7 @@ onMounted(() => {
   if (props.comment.lineCount > parseInt(props.maxLineLimit)) {
     const lines = props.comment.content.split('\n');
     filteredComment.value =
-      lines.slice(0,parseInt(props.maxLineLimit)).join('\n') +
+      lines.slice(0, parseInt(props.maxLineLimit)).join('\n') +
       (lines.length > parseInt(props.maxLineLimit) ? '...' : '');
   }
 
@@ -688,68 +707,68 @@ onMounted(() => {
   white-space: nowrap;
   user-select: none;
   margin-bottom: 4px;
-    align-items: center;
-  }
-  
-  .name {
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  
-  .time {
-    cursor: help;
-    font-size: 12px;
-    color: #787c7e;
-    white-space: nowrap;
-    text-decoration: none;
-  }
-  
-  .expand {
-    cursor: pointer;
-    display: grid;
-    width: 22px;
-    height: 13px;
-    border-radius: 3px;
-    box-shadow: inset 0 0 0 2px rgba(204, 212, 216, 1);
-    transition: color linear 0.1s;
-  }
-  
-  .expand>span {
-    align-self: center;
-    justify-self: center;
-    font-size: 20px;
-  }
-  
-  .comment {
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
-    hyphens: auto;
-    font-size: 14px;
-    line-height: 21px;
-    font-kerning: normal;
-    padding: 0;
-    margin-bottom: 8px;
-    border: none;
-    background: transparent;
-    min-width: min-content;
-    max-width: max-content;
-  }
-  
-  .reply {
-    display: grid;
-    grid-template-columns: repeat(7, auto);
-    grid-auto-columns: minmax(0, auto);
-    grid-auto-rows: minmax(0, auto);
-    grid-column-gap: 8px;
-    font-size: 12px;
-    white-space: nowrap;
-    margin-top: 0;
-    margin-left: 0;
-    margin-bottom: 12px;
+  align-items: center;
+}
+
+.name {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.time {
+  cursor: help;
+  font-size: 12px;
+  color: #787c7e;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.expand {
+  cursor: pointer;
+  display: grid;
+  width: 22px;
+  height: 13px;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 2px rgba(204, 212, 216, 1);
+  transition: color linear 0.1s;
+}
+
+.expand > span {
+  align-self: center;
+  justify-self: center;
+  font-size: 20px;
+}
+
+.comment {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  font-size: 14px;
+  line-height: 21px;
+  font-kerning: normal;
+  padding: 0;
+  margin-bottom: 8px;
+  border: none;
+  background: transparent;
+  min-width: min-content;
+  max-width: max-content;
+}
+
+.reply {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  grid-auto-columns: minmax(0, auto);
+  grid-auto-rows: minmax(0, auto);
+  grid-column-gap: 8px;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-top: 0;
+  margin-left: 0;
+  margin-bottom: 12px;
   transition: color linear 0.1s;
   user-select: none;
 }
