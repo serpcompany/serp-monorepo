@@ -1,9 +1,9 @@
-name: Deploy serp.wiki to NuxtHub
+name: Deploy moviestop.pages.dev to NuxtHub
 on: push
 
 jobs:
   deploy:
-    name: 'Deploy serp.wiki to NuxtHub'
+    name: 'Deploy moviestop.pages.dev to NuxtHub'
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
@@ -13,7 +13,7 @@ jobs:
       id-token: write
     defaults:
       run:
-        working-directory: ./apps/serp-wiki
+        working-directory: ./apps/moviestop-pages-dev
 
     steps:
       - uses: actions/checkout@v4
@@ -42,5 +42,5 @@ jobs:
         uses: nuxt-hub/action@v1
         id: deploy
         with:
-          project-key: serp-wiki-nr2i
-          directory: ./apps/serp-wiki/dist
+          project-key: moviestop-w2tl
+          directory: ./apps/moviestop-pages-dev/dist

@@ -44,17 +44,16 @@ export default NuxtAuthHandler({
   secret: process.env.AUTH_SECRET,
 
   providers: [
-    // @ts-expect-error Use .default here for it to work during SSR.
-    GithubProvider.default({
-      clientId: process.env.AUTH_GITHUB_CLIENT_ID,
-      clientSecret: process.env.AUTH_GITHUB_CLIENT_SECRET
-    }),
-
-    // @ts-expect-error Use .default here for it to work during SSR.
-    GoogleProvider.default({
-      clientId: process.env.AUTH_GOOGLE_CLIENT_ID,
-      clientSecret: process.env.AUTH_GOOGLE_CLIENT_SECRET
-    })
+    // // @ts-expect-error Use .default here for it to work during SSR.
+    // GithubProvider.default({
+    //   clientId: process.env.AUTH_GITHUB_CLIENT_ID,
+    //   clientSecret: process.env.AUTH_GITHUB_CLIENT_SECRET
+    // }),
+    // // @ts-expect-error Use .default here for it to work during SSR.
+    // GoogleProvider.default({
+    //   clientId: process.env.AUTH_GOOGLE_CLIENT_ID,
+    //   clientSecret: process.env.AUTH_GOOGLE_CLIENT_SECRET
+    // })
   ],
 
   callbacks: {

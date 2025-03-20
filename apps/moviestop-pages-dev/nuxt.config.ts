@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     '@nuxthub/core'
   ],
   auth: {
-    baseURL: process.env.AUTH_ORIGIN,
+    baseURL: 'https://staging.moviestop.pages.dev/api/auth', // process.env.AUTH_ORIGIN,
     provider: {
       type: 'authjs',
       trustHost: false,
@@ -135,7 +135,7 @@ export default defineNuxtConfig({
     scripts: {
       registry: {
         googleTagManager: {
-          id: ''
+          id: 'GTM-TM5R8LCN'
         }
       }
     }
