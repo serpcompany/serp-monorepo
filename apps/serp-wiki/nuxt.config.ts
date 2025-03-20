@@ -49,7 +49,7 @@ export default defineNuxtConfig({
       domain: process.env.NUXT_PUBLIC_DOMAIN,
       siteUrl: process.env.NUXT_PUBLIC_URL,
       apiUrl: '/api',
-      useAuth: true,
+      useAuth: false,
       environment: process.env.NODE_ENV,
       socialLinks: [
         {
