@@ -22,17 +22,17 @@
                 <!-- <SearchBar /> -->
               </div>
               <template v-if="showButtons">
-                <u-button
+                <UButton
                   label="Primary Button"
                   class="w-full cursor-pointer rounded-none text-lg sm:w-auto"
-                  >Primary Button</u-button
+                  >Primary Button</UButton
                 >
-                <u-button
+                <UButton
                   variant="outline"
                   class="w-full cursor-pointer rounded-none text-lg sm:w-auto"
                 >
                   Buying Advice
-                </u-button>
+                </UButton>
               </template>
             </div>
           </div>

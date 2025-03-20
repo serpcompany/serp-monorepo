@@ -9,8 +9,8 @@
         <h1>{{ error.statusCode }}</h1>
         <p>{{ error.message }}</p>
       </template>
-      <u-button class="cursor-pointer text-lg" @click="handleError"
-        >Go Home</u-button
+      <UButton class="cursor-pointer text-lg" @click="handleError"
+        >Go Home</UButton
       >
     </div>
   </nuxt-layout>

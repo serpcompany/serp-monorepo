@@ -138,21 +138,21 @@
               v-if="isExpanded"
               class="action-buttons flex justify-end gap-2"
             >
-              <u-button
+              <UButton
                 class="cancel-btn inline-flex items-center justify-center rounded-full border border-gray-300 bg-gray-500 px-4 py-2 text-gray-700 hover:bg-gray-50 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
                 @click="cancelComment"
               >
                 Cancel
-              </u-button>
+              </UButton>
 
-              <u-button
+              <UButton
                 class="comment-btn hover:bg-primary-800 disabled:bg-primary-300 inline-flex items-center justify-center rounded-full border border-transparent bg-blue-700 px-4 py-2 text-white focus:outline-none"
                 :disabled="!filterNewComment.length || requestLoading"
                 @click="addComment"
               >
                 <div v-if="requestLoading" class="request-loading"></div>
                 <span v-else>Comment</span>
-              </u-button>
+              </UButton>
             </div>
             <div v-if="alert" class="alert" :class="alertClass">
               {{ alertMessage }}
