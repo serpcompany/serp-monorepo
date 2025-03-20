@@ -4,150 +4,136 @@
       <svg id="loader" width="150" height="150">
         <circle fill="red">
           <animate
-            attributeName="cx"
-            values="15;135;15"
-            keyTimes="0;0.5;1"
-            calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
-            dur="3s"
-            repeatCount="indefinite"
-          />
+                   attributeName="cx"
+                   values="15;135;15"
+                   keyTimes="0;0.5;1"
+                   calcMode="spline"
+                   keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+                   dur="3s"
+                   repeatCount="indefinite" />
           <animate
-            attributeName="r"
-            values="15;7.5;2;7.5;15"
-            keyTimes="0;0.25;0.5;0.75;1"
-            dur="3s"
-            repeatCount="indefinite"
-          />
+                   attributeName="r"
+                   values="15;7.5;2;7.5;15"
+                   keyTimes="0;0.25;0.5;0.75;1"
+                   dur="3s"
+                   repeatCount="indefinite" />
           <animate
-            attributeName="cy"
-            values="135;15;135"
-            keyTimes="0;0.5;1"
-            calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
-            dur="6s"
-            repeatCount="indefinite"
-          />
+                   attributeName="cy"
+                   values="135;15;135"
+                   keyTimes="0;0.5;1"
+                   calcMode="spline"
+                   keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+                   dur="6s"
+                   repeatCount="indefinite" />
         </circle>
         <circle fill="green">
           <animate
-            attributeName="cx"
-            values="135;15;135"
-            keyTimes="0;0.5;1"
-            calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
-            dur="3s"
-            repeatCount="indefinite"
-          />
+                   attributeName="cx"
+                   values="135;15;135"
+                   keyTimes="0;0.5;1"
+                   calcMode="spline"
+                   keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+                   dur="3s"
+                   repeatCount="indefinite" />
           <animate
-            attributeName="r"
-            values="15;7.5;2;7.5;15"
-            keyTimes="0;0.25;0.5;0.75;1"
-            dur="3s"
-            repeatCount="indefinite"
-          />
+                   attributeName="r"
+                   values="15;7.5;2;7.5;15"
+                   keyTimes="0;0.25;0.5;0.75;1"
+                   dur="3s"
+                   repeatCount="indefinite" />
           <animate
-            attributeName="cy"
-            values="15;135;15"
-            keyTimes="0;0.5;1"
-            calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
-            dur="6s"
-            repeatCount="indefinite"
-          />
+                   attributeName="cy"
+                   values="15;135;15"
+                   keyTimes="0;0.5;1"
+                   calcMode="spline"
+                   keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+                   dur="6s"
+                   repeatCount="indefinite" />
         </circle>
         <circle fill="blue">
           <animate
-            attributeName="cx"
-            values="15;135;15"
-            keyTimes="0;0.5;1"
-            calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
-            dur="3s"
-            repeatCount="indefinite"
-          />
+                   attributeName="cx"
+                   values="15;135;15"
+                   keyTimes="0;0.5;1"
+                   calcMode="spline"
+                   keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+                   dur="3s"
+                   repeatCount="indefinite" />
           <animate
-            attributeName="r"
-            values="15;7.5;2;7.5;15"
-            keyTimes="0;0.25;0.5;0.75;1"
-            dur="3s"
-            repeatCount="indefinite"
-          />
+                   attributeName="r"
+                   values="15;7.5;2;7.5;15"
+                   keyTimes="0;0.25;0.5;0.75;1"
+                   dur="3s"
+                   repeatCount="indefinite" />
           <animate
-            attributeName="cy"
-            values="15;135;15"
-            keyTimes="0;0.5;1"
-            calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
-            dur="6s"
-            repeatCount="indefinite"
-          />
+                   attributeName="cy"
+                   values="15;135;15"
+                   keyTimes="0;0.5;1"
+                   calcMode="spline"
+                   keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+                   dur="6s"
+                   repeatCount="indefinite" />
         </circle>
         <circle fill="orange">
           <animate
-            attributeName="cx"
-            values="135;15;135"
-            keyTimes="0;0.5;1"
-            calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
-            dur="3s"
-            repeatCount="indefinite"
-          />
+                   attributeName="cx"
+                   values="135;15;135"
+                   keyTimes="0;0.5;1"
+                   calcMode="spline"
+                   keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+                   dur="3s"
+                   repeatCount="indefinite" />
           <animate
-            attributeName="r"
-            values="15;7.5;2;7.5;15"
-            keyTimes="0;0.25;0.5;0.75;1"
-            dur="3s"
-            repeatCount="indefinite"
-          />
+                   attributeName="r"
+                   values="15;7.5;2;7.5;15"
+                   keyTimes="0;0.25;0.5;0.75;1"
+                   dur="3s"
+                   repeatCount="indefinite" />
           <animate
-            attributeName="cy"
-            values="135;15;135"
-            keyTimes="0;0.5;1"
-            calcMode="spline"
-            keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
-            dur="6s"
-            repeatCount="indefinite"
-          />
+                   attributeName="cy"
+                   values="135;15;135"
+                   keyTimes="0;0.5;1"
+                   calcMode="spline"
+                   keySplines="0.74 0.11 0.3 0.85; 0.74 0.11 0.3 0.85;"
+                   dur="6s"
+                   repeatCount="indefinite" />
         </circle>
       </svg>
     </div>
     <div v-else class="innerWrapper">
       <div v-if="status == 'authenticated'" class="userName">
         <div class="addComment">
-          <div class="w-12 rounded-t-full" :style="styleShadow">
+          <div class="w-12 rounded-t-full">
             <LazyNuxtImg
-              :src="data.user.image"
-              alt="Avatar"
-              class="h-12 w-12 rounded-full p-1"
-            />
+                         :src="data.user.image"
+                         alt="Avatar"
+                         class="h-12 w-12 rounded-full p-1" />
           </div>
           <div class="commentBox text-black dark:text-white">
             <textarea
-              v-model="newComment"
-              name="addComment"
-              class="addComment bg-white dark:bg-gray-800"
-              placeholder="Add new comment"
-              spellcheck="true"
-              aria-label="Add comment"
-              @keyup="resize"
-            ></textarea>
+                      v-model="newComment"
+                      name="addComment"
+                      class="addComment bg-white dark:bg-gray-800"
+                      placeholder="Add new comment"
+                      spellcheck="true"
+                      aria-label="Add comment"
+                      @keyup="resize"
+                      @focus="expandTextarea"
+                      @blur="collapseTextarea"></textarea>
             <button
-              aria-label="Send"
-              :disabled="requestLoading"
-              class="bg-primary hover:bg-primary-800"
-              @click="addComment"
-            >
+                    aria-label="Send"
+                    :disabled="requestLoading"
+                    class="bg-primary hover:bg-primary-800"
+                    @click="addComment">
               <div v-if="requestLoading" class="requestLoading"></div>
               <span v-else>Send</span>
             </button>
             <div
-              class="remainingLetter"
-              :class="{
-                'bg-red-500': remainingLetter < 0,
-                'bg-primary': remainingLetter >= 0
-              }"
-            >
+                 class="remainingLetter"
+                 :class="{
+                  'bg-red-500': remainingLetter < 0,
+                  'bg-primary': remainingLetter >= 0
+}">
               <span>{{ remainingLetter }}</span>
             </div>
             <div v-if="alert" class="alert" :class="alertClass">
@@ -158,35 +144,30 @@
       </div>
       <div v-else class="noCommentWrapper">
         <NuxtLink
-          :to="`/login?redirectTo=${$route.fullPath}`"
-          class="noCommentWrapper"
-        >
+                  :to="`/login?redirectTo=${$route.fullPath}`"
+                  class="noCommentWrapper">
           <span
-            class="noCommentText text-primary border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
+                class="noCommentText text-primary border-primary hover:bg-primary border hover:text-white">Sign in to comment.</span>
         </NuxtLink>
       </div>
       <TransitionGroup appear name="fade" tag="div">
         <CommentWrapper
-          v-for="(item, index) in displayedComments"
-          :id="props.id"
-          :key="item.id"
-          :comment="item"
-          :comment-background-color="commentBackgroundColor"
-          :comment-text-color="commentTextColor"
-          :user-name-color="userNameColor"
-          :wrapper-size="wrapperSize.toString()"
-          :module="props.module"
-          :current-index="getIndex(item.id)"
-          @delete-comment="deleteComment(index)"
-        />
+                        v-for="(item, index) in displayedComments"
+                        :id="props.id"
+                        :key="item.id"
+                        :comment="item"
+                        :comment-background-color="commentBackgroundColor"
+                        :comment-text-color="commentTextColor"
+                        :user-name-color="userNameColor"
+                        :wrapper-size="wrapperSize.toString()"
+                        :module="props.module"
+                        :current-index="getIndex(item.id)"
+                        @delete-comment="deleteComment(index)" />
       </TransitionGroup>
       <div
-        v-if="limit < comments.length"
-        class="updateLimit"
-        @click="updateLimit"
-      >
+           v-if="limit < comments.length"
+           class="updateLimit"
+           @click="updateLimit">
         <span class="limit">Show more comments</span>
       </div>
     </div>
@@ -195,25 +176,25 @@
 
 <script setup>
 const props = defineProps({
-  module: { type: String, required: true },
-  id: { type: Number, required: true },
-  maxCommentLength: { type: String, default: '1000' },
-  initialMessageLimit: { type: String, default: '10' },
-  background: { type: String, default: 'transparent' },
-  commentBackgroundColor: { type: String, default: 'white' },
-  commentTextColor: { type: String, default: '#1d2129' },
-  userNameColor: { type: String, default: 'rgb(6, 177, 183)' },
-  comments: { type: Array, default: () => [] }
+  module: { type: String,required: true },
+  id: { type: Number,required: true },
+  maxCommentLength: { type: String,default: '1000' },
+  initialMessageLimit: { type: String,default: '10' },
+  background: { type: String,default: 'transparent' },
+  commentBackgroundColor: { type: String,default: 'white' },
+  commentTextColor: { type: String,default: '#1d2129' },
+  userNameColor: { type: String,default: 'rgb(6, 177, 183)' },
+  comments: { type: Array,default: () => [] }
 });
 
 const emit = defineEmits(['loading-finished']);
 
 const toast = useToast();
 
-const { status, data } = useAuth();
+const { status,data } = useAuth();
 
 const loading = ref(true);
-const comments = toRef(props, 'comments');
+const comments = toRef(props,'comments');
 const newComment = ref('');
 const limit = computed(() => parseInt(props.initialMessageLimit));
 const alertMessage = ref('');
@@ -223,10 +204,10 @@ const wrapperSize = ref('');
 const requestLoading = ref(false);
 
 const styleShadow = computed(() => ({
-  boxShadow: `2px -2px rgba(${Math.round(Math.random() * 244)},${Math.round(Math.random() * 244)},${Math.round(Math.random() * 244)},0.6)`
+  // Remove the box-shadow
 }));
 
-const displayedComments = computed(() => comments.value.slice(0, limit.value));
+const displayedComments = computed(() => comments.value.slice(0,limit.value));
 
 const remainingLetter = computed(
   () => parseInt(props.maxCommentLength) - newComment.value.length
@@ -234,11 +215,11 @@ const remainingLetter = computed(
 
 const filterNewComment = computed(() => {
   return newComment.value
-    .replace(/^\n+/, '')
-    .replace(/(\n{2,})+/g, '\n\n')
-    .replace(/\n+$/, '')
-    .replace(/( {30,})+/g, ' ')
-    .replace(/ +$/, '');
+    .replace(/^\n+/,'')
+    .replace(/(\n{2,})+/g,'\n\n')
+    .replace(/\n+$/,'')
+    .replace(/( {30,})+/g,' ')
+    .replace(/ +$/,'');
 });
 
 function updateLimit() {
@@ -252,6 +233,19 @@ function resize(event) {
   } else {
     textarea.style.height = 'auto';
     textarea.style.height = `${textarea.scrollHeight}px`;
+  }
+}
+
+function expandTextarea(event) {
+  const textarea = event.target;
+  textarea.style.height = 'auto';
+  textarea.style.height = `${Math.max(textarea.scrollHeight,60)}px`;
+}
+
+function collapseTextarea(event) {
+  const textarea = event.target;
+  if (newComment.value === '') {
+    textarea.style.height = '32px';
   }
 }
 
@@ -533,6 +527,7 @@ onMounted(async () => {
   justify-self: stretch;
   box-sizing: border-box;
   height: 32px;
+  min-height: 32px;
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 10px;

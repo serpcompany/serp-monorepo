@@ -1,16 +1,14 @@
 <template>
   <div class="comment-wrapper">
     <div
-      class="wrapper"
-      @mouseenter="showHideBar = true"
-      @mouseleave="showHideBar = false"
-    >
-      <div class="w-12 rounded-t-full" :style="styleShadow">
+         class="wrapper"
+         @mouseenter="showHideBar = true"
+         @mouseleave="showHideBar = false">
+      <div class="w-12 rounded-t-full">
         <LazyNuxtImg
-          :src="comment.image"
-          alt="Avatar"
-          class="h-12 w-12 rounded-full p-1"
-        />
+                     :src="comment.image"
+                     alt="Avatar"
+                     class="h-12 w-12 rounded-full p-1" />
       </div>
       <div v-if="hideMessage" class="comment-wrapper">
         <div class="name-wrapper">
@@ -18,10 +16,9 @@
           <span class="dot">•</span>
           <span class="time" :title="getTime">{{ getTimeDiff }}</span>
           <div
-            v-show="showHideBar || wrapperSize < 1024"
-            class="expand hover:text-primary"
-            @click="hideMessage = false"
-          >
+               v-show="showHideBar || wrapperSize < 1024"
+               class="expand hover:text-primary"
+               @click="hideMessage = false">
             <span title="Show Comment">+</span>
           </div>
         </div>
@@ -32,56 +29,48 @@
           <div class="name text-primary">{{ comment.name }}</div>
           <span class="dot">•</span>
           <span class="time" :title="getTime">{{ getTimeDiff }}</span>
-          <UBadge v-if="isDeleted" class="deleted" color="error"
-            >Deleted</UBadge
-          >
+          <UBadge v-if="isDeleted" class="deleted" color="error">Deleted</UBadge>
           <UBadge v-else-if="isUpdated" class="updated">Updated</UBadge>
           <div
-            v-show="showHideBar || wrapperSize < 1024"
-            class="expand hover:text-primary"
-            @click="hideMessage = true"
-          >
+               v-show="showHideBar || wrapperSize < 1024"
+               class="expand hover:text-primary"
+               @click="hideMessage = true">
             <span title="Hide Comment">−</span>
           </div>
         </div>
         <div
-          v-show="!beforeUpdate"
-          ref="comment"
-          class="comment bg-white text-black dark:bg-gray-800 dark:text-white"
-        >
+             v-show="!beforeUpdate"
+             ref="comment"
+             class="comment bg-white text-black dark:bg-gray-800 dark:text-white">
           {{ filteredComment }}
         </div>
         <div
-          v-show="beforeUpdate"
-          class="comment-box text-black dark:text-white"
-        >
+             v-show="beforeUpdate"
+             class="comment-box text-black dark:text-white">
           <div class="user-name text-primary">{{ comment.name }}</div>
           <textarea
-            ref="addUpdate"
-            v-model="updateMessage"
-            name="addUpdate"
-            class="add-comment bg-white dark:bg-gray-800"
-            placeholder="Update message"
-            spellcheck="false"
-            aria-label="Add Comment"
-            @keyup="resize($event, true)"
-          ></textarea>
+                    ref="addUpdate"
+                    v-model="updateMessage"
+                    name="addUpdate"
+                    class="add-comment bg-white dark:bg-gray-800"
+                    placeholder="Update message"
+                    spellcheck="false"
+                    aria-label="Add Comment"
+                    @keyup="resize($event, true)"></textarea>
           <button
-            aria-label="Update"
-            :disabled="requestLoading"
-            class="bg-primary hover:bg-primary-800"
-            @click="update"
-          >
+                  aria-label="Update"
+                  :disabled="requestLoading"
+                  class="bg-primary hover:bg-primary-800"
+                  @click="update">
             <div v-if="requestLoading" class="request-loading"></div>
             <span v-else>Update</span>
           </button>
           <div
-            class="remaining-letter"
-            :class="{
-              'bg-red-500': remainingUpdateLetter < 0,
-              'bg-primary': remainingUpdateLetter >= 0
-            }"
-          >
+               class="remaining-letter"
+               :class="{
+                'bg-red-500': remainingUpdateLetter < 0,
+                'bg-primary': remainingUpdateLetter >= 0
+              }">
             <span>{{ remainingUpdateLetter }}</span>
           </div>
         </div>
@@ -113,19 +102,17 @@
               <div v-if="beforeDelete" class="delete-prompt">
                 <label>Are you sure?</label>
                 <button
-                  aria-label="Yes"
-                  class="yes-prompt"
-                  :disabled="requestDelete"
-                  @click="deleteComment"
-                >
+                        aria-label="Yes"
+                        class="yes-prompt"
+                        :disabled="requestDelete"
+                        @click="deleteComment">
                   Yes
                 </button>
                 <button
-                  aria-label="No"
-                  class="no-prompt"
-                  :disabled="requestDelete"
-                  @click="beforeDelete = false"
-                >
+                        aria-label="No"
+                        class="no-prompt"
+                        :disabled="requestDelete"
+                        @click="beforeDelete = false">
                   No
                 </button>
               </div>
@@ -134,43 +121,39 @@
         </div>
         <div v-if="beforeReply">
           <div class="add-comment">
-            <div class="w-12 rounded-t-full" :style="styleShadow">
+            <div class="w-12 rounded-t-full">
               <LazyNuxtImg
-                :src="data?.user?.image"
-                alt="Avatar"
-                class="h-12 w-12 rounded-full p-1"
-              />
+                           :src="data?.user?.image"
+                           alt="Avatar"
+                           class="h-12 w-12 rounded-full p-1" />
             </div>
             <div class="comment-box text-black dark:text-white">
               <div class="user-name text-primary">
                 {{ data?.user?.name || 'Unknown' }}
               </div>
               <textarea
-                ref="addReply"
-                v-model="replyMessage"
-                name="addReply"
-                class="add-comment bg-white dark:bg-gray-800"
-                placeholder="Add new reply"
-                spellcheck="false"
-                aria-label="Add Reply"
-                @keyup="resize($event)"
-              ></textarea>
+                        ref="addReply"
+                        v-model="replyMessage"
+                        name="addReply"
+                        class="add-comment bg-white dark:bg-gray-800"
+                        placeholder="Add new reply"
+                        spellcheck="false"
+                        aria-label="Add Reply"
+                        @keyup="resize($event)"></textarea>
               <button
-                aria-label="Reply"
-                :disabled="requestLoading"
-                class="bg-primary hover:bg-primary-800"
-                @click="reply"
-              >
+                      aria-label="Reply"
+                      :disabled="requestLoading"
+                      class="bg-primary hover:bg-primary-800"
+                      @click="reply">
                 <div v-if="requestLoading" class="request-loading"></div>
                 <span v-else>Reply</span>
               </button>
               <div
-                class="remaining-letter"
-                :class="{
-                  'bg-red-500': remainingLetter < 0,
-                  'bg-primary': remainingLetter >= 0
-                }"
-              >
+                   class="remaining-letter"
+                   :class="{
+                    'bg-red-500': remainingLetter < 0,
+                    'bg-primary': remainingLetter >= 0
+                  }">
                 <span>{{ remainingLetter }}</span>
               </div>
             </div>
@@ -178,31 +161,29 @@
         </div>
         <transition-group appear name="fade" tag="div">
           <CommentWrapper
-            v-for="(reply, index) in displayedReplies"
-            v-show="showReplies"
-            :id="id"
-            :key="reply.id"
-            :comment="reply"
-            :comment-background-color="commentBackgroundColor"
-            :comment-text-color="commentTextColor"
-            :user-name-color="userNameColor"
-            :wrapper-size="wrapperSize"
-            :depth-length="depthLength + 1"
-            :module="props.module"
-            :parent-ids="[...parentIds, comment.id]"
-            :parent-indices="[...parentIndices, currentIndex]"
-            :current-index="getIndex(reply.id)"
-            @delete-row="deleteReply(index)"
-            @update-comment="$emit('update-comment', $event)"
-            @add-reply="$emit('add-reply', $event)"
-            @delete-reply="$emit('delete-reply', $event)"
-          />
+                          v-for="(reply, index) in displayedReplies"
+                          v-show="showReplies"
+                          :id="id"
+                          :key="reply.id"
+                          :comment="reply"
+                          :comment-background-color="commentBackgroundColor"
+                          :comment-text-color="commentTextColor"
+                          :user-name-color="userNameColor"
+                          :wrapper-size="wrapperSize"
+                          :depth-length="depthLength + 1"
+                          :module="props.module"
+                          :parent-ids="[...parentIds, comment.id]"
+                          :parent-indices="[...parentIndices, currentIndex]"
+                          :current-index="getIndex(reply.id)"
+                          @delete-row="deleteReply(index)"
+                          @update-comment="$emit('update-comment', $event)"
+                          @add-reply="$emit('add-reply', $event)"
+                          @delete-reply="$emit('delete-reply', $event)" />
         </transition-group>
         <div
-          v-if="limit < localState.replies.length && showReplies"
-          class="update-limit"
-          @click="updateLimit"
-        >
+             v-if="limit < localState.replies.length && showReplies"
+             class="update-limit"
+             @click="updateLimit">
           <span class="limit">Show more replies</span>
         </div>
       </div>
@@ -283,7 +264,7 @@ const requestLoading = ref(false);
 const requestDelete = ref(false);
 
 const styleShadow = computed(() => ({
-  boxShadow: `2px -2px rgba(${Math.round(Math.random() * 244)},${Math.round(Math.random() * 244)},${Math.round(Math.random() * 244)},0.6)`
+  // Remove the box-shadow
 }));
 
 const isAuthorOrAdmin = computed(
