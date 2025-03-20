@@ -10,7 +10,7 @@
 
           <!-- Navigation for larger screens -->
           <div class="ml-6 hidden lg:flex">
-            <u-navigation-menu
+            <UNavigationMenu
               aria-label="Main navigation"
               orientation="horizontal"
               highlight
@@ -74,7 +74,7 @@
     <!-- Mobile menu -->
     <div v-if="mobileMenuOpen" class="lg:hidden">
       <div class="space-y-1 px-2 pt-2 pb-3">
-        <u-navigation-menu
+        <UNavigationMenu
           orientation="vertical"
           highlight
           :items="headerNavItems"
