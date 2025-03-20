@@ -3,14 +3,14 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,md,vue}\"",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch"
   },
   "lint-staged": {
     "**/*.{js,ts,vue}": "eslint --fix",
-    "**/*.{json,md,yml}": "prettier . --write"
+    "**/*.{json,md,yml,vue}": "prettier . --write"
   },
   "devDependencies": {
     "husky": "^9.1.7",

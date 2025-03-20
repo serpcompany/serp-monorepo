@@ -1,17 +1,5 @@
 <template>
   <div v-if="data">
-    <UpvoteButton
-      v-if="useAuth"
-      :id="data.id"
-      module="company"
-      :upvotes="upvotes"
-    />
-    <CommentsContainer
-      v-if="useAuth"
-      :id="data.id"
-      module="company"
-      :comments="comments"
-    />
     <multipage-header
       :name="data.name"
       :one-liner="data.oneLiner"
@@ -19,7 +7,16 @@
       class="bg-background sticky top-0 z-10 transition-all duration-300"
       :image="data.logo"
       :serply_link="data.serplyLink"
-    />
+    >
+      <template #upvote>
+        <UpvoteButton
+          v-if="useAuth"
+          :id="data.id"
+          module="company"
+          :upvotes="upvotes"
+        />
+      </template>
+    </multipage-header>
 
     <!-- Main content with grid -->
     <section class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
@@ -70,6 +67,18 @@
               </li>
             </ul>
           </section>
+
+          <!-- Comments Section -->
+          <section id="comments" class="mb-12">
+            <h2 class="mb-6 scroll-mt-60 text-3xl font-bold">Comments</h2>
+            <CommentsContainer
+              v-if="useAuth"
+              :id="data.id"
+              module="company"
+              :comments="comments"
+              class="comments-github-style"
+            />
+          </section>
         </div>
 
         <!-- Sidebar (30%) -->
@@ -100,11 +109,13 @@
 </template>
 
 <script setup lang="ts">
+import type { Company, Comment } from '@serp/types/types';
+
 const route = useRoute();
 const router = useRouter();
 const { slug } = route.params;
 
-const data = await useCompany(`${slug}`);
+const data = (await useCompany(`${slug}`)) as Company;
 if (!data) {
   router.push('/404');
 }
@@ -117,12 +128,14 @@ const useAuth = config.public.useAuth;
 // const comments = data.comments || [];
 
 // Possibly move to onMounted, but may negatively impact SEO (components currently have onMounted, investigate impact on SEO)
-const { upvotes, comments } = await useCompanyUpvotesAndComments(data?.id);
+const { upvotes, comments } = (await useCompanyUpvotesAndComments(
+  data?.id
+)) as { upvotes: string[]; comments: Comment[] };
 
 const faqItems = computed(() => {
   if (!data?.faqs) return [];
 
-  return data?.faqs.map((faq) => ({
+  return data?.faqs.map((faq: { question: string; answer: string }) => ({
     label: faq.question,
     content: faq.answer
   }));
@@ -144,6 +157,9 @@ const sections = computed(() => {
     sectionTitles.push('Alternatives');
   }
 
+  // Add Comments section to navigation
+  sectionTitles.push('Comments');
+
   return sectionTitles;
 });
 
@@ -155,3 +171,84 @@ useSeoMeta({
   )
 });
 </script>
+
+<style>
+.comments-github-style {
+  border: 1px solid var(--color-border, #d0d7de);
+  border-radius: 6px;
+  margin-top: 16px;
+}
+
+.comments-github-style .innerWrapper {
+  padding: 16px;
+}
+
+.comments-github-style .comment-wrapper {
+  border-top: 1px solid var(--color-border, #d0d7de);
+  padding-top: 16px;
+  margin-top: 16px;
+}
+
+.comments-github-style .comment-wrapper:first-child {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.comments-github-style .wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.comments-github-style .addComment {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.comments-github-style .commentBox {
+  flex: 1;
+  border: 1px solid var(--color-border, #d0d7de);
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.comments-github-style .commentBox textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 8px;
+  border-radius: 3px;
+}
+
+.comments-github-style .commentBox button {
+  margin-top: 8px;
+  padding: 5px 16px;
+  border-radius: 6px;
+  color: white;
+}
+
+.comments-github-style .name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.comments-github-style .time {
+  color: #768390;
+  font-size: 0.85em;
+}
+
+.comments-github-style .comment {
+  background-color: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 8px;
+}
+
+.dark .comments-github-style .comment {
+  background-color: #0d1117;
+  border-color: #30363d;
+}
+</style>

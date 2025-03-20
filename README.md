@@ -24,7 +24,7 @@ ALL singles for everything could now go under /posts/[slug]/
 ```yaml
 - companies: serp.co/posts/SERP/
   pages/posts/<single>/
-  
+
   pages/software/index.vue
   pages/software/best/index.vue
 
@@ -103,7 +103,7 @@ footerColumns: [
 By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel.
 
 ```sh
-npx turbo login
+pnpx turbo login
 ```
 
 This will authenticate the Turborepo CLI with your Vercel account

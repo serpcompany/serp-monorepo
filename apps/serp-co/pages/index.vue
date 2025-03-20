@@ -20,7 +20,7 @@
 
       <!-- pagination -->
       <div class="mt-20 flex justify-center">
-        <u-pagination
+        <UPagination
           v-model:page="page"
           :total="data?.pagination?.totalItems"
           :items-per-page="limit"

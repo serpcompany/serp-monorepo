@@ -4,7 +4,17 @@
       :name="artist.name"
       :sections="sections"
       class="bg-background sticky top-0 z-10 transition-all duration-300"
-    />
+      :serply_link="getArtistUrl(artist.name)"
+    >
+      <template #upvote>
+        <UpvoteButton
+          v-if="useAuth"
+          :id="artist.slug"
+          module="artist"
+          :upvotes="upvotes"
+        />
+      </template>
+    </multipage-header>
 
     <!-- Main content with grid -->
     <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
@@ -103,6 +113,14 @@ const route = useRoute();
 const { slug } = route.params;
 const artist = await useArtist(slug);
 
+const config = useRuntimeConfig();
+const useAuth = config.public.useAuth;
+
+// Get upvotes
+const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
+  `/upvotes/${artist.slug}?module=artist`
+)) || { upvotes: [] };
+
 const genres = computed(() => {
   return artist?.genres ? artist.genres.join(', ') : '';
 });
@@ -110,6 +128,11 @@ const genres = computed(() => {
 const tags = computed(() => {
   return artist?.tags ? artist.tags.join(', ') : '';
 });
+
+// Helper function to create a URL for the artist
+function getArtistUrl(name: string) {
+  return `https://musicbrainz.org/artist/${artist.id}`;
+}
 
 const seoTitle = computed(() => artist?.seoTitle);
 const seoDescription = computed(() => artist?.seoDescription);

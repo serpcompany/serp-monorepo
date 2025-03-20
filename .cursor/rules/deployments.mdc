@@ -1,0 +1,19 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: "Deployment guidelines for determining the platform and handling Cloudflare Pages."
+globs:
+  - "nuxt.config.ts"
+---
+
+- **Cloudflare Pages:**  
+  Only apps that extend `@serp/utils-cloudflare-pages` in their nuxt.config.ts are deployed to Cloudflare Pages.
+
+- **Other Platforms:**  
+  Apps not using utils-cloudflare-pages may use alternative deployment platforms.
+
+- **Determine Platform:**  
+  Check nuxt.config.ts to see if it extends `@serp/utils-cloudflare-pages`.

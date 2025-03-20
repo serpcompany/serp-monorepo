@@ -9,7 +9,7 @@
         'fixed top-0 left-0 z-50 w-full': isScrolled
       }"
     >
-      <div class="mx-auto max-w-6xl sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <!-- header top -->
 
         <div class="flex flex-col items-center justify-between sm:flex-row">
@@ -38,16 +38,37 @@
             </div>
           </div>
 
-          <!-- visit website button -->
-          <div class="sm:flex-end flex w-full pt-4 sm:pt-0">
-            <div class="mr-auto ml-0 sm:mr-0 sm:ml-auto">
-              <nuxt-link
-                :to="serply_link"
-                target="_blank"
-                class="border px-4 py-2"
-                >Visit Website</nuxt-link
+          <!-- action buttons -->
+          <div
+            class="flex w-full flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0"
+          >
+            <!-- upvote button slot -->
+            <slot name="upvote"></slot>
+
+            <!-- visit website button -->
+            <a
+              :href="serply_link"
+              target="_blank"
+              class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-gray-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-gray-200"
+            >
+              Visit Website
+              <svg
+                class="h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-            </div>
+                <path
+                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+            </a>
           </div>
         </div>
 

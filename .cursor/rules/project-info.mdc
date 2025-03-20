@@ -1,0 +1,28 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: "Project information and high-level technology references for the SERP Monorepo."
+globs:
+  - "package.json"
+  - "*.ts"
+  - "*.vue"
+---
+
+- **Project Name:** SERP Monorepo  
+  **Description:** A monorepo containing multiple SERP (Search Engine Results Page) related applications and shared packages  
+  **Repository:** serp-monorepo  
+  **Type:** monorepo
+
+- **Technologies & References:**
+  - **Framework:** Nuxt 3
+  - **Language:** TypeScript
+  - **Package Manager:** pnpm@8.15.6
+  - **Monorepo Tool:** Turborepo
+  - **Module References:** Check individual app's package.json for current module dependencies
+  - **Config References:** For Nuxt configurations, check nuxt.config.ts in each app directory
+  - **Workspace Packages:** Use workspace: prefix when referencing internal packages
+  - **Database Info:** Check schema.ts files for current Drizzle ORM schema definitions
+  - **Deployment References:** See deployment section for rules on determining deployment platform

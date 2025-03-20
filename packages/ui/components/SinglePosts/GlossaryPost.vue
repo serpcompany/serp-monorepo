@@ -1,17 +1,5 @@
 <template>
   <div>
-    <UpvoteButton
-      v-if="useAuth"
-      :id="data.slug"
-      module="posts"
-      :upvotes="data.upvotes"
-    />
-    <CommentsContainer
-      v-if="useAuth"
-      :id="data.slug"
-      module="posts"
-      :comments="data.comments || []"
-    />
     <div class="mt-10 grid grid-cols-1 lg:grid-cols-3">
       <div class="col-span-2 pb-10">
         <h1 class="text-4xl font-bold lg:text-6xl">
@@ -60,6 +48,18 @@
             <li>Term 3</li>
           </ul>
         </div>
+
+        <!-- Comments Section -->
+        <div class="mt-10">
+          <h2 class="mb-6 text-3xl font-bold">Comments</h2>
+          <CommentsContainer
+            v-if="useAuth"
+            :id="data.slug"
+            module="posts"
+            :comments="data.comments || []"
+            class="comments-github-style"
+          />
+        </div>
       </div>
 
       <!-- sidebar -->
@@ -86,3 +86,84 @@ function stateChange(event: { data: number }) {
   isPlaying.value = event.data === 1;
 }
 </script>
+
+<style>
+.comments-github-style {
+  border: 1px solid var(--color-border, #d0d7de);
+  border-radius: 6px;
+  margin-top: 16px;
+}
+
+.comments-github-style .innerWrapper {
+  padding: 16px;
+}
+
+.comments-github-style .comment-wrapper {
+  border-top: 1px solid var(--color-border, #d0d7de);
+  padding-top: 16px;
+  margin-top: 16px;
+}
+
+.comments-github-style .comment-wrapper:first-child {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.comments-github-style .wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.comments-github-style .addComment {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.comments-github-style .commentBox {
+  flex: 1;
+  border: 1px solid var(--color-border, #d0d7de);
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.comments-github-style .commentBox textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 8px;
+  border-radius: 3px;
+}
+
+.comments-github-style .commentBox button {
+  margin-top: 8px;
+  padding: 5px 16px;
+  border-radius: 6px;
+  color: white;
+}
+
+.comments-github-style .name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.comments-github-style .time {
+  color: #768390;
+  font-size: 0.85em;
+}
+
+.comments-github-style .comment {
+  background-color: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 8px;
+}
+
+.dark .comments-github-style .comment {
+  background-color: #0d1117;
+  border-color: #30363d;
+}
+</style>

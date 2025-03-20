@@ -4,7 +4,17 @@
       :name="album.name"
       :sections="sections"
       class="bg-background sticky top-0 z-10 transition-all duration-300"
-    />
+      :serply_link="getAlbumUrl(album.id)"
+    >
+      <template #upvote>
+        <UpvoteButton
+          v-if="useAuth"
+          :id="album.slug"
+          module="album"
+          :upvotes="upvotes"
+        />
+      </template>
+    </multipage-header>
 
     <!-- Main content with grid -->
     <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
@@ -89,6 +99,14 @@ const route = useRoute();
 const { slug } = route.params;
 const album = await useAlbum(slug);
 
+const config = useRuntimeConfig();
+const useAuth = config.public.useAuth;
+
+// Get upvotes
+const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
+  `/upvotes/${album.slug}?module=album`
+)) || { upvotes: [] };
+
 const genres = computed(() => {
   return album?.genres ? album.genres.join(', ') : '';
 });
@@ -96,6 +114,11 @@ const genres = computed(() => {
 const tags = computed(() => {
   return album?.tags ? album.tags.join(', ') : '';
 });
+
+// Helper function to create a URL for the album
+function getAlbumUrl(id: string) {
+  return `https://musicbrainz.org/release-group/${album.id}`;
+}
 
 const seoTitle = computed(() => album?.seoTitle);
 const seoDescription = computed(() => album?.seoDescription);

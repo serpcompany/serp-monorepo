@@ -115,7 +115,7 @@
     <div v-else class="innerWrapper">
       <div v-if="status == 'authenticated'" class="userName">
         <div class="addComment">
-          <div class="w-12 rounded-t-full" :style="styleShadow">
+          <div class="w-12 rounded-t-full">
             <LazyNuxtImg
               :src="data.user.image"
               alt="Avatar"
@@ -126,29 +126,33 @@
             <textarea
               v-model="newComment"
               name="addComment"
-              class="addComment bg-white dark:bg-gray-800"
-              placeholder="Add new comment"
+              class="addComment border-gray-500 bg-white dark:border-gray-400 dark:bg-gray-800"
+              placeholder="Add a comment"
               spellcheck="true"
               aria-label="Add comment"
               @keyup="resize"
+              @focus="expandTextarea"
+              @blur="handleBlur"
             ></textarea>
-            <button
-              aria-label="Send"
-              :disabled="requestLoading"
-              class="bg-primary hover:bg-primary-800"
-              @click="addComment"
-            >
-              <div v-if="requestLoading" class="requestLoading"></div>
-              <span v-else>Send</span>
-            </button>
             <div
-              class="remainingLetter"
-              :class="{
-                'bg-red-500': remainingLetter < 0,
-                'bg-primary': remainingLetter >= 0
-              }"
+              v-if="isExpanded"
+              class="action-buttons flex justify-end gap-2"
             >
-              <span>{{ remainingLetter }}</span>
+              <UButton
+                class="cancel-btn inline-flex items-center justify-center rounded-full border border-gray-300 bg-gray-500 px-4 py-2 text-gray-700 hover:bg-gray-50 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                @click="cancelComment"
+              >
+                Cancel
+              </UButton>
+
+              <UButton
+                class="comment-btn hover:bg-primary-800 disabled:bg-primary-300 inline-flex items-center justify-center rounded-full border border-transparent bg-blue-700 px-4 py-2 text-white focus:outline-none"
+                :disabled="!filterNewComment.length || requestLoading"
+                @click="addComment"
+              >
+                <div v-if="requestLoading" class="request-loading"></div>
+                <span v-else>Comment</span>
+              </UButton>
             </div>
             <div v-if="alert" class="alert" :class="alertClass">
               {{ alertMessage }}
@@ -181,17 +185,6 @@
           :current-index="getIndex(item.id)"
           @delete-comment="deleteComment(index)"
         />
-        <div
-          v-if="comments.length < 1"
-          key="noComment"
-          class="noCommentWrapper"
-          @click="focusCommentBox"
-        >
-          <span
-            class="noCommentText text-primary border-primary hover:bg-primary border hover:text-white"
-            >Be the first to comment.</span
-          >
-        </div>
       </TransitionGroup>
       <div
         v-if="limit < comments.length"
@@ -232,9 +225,10 @@ const alertClass = ref('');
 const alert = ref(false);
 const wrapperSize = ref('');
 const requestLoading = ref(false);
+const isExpanded = ref(false);
 
 const styleShadow = computed(() => ({
-  boxShadow: `2px -2px rgba(${Math.round(Math.random() * 244)},${Math.round(Math.random() * 244)},${Math.round(Math.random() * 244)},0.6)`
+  // Remove the box-shadow
 }));
 
 const displayedComments = computed(() => comments.value.slice(0, limit.value));
@@ -263,6 +257,38 @@ function resize(event) {
   } else {
     textarea.style.height = 'auto';
     textarea.style.height = `${textarea.scrollHeight}px`;
+  }
+}
+
+function expandTextarea(event) {
+  const textarea = event.target;
+  textarea.style.height = 'auto';
+  textarea.style.height = `${Math.max(textarea.scrollHeight, 60)}px`;
+  isExpanded.value = true;
+}
+
+function handleBlur(event) {
+  setTimeout(() => {
+    if (document.activeElement.closest('.action-buttons')) {
+      return;
+    }
+
+    if (!isExpanded.value) {
+      const textarea = event.target;
+      if (newComment.value === '') {
+        textarea.style.height = '32px';
+      }
+    }
+  }, 100);
+}
+
+function cancelComment() {
+  isExpanded.value = false;
+  newComment.value = '';
+  const textarea = document.querySelector('textarea.addComment');
+  if (textarea) {
+    textarea.style.height = '32px';
+    textarea.blur();
   }
 }
 
@@ -320,6 +346,7 @@ async function addComment() {
         });
         newComment.value = '';
         resize({ target: document.querySelector('textarea.addComment') });
+        isExpanded.value = false;
       } else {
         throw new Error(`Failed to add comment - ${response.value.message}`);
       }
@@ -416,43 +443,53 @@ onMounted(async () => {
 }
 
 .comments >>> ::-webkit-input-placeholder {
-  color: #92b1b3 !important;
-  text-align: center;
+  color: #4b5563 !important;
+  text-align: left;
+  font-weight: normal;
 }
 
 .comments >>> ::-moz-placeholder {
-  color: #92b1b3 !important;
-  text-align: center;
+  color: #4b5563 !important;
+  text-align: left;
+  font-weight: normal;
 }
 
 .comments >>> :-ms-input-placeholder {
-  color: #92b1b3 !important;
-  text-align: center;
+  color: #4b5563 !important;
+  text-align: left;
+  font-weight: normal;
 }
 
 .comments >>> :-moz-placeholder {
-  color: #92b1b3 !important;
-  text-align: center;
+  color: #4b5563 !important;
+  text-align: left;
+  font-weight: normal;
 }
 
 .comments {
   font-family: 'Roboto', sans-serif;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 0;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 .comments >>> .comments {
   overflow-x: auto;
+  background-color: transparent;
 }
 
 .comments > .innerWrapper {
   overflow-x: auto;
-  padding: 10px 2px;
+  padding: 10px 0;
+  background-color: transparent;
+  border: none;
 }
 
 .comments >>> .noCommentWrapper {
@@ -526,37 +563,45 @@ onMounted(async () => {
   grid-auto-rows: minmax(0, auto);
   grid-column-gap: 10px;
   padding-top: 2px;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .comments >>> .commentBox {
   display: grid;
-  grid-template-columns: minmax(200px, auto) 0.2fr;
+  grid-template-columns: 1fr;
   grid-auto-rows: minmax(0, -webkit-max-content);
   grid-auto-rows: minmax(0, max-content);
   grid-auto-rows: minmax(0, -moz-max-content);
   grid-row-gap: 10px;
   overflow: auto;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .comments >>> .commentBox > textarea {
   font-family: 'Roboto', sans-serif;
   justify-self: stretch;
   box-sizing: border-box;
-  height: 32px;
+  height: 44px;
+  min-height: 44px;
   padding-top: 8px;
   padding-bottom: 8px;
-  padding-left: 10px;
-  padding-right: 22px;
-  font-size: 13px;
-  line-height: 16px;
-  border-radius: 18px;
-  border: 1px solid rgba(204, 212, 216, 0.8);
+  padding-left: 16px;
+  padding-right: 16px;
+  font-size: 14px;
+  line-height: 20px;
+  border-radius: 24px;
+  border: 1px solid #6b7280;
   overflow: hidden;
   resize: none;
   outline: none;
   transition: linear 0.1s all;
   -moz-transition: linear 0.1s all;
   -webkit-transition: linear 0.1s all;
+  width: 100%;
 }
 
 .comments >>> .commentBox > button {
@@ -687,6 +732,26 @@ onMounted(async () => {
 }
 
 @keyframes requestLoading-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.request-loading {
+  display: inline-block;
+  border: 4px solid transparent;
+  border-left-color: #fff;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  animation: request-loading-spin 0.5s linear infinite;
+}
+
+@keyframes request-loading-spin {
   0% {
     transform: rotate(0deg);
   }

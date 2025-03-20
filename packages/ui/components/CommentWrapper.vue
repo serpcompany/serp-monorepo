@@ -5,7 +5,7 @@
       @mouseenter="showHideBar = true"
       @mouseleave="showHideBar = false"
     >
-      <div class="w-12 rounded-t-full" :style="styleShadow">
+      <div class="w-12 rounded-t-full">
         <LazyNuxtImg
           :src="comment.image"
           alt="Avatar"
@@ -134,7 +134,7 @@
         </div>
         <div v-if="beforeReply">
           <div class="add-comment">
-            <div class="w-12 rounded-t-full" :style="styleShadow">
+            <div class="w-12 rounded-t-full">
               <LazyNuxtImg
                 :src="data?.user?.image"
                 alt="Avatar"
@@ -283,7 +283,7 @@ const requestLoading = ref(false);
 const requestDelete = ref(false);
 
 const styleShadow = computed(() => ({
-  boxShadow: `2px -2px rgba(${Math.round(Math.random() * 244)},${Math.round(Math.random() * 244)},${Math.round(Math.random() * 244)},0.6)`
+  // Remove the box-shadow
 }));
 
 const isAuthorOrAdmin = computed(
@@ -700,25 +700,27 @@ onMounted(() => {
 
 .name-wrapper {
   display: grid;
-  grid-template-columns: repeat(4, 0.001fr);
+  grid-template-columns: repeat(4, auto);
   grid-auto-columns: minmax(0, auto);
   grid-column-gap: 5px;
   line-height: 13px;
   white-space: nowrap;
   user-select: none;
+  margin-bottom: 4px;
+  align-items: center;
 }
 
 .name {
-  font-size: 14px;
-  line-height: 14px;
-  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
   white-space: nowrap;
 }
 
 .time {
   cursor: help;
-  font-size: 13px;
-  color: #92b1b3;
+  font-size: 12px;
+  color: #787c7e;
   white-space: nowrap;
   text-decoration: none;
 }
@@ -745,26 +747,28 @@ onMounted(() => {
   word-wrap: break-word;
   word-break: break-word;
   hyphens: auto;
-  font-size: 13px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 21px;
   font-kerning: normal;
-  padding: 8px 10px;
-  border-radius: 18px;
-  border: 1px solid rgba(204, 212, 216, 0.8);
+  padding: 0;
+  margin-bottom: 8px;
+  border: none;
+  background: transparent;
   min-width: min-content;
   max-width: max-content;
 }
 
 .reply {
   display: grid;
-  grid-template-columns: repeat(7, 0.001fr);
+  grid-template-columns: repeat(7, auto);
   grid-auto-columns: minmax(0, auto);
   grid-auto-rows: minmax(0, auto);
-  grid-column-gap: 5px;
-  font-size: 13px;
+  grid-column-gap: 8px;
+  font-size: 12px;
   white-space: nowrap;
-  margin-top: -8px;
-  margin-left: 10px;
+  margin-top: 0;
+  margin-left: 0;
+  margin-bottom: 12px;
   transition: color linear 0.1s;
   user-select: none;
 }

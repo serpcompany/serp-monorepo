@@ -7,7 +7,7 @@ echo "[.husky]: Running pre-commit hook..."
 STAGED_FILES=$(git diff --cached --name-only)
 echo "[.husky]: Your staged files: $STAGED_FILES"
 
-# Run lint
+# Run lint-staged to lint only staged files
 echo "[.husky]: Running script: pnpm lint"
 pnpm lint
 

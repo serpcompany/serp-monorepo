@@ -9,7 +9,7 @@
       <!-- box -->
       <div class="flex justify-center">
         <client-only>
-          <u-input
+          <UInput
             type="file"
             class="mb-10"
             multiple
@@ -20,8 +20,8 @@
       </div>
 
       <!-- button -->
-      <u-button class="mx-auto flex" type="button" @click="handleCombine"
-        >Submit</u-button
+      <UButton class="mx-auto flex" type="button" @click="handleCombine"
+        >Submit</UButton
       >
     </div>
   </div>

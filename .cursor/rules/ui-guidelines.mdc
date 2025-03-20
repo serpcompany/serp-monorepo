@@ -1,0 +1,35 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: "Guidelines for component development, UI styling, and project-specific preferences."
+globs:
+  - "*.vue"
+---
+
+**Framework & Syntax:**
+- **Framework:** Vue 3 with Composition API  
+- **Syntax:** Uses `<script setup>` syntax
+
+**UI Library:**
+- NuxtUI & NuxtUI Pro (our customization of it in our `packages/ui` package)
+- Check existing components for examples of @nuxt/ui usage
+
+**Reference Guidelines:**
+- Always reference other UI (components/pages/etc.) to ensure consistency in style and values across the project.
+
+**Project/Repository Specifics:**
+- **Tailwind Config Settings:**  
+  Find these in the `apps/<app>/tailwind.config.ts` file.
+- **Design Kit Values:**  
+  We generally follow Github Primer design guidelines for values (e.g., spacing numbers, margins, columns, etc.).
+
+**Code Style & Rules:**
+- Everything must be mobile responsive and darkmode compatible.
+- Use Tailwind classes over custom CSS.
+- Use NuxtUI & NuxtUI Pro components.
+  
+**Additional Reference:**
+- Look at existing components in the same app for pattern matching and consistency.
