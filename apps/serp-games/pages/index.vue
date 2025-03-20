@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- hero -->
-    <s-hero
+    <SHero
       headline="SERP Wiki"
       subheadline="Stuff & More."
       :show-search-bar="false"

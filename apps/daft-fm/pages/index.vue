@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- hero -->
-    <s-hero
+    <SHero
       headline="DAFT FM"
       subheadline="All Things Audible."
       :show-search-bar="false"

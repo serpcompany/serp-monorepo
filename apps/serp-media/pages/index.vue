@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- hero -->
-    <s-hero
+    <SHero
       headline="SERP Media"
       subheadline="Media, Movies & More."
       :show-search-bar="false"

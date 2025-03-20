@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- hero -->
-    <s-hero
+    <SHero
       headline="Grow Your Business With Expert Advice "
       subheadline="Discover top-rated companies and tools for your business."
       :show-search-bar="false"

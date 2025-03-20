@@ -1,6 +1,6 @@
 <template>
   <div>
-    <s-hero
+    <SHero
       :headline="
         `
     Category: ${data.categoryName}` ||
