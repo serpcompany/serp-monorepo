@@ -97,9 +97,16 @@
 <script setup lang="ts">
 const route = useRoute();
 const redirectTo = route.query.redirectTo || '/';
-const { signIn, getProviders, status } = useAuth();
-if (status.value === 'authenticated') {
+const { loggedIn } = useUserSession();
+if (loggedIn.value) {
   navigateTo(redirectTo);
 }
-const providers = await getProviders();
+const providers = [
+  { id: 'github', name: 'GitHub' },
+  { id: 'google', name: 'Google' }
+];
+
+const signIn = async (provider: string) => {
+  window.location.href = `/api/auth/${provider}`;
+};
 </script>

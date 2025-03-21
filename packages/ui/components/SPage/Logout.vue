@@ -1,13 +1,13 @@
 <template>
   <div>
-    <UButton @click="signOut"> Sign Out </UButton>
+    <UButton @click="clear"> Sign Out </UButton>
   </div>
 </template>
 
 <script setup lang="ts">
-const { status, signOut } = useAuth();
+const { loggedIn, clear } = useUserSession();
 
-if (status.value === 'unauthenticated') {
+if (!loggedIn.value) {
   navigateTo('/');
 }
 </script>

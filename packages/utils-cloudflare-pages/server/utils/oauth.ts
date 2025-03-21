@@ -1,8 +1,3 @@
-import { NuxtAuthHandler } from '#auth';
-import GithubProvider from 'next-auth/providers/github';
-// import RedditProvider from 'next-auth/providers/reddit';
-import GoogleProvider from 'next-auth/providers/google';
-
 async function d1Query(sql, params = []) {
   const response = await fetch(
     `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/d1/database/${process.env.CLOUDFLARE_AUTH_DATABASE_ID}/query`,
@@ -40,51 +35,40 @@ async function d1Query(sql, params = []) {
   return resultItem.results;
 }
 
-export default NuxtAuthHandler({
-  secret: process.env.AUTH_SECRET,
+export interface OAuthUserData {
+  email: string;
+  name: string;
+  image: string;
+  provider: 'google' | 'github';
+  providerUserId: string;
+}
 
-  providers: [
-    // @ts-expect-error Use .default here for it to work during SSR.
-    GithubProvider.default({
-      clientId: process.env.AUTH_GITHUB_CLIENT_ID,
-      clientSecret: process.env.AUTH_GITHUB_CLIENT_SECRET
-    }),
+export const handleOAuthSuccess = async (event, oauthUser: OAuthUserData) => {
+  if (!oauthUser || !oauthUser.email) {
+    console.error('No user data returned from OAuth provider');
+    return sendRedirect(event, '/login?error=invalidUserData');
+  }
+  // Try selecting an existing user by email.
+  const domain = process.env.NUXT_PUBLIC_DOMAIN;
+  const selectSql = 'SELECT * FROM users WHERE email = ? LIMIT 1';
+  const rows = await d1Query(selectSql, [oauthUser.email]);
 
-    // @ts-expect-error Use .default here for it to work during SSR.
-    GoogleProvider.default({
-      clientId: process.env.AUTH_GOOGLE_CLIENT_ID,
-      clientSecret: process.env.AUTH_GOOGLE_CLIENT_SECRET
-    })
-  ],
-
-  callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      const email_ = email || user?.email;
-      if (!email_ || !user) {
-        return false;
-      }
-
-      // Try selecting an existing user by email.
-      const domain = process.env.NUXT_PUBLIC_DOMAIN;
-      const selectSql = 'SELECT * FROM users WHERE email = ? LIMIT 1';
-      const rows = await d1Query(selectSql, [email_]);
-
-      if (!rows || rows.length === 0) {
-        // No user found, insert a new record.
-        const insertSql =
-          'INSERT INTO users (email, name, image, created_at, sites_registered) VALUES (?, ?, ?, ?, ?)';
-        const createdAt = new Date().toISOString();
-        const sitesRegistered = JSON.stringify([domain]);
-        await d1Query(insertSql, [
-          email_,
-          user.name,
-          user.image,
-          createdAt,
-          sitesRegistered
-        ]);
-      } else {
-        // User found, update their record.
-        const updateSql = `
+  if (!rows || rows.length === 0) {
+    // No user found, insert a new record.
+    const insertSql =
+      'INSERT INTO users (email, name, image, created_at, sites_registered) VALUES (?, ?, ?, ?, ?)';
+    const createdAt = new Date().toISOString();
+    const sitesRegistered = JSON.stringify([domain]);
+    await d1Query(insertSql, [
+      oauthUser.email,
+      oauthUser.name,
+      oauthUser.image,
+      createdAt,
+      sitesRegistered
+    ]);
+  } else {
+    // User found, update their record.
+    const updateSql = `
           UPDATE users SET
             name = ?,
             image = ?,
@@ -106,18 +90,18 @@ export default NuxtAuthHandler({
             updated_at = ?
           WHERE email = ?
         `;
-        const updatedAt = new Date().toISOString();
-        await d1Query(updateSql, [
-          user.name,
-          user.image,
-          domain,
-          domain,
-          updatedAt,
-          email_
-        ]);
-      }
-
-      return true;
-    }
+    const updatedAt = new Date().toISOString();
+    await d1Query(updateSql, [
+      oauthUser.name,
+      oauthUser.image,
+      domain,
+      domain,
+      updatedAt,
+      oauthUser.email
+    ]);
   }
-});
+
+  // Set user session and redirect to homepage
+  await setUserSession(event, { user: oauthUser });
+  return sendRedirect(event, '/');
+};

@@ -1,5 +1,5 @@
 <template>
-  <SPagePostCollection
+  <SPagePostCollectionKeywordAsTitle
     module="movies"
     module-title="Movies & TV Shows"
     base-slug="movies/"

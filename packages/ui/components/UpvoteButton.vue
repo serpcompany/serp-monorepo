@@ -4,7 +4,7 @@
       class="flex w-full items-center justify-center gap-2 rounded-full border border-gray-300 px-4 py-2 font-medium transition-colors hover:bg-gray-100 disabled:opacity-75 sm:w-auto dark:border-gray-600 dark:hover:bg-gray-800"
       :class="{
         'text-orange-500 dark:text-orange-400': localUpvotes.includes(
-          data?.value?.user?.email
+          user.email
         )
       }"
       :disabled="loading"
@@ -34,9 +34,9 @@
 </template>
 
 <script setup lang="ts">
-const { status, data } = useAuth();
+const { loggedIn, user } = useUserSession();
 const props = defineProps<{
-  id: number;
+  id: number | string;
   module: string;
   upvotes: string[];
 }>();
@@ -46,7 +46,7 @@ const toast = useToast();
 const loading = ref(false);
 
 const buttonColor = computed(() =>
-  localUpvotes.value.includes(data?.value?.user?.email) ? 'primary' : 'neutral'
+  localUpvotes.value.includes(user?.value?.email) ? 'primary' : 'neutral'
 );
 
 watch(
@@ -65,8 +65,8 @@ async function upvote() {
   try {
     loading.value = true;
 
-    if (status.value === 'authenticated') {
-      if (!data?.value?.user?.email) {
+    if (loggedIn.value) {
+      if (!user?.value?.email) {
         throw new Error('User not authenticated');
       }
 
@@ -81,12 +81,12 @@ async function upvote() {
       }
 
       if (response.value.message === 'success') {
-        if (localUpvotes.value.includes(data.value.user.email)) {
+        if (localUpvotes.value.includes(user.value.email)) {
           localUpvotes.value = localUpvotes.value.filter(
-            (email) => email !== data.value.user.email
+            (email) => email !== user.value.email
           );
         } else {
-          localUpvotes.value.push(data.value.user.email);
+          localUpvotes.value.push(user.value.email);
         }
 
         toast.add({

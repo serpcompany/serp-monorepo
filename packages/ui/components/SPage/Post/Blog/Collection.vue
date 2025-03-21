@@ -5,7 +5,7 @@
     <div class="pb-20">
       <!-- rows: posts -->
       <div class="space-y-4">
-        <post-card v-for="post in data.posts" :key="post.id" :post="post" />
+        <PostCard v-for="post in data.posts" :key="post.id" :post="post" />
       </div>
 
       <u-pagination

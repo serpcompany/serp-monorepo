@@ -1,7 +1,7 @@
 <template>
   <div class="pb-10">
     <!-- hero -->
-    <s-hero
+    <SHero
       headline="Products, Software & Services."
       subheadline="Discover top-rated software, tools & services."
       :show-search-bar="false"

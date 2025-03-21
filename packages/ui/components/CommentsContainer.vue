@@ -113,11 +113,12 @@
       </svg>
     </div>
     <div v-else class="innerWrapper">
-      <div v-if="status == 'authenticated'" class="userName">
+      <div class="userName">
         <div class="addComment">
           <div class="w-12 rounded-t-full">
             <LazyNuxtImg
-              :src="data.user.image"
+              v-if="user?.image"
+              :src="user?.image"
               alt="Avatar"
               class="h-12 w-12 rounded-full p-1"
             />
@@ -160,7 +161,7 @@
           </div>
         </div>
       </div>
-      <div v-else class="noCommentWrapper">
+      <!-- <div v-else class="noCommentWrapper">
         <NuxtLink
           :to="`/login?redirectTo=${$route.fullPath}`"
           class="noCommentWrapper"
@@ -170,7 +171,7 @@
             >Sign in to comment.</span
           >
         </NuxtLink>
-      </div>
+      </div> -->
       <TransitionGroup appear name="fade" tag="div">
         <CommentWrapper
           v-for="(item, index) in displayedComments"
@@ -214,7 +215,7 @@ const emit = defineEmits(['loading-finished']);
 
 const toast = useToast();
 
-const { status, data } = useAuth();
+const { loggedIn, user } = useUserSession();
 
 const loading = ref(true);
 const comments = toRef(props, 'comments');
@@ -296,7 +297,16 @@ const getIndex = (id) =>
   props.comments.findIndex((comment) => comment.id === id);
 
 async function addComment() {
-  if (!data?.value?.user?.email) {
+  if (!loggedIn.value) {
+    toast.add({
+      id: 'comment-login',
+      title: 'Login required',
+      description: 'You need to login to comment',
+      icon: 'exclamation-circle'
+    });
+    return;
+  }
+  if (!user?.value?.email) {
     toast.add({
       id: 'comment-login',
       title: 'Login required',
@@ -336,9 +346,9 @@ async function addComment() {
         });
         comments.value.push({
           id: response.value.id,
-          email: data.value.user.email,
-          name: data.value.user.name,
-          image: data.value.user.image,
+          email: user.value.email,
+          name: user.value.name,
+          image: user.value.image,
           content: commentObj.comment,
           createdAt: commentObj.timestamp,
           updatedAt: commentObj.timestamp,
@@ -582,7 +592,8 @@ onMounted(async () => {
 }
 
 .comments >>> .commentBox > textarea {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Sys', sans-serif;
+  font-weight: normal;
   justify-self: stretch;
   box-sizing: border-box;
   height: 44px;
@@ -605,7 +616,6 @@ onMounted(async () => {
 }
 
 .comments >>> .commentBox > button {
-  font-family: 'Roboto', sans-serif;
   align-self: end;
   max-height: 32px;
   box-sizing: border-box;

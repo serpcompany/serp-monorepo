@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- hero -->
-    <s-hero
+    <SHero
       headline="SERP AI"
       subheadline="The Ultimate Destination for Everything AI"
       :show-search-bar="false"

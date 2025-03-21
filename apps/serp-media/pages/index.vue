@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- hero -->
-    <s-hero
+    <SHero
       headline="SERP Media"
       subheadline="Media, Movies & More."
       :show-search-bar="false"
@@ -15,11 +15,12 @@
           <h2 class="pb-16 text-3xl">Movies</h2>
         </nuxt-link>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <post-card
+          <PostCard
             v-for="post in movieData.posts"
             :key="post.id"
             :post="post"
             :base-slug="`${post.module}/`"
+            :title="post.keyword"
             article-class="py-2"
           />
         </div>
@@ -31,7 +32,7 @@
           <h2 class="pb-16 text-3xl">Shop</h2>
         </nuxt-link>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <post-card
+          <PostCard
             v-for="post in shopData.posts"
             :key="post.id"
             :post="post"

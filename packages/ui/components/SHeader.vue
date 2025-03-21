@@ -93,7 +93,7 @@
             sideOffset: 8
           }"
         />
-        <div class="mt-4 border-t border-gray-200 pt-4">
+        <div v-if="useAuth" class="mt-4 border-t border-gray-200 pt-4">
           <profile-dropdown />
         </div>
       </div>

@@ -35,16 +35,21 @@ const props = withDefaults(
     post: PostIndex;
     baseSlug?: string;
     articleClass?: string;
+    title?: string;
   }>(),
   {
     baseSlug: 'posts/',
-    articleClass: 'py-16'
+    articleClass: 'py-16',
+    title: undefined
   }
 );
 
 const displayTitle = computed(() => {
   if (props.post.module === 'Glossary') {
     return props.post.keyword || props.post.title;
+  }
+  if (props.title) {
+    return props.title;
   }
   return props.post.title;
 });

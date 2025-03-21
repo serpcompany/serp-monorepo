@@ -136,14 +136,14 @@
           <div class="add-comment">
             <div class="w-12 rounded-t-full">
               <LazyNuxtImg
-                :src="data?.user?.image"
+                :src="user?.image"
                 alt="Avatar"
                 class="h-12 w-12 rounded-full p-1"
               />
             </div>
             <div class="comment-box text-black dark:text-white">
               <div class="user-name text-primary">
-                {{ data?.user?.name || 'Unknown' }}
+                {{ user?.name || 'Unknown' }}
               </div>
               <textarea
                 ref="addReply"
@@ -211,7 +211,7 @@
 </template>
 
 <script setup>
-const { status, data } = useAuth();
+const { loggedIn, user } = useUserSession();
 
 const props = defineProps({
   module: String,
@@ -282,15 +282,10 @@ const limit = computed(() => parseInt(props.initialMessageLimit));
 const requestLoading = ref(false);
 const requestDelete = ref(false);
 
-const styleShadow = computed(() => ({
-  // Remove the box-shadow
-}));
-
 const isAuthorOrAdmin = computed(
   () =>
-    status.value == 'authenticated' &&
-    (data?.value?.user?.email === props.comment.email ||
-      data?.value?.user?.isAdmin)
+    loggedIn.value &&
+    (user?.value?.email === props.comment.email || user?.value?.isAdmin)
 );
 
 const displayedReplies = computed(() =>
@@ -379,7 +374,7 @@ function handleBeforeDelete() {
 }
 
 async function update() {
-  if (status.value !== 'authenticated') {
+  if (!loggedIn.value) {
     toast.add({
       id: 'update-comment-login',
       title: 'Login required',
@@ -389,10 +384,7 @@ async function update() {
     return;
   }
 
-  if (
-    data?.value?.user?.email !== props.comment.email &&
-    !data?.value?.user?.isAdmin
-  ) {
+  if (user?.value?.email !== props.comment.email && !user?.value?.isAdmin) {
     toast.add({
       id: 'update-comment-author',
       title: 'Permission denied',
@@ -467,7 +459,7 @@ async function update() {
 }
 
 async function deleteComment() {
-  if (status.value !== 'authenticated') {
+  if (!loggedIn.value) {
     toast.add({
       id: 'delete-comment-login',
       title: 'Login required',
@@ -477,10 +469,7 @@ async function deleteComment() {
     return;
   }
 
-  if (
-    data?.value?.user?.email !== props.comment.email &&
-    !data?.value?.user?.isAdmin
-  ) {
+  if (user?.value?.email !== props.comment.email && !user?.value?.isAdmin) {
     toast.add({
       id: 'delete-comment-author',
       title: 'Permission denied',
@@ -560,7 +549,7 @@ function resize(event, isUpdate = false) {
 }
 
 async function reply() {
-  if (status.value !== 'authenticated') {
+  if (!loggedIn.value || !user?.value?.email) {
     toast.add({
       id: 'reply-comment-login',
       title: 'Login required',
@@ -606,9 +595,9 @@ async function reply() {
     if (response.value.message && response.value.message === 'success') {
       const newReply = {
         id: response.value.id,
-        email: data.value.user.email,
-        name: data.value.user.name,
-        image: data.value.user.image,
+        email: user.value.email,
+        name: user.value.name,
+        image: user.value.image,
         content: replyMessage.value,
         createdAt: replyObj.timestamp,
         updatedAt: replyObj.timestamp,

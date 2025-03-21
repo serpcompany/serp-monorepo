@@ -1,7 +1,7 @@
 <template>
   <div class="py-10">
     <!-- hero -->
-    <s-hero
+    <SHero
       :headline="`The Best ${data.categoryName}`"
       :show-search-bar="false"
       :show-buttons="false"
