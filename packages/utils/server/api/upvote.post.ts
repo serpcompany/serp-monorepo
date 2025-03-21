@@ -1,17 +1,10 @@
 import { db } from '@serp/utils/server/api/db';
 import { getTableAndPKForModule } from '@serp/utils/server/utils/getTableAndPKForModule';
 import { eq, sql } from 'drizzle-orm';
-import { getServerSession } from '#auth';
 
 export default defineEventHandler(async (event) => {
   try {
-    const session = await getServerSession(event);
-    if (!session) {
-      return {
-        status: 401,
-        message: 'Unauthorized'
-      };
-    }
+    const session = await requireUserSession(event)
 
     const email = session.user?.email;
     if (!email) {

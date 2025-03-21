@@ -9,20 +9,11 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
     '@nuxtjs/html-validator',
-    'nuxt-multi-cache',
     'nuxt-security',
     '@nuxt/scripts',
     'nuxt-link-checker',
     '@nuxthub/core'
   ],
-  auth: {
-    baseURL: 'https://staging.serp-wiki.pages.dev/api/auth', // process.env.AUTH_ORIGIN,
-    provider: {
-      type: 'authjs',
-      trustHost: false,
-      addDefaultCallbackUrl: true
-    }
-  },
   nitro: {
     experimental: {
       tasks: true
@@ -42,14 +33,12 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig: {
-    authOrigin: 'https://staging.serp-wiki.pages.dev/api/auth', //process.env.AUTH_ORIGIN,
-    authSecret: process.env.AUTH_SECRET,
     public: {
       siteName: process.env.NUXT_PUBLIC_SITE_NAME,
       domain: process.env.NUXT_PUBLIC_DOMAIN,
       siteUrl: process.env.NUXT_PUBLIC_URL,
       apiUrl: '/api',
-      useAuth: false,
+      useAuth: true,
       environment: process.env.NODE_ENV,
       socialLinks: [
         {
@@ -189,11 +178,6 @@ export default defineNuxtConfig({
   },
   ogImage: {
     enabled: false
-  },
-  multiCache: {
-    data: {
-      enabled: true
-    }
   },
   hub: {
     database: true,

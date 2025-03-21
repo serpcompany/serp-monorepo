@@ -18,15 +18,6 @@ export default defineNuxtConfig({
     accessKeyId: process.env.CLOUDFLARE_R2_ACCESS_ID,
     secretAccessKey: process.env.CLOUDFLARE_R2_ACCESS_KEY
   },
-  auth: {
-    baseURL: process.env.AUTH_ORIGIN,
-    provider: {
-      type: 'authjs',
-      trustHost: false,
-      defaultProvider: 'credentials',
-      addDefaultCallbackUrl: true
-    }
-  },
   ui: {
     colorMode: true
   },
@@ -40,8 +31,6 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig: {
-    authOrigin: process.env.AUTH_ORIGIN,
-    authSecret: process.env.AUTH_SECRET,
     public: {
       cloudflareR2PublicUrl: process.env.CLOUDFLARE_R2_PUBLIC_URL,
       otelExporterEndpoint: process.env.OTEL_EXPORTER_ENDPOINT,
