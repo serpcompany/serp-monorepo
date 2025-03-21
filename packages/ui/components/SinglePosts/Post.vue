@@ -5,7 +5,7 @@
       <s-pill base-slug="posts/category" :items="data.categories || []" />
     </section>
     <div class="items-end justify-between lg:flex">
-      <div v-if="data?.author">Author: {{ data.author }}</div>
+      <div v-if="isValidAuthor">Author: {{ data.author }}</div>
       <div v-if="data?.createdAt">Published: {{ data.createdAt }}</div>
     </div>
     <u-separator class="my-4">
@@ -33,9 +33,14 @@ import type { Post } from '@serp/types/types';
 const config = useRuntimeConfig();
 const useAuth = config.public.useAuth;
 
-defineProps<{
+const props = defineProps<{
   data: Post;
 }>();
+
+const isValidAuthor =
+  props.data.author !== undefined &&
+  props.data.author !== null &&
+  props.data.author !== 'None';
 </script>
 
 <style>
