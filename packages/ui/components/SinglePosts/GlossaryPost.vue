@@ -50,10 +50,9 @@
         </div>
 
         <!-- Comments Section -->
-        <div class="mt-10">
+        <div v-if="useAuth" class="mt-10">
           <h2 class="mb-6 text-3xl font-bold">Comments</h2>
           <CommentsContainer
-            v-if="useAuth"
             :id="data.slug"
             module="posts"
             :comments="data.comments || []"
