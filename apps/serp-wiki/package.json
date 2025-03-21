@@ -52,6 +52,7 @@
     "happy-dom": "^15.11.6",
     "jsdom": "^25.0.1",
     "nuxt": "^3.15.4",
+    "nuxt-auth-utils": "^0.5.17",
     "nuxt-link-checker": "^4.0.4",
     "nuxt-security": "^2.1.5",
     "playwright-core": "^1.48.2",
