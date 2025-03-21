@@ -27,6 +27,10 @@ export default defineEventHandler(async (event) => {
   }
 
   const post = results[0] as Post;
+  console.log('COMMENTS', post.comments);
+  console.log('CATEGORIES', post.categories);
+  console.log('COMMENT TYPE', typeof post.comments);
+  console.log('CATEGORY TYPE', typeof post.categories);
   if (typeof post.comments === 'string') {
     post.comments = post.comments === 'None' ? [] : JSON.parse(post.comments);
   } else {
