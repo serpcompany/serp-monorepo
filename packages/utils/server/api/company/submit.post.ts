@@ -8,7 +8,7 @@ import { eq, inArray } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
   try {
-    const session = await requireUserSession(event)
+    const session = await requireUserSession(event);
 
     const email = session.user?.email;
     if (!email) {

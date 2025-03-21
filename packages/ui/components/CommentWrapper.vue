@@ -1,16 +1,27 @@
 <template>
   <div class="comment-wrapper">
-    <div class="wrapper" @mouseenter="showHideBar = true" @mouseleave="showHideBar = false">
+    <div
+      class="wrapper"
+      @mouseenter="showHideBar = true"
+      @mouseleave="showHideBar = false"
+    >
       <div class="w-12 rounded-t-full">
-        <LazyNuxtImg :src="comment.image" alt="Avatar" class="h-12 w-12 rounded-full p-1" />
+        <LazyNuxtImg
+          :src="comment.image"
+          alt="Avatar"
+          class="h-12 w-12 rounded-full p-1"
+        />
       </div>
       <div v-if="hideMessage" class="comment-wrapper">
         <div class="name-wrapper">
           <div class="name text-primary">{{ comment.name }}</div>
           <span class="dot">•</span>
           <span class="time" :title="getTime">{{ getTimeDiff }}</span>
-          <div v-show="showHideBar || wrapperSize < 1024" class="expand hover:text-primary"
-            @click="hideMessage = false">
+          <div
+            v-show="showHideBar || wrapperSize < 1024"
+            class="expand hover:text-primary"
+            @click="hideMessage = false"
+          >
             <span title="Show Comment">+</span>
           </div>
         </div>
@@ -21,29 +32,56 @@
           <div class="name text-primary">{{ comment.name }}</div>
           <span class="dot">•</span>
           <span class="time" :title="getTime">{{ getTimeDiff }}</span>
-          <UBadge v-if="isDeleted" class="deleted" color="error">Deleted</UBadge>
+          <UBadge v-if="isDeleted" class="deleted" color="error"
+            >Deleted</UBadge
+          >
           <UBadge v-else-if="isUpdated" class="updated">Updated</UBadge>
-          <div v-show="showHideBar || wrapperSize < 1024" class="expand hover:text-primary" @click="hideMessage = true">
+          <div
+            v-show="showHideBar || wrapperSize < 1024"
+            class="expand hover:text-primary"
+            @click="hideMessage = true"
+          >
             <span title="Hide Comment">−</span>
           </div>
         </div>
-        <div v-show="!beforeUpdate" ref="comment" class="comment bg-white text-black dark:bg-gray-800 dark:text-white">
+        <div
+          v-show="!beforeUpdate"
+          ref="comment"
+          class="comment bg-white text-black dark:bg-gray-800 dark:text-white"
+        >
           {{ filteredComment }}
         </div>
-        <div v-show="beforeUpdate" class="comment-box text-black dark:text-white">
+        <div
+          v-show="beforeUpdate"
+          class="comment-box text-black dark:text-white"
+        >
           <div class="user-name text-primary">{{ comment.name }}</div>
-          <textarea ref="addUpdate" v-model="updateMessage" name="addUpdate"
-            class="add-comment bg-white dark:bg-gray-800" placeholder="Update message" spellcheck="false"
-            aria-label="Add Comment" @keyup="resize($event, true)"></textarea>
-          <button aria-label="Update" :disabled="requestLoading" class="bg-primary hover:bg-primary-800"
-            @click="update">
+          <textarea
+            ref="addUpdate"
+            v-model="updateMessage"
+            name="addUpdate"
+            class="add-comment bg-white dark:bg-gray-800"
+            placeholder="Update message"
+            spellcheck="false"
+            aria-label="Add Comment"
+            @keyup="resize($event, true)"
+          ></textarea>
+          <button
+            aria-label="Update"
+            :disabled="requestLoading"
+            class="bg-primary hover:bg-primary-800"
+            @click="update"
+          >
             <div v-if="requestLoading" class="request-loading"></div>
             <span v-else>Update</span>
           </button>
-          <div class="remaining-letter" :class="{
-            'bg-red-500': remainingUpdateLetter < 0,
-            'bg-primary': remainingUpdateLetter >= 0
-          }">
+          <div
+            class="remaining-letter"
+            :class="{
+              'bg-red-500': remainingUpdateLetter < 0,
+              'bg-primary': remainingUpdateLetter >= 0
+            }"
+          >
             <span>{{ remainingUpdateLetter }}</span>
           </div>
         </div>
@@ -74,10 +112,20 @@
               <div class="delete-text" @click="handleBeforeDelete">Delete</div>
               <div v-if="beforeDelete" class="delete-prompt">
                 <label>Are you sure?</label>
-                <button aria-label="Yes" class="yes-prompt" :disabled="requestDelete" @click="deleteComment">
+                <button
+                  aria-label="Yes"
+                  class="yes-prompt"
+                  :disabled="requestDelete"
+                  @click="deleteComment"
+                >
                   Yes
                 </button>
-                <button aria-label="No" class="no-prompt" :disabled="requestDelete" @click="beforeDelete = false">
+                <button
+                  aria-label="No"
+                  class="no-prompt"
+                  :disabled="requestDelete"
+                  @click="beforeDelete = false"
+                >
                   No
                 </button>
               </div>
@@ -87,39 +135,74 @@
         <div v-if="beforeReply">
           <div class="add-comment">
             <div class="w-12 rounded-t-full">
-              <LazyNuxtImg :src="user?.image" alt="Avatar" class="h-12 w-12 rounded-full p-1" />
+              <LazyNuxtImg
+                :src="user?.image"
+                alt="Avatar"
+                class="h-12 w-12 rounded-full p-1"
+              />
             </div>
             <div class="comment-box text-black dark:text-white">
               <div class="user-name text-primary">
                 {{ user?.name || 'Unknown' }}
               </div>
-              <textarea ref="addReply" v-model="replyMessage" name="addReply"
-                class="add-comment bg-white dark:bg-gray-800" placeholder="Add new reply" spellcheck="false"
-                aria-label="Add Reply" @keyup="resize($event)"></textarea>
-              <button aria-label="Reply" :disabled="requestLoading" class="bg-primary hover:bg-primary-800"
-                @click="reply">
+              <textarea
+                ref="addReply"
+                v-model="replyMessage"
+                name="addReply"
+                class="add-comment bg-white dark:bg-gray-800"
+                placeholder="Add new reply"
+                spellcheck="false"
+                aria-label="Add Reply"
+                @keyup="resize($event)"
+              ></textarea>
+              <button
+                aria-label="Reply"
+                :disabled="requestLoading"
+                class="bg-primary hover:bg-primary-800"
+                @click="reply"
+              >
                 <div v-if="requestLoading" class="request-loading"></div>
                 <span v-else>Reply</span>
               </button>
-              <div class="remaining-letter" :class="{
-                'bg-red-500': remainingLetter < 0,
-                'bg-primary': remainingLetter >= 0
-              }">
+              <div
+                class="remaining-letter"
+                :class="{
+                  'bg-red-500': remainingLetter < 0,
+                  'bg-primary': remainingLetter >= 0
+                }"
+              >
                 <span>{{ remainingLetter }}</span>
               </div>
             </div>
           </div>
         </div>
         <transition-group appear name="fade" tag="div">
-          <CommentWrapper v-for="(reply, index) in displayedReplies" v-show="showReplies" :id="id" :key="reply.id"
-            :comment="reply" :comment-background-color="commentBackgroundColor" :comment-text-color="commentTextColor"
-            :user-name-color="userNameColor" :wrapper-size="wrapperSize" :depth-length="depthLength + 1"
-            :module="props.module" :parent-ids="[...parentIds, comment.id]"
-            :parent-indices="[...parentIndices, currentIndex]" :current-index="getIndex(reply.id)"
-            @delete-row="deleteReply(index)" @update-comment="$emit('update-comment', $event)"
-            @add-reply="$emit('add-reply', $event)" @delete-reply="$emit('delete-reply', $event)" />
+          <CommentWrapper
+            v-for="(reply, index) in displayedReplies"
+            v-show="showReplies"
+            :id="id"
+            :key="reply.id"
+            :comment="reply"
+            :comment-background-color="commentBackgroundColor"
+            :comment-text-color="commentTextColor"
+            :user-name-color="userNameColor"
+            :wrapper-size="wrapperSize"
+            :depth-length="depthLength + 1"
+            :module="props.module"
+            :parent-ids="[...parentIds, comment.id]"
+            :parent-indices="[...parentIndices, currentIndex]"
+            :current-index="getIndex(reply.id)"
+            @delete-row="deleteReply(index)"
+            @update-comment="$emit('update-comment', $event)"
+            @add-reply="$emit('add-reply', $event)"
+            @delete-reply="$emit('delete-reply', $event)"
+          />
         </transition-group>
-        <div v-if="limit < localState.replies.length && showReplies" class="update-limit" @click="updateLimit">
+        <div
+          v-if="limit < localState.replies.length && showReplies"
+          class="update-limit"
+          @click="updateLimit"
+        >
           <span class="limit">Show more replies</span>
         </div>
       </div>
@@ -128,7 +211,7 @@
 </template>
 
 <script setup>
-const { loggedIn, user } = useUserSession()
+const { loggedIn, user } = useUserSession();
 
 const props = defineProps({
   module: String,
@@ -202,8 +285,7 @@ const requestDelete = ref(false);
 const isAuthorOrAdmin = computed(
   () =>
     loggedIn.value &&
-    (user?.value?.email === props.comment.email ||
-      user?.value?.isAdmin)
+    (user?.value?.email === props.comment.email || user?.value?.isAdmin)
 );
 
 const displayedReplies = computed(() =>
@@ -302,10 +384,7 @@ async function update() {
     return;
   }
 
-  if (
-    user?.value?.email !== props.comment.email &&
-    !user?.value?.isAdmin
-  ) {
+  if (user?.value?.email !== props.comment.email && !user?.value?.isAdmin) {
     toast.add({
       id: 'update-comment-author',
       title: 'Permission denied',
@@ -390,10 +469,7 @@ async function deleteComment() {
     return;
   }
 
-  if (
-    user?.value?.email !== props.comment.email &&
-    !user?.value?.isAdmin
-  ) {
+  if (user?.value?.email !== props.comment.email && !user?.value?.isAdmin) {
     toast.add({
       id: 'delete-comment-author',
       title: 'Permission denied',
@@ -648,7 +724,7 @@ onMounted(() => {
   transition: color linear 0.1s;
 }
 
-.expand>span {
+.expand > span {
   align-self: center;
   justify-self: center;
   font-size: 20px;
@@ -686,7 +762,7 @@ onMounted(() => {
   user-select: none;
 }
 
-.reply>div {
+.reply > div {
   cursor: pointer;
 }
 
@@ -719,14 +795,14 @@ onMounted(() => {
   z-index: 999;
 }
 
-.delete-prompt>label {
+.delete-prompt > label {
   grid-column: 1/3;
   grid-row: 2;
   font-weight: 700;
   margin-left: -7px;
 }
 
-.delete-prompt>button {
+.delete-prompt > button {
   grid-row: 1;
   font-size: 11px;
   font-family: 'Roboto', sans-serif;
@@ -780,7 +856,7 @@ onMounted(() => {
   overflow: auto;
 }
 
-.comment-box>textarea {
+.comment-box > textarea {
   font-family: 'Roboto', sans-serif;
   justify-self: stretch;
   box-sizing: border-box;
@@ -796,7 +872,7 @@ onMounted(() => {
   transition: linear 0.1s all;
 }
 
-.comment-box>button {
+.comment-box > button {
   font-family: 'Roboto', sans-serif;
   align-self: end;
   max-height: 32px;
@@ -828,7 +904,7 @@ onMounted(() => {
   z-index: 99;
 }
 
-.remaining-letter>span {
+.remaining-letter > span {
   align-self: center;
   font-size: 11px;
   line-height: 11px;
@@ -914,12 +990,12 @@ onMounted(() => {
 }
 
 @media only screen and (max-width: 480px) {
-  .avatar>svg {
+  .avatar > svg {
     height: 20px;
     width: 20px;
   }
 
-  .name-wrapper>.time {
+  .name-wrapper > .time {
     overflow: hidden;
     width: 38px;
     text-overflow: ellipsis;

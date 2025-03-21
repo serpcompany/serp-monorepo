@@ -16,8 +16,13 @@
     <!-- Comments Section -->
     <div class="mt-10">
       <h2 class="mb-4 text-2xl font-bold">Comments</h2>
-      <CommentsContainer v-if="useAuth" :id="data.slug" module="posts" :comments="data.comments || []"
-        class="comments-github-style" />
+      <CommentsContainer
+        v-if="useAuth"
+        :id="data.slug"
+        module="posts"
+        :comments="data.comments || []"
+        class="comments-github-style"
+      />
     </div>
   </div>
 </template>

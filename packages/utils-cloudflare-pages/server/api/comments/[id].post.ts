@@ -5,7 +5,7 @@ import { getTableAndPKForModule } from '../../utils/getTableAndPKForModule';
 export default defineEventHandler(async (event) => {
   try {
     // Authentication & validation
-    const session = await requireUserSession(event)
+    const session = await requireUserSession(event);
     const email = session.user?.email;
     if (!email) return { status: 401, message: 'Unauthorized' };
 
