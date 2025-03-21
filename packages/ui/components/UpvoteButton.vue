@@ -4,7 +4,7 @@
       class="flex w-full items-center justify-center gap-2 rounded-full border border-gray-300 px-4 py-2 font-medium transition-colors hover:bg-gray-100 disabled:opacity-75 sm:w-auto dark:border-gray-600 dark:hover:bg-gray-800"
       :class="{
         'text-orange-500 dark:text-orange-400': localUpvotes.includes(
-          user.email
+          user?.email
         )
       }"
       :disabled="loading"
