@@ -27,28 +27,15 @@ export default defineEventHandler(async (event) => {
   }
 
   const post = results[0] as Post;
-  try {
-    if (typeof post.comments === 'string') {
-      post.comments = post.comments === 'None' ? [] : JSON.parse(post.comments);
-    } else {
-      post.comments = post.comments
-        ? post.comments.map((comment) =>
-          typeof comment === 'string' ? JSON.parse(comment) : comment
-        )
-        : [];
-    }
-  } catch (error) {
-    post.comments = [];
-  }
-
-  try {
-    post.categories =
-      typeof post.categories === 'string'
-        ? (post.categories === 'None' ? [] : JSON.parse(post.categories))
-        : post.categories;
-  } catch (error) {
-    post.categories = [];
-  }
+  post.comments = post.comments
+    ? post.comments.map((comment) =>
+        typeof comment === 'string' ? JSON.parse(comment) : comment
+      )
+    : [];
+  post.categories =
+    typeof post.categories === 'string' && post.categories.length > 0
+      ? JSON.parse(post.categories)
+      : post.categories;
 
   return post;
 });
