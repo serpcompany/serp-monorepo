@@ -32,19 +32,19 @@ export default defineEventHandler(async (event) => {
             WHEN EXISTS (
               SELECT 1
               FROM json_each(
-                CASE WHEN upvotes IS NULL OR upvotes = '' THEN '[]' ELSE upvotes END
+                CASE WHEN upvotes IS NULL OR upvotes = '' OR upvotes = 'None' THEN '[]' ELSE upvotes END
               )
               WHERE json_each.value = ${email}
             )
             THEN (
               SELECT json_group_array(value)
               FROM json_each(
-                CASE WHEN upvotes IS NULL OR upvotes = '' THEN '[]' ELSE upvotes END
+                CASE WHEN upvotes IS NULL OR upvotes = '' OR upvotes = 'None' THEN '[]' ELSE upvotes END
               )
               WHERE value != ${email}
             )
             ELSE json_insert(
-              CASE WHEN upvotes IS NULL OR upvotes = '' THEN '[]' ELSE upvotes END,
+              CASE WHEN upvotes IS NULL OR upvotes = '' OR upvotes = 'None' THEN '[]' ELSE upvotes END,
               '$[#]',
               ${email}
             )

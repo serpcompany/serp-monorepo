@@ -41,7 +41,7 @@ export default defineEventHandler(async (event) => {
       // Insert at the top level
       const updateExpr = `
         json_insert(
-          COALESCE(comments, json('[]')),
+          COALESCE((CASE WHEN comments = 'None' THEN NULL ELSE comments END), json('[]')),
           '$[#]',
           json('${newCommentJSON}')
         )
