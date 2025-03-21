@@ -4,27 +4,13 @@
       class="flex w-full items-center justify-center gap-2 rounded-full border border-gray-300 px-4 py-2 font-medium transition-colors hover:bg-gray-100 disabled:opacity-75 sm:w-auto dark:border-gray-600 dark:hover:bg-gray-800"
       :class="{
         'text-orange-500 dark:text-orange-400': localUpvotes.includes(
-          user.email
+          user?.email
         )
-      }"
-      :disabled="loading"
-      @click="upvote"
-    >
-      <span
-        v-if="loading"
-        class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent"
-      ></span>
-      <svg
-        v-else
-        class="h-4 w-4"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
+      }" :disabled="loading" @click="upvote">
+      <span v-if="loading"
+        class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent"></span>
+      <svg v-else class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="m5 12 7-7 7 7" />
         <path d="M12 19V5" />
       </svg>
