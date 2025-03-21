@@ -6,11 +6,25 @@
         'text-orange-500 dark:text-orange-400': localUpvotes.includes(
           user?.email
         )
-      }" :disabled="loading" @click="upvote">
-      <span v-if="loading"
-        class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent"></span>
-      <svg v-else class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      }"
+      :disabled="loading"
+      @click="upvote"
+    >
+      <span
+        v-if="loading"
+        class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent"
+      ></span>
+      <svg
+        v-else
+        class="h-4 w-4"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
         <path d="m5 12 7-7 7 7" />
         <path d="M12 19V5" />
       </svg>
