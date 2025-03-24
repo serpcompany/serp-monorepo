@@ -3,8 +3,8 @@
     :class="[
       'mx-auto max-w-5xl rounded-lg',
       company.featured
-        ? 'relative overflow-hidden border border-gray-200 bg-gradient-to-b from-blue-50/50 to-transparent px-6 py-10 dark:border-gray-700 dark:from-blue-900/20 dark:to-transparent'
-        : 'border border-gray-300 px-5 py-4'
+        ? 'relative overflow-hidden border border-gray-200 bg-gradient-to-b from-blue-50/50 to-transparent px-6 py-10 dark:border-blue-500/40 dark:from-blue-900/30 dark:to-gray-900/60 dark:shadow-[0_0_15px_rgba(30,64,175,0.15)]'
+        : 'border border-gray-300 px-5 py-4 dark:border-gray-700'
     ]"
   >
     <!-- Featured accent border -->
@@ -25,9 +25,9 @@
         <nuxt-link :to="`/${baseSlug}${company.slug}/reviews/`">
           <div
             :class="[
-              'overflow-hidden rounded-lg bg-gray-100',
+              'overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800',
               company.featured
-                ? 'h-36 w-36 ring-1 ring-blue-100 dark:ring-blue-800'
+                ? 'h-36 w-36 ring-1 ring-blue-100 dark:ring-blue-500/50'
                 : 'h-28 w-28'
             ]"
           >
@@ -43,7 +43,7 @@
       <!-- company content -->
       <div class="flex-grow">
         <div class="flex flex-col justify-between sm:flex-row">
-          <div>
+          <div class="sm:pr-8 sm:max-w-[calc(100%-180px)]">
             <!-- company name and badge -->
             <div class="flex items-center">
               <nuxt-link
@@ -55,7 +55,7 @@
                     'font-semibold',
                     company.featured
                       ? 'mb-1 text-2xl text-blue-700 dark:text-blue-300'
-                      : 'text-xl'
+                      : 'text-xl dark:text-gray-300'
                   ]"
                 >
                   {{ company.name }}
@@ -79,7 +79,9 @@
             <p
               :class="[
                 'text-gray-600 dark:text-gray-300',
-                company.featured ? 'mt-3 text-base leading-relaxed' : 'mt-2'
+                company.featured
+                  ? 'mt-3 text-base leading-relaxed dark:text-gray-200'
+                  : 'mt-2 line-clamp-2'
               ]"
             >
               {{ company.oneLiner }}
