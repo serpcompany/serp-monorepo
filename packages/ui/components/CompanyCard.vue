@@ -3,7 +3,7 @@
     :class="[
       'mx-auto max-w-5xl rounded-lg',
       company.featured
-        ? 'border border-gray-200 bg-gradient-to-b from-blue-50/50 to-transparent py-8 px-6 dark:border-gray-700 dark:from-blue-900/20 dark:to-transparent relative overflow-hidden'
+        ? 'relative overflow-hidden border border-gray-200 bg-gradient-to-b from-blue-50/50 to-transparent px-6 py-10 dark:border-gray-700 dark:from-blue-900/20 dark:to-transparent'
         : 'border border-gray-300 px-5 py-4'
     ]"
   >
@@ -26,7 +26,9 @@
           <div
             :class="[
               'overflow-hidden rounded-lg bg-gray-100',
-              company.featured ? 'h-36 w-36 ring-1 ring-blue-100 dark:ring-blue-800' : 'h-28 w-28'
+              company.featured
+                ? 'h-36 w-36 ring-1 ring-blue-100 dark:ring-blue-800'
+                : 'h-28 w-28'
             ]"
           >
             <lazy-nuxt-img
@@ -51,7 +53,9 @@
                 <h2
                   :class="[
                     'font-semibold',
-                    company.featured ? 'text-2xl mb-1 text-blue-700 dark:text-blue-300' : 'text-xl'
+                    company.featured
+                      ? 'mb-1 text-2xl text-blue-700 dark:text-blue-300'
+                      : 'text-xl'
                   ]"
                 >
                   {{ company.name }}
@@ -84,7 +88,7 @@
             <!-- show excerpt only for featured cards -->
             <p
               v-if="company.featured && company.excerpt"
-              class="mt-4 text-gray-600 dark:text-gray-300 line-clamp-2"
+              class="mt-5 mb-1 line-clamp-3 text-gray-600 dark:text-gray-300"
             >
               {{ company.excerpt }}
             </p>
@@ -92,7 +96,7 @@
             <!-- rating display -->
             <div
               v-if="company.rating"
-              :class="{ 'mt-3': !company.featured, 'mt-5': company.featured }"
+              :class="{ 'mt-3': !company.featured, 'mt-6': company.featured }"
             >
               <span class="text-lg font-medium">{{ company.rating }}/5</span>
             </div>
@@ -143,7 +147,10 @@
     </div>
 
     <!-- feature tags only for featured companies -->
-    <div v-if="company.featured && company.features && company.features.length" class="mt-6">
+    <div
+      v-if="company.featured && company.features && company.features.length"
+      class="mt-8"
+    >
       <div class="flex flex-wrap gap-2">
         <span
           v-for="feature in company.features.slice(0, 4)"
@@ -230,5 +237,13 @@ const isLogo = computed(() => {
 }
 .upvote-btn :deep(.flex) {
   width: 100%;
+}
+
+/* Override orange upvote color with blue */
+.upvote-btn :deep(.text-orange-500) {
+  color: var(--color-accent-fg, #0969da) !important;
+}
+.upvote-btn :deep(.dark\:text-orange-400) {
+  color: var(--color-accent-fg, #2f81f7) !important;
 }
 </style>
