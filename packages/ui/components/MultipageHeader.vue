@@ -46,7 +46,7 @@
             <slot name="upvote"></slot>
 
             <!-- visit website button -->
-            <a
+            <NuxtLink
               :href="serply_link"
               target="_blank"
               class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-gray-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-gray-200"
@@ -68,7 +68,7 @@
                 <polyline points="15 3 21 3 21 9" />
                 <line x1="10" y1="14" x2="21" y2="3" />
               </svg>
-            </a>
+            </NuxtLink>
           </div>
         </div>
 
