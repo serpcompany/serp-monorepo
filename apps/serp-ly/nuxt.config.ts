@@ -1,23 +1,13 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  extends: ['@serp/ui', '@serp/utils', '@serp/tools', '@serp/types'],
+  extends: ['@serp/ui', '@serp/utils-cloudflare-pages', '@serp/types'],
   modules: [
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
-    'nuxt-multi-cache',
     'nuxt-security',
-    'nuxt-link-checker',
-    '@bg-dev/nuxt-s3'
+    'nuxt-link-checker'
   ],
-  s3: {
-    driver: 's3',
-    bucket: process.env.CLOUDFLARE_R2_BUCKET,
-    endpoint: process.env.CLOUDFLARE_R2_ENDPOINT,
-    region: 'auto',
-    accessKeyId: process.env.CLOUDFLARE_R2_ACCESS_ID,
-    secretAccessKey: process.env.CLOUDFLARE_R2_ACCESS_KEY
-  },
   ui: {
     colorMode: true
   },
@@ -32,80 +22,50 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      cloudflareR2PublicUrl: process.env.CLOUDFLARE_R2_PUBLIC_URL,
-      otelExporterEndpoint: process.env.OTEL_EXPORTER_ENDPOINT,
       siteName: process.env.NUXT_PUBLIC_SITE_NAME,
       domain: process.env.NUXT_PUBLIC_DOMAIN,
       siteUrl: process.env.NUXT_PUBLIC_URL,
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
-      useAuth: true,
       environment: process.env.NODE_ENV,
       socialLinks: [
         {
           name: 'Twitter',
-          href: 'https://serp.ly/@serp/twitter',
+          href: 'https://serp.ly/@serpcompany/twitter',
           icon: 'i-lucide-twitter'
         },
         {
           name: 'Facebook',
-          href: 'https://serp.ly/@serp/facebook',
+          href: 'https://serp.ly/@serpcompany/facebook',
           icon: 'i-lucide-facebook'
         },
         {
           name: 'LinkedIn',
-          href: 'https://serp.ly/@serp/linkedin',
+          href: 'https://serp.ly/@serpcompany/linkedin',
           icon: 'i-lucide-linkedin'
         },
         {
           name: 'YouTube',
-          href: 'https://serp.ly/@serp/youtube',
+          href: 'https://serp.ly/@serpcompany/youtube',
           icon: 'i-lucide-youtube'
         },
         {
           name: 'Github',
-          href: 'https://serp.ly/@serpai/github',
+          href: 'https://serp.ly/@serpcompany/github',
           icon: 'i-lucide-github'
         },
         {
           name: 'Instagram',
-          href: 'https://serp.ly/@serp/instagram',
+          href: 'https://serp.ly/@serpcompany/instagram',
           icon: 'i-lucide-instagram'
-        },
-        {
-          name: 'SoundCloud',
-          href: 'https://serp.ly/@serp/',
-          icon: 'i-lucide-external-link'
         }
       ],
       brandLinks: [
         {
           name: 'About',
-          href: 'https://github.com/serpcompany'
-        },
-        {
-          name: 'Add Your Product',
-          href: 'https://serp.ly/@serp/submit'
+          href: '/about/'
         }
       ],
       headerNavItems: [
-        {
-          label: 'Companies',
-          children: [{ label: 'Companies', to: '/products/' }]
-        },
-        {
-          label: 'Tools',
-          children: [
-            { label: 'Tools', to: '/tools/' },
-            { label: 'Combine CSVs', to: '/tools/combine-csv-files/' },
-            { label: 'JSON to CSV', to: '/tools/convert-json-to-csv/' },
-            { label: 'Character Counter', to: '/tools/count-characters/' },
-            { label: 'Paragraph Counter', to: '/tools/paragraph-counter/' }
-          ]
-        },
-        {
-          label: 'Glossary',
-          children: [{ label: 'Glossary', to: '/glossary/' }]
-        },
         {
           label: 'Posts',
           children: [{ label: 'Posts', to: '/posts/' }]
@@ -116,12 +76,7 @@ export default defineNuxtConfig({
           title: 'Links',
           id: 1,
           slug: '',
-          items: [
-            { text: 'Companies', slug: '/products/' },
-            { text: 'Tools', slug: '/tools/' },
-            { text: 'Posts', slug: '/posts/' },
-            { text: 'Glossary', slug: '/glossary/' }
-          ]
+          items: [{ text: 'Home', slug: '/' }]
         }
       ],
       legalLinks: [
@@ -151,14 +106,14 @@ export default defineNuxtConfig({
     scripts: {
       registry: {
         googleTagManager: {
-          id: 'GTM-WVF43L4'
+          id: ''
         }
       }
     }
   },
   schemaOrg: {
     identity: 'Organization',
-    host: 'https://serp.co'
+    host: 'https://serp.ly'
   },
   experimental: {
     defaults: {
@@ -181,7 +136,7 @@ export default defineNuxtConfig({
     ]
   },
   image: {
-
+    // domains: ['archive.org', 'loremflickr.com'],
     format: ['webp']
   },
   security: {
@@ -216,23 +171,8 @@ export default defineNuxtConfig({
       modules: {
         includeAppSources: true
       },
-      company: {
-        sources: ['/api/__sitemap__/company']
-      },
-      ['company-categories']: {
-        sources: ['/api/__sitemap__/company-categories']
-      },
       posts: {
         sources: ['/api/__sitemap__/posts']
-      },
-      ['post-categories']: {
-        sources: ['/api/__sitemap__/post-categories']
-      },
-      glossary: {
-        sources: ['/api/__sitemap__/glossary']
-      },
-      blog: {
-        sources: ['/api/__sitemap__/blog']
       }
     }
   }
