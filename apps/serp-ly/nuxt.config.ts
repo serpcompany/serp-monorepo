@@ -14,9 +14,6 @@ export default defineNuxtConfig({
   tsConfig: {
     compilerOptions: {
       baseUrl: '.',
-      paths: {
-        '@/*': ['src/*']
-      },
       types: ['vitest/globals', '']
     }
   },
@@ -136,7 +133,6 @@ export default defineNuxtConfig({
     ]
   },
   image: {
-    // domains: ['archive.org', 'loremflickr.com'],
     format: ['webp']
   },
   security: {

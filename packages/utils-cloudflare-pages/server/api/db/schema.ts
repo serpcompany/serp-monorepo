@@ -1,5 +1,4 @@
 import { sqliteTable, text, integer, real } from 'drizzle-orm/sqlite-core';
-import { sql } from 'drizzle-orm';
 
 // Company
 export const companyCache = sqliteTable('company_cache', {
@@ -190,3 +189,10 @@ export const mbArtistMetadataCache = sqliteTable('mb_artist_metadata_cache', {
   comments: text('comments', { mode: 'json' }),
   upvotes: text('upvotes', { mode: 'json' })
 });
+
+export const shortLinks = sqliteTable('short_links', {
+  key: text('key').primaryKey(),
+  data: text('data'),
+  email: text('email').unique()
+});
+

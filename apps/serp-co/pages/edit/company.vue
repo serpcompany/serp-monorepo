@@ -204,8 +204,8 @@
 </template>
 
 <script setup lang="ts">
-const { status, data } = useAuth();
-if (status.value === 'unauthenticated') {
+const { loggedIn, user } = useUserSession();
+if (!loggedIn.value) {
   navigateTo('/');
 }
 
@@ -320,7 +320,7 @@ async function saveCompany() {
     if (!isComplete.value) {
       throw new Error('Please fill in all required fields');
     }
-    if (!data?.value?.user?.email) {
+    if (!user?.value?.email) {
       throw new Error('Please login to save your company');
     }
 
