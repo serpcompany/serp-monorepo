@@ -1,50 +1,42 @@
 <template>
   <div
     :class="[
-      'py-6',
+      'py-4 px-5 max-w-5xl mx-auto',
       company.featured
         ? 'transform border border-blue-500 shadow-lg shadow-blue-300 transition duration-300 ease-in-out hover:scale-105'
-        : 'border border-gray-300'
+        : 'border border-gray-300 rounded-lg'
     ]"
   >
-    <!-- card top half -->
-    <div class="flex flex-col items-start md:flex-row">
-      <!-- col 1 -->
+    <!-- card content -->
+    <div class="flex items-start">
+      <!-- company image -->
       <div
-        class="mb-4 flex w-full flex-shrink-0 flex-row md:mr-4 md:mb-0 md:w-auto"
+        v-if="companyMainImage"
+        class="mr-5 flex-shrink-0"
       >
-        <!-- company image -->
-        <div
-          v-if="companyMainImage"
-          :class="[
-            isLogo
-              ? 'h-16 w-16 overflow-hidden rounded-full'
-              : 'h-[200px] w-[250px] overflow-hidden',
-            'flex items-center justify-center md:ml-4'
-          ]"
-        >
-          <nuxt-link :to="`/${baseSlug}${company.slug}/reviews/`">
+        <nuxt-link :to="`/${baseSlug}${company.slug}/reviews/`">
+          <div class="h-28 w-28 overflow-hidden bg-gray-100 rounded-lg">
             <lazy-nuxt-img
               :src="companyMainImage"
               :alt="company.name"
-              class="object-fit h-full w-full"
+              class="object-contain h-full w-full"
             />
-          </nuxt-link>
-        </div>
+          </div>
+        </nuxt-link>
       </div>
 
-      <!-- col 2 -->
-      <div class="w-full flex-grow md:mr-4">
-        <div
-          class="mb-2 flex flex-col items-start justify-between md:mb-0 md:flex-row md:items-center"
-        >
-          <div class="mb-2 md:mb-0">
-            <!-- company name -->
-            <nuxt-link
-              class="flex"
-              :to="`/${baseSlug}${company.slug}/reviews/`"
-            >
-              <h2 class="text-lg font-semibold">{{ company.name }}</h2>
+      <!-- company content -->
+      <div class="flex-grow">
+        <div class="flex flex-col justify-between sm:flex-row">
+          <div>
+            <!-- company name and badge -->
+            <div class="flex items-center">
+              <nuxt-link
+                class="flex"
+                :to="`/${baseSlug}${company.slug}/reviews/`"
+              >
+                <h2 class="text-xl font-semibold">{{ company.name }}</h2>
+              </nuxt-link>
               <u-badge
                 v-if="company.featured"
                 :avatar="{
@@ -57,68 +49,63 @@
               >
                 Featured
               </u-badge>
-            </nuxt-link>
+            </div>
 
             <!-- company oneliner -->
-            <p class="my-2">{{ company.oneLiner }}</p>
+            <p class="mt-2 text-gray-600 dark:text-gray-300">{{ company.oneLiner }}</p>
 
-            <!-- read more -->
-            <button
-              v-if="showReadMore"
-              class="mt-2 flex cursor-pointer items-center"
-              type="button"
-              @click="toggleExpanded"
+            <!-- rating display -->
+            <div v-if="company.rating" class="mt-3">
+              <span class="font-medium text-lg">{{ company.rating }}/5</span>
+            </div>
+          </div>
+
+          <!-- right side buttons -->
+          <div class="flex flex-col space-y-2 min-w-[140px] mt-4 sm:mt-0">
+            <!-- view website button -->
+            <a
+              :href="company.serplyLink"
+              target="_blank"
+              class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
             >
-              {{ isExpanded ? 'Read less' : 'Read more' }}
+              Website
               <svg
-                :class="{ 'rotate-180 transform': isExpanded }"
-                class="ml-1 h-4 w-4"
+                class="h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
+                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
                 />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
               </svg>
-            </button>
+            </a>
+
+            <!-- upvote button -->
+            <UpvoteButton
+              :id="company.id"
+              module="company"
+              :upvotes="company.upvotes || []"
+              class="upvote-btn text-sm"
+            />
           </div>
-        </div>
-      </div>
-
-      <!-- col 3 -->
-      <div
-        class="flex flex-col items-start justify-between space-y-4 md:w-auto md:items-center"
-      >
-        <!-- view website button -->
-        <nuxt-link
-          :to="company.serplyLink"
-          target="_blank"
-          class="border px-4 py-2 whitespace-nowrap"
-        >
-          View Website
-        </nuxt-link>
-
-        <!-- ratings -->
-        <div v-if="company.rating" class="flex flex-1 items-center text-2xl">
-          <span>{{ company.rating }}/5</span>
         </div>
       </div>
     </div>
 
-    <!-- card bottom half -->
-    <div v-if="isExpanded && showExpandedContent" class="my-10">
-      <div class="border-t py-8">
-        <p>{{ company.excerpt }}</p>
-      </div>
+    <!-- expanded content (if needed) -->
+    <div v-if="isExpanded && showExpandedContent" class="mt-8 pt-4 border-t">
+      <p>{{ company.excerpt }}</p>
 
       <!-- features-->
-      <section v-if="showFeatures" class="my-12">
-        <h3 class="pb-4 text-xl">Features</h3>
+      <section v-if="showFeatures" class="mt-4">
+        <h3 class="pb-2 text-lg font-medium">Features</h3>
         <ul class="list-disc pl-5">
           <li v-for="feature in company.features" :key="feature.id">
             {{ feature.item }}: {{ feature.description }}
@@ -178,3 +165,14 @@ const isLogo = computed(() => {
   return props.company.logo && companyMainImage.value === props.company.logo;
 });
 </script>
+
+<style scoped>
+.upvote-btn :deep(button) {
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+.upvote-btn :deep(.flex) {
+  width: 100%;
+}
+</style>
