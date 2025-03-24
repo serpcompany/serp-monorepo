@@ -11,7 +11,7 @@
               This is your generated short link
             </p>
             <UInput v-model="shortLink" readonly class="mb-2" />
-            <UButton @click="copyToClipboard" variant="soft" size="sm" block>
+            <UButton variant="soft" size="sm" block @click="copyToClipboard">
               Copy Link
             </UButton>
           </div>
@@ -176,13 +176,12 @@ interface FieldDefinition {
   label: string;
 }
 
-const requiredFields: FieldDefinition[] = [
-  { key: 'url', label: 'URL' }
-];
+const requiredFields: FieldDefinition[] = [{ key: 'url', label: 'URL' }];
 
 const isFormValid = computed(() => {
-  return requiredFields.every(field =>
-    linkData.value[field.key] && linkData.value[field.key].trim() !== ''
+  return requiredFields.every(
+    (field) =>
+      linkData.value[field.key] && linkData.value[field.key].trim() !== ''
   );
 });
 
@@ -205,11 +204,14 @@ async function createLink() {
       throw new Error('Please login to create a short link');
     }
 
-    const { data: response, error } = await useFetch<LinkResponse>('/api/link/create', {
-      method: 'POST',
-      headers: useRequestHeaders(['cookie']),
-      body: linkData.value
-    });
+    const { data: response, error } = await useFetch<LinkResponse>(
+      '/api/link/create',
+      {
+        method: 'POST',
+        headers: useRequestHeaders(['cookie']),
+        body: linkData.value
+      }
+    );
 
     if (error.value) {
       throw new Error(`Failed to create link - ${error.value.message}`);
@@ -230,7 +232,8 @@ async function createLink() {
     toast.add({
       id: 'link-create-error',
       title: 'Error creating link',
-      description: error instanceof Error ? error.message : 'Unknown error occurred',
+      description:
+        error instanceof Error ? error.message : 'Unknown error occurred',
       icon: 'exclamation-circle'
     });
   } finally {
@@ -252,7 +255,8 @@ function resetForm() {
 
 function copyToClipboard() {
   if (shortLink.value) {
-    navigator.clipboard.writeText(shortLink.value)
+    navigator.clipboard
+      .writeText(shortLink.value)
       .then(() => {
         toast.add({
           id: 'copy-success',

@@ -195,4 +195,3 @@ export const shortLinks = sqliteTable('short_links', {
   data: text('data'),
   email: text('email').unique()
 });
-

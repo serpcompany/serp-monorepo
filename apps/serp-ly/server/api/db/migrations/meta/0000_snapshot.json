@@ -1186,9 +1186,7 @@
       "indexes": {
         "short_links_email_unique": {
           "name": "short_links_email_unique",
-          "columns": [
-            "email"
-          ],
+          "columns": ["email"],
           "isUnique": true
         }
       },
