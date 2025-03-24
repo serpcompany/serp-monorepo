@@ -2,8 +2,8 @@
   <div>
     <!-- hero -->
     <SHero
-      headline="SERP Wiki"
-      subheadline="Stuff & More."
+      headline="Movie Stop"
+      subheadline="Movies, TV Shows, and more."
       :show-search-bar="false"
       :show-buttons="false"
     />

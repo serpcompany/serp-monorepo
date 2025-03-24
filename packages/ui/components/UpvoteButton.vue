@@ -3,19 +3,29 @@
     <Ubutton
       class="flex w-full items-center justify-center gap-2 rounded-full border border-gray-300 px-4 py-2 font-medium transition-colors hover:bg-gray-100 disabled:opacity-75 sm:w-auto dark:border-gray-600 dark:hover:bg-gray-800"
       :class="{
-        'text-blue-500 dark:text-blue-400': localUpvotes.includes(
-          user?.email
-        )
+        'text-blue-500 dark:text-blue-400': localUpvotes.includes(user?.email)
       }"
       :disabled="loading"
       @click="upvote"
-
     >
       <span
         v-if="loading"
         class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent"
       ></span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up"><path d="m18 15-6-6-6 6"/></svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-chevron-up"
+      >
+        <path d="m18 15-6-6-6 6" />
+      </svg>
       <span>Upvotes {{ localUpvotes.length }}</span>
     </Ubutton>
   </div>
