@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="py-20">
-      <div>
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div class="items-center">
           <div
             class="flex flex-col items-center text-center lg:items-start lg:text-left"
