@@ -43,7 +43,7 @@
       <!-- company content -->
       <div class="flex-grow">
         <div class="flex flex-col justify-between sm:flex-row">
-          <div class="sm:pr-8 sm:max-w-[calc(100%-180px)]">
+          <div class="sm:max-w-[calc(100%-180px)] sm:pr-8">
             <!-- company name and badge -->
             <div class="flex items-center">
               <nuxt-link
