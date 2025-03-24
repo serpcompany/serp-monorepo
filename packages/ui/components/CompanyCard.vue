@@ -1,25 +1,38 @@
 <template>
   <div
     :class="[
-      'py-4 px-5 max-w-5xl mx-auto',
+      'mx-auto max-w-5xl rounded-lg',
       company.featured
-        ? 'transform border border-blue-500 shadow-lg shadow-blue-300 transition duration-300 ease-in-out hover:scale-105'
-        : 'border border-gray-300 rounded-lg'
+        ? 'border border-gray-200 bg-gradient-to-b from-blue-50/50 to-transparent py-8 px-6 dark:border-gray-700 dark:from-blue-900/20 dark:to-transparent relative overflow-hidden'
+        : 'border border-gray-300 px-5 py-4'
     ]"
   >
+    <!-- Featured accent border -->
+    <div
+      v-if="company.featured"
+      class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-400 to-purple-400"
+      aria-hidden="true"
+    ></div>
+
     <!-- card content -->
     <div class="flex items-start">
       <!-- company image -->
       <div
         v-if="companyMainImage"
         class="mr-5 flex-shrink-0"
+        :class="{ 'mb-4 sm:mb-0': company.featured }"
       >
         <nuxt-link :to="`/${baseSlug}${company.slug}/reviews/`">
-          <div class="h-28 w-28 overflow-hidden bg-gray-100 rounded-lg">
+          <div
+            :class="[
+              'overflow-hidden rounded-lg bg-gray-100',
+              company.featured ? 'h-36 w-36 ring-1 ring-blue-100 dark:ring-blue-800' : 'h-28 w-28'
+            ]"
+          >
             <lazy-nuxt-img
               :src="companyMainImage"
               :alt="company.name"
-              class="object-contain h-full w-full"
+              class="h-full w-full object-contain"
             />
           </div>
         </nuxt-link>
@@ -35,7 +48,14 @@
                 class="flex"
                 :to="`/${baseSlug}${company.slug}/reviews/`"
               >
-                <h2 class="text-xl font-semibold">{{ company.name }}</h2>
+                <h2
+                  :class="[
+                    'font-semibold',
+                    company.featured ? 'text-2xl mb-1 text-blue-700 dark:text-blue-300' : 'text-xl'
+                  ]"
+                >
+                  {{ company.name }}
+                </h2>
               </nuxt-link>
               <u-badge
                 v-if="company.featured"
@@ -43,8 +63,8 @@
                   src: 'https://github.com/serpcompany.png'
                 }"
                 size="md"
-                color="neutral"
-                variant="outline"
+                color="info"
+                variant="filled"
                 class="ml-4"
               >
                 Featured
@@ -52,16 +72,39 @@
             </div>
 
             <!-- company oneliner -->
-            <p class="mt-2 text-gray-600 dark:text-gray-300">{{ company.oneLiner }}</p>
+            <p
+              :class="[
+                'text-gray-600 dark:text-gray-300',
+                company.featured ? 'mt-3 text-base leading-relaxed' : 'mt-2'
+              ]"
+            >
+              {{ company.oneLiner }}
+            </p>
+
+            <!-- show excerpt only for featured cards -->
+            <p
+              v-if="company.featured && company.excerpt"
+              class="mt-4 text-gray-600 dark:text-gray-300 line-clamp-2"
+            >
+              {{ company.excerpt }}
+            </p>
 
             <!-- rating display -->
-            <div v-if="company.rating" class="mt-3">
-              <span class="font-medium text-lg">{{ company.rating }}/5</span>
+            <div
+              v-if="company.rating"
+              :class="{ 'mt-3': !company.featured, 'mt-5': company.featured }"
+            >
+              <span class="text-lg font-medium">{{ company.rating }}/5</span>
             </div>
           </div>
 
           <!-- right side buttons -->
-          <div class="flex flex-col space-y-2 min-w-[140px] mt-4 sm:mt-0">
+          <div
+            :class="[
+              'flex min-w-[140px] flex-col space-y-2',
+              company.featured ? 'mt-5 sm:mt-0 sm:ml-4' : 'mt-4 sm:mt-0'
+            ]"
+          >
             <!-- view website button -->
             <a
               :href="company.serplyLink"
@@ -99,8 +142,21 @@
       </div>
     </div>
 
+    <!-- feature tags only for featured companies -->
+    <div v-if="company.featured && company.features && company.features.length" class="mt-6">
+      <div class="flex flex-wrap gap-2">
+        <span
+          v-for="feature in company.features.slice(0, 4)"
+          :key="feature.id"
+          class="inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-200"
+        >
+          {{ feature.item }}
+        </span>
+      </div>
+    </div>
+
     <!-- expanded content (if needed) -->
-    <div v-if="isExpanded && showExpandedContent" class="mt-8 pt-4 border-t">
+    <div v-if="isExpanded && showExpandedContent" class="mt-8 border-t pt-4">
       <p>{{ company.excerpt }}</p>
 
       <!-- features-->
