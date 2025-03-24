@@ -1,20 +1,18 @@
 <template>
   <div>
-    <multipage-header
-      :name="album.name"
-      :sections="sections"
-      class="bg-background sticky top-0 z-10 transition-all duration-300"
-      :serply_link="getAlbumUrl(album.id)"
-    >
+    <MultipageHeader
+                     :name="album.name"
+                     :sections="sections"
+                     class="bg-background sticky top-0 z-10 transition-all duration-300"
+                     :serply_link="getAlbumUrl(album.id)">
       <template #upvote>
         <UpvoteButton
-          v-if="useAuth"
-          :id="album.slug"
-          module="album"
-          :upvotes="upvotes"
-        />
+                      v-if="useAuth"
+                      :id="album.slug"
+                      module="album"
+                      :upvotes="upvotes" />
       </template>
-    </multipage-header>
+    </MultipageHeader>
 
     <!-- Main content with grid -->
     <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
@@ -30,17 +28,14 @@
             <!-- section: song list -->
             <section id="songs" class="mx-auto max-w-6xl scroll-mt-60 p-6">
               <div
-                v-for="song in album.recordings"
-                :key="song.slug"
-                class="flex items-center justify-between"
-              >
+                   v-for="song in album.recordings"
+                   :key="song.slug"
+                   class="flex items-center justify-between">
                 <div class="flex flex-1 items-center space-x-4">
                   <span class="w-6">{{ song.position }}</span>
-                  <nuxt-link
-                    v-if="song.has_lyrics"
-                    :to="`/songs/${song.slug}/`"
-                    >{{ song.name }}</nuxt-link
-                  >
+                  <NuxtLink
+                            v-if="song.has_lyrics"
+                            :to="`/songs/${song.slug}/`">{{ song.name }}</NuxtLink>
                   <span v-else>{{ song.name }}</span>
                 </div>
                 <div class="flex items-center">
@@ -54,10 +49,9 @@
         <!-- Sidebar (30%) -->
         <div class="space-y-6 lg:col-span-1">
           <!-- Album image -->
-          <lazy-nuxt-img
-            :src="album.coverArt?.['500']"
-            :alt="`${album.name} cover art`"
-          />
+          <LazyNuxtImg
+                       :src="album.coverArt?.['500']"
+                       :alt="`${album.name} cover art`" />
           <div v-if="album.date" class="border p-4">
             <ul class="list-disc pl-4">
               <li data-testid="release-date">Released: {{ album.date }}</li>
@@ -70,7 +64,7 @@
               <div>
                 <span>Genres: {{ genres }}</span>
               </div>
-              <br >
+              <br>
               <div v-if="tags">
                 <span>Tags: {{ tags }}</span>
               </div>
@@ -81,9 +75,7 @@
           <div class="border p-4">
             <div class="flex space-y-4">
               <div>
-                <nuxt-link to="https://serp.ly/@daftfm/amazon/music/unlimited"
-                  >Amazon Music</nuxt-link
-                >
+                <NuxtLink to="https://serp.ly/@daftfm/amazon/music/unlimited">Amazon Music</NuxtLink>
               </div>
             </div>
           </div>

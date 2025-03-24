@@ -1,33 +1,30 @@
 <template>
   <div>
     <section>
-      <section-hero-one title="Glossary" />
+      <SectionHeroOne title="Glossary" />
       <first-character-jump-link-nav
-        :characters="characters"
-        :filtered-characters="filteredCharacters"
-      />
+                                     :characters="characters"
+                                     :filtered-characters="filteredCharacters" />
     </section>
 
     <!-- character section (character + cards) -->
     <main>
       <div class="px-6 lg:px-8">
         <div
-          v-for="character in filteredCharacters"
-          :id="character"
-          :key="character"
-          class="pt-12 lg:pt-24"
-        >
+             v-for="character in filteredCharacters"
+             :id="character"
+             :key="character"
+             class="pt-12 lg:pt-24">
           <div>
             <!-- character section top (character) -->
             <h2 class="text-4xl font-semibold">{{ character }}</h2>
 
             <!-- character section bottom (cards) -->
             <div class="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-              <glossary-term-card
-                v-for="term in getTermsByFirstChar(character)"
-                :key="term.slug"
-                :term="term"
-              />
+              <GlossaryTermCard
+                                v-for="term in getTermsByFirstChar(character)"
+                                :key="term.slug"
+                                :term="term" />
             </div>
           </div>
         </div>

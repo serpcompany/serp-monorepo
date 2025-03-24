@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section-hero-one title="Blog" />
+    <SectionHeroOne title="Blog" />
 
     <div class="pb-20">
       <!-- rows: posts -->
@@ -8,22 +8,20 @@
         <PostCard v-for="post in data.posts" :key="post.id" :post="post" />
       </div>
 
-      <u-pagination
-        v-model:page="page"
-        :total="data?.pagination?.totalItems"
-        :items-per-page="limit"
-        :sibling-count="3"
-        aria-label="pagination"
-        class="mt-20 flex justify-center overflow-x-auto rounded-none"
-      />
+      <UPagination
+                   v-model:page="page"
+                   :total="data?.pagination?.totalItems"
+                   :items-per-page="limit"
+                   :sibling-count="3"
+                   aria-label="pagination"
+                   class="mt-20 flex justify-center overflow-x-auto rounded-none" />
 
-      <s-link-hub
-        v-if="categories && categories.length"
-        :categories="categories"
-        headline="Categories"
-        class="mt-20"
-        base-slug="posts/category"
-      />
+      <SLinkHub
+                v-if="categories && categories.length"
+                :categories="categories"
+                headline="Categories"
+                class="mt-20"
+                base-slug="posts/category" />
     </div>
   </div>
 </template>

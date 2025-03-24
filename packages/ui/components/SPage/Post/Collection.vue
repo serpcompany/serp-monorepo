@@ -1,38 +1,33 @@
 <template>
   <div>
-    <section-hero-one :title="props.moduleTitle || 'Posts'" />
+    <SectionHeroOne :title="props.moduleTitle || 'Posts'" />
 
     <div class="pb-20">
       <!-- rows:  posts -->
       <div
-        :class="
-          props.useGrid
+           :class="props.useGrid
             ? 'grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4'
             : 'space-y-4'
-        "
-      >
+            ">
         <PostCard
-          v-for="post in data.posts"
-          :key="post.id"
-          :post="post"
-          :base-slug="props.baseSlug"
-        />
+                  v-for="post in data.posts"
+                  :key="post.id"
+                  :post="post"
+                  :base-slug="props.baseSlug" />
       </div>
 
-      <s-pagination
-        v-model:page="page"
-        :total="data?.pagination?.totalItems"
-        :items-per-page="limit"
-        :sibling-count="3"
-      />
+      <SPagination
+                   v-model:page="page"
+                   :total="data?.pagination?.totalItems"
+                   :items-per-page="limit"
+                   :sibling-count="3" />
 
-      <s-link-hub
-        v-if="!props.noCategories && categories && categories.length"
-        :categories="categories"
-        headline="Categories"
-        class="mt-20"
-        base-slug="posts/category"
-      />
+      <SLinkHub
+                v-if="!props.noCategories && categories && categories.length"
+                :categories="categories"
+                headline="Categories"
+                class="mt-20"
+                base-slug="posts/category" />
     </div>
   </div>
 </template>

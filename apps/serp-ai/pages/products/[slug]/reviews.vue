@@ -1,6 +1,6 @@
 <template>
   <div v-if="data">
-    <multipage-header
+    <MultipageHeader
       :name="data.name"
       :one-liner="data.oneLiner"
       :sections="sections"
@@ -15,7 +15,7 @@
         <!-- Main Content (70%) -->
         <div class="lg:col-span-2">
           <!-- Overview Section -->
-          <company-overview
+          <CompanyOverview
             v-if="data.excerpt"
             id="overview"
             :company="data"

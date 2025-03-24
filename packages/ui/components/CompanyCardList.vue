@@ -1,12 +1,11 @@
 <template>
   <div v-for="company in companies" :key="company.id" class="mb-4 border p-4">
-    <company-card
-      :company="company"
-      :show-read-more="showReadMore"
-      :show-pros-and-cons="showProsAndCons"
-      :show-features="showFeatures"
-      :show-expanded-content="showExpandedContent"
-    />
+    <CompanyCard
+                 :company="company"
+                 :show-read-more="showReadMore"
+                 :show-pros-and-cons="showProsAndCons"
+                 :show-features="showFeatures"
+                 :show-expanded-content="showExpandedContent" />
   </div>
 </template>
 

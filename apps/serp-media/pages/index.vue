@@ -11,9 +11,9 @@
     <main>
       <!-- rows: movies -->
       <div class="mb-16">
-        <nuxt-link to="/movies">
+        <NuxtLink to="/movies">
           <h2 class="pb-16 text-3xl">Movies</h2>
-        </nuxt-link>
+        </NuxtLink>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           <PostCard
             v-for="post in movieData.posts"
@@ -28,9 +28,9 @@
 
       <!-- rows: shop -->
       <div class="mb-16">
-        <nuxt-link to="/shop">
+        <NuxtLink to="/shop">
           <h2 class="pb-16 text-3xl">Shop</h2>
-        </nuxt-link>
+        </NuxtLink>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           <PostCard
             v-for="post in shopData.posts"

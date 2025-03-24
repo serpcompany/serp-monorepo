@@ -2,26 +2,24 @@
   <div>
     <!-- hero -->
     <SHero
-      headline="SERP Wiki"
-      subheadline="Stuff & More."
-      :show-search-bar="false"
-      :show-buttons="false"
-    />
+           headline="SERP Wiki"
+           subheadline="Stuff & More."
+           :show-search-bar="false"
+           :show-buttons="false" />
 
     <main>
       <!-- rows: posts -->
       <div class="mb-16">
-        <nuxt-link to="/posts">
+        <NuxtLink to="/posts">
           <h2 class="pb-16 text-3xl">Posts</h2>
-        </nuxt-link>
+        </NuxtLink>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           <PostCard
-            v-for="post in postsData.posts"
-            :key="post.id"
-            :post="post"
-            base-slug="posts/"
-            article-class="py-2"
-          />
+                    v-for="post in postsData.posts"
+                    :key="post.id"
+                    :post="post"
+                    base-slug="posts/"
+                    article-class="py-2" />
         </div>
       </div>
     </main>

@@ -33,9 +33,9 @@
         </s-script-you-tube-player>
       </div>
 
-      <u-separator class="col-span-3 my-4">
+      <USeparator class="col-span-3 my-4">
         <s-logo />
-      </u-separator>
+      </USeparator>
 
       <!-- main section -->
       <div class="prose dark:prose-invert col-span-2">

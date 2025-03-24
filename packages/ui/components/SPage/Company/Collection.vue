@@ -2,39 +2,35 @@
   <div class="pb-10">
     <!-- hero -->
     <SHero
-      headline="Products, Software & Services."
-      subheadline="Discover top-rated software, tools & services."
-      :show-search-bar="false"
-      :show-buttons="false"
-    />
+           headline="Products, Software & Services."
+           subheadline="Discover top-rated software, tools & services."
+           :show-search-bar="false"
+           :show-buttons="false" />
 
     <main>
       <!-- rows: companies -->
       <div class="space-y-4">
-        <company-card
-          v-for="company in data.companies"
-          :key="company.slug"
-          :company="company"
-        />
+        <CompanyCard
+                     v-for="company in data.companies"
+                     :key="company.slug"
+                     :company="company" />
       </div>
 
-      <u-pagination
-        v-model:page="page"
-        :total="data?.pagination?.totalItems"
-        :items-per-page="limit"
-        :sibling-count="3"
-        aria-label="pagination"
-        class="mt-20 flex justify-center overflow-x-auto rounded-none"
-      />
+      <UPagination
+                   v-model:page="page"
+                   :total="data?.pagination?.totalItems"
+                   :items-per-page="limit"
+                   :sibling-count="3"
+                   aria-label="pagination"
+                   class="mt-20 flex justify-center overflow-x-auto rounded-none" />
 
       <!-- link hub -->
-      <s-link-hub
-        v-if="categories && categories.length"
-        :categories="categories"
-        headline="Categories"
-        class="mt-20"
-        base-slug="products/best"
-      />
+      <SLinkHub
+                v-if="categories && categories.length"
+                :categories="categories"
+                headline="Categories"
+                class="mt-20"
+                base-slug="products/best" />
     </main>
   </div>
 </template>

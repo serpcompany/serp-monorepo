@@ -4,9 +4,9 @@
   >
     <div v-for="artist in artists" :key="artist.slug">
       <span>
-        <nuxt-link :to="`/artists/${artist.slug}/`" aria-label="artist name">
+        <NuxtLink :to="`/artists/${artist.slug}/`" aria-label="artist name">
           {{ artist.name }}
-        </nuxt-link>
+        </NuxtLink>
       </span>
     </div>
   </div>
