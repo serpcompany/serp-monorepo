@@ -82,13 +82,13 @@
         By signing in, you agree to our
         <a
           href="/legal/terms-conditions/"
-          class="text-(--ui-primary)-600 dark:text-(--ui-primary)-400 hover:underline"
+          class="text-[var(--ui-primary-600)] hover:underline dark:text-[var(--ui-primary-400)]"
           >Terms of Service</a
         >
         &
         <a
           href="/legal/privacy-policy/"
-          class="text-(--ui-primary)-600 dark:text-(--ui-primary)-400 hover:underline"
+          class="text-[var(--ui-primary-600)] hover:underline dark:text-[var(--ui-primary-400)]"
           >Privacy Policy</a
         >
       </div>

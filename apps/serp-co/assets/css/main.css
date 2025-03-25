@@ -1,4 +1,8 @@
 /* Import from UI package only - all base styles are defined there */
 @import '@serp/ui/assets/css/main.css';
 
+/* Add specific sources for this application */
+@source "./components";
+@source "./pages";
+
 /* App-specific styles can be added below if needed */
