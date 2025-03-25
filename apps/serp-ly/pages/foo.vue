@@ -7,7 +7,7 @@
         <UCard v-if="shortLink">
           <div class="p-3">
             <h3 class="text-lg font-medium">Your Short Link</h3>
-            <p class="mb-2 text-sm text-gray-600">
+            <p class="mb-2 text-sm text-neutral-600">
               This is your generated short link
             </p>
             <UInput v-model="shortLink" readonly class="mb-2" />
@@ -23,7 +23,7 @@
             <h3 class="text-lg font-medium">
               {{ isFormValid ? '✅ Valid' : '❌ Invalid' }}
             </h3>
-            <p class="mb-2 text-xs text-gray-600">
+            <p class="mb-2 text-xs text-neutral-600">
               Required fields must be filled before creating a link
             </p>
             <div class="grid grid-cols-2 gap-1">

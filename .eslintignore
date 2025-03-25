@@ -1,6 +1,0 @@
-# Add this line to ignore the specific file
-/apps/serp-ly/pages/foo2.vue
-apps/serp-ly/pages/foo2.vue
-**/apps/serp-ly/pages/foo2.vue
-**foo2.vue
-apps/serp-ly/pages/foo2.vue

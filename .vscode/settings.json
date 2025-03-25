@@ -19,6 +19,16 @@
       "source.organizeImports": "explicit"
     }
   },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "tailwindCSS.classAttributes": ["class", "ui"],
+  "tailwindCSS.experimental.classRegex": [
+    ["ui:\\s*{([^)]*)\\s*}", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
   "html.format.enable": false,
   "html.format.preserveNewLines": true,
   "html.format.wrapLineLength": 0,

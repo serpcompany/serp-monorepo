@@ -6,7 +6,7 @@
         <UCard>
           <div class="p-3">
             <h3 class="text-lg font-medium">Link Management</h3>
-            <p class="mb-2 text-sm text-gray-600">
+            <p class="mb-2 text-sm text-neutral-600">
               View, edit, or delete your short links.
             </p>
             <UButton variant="soft" size="sm" block @click="fetchLinks">
@@ -72,7 +72,7 @@
         <UCard>
           <div class="p-4">
             <h3 class="mb-4 text-lg font-medium">Your Short Links</h3>
-            <div v-if="loadingList" class="text-center text-gray-600">
+            <div v-if="loadingList" class="text-center text-neutral-600">
               Loading links...
             </div>
             <div v-else>
@@ -84,7 +84,7 @@
                 >
                   <div>
                     <p class="font-medium">{{ link.slug }}</p>
-                    <p class="text-sm text-gray-600">{{ link.url }}</p>
+                    <p class="text-sm text-neutral-600">{{ link.url }}</p>
                   </div>
                   <div class="space-x-2">
                     <UButton
@@ -106,7 +106,7 @@
                   </div>
                 </div>
               </div>
-              <div v-else class="text-gray-600">No links found.</div>
+              <div v-else class="text-neutral-600">No links found.</div>
             </div>
           </div>
         </UCard>

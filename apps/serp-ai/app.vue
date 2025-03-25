@@ -1,9 +1,9 @@
 <template>
-  <u-app>
-    <nuxt-layout>
-      <nuxt-page />
-    </nuxt-layout>
-  </u-app>
+  <UApp>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </UApp>
 </template>
 
 <script setup>

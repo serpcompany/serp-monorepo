@@ -127,7 +127,7 @@
             <textarea
               v-model="newComment"
               name="addComment"
-              class="addComment border-gray-500 bg-white dark:border-gray-400 dark:bg-gray-800"
+              class="addComment border-neutral-500 bg-white dark:border-neutral-400 dark:bg-neutral-800"
               placeholder="Add a comment"
               spellcheck="true"
               aria-label="Add comment"
@@ -140,7 +140,7 @@
               class="action-buttons flex justify-end gap-2"
             >
               <UButton
-                class="cancel-btn inline-flex items-center justify-center rounded-full border border-gray-300 bg-gray-500 px-4 py-2 text-gray-700 hover:bg-gray-50 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                class="cancel-btn inline-flex items-center justify-center rounded-full border border-neutral-300 bg-neutral-500 px-4 py-2 text-neutral-700 hover:bg-neutral-50 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700"
                 @click="cancelComment"
               >
                 Cancel
@@ -167,7 +167,7 @@
           class="noCommentWrapper"
         >
           <span
-            class="noCommentText text-primary border-primary hover:bg-primary border hover:text-white"
+            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
             >Sign in to comment.</span
           >
         </NuxtLink>

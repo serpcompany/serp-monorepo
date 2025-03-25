@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import '@nuxt/ui';
+@import "@nuxt/ui-pro";
 @import './patch.css';
 
 @plugin "@tailwindcss/typography";
@@ -13,6 +13,7 @@
   html {
     font-size: 16px;
   }
+
   button,
   [role='button'] {
     @apply cursor-pointer;

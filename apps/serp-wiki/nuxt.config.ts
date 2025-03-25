@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: ['@serp/ui', '@serp/types', '@serp/utils-cloudflare-pages'],
   modules: [
-    '@nuxt/ui',
+    '@nuxt/ui-pro',
     '@nuxt/image',
     '@nuxt/eslint',
     '@nuxtjs/seo',
