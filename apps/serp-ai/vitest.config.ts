@@ -8,13 +8,6 @@ export default defineVitestConfig({
     coverage: {
       all: true,
       reporter: ['text', 'json', 'html'],
-      include: [
-        'components/**/*.{js,ts,vue}',
-        'composables/**/*.{js,ts,vue}',
-        'middleware/**/*.{js,ts,vue}',
-        'server/**/*.{js,ts,vue}',
-        'pages/**/*.{js,ts,vue}'
-      ],
       reportsDirectory: './coverage',
       exclude: ['node_modules', 'tests']
     },
