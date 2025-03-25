@@ -19,5 +19,8 @@ export default defineNuxtConfig({
     public: {
       useAuth: process.env.USE_AUTH === 'true'
     }
+  },
+  uiPro: {
+    license: process.env.NUXT_UI_PRO_LICENSE
   }
 });
