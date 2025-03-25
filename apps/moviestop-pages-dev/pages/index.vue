@@ -2,10 +2,11 @@
   <div>
     <!-- hero -->
     <SHero
-           headline="Movie Stop"
-           subheadline="Movies, TV Shows, and more."
-           :show-search-bar="false"
-           :show-buttons="false" />
+      headline="Movie Stop"
+      subheadline="Movies, TV Shows, and more."
+      :show-search-bar="false"
+      :show-buttons="false"
+    />
 
     <main>
       <!-- rows: posts -->
@@ -15,11 +16,12 @@
         </NuxtLink>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           <PostCard
-                    v-for="post in postsData.posts"
-                    :key="post.id"
-                    :post="post"
-                    base-slug="posts/"
-                    article-class="py-2" />
+            v-for="post in postsData.posts"
+            :key="post.id"
+            :post="post"
+            base-slug="posts/"
+            article-class="py-2"
+          />
         </div>
       </div>
     </main>

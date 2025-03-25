@@ -1,16 +1,18 @@
 <template>
   <div>
     <MultipageHeader
-                     :name="song.name"
-                     :sections="sections"
-                     class="bg-background sticky top-0 z-10 transition-all duration-300"
-                     :serply_link="getSongUrl(song.id)">
+      :name="song.name"
+      :sections="sections"
+      class="bg-background sticky top-0 z-10 transition-all duration-300"
+      :serply_link="getSongUrl(song.id)"
+    >
       <template #upvote>
         <UpvoteButton
-                      v-if="useAuth"
-                      :id="song.slug"
-                      module="song"
-                      :upvotes="upvotes" />
+          v-if="useAuth"
+          :id="song.slug"
+          module="song"
+          :upvotes="upvotes"
+        />
       </template>
     </MultipageHeader>
 
@@ -44,7 +46,7 @@
               <div v-if="genres">
                 <span>Genres: {{ genres }}</span>
               </div>
-              <br>
+              <br >
               <div v-if="tags">
                 <span>Tags: {{ tags }}</span>
               </div>
@@ -55,7 +57,9 @@
           <div class="border p-4">
             <div class="flex space-y-4">
               <div>
-                <NuxtLink to="https://serp.ly/@daftfm/amazon/music/unlimited">Amazon Music</NuxtLink>
+                <NuxtLink to="https://serp.ly/@daftfm/amazon/music/unlimited"
+                  >Amazon Music</NuxtLink
+                >
               </div>
             </div>
           </div>

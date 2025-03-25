@@ -3,7 +3,9 @@
     <h1>Legal Information</h1>
     <ul>
       <li>
-        <NuxtLink to="/legal/affiliate-disclosure/">Affiliate Disclosure</NuxtLink>
+        <NuxtLink to="/legal/affiliate-disclosure/"
+          >Affiliate Disclosure</NuxtLink
+        >
         <NuxtLink to="/legal/dmca/">DMCA & IP Complaints</NuxtLink>
         <NuxtLink to="/legal/privacy-policy/">Privacy Policy</NuxtLink>
         <NuxtLink to="/legal/terms-conditions/">Terms & Conditions</NuxtLink>

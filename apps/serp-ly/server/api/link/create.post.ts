@@ -1,12 +1,8 @@
 import { useDrizzle } from '@serp/utils-cloudflare-pages/server/api/db';
 import { shortLinks } from '@serp/utils-cloudflare-pages/server/api/db/schema';
-import { eq, sql } from 'drizzle-orm';
+import { sql } from 'drizzle-orm';
 import { nanoid } from 'nanoid';
 import type { Link } from '@serp/types/types/Link';
-
-interface ErrorWithStatusCode extends Error {
-  statusCode?: number;
-}
 
 export default defineEventHandler(async (event) => {
   const session = await requireUserSession(event);
@@ -44,36 +40,37 @@ export default defineEventHandler(async (event) => {
   try {
     const newLinkJSON = JSON.stringify(link).replace(/'/g, "''");
 
-    const query = `
-      INSERT INTO short_links (email, key, data)
-      VALUES (
-        '${email}',
-        '${email}',
-        json_array(json('${newLinkJSON}'))
-      )
-      ON CONFLICT (email) DO UPDATE SET
-        data = CASE
+    await db
+      .insert(shortLinks)
+      .values({
+        email,
+        key: email,
+        data: sql`json_array(json(${newLinkJSON}))`
+      })
+      .onConflictDoUpdate({
+        target: shortLinks.email,
+        set: {
+          data: sql`CASE
           WHEN EXISTS(
-            SELECT 1 FROM json_each(data)
-            WHERE json_extract(value, '$.slug') = '${link.slug}'
+            SELECT 1 FROM json_each("data")
+            WHERE json_extract(value, '$.slug') = ${link.slug}
           )
-          THEN data
+          THEN "data"
           ELSE json_insert(
-            COALESCE(data, json('[]')),
+            COALESCE("data", json('[]')),
             '$[#]',
-            json('${newLinkJSON}')
+            json(${newLinkJSON})
           )
-        END
-    `;
-    await db.run(sql.raw(query));
+        END`
+        }
+      })
+      .execute();
 
-    setResponseStatus(event, 201);
-
-    const shortLink = `${getRequestProtocol(event)}://${getRequestHost(event)}/${link.slug}`;
+    const shortLink = `${getRequestProtocol(event)}://${getRequestHost(event)}/${email}/${link.slug}`;
 
     return { link, shortLink };
   } catch (error: unknown) {
-    if ((error as ErrorWithStatusCode).statusCode) {
+    if (error.statusCode) {
       throw error;
     }
 

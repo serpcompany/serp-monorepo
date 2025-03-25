@@ -1,12 +1,13 @@
 <!-- eslint-disable vue/no-mutating-props -->
 <template>
   <UPagination
-               v-model:page="page"
-               :total="totalItems"
-               :items-per-page="limit"
-               :sibling-count="siblingCount"
-               aria-label="pagination"
-               class="mt-20 flex justify-center overflow-x-auto rounded-none" />
+    v-model:page="page"
+    :total="totalItems"
+    :items-per-page="limit"
+    :sibling-count="siblingCount"
+    aria-label="pagination"
+    class="mt-20 flex justify-center overflow-x-auto rounded-none"
+  />
 </template>
 
 <script setup lang="ts">

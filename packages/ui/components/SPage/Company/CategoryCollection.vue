@@ -2,33 +2,37 @@
   <div class="py-10">
     <!-- hero -->
     <SHero
-           :headline="`The Best ${data.categoryName}`"
-           :show-search-bar="false"
-           :show-buttons="false" />
+      :headline="`The Best ${data.categoryName}`"
+      :show-search-bar="false"
+      :show-buttons="false"
+    />
 
     <main>
       <!-- rows: companies -->
       <div class="space-y-4">
         <CompanyCard
-                     v-for="company in data.companies"
-                     :key="company.slug"
-                     :company="company" />
+          v-for="company in data.companies"
+          :key="company.slug"
+          :company="company"
+        />
       </div>
 
       <UPagination
-                   v-model:page="page"
-                   :total="data?.pagination?.totalItems"
-                   :items-per-page="limit"
-                   :sibling-count="3"
-                   aria-label="pagination"
-                   class="mt-20 flex justify-center overflow-x-auto rounded-none" />
+        v-model:page="page"
+        :total="data?.pagination?.totalItems"
+        :items-per-page="limit"
+        :sibling-count="3"
+        aria-label="pagination"
+        class="mt-20 flex justify-center overflow-x-auto rounded-none"
+      />
 
       <SLinkHub
-                v-if="categories && categories.length"
-                :categories="categories"
-                headline="Categories"
-                class="mt-20"
-                base-slug="products/best" />
+        v-if="categories && categories.length"
+        :categories="categories"
+        headline="Categories"
+        class="mt-20"
+        base-slug="products/best"
+      />
 
       <!-- company category article -->
       <section v-if="data.categoryArticle" class="mt-20">

@@ -1,12 +1,14 @@
 <template>
   <div>
     <SHero
-           :headline="`
+      :headline="
+        `
     Category: ${data.categoryName}` ||
-            'If this is showing call 911, because something is very wrong.'
-            "
-           :show-search-bar="false"
-           :show-buttons="false" />
+        'If this is showing call 911, because something is very wrong.'
+      "
+      :show-search-bar="false"
+      :show-buttons="false"
+    />
 
     <main class="pb-20">
       <!-- rows: posts -->
@@ -15,18 +17,20 @@
       </div>
 
       <UPagination
-                   v-model:page="page"
-                   :total="data?.pagination?.totalItems"
-                   :items-per-page="limit"
-                   :sibling-count="3"
-                   aria-label="pagination"
-                   class="mt-20 flex justify-center overflow-x-auto" />
+        v-model:page="page"
+        :total="data?.pagination?.totalItems"
+        :items-per-page="limit"
+        :sibling-count="3"
+        aria-label="pagination"
+        class="mt-20 flex justify-center overflow-x-auto"
+      />
 
       <SLinkHub
-                :categories="categories"
-                headline="Categories"
-                class="mt-20"
-                base-slug="posts/category" />
+        :categories="categories"
+        headline="Categories"
+        class="mt-20"
+        base-slug="posts/category"
+      />
     </main>
   </div>
 </template>

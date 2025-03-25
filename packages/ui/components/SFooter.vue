@@ -3,8 +3,9 @@
     <div>
       <!-- footer row 1 -->
       <nav
-           aria-label="Footer Main Navigation"
-           class="mb-4 grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-5">
+        aria-label="Footer Main Navigation"
+        class="mb-4 grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-5"
+      >
         <!-- Main footer columns -->
         <div v-for="column in footerColumns" :key="column.id">
           <span class="text-md font-extrabold uppercase">
@@ -32,36 +33,42 @@
 
         <div class="mb-8 items-center justify-between sm:flex md:flex-row">
           <div
-               class="hide-scrollbar flex flex-col items-center justify-between sm:overflow-x-auto md:flex-row">
+            class="hide-scrollbar flex flex-col items-center justify-between sm:overflow-x-auto md:flex-row"
+          >
             <!-- Social Links -->
             <nav aria-label="Social Media Links" class="mb-4 flex md:mb-0">
               <NuxtLink
-                        v-for="social in socialLinks"
-                        :key="social.name"
-                        :to="social.href"
-                        :aria-label="social.name"
-                        class="mr-6"
-                        target="_blank">
+                v-for="social in socialLinks"
+                :key="social.name"
+                :to="social.href"
+                :aria-label="social.name"
+                class="mr-6"
+                target="_blank"
+              >
                 <u-icon
-                        :name="social.icon"
-                        class="size-5 text-black dark:text-white"
-                        aria-hidden="true" />
+                  :name="social.icon"
+                  class="size-5 text-black dark:text-white"
+                  aria-hidden="true"
+                />
                 <span class="sr-only">Visit our {{ social.name }} page</span>
               </NuxtLink>
             </nav>
           </div>
 
           <div
-               class="flex flex-col justify-between sm:items-center md:flex-row">
+            class="flex flex-col justify-between sm:items-center md:flex-row"
+          >
             <!-- Brand links -->
             <nav
-                 aria-label="Brand Navigation"
-                 class="flex flex-col flex-wrap justify-center gap-4 text-sm sm:flex-row md:justify-end">
+              aria-label="Brand Navigation"
+              class="flex flex-col flex-wrap justify-center gap-4 text-sm sm:flex-row md:justify-end"
+            >
               <NuxtLink
-                        v-for="link in brandLinks"
-                        :key="link.href"
-                        :to="link.href"
-                        target="_blank">
+                v-for="link in brandLinks"
+                :key="link.href"
+                :to="link.href"
+                target="_blank"
+              >
                 {{ link.name }}
               </NuxtLink>
             </nav>
@@ -71,17 +78,21 @@
         <!-- footer row 3 -->
         <!-- Legal links -->
         <nav
-             aria-label="Legal Navigation"
-             class="flex flex-col justify-between text-sm sm:items-center md:flex-row">
+          aria-label="Legal Navigation"
+          class="flex flex-col justify-between text-sm sm:items-center md:flex-row"
+        >
           <div class="mb-2 font-semibold md:mb-0">
             {{ copyrightText }}
           </div>
           <div
-               class="flex flex-col flex-wrap justify-center gap-4 sm:flex-row md:justify-end">
+            class="flex flex-col flex-wrap justify-center gap-4 sm:flex-row md:justify-end"
+          >
             <NuxtLink
-                      v-for="link in legalLinks"
-                      :key="link.text"
-                      :to="link.slug">{{ link.text }}</NuxtLink>
+              v-for="link in legalLinks"
+              :key="link.text"
+              :to="link.slug"
+              >{{ link.text }}</NuxtLink
+            >
           </div>
         </nav>
 
