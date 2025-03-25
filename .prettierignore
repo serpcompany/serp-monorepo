@@ -8,3 +8,11 @@ build/
 .nuxt/
 .turbo/
 .wrangler/
+**/.nuxt/
+**/.turbo/
+**/.wrangler/
+**/.playground/
+**/.nuxt/
+**/.turbo/
+**/.wrangler/
+**/.playground/
