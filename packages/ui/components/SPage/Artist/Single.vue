@@ -1,10 +1,10 @@
 <template>
   <div>
-    <MultipageHeader
+    <MultipageHeaderMusic
       :name="artist.name"
       :sections="sections"
       class="bg-background sticky top-0 z-10 transition-all duration-300"
-      :serply_link="getArtistUrl(artist.name)"
+      serply_link="https://serp.ly/@daftfm/amazon/music/unlimited"
     >
       <template #upvote>
         <UpvoteButton
@@ -14,7 +14,7 @@
           :upvotes="upvotes"
         />
       </template>
-    </MultipageHeader>
+    </MultipageHeaderMusic>
 
     <!-- Main content with grid -->
     <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
@@ -95,7 +95,7 @@
               <div>
                 <span>Genres: {{ genres }}</span>
               </div>
-              <br >
+              <br />
               <div>
                 <span>Tags: {{ tags }}</span>
               </div>
