@@ -117,6 +117,7 @@
 
 <script setup lang="ts">
 import type { Link } from '@serp/types/types/Link';
+import { useShortlinks } from '@serp/utils-cloudflare-pages/composables/useShortlinks';
 const { loggedIn } = useUserSession();
 if (!loggedIn.value) {
   navigateTo('/');
@@ -131,15 +132,8 @@ const toast = useToast();
 async function fetchLinks() {
   loadingList.value = true;
   try {
-    const { data, error } = await useFetch('/api/link/list', {
-      method: 'GET',
-      headers: useRequestHeaders(['cookie'])
-    });
-    if (error.value) {
-      throw new Error(error.value.message || 'Failed to fetch links');
-    }
-    if (data.value && data.value.length > 0) {
-      const record = data.value[0];
+    const record = await useShortlinks();
+    if (record) {
       if (record.data) {
         links.value = JSON.parse(record.data);
       } else {
@@ -159,6 +153,8 @@ async function fetchLinks() {
     loadingList.value = false;
   }
 }
+
+await fetchLinks();
 
 // Delete a link by its slug
 async function deleteLink(slug: string) {
@@ -249,8 +245,4 @@ async function updateLink() {
     loadingUpdate.value = false;
   }
 }
-
-onMounted(() => {
-  fetchLinks();
-});
 </script>
