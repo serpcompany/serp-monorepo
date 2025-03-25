@@ -7,9 +7,7 @@
     "build": "nuxt build .playground",
     "generate": "nuxt generate .playground",
     "lint": "prettier . --write && eslint --fix",
-    "preview": "nuxt preview .playground",
-    "test": "vitest --coverage --run",
-    "test:watch": "vitest --coverage"
+    "preview": "nuxt preview .playground"
   },
   "dependencies": {
     "@opentelemetry/auto-instrumentations-web": "^0.43.0",

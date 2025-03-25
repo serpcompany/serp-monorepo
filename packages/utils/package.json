@@ -7,9 +7,7 @@
     "build": "nuxt build .playground",
     "generate": "nuxt generate .playground",
     "lint": "prettier . --write && eslint --fix",
-    "preview": "nuxt preview .playground",
-    "test": "vitest --coverage --run",
-    "test:watch": "vitest --coverage"
+    "preview": "nuxt preview .playground"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",

@@ -15,9 +15,7 @@
     "postinstall": "nuxt prepare",
     "lint": "prettier . --write && eslint --fix",
     "preview": "nuxt preview",
-    "server": "node .output/server/index.mjs",
-    "test": "vitest --coverage --run",
-    "test:watch": "vitest --coverage"
+    "server": "node .output/server/index.mjs"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
