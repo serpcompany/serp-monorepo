@@ -1,5 +1,6 @@
 import { useDrizzle } from '@serp/utils-cloudflare-pages/server/api/db';
-import { sql } from 'drizzle-orm';
+import { shortLinks } from '@serp/utils-cloudflare-pages/server/api/db/schema';
+import { sql, and, eq } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
   const { key, slug } = getQuery(event);
@@ -14,17 +15,20 @@ export default defineEventHandler(async (event) => {
   const db = useDrizzle();
 
   try {
-    const query = `
-      SELECT json_extract(value, '$.url') AS url
-      FROM short_links, json_each(short_links.data) AS value
-      WHERE short_links.key = '${key}'
-        AND json_extract(value, '$.slug') = '${slug}'
-      LIMIT 1
-    `;
-    const result = await db.run(sql.raw(query));
+    const result = await db
+      .select({ url: sql`json_extract(value, '$.url')` })
+      .from(sql`short_links, json_each(short_links.data) AS value`)
+      .where(
+        and(
+          eq(shortLinks.key, key),
+          sql`json_extract(value, '$.slug') = ${slug}`
+        )
+      )
+      .limit(1)
+      .execute();
 
-    if (result.results && result.results.length > 0) {
-      return { url: result.results[0].url };
+    if (result && result.length > 0) {
+      return { url: result[0].url };
     } else {
       return { url: null };
     }

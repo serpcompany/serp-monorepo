@@ -48,8 +48,8 @@
             :loading="loading"
             :disabled="!isFormValid"
             @click="createLink"
-            >Create Short Link</UButton
-          >
+            >Create Short Link
+          </UButton>
           <UButton variant="outline" @click="resetForm">Reset Form</UButton>
         </div>
       </div>
@@ -144,7 +144,7 @@
 <script setup lang="ts">
 import type { Link } from '@serp/types/types/Link';
 
-const { loggedIn, user, clear } = useUserSession();
+const { loggedIn, user } = useUserSession();
 if (!loggedIn.value) {
   navigateTo('/');
 }

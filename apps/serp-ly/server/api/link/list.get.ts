@@ -19,5 +19,12 @@ export default defineEventHandler(async (event) => {
     .where(eq(shortLinks.email, email))
     .execute();
 
-  return results;
+  if (!results || results.length === 0) {
+    return {
+      status: 404,
+      message: 'No links found'
+    };
+  }
+
+  return results[0];
 });

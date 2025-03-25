@@ -1,10 +1,7 @@
 import { useDrizzle } from '@serp/utils-cloudflare-pages/server/api/db';
-import { sql } from 'drizzle-orm';
+import { shortLinks } from '@serp/utils-cloudflare-pages/server/api/db/schema';
+import { sql, eq } from 'drizzle-orm';
 import type { Link } from '@serp/types/types/Link';
-
-interface ErrorWithStatusCode extends Error {
-  statusCode?: number;
-}
 
 export default defineEventHandler(async (event) => {
   const session = await requireUserSession(event);
@@ -38,32 +35,28 @@ export default defineEventHandler(async (event) => {
     image: body.image
   };
 
-  const { caseSensitive } = useRuntimeConfig(event);
-  if (!caseSensitive) {
-    link.slug = link.slug.toLowerCase();
-  }
-
   const newLinkJSON = JSON.stringify(link).replace(/'/g, "''");
 
   const db = useDrizzle();
 
   try {
-    const query = `
-      UPDATE short_links
-      SET data = (
-        SELECT json_group_array(
-          CASE
-            WHEN json_extract(value, '$.slug') = '${originalSlug}'
-            THEN json('${newLinkJSON}')
-            ELSE value
-          END
-        )
-        FROM json_each(data)
-      )
-      WHERE email = '${email}';
-    `;
-    await db.run(sql.raw(query));
-    setResponseStatus(event, 200);
+    await db
+      .update(shortLinks)
+      .set({
+        data: sql`(
+                SELECT json_group_array(
+                    CASE
+                    WHEN json_extract(value, '$.slug') = ${originalSlug}
+                    THEN json(${newLinkJSON})
+                    ELSE value
+                    END
+                )
+                FROM json_each("data")
+                )`
+      })
+      .where(eq(shortLinks.email, email))
+      .execute();
+
     return { status: 200, message: 'Link updated successfully', link };
   } catch (error: unknown) {
     console.error('Error updating link:', error);
