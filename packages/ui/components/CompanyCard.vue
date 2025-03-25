@@ -3,8 +3,8 @@
     :class="[
       'mx-auto max-w-5xl rounded-lg',
       company.featured
-        ? 'relative overflow-hidden border border-gray-200 bg-gradient-to-b from-blue-50/50 to-transparent px-6 py-10 dark:border-blue-500/40 dark:from-blue-900/30 dark:to-gray-900/60 dark:shadow-[0_0_15px_rgba(30,64,175,0.15)]'
-        : 'border border-gray-300 px-5 py-4 dark:border-gray-700'
+        ? 'relative overflow-hidden border border-neutral-200 bg-gradient-to-b from-blue-50/50 to-transparent px-6 py-10 dark:border-blue-500/40 dark:from-blue-900/30 dark:to-neutral-900/60 dark:shadow-[0_0_15px_rgba(30,64,175,0.15)]'
+        : 'border border-[var(--ui-border)] px-5 py-4 dark:border-[var(--ui-border-accented)]'
     ]"
   >
     <!-- Featured accent border -->
@@ -22,22 +22,22 @@
         class="mr-5 flex-shrink-0"
         :class="{ 'mb-4 sm:mb-0': company.featured }"
       >
-        <nuxt-link :to="`/${baseSlug}${company.slug}/reviews/`">
+        <NuxtLink :to="`/${baseSlug}${company.slug}/reviews/`">
           <div
             :class="[
-              'overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800',
+              'overflow-hidden rounded-lg bg-[var(--ui-bg-muted)] dark:bg-[var(--ui-bg-elevated)]',
               company.featured
                 ? 'h-36 w-36 ring-1 ring-blue-100 dark:ring-blue-500/50'
                 : 'h-28 w-28'
             ]"
           >
-            <lazy-nuxt-img
+            <LazyNuxtImg
               :src="companyMainImage"
               :alt="company.name"
               class="h-full w-full object-contain"
             />
           </div>
-        </nuxt-link>
+        </NuxtLink>
       </div>
 
       <!-- company content -->
@@ -46,7 +46,7 @@
           <div class="sm:max-w-[calc(100%-180px)] sm:pr-8">
             <!-- company name and badge -->
             <div class="flex items-center">
-              <nuxt-link
+              <NuxtLink
                 class="flex"
                 :to="`/${baseSlug}${company.slug}/reviews/`"
               >
@@ -55,13 +55,13 @@
                     'font-semibold',
                     company.featured
                       ? 'mb-1 text-2xl text-blue-700 dark:text-blue-300'
-                      : 'text-xl dark:text-gray-300'
+                      : 'text-xl text-[var(--ui-text)] dark:text-[var(--ui-text)]'
                   ]"
                 >
                   {{ company.name }}
                 </h2>
-              </nuxt-link>
-              <u-badge
+              </NuxtLink>
+              <UBadge
                 v-if="company.featured"
                 :avatar="{
                   src: 'https://github.com/serpcompany.png'
@@ -72,15 +72,15 @@
                 class="ml-4"
               >
                 Featured
-              </u-badge>
+              </UBadge>
             </div>
 
             <!-- company oneliner -->
             <p
               :class="[
-                'text-gray-600 dark:text-gray-300',
+                'text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)]',
                 company.featured
-                  ? 'mt-3 text-base leading-relaxed dark:text-gray-200'
+                  ? 'mt-3 text-base leading-relaxed dark:text-[var(--ui-text)]'
                   : 'mt-2 line-clamp-2'
               ]"
             >
@@ -90,7 +90,7 @@
             <!-- show excerpt only for featured cards -->
             <p
               v-if="company.featured && company.excerpt"
-              class="mt-5 mb-1 line-clamp-3 text-gray-600 dark:text-gray-300"
+              class="mt-5 mb-1 line-clamp-3 text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)]"
             >
               {{ company.excerpt }}
             </p>
@@ -115,7 +115,7 @@
             <a
               :href="company.serplyLink"
               target="_blank"
-              class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
+              class="flex w-full items-center justify-center gap-2 rounded-full bg-[var(--ui-bg-inverted)] px-4 py-2 text-sm font-medium text-[var(--ui-bg)] transition-colors hover:bg-neutral-800 dark:bg-[var(--ui-bg)] dark:text-[var(--ui-bg-inverted)] dark:hover:bg-[var(--ui-bg-elevated)]"
             >
               Website
               <svg
@@ -157,7 +157,7 @@
         <span
           v-for="feature in company.features.slice(0, 4)"
           :key="feature.id"
-          class="inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-200"
+          class="inline-flex rounded-full bg-[var(--ui-color-secondary-50)] px-3 py-1 text-xs font-medium text-[var(--ui-color-secondary-700)] dark:bg-[var(--ui-color-secondary-900)]/30 dark:text-[var(--ui-color-secondary-200)]"
         >
           {{ feature.item }}
         </span>
@@ -243,9 +243,9 @@ const isLogo = computed(() => {
 
 /* Override orange upvote color with blue */
 .upvote-btn :deep(.text-orange-500) {
-  color: var(--color-accent-fg, #0969da) !important;
+  color: var(--ui-color-secondary-500, #0969da) !important;
 }
 .upvote-btn :deep(.dark\:text-orange-400) {
-  color: var(--color-accent-fg, #2f81f7) !important;
+  color: var(--ui-color-secondary-400, #2f81f7) !important;
 }
 </style>

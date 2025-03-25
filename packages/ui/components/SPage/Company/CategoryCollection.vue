@@ -10,14 +10,14 @@
     <main>
       <!-- rows: companies -->
       <div class="space-y-4">
-        <company-card
+        <CompanyCard
           v-for="company in data.companies"
           :key="company.slug"
           :company="company"
         />
       </div>
 
-      <u-pagination
+      <UPagination
         v-model:page="page"
         :total="data?.pagination?.totalItems"
         :items-per-page="limit"
@@ -26,7 +26,7 @@
         class="mt-20 flex justify-center overflow-x-auto rounded-none"
       />
 
-      <s-link-hub
+      <SLinkHub
         v-if="categories && categories.length"
         :categories="categories"
         headline="Categories"
@@ -36,7 +36,7 @@
 
       <!-- company category article -->
       <section v-if="data.categoryArticle" class="mt-20">
-        <company-article-section :article="data.categoryArticle" />
+        <CompanyArticleSection :article="data.categoryArticle" />
       </section>
     </main>
   </div>

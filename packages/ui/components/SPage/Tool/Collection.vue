@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="px-4 py-10 sm:px-6 sm:py-16 md:px-8 md:py-20">
-      <section-hero-one
+      <SectionHeroOne
         title="Tools"
         subtitle="Free online tools and apps for combining, converting, compressing & convenience."
       />
@@ -13,12 +13,12 @@
             <h2 class="mb-4 text-xs uppercase">Combine</h2>
             <ul>
               <li>
-                <nuxt-link
+                <NuxtLink
                   to="/tools/combine-csv-files/"
                   class="flex items-center"
                 >
                   Combine CSVs
-                </nuxt-link>
+                </NuxtLink>
               </li>
             </ul>
           </div>
@@ -27,12 +27,12 @@
             <h2 class="mb-4 text-xs uppercase">Convert</h2>
             <ul>
               <li>
-                <nuxt-link
+                <NuxtLink
                   to="/tools/convert-json-to-csv/"
                   class="flex items-center"
                 >
                   JSON to CSV
-                </nuxt-link>
+                </NuxtLink>
               </li>
             </ul>
           </div>
@@ -41,20 +41,20 @@
             <h2 class="mb-4 text-xs uppercase">Counters</h2>
             <ul>
               <li class="mb-2">
-                <nuxt-link
+                <NuxtLink
                   to="/tools/count-characters/"
                   class="flex items-center"
                 >
                   Character Counter
-                </nuxt-link>
+                </NuxtLink>
               </li>
               <li class="mb-2">
-                <nuxt-link
+                <NuxtLink
                   to="/tools/paragraph-counter/"
                   class="flex items-center"
                 >
                   Paragraph Counter
-                </nuxt-link>
+                </NuxtLink>
               </li>
             </ul>
           </div>

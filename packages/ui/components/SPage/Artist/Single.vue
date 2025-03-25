@@ -1,6 +1,6 @@
 <template>
   <div>
-    <multipage-header
+    <MultipageHeader
       :name="artist.name"
       :sections="sections"
       class="bg-background sticky top-0 z-10 transition-all duration-300"
@@ -14,7 +14,7 @@
           :upvotes="upvotes"
         />
       </template>
-    </multipage-header>
+    </MultipageHeader>
 
     <!-- Main content with grid -->
     <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
@@ -31,18 +31,18 @@
               <!-- Album Section -->
               <div>
                 <div class="flex">
-                  <nuxt-link
+                  <NuxtLink
                     aria-label="link to the album"
                     :to="`/albums/${album.slug}/`"
                   >
                     <div>
-                      <lazy-nuxt-img
+                      <LazyNuxtImg
                         :src="album.cover_art_urls?.['500']"
                         :alt="album.name"
                       />
                       {{ album.name }}
                     </div>
-                  </nuxt-link>
+                  </NuxtLink>
                   <div>
                     <!-- Songs for the Album -->
                     <ol>
@@ -50,12 +50,12 @@
                         <div>
                           <div>
                             {{ song.position }}.
-                            <nuxt-link
+                            <NuxtLink
                               v-if="song.has_lyrics"
                               :to="`/songs/${song.slug}/`"
                             >
                               {{ song.name }}
-                            </nuxt-link>
+                            </NuxtLink>
                             <span v-else>{{ song.name }}</span>
                           </div>
                         </div>
@@ -82,8 +82,8 @@
           <div class="border p-4">
             <div class="flex space-y-4">
               <div>
-                <nuxt-link to="https://serp.ly/@daftfm/amazon/music/unlimited"
-                  >Amazon Music</nuxt-link
+                <NuxtLink to="https://serp.ly/@daftfm/amazon/music/unlimited"
+                  >Amazon Music</NuxtLink
                 >
               </div>
             </div>

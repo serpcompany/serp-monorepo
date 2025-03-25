@@ -14,9 +14,9 @@
           <!-- Footer column links -->
           <ul class="space-y-2 pt-4" :aria-label="`${column.title} menu`">
             <li v-for="item in column.items" :key="item.slug">
-              <nuxt-link :to="item.slug" class="text-s">
+              <NuxtLink :to="item.slug" class="text-s">
                 {{ item.text }}
-              </nuxt-link>
+              </NuxtLink>
             </li>
           </ul>
         </div>
@@ -37,7 +37,7 @@
           >
             <!-- Social Links -->
             <nav aria-label="Social Media Links" class="mb-4 flex md:mb-0">
-              <nuxt-link
+              <NuxtLink
                 v-for="social in socialLinks"
                 :key="social.name"
                 :to="social.href"
@@ -51,7 +51,7 @@
                   aria-hidden="true"
                 />
                 <span class="sr-only">Visit our {{ social.name }} page</span>
-              </nuxt-link>
+              </NuxtLink>
             </nav>
           </div>
 
@@ -63,14 +63,14 @@
               aria-label="Brand Navigation"
               class="flex flex-col flex-wrap justify-center gap-4 text-sm sm:flex-row md:justify-end"
             >
-              <nuxt-link
+              <NuxtLink
                 v-for="link in brandLinks"
                 :key="link.href"
                 :to="link.href"
                 target="_blank"
               >
                 {{ link.name }}
-              </nuxt-link>
+              </NuxtLink>
             </nav>
           </div>
         </div>
@@ -87,11 +87,11 @@
           <div
             class="flex flex-col flex-wrap justify-center gap-4 sm:flex-row md:justify-end"
           >
-            <nuxt-link
+            <NuxtLink
               v-for="link in legalLinks"
               :key="link.text"
               :to="link.slug"
-              >{{ link.text }}</nuxt-link
+              >{{ link.text }}</NuxtLink
             >
           </div>
         </nav>

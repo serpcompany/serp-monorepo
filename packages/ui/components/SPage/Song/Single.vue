@@ -1,6 +1,6 @@
 <template>
   <div>
-    <multipage-header
+    <MultipageHeader
       :name="song.name"
       :sections="sections"
       class="bg-background sticky top-0 z-10 transition-all duration-300"
@@ -14,7 +14,7 @@
           :upvotes="upvotes"
         />
       </template>
-    </multipage-header>
+    </MultipageHeader>
 
     <!-- Main content with grid -->
     <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
@@ -57,8 +57,8 @@
           <div class="border p-4">
             <div class="flex space-y-4">
               <div>
-                <nuxt-link to="https://serp.ly/@daftfm/amazon/music/unlimited"
-                  >Amazon Music</nuxt-link
+                <NuxtLink to="https://serp.ly/@daftfm/amazon/music/unlimited"
+                  >Amazon Music</NuxtLink
                 >
               </div>
             </div>

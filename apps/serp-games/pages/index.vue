@@ -11,9 +11,9 @@
     <main>
       <!-- rows: posts -->
       <div class="mb-16">
-        <nuxt-link to="/posts">
+        <NuxtLink to="/posts">
           <h2 class="pb-16 text-3xl">Posts</h2>
-        </nuxt-link>
+        </NuxtLink>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           <PostCard
             v-for="post in postsData.posts"

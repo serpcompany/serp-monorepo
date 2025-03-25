@@ -1,7 +1,7 @@
 <template>
   <div>
     <section>
-      <section-hero-one title="Glossary" />
+      <SectionHeroOne title="Glossary" />
       <first-character-jump-link-nav
         :characters="characters"
         :filtered-characters="filteredCharacters"
@@ -23,7 +23,7 @@
 
             <!-- character section bottom (cards) -->
             <div class="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-              <glossary-term-card
+              <GlossaryTermCard
                 v-for="term in getTermsByFirstChar(character)"
                 :key="term.slug"
                 :term="term"

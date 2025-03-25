@@ -1,7 +1,7 @@
 <template>
   <article :class="articleClass">
-    <nuxt-link :to="`/${baseSlug}${post.slug}/`">
-      <lazy-nuxt-img
+    <NuxtLink :to="`/${baseSlug}${post.slug}/`">
+      <LazyNuxtImg
         v-if="post.featuredImage"
         :src="post.featuredImage"
         :alt="displayTitle"
@@ -11,7 +11,7 @@
       <h2 class="mb-2 text-xl font-medium hover:underline">
         {{ displayTitle }}
       </h2>
-    </nuxt-link>
+    </NuxtLink>
 
     <p v-if="post.author" class="mb-2 italic">
       <span>By {{ post.author }}</span

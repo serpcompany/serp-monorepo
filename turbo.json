@@ -6,9 +6,11 @@
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".nuxt/**", ".output/**", "dist/**"]
     },
-    "test": {},
-    "test:watch": {},
     "lint": {},
+    "test": {
+      "dependsOn": ["lint"]
+    },
+    "test:watch": {},
     "dev": {
       "cache": true,
       "persistent": true

@@ -11,22 +11,22 @@
     <main>
       <div>
         <!-- link hub: songs -->
-        <nuxt-link to="/songs/">
+        <NuxtLink to="/songs/">
           <h2 class="mt-20">Songs</h2>
-        </nuxt-link>
-        <songs-link-hub :songs="songsData?.songs" />
+        </NuxtLink>
+        <SongsLinkHub :songs="songsData?.songs" />
 
         <!-- link hub: artists -->
-        <nuxt-link to="/artists/">
+        <NuxtLink to="/artists/">
           <h2 class="mt-20">Artists</h2>
-        </nuxt-link>
-        <artists-link-hub :artists="artistsData?.artists" />
+        </NuxtLink>
+        <ArtistsLinkHub :artists="artistsData?.artists" />
 
         <!-- link hub: albums -->
-        <nuxt-link to="/albums/">
+        <NuxtLink to="/albums/">
           <h2 class="mt-20">Albums</h2>
-        </nuxt-link>
-        <albums-link-hub :albums="albumsData?.albums" />
+        </NuxtLink>
+        <AlbumsLinkHub :albums="albumsData?.albums" />
       </div>
     </main>
   </div>

@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-mutating-props -->
 <template>
-  <u-pagination
+  <UPagination
     v-model:page="page"
     :total="totalItems"
     :items-per-page="limit"

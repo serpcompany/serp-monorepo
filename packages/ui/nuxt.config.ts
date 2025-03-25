@@ -8,7 +8,7 @@ export default defineNuxtConfig({
       : '@serp/utils'
   ],
   modules: [
-    '@nuxt/ui',
+    '@nuxt/ui-pro',
     '@nuxtjs/html-validator',
     '@nuxt/image',
     '@nuxt/eslint',
@@ -19,5 +19,8 @@ export default defineNuxtConfig({
     public: {
       useAuth: process.env.USE_AUTH === 'true'
     }
+  },
+  uiPro: {
+    license: process.env.NUXT_UI_PRO_LICENSE
   }
 });

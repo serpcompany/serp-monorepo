@@ -1,11 +1,11 @@
 <template>
   <div class="flex min-h-[50vh] w-full items-center justify-center p-6">
     <div
-      class="w-full max-w-md rounded-md border border-gray-200 p-8 shadow-sm dark:border-gray-800"
+      class="w-full max-w-md rounded-md border border-neutral-200 p-8 shadow-sm dark:border-neutral-800"
     >
       <div class="mb-6 text-center">
         <h2 class="mb-2 text-2xl font-semibold">Sign In</h2>
-        <p class="text-gray-500 dark:text-gray-400">
+        <p class="text-neutral-500 dark:text-neutral-400">
           Continue with your preferred provider
         </p>
       </div>
@@ -76,17 +76,19 @@
         </UButton>
       </div>
 
-      <div class="mt-8 text-center text-xs text-gray-500 dark:text-gray-400">
+      <div
+        class="mt-8 text-center text-xs text-neutral-500 dark:text-neutral-400"
+      >
         By signing in, you agree to our
         <a
           href="/legal/terms-conditions/"
-          class="text-primary-600 dark:text-primary-400 hover:underline"
+          class="text-[var(--ui-primary-600)] hover:underline dark:text-[var(--ui-primary-400)]"
           >Terms of Service</a
         >
         &
         <a
           href="/legal/privacy-policy/"
-          class="text-primary-600 dark:text-primary-400 hover:underline"
+          class="text-[var(--ui-primary-600)] hover:underline dark:text-[var(--ui-primary-400)]"
           >Privacy Policy</a
         >
       </div>

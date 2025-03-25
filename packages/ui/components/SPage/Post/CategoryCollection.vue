@@ -16,7 +16,7 @@
         <PostCard v-for="post in data.posts" :key="post.id" :post="post" />
       </div>
 
-      <u-pagination
+      <UPagination
         v-model:page="page"
         :total="data?.pagination?.totalItems"
         :items-per-page="limit"
@@ -25,7 +25,7 @@
         class="mt-20 flex justify-center overflow-x-auto"
       />
 
-      <s-link-hub
+      <SLinkHub
         :categories="categories"
         headline="Categories"
         class="mt-20"

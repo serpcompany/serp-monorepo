@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: ['@serp/ui', '@serp/utils', '@serp/tools', '@serp/types'],
   modules: [
+    '@nuxt/ui-pro',
     '@nuxtjs/seo',
     '@nuxtjs/sitemap',
     'nuxt-multi-cache',
@@ -10,6 +11,7 @@ export default defineNuxtConfig({
     'nuxt-link-checker',
     '@bg-dev/nuxt-s3'
   ],
+  css: ['~/assets/css/main.css'],
   s3: {
     driver: 's3',
     bucket: process.env.CLOUDFLARE_R2_BUCKET,
@@ -20,6 +22,9 @@ export default defineNuxtConfig({
   },
   ui: {
     colorMode: true
+  },
+  uiPro: {
+    license: process.env.NUXT_UI_PRO_LICENSE
   },
   tsConfig: {
     compilerOptions: {
@@ -181,7 +186,6 @@ export default defineNuxtConfig({
     ]
   },
   image: {
-    // domains: ['archive.org', 'loremflickr.com'],
     format: ['webp']
   },
   security: {

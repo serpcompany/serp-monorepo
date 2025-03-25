@@ -1,9 +1,9 @@
 <template>
   <div class="container py-20">
     <h1 class="py-10">Artists</h1>
-    <artists-link-hub :artists="data?.artists" />
+    <ArtistsLinkHub :artists="data?.artists" />
     <div class="my-20 flex w-full justify-center">
-      <u-pagination
+      <UPagination
         v-model:page="page"
         :total="data?.pagination?.totalItems"
         :items-per-page="limit"

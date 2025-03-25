@@ -1,6 +1,6 @@
 <template>
-  <client-only>
-    <u-button
+  <ClientOnly>
+    <UButton
       :icon="isDark ? 'i-lucide-moon' : 'i-lucide-sun'"
       color="neutral"
       variant="ghost"
@@ -10,7 +10,7 @@
     <template #fallback>
       <div class="size-8"></div>
     </template>
-  </client-only>
+  </ClientOnly>
 </template>
 
 <script setup lang="ts">

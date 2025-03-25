@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <div class="px-4 py-10 sm:px-6 sm:py-16 md:px-8 md:py-20">
-      <section-hero-one
+      <SectionHeroOne
         title="Combine CSV Files"
         subtitle="Merge multiple spreadsheet or excel files like .csv, .xls and .xlxs."
       />
 
       <!-- box -->
       <div class="flex justify-center">
-        <client-only>
+        <ClientOnly>
           <UInput
             type="file"
             class="mb-10"
@@ -16,7 +16,7 @@
             accept=".csv,.xls,.xlsx"
             @change="handleFileChange"
           />
-        </client-only>
+        </ClientOnly>
       </div>
 
       <!-- button -->

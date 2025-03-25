@@ -11,14 +11,14 @@
     <main>
       <!-- rows: companies -->
       <div class="space-y-4">
-        <company-card
+        <CompanyCard
           v-for="company in data.companies"
           :key="company.slug"
           :company="company"
         />
       </div>
 
-      <u-pagination
+      <UPagination
         v-model:page="page"
         :total="data?.pagination?.totalItems"
         :items-per-page="limit"
@@ -28,7 +28,7 @@
       />
 
       <!-- link hub -->
-      <s-link-hub
+      <SLinkHub
         v-if="categories && categories.length"
         :categories="categories"
         headline="Categories"

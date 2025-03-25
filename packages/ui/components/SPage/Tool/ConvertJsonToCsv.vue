@@ -1,30 +1,30 @@
 <template>
   <div class="container">
     <div class="px-4 py-10 sm:px-6 sm:py-16 md:px-8 md:py-20">
-      <section-hero-one
+      <SectionHeroOne
         title="JSON to CSV Converter"
         subtitle="Convert JSON to CSV format (comma separated list)."
       />
 
       <!-- in box-->
       <div class="flex justify-around gap-8">
-        <client-only>
-          <u-textarea
+        <ClientOnly>
+          <UTextarea
             v-model="jsonInput"
             placeholder="Paste your content here"
             :rows="15"
             class="mb-10 w-full"
           />
-        </client-only>
+        </ClientOnly>
 
         <!-- out box-->
-        <client-only>
-          <u-textarea v-model="csvOutput" :rows="15" class="mb-10 w-full" />
-        </client-only>
+        <ClientOnly>
+          <UTextarea v-model="csvOutput" :rows="15" class="mb-10 w-full" />
+        </ClientOnly>
       </div>
 
       <!-- button -->
-      <u-button type="button" @click="runFunction">Submit</u-button>
+      <UButton type="button" @click="runFunction">Submit</UButton>
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center justify-center">
     <div class="mb-2 flex flex-col items-center">
-      <button class="p-1 text-gray-500" type="button">
+      <button class="p-1 text-neutral-500" type="button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5"
@@ -18,7 +18,7 @@
         </svg>
       </button>
       <span class="mx-1 text-sm font-bold">#</span>
-      <button class="p-1 text-gray-500" type="button">
+      <button class="p-1 text-neutral-500" type="button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5"

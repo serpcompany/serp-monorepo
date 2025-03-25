@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section-hero-one :title="props.moduleTitle || 'Posts'" />
+    <SectionHeroOne :title="props.moduleTitle || 'Posts'" />
 
     <div class="pb-20">
       <!-- rows:  posts -->
@@ -19,14 +19,14 @@
         />
       </div>
 
-      <s-pagination
+      <SPagination
         v-model:page="page"
         :total="data?.pagination?.totalItems"
         :items-per-page="limit"
         :sibling-count="3"
       />
 
-      <s-link-hub
+      <SLinkHub
         v-if="!props.noCategories && categories && categories.length"
         :categories="categories"
         headline="Categories"

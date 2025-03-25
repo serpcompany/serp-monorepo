@@ -14,12 +14,12 @@
       </div>
       <div v-if="hideMessage" class="comment-wrapper">
         <div class="name-wrapper">
-          <div class="name text-primary">{{ comment.name }}</div>
+          <div class="name text-(--ui-primary)">{{ comment.name }}</div>
           <span class="dot">•</span>
           <span class="time" :title="getTime">{{ getTimeDiff }}</span>
           <div
             v-show="showHideBar || wrapperSize < 1024"
-            class="expand hover:text-primary"
+            class="expand hover:text-(--ui-primary)"
             @click="hideMessage = false"
           >
             <span title="Show Comment">+</span>
@@ -29,7 +29,7 @@
       </div>
       <div v-else class="comment-wrapper">
         <div v-show="!beforeUpdate" class="name-wrapper">
-          <div class="name text-primary">{{ comment.name }}</div>
+          <div class="name text-(--ui-primary)">{{ comment.name }}</div>
           <span class="dot">•</span>
           <span class="time" :title="getTime">{{ getTimeDiff }}</span>
           <UBadge v-if="isDeleted" class="deleted" color="error"
@@ -38,7 +38,7 @@
           <UBadge v-else-if="isUpdated" class="updated">Updated</UBadge>
           <div
             v-show="showHideBar || wrapperSize < 1024"
-            class="expand hover:text-primary"
+            class="expand hover:text-(--ui-primary)"
             @click="hideMessage = true"
           >
             <span title="Hide Comment">−</span>
@@ -47,7 +47,7 @@
         <div
           v-show="!beforeUpdate"
           ref="comment"
-          class="comment bg-white text-black dark:bg-gray-800 dark:text-white"
+          class="comment bg-white text-black dark:bg-neutral-800 dark:text-white"
         >
           {{ filteredComment }}
         </div>
@@ -55,12 +55,12 @@
           v-show="beforeUpdate"
           class="comment-box text-black dark:text-white"
         >
-          <div class="user-name text-primary">{{ comment.name }}</div>
+          <div class="user-name text-(--ui-primary)">{{ comment.name }}</div>
           <textarea
             ref="addUpdate"
             v-model="updateMessage"
             name="addUpdate"
-            class="add-comment bg-white dark:bg-gray-800"
+            class="add-comment bg-white dark:bg-neutral-800"
             placeholder="Update message"
             spellcheck="false"
             aria-label="Add Comment"
@@ -85,16 +85,16 @@
             <span>{{ remainingUpdateLetter }}</span>
           </div>
         </div>
-        <div v-show="beforeUpdate" class="reply hover:text-primary">
+        <div v-show="beforeUpdate" class="reply hover:text-(--ui-primary)">
           <div @click="beforeUpdate = false">Never mind</div>
         </div>
         <div v-show="!beforeUpdate" class="reply">
-          <div class="hover:text-primary" @click="handleBeforeReply">
+          <div class="hover:text-(--ui-primary)" @click="handleBeforeReply">
             {{ beforeReply ? 'Never mind' : 'Reply' }}
           </div>
           <template v-if="localState.replies.length !== 0">
             <span class="dot">•</span>
-            <div class="hover:text-primary" @click="showReply">
+            <div class="hover:text-(--ui-primary)" @click="showReply">
               {{
                 showReplies
                   ? 'Hide replies'
@@ -104,7 +104,7 @@
           </template>
           <template v-if="isAuthorOrAdmin">
             <span class="dot">•</span>
-            <div class="hover:text-primary" @click="handleBeforeUpdate">
+            <div class="hover:text-(--ui-primary)" @click="handleBeforeUpdate">
               Update
             </div>
             <span class="dot">•</span>
@@ -142,14 +142,14 @@
               />
             </div>
             <div class="comment-box text-black dark:text-white">
-              <div class="user-name text-primary">
+              <div class="user-name text-(--ui-primary)">
                 {{ user?.name || 'Unknown' }}
               </div>
               <textarea
                 ref="addReply"
                 v-model="replyMessage"
                 name="addReply"
-                class="add-comment bg-white dark:bg-gray-800"
+                class="add-comment bg-white dark:bg-neutral-800"
                 placeholder="Add new reply"
                 spellcheck="false"
                 aria-label="Add Reply"

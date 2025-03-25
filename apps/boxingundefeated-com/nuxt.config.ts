@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: ['@serp/ui', '@serp/types', '@serp/utils'],
   modules: [
-    '@nuxt/ui',
+    '@nuxt/ui-pro',
     '@nuxtjs/html-validator',
     '@nuxt/image',
     '@nuxt/eslint',
@@ -155,7 +155,6 @@ export default defineNuxtConfig({
     ]
   },
   image: {
-    // domains: ['archive.org', 'loremflickr.com'],
     format: ['webp']
   },
   security: {

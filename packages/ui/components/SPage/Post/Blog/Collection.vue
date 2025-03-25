@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section-hero-one title="Blog" />
+    <SectionHeroOne title="Blog" />
 
     <div class="pb-20">
       <!-- rows: posts -->
@@ -8,7 +8,7 @@
         <PostCard v-for="post in data.posts" :key="post.id" :post="post" />
       </div>
 
-      <u-pagination
+      <UPagination
         v-model:page="page"
         :total="data?.pagination?.totalItems"
         :items-per-page="limit"
@@ -17,7 +17,7 @@
         class="mt-20 flex justify-center overflow-x-auto rounded-none"
       />
 
-      <s-link-hub
+      <SLinkHub
         v-if="categories && categories.length"
         :categories="categories"
         headline="Categories"

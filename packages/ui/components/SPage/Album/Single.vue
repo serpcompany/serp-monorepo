@@ -1,6 +1,6 @@
 <template>
   <div>
-    <multipage-header
+    <MultipageHeader
       :name="album.name"
       :sections="sections"
       class="bg-background sticky top-0 z-10 transition-all duration-300"
@@ -14,7 +14,7 @@
           :upvotes="upvotes"
         />
       </template>
-    </multipage-header>
+    </MultipageHeader>
 
     <!-- Main content with grid -->
     <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
@@ -36,10 +36,10 @@
               >
                 <div class="flex flex-1 items-center space-x-4">
                   <span class="w-6">{{ song.position }}</span>
-                  <nuxt-link
+                  <NuxtLink
                     v-if="song.has_lyrics"
                     :to="`/songs/${song.slug}/`"
-                    >{{ song.name }}</nuxt-link
+                    >{{ song.name }}</NuxtLink
                   >
                   <span v-else>{{ song.name }}</span>
                 </div>
@@ -54,7 +54,7 @@
         <!-- Sidebar (30%) -->
         <div class="space-y-6 lg:col-span-1">
           <!-- Album image -->
-          <lazy-nuxt-img
+          <LazyNuxtImg
             :src="album.coverArt?.['500']"
             :alt="`${album.name} cover art`"
           />
@@ -81,8 +81,8 @@
           <div class="border p-4">
             <div class="flex space-y-4">
               <div>
-                <nuxt-link to="https://serp.ly/@daftfm/amazon/music/unlimited"
-                  >Amazon Music</nuxt-link
+                <NuxtLink to="https://serp.ly/@daftfm/amazon/music/unlimited"
+                  >Amazon Music</NuxtLink
                 >
               </div>
             </div>

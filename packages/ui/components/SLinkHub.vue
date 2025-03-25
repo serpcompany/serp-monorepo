@@ -17,12 +17,12 @@
           :key="category.slug"
           class="border-t"
         >
-          <nuxt-link
+          <NuxtLink
             :to="`/${baseSlug}/${category.slug}/`"
             class="mt-3 flex font-medium"
           >
             {{ category.name }}
-          </nuxt-link>
+          </NuxtLink>
         </div>
       </div>
     </div>

@@ -1,4 +1,8 @@
 // vitest.config.ts
+
+// THIS IS THE DUMMYTEST SETUP
+// MAKE SURE TO UPDATE THESE VALUES
+// IF YOU START WRITING ACTUAL TESTS FOR THIS APP/PACKAGE
 import { defineVitestConfig } from '@nuxt/test-utils/config';
 
 export default defineVitestConfig({
@@ -6,15 +10,7 @@ export default defineVitestConfig({
     environment: 'nuxt',
     globals: true,
     coverage: {
-      all: true,
       reporter: ['text', 'json', 'html'],
-      include: [
-        'components/**/*.{js,ts,vue}',
-        'composables/**/*.{js,ts,vue}',
-        'middleware/**/*.{js,ts,vue}',
-        'server/**/*.{js,ts,vue}',
-        'pages/**/*.{js,ts,vue}'
-      ],
       reportsDirectory: './coverage',
       exclude: ['node_modules', 'tests']
     },

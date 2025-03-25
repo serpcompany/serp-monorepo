@@ -3,12 +3,12 @@
     <h1>Legal Information</h1>
     <ul>
       <li>
-        <nuxt-link to="/legal/affiliate-disclosure/"
-          >Affiliate Disclosure</nuxt-link
+        <NuxtLink to="/legal/affiliate-disclosure/"
+          >Affiliate Disclosure</NuxtLink
         >
-        <nuxt-link to="/legal/dmca/">DMCA & IP Complaints</nuxt-link>
-        <nuxt-link to="/legal/privacy-policy/">Privacy Policy</nuxt-link>
-        <nuxt-link to="/legal/terms-conditions/">Terms & Conditions</nuxt-link>
+        <NuxtLink to="/legal/dmca/">DMCA & IP Complaints</NuxtLink>
+        <NuxtLink to="/legal/privacy-policy/">Privacy Policy</NuxtLink>
+        <NuxtLink to="/legal/terms-conditions/">Terms & Conditions</NuxtLink>
       </li>
     </ul>
   </div>

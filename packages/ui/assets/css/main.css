@@ -1,18 +1,52 @@
-@import 'tailwindcss';
-@import '@nuxt/ui';
+@import 'tailwindcss' theme(static);
+@import '@nuxt/ui-pro';
 @import './patch.css';
 
 @plugin "@tailwindcss/typography";
 
-@theme {
+@theme static {
   --ui-radius: var(--radius-none);
+
+  /* Define primary and secondary colors to ensure consistency */
+  --ui-primary: #0969da;
+  --ui-primary-50: #f0f6ff;
+  --ui-primary-100: #dfeaff;
+  --ui-primary-200: #b7d1ff;
+  --ui-primary-300: #84b1ff;
+  --ui-primary-400: #4d8dff;
+  --ui-primary-500: #2f81f7;
+  --ui-primary-600: #0969da;
+  --ui-primary-700: #0550ae;
+  --ui-primary-800: #033d82;
+  --ui-primary-900: #022a56;
+  --ui-primary-950: #011a38;
+
+  /* Secondary color (blue in this case) */
+  --ui-color-secondary-50: #f0f6ff;
+  --ui-color-secondary-100: #dfeaff;
+  --ui-color-secondary-200: #b7d1ff;
+  --ui-color-secondary-300: #84b1ff;
+  --ui-color-secondary-400: #4d8dff;
+  --ui-color-secondary-500: #2f81f7;
+  --ui-color-secondary-600: #0969da;
+  --ui-color-secondary-700: #0550ae;
+  --ui-color-secondary-800: #033d82;
+  --ui-color-secondary-900: #022a56;
+  --ui-color-secondary-950: #011a38;
 }
+
+/* Add @source directives for components that might not be detected automatically */
+@source "../components";
+@source "../../components";
+@source "../pages";
+@source "../../pages";
 
 /* Add base layer for direct element styling */
 @layer base {
   html {
     font-size: 16px;
   }
+
   button,
   [role='button'] {
     @apply cursor-pointer;

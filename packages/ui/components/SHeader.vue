@@ -5,7 +5,7 @@
         <!-- Logo on left -->
         <div class="flex items-center">
           <div class="flex-shrink-0">
-            <nuxt-link to="/" aria-label="home"><s-logo /></nuxt-link>
+            <NuxtLink to="/" aria-label="home"><s-logo /></NuxtLink>
           </div>
 
           <!-- Navigation for larger screens -->
@@ -65,7 +65,7 @@
           <!-- Color mode button on right for larger screens -->
           <div class="hidden items-center space-x-4 lg:flex">
             <color-mode-button />
-            <profile-dropdown v-if="useAuth" />
+            <ProfileDropdown v-if="useAuth" />
           </div>
         </div>
       </div>
@@ -93,8 +93,8 @@
             sideOffset: 8
           }"
         />
-        <div v-if="useAuth" class="mt-4 border-t border-gray-200 pt-4">
-          <profile-dropdown />
+        <div v-if="useAuth" class="mt-4 border-t border-neutral-200 pt-4">
+          <ProfileDropdown />
         </div>
       </div>
     </div>

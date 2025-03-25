@@ -158,7 +158,6 @@ export default defineNuxtConfig({
     ]
   },
   image: {
-    // domains: ['archive.org', 'loremflickr.com'],
     format: ['webp']
   },
   security: {

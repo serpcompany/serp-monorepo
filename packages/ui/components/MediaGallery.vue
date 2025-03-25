@@ -4,7 +4,7 @@
       <div
         class="relative flex h-full w-full cursor-pointer items-center justify-center"
       >
-        <lazy-nuxt-img
+        <LazyNuxtImg
           v-if="company?.screenshots && company.screenshots.length"
           :src="company?.screenshots[0]"
           alt="Main Image"

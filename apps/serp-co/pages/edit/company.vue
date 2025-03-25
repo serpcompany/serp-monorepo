@@ -6,10 +6,10 @@
         <!-- Waiting Line Card -->
         <UCard>
           <div class="p-3">
-            <p class="text-sm text-gray-500">
+            <p class="text-sm text-neutral-500">
               The current waiting line is about 104 days.
             </p>
-            <p class="text-sm text-gray-500">
+            <p class="text-sm text-neutral-500">
               Your company would launch around June 26, 2025.
             </p>
           </div>
@@ -21,7 +21,7 @@
             <h3 class="text-lg font-medium">
               {{ isComplete ? '✅ Complete' : '❌ Incomplete' }}
             </h3>
-            <p class="mb-2 text-xs text-gray-600">
+            <p class="mb-2 text-xs text-neutral-600">
               Complete your company before launching it
             </p>
             <div class="grid grid-cols-2 gap-1">
@@ -204,8 +204,8 @@
 </template>
 
 <script setup lang="ts">
-const { status, data } = useAuth();
-if (status.value === 'unauthenticated') {
+const { loggedIn, user } = useUserSession();
+if (!loggedIn.value) {
   navigateTo('/');
 }
 
@@ -320,7 +320,7 @@ async function saveCompany() {
     if (!isComplete.value) {
       throw new Error('Please fill in all required fields');
     }
-    if (!data?.value?.user?.email) {
+    if (!user?.value?.email) {
       throw new Error('Please login to save your company');
     }
 
