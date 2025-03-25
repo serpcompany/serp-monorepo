@@ -2,10 +2,11 @@
   <article :class="articleClass">
     <NuxtLink :to="`/${baseSlug}${post.slug}/`">
       <LazyNuxtImg
-                   v-if="post.featuredImage"
-                   :src="post.featuredImage"
-                   :alt="displayTitle"
-                   class="mb-6 h-64 w-full object-cover" />
+        v-if="post.featuredImage"
+        :src="post.featuredImage"
+        :alt="displayTitle"
+        class="mb-6 h-64 w-full object-cover"
+      />
       <!-- Title -->
       <h2 class="mb-2 text-xl font-medium hover:underline">
         {{ displayTitle }}
@@ -13,14 +14,16 @@
     </NuxtLink>
 
     <p v-if="post.author" class="mb-2 italic">
-      <span>By {{ post.author }}</span><span v-if="post.createdAt"> | {{ post.createdAt }}</span>
+      <span>By {{ post.author }}</span
+      ><span v-if="post.createdAt"> | {{ post.createdAt }}</span>
     </p>
     <p v-if="post.excerpt" class="mb-8">{{ post.excerpt }}</p>
 
     <s-pill
-            v-if="post.categories && post.categories.length"
-            :base-slug="`${baseSlug}category`"
-            :items="post.categories" />
+      v-if="post.categories && post.categories.length"
+      :base-slug="`${baseSlug}category`"
+      :items="post.categories"
+    />
   </article>
 </template>
 

@@ -2,8 +2,9 @@
   <div class="container">
     <div class="px-4 py-10 sm:px-6 sm:py-16 md:px-8 md:py-20">
       <SectionHeroOne
-                      title="Tools"
-                      subtitle="Free online tools and apps for combining, converting, compressing & convenience." />
+        title="Tools"
+        subtitle="Free online tools and apps for combining, converting, compressing & convenience."
+      />
 
       <section class="md:container md:mx-auto">
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
@@ -13,8 +14,9 @@
             <ul>
               <li>
                 <NuxtLink
-                          to="/tools/combine-csv-files/"
-                          class="flex items-center">
+                  to="/tools/combine-csv-files/"
+                  class="flex items-center"
+                >
                   Combine CSVs
                 </NuxtLink>
               </li>
@@ -26,8 +28,9 @@
             <ul>
               <li>
                 <NuxtLink
-                          to="/tools/convert-json-to-csv/"
-                          class="flex items-center">
+                  to="/tools/convert-json-to-csv/"
+                  class="flex items-center"
+                >
                   JSON to CSV
                 </NuxtLink>
               </li>
@@ -39,15 +42,17 @@
             <ul>
               <li class="mb-2">
                 <NuxtLink
-                          to="/tools/count-characters/"
-                          class="flex items-center">
+                  to="/tools/count-characters/"
+                  class="flex items-center"
+                >
                   Character Counter
                 </NuxtLink>
               </li>
               <li class="mb-2">
                 <NuxtLink
-                          to="/tools/paragraph-counter/"
-                          class="flex items-center">
+                  to="/tools/paragraph-counter/"
+                  class="flex items-center"
+                >
                   Paragraph Counter
                 </NuxtLink>
               </li>

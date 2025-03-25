@@ -4,11 +4,12 @@
     <ArtistsLinkHub :artists="data?.artists" />
     <div class="my-20 flex w-full justify-center">
       <UPagination
-                   v-model:page="page"
-                   :total="data?.pagination?.totalItems"
-                   :items-per-page="limit"
-                   :sibling-count="3"
-                   aria-label="pagination" />
+        v-model:page="page"
+        :total="data?.pagination?.totalItems"
+        :items-per-page="limit"
+        :sibling-count="3"
+        aria-label="pagination"
+      />
     </div>
   </div>
 </template>

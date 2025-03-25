@@ -1,16 +1,18 @@
 <template>
   <div>
     <MultipageHeader
-                     :name="artist.name"
-                     :sections="sections"
-                     class="bg-background sticky top-0 z-10 transition-all duration-300"
-                     :serply_link="getArtistUrl(artist.name)">
+      :name="artist.name"
+      :sections="sections"
+      class="bg-background sticky top-0 z-10 transition-all duration-300"
+      :serply_link="getArtistUrl(artist.name)"
+    >
       <template #upvote>
         <UpvoteButton
-                      v-if="useAuth"
-                      :id="artist.slug"
-                      module="artist"
-                      :upvotes="upvotes" />
+          v-if="useAuth"
+          :id="artist.slug"
+          module="artist"
+          :upvotes="upvotes"
+        />
       </template>
     </MultipageHeader>
 
@@ -30,12 +32,14 @@
               <div>
                 <div class="flex">
                   <NuxtLink
-                            aria-label="link to the album"
-                            :to="`/albums/${album.slug}/`">
+                    aria-label="link to the album"
+                    :to="`/albums/${album.slug}/`"
+                  >
                     <div>
                       <LazyNuxtImg
-                                   :src="album.cover_art_urls?.['500']"
-                                   :alt="album.name" />
+                        :src="album.cover_art_urls?.['500']"
+                        :alt="album.name"
+                      />
                       {{ album.name }}
                     </div>
                   </NuxtLink>
@@ -47,8 +51,9 @@
                           <div>
                             {{ song.position }}.
                             <NuxtLink
-                                      v-if="song.has_lyrics"
-                                      :to="`/songs/${song.slug}/`">
+                              v-if="song.has_lyrics"
+                              :to="`/songs/${song.slug}/`"
+                            >
                               {{ song.name }}
                             </NuxtLink>
                             <span v-else>{{ song.name }}</span>
@@ -77,7 +82,9 @@
           <div class="border p-4">
             <div class="flex space-y-4">
               <div>
-                <NuxtLink to="https://serp.ly/@daftfm/amazon/music/unlimited">Amazon Music</NuxtLink>
+                <NuxtLink to="https://serp.ly/@daftfm/amazon/music/unlimited"
+                  >Amazon Music</NuxtLink
+                >
               </div>
             </div>
           </div>
@@ -88,7 +95,7 @@
               <div>
                 <span>Genres: {{ genres }}</span>
               </div>
-              <br>
+              <br >
               <div>
                 <span>Tags: {{ tags }}</span>
               </div>

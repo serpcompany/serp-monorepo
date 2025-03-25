@@ -2,23 +2,27 @@
   <div class="container">
     <div class="px-4 py-10 sm:px-6 sm:py-16 md:px-8 md:py-20">
       <SectionHeroOne
-                      title="Combine CSV Files"
-                      subtitle="Merge multiple spreadsheet or excel files like .csv, .xls and .xlxs." />
+        title="Combine CSV Files"
+        subtitle="Merge multiple spreadsheet or excel files like .csv, .xls and .xlxs."
+      />
 
       <!-- box -->
       <div class="flex justify-center">
         <ClientOnly>
           <UInput
-                  type="file"
-                  class="mb-10"
-                  multiple
-                  accept=".csv,.xls,.xlsx"
-                  @change="handleFileChange" />
+            type="file"
+            class="mb-10"
+            multiple
+            accept=".csv,.xls,.xlsx"
+            @change="handleFileChange"
+          />
         </ClientOnly>
       </div>
 
       <!-- button -->
-      <UButton class="mx-auto flex" type="button" @click="handleCombine">Submit</UButton>
+      <UButton class="mx-auto flex" type="button" @click="handleCombine"
+        >Submit</UButton
+      >
     </div>
   </div>
 </template>

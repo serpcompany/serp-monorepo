@@ -5,30 +5,35 @@
     <div class="pb-20">
       <!-- rows:  posts -->
       <div
-           :class="props.useGrid
+        :class="
+          props.useGrid
             ? 'grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4'
             : 'space-y-4'
-            ">
+        "
+      >
         <PostCard
-                  v-for="post in data.posts"
-                  :key="post.id"
-                  :post="post"
-                  :base-slug="props.baseSlug"
-                  :title="post.keyword" />
+          v-for="post in data.posts"
+          :key="post.id"
+          :post="post"
+          :base-slug="props.baseSlug"
+          :title="post.keyword"
+        />
       </div>
 
       <SPagination
-                   v-model:page="page"
-                   :total="data?.pagination?.totalItems"
-                   :items-per-page="limit"
-                   :sibling-count="3" />
+        v-model:page="page"
+        :total="data?.pagination?.totalItems"
+        :items-per-page="limit"
+        :sibling-count="3"
+      />
 
       <SLinkHub
-                v-if="!props.noCategories && categories && categories.length"
-                :categories="categories"
-                headline="Categories"
-                class="mt-20"
-                base-slug="posts/category" />
+        v-if="!props.noCategories && categories && categories.length"
+        :categories="categories"
+        headline="Categories"
+        class="mt-20"
+        base-slug="posts/category"
+      />
     </div>
   </div>
 </template>

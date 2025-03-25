@@ -1,7 +1,26 @@
 {
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
+  "[html]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.autoIndent": "advanced"
+  },
+  "[vue]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
     }
-  ]
+  },
+  "html.format.enable": false,
+  "html.format.preserveNewLines": true,
+  "html.format.wrapLineLength": 0,
+  "editor.formatOnSaveMode": "file"
 }

@@ -2,17 +2,19 @@
   <div class="container">
     <div class="px-4 py-10 sm:px-6 sm:py-16 md:px-8 md:py-20">
       <SectionHeroOne
-                      title="JSON to CSV Converter"
-                      subtitle="Convert JSON to CSV format (comma separated list)." />
+        title="JSON to CSV Converter"
+        subtitle="Convert JSON to CSV format (comma separated list)."
+      />
 
       <!-- in box-->
       <div class="flex justify-around gap-8">
         <ClientOnly>
           <UTextarea
-                     v-model="jsonInput"
-                     placeholder="Paste your content here"
-                     :rows="15"
-                     class="mb-10 w-full" />
+            v-model="jsonInput"
+            placeholder="Paste your content here"
+            :rows="15"
+            class="mb-10 w-full"
+          />
         </ClientOnly>
 
         <!-- out box-->
