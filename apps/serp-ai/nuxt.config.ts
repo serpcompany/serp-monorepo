@@ -71,7 +71,7 @@ export default defineNuxtConfig({
       brandLinks: [
         {
           name: 'About',
-          href: 'https://github.com/serpcompany'
+          href: 'https://github.com/serp-ai'
         },
         {
           name: 'Add Your Product',
