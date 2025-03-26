@@ -1,4 +1,4 @@
-name: build_staging_serp_ai
+wname: build_staging_serp_ai
 
 on:
   push:
