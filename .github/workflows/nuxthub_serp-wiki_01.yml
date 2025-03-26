@@ -1,51 +1,51 @@
-name: Deploy serp.wiki to NuxtHub
-on: push
+# name: Deploy serp.wiki to NuxtHub
+# on: push
 
-jobs:
-  deploy:
-    name: 'Deploy serp.wiki to NuxtHub'
-    runs-on: ubuntu-latest
-    environment:
-      name: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
-      url: ${{ steps.deploy.outputs.deployment-url }}
-    permissions:
-      contents: read
-      id-token: write
-    defaults:
-      run:
-        working-directory: ./apps/serp-wiki
+# jobs:
+#   deploy:
+#     name: 'Deploy serp.wiki to NuxtHub'
+#     runs-on: ubuntu-latest
+#     environment:
+#       name: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
+#       url: ${{ steps.deploy.outputs.deployment-url }}
+#     permissions:
+#       contents: read
+#       id-token: write
+#     defaults:
+#       run:
+#         working-directory: ./apps/serp-wiki
 
-    steps:
-      - uses: actions/checkout@v4
+#     steps:
+#       - uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 8.15.6
+#       - name: Install pnpm
+#         uses: pnpm/action-setup@v4
+#         with:
+#           version: 8.15.6
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: 'pnpm'
+#       - name: Install Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 22
+#           cache: 'pnpm'
 
-      - name: Install dependencies
-        run: pnpm install
-        env:
-          FOR_CLOUDFLARE: true
+#       - name: Install dependencies
+#         run: pnpm install
+#         env:
+#           FOR_CLOUDFLARE: true
 
-      - name: Ensure NuxtHub module is installed
-        run: pnpx nuxthub@latest ensure
+#       - name: Ensure NuxtHub module is installed
+#         run: pnpx nuxthub@latest ensure
 
-      - name: Build application
-        run: pnpm build
-        env:
-          NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
-          FOR_CLOUDFLARE: true
+#       - name: Build application
+#         run: pnpm build
+#         env:
+#           NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
+#           FOR_CLOUDFLARE: true
 
-      - name: Deploy to NuxtHub
-        uses: nuxt-hub/action@v1
-        id: deploy
-        with:
-          project-key: serp-wiki-nr2i
-          directory: ./apps/serp-wiki/dist
+#       - name: Deploy to NuxtHub
+#         uses: nuxt-hub/action@v1
+#         id: deploy
+#         with:
+#           project-key: serp-wiki-nr2i
+#           directory: ./apps/serp-wiki/dist
