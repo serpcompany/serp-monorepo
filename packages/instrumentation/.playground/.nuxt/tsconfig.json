@@ -77,7 +77,7 @@
       ],
       "#imports": ["./imports"],
       "#app-manifest": [
-        "./manifest/meta/35cfb0ef-1b7f-4eda-8f88-fc6ff2477959.json"
+        "./manifest/meta/c0e03b3b-9f77-4b27-9526-f96037a85508.json"
       ],
       "#components": ["./components"],
       "#build": ["."],
