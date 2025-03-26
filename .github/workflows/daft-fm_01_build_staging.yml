@@ -26,4 +26,5 @@ jobs:
             cd serp-monorepo-staging/apps/daft-fm
             docker compose -f docker-compose-staging.yml down
             git pull https://${{ secrets.DEVIN_GITHUB_TOKEN }}@github.com/${{ github.repository }}.git ${{ github.ref_name }}
+            export NUXT_UI_PRO_LICENSE="${{ secrets.NUXT_UI_PRO_LICENSE }}"
             infisical run --domain=https://secrets.serp.co --token=${{ secrets.INFISICAL_ACCESS_TOKEN_SERP }} --projectId=${{ secrets.INFISICAL_PROJECT_ID_DAFT_FM }} -- docker compose -f docker-compose-staging.yml up --build -d
