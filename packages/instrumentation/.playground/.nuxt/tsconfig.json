@@ -11,12 +11,8 @@
       "nitropack": [
         "../../../../node_modules/.pnpm/nitropack@2.11.7_drizzle-orm@0.36.4_typescript@5.7.3/node_modules/nitropack"
       ],
-      "defu": [
-        "../../../../node_modules/.pnpm/defu@6.1.4/node_modules/defu"
-      ],
-      "h3": [
-        "../../../../node_modules/.pnpm/h3@1.15.0/node_modules/h3"
-      ],
+      "defu": ["../../../../node_modules/.pnpm/defu@6.1.4/node_modules/defu"],
+      "h3": ["../../../../node_modules/.pnpm/h3@1.15.0/node_modules/h3"],
       "consola": [
         "../../../../node_modules/.pnpm/consola@3.4.0/node_modules/consola"
       ],
@@ -53,39 +49,17 @@
       "vite/client": [
         "../../../../node_modules/.pnpm/vite@6.1.0/node_modules/vite/client"
       ],
-      "~": [
-        ".."
-      ],
-      "~/*": [
-        "../*"
-      ],
-      "@": [
-        ".."
-      ],
-      "@/*": [
-        "../*"
-      ],
-      "~~": [
-        ".."
-      ],
-      "~~/*": [
-        "../*"
-      ],
-      "@@": [
-        ".."
-      ],
-      "@@/*": [
-        "../*"
-      ],
-      "#shared": [
-        "../shared"
-      ],
-      "assets": [
-        "../assets"
-      ],
-      "public": [
-        "../public"
-      ],
+      "~": [".."],
+      "~/*": ["../*"],
+      "@": [".."],
+      "@/*": ["../*"],
+      "~~": [".."],
+      "~~/*": ["../*"],
+      "@@": [".."],
+      "@@/*": ["../*"],
+      "#shared": ["../shared"],
+      "assets": ["../assets"],
+      "public": ["../public"],
       "#app": [
         "../../../../node_modules/.pnpm/nuxt@3.16.1_drizzle-orm@0.36.4_eslint@9.21.0_typescript@5.8.2_vite@6.2.2/node_modules/nuxt/dist/app"
       ],
@@ -101,21 +75,13 @@
       "#unhead/composables": [
         "../../../../node_modules/.pnpm/nuxt@3.16.1_drizzle-orm@0.36.4_eslint@9.21.0_typescript@5.8.2_vite@6.2.2/node_modules/nuxt/dist/head/runtime/composables/v3"
       ],
-      "#imports": [
-        "./imports"
-      ],
+      "#imports": ["./imports"],
       "#app-manifest": [
         "./manifest/meta/35cfb0ef-1b7f-4eda-8f88-fc6ff2477959.json"
       ],
-      "#components": [
-        "./components"
-      ],
-      "#build": [
-        "."
-      ],
-      "#build/*": [
-        "./*"
-      ]
+      "#components": ["./components"],
+      "#build": ["."],
+      "#build/*": ["./*"]
     },
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -131,12 +97,7 @@
     "noImplicitOverride": true,
     "module": "preserve",
     "noEmit": true,
-    "lib": [
-      "ESNext",
-      "dom",
-      "dom.iterable",
-      "webworker"
-    ],
+    "lib": ["ESNext", "dom", "dom.iterable", "webworker"],
     "jsx": "preserve",
     "jsxImportSource": "vue",
     "types": [],
