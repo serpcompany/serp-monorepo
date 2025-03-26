@@ -52,6 +52,3 @@ dist/
 
 .dev.vars
 
-# stupid files that keep triggering lint and re lint
-*tsconfig.json
-*eslint.config.mjs
