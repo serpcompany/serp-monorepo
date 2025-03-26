@@ -12,7 +12,8 @@
     "format": "prettier -w .",
     "generate": "nuxt generate",
     "postinstall": "nuxt prepare",
-    "lint": "prettier . --write && eslint --fix",
+    "prelint": "prettier . --write && eslint . --fix --quiet",
+    "lint": "prettier . --write && eslint . --fix",
     "preview": "nuxt preview",
     "server": "node .output/server/index.mjs"
   },

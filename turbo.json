@@ -12,7 +12,7 @@
       "dependsOn": ["lint"]
     },
     "pretest": {
-      "dependsOn": ["lint"]
+      "dependsOn": ["prelint"]
     },
     "test:watch": {},
     "dev": {
