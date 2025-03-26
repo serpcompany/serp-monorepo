@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   // devtools: { enabled: true }
   extends: ['@serp/types'],
-  modules: ['nuxt-auth-utils'],
+  modules: ['nuxt-auth-utils', '@nuxt/eslint'],
   multiCache: {
     data: {
       enabled: true

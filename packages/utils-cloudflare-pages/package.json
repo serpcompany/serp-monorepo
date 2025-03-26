@@ -14,6 +14,7 @@
     "@nuxt/eslint": "^0.6.1",
     "@nuxt/test-utils": "^3.14.4",
     "@nuxthub/core": "0.8.18",
+    "@serp/configs": "workspace:^",
     "@serp/types": "workspace:^",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/vue": "^8.1.0",

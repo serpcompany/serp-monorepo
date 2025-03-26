@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   // devtools: { enabled: true }
   extends: ['@serp/types'],
-  modules: ['@nuxthub/core', 'nuxt-auth-utils'],
+  modules: ['@nuxthub/core', 'nuxt-auth-utils', '@nuxt/eslint'],
   hub: {
     database: true,
     databaseMigrationsDirs: ['server/db/migrations', 'server/api/db/migrations']
