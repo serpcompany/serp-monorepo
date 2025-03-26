@@ -25,8 +25,11 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.FRANCIS_SERVER_SSH_PRIVATE_KEY }}
+          envs: NUXT_UI_PRO_LICENSE
+          env:
+            NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
           script: |
             cd serp-monorepo-staging/apps/serp-co
             docker compose -f docker-compose-staging.yml down
             git pull https://${{ secrets.DEVIN_GITHUB_TOKEN }}@github.com/${{ github.repository }}.git ${{ github.ref_name }}
-            NUXT_UI_PRO_LICENSE="${{ secrets.NUXT_UI_PRO_LICENSE }}" infisical run --domain=https://secrets.serp.co --token=${{ secrets.INFISICAL_ACCESS_TOKEN_SERP }} --projectId=${{ secrets.INFISICAL_PROJECT_ID_SERP_CO }} -- docker compose -f docker-compose-staging.yml up --build -d
+            infisical run --domain=https://secrets.serp.co --token=${{ secrets.INFISICAL_ACCESS_TOKEN_SERP }} --projectId=${{ secrets.INFISICAL_PROJECT_ID_SERP_CO }} -- docker compose -f docker-compose-staging.yml up --build -d
