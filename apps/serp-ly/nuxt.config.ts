@@ -11,6 +11,9 @@ export default defineNuxtConfig({
   ui: {
     colorMode: true
   },
+  uiPro: {
+    license: process.env.NUXT_UI_PRO_LICENSE
+  },
   tsConfig: {
     compilerOptions: {
       baseUrl: '.',
