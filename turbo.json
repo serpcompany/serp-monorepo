@@ -7,12 +7,8 @@
       "outputs": [".nuxt/**", ".output/**", "dist/**"]
     },
     "lint": {},
-    "prelint": {},
     "test": {
       "dependsOn": ["lint"]
-    },
-    "pretest": {
-      "dependsOn": ["prelint"]
     },
     "test:watch": {},
     "dev": {
