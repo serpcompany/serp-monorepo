@@ -28,6 +28,7 @@
     "@nuxt/scripts": "^0.11.1",
     "@nuxt/test-utils": "^3.14.4",
     "@nuxt/ui-pro": "^3.0.1",
+    "@nuxt/kit": "^3.16.1",
     "@nuxthub/core": "0.8.18",
     "@nuxtjs/html-validator": "^1.8.2",
     "@nuxtjs/seo": "^2.0.0-rc.23",
