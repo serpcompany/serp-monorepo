@@ -6,7 +6,7 @@
   "scripts": {
     "build": "nuxt build .playground",
     "generate": "nuxt generate .playground",
-    "lint": "prettier . --write && eslint --fix",
+    "lint": "prettier . --write && eslint . --fix",
     "preview": "nuxt preview .playground"
   },
   "dependencies": {
