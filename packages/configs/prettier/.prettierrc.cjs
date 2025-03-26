@@ -1,8 +1,8 @@
 // @ts-check
-import { extendConfig } from '@serp/configs/prettier';
+const { extendConfig } = require('./index.js');
 
 // Extend the base Prettier config with app-specific options (if any)
-export default extendConfig({
+module.exports = extendConfig({
   // App-specific customizations go here
   // For example:
   // semi: false,
