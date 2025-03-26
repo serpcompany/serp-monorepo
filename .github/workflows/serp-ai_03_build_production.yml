@@ -29,5 +29,5 @@ jobs:
             cd serp-monorepo/apps/serp-ai
             docker compose down
             git pull https://${{ secrets.DEVIN_GITHUB_TOKEN }}@github.com/${{ github.repository }}.git ${{ github.ref_name }}
-            export NUXT_UI_PRO_LICENSE="${{ secrets.NUXT_UI_PRO_LICENSE }}"
-            infisical run --domain=https://secrets.serp.co --token=${{ secrets.INFISICAL_ACCESS_TOKEN_SERP }} --projectId=${{ secrets.INFISICAL_PROJECT_ID_SERP_AI }} -- docker compose up --build -d
+            # Pass the license key directly to infisical as an environment variable
+            NUXT_UI_PRO_LICENSE="${{ secrets.NUXT_UI_PRO_LICENSE }}" infisical run --domain=https://secrets.serp.co --token=${{ secrets.INFISICAL_ACCESS_TOKEN_SERP }} --projectId=${{ secrets.INFISICAL_PROJECT_ID_SERP_AI }} -- docker compose up --build -d
