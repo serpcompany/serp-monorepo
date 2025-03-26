@@ -22,7 +22,6 @@
     "@faker-js/faker": "^9.2.0",
     "@iconify-json/lucide": "^1.2.14",
     "@infisical/cli": "^0.31.8",
-    "@lhci/cli": "^0.14.0",
     "@nuxt/eslint": "^0.6.1",
     "@nuxt/icon": "^1.7.5",
     "@nuxt/image": "^1.8.1",
