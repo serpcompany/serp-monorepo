@@ -12,9 +12,11 @@
     "format": "prettier -w .",
     "generate": "nuxt generate",
     "postinstall": "nuxt prepare",
+    "prelint": "prettier . --write && eslint --fix",
     "lint": "prettier . --write && eslint --fix",
     "preview": "nuxt preview",
-    "server": "node .output/server/index.mjs"
+    "server": "node .output/server/index.mjs",
+    "test:watch": "vitest --coverage"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
