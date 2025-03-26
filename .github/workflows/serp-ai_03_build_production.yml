@@ -13,6 +13,9 @@ jobs:
   build_production_serp_ai:
     runs-on: ubuntu-latest
     steps:
+      - name: Add delay for staggering
+        run: sleep 20
+
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -24,7 +27,7 @@ jobs:
           key: ${{ secrets.FRANCIS_SERVER_SSH_PRIVATE_KEY }}
           script: |
             cd serp-monorepo/apps/serp-ai
-            docker compose -f docker-compose.yml down
+            docker compose down
             git pull https://${{ secrets.DEVIN_GITHUB_TOKEN }}@github.com/${{ github.repository }}.git ${{ github.ref_name }}
             export NUXT_UI_PRO_LICENSE="${{ secrets.NUXT_UI_PRO_LICENSE }}"
-            infisical run --domain=https://secrets.serp.co --token=${{ secrets.INFISICAL_ACCESS_TOKEN_SERP }} --projectId=${{ secrets.INFISICAL_PROJECT_ID_SERP_AI }} -- docker compose -f docker-compose.yml up --build -d
+            infisical run --domain=https://secrets.serp.co --token=${{ secrets.INFISICAL_ACCESS_TOKEN_SERP }} --projectId=${{ secrets.INFISICAL_PROJECT_ID_SERP_AI }} -- docker compose up --build -d

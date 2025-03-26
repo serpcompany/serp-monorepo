@@ -4,8 +4,8 @@
   "scripts": {
     "build": "turbo run build",
     "format": "prettier --write \"**/*.{ts,tsx,md,vue}\"",
-    "lint": "turbo run lint --no-update-notifier --output-logs=none",
-    "test": "turbo run test --no-update-notifier --output-logs=none",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
     "test:watch": "turbo run test:watch"
   },
   "devDependencies": {
