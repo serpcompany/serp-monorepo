@@ -11,6 +11,8 @@ services:
   serp-media-app:
     build:
       context: ../..
+      args:
+        - NUXT_UI_PRO_LICENSE=${NUXT_UI_PRO_LICENSE}
       dockerfile: ./apps/serp-media/Dockerfile
     container_name: serp-media-app
     restart: unless-stopped

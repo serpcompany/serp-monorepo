@@ -11,6 +11,8 @@ services:
   serp-co-app-staging:
     build:
       context: ../..
+      args:
+        - NUXT_UI_PRO_LICENSE=${NUXT_UI_PRO_LICENSE}
       dockerfile: ./apps/serp-co/Dockerfile
     container_name: serp-co-app-staging
     restart: unless-stopped

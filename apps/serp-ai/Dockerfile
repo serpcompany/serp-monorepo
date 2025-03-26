@@ -6,6 +6,8 @@ RUN apt-get install -y git make g++ python3
 # install pnpm
 RUN npm install -g pnpm
 
+ARG NUXT_UI_PRO_LICENSE
+
 WORKDIR /app
 COPY . .
 RUN pnpm --filter @serp-ai install --shamefully-hoist
