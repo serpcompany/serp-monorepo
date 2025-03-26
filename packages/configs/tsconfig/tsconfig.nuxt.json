@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": ["./base.json", "@vue/tsconfig/tsconfig.dom.json"],
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "preserve",
+    "types": ["node", "@nuxt/types", "@nuxtjs/i18n"]
+  },
+  "include": [
+    "./**/*.ts",
+    "./**/*.vue",
+    "./.nuxt/nuxt.d.ts"
+  ],
+  "exclude": ["node_modules", "dist"]
+}
