@@ -1,0 +1,9 @@
+{
+  "name": "@serp/configs-tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "@vue/tsconfig": "^0.5.1"
+  }
+}
