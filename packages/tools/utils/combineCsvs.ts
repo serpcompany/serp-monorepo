@@ -1,4 +1,3 @@
-import Papa from 'papaparse';
 import * as XLSX from './vendor/xlsx.full.min.js';
 
 export function combineCsvs(files: FileList): Promise<string> {
@@ -16,9 +15,17 @@ export function combineCsvs(files: FileList): Promise<string> {
 
         try {
           if (fileExt === 'csv') {
-            data = Papa.parse(e.target?.result as string, {
-              header: true
-            }).data;
+            const csvData = e.target?.result as string;
+            const rows = csvData.split('\n').map((row) => row.split(','));
+            const headers = rows[0];
+            const jsonData = rows.slice(1).map((row) => {
+              const obj: Record<string, string> = {};
+              headers.forEach((header, index) => {
+                obj[header] = row[index];
+              });
+              return obj;
+            });
+            data = jsonData;
           } else if (fileExt === 'xls' || fileExt === 'xlsx') {
             const workbook = XLSX.read(e.target?.result, { type: 'binary' });
             const sheetName = workbook.SheetNames[0];
@@ -32,7 +39,12 @@ export function combineCsvs(files: FileList): Promise<string> {
           filesProcessed++;
 
           if (filesProcessed === files.length) {
-            const csv = Papa.unparse(combinedData);
+            const csv = Object.keys(combinedData[0])
+              .join(',') +
+              '\n' +
+              combinedData
+                .map((row: Record<string, unknown>) => Object.values(row).join(','))
+                .join('\n');
             resolve(csv);
           }
         } catch (error) {
