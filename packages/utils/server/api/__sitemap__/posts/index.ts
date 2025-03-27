@@ -3,7 +3,6 @@ import { db } from '@serp/utils/server/api/db';
 import { postCache } from '@serp/utils/server/api/db/schema';
 import { sql } from 'drizzle-orm';
 
- 
 export default defineEventHandler(async (event) => {
   // Extract page and count from query parameters
   const { page, count = false } = getQuery(event);
