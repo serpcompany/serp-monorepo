@@ -3,7 +3,6 @@
     "name": "SERP Monorepo",
     "description": "A monorepo containing multiple SERP related applications and shared packages."
   },
-  "global_instructions": "Apply the global coding standards and project guidelines as defined in the referenced rule files.",
   "references": [
     "@file .cursor/rules/project-info.mdc",
     "@file .cursor/rules/project-structure.mdc",
@@ -14,7 +13,9 @@
     "@file .cursor/rules/preferences.mdc",
     "@file .cursor/rules/naming-conventions.mdc",
     "@file .cursor/rules/import-conventions.mdc",
-    "@file .cursor/rules/nuxt-configurations.mdc"
+    "@file .cursor/rules/configs-nuxt-config.mdc",
+    "@file .cursor/rules/writing-tests-unit-tests.mdc",
+    "@file .cursor/rules/writing-tests.mdc"
   ],
   "ai_instructions": "When generating code, first apply these global guidelines, then load and merge the additional rules from the referenced files."
 }
