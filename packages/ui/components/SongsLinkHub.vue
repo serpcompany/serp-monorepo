@@ -1,3 +1,14 @@
+<script setup lang="ts">
+  import type { RecordingIndex } from '@serp/types/types';
+
+  defineProps({
+    songs: {
+      type: Array as () => RecordingIndex[],
+      required: true
+    }
+  });
+</script>
+
 <template>
   <div class="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-2">
     <div v-for="song in songs" :key="song.slug">
@@ -14,14 +25,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { RecordingIndex } from '@serp/types/types';
-
-defineProps({
-  songs: {
-    type: Array as () => RecordingIndex[],
-    required: true
-  }
-});
-</script>

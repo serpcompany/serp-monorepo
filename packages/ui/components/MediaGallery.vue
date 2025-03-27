@@ -1,3 +1,11 @@
+<script setup lang="ts">
+  import type { Company } from '@serp/types/types';
+
+  defineProps<{
+    company: Company;
+  }>();
+</script>
+
 <template>
   <section class="flex w-full flex-col gap-2 md:max-w-[444px]">
     <div class="aspect-video">
@@ -25,11 +33,3 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import type { Company } from '@serp/types/types';
-
-defineProps<{
-  company: Company;
-}>();
-</script>

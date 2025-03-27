@@ -1,3 +1,5 @@
+<script setup lang="ts"></script>
+
 <template>
   <div class="flex flex-col items-center justify-center">
     <div class="mb-2 flex flex-col items-center">
@@ -37,5 +39,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts"></script>

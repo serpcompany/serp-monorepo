@@ -1,3 +1,15 @@
+<script setup>
+  const config = useRuntimeConfig();
+  const headerNavItems = config.public.headerNavItems;
+  const useAuth = config.public.useAuth;
+
+  const mobileMenuOpen = ref(false);
+
+  const toggleMobileMenu = () => {
+    mobileMenuOpen.value = !mobileMenuOpen.value;
+  };
+</script>
+
 <template>
   <header>
     <div>
@@ -100,15 +112,3 @@
     </div>
   </header>
 </template>
-
-<script setup>
-const config = useRuntimeConfig();
-const headerNavItems = config.public.headerNavItems;
-const useAuth = config.public.useAuth;
-
-const mobileMenuOpen = ref(false);
-
-const toggleMobileMenu = () => {
-  mobileMenuOpen.value = !mobileMenuOpen.value;
-};
-</script>

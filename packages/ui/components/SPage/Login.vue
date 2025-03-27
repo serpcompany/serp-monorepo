@@ -1,3 +1,20 @@
+<script setup lang="ts">
+  const route = useRoute();
+  const redirectTo = route.query.redirectTo || '/';
+  const { loggedIn } = useUserSession();
+  if (loggedIn.value) {
+    navigateTo(redirectTo);
+  }
+  const providers = [
+    { id: 'github', name: 'GitHub' },
+    { id: 'google', name: 'Google' }
+  ];
+
+  const signIn = async (provider: string) => {
+    window.location.href = `/api/auth/${provider}`;
+  };
+</script>
+
 <template>
   <div class="flex min-h-[50vh] w-full items-center justify-center p-6">
     <div
@@ -95,20 +112,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const route = useRoute();
-const redirectTo = route.query.redirectTo || '/';
-const { loggedIn } = useUserSession();
-if (loggedIn.value) {
-  navigateTo(redirectTo);
-}
-const providers = [
-  { id: 'github', name: 'GitHub' },
-  { id: 'google', name: 'Google' }
-];
-
-const signIn = async (provider: string) => {
-  window.location.href = `/api/auth/${provider}`;
-};
-</script>

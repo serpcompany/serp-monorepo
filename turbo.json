@@ -7,6 +7,8 @@
       "outputs": [".nuxt/**", ".output/**", "dist/**"]
     },
     "lint": {},
+    "eslint": {},
+    "prettier": {},
     "test": {
       "dependsOn": ["lint"]
     },

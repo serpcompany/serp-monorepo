@@ -1,3 +1,21 @@
+<script setup lang="ts">
+  import type { Category } from '@serp/types/types';
+
+  defineProps({
+    categories: {
+      type: Array as PropType<Category[]>,
+      required: true
+    },
+    headline: {
+      type: String,
+      default: null
+    },
+    baseSlug: {
+      type: String
+    }
+  });
+</script>
+
 <template>
   <section>
     <div class="mx-auto">
@@ -28,21 +46,3 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import type { Category } from '@serp/types/types';
-
-defineProps({
-  categories: {
-    type: Array as PropType<Category[]>,
-    required: true
-  },
-  headline: {
-    type: String,
-    default: null
-  },
-  baseSlug: {
-    type: String
-  }
-});
-</script>

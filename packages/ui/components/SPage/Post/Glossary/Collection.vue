@@ -1,3 +1,41 @@
+<script setup lang="ts">
+  const router = useRouter();
+
+  const data = await usePosts(1, 1000000, '', 'Glossary');
+  if (!data) {
+    router.push('/404');
+  }
+
+  const characters = Array.from({ length: 26 }, (_, i) =>
+    String.fromCharCode(65 + i)
+  );
+  characters.push('*');
+
+  const getTermsByFirstChar = (character: string) => {
+    if (character === '*') {
+      return data.posts.filter(
+        (term) => !/^[a-z]/i.test(term.keyword || term.title)
+      );
+    }
+    return data.posts.filter((term) => {
+      return term.keyword
+        ? term.keyword.toLowerCase().startsWith(character.toLowerCase())
+        : term.title.toLowerCase().startsWith(character.toLowerCase());
+    });
+  };
+
+  // computed property to filter characters that have terms
+  const filteredCharacters = computed(() => {
+    return characters.filter(
+      (character) => getTermsByFirstChar(character).length > 0
+    );
+  });
+
+  useSeoMeta({
+    title: 'Glossary'
+  });
+</script>
+
 <template>
   <div>
     <section>
@@ -35,41 +73,3 @@
     </main>
   </div>
 </template>
-
-<script setup lang="ts">
-const router = useRouter();
-
-const data = await usePosts(1, 1000000, '', 'Glossary');
-if (!data) {
-  router.push('/404');
-}
-
-const characters = Array.from({ length: 26 }, (_, i) =>
-  String.fromCharCode(65 + i)
-);
-characters.push('*');
-
-const getTermsByFirstChar = (character: string) => {
-  if (character === '*') {
-    return data.posts.filter(
-      (term) => !/^[a-z]/i.test(term.keyword || term.title)
-    );
-  }
-  return data.posts.filter((term) => {
-    return term.keyword
-      ? term.keyword.toLowerCase().startsWith(character.toLowerCase())
-      : term.title.toLowerCase().startsWith(character.toLowerCase());
-  });
-};
-
-// computed property to filter characters that have terms
-const filteredCharacters = computed(() => {
-  return characters.filter(
-    (character) => getTermsByFirstChar(character).length > 0
-  );
-});
-
-useSeoMeta({
-  title: 'Glossary'
-});
-</script>

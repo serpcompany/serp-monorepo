@@ -1,3 +1,39 @@
+<script setup lang="ts">
+  const sections = ['Lyrics'];
+  const route = useRoute();
+  const { slug } = route.params;
+  const song = await useSong(encodeURIComponent(slug));
+
+  const config = useRuntimeConfig();
+  const useAuth = config.public.useAuth;
+
+  // Get upvotes
+  const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
+    `/upvotes/${encodeURIComponent(song.slug)}?module=song`
+  )) || { upvotes: [] };
+
+  const genres = computed(() => {
+    return song?.genres ? song.genres.join(', ') : '';
+  });
+
+  const tags = computed(() => {
+    return song?.tags ? song.tags.join(', ') : '';
+  });
+
+  // Helper function to create a URL for the song
+  function getSongUrl(id: string) {
+    return `https://musicbrainz.org/recording/${song.id}`;
+  }
+
+  const seoTitle = computed(() => song?.seoTitle);
+  const seoDescription = computed(() => song?.seoDescription);
+
+  useSeoMeta({
+    title: song.name + ' - Lyrics',
+    description: seoDescription
+  });
+</script>
+
 <template>
   <div>
     <MultipageHeaderMusic
@@ -68,39 +104,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const sections = ['Lyrics'];
-const route = useRoute();
-const { slug } = route.params;
-const song = await useSong(encodeURIComponent(slug));
-
-const config = useRuntimeConfig();
-const useAuth = config.public.useAuth;
-
-// Get upvotes
-const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
-  `/upvotes/${encodeURIComponent(song.slug)}?module=song`
-)) || { upvotes: [] };
-
-const genres = computed(() => {
-  return song?.genres ? song.genres.join(', ') : '';
-});
-
-const tags = computed(() => {
-  return song?.tags ? song.tags.join(', ') : '';
-});
-
-// Helper function to create a URL for the song
-function getSongUrl(id: string) {
-  return `https://musicbrainz.org/recording/${song.id}`;
-}
-
-const seoTitle = computed(() => song?.seoTitle);
-const seoDescription = computed(() => song?.seoDescription);
-
-useSeoMeta({
-  title: song.name + ' - Lyrics',
-  description: seoDescription
-});
-</script>

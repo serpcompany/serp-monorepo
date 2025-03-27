@@ -1,4 +1,21 @@
 <!-- eslint-disable vue/no-mutating-props -->
+<script setup lang="ts">
+  const props = withDefaults(
+    defineProps<{
+      totalItems: number;
+      limit: number;
+      siblingCount: number;
+    }>(),
+    {
+      totalItems: 0,
+      limit: 50,
+      siblingCount: 3
+    }
+  );
+
+  const page = defineModel();
+</script>
+
 <template>
   <UPagination
     v-model:page="page"
@@ -9,20 +26,3 @@
     class="mt-20 flex justify-center overflow-x-auto rounded-none"
   />
 </template>
-
-<script setup lang="ts">
-const props = withDefaults(
-  defineProps<{
-    totalItems: number;
-    limit: number;
-    siblingCount: number;
-  }>(),
-  {
-    totalItems: 0,
-    limit: 50,
-    siblingCount: 3
-  }
-);
-
-const page = defineModel();
-</script>

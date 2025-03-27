@@ -1,3 +1,13 @@
+<script setup lang="ts">
+  const config = useRuntimeConfig();
+  const domain = config.public.domain;
+
+  useSeoMeta({
+    title: 'DMCA',
+    description: 'Steps to report copyright infringement under our DMCA policy.'
+  });
+</script>
+
 <template>
   <div class="prose dark:prose-invert container my-20">
     <h1>DMCA & IP Complaints</h1>
@@ -11,13 +21,3 @@
     </p>
   </div>
 </template>
-
-<script setup lang="ts">
-const config = useRuntimeConfig();
-const domain = config.public.domain;
-
-useSeoMeta({
-  title: 'DMCA',
-  description: 'Steps to report copyright infringement under our DMCA policy.'
-});
-</script>

@@ -1,3 +1,38 @@
+<script setup lang="ts">
+  const router = useRouter();
+  const route = useRoute();
+
+  const page = ref(Number(route.query.page) || 1);
+  const limit = ref(Number(route.query.limit) || 50);
+  const categories = await useCompanyCategories();
+  const slug = route.params.slug as string;
+
+  let data = await useCompanies(page.value, limit.value, slug);
+  if (!data) {
+    router.push('/404');
+  }
+
+  watch([page, limit], async ([newPage, newLimit]) => {
+    const query = { ...route.query };
+    if (newPage !== 1) {
+      query.page = String(newPage);
+    } else {
+      delete query.page;
+    }
+    if (newLimit !== 50) {
+      query.limit = String(newLimit);
+    } else {
+      delete query.limit;
+    }
+    data = await useCompanies(page.value, limit.value, slug);
+    router.push({ query });
+  });
+
+  useSeoMeta({
+    title: () => `The Best ${data.categoryName} Providers`
+  });
+</script>
+
 <template>
   <div class="py-10">
     <!-- hero -->
@@ -41,38 +76,3 @@
     </main>
   </div>
 </template>
-
-<script setup lang="ts">
-const router = useRouter();
-const route = useRoute();
-
-const page = ref(Number(route.query.page) || 1);
-const limit = ref(Number(route.query.limit) || 50);
-const categories = await useCompanyCategories();
-const slug = route.params.slug as string;
-
-let data = await useCompanies(page.value, limit.value, slug);
-if (!data) {
-  router.push('/404');
-}
-
-watch([page, limit], async ([newPage, newLimit]) => {
-  const query = { ...route.query };
-  if (newPage !== 1) {
-    query.page = String(newPage);
-  } else {
-    delete query.page;
-  }
-  if (newLimit !== 50) {
-    query.limit = String(newLimit);
-  } else {
-    delete query.limit;
-  }
-  data = await useCompanies(page.value, limit.value, slug);
-  router.push({ query });
-});
-
-useSeoMeta({
-  title: () => `The Best ${data.categoryName} Providers`
-});
-</script>

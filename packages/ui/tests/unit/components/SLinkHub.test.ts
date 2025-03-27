@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
 import { renderSuspended } from '@nuxt/test-utils/runtime';
+import { describe, it } from 'vitest';
 import SLinkHub from '~/components/SLinkHub.vue';
 
 const mockCategories = [

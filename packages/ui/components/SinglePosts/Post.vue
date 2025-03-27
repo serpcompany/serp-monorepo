@@ -1,3 +1,19 @@
+<script setup lang="ts">
+  import type { Post } from '@serp/types/types';
+
+  const config = useRuntimeConfig();
+  const useAuth = config.public.useAuth;
+
+  const props = defineProps<{
+    data: Post;
+  }>();
+
+  const isValidAuthor =
+    props.data.author !== undefined &&
+    props.data.author !== null &&
+    props.data.author !== 'None';
+</script>
+
 <template>
   <div>
     <section class="mb-8">
@@ -26,25 +42,9 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import type { Post } from '@serp/types/types';
-
-const config = useRuntimeConfig();
-const useAuth = config.public.useAuth;
-
-const props = defineProps<{
-  data: Post;
-}>();
-
-const isValidAuthor =
-  props.data.author !== undefined &&
-  props.data.author !== null &&
-  props.data.author !== 'None';
-</script>
-
 <style>
-.comments-github-style {
-  border-radius: 6px;
-  margin-top: 16px;
-}
+  .comments-github-style {
+    border-radius: 6px;
+    margin-top: 16px;
+  }
 </style>

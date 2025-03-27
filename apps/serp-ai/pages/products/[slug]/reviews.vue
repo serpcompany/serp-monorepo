@@ -1,3 +1,50 @@
+<script setup lang="ts">
+  const route = useRoute();
+  const router = useRouter();
+  const { slug } = route.params;
+
+  const data = await useCompany(`${slug}`);
+  if (!data) {
+    router.push('/404');
+  }
+
+  const faqItems = computed(() => {
+    if (!data?.faqs) return [];
+
+    return data?.faqs.map((faq) => ({
+      label: faq.question,
+      content: faq.answer
+    }));
+  });
+
+  const sections = computed(() => {
+    const sectionTitles: string[] = [];
+
+    sectionTitles.push('Overview');
+
+    if (data?.features) {
+      sectionTitles.push('Features');
+    }
+    if (faqItems.value && faqItems.value.length) {
+      sectionTitles.push('FAQ');
+    }
+
+    if (data?.alternatives) {
+      sectionTitles.push('Alternatives');
+    }
+
+    return sectionTitles;
+  });
+
+  useSeoMeta({
+    title: computed(() =>
+      data?.name
+        ? `${data.name} - Reviews, Pricing, Features`
+        : 'Product Information'
+    )
+  });
+</script>
+
 <template>
   <div v-if="data">
     <MultipageHeader
@@ -85,50 +132,3 @@
     </section>
   </div>
 </template>
-
-<script setup lang="ts">
-const route = useRoute();
-const router = useRouter();
-const { slug } = route.params;
-
-const data = await useCompany(`${slug}`);
-if (!data) {
-  router.push('/404');
-}
-
-const faqItems = computed(() => {
-  if (!data?.faqs) return [];
-
-  return data?.faqs.map((faq) => ({
-    label: faq.question,
-    content: faq.answer
-  }));
-});
-
-const sections = computed(() => {
-  const sectionTitles: string[] = [];
-
-  sectionTitles.push('Overview');
-
-  if (data?.features) {
-    sectionTitles.push('Features');
-  }
-  if (faqItems.value && faqItems.value.length) {
-    sectionTitles.push('FAQ');
-  }
-
-  if (data?.alternatives) {
-    sectionTitles.push('Alternatives');
-  }
-
-  return sectionTitles;
-});
-
-useSeoMeta({
-  title: computed(() =>
-    data?.name
-      ? `${data.name} - Reviews, Pricing, Features`
-      : 'Product Information'
-  )
-});
-</script>

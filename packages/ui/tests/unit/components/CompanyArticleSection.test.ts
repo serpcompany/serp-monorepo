@@ -1,6 +1,6 @@
 import { renderSuspended } from '@nuxt/test-utils/runtime';
-import { screen, within } from '@testing-library/vue';
-import { describe, it, expect } from 'vitest';
+import { screen } from '@testing-library/vue';
+import { describe, expect, it } from 'vitest';
 
 import CompanyArticleSection from '@/components/CompanyArticleSection.vue';
 

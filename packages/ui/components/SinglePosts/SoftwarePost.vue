@@ -1,3 +1,47 @@
+<script setup lang="ts">
+  import type { Company } from '@serp/types/types';
+
+  const isLoaded = ref(false);
+  const isPlaying = ref(false);
+  const video = ref();
+
+  const props = defineProps<{
+    data: Company;
+  }>();
+
+  const faqItems = computed(() => {
+    if (!props.data?.faqs) return [];
+
+    return props.data?.faqs.map((faq) => ({
+      label: faq.question,
+      content: faq.answer
+    }));
+  });
+
+  const sections = computed(() => {
+    const sectionTitles: string[] = [];
+
+    sectionTitles.push('Overview');
+
+    if (props.data?.features) {
+      sectionTitles.push('Features');
+    }
+    if (faqItems.value && faqItems.value.length) {
+      sectionTitles.push('FAQ');
+    }
+
+    if (props.data?.alternatives) {
+      sectionTitles.push('Alternatives');
+    }
+
+    return sectionTitles;
+  });
+
+  function stateChange(event: { data: number }) {
+    isPlaying.value = event.data === 1;
+  }
+</script>
+
 <template>
   <div v-if="data">
     <MultipageHeader
@@ -86,47 +130,3 @@
     </section>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { Company } from '@serp/types/types';
-
-const isLoaded = ref(false);
-const isPlaying = ref(false);
-const video = ref();
-
-const props = defineProps<{
-  data: Company;
-}>();
-
-const faqItems = computed(() => {
-  if (!props.data?.faqs) return [];
-
-  return props.data?.faqs.map((faq) => ({
-    label: faq.question,
-    content: faq.answer
-  }));
-});
-
-const sections = computed(() => {
-  const sectionTitles: string[] = [];
-
-  sectionTitles.push('Overview');
-
-  if (props.data?.features) {
-    sectionTitles.push('Features');
-  }
-  if (faqItems.value && faqItems.value.length) {
-    sectionTitles.push('FAQ');
-  }
-
-  if (props.data?.alternatives) {
-    sectionTitles.push('Alternatives');
-  }
-
-  return sectionTitles;
-});
-
-function stateChange(event: { data: number }) {
-  isPlaying.value = event.data === 1;
-}
-</script>

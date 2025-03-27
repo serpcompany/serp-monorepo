@@ -1,3 +1,41 @@
+<script setup lang="ts">
+  const jsonInput = ref('');
+  const csvOutput = ref<string>('');
+
+  const toast = useToast();
+
+  const runFunction = () => {
+    try {
+      if (!jsonInput.value.trim()) {
+        throw new Error('Please enter JSON input');
+      }
+
+      const result = convertJsonToCsv(jsonInput.value);
+      csvOutput.value = result ?? '';
+
+      toast.add({
+        title: 'Success',
+        description: 'JSON successfully converted to CSV',
+        color: 'success'
+      });
+    } catch (error) {
+      csvOutput.value = '';
+      toast.add({
+        title: 'Error: Incorrect JSON Format',
+        description:
+          error instanceof Error
+            ? error.message
+            : 'Failed to convert JSON to CSV',
+        color: 'error'
+      });
+    }
+  };
+
+  useSeoMeta({
+    title: 'JSON to CSV Converter: Convert JSON to CSV format'
+  });
+</script>
+
 <template>
   <div class="container">
     <div class="px-4 py-10 sm:px-6 sm:py-16 md:px-8 md:py-20">
@@ -28,41 +66,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const jsonInput = ref('');
-const csvOutput = ref<string>('');
-
-const toast = useToast();
-
-const runFunction = () => {
-  try {
-    if (!jsonInput.value.trim()) {
-      throw new Error('Please enter JSON input');
-    }
-
-    const result = convertJsonToCsv(jsonInput.value);
-    csvOutput.value = result ?? '';
-
-    toast.add({
-      title: 'Success',
-      description: 'JSON successfully converted to CSV',
-      color: 'success'
-    });
-  } catch (error) {
-    csvOutput.value = '';
-    toast.add({
-      title: 'Error: Incorrect JSON Format',
-      description:
-        error instanceof Error
-          ? error.message
-          : 'Failed to convert JSON to CSV',
-      color: 'error'
-    });
-  }
-};
-
-useSeoMeta({
-  title: 'JSON to CSV Converter: Convert JSON to CSV format'
-});
-</script>

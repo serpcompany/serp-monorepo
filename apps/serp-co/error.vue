@@ -1,3 +1,12 @@
+<script setup>
+  const error = useError();
+  const handleError = () => {
+    clearError({
+      redirect: '/'
+    });
+  };
+</script>
+
 <template>
   <NuxtLayout>
     <div class="mt-40 flex h-full flex-col items-center justify-center">
@@ -15,12 +24,3 @@
     </div>
   </NuxtLayout>
 </template>
-
-<script setup>
-const error = useError();
-const handleError = () => {
-  clearError({
-    redirect: '/'
-  });
-};
-</script>

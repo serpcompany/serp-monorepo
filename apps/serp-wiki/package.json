@@ -10,10 +10,12 @@
     "db:studio": "drizzle-kit studio",
     "dev": "infisical run -- nuxt dev",
     "dev:docker": "nuxt dev",
+    "eslint": "eslint . --fix",
     "format": "prettier -w .",
     "generate": "nuxt generate",
     "postinstall": "nuxt prepare",
     "lint": "prettier . --write && eslint . --fix",
+    "prettier": "prettier . --write",
     "preview": "nuxt preview",
     "server": "node .output/server/index.mjs"
   },

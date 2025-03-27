@@ -1,3 +1,30 @@
+<script setup lang="ts">
+  const router = useRouter();
+  const route = useRoute();
+
+  const page = ref(Number(route.query.page) || 1);
+  const limit = ref(Number(route.query.limit) || 50);
+
+  const songsData = await useSongs(page.value, limit.value);
+  if (!songsData) {
+    router.push('/404');
+  }
+
+  const artistsData = await useArtists(page.value, limit.value);
+  if (!artistsData) {
+    router.push('/404');
+  }
+
+  const albumsData = await useAlbums(page.value, limit.value);
+  if (!albumsData) {
+    router.push('/404');
+  }
+
+  useSeoMeta({
+    title: 'Home'
+  });
+</script>
+
 <template>
   <div>
     <!-- hero -->
@@ -31,30 +58,3 @@
     </main>
   </div>
 </template>
-
-<script setup lang="ts">
-const router = useRouter();
-const route = useRoute();
-
-const page = ref(Number(route.query.page) || 1);
-const limit = ref(Number(route.query.limit) || 50);
-
-const songsData = await useSongs(page.value, limit.value);
-if (!songsData) {
-  router.push('/404');
-}
-
-const artistsData = await useArtists(page.value, limit.value);
-if (!artistsData) {
-  router.push('/404');
-}
-
-const albumsData = await useAlbums(page.value, limit.value);
-if (!albumsData) {
-  router.push('/404');
-}
-
-useSeoMeta({
-  title: 'Home'
-});
-</script>

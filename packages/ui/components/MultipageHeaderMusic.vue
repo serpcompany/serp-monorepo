@@ -1,3 +1,31 @@
+<script setup lang="ts">
+  defineProps({
+    name: {
+      type: String,
+      required: true
+    },
+    oneLiner: {
+      type: String,
+      required: false
+    },
+    image: {
+      type: String,
+      required: false
+    },
+    sections: {
+      type: Array as () => string[],
+      required: true
+    },
+    serply_link: {
+      type: String,
+      required: true
+    }
+  });
+
+  const header = ref(null);
+  const isScrolled = ref(false);
+</script>
+
 <template>
   <div>
     <header
@@ -95,31 +123,3 @@
     </header>
   </div>
 </template>
-
-<script setup lang="ts">
-defineProps({
-  name: {
-    type: String,
-    required: true
-  },
-  oneLiner: {
-    type: String,
-    required: false
-  },
-  image: {
-    type: String,
-    required: false
-  },
-  sections: {
-    type: Array as () => string[],
-    required: true
-  },
-  serply_link: {
-    type: String,
-    required: true
-  }
-});
-
-const header = ref(null);
-const isScrolled = ref(false);
-</script>

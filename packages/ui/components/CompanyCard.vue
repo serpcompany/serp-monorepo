@@ -1,3 +1,53 @@
+<script setup lang="ts">
+  import type { Company } from '@serp/types/types';
+  import { computed, ref } from 'vue';
+
+  const props = defineProps({
+    company: {
+      type: Object as PropType<Company>,
+      required: true
+    },
+    showReadMore: {
+      type: Boolean,
+      default: false
+    },
+    showFeatures: {
+      type: Boolean,
+      default: false
+    },
+    showExpandedContent: {
+      type: Boolean,
+      default: false
+    },
+    baseSlug: {
+      type: String,
+      default: 'products/'
+    }
+  });
+
+  const isExpanded = ref(false);
+
+  const toggleExpanded = () => {
+    isExpanded.value = !isExpanded.value;
+  };
+
+  // Compute the main image, either the company logo or the first screenshot
+  const companyMainImage = computed(() => {
+    if (props.company.logo) {
+      return props.company.logo;
+    } else if (props.company.screenshots && props.company.screenshots.length) {
+      return props.company.screenshots[0];
+    } else {
+      return null;
+    }
+  });
+
+  // Determine whether the main image is a logo or a screenshot
+  const isLogo = computed(() => {
+    return props.company.logo && companyMainImage.value === props.company.logo;
+  });
+</script>
+
 <template>
   <div
     :class="[
@@ -181,71 +231,21 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import type { Company } from '@serp/types/types';
-import { computed, ref } from 'vue';
-
-const props = defineProps({
-  company: {
-    type: Object as PropType<Company>,
-    required: true
-  },
-  showReadMore: {
-    type: Boolean,
-    default: false
-  },
-  showFeatures: {
-    type: Boolean,
-    default: false
-  },
-  showExpandedContent: {
-    type: Boolean,
-    default: false
-  },
-  baseSlug: {
-    type: String,
-    default: 'products/'
-  }
-});
-
-const isExpanded = ref(false);
-
-const toggleExpanded = () => {
-  isExpanded.value = !isExpanded.value;
-};
-
-// Compute the main image, either the company logo or the first screenshot
-const companyMainImage = computed(() => {
-  if (props.company.logo) {
-    return props.company.logo;
-  } else if (props.company.screenshots && props.company.screenshots.length) {
-    return props.company.screenshots[0];
-  } else {
-    return null;
-  }
-});
-
-// Determine whether the main image is a logo or a screenshot
-const isLogo = computed(() => {
-  return props.company.logo && companyMainImage.value === props.company.logo;
-});
-</script>
-
 <style scoped>
-.upvote-btn :deep(button) {
-  font-size: 0.875rem;
-  padding: 0.5rem 1rem;
-  width: 100%;
-}
-.upvote-btn :deep(.flex) {
-  width: 100%;
-}
+  .upvote-btn :deep(button) {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    width: 100%;
+  }
+  .upvote-btn :deep(.flex) {
+    width: 100%;
+  }
 
-/* Override orange upvote color with blue */
-.upvote-btn :deep(.text-orange-500) {
-  color: var(--ui-color-secondary-500, #0969da) !important;
-}
-.upvote-btn :deep(.dark\:text-orange-400) {
-  color: var(--ui-color-secondary-400, #2f81f7) !important;
-}
+  /* Override orange upvote color with blue */
+  .upvote-btn :deep(.text-orange-500) {
+    color: var(--ui-color-secondary-500, #0969da) !important;
+  }
+  .upvote-btn :deep(.dark\:text-orange-400) {
+    color: var(--ui-color-secondary-400, #2f81f7) !important;
+  }
 </style>

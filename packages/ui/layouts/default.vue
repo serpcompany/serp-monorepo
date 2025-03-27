@@ -1,4 +1,25 @@
 <!-- layouts/default.vue -->
+<script lang="ts" setup>
+  import { useRoute } from 'vue-router';
+  import type { BreadcrumbItem } from '#ui/types';
+
+  const route = useRoute();
+  const items = useBreadcrumbItems({
+    schemaOrg: true,
+    overrides: [
+      undefined,
+      undefined,
+      {
+        label: Array.isArray(route.params.slug)
+          ? route.params.slug.join('')
+          : route.params.slug || '',
+        to: String(route.fullPath),
+        type: undefined
+      }
+    ]
+  }).value as BreadcrumbItem[];
+</script>
+
 <template>
   <UContainer>
     <SHeader />
@@ -15,24 +36,3 @@
     <LazySFooter />
   </UContainer>
 </template>
-
-<script lang="ts" setup>
-import { useRoute } from 'vue-router';
-import type { BreadcrumbItem } from '#ui/types';
-
-const route = useRoute();
-const items = useBreadcrumbItems({
-  schemaOrg: true,
-  overrides: [
-    undefined,
-    undefined,
-    {
-      label: Array.isArray(route.params.slug)
-        ? route.params.slug.join('')
-        : route.params.slug || '',
-      to: String(route.fullPath),
-      type: undefined
-    }
-  ]
-}).value as BreadcrumbItem[];
-</script>

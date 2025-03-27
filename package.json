@@ -3,8 +3,10 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "eslint": "turbo run eslint",
     "format": "prettier --write \"**/*.{ts,tsx,md,vue}\"",
     "lint": "turbo run lint",
+    "prettier": "turbo run prettier",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch"
   },

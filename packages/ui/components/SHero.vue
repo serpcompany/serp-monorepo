@@ -1,3 +1,19 @@
+<script setup lang="ts">
+  interface Props {
+    headline: string;
+    subheadline?: string;
+    showSearchBar?: boolean;
+    showButtons?: boolean;
+  }
+
+  withDefaults(defineProps<Props>(), {
+    headline: '',
+    subheadline: undefined,
+    showSearchBar: true,
+    showButtons: true
+  });
+</script>
+
 <template>
   <div>
     <div class="py-20">
@@ -41,19 +57,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-interface Props {
-  headline: string;
-  subheadline?: string;
-  showSearchBar?: boolean;
-  showButtons?: boolean;
-}
-
-withDefaults(defineProps<Props>(), {
-  headline: '',
-  subheadline: undefined,
-  showSearchBar: true,
-  showButtons: true
-});
-</script>

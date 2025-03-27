@@ -1,3 +1,39 @@
+<script setup lang="ts">
+  const sections = ['Overview', 'Songs'];
+  const route = useRoute();
+  const { slug } = route.params;
+  const album = await useAlbum(encodeURIComponent(slug));
+
+  const config = useRuntimeConfig();
+  const useAuth = config.public.useAuth;
+
+  // Get upvotes
+  const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
+    `/upvotes/${encodeURIComponent(album.slug)}?module=album`
+  )) || { upvotes: [] };
+
+  const genres = computed(() => {
+    return album?.genres ? album.genres.join(', ') : '';
+  });
+
+  const tags = computed(() => {
+    return album?.tags ? album.tags.join(', ') : '';
+  });
+
+  // Helper function to create a URL for the album
+  function getAlbumUrl(id: string) {
+    return `https://musicbrainz.org/release-group/${album.id}`;
+  }
+
+  const seoTitle = computed(() => album?.seoTitle);
+  const seoDescription = computed(() => album?.seoDescription);
+
+  useSeoMeta({
+    title: album.name + ' - Album',
+    description: seoDescription
+  });
+</script>
+
 <template>
   <div>
     <MultipageHeaderMusic
@@ -92,39 +128,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const sections = ['Overview', 'Songs'];
-const route = useRoute();
-const { slug } = route.params;
-const album = await useAlbum(encodeURIComponent(slug));
-
-const config = useRuntimeConfig();
-const useAuth = config.public.useAuth;
-
-// Get upvotes
-const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
-  `/upvotes/${encodeURIComponent(album.slug)}?module=album`
-)) || { upvotes: [] };
-
-const genres = computed(() => {
-  return album?.genres ? album.genres.join(', ') : '';
-});
-
-const tags = computed(() => {
-  return album?.tags ? album.tags.join(', ') : '';
-});
-
-// Helper function to create a URL for the album
-function getAlbumUrl(id: string) {
-  return `https://musicbrainz.org/release-group/${album.id}`;
-}
-
-const seoTitle = computed(() => album?.seoTitle);
-const seoDescription = computed(() => album?.seoDescription);
-
-useSeoMeta({
-  title: album.name + ' - Album',
-  description: seoDescription
-});
-</script>

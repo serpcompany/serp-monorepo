@@ -1,3 +1,10 @@
+<script setup lang="ts">
+  defineProps<{
+    characters: string[];
+    filteredCharacters: string[];
+  }>();
+</script>
+
 <template>
   <nav class="mx-auto flex justify-between overflow-x-scroll">
     <UButton
@@ -11,10 +18,3 @@
     </UButton>
   </nav>
 </template>
-
-<script setup lang="ts">
-defineProps<{
-  characters: string[];
-  filteredCharacters: string[];
-}>();
-</script>

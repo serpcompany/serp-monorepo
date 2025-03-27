@@ -1,3 +1,12 @@
+<script setup>
+  const config = useRuntimeConfig();
+  const url = config.public.siteUrl;
+
+  useSeoMeta({
+    ogImage: `${url}/og-image.png`
+  });
+</script>
+
 <template>
   <UApp>
     <NuxtLayout>
@@ -5,12 +14,3 @@
     </NuxtLayout>
   </UApp>
 </template>
-
-<script setup>
-const config = useRuntimeConfig();
-const url = config.public.siteUrl;
-
-useSeoMeta({
-  ogImage: `${url}/og-image.png`
-});
-</script>
