@@ -7,8 +7,8 @@
     "build": "nuxt build .playground",
     "eslint": "eslint . --fix",
     "generate": "nuxt generate .playground",
-    "lint": "prettier . --write && eslint . --fix",
-    "prettier": "prettier . --write",
+    "lint": "prettier . --write --log-level warn && eslint . --fix",
+    "prettier": "prettier . --write --log-level warn",
     "preview": "nuxt preview .playground",
     "test": "vitest --coverage --run",
     "test:watch": "vitest --coverage"
