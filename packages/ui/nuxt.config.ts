@@ -3,9 +3,6 @@ export default defineNuxtConfig({
   // devtools: { enabled: true },
   extends: [
     '@serp/types',
-    process.env.DEPLOY_FROM_CLOUDFLARE === 'true'
-      ? '@serp/utils-cloudflare-pages'
-      : '@serp/utils'
   ],
   modules: [
     '@nuxt/ui-pro',

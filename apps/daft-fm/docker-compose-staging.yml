@@ -11,6 +11,8 @@ services:
   daft-fm-app-staging:
     build:
       context: ../..
+      args:
+        - NUXT_UI_PRO_LICENSE=${NUXT_UI_PRO_LICENSE}
       dockerfile: ./apps/daft-fm/Dockerfile
     container_name: daft-fm-app-staging
     restart: unless-stopped
