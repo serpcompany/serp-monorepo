@@ -2,7 +2,6 @@ import { and, eq, sql } from 'drizzle-orm';
 import { getTableAndPKForModule } from '../../utils/getTableAndPKForModule';
 import { useDrizzle } from '../db';
 
- 
 export default defineEventHandler(async (event) => {
   try {
     // Authentication & basic validation
@@ -71,6 +70,6 @@ export default defineEventHandler(async (event) => {
     return { status: 200, message: 'success', id: commentIndex };
   } catch (error) {
     console.error(error);
-    return { status: 500, message: error.message };
+    return { status: 500, message: (error as Error).message };
   }
 });
