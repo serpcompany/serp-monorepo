@@ -1,9 +1,7 @@
 <script setup lang="ts">
   import type { Company } from '@serp/types/types';
 
-  const isLoaded = ref(false);
   const isPlaying = ref(false);
-  const video = ref();
 
   const props = defineProps<{
     data: Company;

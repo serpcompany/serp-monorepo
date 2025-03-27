@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 export default defineNuxtRouteMiddleware((to, from) => {
   if (to.path !== '/' && !to.path.endsWith('/') && !to.path.endsWith('.xml')) {
     const { path, query, hash } = to;

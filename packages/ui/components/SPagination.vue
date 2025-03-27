@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-mutating-props -->
 <script setup lang="ts">
-  const props = withDefaults(
+  withDefaults(
     defineProps<{
       totalItems: number;
       limit: number;
