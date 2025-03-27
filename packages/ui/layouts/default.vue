@@ -1,6 +1,6 @@
 <!-- layouts/default.vue -->
 <template>
-  <div class="container mx-auto">
+  <UContainer>
     <SHeader />
     <UBreadcrumb
       v-if="route.path !== '/' && !route.path.match(/^\/[^\/]+\/?$/)"
@@ -13,7 +13,7 @@
     />
     <slot></slot>
     <LazySFooter />
-  </div>
+  </UContainer>
 </template>
 
 <script lang="ts" setup>
