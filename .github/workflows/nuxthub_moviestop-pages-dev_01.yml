@@ -1,5 +1,11 @@
 name: Deploy moviestop.pages.dev to NuxtHub
-on: push
+
+on:
+  workflow_run:
+    workflows:
+      - ci_1
+    types:
+      - completed
 
 jobs:
   deploy:
