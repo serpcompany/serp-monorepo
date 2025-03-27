@@ -27,10 +27,6 @@
 
   const isExpanded = ref(false);
 
-  const toggleExpanded = () => {
-    isExpanded.value = !isExpanded.value;
-  };
-
   // Compute the main image, either the company logo or the first screenshot
   const companyMainImage = computed(() => {
     if (props.company.logo) {
@@ -40,11 +36,6 @@
     } else {
       return null;
     }
-  });
-
-  // Determine whether the main image is a logo or a screenshot
-  const isLogo = computed(() => {
-    return props.company.logo && companyMainImage.value === props.company.logo;
   });
 </script>
 

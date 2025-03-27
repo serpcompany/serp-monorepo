@@ -1,6 +1,7 @@
 import { useDrizzle } from '../../db';
 import { companyCache } from '../../db/schema';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
 export default defineEventHandler(async (event) => {
   const companies = await useDrizzle()
     .select({ slug: companyCache.slug })

@@ -1,7 +1,7 @@
+import type { Pagination } from '@serp/types/types';
+import { desc } from 'drizzle-orm';
 import { useDrizzle } from '../api/db';
 import { postCache, postCategoryCache, postIndexCache } from '../api/db/schema';
-import { desc } from 'drizzle-orm';
-import type { Pagination } from '@serp/types/types';
 
 const POSTS_PER_PAGE = 100;
 
@@ -77,13 +77,17 @@ export default defineTask({
           if (Array.isArray(post.categories)) return post.categories;
           // Try to parse as JSON if it's a string
           return JSON.parse(post.categories as string);
-        } catch (e) {
+        } catch (e: unknown) {
           // If parsing fails, it might be a comma-separated string or another format
           if (typeof post.categories === 'string') {
             // Try to handle as comma-separated
             return post.categories.split(',').map((cat) => cat.trim());
           }
-          console.warn('Could not parse categories for post:', post.title);
+          console.warn(
+            'Could not parse categories for post:',
+            post.title,
+            (e as Error).message
+          );
           return [];
         }
       };

@@ -1,8 +1,6 @@
 <script setup lang="ts">
   import type { Company } from '@serp/types/types';
 
-  const isPlaying = ref(false);
-
   const props = defineProps<{
     data: Company;
   }>();
@@ -34,10 +32,6 @@
 
     return sectionTitles;
   });
-
-  function stateChange(event: { data: number }) {
-    isPlaying.value = event.data === 1;
-  }
 </script>
 
 <template>
@@ -48,7 +42,7 @@
       :sections="sections"
       class="bg-background sticky top-0 z-10 transition-all duration-300"
       :image="data.logo"
-      :serply_link="data.serplyLink"
+      :serply-link="data.serplyLink"
     />
 
     <!-- Main content with grid -->

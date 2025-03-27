@@ -1,6 +1,6 @@
-import { eq, sql } from 'drizzle-orm';
 import { db } from '@serp/utils/server/api/db';
 import { getTableAndPKForModule } from '@serp/utils/server/utils/getTableAndPKForModule';
+import { sql } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
   try {

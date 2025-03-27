@@ -21,6 +21,7 @@ export default defineOAuthGoogleEventHandler({
     try {
       await handleOAuthSuccess(event, mapGoogleUser(user));
     } catch (error) {
+      console.error('GoogleOAuthUser:', (error as Error).message);
       throw createError({
         statusCode: 500,
         statusMessage: 'Authentication failed'

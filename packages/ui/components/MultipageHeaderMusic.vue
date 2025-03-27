@@ -16,7 +16,7 @@
       type: Array as () => string[],
       required: true
     },
-    serply_link: {
+    serplyLink: {
       type: String,
       required: true
     }
@@ -75,7 +75,7 @@
 
             <!-- visit website button -->
             <NuxtLink
-              :href="serply_link"
+              :href="serplyLink"
               target="_blank"
               class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"
             >

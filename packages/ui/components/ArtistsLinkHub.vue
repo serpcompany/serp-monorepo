@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import type { ArtistBase } from '@serp/types/types';
 
-  const props = defineProps({
+  defineProps({
     artists: {
       type: Array as () => ArtistBase[],
       required: true

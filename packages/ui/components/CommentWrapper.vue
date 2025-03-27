@@ -19,13 +19,6 @@
     parentIndices: { type: Array, default: () => [] }
   });
 
-  const localComment = computed(() => ({
-    content: filteredComment.value,
-    updatedAt: props.comment.updatedAt,
-    replies: [...props.comment.replies],
-    replyCount: props.comment.replyCount || 0
-  }));
-
   const localState = reactive({
     updatedAt: null,
     replies: [],

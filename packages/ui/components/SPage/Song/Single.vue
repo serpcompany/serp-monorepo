@@ -20,12 +20,6 @@
     return song?.tags ? song.tags.join(', ') : '';
   });
 
-  // Helper function to create a URL for the song
-  function getSongUrl(id: string) {
-    return `https://musicbrainz.org/recording/${song.id}`;
-  }
-
-  const seoTitle = computed(() => song?.seoTitle);
   const seoDescription = computed(() => song?.seoDescription);
 
   useSeoMeta({
@@ -40,7 +34,7 @@
       :name="song.name"
       :sections="sections"
       class="bg-background sticky top-0 z-10 transition-all duration-300"
-      serply_link="https://serp.ly/@daftfm/amazon/music/unlimited"
+      serply-link="https://serp.ly/@daftfm/amazon/music/unlimited"
     >
       <template #upvote>
         <UpvoteButton

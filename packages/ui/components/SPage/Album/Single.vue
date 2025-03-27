@@ -20,12 +20,6 @@
     return album?.tags ? album.tags.join(', ') : '';
   });
 
-  // Helper function to create a URL for the album
-  function getAlbumUrl(id: string) {
-    return `https://musicbrainz.org/release-group/${album.id}`;
-  }
-
-  const seoTitle = computed(() => album?.seoTitle);
   const seoDescription = computed(() => album?.seoDescription);
 
   useSeoMeta({
@@ -40,7 +34,7 @@
       :name="album.name"
       :sections="sections"
       class="bg-background sticky top-0 z-10 transition-all duration-300"
-      serply_link="https://serp.ly/@daftfm/amazon/music/unlimited"
+      serply-link="https://serp.ly/@daftfm/amazon/music/unlimited"
     >
       <template #upvote>
         <UpvoteButton

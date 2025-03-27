@@ -28,16 +28,8 @@
   const requestLoading = ref(false);
   const isExpanded = ref(false);
 
-  const styleShadow = computed(() => ({
-    // Remove the box-shadow
-  }));
-
   const displayedComments = computed(() =>
     comments.value.slice(0, limit.value)
-  );
-
-  const remainingLetter = computed(
-    () => parseInt(props.maxCommentLength) - newComment.value.length
   );
 
   const filterNewComment = computed(() => {
@@ -179,10 +171,6 @@
 
   function deleteComment(index) {
     comments.value.splice(index, 1);
-  }
-
-  function focusCommentBox() {
-    document.querySelector('textarea.addComment')?.focus();
   }
 
   onMounted(async () => {
@@ -358,17 +346,6 @@
           </div>
         </div>
       </div>
-      <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="`/login?redirectTo=${$route.fullPath}`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
       <TransitionGroup appear name="fade" tag="div">
         <CommentWrapper
           v-for="(item, index) in displayedComments"

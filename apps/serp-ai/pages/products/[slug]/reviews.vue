@@ -53,7 +53,7 @@
       :sections="sections"
       class="bg-background sticky top-0 z-10 transition-all duration-300"
       :image="data.logo"
-      :serply_link="data.serplyLink"
+      :serply-link="data.serplyLink"
     />
 
     <!-- Main content with grid -->

@@ -21,6 +21,7 @@ export default defineOAuthGitHubEventHandler({
     try {
       await handleOAuthSuccess(event, mapGitHubUser(user));
     } catch (error) {
+      console.error('GitHubOAuthUser:', (error as Error).message);
       throw createError({
         statusCode: 500,
         statusMessage: 'Authentication failed'
