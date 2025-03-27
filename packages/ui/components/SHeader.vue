@@ -5,7 +5,7 @@
         <!-- Logo on left -->
         <div class="flex items-center">
           <div class="flex-shrink-0">
-            <NuxtLink to="/" aria-label="home"><s-logo /></NuxtLink>
+            <NuxtLink to="/" aria-label="home"><SLogo /></NuxtLink>
           </div>
 
           <!-- Navigation for larger screens -->
@@ -64,7 +64,7 @@
 
           <!-- Color mode button on right for larger screens -->
           <div class="hidden items-center space-x-4 lg:flex">
-            <color-mode-button />
+            <ColorModeButton />
             <ProfileDropdown v-if="useAuth" />
           </div>
         </div>

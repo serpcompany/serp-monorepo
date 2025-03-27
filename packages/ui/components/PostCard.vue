@@ -19,7 +19,7 @@
     </p>
     <p v-if="post.excerpt" class="mb-8">{{ post.excerpt }}</p>
 
-    <s-pill
+    <SPill
       v-if="post.categories && post.categories.length"
       :base-slug="`${baseSlug}category`"
       :items="post.categories"

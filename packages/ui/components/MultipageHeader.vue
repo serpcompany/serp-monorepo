@@ -15,7 +15,7 @@
         <div class="flex flex-col items-center justify-between sm:flex-row">
           <!-- image -->
           <div class="flex w-full items-start justify-between">
-            <nuxt-img
+            <NuxtImg
               v-if="image"
               :src="image"
               :alt="`${name} logo`"

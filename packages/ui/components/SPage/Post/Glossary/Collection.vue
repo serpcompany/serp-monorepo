@@ -2,7 +2,7 @@
   <div>
     <section>
       <SectionHeroOne title="Glossary" />
-      <first-character-jump-link-nav
+      <FirstCharacterJumpLinkNav
         :characters="characters"
         :filtered-characters="filteredCharacters"
       />

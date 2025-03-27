@@ -176,7 +176,7 @@
             </div>
           </div>
         </div>
-        <transition-group appear name="fade" tag="div">
+        <TransitionGroup appear name="fade" tag="div">
           <CommentWrapper
             v-for="(reply, index) in displayedReplies"
             v-show="showReplies"
@@ -197,7 +197,7 @@
             @add-reply="$emit('add-reply', $event)"
             @delete-reply="$emit('delete-reply', $event)"
           />
-        </transition-group>
+        </TransitionGroup>
         <div
           v-if="limit < localState.replies.length && showReplies"
           class="update-limit"

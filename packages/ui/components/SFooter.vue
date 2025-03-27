@@ -45,7 +45,7 @@
                 class="mr-6"
                 target="_blank"
               >
-                <u-icon
+                <UIcon
                   :name="social.icon"
                   class="size-5 text-black dark:text-white"
                   aria-hidden="true"

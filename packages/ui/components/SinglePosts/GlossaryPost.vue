@@ -10,7 +10,7 @@
         </p>
       </div>
       <div class="col-span-1 pb-10">
-        <s-script-you-tube-player
+        <SScriptYouTubePlayer
           v-if="data.videoId"
           ref="video"
           :video-id="data.videoId"
@@ -30,11 +30,11 @@
               </svg>
             </div>
           </template>
-        </s-script-you-tube-player>
+        </SScriptYouTubePlayer>
       </div>
 
       <USeparator class="col-span-3 my-4">
-        <s-logo />
+        <SLogo />
       </USeparator>
 
       <!-- main section -->

@@ -2,14 +2,14 @@
   <div>
     <section class="mb-8">
       <SectionHeroOne :title="data.title" />
-      <s-pill base-slug="posts/category" :items="data.categories || []" />
+      <SPill base-slug="posts/category" :items="data.categories || []" />
     </section>
     <div class="items-end justify-between lg:flex">
       <div v-if="isValidAuthor">Author: {{ data.author }}</div>
       <div v-if="data?.createdAt">Published: {{ data.createdAt }}</div>
     </div>
     <USeparator class="my-4">
-      <s-logo />
+      <SLogo />
     </USeparator>
     <article class="prose dark:prose-invert" v-html="data.content"></article>
 

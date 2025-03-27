@@ -53,7 +53,7 @@
           <!-- FAQs Section -->
           <section v-if="faqItems && faqItems.length" id="faqs" class="mb-12">
             <h2 class="mb-4 scroll-mt-60 text-3xl font-bold">FAQ</h2>
-            <u-accordion type="multiple" :items="faqItems" />
+            <UAccordion type="multiple" :items="faqItems" />
           </section>
 
           <!-- Alternatives -->
@@ -90,7 +90,7 @@
           class="space-y-6 lg:col-span-1"
         >
           <!-- Left Column: Media Gallery -->
-          <media-gallery
+          <MediaGallery
             v-if="data.screenshots && data.screenshots.length"
             :company="data"
           />
@@ -100,7 +100,7 @@
             v-if="data.categories && data.categories.length"
             class="gap-2"
           >
-            <s-pill base-slug="products/best" :items="data.categories" />
+            <SPill base-slug="products/best" :items="data.categories" />
           </section>
         </aside>
       </div>

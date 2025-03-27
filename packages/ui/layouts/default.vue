@@ -1,8 +1,8 @@
 <!-- layouts/default.vue -->
 <template>
   <div class="container mx-auto">
-    <s-header />
-    <u-breadcrumb
+    <SHeader />
+    <UBreadcrumb
       v-if="route.path !== '/' && !route.path.match(/^\/[^\/]+\/?$/)"
       class="mx-auto mt-6 mb-2 max-w-7xl px-4 md:px-6 lg:px-8"
       :items="items"
@@ -12,7 +12,7 @@
       }"
     />
     <slot></slot>
-    <lazy-s-footer />
+    <LazySFooter />
   </div>
 </template>
 
