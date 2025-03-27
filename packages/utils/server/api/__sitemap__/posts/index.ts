@@ -1,8 +1,9 @@
+import { useDataCache } from '#nuxt-multi-cache/composables';
 import { db } from '@serp/utils/server/api/db';
 import { postCache } from '@serp/utils/server/api/db/schema';
-import { useDataCache } from '#nuxt-multi-cache/composables';
-import { eq, sql } from 'drizzle-orm';
+import { sql } from 'drizzle-orm';
 
+ 
 export default defineEventHandler(async (event) => {
   // Extract page and count from query parameters
   const { page, count = false } = getQuery(event);

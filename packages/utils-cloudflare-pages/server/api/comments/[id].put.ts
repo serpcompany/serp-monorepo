@@ -1,3 +1,4 @@
+import type { User } from '@serp/types/types/User';
 import { and, eq, sql } from 'drizzle-orm';
 import { getTableAndPKForModule } from '../../utils/getTableAndPKForModule';
 import { useDrizzle } from '../db';
@@ -6,7 +7,7 @@ export default defineEventHandler(async (event) => {
   try {
     // Authentication & basic validation
     const session = await requireUserSession(event);
-    const email = session.user?.email;
+    const email = (session.user as User)?.email;
     if (!email) return { status: 401, message: 'Unauthorized' };
 
     const { id } = getRouterParams(event);
@@ -32,7 +33,7 @@ export default defineEventHandler(async (event) => {
       finalPath = `$[${commentIndex}]`;
     } else {
       let jsonPath = '$';
-      parentIndices.forEach((idx) => {
+      parentIndices.forEach((idx: number) => {
         jsonPath += `[${idx}].replies`;
       });
       finalPath = `${jsonPath}[${commentIndex}]`;

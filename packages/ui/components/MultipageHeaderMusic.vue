@@ -6,11 +6,13 @@
     },
     oneLiner: {
       type: String,
-      required: false
+      required: false,
+      default: ''
     },
     image: {
       type: String,
-      required: false
+      required: false,
+      default: ''
     },
     sections: {
       type: Array as () => string[],

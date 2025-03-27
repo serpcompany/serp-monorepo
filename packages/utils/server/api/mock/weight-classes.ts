@@ -20,6 +20,7 @@ const predefinedWeightClasses: WeightClass[] = [
   { id: 17, name: 'Welterweight', slug: 'welterweight' }
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
 export default defineEventHandler(async (event) => {
   return predefinedWeightClasses;
 });
