@@ -9,7 +9,7 @@
       <template #upvote>
         <UpvoteButton
           v-if="useAuth"
-          :id="song.slug"
+          :id="encodeURIComponent(song.slug)"
           module="song"
           :upvotes="upvotes"
         />
@@ -73,14 +73,14 @@
 const sections = ['Lyrics'];
 const route = useRoute();
 const { slug } = route.params;
-const song = await useSong(slug);
+const song = await useSong(encodeURIComponent(slug));
 
 const config = useRuntimeConfig();
 const useAuth = config.public.useAuth;
 
 // Get upvotes
 const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
-  `/upvotes/${song.slug}?module=song`
+  `/upvotes/${encodeURIComponent(song.slug)}?module=song`
 )) || { upvotes: [] };
 
 const genres = computed(() => {

@@ -9,7 +9,7 @@
       <template #upvote>
         <UpvoteButton
           v-if="useAuth"
-          :id="artist.slug"
+          :id="encodeURIComponent(artist.slug)"
           module="artist"
           :upvotes="upvotes"
         />
@@ -33,7 +33,7 @@
                 <div class="flex">
                   <NuxtLink
                     aria-label="link to the album"
-                    :to="`/albums/${album.slug}/`"
+                    :to="`/albums/${encodeURIComponent(album.slug)}/`"
                   >
                     <div>
                       <LazyNuxtImg
@@ -52,7 +52,7 @@
                             {{ song.position }}.
                             <NuxtLink
                               v-if="song.has_lyrics"
-                              :to="`/songs/${song.slug}/`"
+                              :to="`/songs/${encodeURIComponent(song.slug)}/`"
                             >
                               {{ song.name }}
                             </NuxtLink>
@@ -111,14 +111,14 @@
 const sections = ['Overview', 'Albums', 'Songs'];
 const route = useRoute();
 const { slug } = route.params;
-const artist = await useArtist(slug);
+const artist = await useArtist(encodeURIComponent(slug));
 
 const config = useRuntimeConfig();
 const useAuth = config.public.useAuth;
 
 // Get upvotes
 const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
-  `/upvotes/${artist.slug}?module=artist`
+  `/upvotes/${encodeURIComponent(artist.slug)}?module=artist`
 )) || { upvotes: [] };
 
 const genres = computed(() => {
@@ -129,12 +129,6 @@ const tags = computed(() => {
   return artist?.tags ? artist.tags.join(', ') : '';
 });
 
-// Helper function to create a URL for the artist
-function getArtistUrl(name: string) {
-  return `https://musicbrainz.org/artist/${artist.id}`;
-}
-
-const seoTitle = computed(() => artist?.seoTitle);
 const seoDescription = computed(() => artist?.seoDescription);
 
 useSeoMeta({

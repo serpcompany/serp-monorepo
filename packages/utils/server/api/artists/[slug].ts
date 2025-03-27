@@ -1,11 +1,11 @@
+import { useDataCache } from '#nuxt-multi-cache/composables';
+import type { Artist } from '@serp/types/types';
 import { db } from '@serp/utils/server/api/db';
 import { mbArtistMetadataCache } from '@serp/utils/server/api/db/schema';
 import { eq } from 'drizzle-orm';
-import { useDataCache } from '#nuxt-multi-cache/composables';
-import type { Artist } from '@serp/types/types';
 
 export default defineEventHandler(async (event) => {
-  const slug = getRouterParam(event, 'slug');
+  const slug = decodeURIComponent(getRouterParam(event, 'slug'));
 
   if (!slug) {
     throw createError({

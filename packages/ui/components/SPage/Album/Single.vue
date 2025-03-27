@@ -9,7 +9,7 @@
       <template #upvote>
         <UpvoteButton
           v-if="useAuth"
-          :id="album.slug"
+          :id="encodeURIComponent(album.slug)"
           module="album"
           :upvotes="upvotes"
         />
@@ -38,7 +38,7 @@
                   <span class="w-6">{{ song.position }}</span>
                   <NuxtLink
                     v-if="song.has_lyrics"
-                    :to="`/songs/${song.slug}/`"
+                    :to="`/songs/${encodeURIComponent(song.slug)}/`"
                     >{{ song.name }}</NuxtLink
                   >
                   <span v-else>{{ song.name }}</span>
@@ -97,14 +97,14 @@
 const sections = ['Overview', 'Songs'];
 const route = useRoute();
 const { slug } = route.params;
-const album = await useAlbum(slug);
+const album = await useAlbum(encodeURIComponent(slug));
 
 const config = useRuntimeConfig();
 const useAuth = config.public.useAuth;
 
 // Get upvotes
 const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
-  `/upvotes/${album.slug}?module=album`
+  `/upvotes/${encodeURIComponent(album.slug)}?module=album`
 )) || { upvotes: [] };
 
 const genres = computed(() => {

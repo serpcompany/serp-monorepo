@@ -39,11 +39,13 @@ export function combineCsvs(files: FileList): Promise<string> {
           filesProcessed++;
 
           if (filesProcessed === files.length) {
-            const csv = Object.keys(combinedData[0])
-              .join(',') +
+            const csv =
+              Object.keys(combinedData[0]).join(',') +
               '\n' +
               combinedData
-                .map((row: Record<string, unknown>) => Object.values(row).join(','))
+                .map((row: Record<string, unknown>) =>
+                  Object.values(row).join(',')
+                )
                 .join('\n');
             resolve(csv);
           }

@@ -4,7 +4,10 @@
   >
     <div v-for="artist in artists" :key="artist.slug">
       <span>
-        <NuxtLink :to="`/artists/${artist.slug}/`" aria-label="artist name">
+        <NuxtLink
+          :to="`/artists/${encodeURIComponent(artist.slug)}/`"
+          aria-label="artist name"
+        >
           {{ artist.name }}
         </NuxtLink>
       </span>

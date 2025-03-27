@@ -1,8 +1,8 @@
+import { useDataCache } from '#nuxt-multi-cache/composables';
+import type { Recording } from '@serp/types/types';
 import { db } from '@serp/utils/server/api/db';
 import { mbMetadataCache } from '@serp/utils/server/api/db/schema';
 import { eq } from 'drizzle-orm';
-import { useDataCache } from '#nuxt-multi-cache/composables';
-import type { Recording } from '@serp/types/types';
 
 const postProcessLyrics = (lyrics: string) => {
   if (!lyrics) return null;
@@ -14,7 +14,7 @@ const postProcessLyrics = (lyrics: string) => {
 };
 
 export default defineEventHandler(async (event) => {
-  const slug = getRouterParam(event, 'slug');
+  const slug = decodeURIComponent(getRouterParam(event, 'slug'));
 
   if (!slug) {
     throw createError({

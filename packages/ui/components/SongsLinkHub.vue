@@ -1,7 +1,10 @@
 <template>
   <div class="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-2">
     <div v-for="song in songs" :key="song.slug">
-      <NuxtLink :to="`/songs/${song.slug}/`" aria-label="song name">
+      <NuxtLink
+        :to="`/songs/${encodeURIComponent(song.slug)}/`"
+        aria-label="song name"
+      >
         {{ song.name }} -
         <span v-for="artist in song.artists" :key="artist.slug">
           {{ artist.credit_name }}
