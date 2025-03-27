@@ -106,7 +106,7 @@
               <div>
                 <span>Genres: {{ genres }}</span>
               </div>
-              <br />
+              <br >
               <div v-if="tags">
                 <span>Tags: {{ tags }}</span>
               </div>
