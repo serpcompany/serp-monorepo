@@ -1,6 +1,6 @@
+import { eq } from 'drizzle-orm';
 import { useDrizzle } from '../db';
 import { postIndexCache } from '../db/schema';
-import { eq } from 'drizzle-orm';
 
 import type { PostIndex } from '@serp/types/types';
 
@@ -24,6 +24,7 @@ const formatDate = (
     }
     return dateString;
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(`Error formatting date: ${error.message}`);
     return dateString;
   }
@@ -80,6 +81,7 @@ export default defineEventHandler(async (event) => {
         }
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error(
         `Error parsing categories for post ${post.id}: ${error.message}`
       );

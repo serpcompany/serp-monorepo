@@ -2,10 +2,10 @@
   const { loggedIn, user } = useUserSession();
 
   const props = defineProps({
-    module: String,
-    id: Number,
-    comment: Object,
-    currentIndex: Number,
+    module: { type: String, default: '' },
+    id: { type: Number, default: null },
+    comment: { type: Object, default: () => ({}) },
+    currentIndex: { type: Number, default: 0 },
     initialMessageLimit: { type: String, default: '10' },
     maxLineLimit: { type: String, default: '40' },
     maxShowingDepth: { type: String, default: '5' },
@@ -14,7 +14,7 @@
     commentBackgroundColor: { type: String, default: 'white' },
     commentTextColor: { type: String, default: '#1d2129' },
     userNameColor: { type: String, default: 'rgb(6, 177, 183)' },
-    wrapperSize: String,
+    wrapperSize: { type: String, default: 'medium' },
     parentIds: { type: Array, default: () => [] },
     parentIndices: { type: Array, default: () => [] }
   });
@@ -616,11 +616,11 @@
         </div>
         <TransitionGroup appear name="fade" tag="div">
           <CommentWrapper
-            v-for="(reply, index) in displayedReplies"
+            v-for="(replyItem, index) in displayedReplies"
             v-show="showReplies"
             :id="id"
-            :key="reply.id"
-            :comment="reply"
+            :key="replyItem.id"
+            :comment="replyItem"
             :comment-background-color="commentBackgroundColor"
             :comment-text-color="commentTextColor"
             :user-name-color="userNameColor"
@@ -629,7 +629,7 @@
             :module="props.module"
             :parent-ids="[...parentIds, comment.id]"
             :parent-indices="[...parentIndices, currentIndex]"
-            :current-index="getIndex(reply.id)"
+            :current-index="getIndex(replyItem.id)"
             @delete-row="deleteReply(index)"
             @update-comment="$emit('update-comment', $event)"
             @add-reply="$emit('add-reply', $event)"

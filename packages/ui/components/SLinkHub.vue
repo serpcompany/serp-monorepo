@@ -11,7 +11,8 @@
       default: null
     },
     baseSlug: {
-      type: String
+      type: String,
+      default: ''
     }
   });
 </script>

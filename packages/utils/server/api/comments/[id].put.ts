@@ -113,6 +113,7 @@ export default defineEventHandler(async (event) => {
 
     return { status: 200, message: 'success', id: commentId };
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error);
     return { status: 500, message: error.message };
   }

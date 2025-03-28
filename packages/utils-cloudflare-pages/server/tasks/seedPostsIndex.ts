@@ -12,6 +12,7 @@ export default defineTask({
   },
   async run() {
     try {
+      // eslint-disable-next-line no-console
       console.log('Running DB seed posts index task...');
       const db = useDrizzle();
 
@@ -83,6 +84,7 @@ export default defineTask({
             // Try to handle as comma-separated
             return post.categories.split(',').map((cat) => cat.trim());
           }
+          // eslint-disable-next-line no-console
           console.warn(
             'Could not parse categories for post:',
             post.title,
@@ -227,9 +229,11 @@ export default defineTask({
         }
       }
 
+      // eslint-disable-next-line no-console
       console.log('Post index seeding completed');
       return { success: true };
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Error seeding post index:', error);
       throw error;
     }

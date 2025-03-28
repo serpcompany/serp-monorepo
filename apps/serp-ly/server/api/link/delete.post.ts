@@ -40,6 +40,7 @@ export default defineEventHandler(async (event) => {
       message: 'Link deleted successfully'
     };
   } catch (error: unknown) {
+    // eslint-disable-next-line no-console
     console.error('Error deleting link:', error);
     throw createError({
       status: 500,

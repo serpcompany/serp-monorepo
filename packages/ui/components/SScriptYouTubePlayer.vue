@@ -22,7 +22,9 @@
       // @ts-expect-error untyped 10 chars or longer
       playerVars: { autoplay: 0, playsinline: 1 },
       width: 640,
-      height: 360
+      height: 360,
+      placeholderAttrs: () => ({}),
+      rootAttrs: () => ({})
     }
   );
 
@@ -191,7 +193,7 @@
       style="width: 100%; height: 100%; position: absolute; top: 0; left: 0"
     ></div>
     <slot v-if="!ready" :placeholder="placeholder" name="placeholder">
-      <img v-bind="placeholderAttrs" />
+      <img v-bind="placeholderAttrs" >
     </slot>
     <slot v-if="status === 'loading'" name="loading">
       <ScriptLoadingIndicator />

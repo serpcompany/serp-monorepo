@@ -58,6 +58,7 @@
 
       <!-- main section -->
       <div class="prose dark:prose-invert col-span-2">
+        <!-- eslint-disable-next-line vue/no-v-html -->
         <article v-html="data.content"></article>
         <div v-if="data.relatedPosts && data.relatedPosts.length === 0">
           <h2>Related Posts</h2>

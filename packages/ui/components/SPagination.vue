@@ -13,7 +13,7 @@
     }
   );
 
-  const page = defineModel();
+  const page = defineModel<number>();
 </script>
 
 <template>

@@ -21,6 +21,7 @@ export default defineOAuthGoogleEventHandler({
     try {
       await handleOAuthSuccess(event, mapGoogleUser(user));
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('GoogleOAuthUser:', (error as Error).message);
 
       throw createError({

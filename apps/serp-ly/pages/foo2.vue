@@ -80,6 +80,7 @@
   const isEditing = computed(() => !!editLinkData.value.originalSlug);
 
   function openEditCard(link: Link) {
+    // eslint-disable-next-line no-console
     console.log('Edit clicked for link:', link);
     // Copy link data into the edit form and store the original slug for reference
     editLinkData.value = { ...link, originalSlug: link.slug };

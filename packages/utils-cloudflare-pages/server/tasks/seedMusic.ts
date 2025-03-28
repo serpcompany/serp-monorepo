@@ -1,8 +1,8 @@
 import { useDrizzle } from '../api/db';
 import {
+  mbArtistMetadataCache,
   mbMetadataCache,
-  mbReleaseGroupCache,
-  mbArtistMetadataCache
+  mbReleaseGroupCache
 } from '../api/db/schema';
 
 export default defineTask({
@@ -12,6 +12,7 @@ export default defineTask({
       'Seed the database with sample music metadata, release groups, and artist metadata'
   },
   async run() {
+    // eslint-disable-next-line no-console
     console.log('Running DB seed task for Music...');
 
     const metadata = [

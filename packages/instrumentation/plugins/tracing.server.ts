@@ -1,10 +1,10 @@
 // plugins/tracing.server.ts
-import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node';
-import { SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
-import { Resource } from '@opentelemetry/resources';
+import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
-import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
+import { Resource } from '@opentelemetry/resources';
+import { SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
+import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node';
 // import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
 
 export default defineNuxtPlugin(() => {
@@ -41,12 +41,4 @@ export default defineNuxtPlugin(() => {
       })
     ]
   });
-
-  // registerInstrumentations({
-  //     instrumentations: [
-  //         new HttpInstrumentation(),
-  //     ],
-  // });
-
-  console.log('Server-side tracing service started');
 });

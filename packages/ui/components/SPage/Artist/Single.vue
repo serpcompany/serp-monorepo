@@ -54,6 +54,7 @@
           <div>
             <!-- section: overview -->
             <h2 id="overview" class="scroll-mt-60">About {{ artist.name }}</h2>
+            <!-- eslint-disable-next-line vue/no-v-html-->
             <div class="prose dark:prose-invert" v-html="artist.overview"></div>
 
             <h2 id="albums" class="scroll-mt-60">{{ artist.name }} Albums</h2>
@@ -125,7 +126,7 @@
               <div>
                 <span>Genres: {{ genres }}</span>
               </div>
-              <br />
+              <br >
               <div>
                 <span>Tags: {{ tags }}</span>
               </div>

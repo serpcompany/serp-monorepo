@@ -62,7 +62,7 @@ export default defineEventHandler(async (event) => {
       email
     );
 
-    const result = await useDrizzle()
+    await useDrizzle()
       .update(table)
       .set({ comments: sql.raw(updateExpr) })
       .where(and(eq(field, id), emailCondition))
@@ -70,6 +70,7 @@ export default defineEventHandler(async (event) => {
 
     return { status: 200, message: 'success', id: commentIndex };
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error);
     return { status: 500, message: (error as Error).message };
   }

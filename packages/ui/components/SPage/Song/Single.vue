@@ -56,6 +56,7 @@
             <h2 id="lyrics" class="flex scroll-mt-60 flex-row">
               {{ song.name }} Lyrics
             </h2>
+            <!-- eslint-disable-next-line vue/no-v-html -->
             <div v-html="song.lyrics"></div>
           </div>
         </div>
@@ -76,7 +77,7 @@
               <div v-if="genres">
                 <span>Genres: {{ genres }}</span>
               </div>
-              <br />
+              <br >
               <div v-if="tags">
                 <span>Tags: {{ tags }}</span>
               </div>

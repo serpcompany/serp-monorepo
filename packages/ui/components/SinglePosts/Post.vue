@@ -27,6 +27,7 @@
     <USeparator class="my-4">
       <SLogo />
     </USeparator>
+    <!-- eslint-disable-next-line vue/no-v-html-->
     <article class="prose dark:prose-invert" v-html="data.content"></article>
 
     <!-- Comments Section -->
