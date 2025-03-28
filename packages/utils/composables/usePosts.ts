@@ -4,9 +4,10 @@ export const usePosts = async (
   page = 1,
   limit = 50,
   categorySlug = '',
-  module = ''
+  module = '',
+  randomize = false
 ) => {
   return useFetchWithCache<Posts>(
-    `/posts?page=${page}&limit=${limit}&categorySlug=${categorySlug}&module=${module}`
+    `/posts?page=${page}&limit=${limit}&categorySlug=${categorySlug}&module=${module}&randomize=${randomize}`
   );
 };

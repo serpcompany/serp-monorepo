@@ -17,10 +17,8 @@
 </script>
 
 <template>
-  <div>
-    <main>
-      <SinglePostsGlossaryPost v-if="data.module === 'Glossary'" :data="data" />
-      <SinglePostsPost v-else :data="data" />
-    </main>
-  </div>
+  <UMain>
+    <SinglePostsGlossaryPost v-if="data.module === 'Glossary'" :data="data" />
+    <SinglePostsPost v-else :data="data" :module="computedModule" />
+  </UMain>
 </template>

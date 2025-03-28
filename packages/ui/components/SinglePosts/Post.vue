@@ -6,6 +6,7 @@
 
   const props = defineProps<{
     data: Post;
+    module: string;
   }>();
 
   const isValidAuthor =
@@ -15,7 +16,7 @@
 </script>
 
 <template>
-  <div>
+  <UMain>
     <section class="mb-8">
       <SectionHeroOne :title="data.title" />
       <SPill base-slug="posts/category" :items="data.categories || []" />
@@ -30,6 +31,11 @@
     <!-- eslint-disable-next-line vue/no-v-html-->
     <article class="prose dark:prose-invert" v-html="data.content"></article>
 
+    <!-- link hub for other posts -->
+    <UPageSection v-if="module === 'movies'" title="More Posts">
+      <LazyMoviePostLinkHub />
+    </UPageSection>
+
     <!-- Comments Section -->
     <div v-if="useAuth" class="mt-10">
       <h2 class="mb-4 text-2xl font-bold">Comments</h2>
@@ -40,7 +46,7 @@
         class="comments-github-style"
       />
     </div>
-  </div>
+  </UMain>
 </template>
 
 <style>
