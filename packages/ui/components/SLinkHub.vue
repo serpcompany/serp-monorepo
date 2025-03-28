@@ -18,7 +18,7 @@
 </script>
 
 <template>
-  <section>
+  <section v-if="baseSlug">
     <div class="mx-auto">
       <div class="pt-12">
         <div>
@@ -37,6 +37,7 @@
           class="border-t"
         >
           <NuxtLink
+            v-if="category.slug"
             :to="`/${baseSlug}/${category.slug}/`"
             class="mt-3 flex font-medium"
           >

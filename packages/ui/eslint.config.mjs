@@ -8,6 +8,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Create base config first
 const baseConfig = createConfig({
+  quiet: false,
+  additionalRules: {},
   additionalIgnores: [],
   baseDirectory: __dirname
 });
