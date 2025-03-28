@@ -17,5 +17,9 @@ export default defineNuxtConfig({
   },
   uiPro: {
     license: process.env.NUXT_UI_PRO_LICENSE
+  },
+  typescript: {
+    typeCheck: false,
+    shim: false
   }
 });
