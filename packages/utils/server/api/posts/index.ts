@@ -1,13 +1,19 @@
+import { useDataCache } from '#nuxt-multi-cache/composables';
 import { db } from '@serp/utils/server/api/db';
 import { postCache } from '@serp/utils/server/api/db/schema';
-import { sql, eq, and } from 'drizzle-orm';
-import { useDataCache } from '#nuxt-multi-cache/composables';
+import { and, eq, sql } from 'drizzle-orm';
 
-import type { PostIndex, Pagination } from '@serp/types/types';
+import type { Pagination, PostIndex } from '@serp/types/types';
 
 export default defineEventHandler(async (event) => {
-  const { page = 1, limit = 100, categorySlug, module = '' } = getQuery(event);
-  const cacheKey = `posts-${categorySlug}-${page}-${limit}-${module}`;
+  const {
+    page = 1,
+    limit = 100,
+    categorySlug,
+    module = '',
+    randomize = false
+  } = getQuery(event);
+  const cacheKey = `posts-${categorySlug}-${page}-${limit}-${module}-${randomize}`;
   const { value, addToCache } = await useDataCache(cacheKey, event);
   if (value) {
     return value;
@@ -64,10 +70,12 @@ export default defineEventHandler(async (event) => {
     whereConditions.push(eq(postCache.module, module));
   }
 
-  baseQuery = baseQuery
-    .orderBy(postCache.title)
-    .limit(limitNumber)
-    .offset(offset);
+  if (randomize === 'true') {
+    baseQuery = baseQuery.orderBy(sql`RANDOM()`);
+  } else {
+    baseQuery = baseQuery.orderBy(postCache.title);
+  }
+  baseQuery = baseQuery.limit(limitNumber).offset(offset);
 
   let totalQuery = db.select({ count: sql<number>`count(*)` }).from(postCache);
 

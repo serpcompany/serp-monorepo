@@ -1,7 +1,7 @@
+import type { Link } from '@serp/types/types/Link';
 import { useDrizzle } from '@serp/utils-cloudflare-pages/server/api/db';
 import { shortLinks } from '@serp/utils-cloudflare-pages/server/api/db/schema';
-import { sql, eq } from 'drizzle-orm';
-import type { Link } from '@serp/types/types/Link';
+import { eq, sql } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
   const session = await requireUserSession(event);
@@ -59,6 +59,7 @@ export default defineEventHandler(async (event) => {
 
     return { status: 200, message: 'Link updated successfully', link };
   } catch (error: unknown) {
+    // eslint-disable-next-line no-console
     console.error('Error updating link:', error);
     throw createError({
       status: 500,

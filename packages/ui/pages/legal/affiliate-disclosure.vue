@@ -1,3 +1,14 @@
+<script setup lang="ts">
+  const config = useRuntimeConfig();
+  const domain = config.public.domain;
+
+  useSeoMeta({
+    title: 'Affiliate Disclosure',
+    description:
+      'Details about our affiliate partnerships and how they impact content on this site.'
+  });
+</script>
+
 <template>
   <div class="prose dark:prose-invert container my-20">
     <h1>Affiliate Disclosure</h1>
@@ -31,14 +42,3 @@
     </p>
   </div>
 </template>
-
-<script setup lang="ts">
-const config = useRuntimeConfig();
-const domain = config.public.domain;
-
-useSeoMeta({
-  title: 'Affiliate Disclosure',
-  description:
-    'Details about our affiliate partnerships and how they impact content on this site.'
-});
-</script>

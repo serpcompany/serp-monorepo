@@ -1,3 +1,54 @@
+<script setup lang="ts">
+  const props = defineProps<{
+    module?: string;
+    moduleTitle?: string;
+    baseSlug?: string;
+    seoTitle?: string;
+    useGrid?: boolean;
+    noCategories?: boolean;
+    useCategories?: boolean;
+  }>();
+
+  const router = useRouter();
+  const route = useRoute();
+
+  const page = ref(Number(route.query.page) || 1);
+  const limit = ref(Number(route.query.limit) || 50);
+
+  const computedUseCategories = computed(() => props.useCategories);
+  const computedModule = computed(() => props.module);
+  const computedSeoTitle = computed(() => props.seoTitle);
+
+  const categories = computedUseCategories.value
+    ? await usePostCategories()
+    : null;
+
+  let data = await usePosts(page.value, limit.value, '', computedModule.value);
+  if (!data) {
+    router.push('/404');
+  }
+
+  watch([page, limit], async ([newPage, newLimit]) => {
+    const query = { ...route.query };
+    if (newPage !== 1) {
+      query.page = String(newPage);
+    } else {
+      delete query.page;
+    }
+    if (newLimit !== 50) {
+      query.limit = String(newLimit);
+    } else {
+      delete query.limit;
+    }
+    data = await usePosts(page.value, limit.value, '', computedModule.value);
+    router.push({ query });
+  });
+
+  useSeoMeta({
+    title: () => computedSeoTitle.value || 'Posts'
+  });
+</script>
+
 <template>
   <div>
     <SectionHeroOne :title="props.moduleTitle || 'Posts'" />
@@ -37,54 +88,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const props = defineProps<{
-  module?: string;
-  moduleTitle?: string;
-  baseSlug?: string;
-  seoTitle?: string;
-  useGrid?: boolean;
-  noCategories?: boolean;
-  useCategories?: boolean;
-}>();
-
-const router = useRouter();
-const route = useRoute();
-
-const page = ref(Number(route.query.page) || 1);
-const limit = ref(Number(route.query.limit) || 50);
-
-const computedUseCategories = computed(() => props.useCategories);
-const computedModule = computed(() => props.module);
-const computedSeoTitle = computed(() => props.seoTitle);
-
-const categories = computedUseCategories.value
-  ? await usePostCategories()
-  : null;
-
-let data = await usePosts(page.value, limit.value, '', computedModule.value);
-if (!data) {
-  router.push('/404');
-}
-
-watch([page, limit], async ([newPage, newLimit]) => {
-  const query = { ...route.query };
-  if (newPage !== 1) {
-    query.page = String(newPage);
-  } else {
-    delete query.page;
-  }
-  if (newLimit !== 50) {
-    query.limit = String(newLimit);
-  } else {
-    delete query.limit;
-  }
-  data = await usePosts(page.value, limit.value, '', computedModule.value);
-  router.push({ query });
-});
-
-useSeoMeta({
-  title: () => computedSeoTitle.value || 'Posts'
-});
-</script>

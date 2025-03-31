@@ -1,3 +1,14 @@
+<script setup lang="ts">
+  const config = useRuntimeConfig();
+  const domain = config.public.domain;
+  const siteName = config.public.siteName;
+
+  useSeoMeta({
+    title: 'Privacy Policy',
+    description: 'Information on how we collect, use, and protect your data.'
+  });
+</script>
+
 <template>
   <div class="prose dark:prose-invert container my-20">
     <h1>Privacy Policy</h1>
@@ -148,14 +159,3 @@
     <p>If you have any questions about these terms, please contact us.</p>
   </div>
 </template>
-
-<script setup lang="ts">
-const config = useRuntimeConfig();
-const domain = config.public.domain;
-const siteName = config.public.siteName;
-
-useSeoMeta({
-  title: 'Privacy Policy',
-  description: 'Information on how we collect, use, and protect your data.'
-});
-</script>

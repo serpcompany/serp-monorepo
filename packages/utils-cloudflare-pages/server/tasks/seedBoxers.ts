@@ -7,6 +7,7 @@ export default defineTask({
     description: 'Seed the database with sample boxers and weight classes'
   },
   async run() {
+    // eslint-disable-next-line no-console
     console.log('Running DB seed task for Boxers...');
 
     const boxers = [

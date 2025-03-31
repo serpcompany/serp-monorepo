@@ -1,7 +1,6 @@
 import { mockNuxtImport, renderSuspended } from '@nuxt/test-utils/runtime';
 import { screen } from '@testing-library/vue';
-import userEvent from '@testing-library/user-event';
-import { describe, it, expect, beforeEach } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 import ColorModeButton from '~/components/ColorModeButton.vue';
 

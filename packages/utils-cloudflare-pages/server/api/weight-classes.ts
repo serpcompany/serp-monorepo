@@ -1,7 +1,8 @@
+import type { WeightClass } from '@serp/types/types';
 import { useDrizzle } from './db';
 import { weightClassCache } from './db/schema';
-import type { WeightClass } from '@serp/types/types';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
 export default defineEventHandler(async (event) => {
   const query = useDrizzle().select().from(weightClassCache);
 

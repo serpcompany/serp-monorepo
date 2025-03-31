@@ -1,12 +1,3 @@
 {
-  "extends": "@serp/configs-tsconfig/tsconfig.dom.json",
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "jsx": "preserve",
-    "types": ["node"]
-  },
-  "include": ["./**/*.ts", "./**/*.vue"],
-  "exclude": ["node_modules", "dist"]
+  "extends": ["@serp/configs/tsconfig", "./.playground/.nuxt/tsconfig.json"]
 }

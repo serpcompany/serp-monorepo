@@ -1,8 +1,8 @@
+import type { Link } from '@serp/types/types/Link';
 import { useDrizzle } from '@serp/utils-cloudflare-pages/server/api/db';
 import { shortLinks } from '@serp/utils-cloudflare-pages/server/api/db/schema';
 import { sql } from 'drizzle-orm';
 import { nanoid } from 'nanoid';
-import type { Link } from '@serp/types/types/Link';
 
 export default defineEventHandler(async (event) => {
   const session = await requireUserSession(event);
@@ -74,6 +74,7 @@ export default defineEventHandler(async (event) => {
       throw error;
     }
 
+    // eslint-disable-next-line no-console
     console.error('Error creating link:', error);
     throw createError({
       status: 500,

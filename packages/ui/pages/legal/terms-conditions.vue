@@ -1,3 +1,14 @@
+<script setup lang="ts">
+  const config = useRuntimeConfig();
+  const domain = config.public.domain;
+  const siteName = config.public.siteName;
+
+  useSeoMeta({
+    title: 'Terms & Conditions',
+    description: 'Rules and guidelines for using this website and its services.'
+  });
+</script>
+
 <template>
   <div class="prose dark:prose-invert container my-20">
     <h1>Terms & Conditions</h1>
@@ -144,14 +155,3 @@
     <p>If you have any questions about these terms, please contact us.</p>
   </div>
 </template>
-
-<script setup lang="ts">
-const config = useRuntimeConfig();
-const domain = config.public.domain;
-const siteName = config.public.siteName;
-
-useSeoMeta({
-  title: 'Terms & Conditions',
-  description: 'Rules and guidelines for using this website and its services.'
-});
-</script>

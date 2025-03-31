@@ -1,6 +1,6 @@
 import { eq, sql } from 'drizzle-orm';
-import { useDrizzle } from '../db';
 import { getTableAndPKForModule } from '../../utils/getTableAndPKForModule';
+import { useDrizzle } from '../db';
 
 export default defineEventHandler(async (event) => {
   try {
@@ -82,6 +82,7 @@ export default defineEventHandler(async (event) => {
 
     return { status: 200, message: 'success', id: newCommentId };
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error);
     return { status: 500, message: error.message };
   }

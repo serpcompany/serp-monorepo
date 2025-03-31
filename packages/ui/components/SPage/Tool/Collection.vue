@@ -1,3 +1,10 @@
+<script setup lang="ts">
+  useSeoMeta({
+    title:
+      'Free online tools and apps for combining, converting, compressing & convenience.'
+  });
+</script>
+
 <template>
   <div class="container">
     <div class="px-4 py-10 sm:px-6 sm:py-16 md:px-8 md:py-20">
@@ -63,10 +70,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-useSeoMeta({
-  title:
-    'Free online tools and apps for combining, converting, compressing & convenience.'
-});
-</script>

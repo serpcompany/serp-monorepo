@@ -1,3 +1,11 @@
+<script setup lang="ts">
+  import type { Company } from '@serp/types/types';
+
+  defineProps<{
+    company: Company;
+  }>();
+</script>
+
 <template>
   <section class="flex w-full flex-col gap-2 md:max-w-[444px]">
     <div class="aspect-video">
@@ -15,7 +23,7 @@
     <div class="grid grid-cols-4 gap-2">
       <div v-for="screenshot in company?.screenshots" :key="screenshot">
         <div class="flex h-full w-full items-center justify-center">
-          <nuxt-img
+          <NuxtImg
             :src="screenshot"
             :alt="`${company.name} screenshots`"
             class="h-full w-full object-contain"
@@ -25,11 +33,3 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import type { Company } from '@serp/types/types';
-
-defineProps<{
-  company: Company;
-}>();
-</script>

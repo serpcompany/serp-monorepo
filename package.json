@@ -3,9 +3,11 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "eslint": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run eslint",
     "format": "prettier --write \"**/*.{ts,tsx,md,vue}\"",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
+    "lint": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run lint",
+    "prettier": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run prettier",
+    "test": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run test",
     "test:watch": "turbo run test:watch"
   },
   "devDependencies": {

@@ -1,3 +1,15 @@
+<script setup>
+  const config = useRuntimeConfig();
+  const headerNavItems = config.public.headerNavItems;
+  const useAuth = config.public.useAuth;
+
+  const mobileMenuOpen = ref(false);
+
+  const toggleMobileMenu = () => {
+    mobileMenuOpen.value = !mobileMenuOpen.value;
+  };
+</script>
+
 <template>
   <header>
     <div>
@@ -5,7 +17,7 @@
         <!-- Logo on left -->
         <div class="flex items-center">
           <div class="flex-shrink-0">
-            <NuxtLink to="/" aria-label="home"><s-logo /></NuxtLink>
+            <NuxtLink to="/" aria-label="home"><SLogo /></NuxtLink>
           </div>
 
           <!-- Navigation for larger screens -->
@@ -64,7 +76,7 @@
 
           <!-- Color mode button on right for larger screens -->
           <div class="hidden items-center space-x-4 lg:flex">
-            <color-mode-button />
+            <ColorModeButton />
             <ProfileDropdown v-if="useAuth" />
           </div>
         </div>
@@ -100,15 +112,3 @@
     </div>
   </header>
 </template>
-
-<script setup>
-const config = useRuntimeConfig();
-const headerNavItems = config.public.headerNavItems;
-const useAuth = config.public.useAuth;
-
-const mobileMenuOpen = ref(false);
-
-const toggleMobileMenu = () => {
-  mobileMenuOpen.value = !mobileMenuOpen.value;
-};
-</script>

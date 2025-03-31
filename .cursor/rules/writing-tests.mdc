@@ -1,0 +1,19 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: "Guidelines for writing unit tests."
+---
+
+## Frameworks
+
+- Vitest (https://vitest.dev/)
+- Nuxt Test Utils (https://nuxt.com/docs/getting-started/testing)
+- Vue Test Utils (https://test-utils.vuejs.org/)
+- Testing Library (https://testing-library.com/)
+- Testing Library - Vue Test Utils (https://testing-library.com/docs/vue-testing-library/intro)
+- Testing Library - DOM Testing Library (https://testing-library.com/docs/dom-testing-library/intro)
+- JSDOM (https://github.com/jsdom/jsdom)
+- Playwright (https://playwright.dev/docs/intro)

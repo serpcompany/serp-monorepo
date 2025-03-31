@@ -7,6 +7,7 @@ export default defineTask({
     description: 'Seed the database with sample posts and categories'
   },
   async run() {
+    // eslint-disable-next-line no-console
     console.log('Running DB seed task...');
 
     // Sample posts data with HTML formatted content

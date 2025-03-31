@@ -1,3 +1,11 @@
+<script setup lang="ts">
+  import type { PostIndex } from '@serp/types/types';
+
+  defineProps<{
+    term: PostIndex;
+  }>();
+</script>
+
 <template>
   <div>
     <NuxtLink
@@ -9,11 +17,3 @@
     </NuxtLink>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { PostIndex } from '@serp/types/types';
-
-defineProps<{
-  term: PostIndex;
-}>();
-</script>

@@ -1,3 +1,33 @@
+<script setup lang="ts">
+  defineProps({
+    name: {
+      type: String,
+      required: true
+    },
+    oneLiner: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    image: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    sections: {
+      type: Array as () => string[],
+      required: true
+    },
+    serplyLink: {
+      type: String,
+      required: true
+    }
+  });
+
+  const header = ref(null);
+  const isScrolled = ref(false);
+</script>
+
 <template>
   <div>
     <header
@@ -15,7 +45,7 @@
         <div class="flex flex-col items-center justify-between sm:flex-row">
           <!-- image -->
           <div class="flex w-full items-start justify-between">
-            <nuxt-img
+            <NuxtImg
               v-if="image"
               :src="image"
               :alt="`${name} logo`"
@@ -47,7 +77,7 @@
 
             <!-- visit website button -->
             <NuxtLink
-              :href="serply_link"
+              :href="serplyLink"
               target="_blank"
               class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"
             >
@@ -95,31 +125,3 @@
     </header>
   </div>
 </template>
-
-<script setup lang="ts">
-defineProps({
-  name: {
-    type: String,
-    required: true
-  },
-  oneLiner: {
-    type: String,
-    required: false
-  },
-  image: {
-    type: String,
-    required: false
-  },
-  sections: {
-    type: Array as () => string[],
-    required: true
-  },
-  serply_link: {
-    type: String,
-    required: true
-  }
-});
-
-const header = ref(null);
-const isScrolled = ref(false);
-</script>

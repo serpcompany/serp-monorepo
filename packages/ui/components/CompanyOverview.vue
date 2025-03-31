@@ -1,3 +1,11 @@
+<script setup lang="ts">
+  import type { Company } from '@serp/types/types';
+
+  defineProps<{
+    company: Company;
+  }>();
+</script>
+
 <template>
   <div>
     <div
@@ -12,11 +20,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { Company } from '@serp/types/types';
-
-defineProps<{
-  company: Company;
-}>();
-</script>

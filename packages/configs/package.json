@@ -8,7 +8,8 @@
     "./prettier": {
       "import": "./prettier/index.mjs",
       "require": "./prettier/index.js"
-    }
+    },
+    "./tsconfig": "./tsconfig/base.json"
   },
   "workspaces": [
     "eslint",

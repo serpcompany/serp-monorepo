@@ -1,3 +1,12 @@
+<script setup lang="ts">
+  import type { Category } from '@serp/types/types';
+
+  defineProps<{
+    items: Category[];
+    baseSlug: string;
+  }>();
+</script>
+
 <template>
   <div class="flex flex-wrap gap-2">
     <NuxtLink
@@ -10,12 +19,3 @@
     </NuxtLink>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { Category } from '@serp/types/types';
-
-defineProps<{
-  items: Category[];
-  baseSlug: string;
-}>();
-</script>

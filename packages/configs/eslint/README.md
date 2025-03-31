@@ -1,57 +1,61 @@
-# SERP ESLint Configuration
+# README
 
-Centralized ESLint configuration for the SERP monorepo.
+This contains a central eslint.config.mjs file with the base/default eslint config settings that each of the `apps/` and `packages/` extend from.
 
-## Usage
+Each of the `apps/` and `packages/` needs to have their own `eslint.config.mjs` file in them which extends these base settings and also imports the `.nuxt/` eslint settings of that individual app or package.
 
-In your Nuxt app or package, create an `eslint.config.js` (or `.mjs`) file with the following content:
+An example of that file is here:
 
-```js
-// eslint.config.js or eslint.config.mjs
-import withNuxt from './.nuxt/eslint.config.mjs'; // Nuxt-generated config
-import { createConfig } from '@serp/eslint-config';
+```javascript
+// eslint.config.mjs (app/package level)
+// @ts-check
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import withNuxt from './.nuxt/eslint.config.mjs';
+import { createConfig } from '../../packages/configs/eslint/eslint.config.mjs';
 
-// Create config with project-specific customizations
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+/// Create base config first
 const baseConfig = createConfig({
-  // Set to true to disable no-unused-vars in terminal output
-  // but still see them as warnings in your editor
-  quiet: true,
-  
-  // Project-specific ignores
-  additionalIgnores: [
-    '**/.nuxt',
-    '**/dist',
-    '**/node_modules'
-    // Add any project-specific directories to ignore
-  ],
-  
-  // Project-specific rule overrides
-  additionalRules: {
-    // Add any project-specific rule customizations
-    // For example:
-    // 'vue/multi-word-component-names': 'off'
-  }
+  quiet: false,
+  additionalRules: {},
+  additionalIgnores: [],
+  baseDirectory: __dirname
 });
 
-// Export the final config
+// Apply our overrides to ensure they take precedence
+baseConfig[1].rules = {
+  ...baseConfig[1].rules
+  // 'no-unused-vars': 'error',
+};
+
 export default withNuxt(baseConfig);
 ```
 
-## Options
+## How to use
 
-- `quiet` (boolean): When set to `true`, disables no-unused-vars warnings. Useful when you want to see these in your editor but not in lint output.
-- `additionalRules` (object): Extra ESLint rules to add or override.
-- `additionalIgnores` (array): Additional file patterns to ignore.
+You can add "global/default" eslint settings to this packages `eslint.config.mjs` file. or you can add app/package specific settings to their respestive `eslint.config.mjs` files.
 
-## How it Works
+> Note: If running a command at top level (ie through turbo) make sure you run turbo with no cache to test it using the ``--force` clag on the command, like `pnpm lint --force`
 
-The configuration is composed of:
+## eslint ignore rules you might need to use inline
 
-1. A base configuration with standard rules for Vue/Nuxt projects
-2. Options to customize the configuration for specific projects
-3. Support for quiet mode to suppress warnings in terminal output while keeping them visible in your editor
 
-This approach allows us to:
-- Maintain consistent rules across the monorepo
-- Customize rules for specific apps or packages
-- Toggle certain rule behaviors like quiet mode for unused variables 
+You can use these solo, or comma separated like:
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+
+
+**eslint inline rules for .js / .ts files**
+```
+// eslint-disable-next-line no-unused-vars
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+```
+
+**eslint rules for .vue files**
+
+```
+<!-- eslint-disable-next-line vue/no-v-html -->
+```

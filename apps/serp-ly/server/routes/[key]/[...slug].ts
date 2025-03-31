@@ -1,6 +1,6 @@
 import { useDrizzle } from '@serp/utils-cloudflare-pages/server/api/db';
 import { shortLinks } from '@serp/utils-cloudflare-pages/server/api/db/schema';
-import { sql, eq, and } from 'drizzle-orm';
+import { and, eq, sql } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
   const { key, slug } = getRouterParams(event);
@@ -36,6 +36,7 @@ export default defineEventHandler(async (event) => {
       });
     }
   } catch (error: unknown) {
+    // eslint-disable-next-line no-console
     console.error('Error retrieving destination URL:', error);
     throw createError({
       status: 500,

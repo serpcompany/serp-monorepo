@@ -1,3 +1,16 @@
+<script setup lang="ts">
+  const str = ref('');
+  const paragraphCount = ref();
+
+  const runFunction = () => {
+    paragraphCount.value = countParagraphs(str.value);
+  };
+
+  useSeoMeta({
+    title: 'A Free Online Paragraph Counter'
+  });
+</script>
+
 <template>
   <div class="container">
     <div class="px-4 py-10 sm:px-6 sm:py-16 md:px-8 md:py-20">
@@ -26,16 +39,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const str = ref('');
-const paragraphCount = ref();
-
-const runFunction = () => {
-  paragraphCount.value = countParagraphs(str.value);
-};
-
-useSeoMeta({
-  title: 'A Free Online Paragraph Counter'
-});
-</script>

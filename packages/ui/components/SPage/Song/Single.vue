@@ -1,10 +1,40 @@
+<script setup lang="ts">
+  const sections = ['Lyrics'];
+  const route = useRoute();
+  const { slug } = route.params;
+  const song = await useSong(encodeURIComponent(slug));
+
+  const config = useRuntimeConfig();
+  const useAuth = config.public.useAuth;
+
+  // Get upvotes
+  const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
+    `/upvotes/${encodeURIComponent(song.slug)}?module=song`
+  )) || { upvotes: [] };
+
+  const genres = computed(() => {
+    return song?.genres ? song.genres.join(', ') : '';
+  });
+
+  const tags = computed(() => {
+    return song?.tags ? song.tags.join(', ') : '';
+  });
+
+  const seoDescription = computed(() => song?.seoDescription);
+
+  useSeoMeta({
+    title: song.name + ' - Lyrics',
+    description: seoDescription
+  });
+</script>
+
 <template>
   <div>
     <MultipageHeaderMusic
       :name="song.name"
       :sections="sections"
       class="bg-background sticky top-0 z-10 transition-all duration-300"
-      serply_link="https://serp.ly/@daftfm/amazon/music/unlimited"
+      serply-link="https://serp.ly/@daftfm/amazon/music/unlimited"
     >
       <template #upvote>
         <UpvoteButton
@@ -26,6 +56,7 @@
             <h2 id="lyrics" class="flex scroll-mt-60 flex-row">
               {{ song.name }} Lyrics
             </h2>
+            <!-- eslint-disable-next-line vue/no-v-html -->
             <div v-html="song.lyrics"></div>
           </div>
         </div>
@@ -68,39 +99,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const sections = ['Lyrics'];
-const route = useRoute();
-const { slug } = route.params;
-const song = await useSong(encodeURIComponent(slug));
-
-const config = useRuntimeConfig();
-const useAuth = config.public.useAuth;
-
-// Get upvotes
-const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
-  `/upvotes/${encodeURIComponent(song.slug)}?module=song`
-)) || { upvotes: [] };
-
-const genres = computed(() => {
-  return song?.genres ? song.genres.join(', ') : '';
-});
-
-const tags = computed(() => {
-  return song?.tags ? song.tags.join(', ') : '';
-});
-
-// Helper function to create a URL for the song
-function getSongUrl(id: string) {
-  return `https://musicbrainz.org/recording/${song.id}`;
-}
-
-const seoTitle = computed(() => song?.seoTitle);
-const seoDescription = computed(() => song?.seoDescription);
-
-useSeoMeta({
-  title: song.name + ' - Lyrics',
-  description: seoDescription
-});
-</script>

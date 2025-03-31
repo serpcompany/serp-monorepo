@@ -1,3 +1,50 @@
+<script setup lang="ts">
+  const route = useRoute();
+  const router = useRouter();
+  const { slug } = route.params;
+
+  const data = await useCompany(`${slug}`);
+  if (!data) {
+    router.push('/404');
+  }
+
+  const faqItems = computed(() => {
+    if (!data?.faqs) return [];
+
+    return data?.faqs.map((faq) => ({
+      label: faq.question,
+      content: faq.answer
+    }));
+  });
+
+  const sections = computed(() => {
+    const sectionTitles: string[] = [];
+
+    sectionTitles.push('Overview');
+
+    if (data?.features) {
+      sectionTitles.push('Features');
+    }
+    if (faqItems.value && faqItems.value.length) {
+      sectionTitles.push('FAQ');
+    }
+
+    if (data?.alternatives) {
+      sectionTitles.push('Alternatives');
+    }
+
+    return sectionTitles;
+  });
+
+  useSeoMeta({
+    title: computed(() =>
+      data?.name
+        ? `${data.name} - Reviews, Pricing, Features`
+        : 'Product Information'
+    )
+  });
+</script>
+
 <template>
   <div v-if="data">
     <MultipageHeader
@@ -6,7 +53,7 @@
       :sections="sections"
       class="bg-background sticky top-0 z-10 transition-all duration-300"
       :image="data.logo"
-      :serply_link="data.serplyLink"
+      :serply-link="data.serplyLink"
     />
 
     <!-- Main content with grid -->
@@ -27,6 +74,7 @@
             v-if="data.content"
             class="prose dark:prose-invert mt-[-25px]"
           >
+            <!-- eslint-disable-next-line vue/no-v-html-->
             <div id="article" class="mb-8" v-html="data.content"></div>
           </section>
 
@@ -44,7 +92,7 @@
           <!-- FAQs Section -->
           <section v-if="faqItems && faqItems.length" id="faqs" class="mb-12">
             <h2 class="mb-4 scroll-mt-60 text-3xl font-bold">FAQ</h2>
-            <u-accordion type="multiple" :items="faqItems" />
+            <UAccordion type="multiple" :items="faqItems" />
           </section>
 
           <!-- Alternatives -->
@@ -68,7 +116,7 @@
           "
           class="space-y-6 lg:col-span-1"
         >
-          <media-gallery
+          <MediaGallery
             v-if="data.screenshots && data.screenshots.length"
             :company="data"
           />
@@ -78,57 +126,10 @@
             v-if="data.categories && data.categories.length"
             class="gap-2"
           >
-            <s-pill base-slug="products/best" :items="data.categories" />
+            <SPill base-slug="products/best" :items="data.categories" />
           </section>
         </aside>
       </div>
     </section>
   </div>
 </template>
-
-<script setup lang="ts">
-const route = useRoute();
-const router = useRouter();
-const { slug } = route.params;
-
-const data = await useCompany(`${slug}`);
-if (!data) {
-  router.push('/404');
-}
-
-const faqItems = computed(() => {
-  if (!data?.faqs) return [];
-
-  return data?.faqs.map((faq) => ({
-    label: faq.question,
-    content: faq.answer
-  }));
-});
-
-const sections = computed(() => {
-  const sectionTitles: string[] = [];
-
-  sectionTitles.push('Overview');
-
-  if (data?.features) {
-    sectionTitles.push('Features');
-  }
-  if (faqItems.value && faqItems.value.length) {
-    sectionTitles.push('FAQ');
-  }
-
-  if (data?.alternatives) {
-    sectionTitles.push('Alternatives');
-  }
-
-  return sectionTitles;
-});
-
-useSeoMeta({
-  title: computed(() =>
-    data?.name
-      ? `${data.name} - Reviews, Pricing, Features`
-      : 'Product Information'
-  )
-});
-</script>

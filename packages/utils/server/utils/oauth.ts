@@ -15,11 +15,13 @@ async function d1Query(sql, params = []) {
 
   // Check if there are any errors returned by the API.
   if (data.errors && data.errors.length > 0) {
+    // eslint-disable-next-line no-console
     console.error(`Error querying D1: ${JSON.stringify(data.errors)}`);
     throw new Error(`Error querying D1: ${JSON.stringify(data.errors)}`);
   }
 
   if (!data.success) {
+    // eslint-disable-next-line no-console
     console.error(`Query unsuccessful: ${JSON.stringify(data)}`);
     throw new Error(`Query unsuccessful: ${JSON.stringify(data)}`);
   }
@@ -27,6 +29,7 @@ async function d1Query(sql, params = []) {
   // The API returns an array in "result". Unwrap the first element.
   const resultItem = data.result?.[0];
   if (!resultItem || !resultItem.success) {
+    // eslint-disable-next-line no-console
     console.error(`Query unsuccessful: ${JSON.stringify(data)}`);
     throw new Error(`Query unsuccessful: ${JSON.stringify(data)}`);
   }
@@ -45,6 +48,7 @@ export interface OAuthUserData {
 
 export const handleOAuthSuccess = async (event, oauthUser: OAuthUserData) => {
   if (!oauthUser || !oauthUser.email) {
+    // eslint-disable-next-line no-console
     console.error('No user data returned from OAuth provider');
     return sendRedirect(event, '/login?error=invalidUserData');
   }

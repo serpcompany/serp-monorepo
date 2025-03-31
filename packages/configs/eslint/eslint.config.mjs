@@ -56,9 +56,10 @@ export function createConfig({
       ...compat.extends(),
       // Base rules for all files
       rules: {
+        // Vue/nuxt rules
         'vue/block-order': [
           'error',
-          { order: ['template', 'script', 'style'] }
+          { order: ['script', 'template', 'style'] }
         ],
         'vue/no-setup-props-destructure': 'error',
         'vue/html-self-closing': [
@@ -73,7 +74,7 @@ export function createConfig({
             math: 'always'
           }
         ],
-        'vue/multi-word-component-names': 'warn',
+        'vue/multi-word-component-names': 'off',
 
         // TypeScript rules
         '@typescript-eslint/no-unused-vars': 'warn',

@@ -1,5 +1,6 @@
 import redirects from '@/redirects.json';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
 export default defineNuxtRouteMiddleware((to, from) => {
   const { path, query, hash } = to;
 

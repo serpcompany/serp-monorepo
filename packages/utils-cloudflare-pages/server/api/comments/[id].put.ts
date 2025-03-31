@@ -1,12 +1,13 @@
-import { eq, sql, and } from 'drizzle-orm';
-import { useDrizzle } from '../db';
+import type { User } from '@serp/types/types/User';
+import { and, eq, sql } from 'drizzle-orm';
 import { getTableAndPKForModule } from '../../utils/getTableAndPKForModule';
+import { useDrizzle } from '../db';
 
 export default defineEventHandler(async (event) => {
   try {
     // Authentication & basic validation
     const session = await requireUserSession(event);
-    const email = session.user?.email;
+    const email = (session.user as User)?.email;
     if (!email) return { status: 401, message: 'Unauthorized' };
 
     const { id } = getRouterParams(event);
@@ -32,7 +33,7 @@ export default defineEventHandler(async (event) => {
       finalPath = `$[${commentIndex}]`;
     } else {
       let jsonPath = '$';
-      parentIndices.forEach((idx) => {
+      parentIndices.forEach((idx: number) => {
         jsonPath += `[${idx}].replies`;
       });
       finalPath = `${jsonPath}[${commentIndex}]`;
@@ -61,7 +62,7 @@ export default defineEventHandler(async (event) => {
       email
     );
 
-    const result = await useDrizzle()
+    await useDrizzle()
       .update(table)
       .set({ comments: sql.raw(updateExpr) })
       .where(and(eq(field, id), emailCondition))
@@ -69,7 +70,8 @@ export default defineEventHandler(async (event) => {
 
     return { status: 200, message: 'success', id: commentIndex };
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error);
-    return { status: 500, message: error.message };
+    return { status: 500, message: (error as Error).message };
   }
 });

@@ -1,17 +1,40 @@
+<script setup lang="ts">
+  import type { Post } from '@serp/types/types';
+
+  const config = useRuntimeConfig();
+  const useAuth = config.public.useAuth;
+
+  const props = defineProps<{
+    data: Post;
+    module: string;
+  }>();
+
+  const isValidAuthor =
+    props.data.author !== undefined &&
+    props.data.author !== null &&
+    props.data.author !== 'None';
+</script>
+
 <template>
-  <div>
+  <UMain>
     <section class="mb-8">
       <SectionHeroOne :title="data.title" />
-      <s-pill base-slug="posts/category" :items="data.categories || []" />
+      <SPill base-slug="posts/category" :items="data.categories || []" />
     </section>
     <div class="items-end justify-between lg:flex">
       <div v-if="isValidAuthor">Author: {{ data.author }}</div>
       <div v-if="data?.createdAt">Published: {{ data.createdAt }}</div>
     </div>
     <USeparator class="my-4">
-      <s-logo />
+      <SLogo />
     </USeparator>
+    <!-- eslint-disable-next-line vue/no-v-html-->
     <article class="prose dark:prose-invert" v-html="data.content"></article>
+
+    <!-- link hub for other posts -->
+    <UPageSection v-if="module === 'movies'" title="More Posts">
+      <LazyMoviePostLinkHub />
+    </UPageSection>
 
     <!-- Comments Section -->
     <div v-if="useAuth" class="mt-10">
@@ -23,28 +46,12 @@
         class="comments-github-style"
       />
     </div>
-  </div>
+  </UMain>
 </template>
 
-<script setup lang="ts">
-import type { Post } from '@serp/types/types';
-
-const config = useRuntimeConfig();
-const useAuth = config.public.useAuth;
-
-const props = defineProps<{
-  data: Post;
-}>();
-
-const isValidAuthor =
-  props.data.author !== undefined &&
-  props.data.author !== null &&
-  props.data.author !== 'None';
-</script>
-
 <style>
-.comments-github-style {
-  border-radius: 6px;
-  margin-top: 16px;
-}
+  .comments-github-style {
+    border-radius: 6px;
+    margin-top: 16px;
+  }
 </style>

@@ -1,3 +1,11 @@
+<script setup lang="ts">
+  useSeoMeta({
+    title: 'Legal Information',
+    description:
+      'Links to various resources on our website about legal related items.'
+  });
+</script>
+
 <template>
   <div class="prose dark:prose-invert container my-20">
     <h1>Legal Information</h1>
@@ -13,14 +21,3 @@
     </ul>
   </div>
 </template>
-
-<script setup lang="ts">
-const config = useRuntimeConfig();
-const domain = config.public.domain;
-
-useSeoMeta({
-  title: 'Affiliate Disclosure',
-  description:
-    'Links to various resources on our website about legal related items.'
-});
-</script>

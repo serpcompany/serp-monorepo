@@ -1,10 +1,40 @@
+<script setup lang="ts">
+  const sections = ['Overview', 'Albums', 'Songs'];
+  const route = useRoute();
+  const { slug } = route.params;
+  const artist = await useArtist(encodeURIComponent(slug));
+
+  const config = useRuntimeConfig();
+  const useAuth = config.public.useAuth;
+
+  // Get upvotes
+  const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
+    `/upvotes/${encodeURIComponent(artist.slug)}?module=artist`
+  )) || { upvotes: [] };
+
+  const genres = computed(() => {
+    return artist?.genres ? artist.genres.join(', ') : '';
+  });
+
+  const tags = computed(() => {
+    return artist?.tags ? artist.tags.join(', ') : '';
+  });
+
+  const seoDescription = computed(() => artist?.seoDescription);
+
+  useSeoMeta({
+    title: artist.name + ' - Songs, Albums, and More',
+    description: seoDescription
+  });
+</script>
+
 <template>
   <div>
     <MultipageHeaderMusic
       :name="artist.name"
       :sections="sections"
       class="bg-background sticky top-0 z-10 transition-all duration-300"
-      serply_link="https://serp.ly/@daftfm/amazon/music/unlimited"
+      serply-link="https://serp.ly/@daftfm/amazon/music/unlimited"
     >
       <template #upvote>
         <UpvoteButton
@@ -24,6 +54,7 @@
           <div>
             <!-- section: overview -->
             <h2 id="overview" class="scroll-mt-60">About {{ artist.name }}</h2>
+            <!-- eslint-disable-next-line vue/no-v-html-->
             <div class="prose dark:prose-invert" v-html="artist.overview"></div>
 
             <h2 id="albums" class="scroll-mt-60">{{ artist.name }} Albums</h2>
@@ -106,33 +137,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const sections = ['Overview', 'Albums', 'Songs'];
-const route = useRoute();
-const { slug } = route.params;
-const artist = await useArtist(encodeURIComponent(slug));
-
-const config = useRuntimeConfig();
-const useAuth = config.public.useAuth;
-
-// Get upvotes
-const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
-  `/upvotes/${encodeURIComponent(artist.slug)}?module=artist`
-)) || { upvotes: [] };
-
-const genres = computed(() => {
-  return artist?.genres ? artist.genres.join(', ') : '';
-});
-
-const tags = computed(() => {
-  return artist?.tags ? artist.tags.join(', ') : '';
-});
-
-const seoDescription = computed(() => artist?.seoDescription);
-
-useSeoMeta({
-  title: artist.name + ' - Songs, Albums, and More',
-  description: seoDescription
-});
-</script>

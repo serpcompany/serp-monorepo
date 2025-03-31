@@ -1,10 +1,40 @@
+<script setup lang="ts">
+  const sections = ['Overview', 'Songs'];
+  const route = useRoute();
+  const { slug } = route.params;
+  const album = await useAlbum(encodeURIComponent(slug));
+
+  const config = useRuntimeConfig();
+  const useAuth = config.public.useAuth;
+
+  // Get upvotes
+  const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
+    `/upvotes/${encodeURIComponent(album.slug)}?module=album`
+  )) || { upvotes: [] };
+
+  const genres = computed(() => {
+    return album?.genres ? album.genres.join(', ') : '';
+  });
+
+  const tags = computed(() => {
+    return album?.tags ? album.tags.join(', ') : '';
+  });
+
+  const seoDescription = computed(() => album?.seoDescription);
+
+  useSeoMeta({
+    title: album.name + ' - Album',
+    description: seoDescription
+  });
+</script>
+
 <template>
   <div>
     <MultipageHeaderMusic
       :name="album.name"
       :sections="sections"
       class="bg-background sticky top-0 z-10 transition-all duration-300"
-      serply_link="https://serp.ly/@daftfm/amazon/music/unlimited"
+      serply-link="https://serp.ly/@daftfm/amazon/music/unlimited"
     >
       <template #upvote>
         <UpvoteButton
@@ -92,39 +122,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const sections = ['Overview', 'Songs'];
-const route = useRoute();
-const { slug } = route.params;
-const album = await useAlbum(encodeURIComponent(slug));
-
-const config = useRuntimeConfig();
-const useAuth = config.public.useAuth;
-
-// Get upvotes
-const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
-  `/upvotes/${encodeURIComponent(album.slug)}?module=album`
-)) || { upvotes: [] };
-
-const genres = computed(() => {
-  return album?.genres ? album.genres.join(', ') : '';
-});
-
-const tags = computed(() => {
-  return album?.tags ? album.tags.join(', ') : '';
-});
-
-// Helper function to create a URL for the album
-function getAlbumUrl(id: string) {
-  return `https://musicbrainz.org/release-group/${album.id}`;
-}
-
-const seoTitle = computed(() => album?.seoTitle);
-const seoDescription = computed(() => album?.seoDescription);
-
-useSeoMeta({
-  title: album.name + ' - Album',
-  description: seoDescription
-});
-</script>

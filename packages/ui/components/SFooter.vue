@@ -1,3 +1,16 @@
+<script setup lang="ts">
+  import type { FooterColumn } from '@serp/types/types';
+
+  const config = useRuntimeConfig();
+  const companyName = config.public.siteName;
+  const socialLinks = config.public.socialLinks;
+  const brandLinks = config.public.brandLinks;
+  const copyrightText = config.public.copyrightText;
+  const address = config.public.address;
+  const footerColumns = config.public.footerColumns as FooterColumn[];
+  const legalLinks = config.public.legalLinks;
+</script>
+
 <template>
   <footer class="mt-20 py-10">
     <div>
@@ -45,7 +58,7 @@
                 class="mr-6"
                 target="_blank"
               >
-                <u-icon
+                <UIcon
                   :name="social.icon"
                   class="size-5 text-black dark:text-white"
                   aria-hidden="true"
@@ -105,26 +118,13 @@
   </footer>
 </template>
 
-<script setup lang="ts">
-import type { FooterColumn } from '@serp/types/types';
-
-const config = useRuntimeConfig();
-const companyName = config.public.siteName;
-const socialLinks = config.public.socialLinks;
-const brandLinks = config.public.brandLinks;
-const copyrightText = config.public.copyrightText;
-const address = config.public.address;
-const footerColumns = config.public.footerColumns as FooterColumn[];
-const legalLinks = config.public.legalLinks;
-</script>
-
 <style>
-.hide-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
+  .hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 
-.hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
-}
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
 </style>
