@@ -15,15 +15,6 @@ pnpm lint
 echo "[husky]: Running script: pnpm test"
 pnpm test
 
-# Run Infisical scan on staged changes with baseline
-echo "[husky]: Running command: pnpm infisical scan git-changes --staged --verbose --baseline-path .reports/secrets-report.json"
-pnpm infisical scan git-changes --staged --verbose --baseline-path .reports/secrets-report.json
-
-# Check if there are any staged changes to commit
-# if git diff --cached --quiet; then
-#     echo "[husky]: No staged changes detected after linting, skipping git commands"
-# else
-#     echo "[husky]: Staged changes detected, running git commands"
-#     git add .
-#     git commit --amend --no-edit --no-verify
-# fi
+# # Run secret scan check with Trufflehog
+# echo "[husky]: Running script: pnpm scan:secrets"
+# pnpm scan:secrets
