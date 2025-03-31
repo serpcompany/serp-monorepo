@@ -25,8 +25,6 @@ jobs:
 
       - name: Run TruffleHog Secret Scan
         uses: trufflesecurity/trufflehog@main
-        with:
-          extra_args: --only-verified
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
