@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import type { PostIndex } from '@serp/types/types';
+
   const router = useRouter();
 
   const data = await usePosts(1, 1000000, '', 'Glossary');
@@ -14,10 +16,10 @@
   const getTermsByFirstChar = (character: string) => {
     if (character === '*') {
       return data.posts.filter(
-        (term) => !/^[a-z]/i.test(term.keyword || term.title)
+        (term: PostIndex) => !/^[a-z]/i.test(term.keyword || term.title)
       );
     }
-    return data.posts.filter((term) => {
+    return data.posts.filter((term: PostIndex) => {
       return term.keyword
         ? term.keyword.toLowerCase().startsWith(character.toLowerCase())
         : term.title.toLowerCase().startsWith(character.toLowerCase());

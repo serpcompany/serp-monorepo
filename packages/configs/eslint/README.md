@@ -6,7 +6,7 @@ Each of the `apps/` and `packages/` needs to have their own `eslint.config.mjs` 
 
 An example of that file is here:
 
-```
+```javascript
 // eslint.config.mjs (app/package level)
 // @ts-check
 import path from 'node:path';

@@ -19,6 +19,6 @@
 <template>
   <UMain>
     <SinglePostsGlossaryPost v-if="data.module === 'Glossary'" :data="data" />
-    <SinglePostsPost v-else :data="data" :module="computedModule" />
+    <SinglePostsPost v-else :data="data" :module="computedModule || ''" />
   </UMain>
 </template>

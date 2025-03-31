@@ -76,7 +76,7 @@
       toast.add({
         id: 'upvote-error',
         title: 'Error upvoting',
-        description: error.message,
+        description: (error as Error).message,
         icon: 'exclamation-circle'
       });
     } finally {
