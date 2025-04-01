@@ -254,10 +254,6 @@
       loading.value = false;
     }
   }
-
-  function previewCompany() {
-    alert('Preview company (placeholder)');
-  }
 </script>
 
 <template>
@@ -342,9 +338,6 @@
             :disabled="!isComplete"
             @click="saveCompany"
             >Save Company</UButton
-          >
-          <UButton variant="outline" :loading="loading" @click="previewCompany"
-            >Preview Company</UButton
           >
         </div>
       </div>
