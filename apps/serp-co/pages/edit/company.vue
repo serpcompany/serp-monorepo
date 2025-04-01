@@ -1,4 +1,7 @@
 <script setup lang="ts">
+  import { v4 as uuidv4 } from 'uuid';
+  import Stripe from '~/components/Stripe.vue';
+
   const { loggedIn, user } = useUserSession();
   if (!loggedIn.value) {
     navigateTo('/');
@@ -21,8 +24,11 @@
     logo: ''
   });
 
+  const stripeComponent = ref(null);
+
   const toast = useToast();
   const loading = ref(false);
+  const uuid = uuidv4();
 
   const categories = await useCompanyCategories();
   const categoryOptions = ref(categories?.map((category) => category.name));
@@ -85,28 +91,118 @@
     const file = target.files?.[0];
     if (!file) return;
 
-    try {
-      const uploaded = await s3.upload(file, {
-        prefix: 'images',
-        meta: { purpose: 'company-logo' }
-      });
-
-      company.value.logo = `${runtimeConfig.public.cloudflareR2PublicUrl}${uploaded.replace('/api/s3/query', '')}`;
-
-      toast.add({
-        id: 'upload-success',
-        title: 'Logo Uploaded',
-        description: 'Your company logo has been uploaded successfully!',
-        icon: 'check-circle'
-      });
-    } catch (err) {
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
       toast.add({
         id: 'upload-error',
-        title: 'Upload Failed',
-        description: err.message || 'Failed to upload logo.',
+        title: 'Invalid File',
+        description: 'Please select an image file.',
         icon: 'exclamation-circle'
       });
+      return;
     }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const img = new Image();
+      img.src = reader.result as string;
+      img.onload = () => {
+        // Calculate new dimensions based on the longest side being 512px
+        let width = img.width;
+        let height = img.height;
+        if (width > height) {
+          if (width > 512) {
+            height = Math.round(height * (512 / width));
+            width = 512;
+          }
+        } else {
+          if (height > 512) {
+            width = Math.round(width * (512 / height));
+            height = 512;
+          }
+        }
+
+        // Create an offscreen canvas to resize and convert the image
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          toast.add({
+            id: 'upload-error',
+            title: 'Processing Error',
+            description: 'Failed to get canvas context.',
+            icon: 'exclamation-circle'
+          });
+          return;
+        }
+        ctx.drawImage(img, 0, 0, width, height);
+
+        // Convert canvas to a WebP blob
+        canvas.toBlob(
+          async (blob) => {
+            if (!blob) {
+              toast.add({
+                id: 'upload-error',
+                title: 'Conversion Error',
+                description: 'Could not convert image.',
+                icon: 'exclamation-circle'
+              });
+              return;
+            }
+            // Create a new File from the blob with a .webp extension
+            const processedFile = new File(
+              [blob],
+              file.name.replace(/\.[^.]+$/, '.webp'),
+              { type: 'image/webp' }
+            );
+            try {
+              const uploaded = await s3.upload(processedFile, {
+                prefix: 'images',
+                meta: { purpose: 'company-logo' }
+              });
+              company.value.logo = `${runtimeConfig.public.cloudflareR2PublicUrl}${uploaded.replace(
+                '/api/s3/query',
+                ''
+              )}`;
+              toast.add({
+                id: 'upload-success',
+                title: 'Logo Uploaded',
+                description:
+                  'Your company logo has been uploaded successfully!',
+                icon: 'check-circle'
+              });
+            } catch (err) {
+              toast.add({
+                id: 'upload-error',
+                title: 'Upload Failed',
+                description: err.message || 'Failed to upload logo.',
+                icon: 'exclamation-circle'
+              });
+            }
+          },
+          'image/webp',
+          1.0 // Image quality
+        );
+      };
+      img.onerror = () => {
+        toast.add({
+          id: 'upload-error',
+          title: 'Image Load Error',
+          description: 'Could not load the image for processing.',
+          icon: 'exclamation-circle'
+        });
+      };
+    };
+    reader.onerror = () => {
+      toast.add({
+        id: 'upload-error',
+        title: 'File Read Error',
+        description: 'Could not read the selected file.',
+        icon: 'exclamation-circle'
+      });
+    };
   }
 
   async function saveCompany() {
@@ -121,7 +217,8 @@
 
       const payload = {
         ...company.value,
-        categories: getCategoryIds.value
+        categories: getCategoryIds.value,
+        uuid: uuid
       };
 
       const { data: response, error } = await useFetch('/api/company/submit', {
@@ -141,6 +238,8 @@
           description: 'Your company has been saved successfully',
           icon: 'check-circle'
         });
+
+        stripeComponent.value.$.exposed.payWithStripe();
       } else {
         throw new Error(`Failed to save company - ${response.value.message}`);
       }
@@ -168,14 +267,28 @@
       <div class="col-span-1 space-y-4">
         <!-- Waiting Line Card -->
         <UCard>
-          <div class="p-3">
-            <p class="text-sm text-neutral-500">
-              The current waiting line is about 104 days.
-            </p>
-            <p class="text-sm text-neutral-500">
-              Your company would launch around June 26, 2025.
-            </p>
-          </div>
+          <Stripe
+            :id="uuid"
+            ref="stripeComponent"
+            type="company-priority-queue"
+            redirect-to="/submissions"
+          >
+            <template #content="{ createPaymentIntent }">
+              <p class="text-sm text-neutral-500">
+                The current waiting time is > 30 days.
+              </p>
+              <p class="text-sm text-neutral-500">
+                Join the <b><i>priority queue</i></b> to get your company listed
+                within 24 hours.
+              </p>
+              <UButton
+                variant="outline"
+                class="mt-2"
+                @click="createPaymentIntent"
+                >Join the priority queue</UButton
+              >
+            </template>
+          </Stripe>
         </UCard>
 
         <!-- Completion Status Card -->

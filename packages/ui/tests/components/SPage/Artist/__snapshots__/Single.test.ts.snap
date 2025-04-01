@@ -42,7 +42,7 @@ exports[`SPageArtistSingle Snapshot > renders complete artist with upvotes and a
       <div class="lg:col-span-2">
         <div>
           <!-- section: overview -->
-          <h2 id="overview" class="scroll-mt-60">About Test Artist</h2>
+          <h2 id="overview" class="scroll-mt-60">About Test Artist</h2><!-- eslint-disable-next-line vue/no-v-html-->
           <div class="prose dark:prose-invert">
             <p>Overview content for Test Artist.</p>
           </div>
@@ -135,7 +135,7 @@ exports[`SPageArtistSingle Snapshot > renders minimal artist without upvotes and
       <div class="lg:col-span-2">
         <div>
           <!-- section: overview -->
-          <h2 id="overview" class="scroll-mt-60">About Minimal Artist</h2>
+          <h2 id="overview" class="scroll-mt-60">About Minimal Artist</h2><!-- eslint-disable-next-line vue/no-v-html-->
           <div class="prose dark:prose-invert">
             <p>Minimal overview content.</p>
           </div>

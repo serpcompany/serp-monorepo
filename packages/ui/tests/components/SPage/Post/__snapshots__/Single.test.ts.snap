@@ -1,391 +1,345 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`SPagePostSingle Snapshot > renders with basic post data (with auth) correctly 1`] = `
-"<div>
-  <main>
-    <div>
-      <section class="mb-8">
-        <section class="py-20">
-          <h1 class="md:text-center">Post Two</h1>
-          <!--v-if-->
-        </section>
-        <div class="flex flex-wrap gap-2"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+"<main class="min-h-[calc(100vh-var(--ui-header-height))]">
+  <main class="min-h-[calc(100vh-var(--ui-header-height))]">
+    <section class="mb-8">
+      <section class="py-20">
+        <h1 class="md:text-center">Post Two</h1>
+        <!--v-if-->
       </section>
-      <div class="items-end justify-between lg:flex">
-        <!--v-if-->
-        <!--v-if-->
-      </div>
-      <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row my-4">
-        <div class="border-(--ui-border) w-full border-solid border-t"></div>
-        <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
-          <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
-              <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
-            </svg></div>
-        </div>
-        <div class="border-(--ui-border) w-full border-solid border-t"></div>
-      </div>
-      <article class="prose dark:prose-invert">
-        <p>Test content</p>
-      </article><!-- Comments Section -->
-      <div class="mt-10">
-        <h2 class="mb-4 text-2xl font-bold">Comments</h2>
-        <div data-v-e7198dba="" class="comments comments-github-style" style="background: transparent;">
-          <div data-v-e7198dba="" class="innerWrapper">
-            <div data-v-e7198dba="" class="userName">
-              <div data-v-e7198dba="" class="addComment">
-                <div data-v-e7198dba="" class="w-12 rounded-t-full">
-                  <!--v-if-->
-                </div>
-                <div data-v-e7198dba="" class="commentBox text-black dark:text-white"><textarea data-v-e7198dba="" name="addComment" class="addComment border-neutral-500 bg-white dark:border-neutral-400 dark:bg-neutral-800" placeholder="Add a comment" spellcheck="true" aria-label="Add comment"></textarea>
-                  <!--v-if-->
-                  <!--v-if-->
-                </div>
-              </div>
-            </div>
-            <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
-            <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
-            <!--v-if-->
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-</div>"
-`;
-
-exports[`SPagePostSingle Snapshot > renders with basic post data (without auth) correctly 1`] = `
-"<div>
-  <main>
-    <div>
-      <section class="mb-8">
-        <section class="py-20">
-          <h1 class="md:text-center">Post Two</h1>
-          <!--v-if-->
-        </section>
-        <div class="flex flex-wrap gap-2"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
-      </section>
-      <div class="items-end justify-between lg:flex">
-        <!--v-if-->
-        <!--v-if-->
-      </div>
-      <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row my-4">
-        <div class="border-(--ui-border) w-full border-solid border-t"></div>
-        <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
-          <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
-              <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
-            </svg></div>
-        </div>
-        <div class="border-(--ui-border) w-full border-solid border-t"></div>
-      </div>
-      <article class="prose dark:prose-invert">
-        <p>Test content</p>
-      </article><!-- Comments Section -->
+      <div class="flex flex-wrap gap-2"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+    </section>
+    <div class="items-end justify-between lg:flex">
+      <!--v-if-->
       <!--v-if-->
     </div>
-  </main>
-</div>"
-`;
-
-exports[`SPagePostSingle Snapshot > renders with blog module (with auth) correctly 1`] = `
-"<div>
-  <main>
-    <div>
-      <section class="mb-8">
-        <section class="py-20">
-          <h1 class="md:text-center">Post Two</h1>
-          <!--v-if-->
-        </section>
-        <div class="flex flex-wrap gap-2"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
-      </section>
-      <div class="items-end justify-between lg:flex">
-        <!--v-if-->
-        <!--v-if-->
+    <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row my-4">
+      <div class="border-(--ui-border) w-full border-solid border-t"></div>
+      <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
+        <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
+            <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
+          </svg></div>
       </div>
-      <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row my-4">
-        <div class="border-(--ui-border) w-full border-solid border-t"></div>
-        <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
-          <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
-              <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
-            </svg></div>
-        </div>
-        <div class="border-(--ui-border) w-full border-solid border-t"></div>
-      </div>
-      <article class="prose dark:prose-invert">
-        <p>Test content</p>
-      </article><!-- Comments Section -->
-      <div class="mt-10">
-        <h2 class="mb-4 text-2xl font-bold">Comments</h2>
-        <div data-v-e7198dba="" class="comments comments-github-style" style="background: transparent;">
-          <div data-v-e7198dba="" class="innerWrapper">
-            <div data-v-e7198dba="" class="userName">
-              <div data-v-e7198dba="" class="addComment">
-                <div data-v-e7198dba="" class="w-12 rounded-t-full">
-                  <!--v-if-->
-                </div>
-                <div data-v-e7198dba="" class="commentBox text-black dark:text-white"><textarea data-v-e7198dba="" name="addComment" class="addComment border-neutral-500 bg-white dark:border-neutral-400 dark:bg-neutral-800" placeholder="Add a comment" spellcheck="true" aria-label="Add comment"></textarea>
-                  <!--v-if-->
-                  <!--v-if-->
-                </div>
+      <div class="border-(--ui-border) w-full border-solid border-t"></div>
+    </div><!-- eslint-disable-next-line vue/no-v-html-->
+    <article class="prose dark:prose-invert">
+      <p>Test content</p>
+    </article><!-- link hub for other posts -->
+    <!--v-if-->
+    <!-- Comments Section -->
+    <div class="mt-10">
+      <h2 class="mb-4 text-2xl font-bold">Comments</h2>
+      <div data-v-e7198dba="" class="comments comments-github-style" style="background: transparent;">
+        <div data-v-e7198dba="" class="innerWrapper">
+          <div data-v-e7198dba="" class="userName">
+            <div data-v-e7198dba="" class="addComment">
+              <div data-v-e7198dba="" class="w-12 rounded-t-full">
+                <!--v-if-->
               </div>
-            </div>
-            <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
-            <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
-            <!--v-if-->
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-</div>"
-`;
-
-exports[`SPagePostSingle Snapshot > renders with blog module (without auth) correctly 1`] = `
-"<div>
-  <main>
-    <div>
-      <section class="mb-8">
-        <section class="py-20">
-          <h1 class="md:text-center">Post Two</h1>
-          <!--v-if-->
-        </section>
-        <div class="flex flex-wrap gap-2"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
-      </section>
-      <div class="items-end justify-between lg:flex">
-        <!--v-if-->
-        <!--v-if-->
-      </div>
-      <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row my-4">
-        <div class="border-(--ui-border) w-full border-solid border-t"></div>
-        <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
-          <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
-              <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
-            </svg></div>
-        </div>
-        <div class="border-(--ui-border) w-full border-solid border-t"></div>
-      </div>
-      <article class="prose dark:prose-invert">
-        <p>Test content</p>
-      </article><!-- Comments Section -->
-      <!--v-if-->
-    </div>
-  </main>
-</div>"
-`;
-
-exports[`SPagePostSingle Snapshot > renders with glossary module (with auth) correctly 1`] = `
-"<div>
-  <main>
-    <div>
-      <div class="mt-10 grid grid-cols-1 lg:grid-cols-3">
-        <div class="col-span-2 pb-10">
-          <h1 class="text-4xl font-bold lg:text-6xl">Two</h1>
-          <p class="prose dark:prose-invert mt-4">Test one-liner</p>
-        </div>
-        <div class="col-span-1 pb-10">
-          <!--v-if-->
-        </div>
-        <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row col-span-3 my-4">
-          <div class="border-(--ui-border) w-full border-solid border-t"></div>
-          <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
-            <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
-                <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
-              </svg></div>
-          </div>
-          <div class="border-(--ui-border) w-full border-solid border-t"></div>
-        </div><!-- main section -->
-        <div class="prose dark:prose-invert col-span-2">
-          <article>
-            <p>Test content</p>
-          </article>
-          <!--v-if-->
-          <!-- Comments Section -->
-          <div class="mt-10">
-            <h2 class="mb-6 text-3xl font-bold">Comments</h2>
-            <div data-v-e7198dba="" class="comments comments-github-style" style="background: transparent;">
-              <div data-v-e7198dba="" class="innerWrapper">
-                <div data-v-e7198dba="" class="userName">
-                  <div data-v-e7198dba="" class="addComment">
-                    <div data-v-e7198dba="" class="w-12 rounded-t-full">
-                      <!--v-if-->
-                    </div>
-                    <div data-v-e7198dba="" class="commentBox text-black dark:text-white"><textarea data-v-e7198dba="" name="addComment" class="addComment border-neutral-500 bg-white dark:border-neutral-400 dark:bg-neutral-800" placeholder="Add a comment" spellcheck="true" aria-label="Add comment"></textarea>
-                      <!--v-if-->
-                      <!--v-if-->
-                    </div>
-                  </div>
-                </div>
-                <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
-                <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
+              <div data-v-e7198dba="" class="commentBox text-black dark:text-white"><textarea data-v-e7198dba="" name="addComment" class="addComment border-neutral-500 bg-white dark:border-neutral-400 dark:bg-neutral-800" placeholder="Add a comment" spellcheck="true" aria-label="Add comment"></textarea>
+                <!--v-if-->
                 <!--v-if-->
               </div>
             </div>
           </div>
-        </div><!-- sidebar -->
-        <div class="col-span-1"></div>
+          <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
+          <!--v-if-->
+        </div>
       </div>
     </div>
   </main>
-</div>"
+</main>"
+`;
+
+exports[`SPagePostSingle Snapshot > renders with basic post data (without auth) correctly 1`] = `
+"<main class="min-h-[calc(100vh-var(--ui-header-height))]">
+  <main class="min-h-[calc(100vh-var(--ui-header-height))]">
+    <section class="mb-8">
+      <section class="py-20">
+        <h1 class="md:text-center">Post Two</h1>
+        <!--v-if-->
+      </section>
+      <div class="flex flex-wrap gap-2"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+    </section>
+    <div class="items-end justify-between lg:flex">
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row my-4">
+      <div class="border-(--ui-border) w-full border-solid border-t"></div>
+      <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
+        <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
+            <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
+          </svg></div>
+      </div>
+      <div class="border-(--ui-border) w-full border-solid border-t"></div>
+    </div><!-- eslint-disable-next-line vue/no-v-html-->
+    <article class="prose dark:prose-invert">
+      <p>Test content</p>
+    </article><!-- link hub for other posts -->
+    <!--v-if-->
+    <!-- Comments Section -->
+    <!--v-if-->
+  </main>
+</main>"
+`;
+
+exports[`SPagePostSingle Snapshot > renders with blog module (with auth) correctly 1`] = `
+"<main class="min-h-[calc(100vh-var(--ui-header-height))]">
+  <main class="min-h-[calc(100vh-var(--ui-header-height))]">
+    <section class="mb-8">
+      <section class="py-20">
+        <h1 class="md:text-center">Post Two</h1>
+        <!--v-if-->
+      </section>
+      <div class="flex flex-wrap gap-2"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+    </section>
+    <div class="items-end justify-between lg:flex">
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row my-4">
+      <div class="border-(--ui-border) w-full border-solid border-t"></div>
+      <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
+        <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
+            <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
+          </svg></div>
+      </div>
+      <div class="border-(--ui-border) w-full border-solid border-t"></div>
+    </div><!-- eslint-disable-next-line vue/no-v-html-->
+    <article class="prose dark:prose-invert">
+      <p>Test content</p>
+    </article><!-- link hub for other posts -->
+    <!--v-if-->
+    <!-- Comments Section -->
+    <div class="mt-10">
+      <h2 class="mb-4 text-2xl font-bold">Comments</h2>
+      <div data-v-e7198dba="" class="comments comments-github-style" style="background: transparent;">
+        <div data-v-e7198dba="" class="innerWrapper">
+          <div data-v-e7198dba="" class="userName">
+            <div data-v-e7198dba="" class="addComment">
+              <div data-v-e7198dba="" class="w-12 rounded-t-full">
+                <!--v-if-->
+              </div>
+              <div data-v-e7198dba="" class="commentBox text-black dark:text-white"><textarea data-v-e7198dba="" name="addComment" class="addComment border-neutral-500 bg-white dark:border-neutral-400 dark:bg-neutral-800" placeholder="Add a comment" spellcheck="true" aria-label="Add comment"></textarea>
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </div>
+          </div>
+          <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
+          <!--v-if-->
+        </div>
+      </div>
+    </div>
+  </main>
+</main>"
+`;
+
+exports[`SPagePostSingle Snapshot > renders with blog module (without auth) correctly 1`] = `
+"<main class="min-h-[calc(100vh-var(--ui-header-height))]">
+  <main class="min-h-[calc(100vh-var(--ui-header-height))]">
+    <section class="mb-8">
+      <section class="py-20">
+        <h1 class="md:text-center">Post Two</h1>
+        <!--v-if-->
+      </section>
+      <div class="flex flex-wrap gap-2"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+    </section>
+    <div class="items-end justify-between lg:flex">
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row my-4">
+      <div class="border-(--ui-border) w-full border-solid border-t"></div>
+      <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
+        <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
+            <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
+          </svg></div>
+      </div>
+      <div class="border-(--ui-border) w-full border-solid border-t"></div>
+    </div><!-- eslint-disable-next-line vue/no-v-html-->
+    <article class="prose dark:prose-invert">
+      <p>Test content</p>
+    </article><!-- link hub for other posts -->
+    <!--v-if-->
+    <!-- Comments Section -->
+    <!--v-if-->
+  </main>
+</main>"
+`;
+
+exports[`SPagePostSingle Snapshot > renders with glossary module (with auth) correctly 1`] = `
+"<main class="min-h-[calc(100vh-var(--ui-header-height))]">
+  <div>
+    <div class="mt-10 grid grid-cols-1 lg:grid-cols-3">
+      <div class="col-span-2 pb-10">
+        <h1 class="text-4xl font-bold lg:text-6xl">Two</h1>
+        <p class="prose dark:prose-invert mt-4">Test one-liner</p>
+      </div>
+      <div class="col-span-1 pb-10">
+        <!--v-if-->
+      </div>
+      <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row col-span-3 my-4">
+        <div class="border-(--ui-border) w-full border-solid border-t"></div>
+        <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
+          <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
+              <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
+            </svg></div>
+        </div>
+        <div class="border-(--ui-border) w-full border-solid border-t"></div>
+      </div><!-- main section -->
+      <div class="prose dark:prose-invert col-span-2">
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <article>
+          <p>Test content</p>
+        </article>
+        <!--v-if-->
+        <!-- Comments Section -->
+        <div class="mt-10">
+          <h2 class="mb-6 text-3xl font-bold">Comments</h2>
+          <div data-v-e7198dba="" class="comments comments-github-style" style="background: transparent;">
+            <div data-v-e7198dba="" class="innerWrapper">
+              <div data-v-e7198dba="" class="userName">
+                <div data-v-e7198dba="" class="addComment">
+                  <div data-v-e7198dba="" class="w-12 rounded-t-full">
+                    <!--v-if-->
+                  </div>
+                  <div data-v-e7198dba="" class="commentBox text-black dark:text-white"><textarea data-v-e7198dba="" name="addComment" class="addComment border-neutral-500 bg-white dark:border-neutral-400 dark:bg-neutral-800" placeholder="Add a comment" spellcheck="true" aria-label="Add comment"></textarea>
+                    <!--v-if-->
+                    <!--v-if-->
+                  </div>
+                </div>
+              </div>
+              <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
+              <!--v-if-->
+            </div>
+          </div>
+        </div>
+      </div><!-- sidebar -->
+      <div class="col-span-1"></div>
+    </div>
+  </div>
+</main>"
 `;
 
 exports[`SPagePostSingle Snapshot > renders with glossary module (without auth) correctly 1`] = `
-"<div>
-  <main>
-    <div>
-      <div class="mt-10 grid grid-cols-1 lg:grid-cols-3">
-        <div class="col-span-2 pb-10">
-          <h1 class="text-4xl font-bold lg:text-6xl">Two</h1>
-          <p class="prose dark:prose-invert mt-4">Test one-liner</p>
-        </div>
-        <div class="col-span-1 pb-10">
-          <!--v-if-->
-        </div>
-        <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row col-span-3 my-4">
-          <div class="border-(--ui-border) w-full border-solid border-t"></div>
-          <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
-            <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
-                <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
-              </svg></div>
-          </div>
-          <div class="border-(--ui-border) w-full border-solid border-t"></div>
-        </div><!-- main section -->
-        <div class="prose dark:prose-invert col-span-2">
-          <article>
-            <p>Test content</p>
-          </article>
-          <!--v-if-->
-          <!-- Comments Section -->
-          <!--v-if-->
-        </div><!-- sidebar -->
-        <div class="col-span-1"></div>
+"<main class="min-h-[calc(100vh-var(--ui-header-height))]">
+  <div>
+    <div class="mt-10 grid grid-cols-1 lg:grid-cols-3">
+      <div class="col-span-2 pb-10">
+        <h1 class="text-4xl font-bold lg:text-6xl">Two</h1>
+        <p class="prose dark:prose-invert mt-4">Test one-liner</p>
       </div>
+      <div class="col-span-1 pb-10">
+        <!--v-if-->
+      </div>
+      <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row col-span-3 my-4">
+        <div class="border-(--ui-border) w-full border-solid border-t"></div>
+        <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
+          <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
+              <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
+            </svg></div>
+        </div>
+        <div class="border-(--ui-border) w-full border-solid border-t"></div>
+      </div><!-- main section -->
+      <div class="prose dark:prose-invert col-span-2">
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <article>
+          <p>Test content</p>
+        </article>
+        <!--v-if-->
+        <!-- Comments Section -->
+        <!--v-if-->
+      </div><!-- sidebar -->
+      <div class="col-span-1"></div>
     </div>
-  </main>
-</div>"
+  </div>
+</main>"
 `;
 
 exports[`SPagePostSingle Snapshot > renders with movies module (with auth) correctly 1`] = `
-"<div>
-  <main>
-    <div>
-      <section class="mb-8">
-        <section class="py-20">
-          <h1 class="md:text-center">Post Two</h1>
-          <!--v-if-->
-        </section>
-        <div class="flex flex-wrap gap-2"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+"<main class="min-h-[calc(100vh-var(--ui-header-height))]">
+  <main class="min-h-[calc(100vh-var(--ui-header-height))]">
+    <section class="mb-8">
+      <section class="py-20">
+        <h1 class="md:text-center">Post Two</h1>
+        <!--v-if-->
       </section>
-      <div class="items-end justify-between lg:flex">
-        <!--v-if-->
-        <!--v-if-->
+      <div class="flex flex-wrap gap-2"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+    </section>
+    <div class="items-end justify-between lg:flex">
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row my-4">
+      <div class="border-(--ui-border) w-full border-solid border-t"></div>
+      <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
+        <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
+            <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
+          </svg></div>
       </div>
-      <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row my-4">
-        <div class="border-(--ui-border) w-full border-solid border-t"></div>
-        <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
-          <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
-              <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
-            </svg></div>
-        </div>
-        <div class="border-(--ui-border) w-full border-solid border-t"></div>
-      </div>
-      <article class="prose dark:prose-invert">
-        <p>Test content</p>
-      </article><!-- Comments Section -->
-      <div class="mt-10">
-        <h2 class="mb-4 text-2xl font-bold">Comments</h2>
-        <div data-v-e7198dba="" class="comments comments-github-style" style="background: transparent;">
-          <div data-v-e7198dba="" class="innerWrapper">
-            <div data-v-e7198dba="" class="userName">
-              <div data-v-e7198dba="" class="addComment">
-                <div data-v-e7198dba="" class="w-12 rounded-t-full">
-                  <!--v-if-->
-                </div>
-                <div data-v-e7198dba="" class="commentBox text-black dark:text-white"><textarea data-v-e7198dba="" name="addComment" class="addComment border-neutral-500 bg-white dark:border-neutral-400 dark:bg-neutral-800" placeholder="Add a comment" spellcheck="true" aria-label="Add comment"></textarea>
-                  <!--v-if-->
-                  <!--v-if-->
-                </div>
+      <div class="border-(--ui-border) w-full border-solid border-t"></div>
+    </div><!-- eslint-disable-next-line vue/no-v-html-->
+    <article class="prose dark:prose-invert">
+      <p>Test content</p>
+    </article><!-- link hub for other posts -->
+    <!--v-if-->
+    <!-- Comments Section -->
+    <div class="mt-10">
+      <h2 class="mb-4 text-2xl font-bold">Comments</h2>
+      <div data-v-e7198dba="" class="comments comments-github-style" style="background: transparent;">
+        <div data-v-e7198dba="" class="innerWrapper">
+          <div data-v-e7198dba="" class="userName">
+            <div data-v-e7198dba="" class="addComment">
+              <div data-v-e7198dba="" class="w-12 rounded-t-full">
+                <!--v-if-->
+              </div>
+              <div data-v-e7198dba="" class="commentBox text-black dark:text-white"><textarea data-v-e7198dba="" name="addComment" class="addComment border-neutral-500 bg-white dark:border-neutral-400 dark:bg-neutral-800" placeholder="Add a comment" spellcheck="true" aria-label="Add comment"></textarea>
+                <!--v-if-->
+                <!--v-if-->
               </div>
             </div>
-            <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
-            <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
-            <!--v-if-->
           </div>
+          <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
+          <!--v-if-->
         </div>
       </div>
     </div>
   </main>
-</div>"
+</main>"
 `;
 
 exports[`SPagePostSingle Snapshot > renders with movies module (without auth) correctly 1`] = `
-"<div>
-  <main>
-    <div>
-      <section class="mb-8">
-        <section class="py-20">
-          <h1 class="md:text-center">Post Two</h1>
-          <!--v-if-->
-        </section>
-        <div class="flex flex-wrap gap-2"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+"<main class="min-h-[calc(100vh-var(--ui-header-height))]">
+  <main class="min-h-[calc(100vh-var(--ui-header-height))]">
+    <section class="mb-8">
+      <section class="py-20">
+        <h1 class="md:text-center">Post Two</h1>
+        <!--v-if-->
       </section>
-      <div class="items-end justify-between lg:flex">
-        <!--v-if-->
-        <!--v-if-->
-      </div>
-      <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row my-4">
-        <div class="border-(--ui-border) w-full border-solid border-t"></div>
-        <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
-          <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
-              <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
-            </svg></div>
-        </div>
-        <div class="border-(--ui-border) w-full border-solid border-t"></div>
-      </div>
-      <article class="prose dark:prose-invert">
-        <p>Test content</p>
-      </article><!-- Comments Section -->
+      <div class="flex flex-wrap gap-2"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+    </section>
+    <div class="items-end justify-between lg:flex">
+      <!--v-if-->
       <!--v-if-->
     </div>
+    <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row my-4">
+      <div class="border-(--ui-border) w-full border-solid border-t"></div>
+      <div class="font-medium text-(--ui-text) flex mx-3 whitespace-nowrap">
+        <div class="flex items-center space-x-2"><svg width="35pt" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-label="SERP Brand logo">
+            <path class="fill-[var(--ui-primary)]" d=" M 127.62 540.68 C 255.64 429.97 383.70 319.31 511.76 208.65 C 639.74 319.23 767.70 429.86 895.69 540.45 C 895.70 631.71 895.73 722.97 895.64 814.23 C 719.72 662.17 543.76 510.14 367.81 358.10 C 398.86 414.80 429.83 471.54 460.92 528.22 C 349.85 623.79 238.69 719.27 127.67 814.91 C 127.66 723.50 127.67 632.09 127.62 540.68 Z"></path>
+          </svg></div>
+      </div>
+      <div class="border-(--ui-border) w-full border-solid border-t"></div>
+    </div><!-- eslint-disable-next-line vue/no-v-html-->
+    <article class="prose dark:prose-invert">
+      <p>Test content</p>
+    </article><!-- link hub for other posts -->
+    <!--v-if-->
+    <!-- Comments Section -->
+    <!--v-if-->
   </main>
-</div>"
+</main>"
 `;

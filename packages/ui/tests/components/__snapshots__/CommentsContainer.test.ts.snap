@@ -14,17 +14,6 @@ exports[`CommentsContainer Snapshot > renders default state with no comments cor
         </div>
       </div>
     </div>
-    <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
     <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
     <!--v-if-->
   </div>
@@ -45,17 +34,6 @@ exports[`CommentsContainer Snapshot > renders with a single comment correctly 1`
         </div>
       </div>
     </div>
-    <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
     <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true">
       <div data-v-d830712d="" data-v-e7198dba="" class="comment-wrapper">
         <div data-v-d830712d="" class="wrapper">
@@ -107,17 +85,6 @@ exports[`CommentsContainer Snapshot > renders with multiple comments and custom 
         </div>
       </div>
     </div>
-    <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
     <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true">
       <div data-v-d830712d="" data-v-e7198dba="" class="comment-wrapper">
         <div data-v-d830712d="" class="wrapper">
@@ -195,17 +162,6 @@ exports[`CommentsContainer Snapshot > renders with nested comment correctly 1`] 
         </div>
       </div>
     </div>
-    <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
     <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true">
       <div data-v-d830712d="" data-v-e7198dba="" class="comment-wrapper">
         <div data-v-d830712d="" class="wrapper">

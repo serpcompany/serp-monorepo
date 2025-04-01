@@ -9,9 +9,20 @@ export default defineNuxtConfig({
     'nuxt-multi-cache',
     'nuxt-security',
     'nuxt-link-checker',
-    '@bg-dev/nuxt-s3'
+    '@bg-dev/nuxt-s3',
+    '@unlok-co/nuxt-stripe'
   ],
   css: ['~/assets/css/main.css'],
+  stripe: {
+    server: {
+      key: process.env.STRIPE_SECRET_KEY,
+      options: {}
+    },
+    client: {
+      key: process.env.STRIPE_API_KEY,
+      options: {}
+    }
+  },
   s3: {
     driver: 's3',
     bucket: process.env.CLOUDFLARE_R2_BUCKET,

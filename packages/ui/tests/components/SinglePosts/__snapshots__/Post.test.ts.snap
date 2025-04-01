@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`SinglePostsPost Snapshot > renders with full post and auth disabled correctly 1`] = `
-"<div>
+"<main class="min-h-[calc(100vh-var(--ui-header-height))]">
   <section class="mb-8">
     <section class="py-20">
       <h1 class="md:text-center"></h1>
@@ -21,16 +21,18 @@ exports[`SinglePostsPost Snapshot > renders with full post and auth disabled cor
         </svg></div>
     </div>
     <div class="border-(--ui-border) w-full border-solid border-t"></div>
-  </div>
+  </div><!-- eslint-disable-next-line vue/no-v-html-->
   <article class="prose dark:prose-invert">
     <p>Content of the post</p>
-  </article><!-- Comments Section -->
+  </article><!-- link hub for other posts -->
   <!--v-if-->
-</div>"
+  <!-- Comments Section -->
+  <!--v-if-->
+</main>"
 `;
 
 exports[`SinglePostsPost Snapshot > renders with full post and auth enabled correctly 1`] = `
-"<div>
+"<main class="min-h-[calc(100vh-var(--ui-header-height))]">
   <section class="mb-8">
     <section class="py-20">
       <h1 class="md:text-center"></h1>
@@ -50,10 +52,12 @@ exports[`SinglePostsPost Snapshot > renders with full post and auth enabled corr
         </svg></div>
     </div>
     <div class="border-(--ui-border) w-full border-solid border-t"></div>
-  </div>
+  </div><!-- eslint-disable-next-line vue/no-v-html-->
   <article class="prose dark:prose-invert">
     <p>Content of the post</p>
-  </article><!-- Comments Section -->
+  </article><!-- link hub for other posts -->
+  <!--v-if-->
+  <!-- Comments Section -->
   <div class="mt-10">
     <h2 class="mb-4 text-2xl font-bold">Comments</h2>
     <div data-v-e7198dba="" class="comments comments-github-style" style="background: transparent;">
@@ -69,17 +73,6 @@ exports[`SinglePostsPost Snapshot > renders with full post and auth enabled corr
             </div>
           </div>
         </div>
-        <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
         <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true">
           <div data-v-d830712d="" data-v-e7198dba="" class="comment-wrapper">
             <div data-v-d830712d="" class="wrapper">
@@ -116,11 +109,11 @@ exports[`SinglePostsPost Snapshot > renders with full post and auth enabled corr
       </div>
     </div>
   </div>
-</div>"
+</main>"
 `;
 
 exports[`SinglePostsPost Snapshot > renders with non-empty relatedPosts correctly 1`] = `
-"<div>
+"<main class="min-h-[calc(100vh-var(--ui-header-height))]">
   <section class="mb-8">
     <section class="py-20">
       <h1 class="md:text-center">Related Posts Present</h1>
@@ -140,10 +133,12 @@ exports[`SinglePostsPost Snapshot > renders with non-empty relatedPosts correctl
         </svg></div>
     </div>
     <div class="border-(--ui-border) w-full border-solid border-t"></div>
-  </div>
+  </div><!-- eslint-disable-next-line vue/no-v-html-->
   <article class="prose dark:prose-invert">
     <p>Some content here</p>
-  </article><!-- Comments Section -->
+  </article><!-- link hub for other posts -->
+  <!--v-if-->
+  <!-- Comments Section -->
   <div class="mt-10">
     <h2 class="mb-4 text-2xl font-bold">Comments</h2>
     <div data-v-e7198dba="" class="comments comments-github-style" style="background: transparent;">
@@ -159,27 +154,16 @@ exports[`SinglePostsPost Snapshot > renders with non-empty relatedPosts correctl
             </div>
           </div>
         </div>
-        <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
         <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
         <!--v-if-->
       </div>
     </div>
   </div>
-</div>"
+</main>"
 `;
 
 exports[`SinglePostsPost Snapshot > renders without video and minimal fields correctly 1`] = `
-"<div>
+"<main class="min-h-[calc(100vh-var(--ui-header-height))]">
   <section class="mb-8">
     <section class="py-20">
       <h1 class="md:text-center">No Video Post</h1>
@@ -199,10 +183,12 @@ exports[`SinglePostsPost Snapshot > renders without video and minimal fields cor
         </svg></div>
     </div>
     <div class="border-(--ui-border) w-full border-solid border-t"></div>
-  </div>
+  </div><!-- eslint-disable-next-line vue/no-v-html-->
   <article class="prose dark:prose-invert">
     <p>Content without video</p>
-  </article><!-- Comments Section -->
+  </article><!-- link hub for other posts -->
+  <!--v-if-->
+  <!-- Comments Section -->
   <div class="mt-10">
     <h2 class="mb-4 text-2xl font-bold">Comments</h2>
     <div data-v-e7198dba="" class="comments comments-github-style" style="background: transparent;">
@@ -218,21 +204,10 @@ exports[`SinglePostsPost Snapshot > renders without video and minimal fields cor
             </div>
           </div>
         </div>
-        <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
         <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
         <!--v-if-->
       </div>
     </div>
   </div>
-</div>"
+</main>"
 `;

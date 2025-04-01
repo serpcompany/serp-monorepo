@@ -42,7 +42,7 @@ exports[`SPageSongSingle Snapshot > renders complete song with upvotes and auth 
       <div class="lg:col-span-2">
         <div>
           <!-- section: overview -->
-          <h2 id="lyrics" class="flex scroll-mt-60 flex-row">Test Song Lyrics </h2>
+          <h2 id="lyrics" class="flex scroll-mt-60 flex-row">Test Song Lyrics </h2><!-- eslint-disable-next-line vue/no-v-html -->
           <div>
             <p>Test lyrics content.</p>
           </div>
@@ -107,7 +107,7 @@ exports[`SPageSongSingle Snapshot > renders minimal song without upvotes and aut
       <div class="lg:col-span-2">
         <div>
           <!-- section: overview -->
-          <h2 id="lyrics" class="flex scroll-mt-60 flex-row">Minimal Song Lyrics </h2>
+          <h2 id="lyrics" class="flex scroll-mt-60 flex-row">Minimal Song Lyrics </h2><!-- eslint-disable-next-line vue/no-v-html -->
           <div></div>
         </div>
       </div><!-- Sidebar (30%) -->

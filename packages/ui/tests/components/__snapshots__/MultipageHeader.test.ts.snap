@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`MultipageHeader Snapshot > renders default rendering correctly 1`] = `
-"<div>
+"<div serply_link="https://example.com">
   <header class="bg-[var(--ui-bg)] py-2 sm:py-2">
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
       <!-- header top -->
@@ -16,7 +16,7 @@ exports[`MultipageHeader Snapshot > renders default rendering correctly 1`] = `
         </div><!-- action buttons -->
         <div class="flex w-full flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0">
           <!-- upvote button slot -->
-          <!-- visit website button --><a href="https://example.com" rel="noopener noreferrer" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"> Visit Website <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- visit website button --><a rel="noopener noreferrer" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"> Visit Website <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
               <polyline points="15 3 21 3 21 9"></polyline>
               <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -32,7 +32,7 @@ exports[`MultipageHeader Snapshot > renders default rendering correctly 1`] = `
 `;
 
 exports[`MultipageHeader Snapshot > renders with empty sections correctly 1`] = `
-"<div>
+"<div serply_link="https://example.com">
   <header class="bg-[var(--ui-bg)] py-2 sm:py-2">
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
       <!-- header top -->
@@ -47,7 +47,7 @@ exports[`MultipageHeader Snapshot > renders with empty sections correctly 1`] = 
         </div><!-- action buttons -->
         <div class="flex w-full flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0">
           <!-- upvote button slot -->
-          <!-- visit website button --><a href="https://example.com" rel="noopener noreferrer" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"> Visit Website <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- visit website button --><a rel="noopener noreferrer" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"> Visit Website <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
               <polyline points="15 3 21 3 21 9"></polyline>
               <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -63,7 +63,7 @@ exports[`MultipageHeader Snapshot > renders with empty sections correctly 1`] = 
 `;
 
 exports[`MultipageHeader Snapshot > renders with oneLiner and image correctly 1`] = `
-"<div>
+"<div serply_link="https://example.com">
   <header class="bg-[var(--ui-bg)] py-2 sm:py-2">
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
       <!-- header top -->
@@ -76,7 +76,7 @@ exports[`MultipageHeader Snapshot > renders with oneLiner and image correctly 1`
         </div><!-- action buttons -->
         <div class="flex w-full flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0">
           <!-- upvote button slot -->
-          <!-- visit website button --><a href="https://example.com" rel="noopener noreferrer" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"> Visit Website <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- visit website button --><a rel="noopener noreferrer" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"> Visit Website <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
               <polyline points="15 3 21 3 21 9"></polyline>
               <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -92,7 +92,7 @@ exports[`MultipageHeader Snapshot > renders with oneLiner and image correctly 1`
 `;
 
 exports[`MultipageHeader Snapshot > renders with upvote slot correctly 1`] = `
-"<div>
+"<div serply_link="https://example.com">
   <header class="bg-[var(--ui-bg)] py-2 sm:py-2">
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
       <!-- header top -->
@@ -107,7 +107,7 @@ exports[`MultipageHeader Snapshot > renders with upvote slot correctly 1`] = `
         </div><!-- action buttons -->
         <div class="flex w-full flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0">
           <!-- upvote button slot -->&lt;button&gt;Upvote&lt;/button&gt;
-          <!-- visit website button --><a href="https://example.com" rel="noopener noreferrer" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"> Visit Website <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- visit website button --><a rel="noopener noreferrer" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"> Visit Website <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
               <polyline points="15 3 21 3 21 9"></polyline>
               <line x1="10" y1="14" x2="21" y2="3"></line>

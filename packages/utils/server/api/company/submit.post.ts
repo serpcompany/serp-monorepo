@@ -1,8 +1,8 @@
 import { db } from '@serp/utils/server/api/db';
 import {
-  companySubmitForm,
   companyCache,
-  companyCategoryCache
+  companyCategoryCache,
+  companySubmitForm
 } from '@serp/utils/server/api/db/schema';
 import { eq, inArray } from 'drizzle-orm';
 
@@ -23,7 +23,8 @@ export default defineEventHandler(async (event) => {
       'domain',
       'pricing',
       'oneLiner',
-      'description'
+      'description',
+      'uuid'
     ];
 
     const data = await readBody(event);
@@ -106,7 +107,8 @@ export default defineEventHandler(async (event) => {
         tags,
         oneLiner: data.oneLiner,
         description: data.description,
-        logo: data.logo
+        logo: data.logo,
+        uuid: data.uuid
       })
       .execute();
 

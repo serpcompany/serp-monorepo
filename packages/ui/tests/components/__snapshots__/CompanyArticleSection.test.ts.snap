@@ -4,6 +4,7 @@ exports[`CompanyArticleSection Snapshot > renders with empty article correctly 1
 
 exports[`CompanyArticleSection Snapshot > renders with valid article content correctly 1`] = `
 "<article role="article" aria-labelledby="article-title">
+  <!-- eslint-disable-next-line vue/no-v-html -->
   <div role="document">
     <h1 id="article-title">Breaking News</h1>
     <p>This is an amazing article content!</p>

@@ -142,6 +142,7 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with complete data co
     </section><!-- company category article -->
     <section class="mt-20">
       <article role="article" aria-labelledby="article-title">
+        <!-- eslint-disable-next-line vue/no-v-html -->
         <div role="document">[object Object]</div>
       </article>
     </section>
@@ -338,6 +339,7 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with no categories co
     <!-- company category article -->
     <section class="mt-20">
       <article role="article" aria-labelledby="article-title">
+        <!-- eslint-disable-next-line vue/no-v-html -->
         <div role="document">[object Object]</div>
       </article>
     </section>

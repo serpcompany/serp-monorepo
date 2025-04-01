@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ref } from 'vue';
-import ProfileDropdown from '../../components/ProfileDropdown.vue';
+import ProfileDropdown from '../../components/ProfileDropdown.client.vue';
 import ComponentRender from '../componentRender';
 
 // Declare a mutable session_ variable.

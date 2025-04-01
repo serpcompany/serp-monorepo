@@ -27,6 +27,7 @@ exports[`SinglePostsGlossaryPost Snapshot > renders with full post and auth disa
       <div class="border-(--ui-border) w-full border-solid border-t"></div>
     </div><!-- main section -->
     <div class="prose dark:prose-invert col-span-2">
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <article>
         <p>Content of the post</p>
       </article>
@@ -72,6 +73,7 @@ exports[`SinglePostsGlossaryPost Snapshot > renders with full post and auth enab
       <div class="border-(--ui-border) w-full border-solid border-t"></div>
     </div><!-- main section -->
     <div class="prose dark:prose-invert col-span-2">
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <article>
         <p>Content of the post</p>
       </article>
@@ -98,17 +100,6 @@ exports[`SinglePostsGlossaryPost Snapshot > renders with full post and auth enab
                 </div>
               </div>
             </div>
-            <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
             <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true">
               <div data-v-d830712d="" data-v-e7198dba="" class="comment-wrapper">
                 <div data-v-d830712d="" class="wrapper">
@@ -178,6 +169,7 @@ exports[`SinglePostsGlossaryPost Snapshot > renders with non-empty relatedPosts 
       <div class="border-(--ui-border) w-full border-solid border-t"></div>
     </div><!-- main section -->
     <div class="prose dark:prose-invert col-span-2">
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <article>
         <p>Some content here</p>
       </article>
@@ -198,17 +190,6 @@ exports[`SinglePostsGlossaryPost Snapshot > renders with non-empty relatedPosts 
                 </div>
               </div>
             </div>
-            <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
             <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
             <!--v-if-->
           </div>
@@ -240,6 +221,7 @@ exports[`SinglePostsGlossaryPost Snapshot > renders without video and minimal fi
       <div class="border-(--ui-border) w-full border-solid border-t"></div>
     </div><!-- main section -->
     <div class="prose dark:prose-invert col-span-2">
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <article>
         <p>Content without video</p>
       </article>
@@ -260,17 +242,6 @@ exports[`SinglePostsGlossaryPost Snapshot > renders without video and minimal fi
                 </div>
               </div>
             </div>
-            <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
             <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
             <!--v-if-->
           </div>

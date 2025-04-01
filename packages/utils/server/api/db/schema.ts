@@ -1,17 +1,29 @@
 import {
-  serial,
-  timestamp,
-  varchar,
-  text,
   boolean,
-  jsonb,
   doublePrecision,
   integer,
-  pgSchema
+  jsonb,
+  pgSchema,
+  serial,
+  text,
+  timestamp,
+  uuid,
+  varchar
 } from 'drizzle-orm/pg-core';
 
 export const cacheSchema = pgSchema('cache');
 export const formSchema = pgSchema('form');
+export const stripeSchema = pgSchema('stripe');
+
+// Stripe
+export const customer = stripeSchema.table('customer', {
+  id: serial('id').primaryKey(),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  email: varchar('email', { length: 255 }).unique().notNull(),
+  stripeId: varchar('stripe_id', { length: 255 }).unique().notNull()
+});
 
 // Company
 export const companyCache = cacheSchema.table('company_cache', {
@@ -72,7 +84,10 @@ export const companySubmitForm = formSchema.table('company_submit', {
   approved: boolean('approved').notNull().default(false),
   reviewedAt: timestamp('reviewed_at', { withTimezone: true }),
   reviewedBy: varchar('reviewed_by', { length: 255 }),
-  reviewedNotes: text('reviewed_notes')
+  reviewedNotes: text('reviewed_notes'),
+  isPriority: boolean('is_priority').notNull().default(false),
+  priorityPaymentData: jsonb('priority_payment_data'),
+  uuid: uuid('uuid').unique().notNull()
 });
 // End Company
 

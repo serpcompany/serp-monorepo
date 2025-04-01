@@ -48,6 +48,7 @@ exports[`SPageCompanySingle Snapshot > renders complete company data (with auth)
           </div>
         </div><!-- Article Section -->
         <section class="prose dark:prose-invert mt-[-25px]">
+          <!-- eslint-disable-next-line vue/no-v-html-->
           <div id="article" class="mb-8">
             <p>Company article content</p>
           </div>
@@ -94,17 +95,6 @@ exports[`SPageCompanySingle Snapshot > renders complete company data (with auth)
                   </div>
                 </div>
               </div>
-              <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
               <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true">
                 <div data-v-d830712d="" data-v-e7198dba="" class="comment-wrapper">
                   <div data-v-d830712d="" class="wrapper">
@@ -205,6 +195,7 @@ exports[`SPageCompanySingle Snapshot > renders complete company data (without au
           </div>
         </div><!-- Article Section -->
         <section class="prose dark:prose-invert mt-[-25px]">
+          <!-- eslint-disable-next-line vue/no-v-html-->
           <div id="article" class="mb-8">
             <p>Company article content</p>
           </div>
@@ -326,17 +317,6 @@ exports[`SPageCompanySingle Snapshot > renders minimal company data (with auth) 
                   </div>
                 </div>
               </div>
-              <!-- <div v-else class="noCommentWrapper">
-        <NuxtLink
-          :to="\`/login?redirectTo=\${$route.fullPath}\`"
-          class="noCommentWrapper"
-        >
-          <span
-            class="noCommentText text-(--ui-primary) border-primary hover:bg-primary border hover:text-white"
-            >Sign in to comment.</span
-          >
-        </NuxtLink>
-      </div> -->
               <transition-group-stub data-v-e7198dba="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
               <!--v-if-->
             </div>
