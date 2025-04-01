@@ -9,8 +9,7 @@
 
   const activeTab = ref('general');
   const tabs = ref([
-    { label: 'General', value: 'general' },
-    { label: 'Example', value: 'example' }
+    { label: 'General', value: 'general' }
   ]);
 
   const company = ref({
@@ -461,9 +460,6 @@
                   </div>
                 </div>
               </form>
-            </div>
-            <div v-else-if="activeTab === 'example'">
-              <p class="text-sm">Example tab</p>
             </div>
           </TransitionGroup>
         </UCard>
