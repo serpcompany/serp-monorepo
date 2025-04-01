@@ -440,6 +440,7 @@
                         v-model="company.oneLiner"
                         placeholder="A short company tagline"
                         class="w-full"
+                        maxlength="100"
                       />
                     </UFormField>
                   </div>
