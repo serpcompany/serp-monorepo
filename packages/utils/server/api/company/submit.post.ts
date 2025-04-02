@@ -75,19 +75,22 @@ export default defineEventHandler(async (event) => {
       };
     }
 
-    // Ensure domain hasn't already been submitted
-    const existingCompanyForm = await db
-      .select()
-      .from(companySubmitForm)
-      .where(eq(companySubmitForm.domain, data.domain))
-      .limit(1)
-      .execute();
+    if (!data.id) {
+      // Not an update
+      // Ensure domain hasn't already been submitted
+      const existingCompanyForm = await db
+        .select()
+        .from(companySubmitForm)
+        .where(eq(companySubmitForm.domain, data.domain))
+        .limit(1)
+        .execute();
 
-    if (existingCompanyForm.length) {
-      return {
-        status: 400,
-        message: 'Company with domain already submitted'
-      };
+      if (existingCompanyForm.length) {
+        return {
+          status: 400,
+          message: 'Company with domain already submitted'
+        };
+      }
     }
 
     let tags = data.tags;
@@ -96,21 +99,39 @@ export default defineEventHandler(async (event) => {
     }
     tags = [...new Set(tags)];
 
-    await db
-      .insert(companySubmitForm)
-      .values({
-        submittingEmail: email,
-        name: data.name,
-        domain: data.domain,
-        categories: data.categories,
-        pricing: data.pricing,
-        tags,
-        oneLiner: data.oneLiner,
-        description: data.description,
-        logo: data.logo,
-        uuid: data.uuid
-      })
-      .execute();
+    if (data.id) {
+      // Update existing submission
+      await db
+        .update(companySubmitForm)
+        .set({
+          name: data.name,
+          domain: data.domain,
+          categories: data.categories,
+          pricing: data.pricing,
+          tags,
+          oneLiner: data.oneLiner,
+          description: data.description,
+          logo: data.logo
+        })
+        .where(eq(companySubmitForm.id, data.id))
+        .execute();
+    } else {
+      await db
+        .insert(companySubmitForm)
+        .values({
+          submittingEmail: email,
+          name: data.name,
+          domain: data.domain,
+          categories: data.categories,
+          pricing: data.pricing,
+          tags,
+          oneLiner: data.oneLiner,
+          description: data.description,
+          logo: data.logo,
+          uuid: data.uuid
+        })
+        .execute();
+    }
 
     return {
       message: 'success'

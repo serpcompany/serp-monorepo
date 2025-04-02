@@ -17,13 +17,38 @@ export const stripeSchema = pgSchema('stripe');
 
 // Stripe
 export const customer = stripeSchema.table('customer', {
+  id: varchar('id', { length: 255 }).primaryKey(),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  email: varchar('email', { length: 255 }).unique().notNull()
+});
+
+export const payment = stripeSchema.table('payment', {
   id: serial('id').primaryKey(),
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
     .defaultNow(),
-  email: varchar('email', { length: 255 }).unique().notNull(),
-  stripeId: varchar('stripe_id', { length: 255 }).unique().notNull()
+  customer: varchar('customer', { length: 255 }).notNull(),
+  data: jsonb('data').notNull(),
+  type: varchar('type', { length: 255 }).notNull()
 });
+
+export const companyFeaturedSubscription = stripeSchema.table(
+  'companyFeaturedSubscription',
+  {
+    id: serial('id').primaryKey(),
+    createdAt: timestamp('created_at', { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+    lastPaymentFk: integer('last_payment_fk'),
+    placement: integer('placement'),
+    categoryFk: integer('category_fk'),
+    companyFk: integer('company_fk'),
+    isActive: boolean('is_active').notNull().default(false),
+    email: varchar('email', { length: 255 }).notNull()
+  }
+);
 
 // Company
 export const companyCache = cacheSchema.table('company_cache', {
@@ -86,7 +111,7 @@ export const companySubmitForm = formSchema.table('company_submit', {
   reviewedBy: varchar('reviewed_by', { length: 255 }),
   reviewedNotes: text('reviewed_notes'),
   isPriority: boolean('is_priority').notNull().default(false),
-  priorityPaymentData: jsonb('priority_payment_data'),
+  priorityPaymentFk: integer('priority_payment_fk'),
   uuid: uuid('uuid').unique().notNull()
 });
 // End Company

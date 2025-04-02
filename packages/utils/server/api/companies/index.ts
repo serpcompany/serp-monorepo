@@ -1,7 +1,7 @@
+import { useDataCache } from '#nuxt-multi-cache/composables';
 import { db } from '@serp/utils/server/api/db';
 import { companyCache } from '@serp/utils/server/api/db/schema';
-import { sql, asc, desc } from 'drizzle-orm';
-import { useDataCache } from '#nuxt-multi-cache/composables';
+import { asc, desc, sql } from 'drizzle-orm';
 
 import type { CompanyIndex, Pagination } from '@serp/types/types';
 

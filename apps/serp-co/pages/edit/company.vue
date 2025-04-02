@@ -8,11 +8,10 @@
   }
 
   const activeTab = ref('general');
-  const tabs = ref([
-    { label: 'General', value: 'general' }
-  ]);
+  const tabs = ref([{ label: 'General', value: 'general' }]);
 
   const company = ref({
+    id: null,
     name: '',
     domain: '',
     pricing: '',
@@ -23,15 +22,43 @@
     logo: ''
   });
 
-  const stripeComponent = ref(null);
-
-  const toast = useToast();
-  const loading = ref(false);
-  const uuid = uuidv4();
+  let uuid = uuidv4();
+  const isPriority = ref(false);
 
   const categories = await useCompanyCategories();
   const categoryOptions = ref(categories?.map((category) => category.name));
   const pricingOptions = ref(['Free', 'Paid', 'Subscription']);
+
+  const route = useRoute();
+  const id = route.query.id;
+  if (id) {
+    const submissionData = await useCompanySubmissions(id);
+    if (submissionData) {
+      if (submissionData.approved) {
+        navigateTo(`/products/${submissionData.domain}/reviews/`);
+      }
+      company.value.id = submissionData.id;
+      company.value.name = submissionData.name;
+      company.value.domain = submissionData.domain;
+      company.value.pricing = submissionData.pricing;
+      company.value.tags = submissionData.tags;
+      company.value.oneLiner = submissionData.oneLiner;
+      company.value.description = submissionData.description;
+      company.value.categories = submissionData.categories
+        ? submissionData.categories.map(
+            (category) => categories.find((c) => c.id === category)?.name
+          )
+        : [];
+      company.value.logo = submissionData.logo;
+      uuid = submissionData.uuid;
+      isPriority.value = submissionData.isPriority;
+    }
+  }
+
+  const stripeComponent = ref(null);
+
+  const toast = useToast();
+  const loading = ref(false);
 
   const allFields = [
     { key: 'name', label: 'Name' },
@@ -238,7 +265,9 @@
           icon: 'check-circle'
         });
 
-        stripeComponent.value.$.exposed.payWithStripe();
+        if (!isPriority.value) {
+          stripeComponent.value.$.exposed.payWithStripe();
+        }
       } else {
         throw new Error(`Failed to save company - ${response.value.message}`);
       }
@@ -263,6 +292,7 @@
         <!-- Waiting Line Card -->
         <UCard>
           <Stripe
+            v-if="!isPriority"
             :id="uuid"
             ref="stripeComponent"
             type="company-priority-queue"
@@ -284,6 +314,13 @@
               >
             </template>
           </Stripe>
+          <div v-else>
+            <UBadge>Priority</UBadge>
+            <p class="text-sm text-neutral-500">
+              You are in the priority queue. Your company will be listed within
+              24 hours.
+            </p>
+          </div>
         </UCard>
 
         <!-- Completion Status Card -->

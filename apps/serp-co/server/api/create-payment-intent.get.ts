@@ -23,40 +23,40 @@ export default defineEventHandler(async (event) => {
     };
   }
 
-  const { type, id } = getQuery(event);
+  const { type, id, secondaryId } = getQuery(event);
   const { amount, currency, description, recurring, paymentId } =
     await processSuccessfulPayment(type as string, false, true);
 
+  let customer_;
+  try {
+    // Check if customer exists in the database
+    // If not, create a new customer in Stripe and save it to the database
+    const results = await db
+      .select({ id: customer.id })
+      .from(customer)
+      .where(eq(customer.email, email))
+      .limit(1)
+      .execute();
+    if (results.length > 0) {
+      customer_ = results[0];
+    } else {
+      customer_ = await stripe.customers.create({
+        email
+      });
+      await db
+        .insert(customer)
+        .values({
+          id: customer_.id,
+          email
+        })
+        .execute();
+    }
+  } catch (e) {
+    return { clientSecret: null, error: e };
+  }
+
   // If it's a recurring (subscription) payment
   if (recurring) {
-    let customer_;
-    try {
-      // Check if customer exists in the database
-      // If not, create a new customer in Stripe and save it to the database
-      const results = await db
-        .select({ id: customer.id })
-        .from(customer)
-        .where(eq(customer.email, email))
-        .limit(1)
-        .execute();
-      if (results.length > 0) {
-        customer_ = results[0];
-      } else {
-        customer_ = await stripe.customers.create({
-          email
-        });
-        await db
-          .insert(customer)
-          .values({
-            id: customer_.id,
-            email
-          })
-          .execute();
-      }
-    } catch (e) {
-      return { clientSecret: null, error: e };
-    }
-
     try {
       const subscription = await stripe.subscriptions.create({
         customer: customer_.id,
@@ -68,7 +68,9 @@ export default defineEventHandler(async (event) => {
         metadata: {
           email,
           type,
-          id
+          id,
+          customerId: customer_.id,
+          secondaryId
         }
       });
       return {
@@ -85,11 +87,12 @@ export default defineEventHandler(async (event) => {
     // One-off payment intent flow
     try {
       const paymentIntent = await stripe.paymentIntents.create({
+        customer: customer_.id,
         currency,
         amount,
         description,
         automatic_payment_methods: { enabled: true },
-        metadata: { email, type, id }
+        metadata: { email, type, id, customerId: customer_.id, secondaryId }
       });
       return {
         clientSecret: paymentIntent.client_secret,

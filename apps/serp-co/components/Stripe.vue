@@ -8,6 +8,10 @@
       type: String || Number,
       default: ''
     },
+    secondaryId: {
+      type: String || Number,
+      default: ''
+    },
     redirectTo: {
       type: String,
       default: '/'
@@ -17,6 +21,8 @@
   defineExpose({ payWithStripe });
 
   const { stripe } = await useClientStripe();
+
+  const colorMode = useColorMode();
 
   const clientSecret = ref('');
 
@@ -30,7 +36,7 @@
     try {
       if (!props.type || !props.id) return;
       const { clientSecret: cs, error } = await $fetch(
-        `http://localhost:3000/api/create-payment-intent?type=${props.type}&id=${props.id}`,
+        `http://localhost:3000/api/create-payment-intent?type=${props.type}&id=${props.id}&secondaryId=${props.secondaryId}`,
         {
           method: 'GET'
         }
@@ -48,7 +54,12 @@
 
   watch([stripe, clientSecret], async ([stripeVal, clientSecretVal]) => {
     if (stripeVal && clientSecretVal && !elements.value) {
-      elements.value = stripeVal.elements({ clientSecret: clientSecretVal });
+      elements.value = stripeVal.elements({
+        clientSecret: clientSecretVal,
+        appearance: {
+          theme: colorMode.value === 'dark' ? 'night' : 'stripe'
+        }
+      });
 
       linkAuthElement.value = elements.value.create('linkAuthentication');
       linkAuthElement.value.mount('#linkAuthenticationElement');
