@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import { v4 as uuidv4 } from 'uuid';
-  import Stripe from '~/components/Stripe.vue';
 
   const { loggedIn, user } = useUserSession();
   if (!loggedIn.value) {
@@ -31,6 +30,7 @@
 
   const route = useRoute();
   const id = route.query.id;
+  const existingForm = ref(false)
   if (id) {
     const submissionData = await useCompanySubmissions(id);
     if (submissionData) {
@@ -52,6 +52,7 @@
       company.value.logo = submissionData.logo;
       uuid = submissionData.uuid;
       isPriority.value = submissionData.isPriority;
+      existingForm.value = true;
     }
   }
 
@@ -264,10 +265,6 @@
           description: 'Your company has been saved successfully',
           icon: 'check-circle'
         });
-
-        if (!isPriority.value) {
-          stripeComponent.value.$.exposed.payWithStripe();
-        }
       } else {
         throw new Error(`Failed to save company - ${response.value.message}`);
       }
@@ -275,6 +272,31 @@
       toast.add({
         id: 'company-save-error',
         title: 'Error saving company',
+        description: error.message,
+        icon: 'exclamation-circle'
+      });
+    } finally {
+      loading.value = false;
+    }
+  }
+
+  async function priorityQueueCheckout() {
+    try {
+      loading.value = true;
+      const response = await $fetch(
+        `/api/create-checkout-session?type=company-priority-queue&id=${uuid}`,
+        {
+          method: 'GET',
+        }
+      );
+
+      if (response) {
+        window.location.href = response;
+      }
+    } catch (error) {
+      toast.add({
+        id: 'checkout-error',
+        title: 'Checkout Error',
         description: error.message,
         icon: 'exclamation-circle'
       });
@@ -291,14 +313,8 @@
       <div class="col-span-1 space-y-4">
         <!-- Waiting Line Card -->
         <UCard>
-          <Stripe
-            v-if="!isPriority"
-            :id="uuid"
-            ref="stripeComponent"
-            type="company-priority-queue"
-            redirect-to="/submissions"
-          >
-            <template #content="{ createPaymentIntent }">
+
+            <div v-if="!isPriority && existingForm">
               <p class="text-sm text-neutral-500">
                 The current waiting time is > 30 days.
               </p>
@@ -309,12 +325,11 @@
               <UButton
                 variant="outline"
                 class="mt-2"
-                @click="createPaymentIntent"
+                @click="priorityQueueCheckout"
                 >Join the priority queue</UButton
               >
-            </template>
-          </Stripe>
-          <div v-else>
+            </div>
+          <div v-else-if="isPriority">
             <UBadge>Priority</UBadge>
             <p class="text-sm text-neutral-500">
               You are in the priority queue. Your company will be listed within

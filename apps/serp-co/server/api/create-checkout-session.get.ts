@@ -85,7 +85,16 @@ export default defineEventHandler(async (event) => {
           id,
           customerId: customer_.id,
           secondaryId
-        }
+        },
+        subscription_data: {
+            metadata: {
+              email,
+              type,
+              id,
+              customerId: customer_.id,
+              secondaryId
+            }
+          }
       });
     } catch (e) {
       throw createError({
@@ -119,7 +128,16 @@ export default defineEventHandler(async (event) => {
           id,
           customerId: customer_.id,
           secondaryId
-        }
+        },
+        payment_intent_data: {
+            metadata: {
+              email,
+              type,
+              id,
+              customerId: customer_.id,
+              secondaryId
+            }
+          }
       });
     } catch (e) {
       throw createError({
