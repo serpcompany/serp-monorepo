@@ -43,7 +43,10 @@ export default defineEventHandler(async (event) => {
         .execute();
     }
   } catch (e) {
-    return { clientSecret: null, error: e };
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Failed to retrieve or create customer'
+    });
   }
 
   try {
