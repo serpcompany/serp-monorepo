@@ -30,21 +30,25 @@ export default defineEventHandler(async (event) => {
         companyName: companyCache.name,
         companyDomain: companyCache.domain,
         companyLogo: companyCache.logo,
-        categoryName: companyCategoryCache.name
+        categoryName: companyCategoryCache.name,
+        categorySlug: companyCategoryCache.slug,
+        isActive: companyFeaturedSubscription.isActive
       })
       .from(companyFeaturedSubscription)
       .innerJoin(
         companyCache,
         eq(companyFeaturedSubscription.companyFk, companyCache.id)
       )
-      .innerJoin(
+      .leftJoin(
         companyCategoryCache,
         eq(companyFeaturedSubscription.categoryFk, companyCategoryCache.id)
       )
       .where(
         and(
           eq(companyFeaturedSubscription.email, email),
-          activeOnly ? eq(companyFeaturedSubscription.active, true) : undefined
+          activeOnly
+            ? eq(companyFeaturedSubscription.isActive, true)
+            : undefined
         )
       )
       .execute();

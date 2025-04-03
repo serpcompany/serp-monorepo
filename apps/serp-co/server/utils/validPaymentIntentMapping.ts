@@ -7,7 +7,7 @@ import {
   payment
 } from '@serp/utils/server/api/db/schema';
 import { WebClient } from '@slack/web-api';
-import { and, eq } from 'drizzle-orm';
+import { and, eq, isNull } from 'drizzle-orm';
 
 const slackToken = process.env.SLACK_BOT_TOKEN;
 const slackChannel_ = process.env.SLACK_CHANNEL_ID;
@@ -39,16 +39,19 @@ async function processCompanyFeatured(type: string, data?: unknown) {
     .execute();
   const company = companyResults[0];
 
-  const categoryResults = await db
-    .select({
-      id: companyCategoryCache.id,
-      name: companyCategoryCache.name
-    })
-    .from(companyCategoryCache)
-    .where(eq(companyCategoryCache.id, data.metadata.secondaryId))
-    .limit(1)
-    .execute();
-  const category = categoryResults[0];
+  const categoryResults =
+    data.metadata.secondaryId != '0'
+      ? await db
+          .select({
+            id: companyCategoryCache.id,
+            name: companyCategoryCache.name
+          })
+          .from(companyCategoryCache)
+          .where(eq(companyCategoryCache.id, data.metadata.secondaryId))
+          .limit(1)
+          .execute()
+      : [];
+  const category = data.metadata.secondaryId != '0' ? categoryResults[0] : {};
 
   const result = await db
     .insert(payment)
@@ -71,7 +74,9 @@ async function processCompanyFeatured(type: string, data?: unknown) {
     .where(
       and(
         eq(companyFeaturedSubscription.companyFk, company.id),
-        eq(companyFeaturedSubscription.categoryFk, category.id)
+        data.metadata.secondaryId != '0'
+          ? eq(companyFeaturedSubscription.categoryFk, category.id)
+          : isNull(companyFeaturedSubscription.categoryFk)
       )
     )
     .execute();
@@ -87,7 +92,9 @@ async function processCompanyFeatured(type: string, data?: unknown) {
       .where(
         and(
           eq(companyFeaturedSubscription.companyFk, company.id),
-          eq(companyFeaturedSubscription.categoryFk, category.id)
+          data.metadata.secondaryId != '0'
+            ? eq(companyFeaturedSubscription.categoryFk, category.id)
+            : isNull(companyFeaturedSubscription.categoryFk)
         )
       )
       .execute();
@@ -97,10 +104,11 @@ async function processCompanyFeatured(type: string, data?: unknown) {
       .insert(companyFeaturedSubscription)
       .values({
         companyFk: company.id,
-        categoryFk: category.id,
+        categoryFk: data.metadata.secondaryId != '0' ? category.id : null,
         lastPaymentFk: paymentId,
         placement: type.split('-')[2],
-        isActive: true
+        isActive: true,
+        email: data.metadata.email
       })
       .execute();
   }

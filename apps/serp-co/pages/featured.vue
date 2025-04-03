@@ -6,16 +6,25 @@
   const showFeaturedSubmitModal = ref(false);
   const loading = ref(false);
 
+  const toast = useToast();
+
   const stripeComponent = ref(null);
 
   const form = reactive({
     category: '',
-    company: ''
+    company: '',
+    placement: ''
+  });
+
+  const paymentIntentDetails = reactive({
+    category: '',
+    company: '',
+    placement: ''
   });
 
   let data = [];
   if (loggedIn.value) {
-    data = await useCompanyFeaturedSubscriptions();
+    data = await useCompanyFeaturedSubscriptions(false);
   }
 
   const categories = await useCompanyCategories();
@@ -29,8 +38,18 @@
   });
   const categoryOptions = ref(categories?.map((category) => category.name));
 
+  const submitLoading = ref(false);
+  const disabled = ref(true);
+  const disabledSubmit = computed(() => {
+    return (
+      !paymentIntentDetails.category ||
+      !paymentIntentDetails.company ||
+      !paymentIntentDetails.placement
+    );
+  });
   const companies = ref([]);
   const companyOptions = ref(companies.value.map((company) => company.domain));
+  const availablePlacements = ref([]);
   async function getCompaniesForCategory(category: string) {
     try {
       const categorySlug = categories.find(
@@ -38,9 +57,18 @@
       )?.slug;
 
       const companiesData = await useAllCompaniesForCategory(categorySlug);
-      if (companiesData && companiesData.length) {
-        companies.value = companiesData;
-        companyOptions.value = companiesData.map((company) => company.domain);
+      if (companiesData && companiesData.companies?.length) {
+        companies.value = companiesData.companies;
+        companyOptions.value = companiesData.companies.map(
+          (company) => company.domain
+        );
+        availablePlacements.value = companiesData.availablePlacements;
+        disabled.value = false;
+      } else {
+        companies.value = [];
+        companyOptions.value = [];
+        availablePlacements.value = [];
+        disabled.value = true;
       }
     } catch (error) {
       console.error('Error fetching companies:', error);
@@ -56,6 +84,12 @@
     loading.value = false;
   }
 
+  function updatePaymentIntentDetails() {
+    paymentIntentDetails.category = form.category;
+    paymentIntentDetails.company = form.company;
+    paymentIntentDetails.placement = form.placement;
+  }
+
   function getCompanyId(company: string) {
     const companyData = companies.value.find((c) => c.domain === company);
     return companyData ? companyData.id : null;
@@ -66,9 +100,64 @@
     return categoryData ? categoryData.id : null;
   }
 
+  function getCategorySlug(category: string) {
+    const categoryData = categories.find((c) => c.name === category);
+    return categoryData ? categoryData.slug : null;
+  }
+
   async function submitFeaturedCompany() {
-    // TODO: api call to verify position is available to rent before starting subscription
-    stripeComponent.value.$.exposed.payWithStripe();
+    try {
+      if (!loggedIn.value) {
+        toast.add({
+          id: 'not-logged-in',
+          title: 'Not Logged In',
+          description: 'Please log in to feature a company.',
+          icon: 'exclamation-circle'
+        });
+        return;
+      }
+      if (!form.category || !form.company || !form.placement) {
+        toast.add({
+          id: 'missing-fields',
+          title: 'Missing Fields',
+          description: 'Please fill in all fields.',
+          icon: 'exclamation-circle'
+        });
+        return;
+      }
+
+      submitLoading.value = true;
+      // Check if placement is still open
+      const data = await useCheckPlacementAvailability(
+        paymentIntentDetails.placement,
+        paymentIntentDetails.company,
+        paymentIntentDetails.category === 'all'
+          ? null
+          : getCategorySlug(paymentIntentDetails.category)
+      );
+      if (data.available) {
+        // If placement is available, proceed with payment
+        stripeComponent.value.$.exposed.payWithStripe();
+        return;
+      } else {
+        toast.add({
+          id: 'placement-not-available',
+          title: 'Placement Not Available',
+          description: 'This placement is no longer available.',
+          icon: 'exclamation-circle'
+        });
+      }
+    } catch (error) {
+      console.error('Error submitting featured company:', error);
+      toast.add({
+        id: 'submission-error',
+        title: 'Submission Error',
+        description: 'An error occurred while submitting the featured company.',
+        icon: 'exclamation-circle'
+      });
+    } finally {
+      submitLoading.value = false;
+    }
   }
 
   useSeoMeta({
@@ -90,13 +179,35 @@
             <div
               v-for="subscription in data"
               :key="subscription.id"
-              class="rounded-lg bg-white p-4 shadow-md"
+              class="rounded-lg bg-white p-4 shadow-md dark:bg-neutral-800"
             >
               <div v-if="subscription.isActive">
                 <UBadge>Active</UBadge>
               </div>
-              <NuxtLink :to="`/products/${subscription.domain}/reviews/`">
-                <h2 class="text-lg font-semibold">{{ subscription.domain }}</h2>
+              <NuxtLink
+                :to="`/products/${subscription.companyDomain}/reviews/`"
+              >
+                <h2 class="text-lg font-semibold">
+                  {{ subscription.companyDomain }}
+                </h2>
+                <NuxtLink
+                  :to="
+                    subscription.categorySlug
+                      ? `/products/best/${subscription.categorySlug}/`
+                      : `/products`
+                  "
+                  ><p class="text-gray-600">
+                    Category:
+                    {{
+                      subscription.categoryName
+                        ? subscription.categoryName
+                        : 'All'
+                    }}
+                  </p>
+                </NuxtLink>
+                <p class="text-gray-600">
+                  Placement: {{ subscription.placement }}
+                </p>
                 <p class="text-gray-500">
                   Created At: {{ subscription.createdAt }}
                 </p>
@@ -150,27 +261,52 @@
             <UInputMenu
               v-model="form.company"
               :items="companyOptions"
+              :disabled="disabled"
+              class="w-full"
+            />
+          </UFormField>
+          <UFormField
+            label="Placement"
+            help="Select a placement"
+            class="w-full"
+          >
+            <UInputMenu
+              v-model="form.placement"
+              :items="availablePlacements"
+              :disabled="disabled"
               class="w-full"
             />
           </UFormField>
           <Stripe
+            v-if="form.category && form.company && form.placement"
             :id="getCompanyId(form.company)"
             ref="stripeComponent"
             :secondary-id="getCategoryId(form.category)"
-            type="company-featured-1"
+            :type="`company-featured-${form.placement}`"
             redirect-to="/featured"
           >
             <template #content="{ createPaymentIntent }">
               <UButton
                 variant="outline"
                 class="mt-2"
-                @click="createPaymentIntent"
+                @click="
+                  () => {
+                    updatePaymentIntentDetails();
+                    createPaymentIntent();
+                  }
+                "
                 >Feature this Company</UButton
               >
             </template>
           </Stripe>
-          <UButton variant="outline" class="mt-2" @click="submitFeaturedCompany"
-            >Submit</UButton
+          <UButton
+            variant="outline"
+            class="mt-2"
+            :disabled="disabledSubmit"
+            :loading="submitLoading"
+            @click="submitFeaturedCompany"
+          >
+            Submit</UButton
           >
         </div>
       </template>
