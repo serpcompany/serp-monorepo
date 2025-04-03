@@ -4,6 +4,8 @@
     navigateTo('/');
   }
 
+  const router = useRouter();
+
   const purchases = ref<unknown[]>([]);
   const pagination = ref({ hasMore: false, nextCursor: null, limit: 50 });
   const isLoading = ref(false);
@@ -36,6 +38,22 @@
   // Load initial purchases
   await fetchPurchaseHistory();
 
+  async function createStripeBillingPortalSession() {
+    isLoading.value = true;
+    try {
+      const response = await $fetch('/api/stripe-portal', {
+        method: 'GET'
+      });
+      if (response) {
+        window.open(response, '_blank');
+      }
+    } catch (error) {
+      console.error('Error creating billing portal session:', error);
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
   function loadMore() {
     if (pagination.value.hasMore && pagination.value.nextCursor) {
       fetchPurchaseHistory(pagination.value.nextCursor);
@@ -57,6 +75,14 @@
     />
 
     <main class="pb-20">
+      <UButton
+        class="mb-4"
+        @click="createStripeBillingPortalSession"
+        :disabled="isLoading"
+        variant="primary"
+      > 
+        <span>Manage Billing</span>
+      </UButton>
       <!-- Purchase List -->
       <div v-if="purchases.length" class="space-y-4">
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">

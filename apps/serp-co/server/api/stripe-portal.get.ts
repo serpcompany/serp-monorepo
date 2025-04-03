@@ -55,6 +55,7 @@ export default defineEventHandler(async (event) => {
     });
     return session.url;
   } catch (error) {
+    console.error('Error creating billing portal session:', error);
     throw createError({
       statusCode: 500,
       statusMessage: 'Failed to create billing portal session'
