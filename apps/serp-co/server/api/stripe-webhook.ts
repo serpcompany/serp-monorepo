@@ -32,7 +32,6 @@ export default defineEventHandler(async (event) => {
   switch (rawBody.type) {
     case 'customer.subscription.updated': {
       const subscription = rawBody.data.object;
-      console.log(subscription);
       subscription.mode = 'customer.subscription.updated';
       processSuccessfulPayment(
         subscription.metadata.type,
