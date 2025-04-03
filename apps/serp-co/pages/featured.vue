@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import Stripe from '~/components/Stripe.vue';
-
   const { loggedIn, user } = useUserSession();
 
   const showFeaturedSubmitModal = ref(false);
@@ -8,15 +6,7 @@
 
   const toast = useToast();
 
-  const stripeComponent = ref(null);
-
   const form = reactive({
-    category: '',
-    company: '',
-    placement: ''
-  });
-
-  const paymentIntentDetails = reactive({
     category: '',
     company: '',
     placement: ''
@@ -40,13 +30,6 @@
 
   const submitLoading = ref(false);
   const disabled = ref(true);
-  const disabledSubmit = computed(() => {
-    return (
-      !paymentIntentDetails.category ||
-      !paymentIntentDetails.company ||
-      !paymentIntentDetails.placement
-    );
-  });
   const companies = ref([]);
   const companyOptions = ref(companies.value.map((company) => company.domain));
   const availablePlacements = ref([]);
@@ -82,12 +65,6 @@
   function closeCompanyFeaturedSubmitModal() {
     showFeaturedSubmitModal.value = false;
     loading.value = false;
-  }
-
-  function updatePaymentIntentDetails() {
-    paymentIntentDetails.category = form.category;
-    paymentIntentDetails.company = form.company;
-    paymentIntentDetails.placement = form.placement;
   }
 
   function getCompanyId(company: string) {
@@ -129,16 +106,26 @@
       submitLoading.value = true;
       // Check if placement is still open
       const data = await useCheckPlacementAvailability(
-        paymentIntentDetails.placement,
-        paymentIntentDetails.company,
-        paymentIntentDetails.category === 'all'
+        form.placement,
+        form.company,
+        form.category === 'all'
           ? null
-          : getCategorySlug(paymentIntentDetails.category)
+          : getCategorySlug(form.category)
       );
       if (data.available) {
         // If placement is available, proceed with payment
-        stripeComponent.value.$.exposed.payWithStripe();
-        return;
+        const response = await $fetch(
+          `/api/create-checkout-session?type=company-featured-${form.placement}&id=${getCompanyId(
+            form.company
+          )}&secondaryId=${getCategoryId(form.category)}`,
+          {
+            method: 'GET',
+          }
+        );
+
+        if (response) {
+          window.location.href = response;
+        }
       } else {
         toast.add({
           id: 'placement-not-available',
@@ -277,32 +264,9 @@
               class="w-full"
             />
           </UFormField>
-          <Stripe
-            v-if="form.category && form.company && form.placement"
-            :id="getCompanyId(form.company)"
-            ref="stripeComponent"
-            :secondary-id="getCategoryId(form.category)"
-            :type="`company-featured-${form.placement}`"
-            redirect-to="/featured"
-          >
-            <template #content="{ createPaymentIntent }">
-              <UButton
-                variant="outline"
-                class="mt-2"
-                @click="
-                  () => {
-                    updatePaymentIntentDetails();
-                    createPaymentIntent();
-                  }
-                "
-                >Feature this Company</UButton
-              >
-            </template>
-          </Stripe>
           <UButton
             variant="outline"
             class="mt-2"
-            :disabled="disabledSubmit"
             :loading="submitLoading"
             @click="submitFeaturedCompany"
           >
