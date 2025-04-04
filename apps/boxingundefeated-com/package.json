@@ -16,8 +16,7 @@
     "lint": "prettier . --write --log-level warn && eslint . --fix",
     "prettier": "prettier . --write --log-level warn",
     "preview": "nuxt preview",
-    "server": "node .output/server/index.mjs",
-    "test:watch": "vitest --coverage"
+    "server": "node .output/server/index.mjs"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",

@@ -2,43 +2,47 @@
 
 exports[`SPageArtistSingle Snapshot > renders complete artist with upvotes and auth enabled correctly 1`] = `
 "<div>
-  <div class="bg-background sticky top-0 z-10 transition-all duration-300">
-    <header class="bg-[var(--ui-bg)] py-2 sm:py-2">
-      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <!-- header top -->
-        <div class="flex flex-col items-center justify-between sm:flex-row">
-          <!-- image -->
-          <div class="flex w-full items-start justify-between">
-            <!--v-if-->
-            <!-- name -->
-            <div class="flex-grow">
-              <h1 class="text-xl font-bold text-(--ui-primary) transition-all duration-300 sm:text-3xl">Test Artist</h1><span class="text-xs"></span>
-            </div>
-          </div><!-- action buttons -->
-          <div class="flex w-full flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0">
-            <!-- upvote button slot -->
-            <div class="flex w-full items-center sm:w-auto">
-              <ubutton class="flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800" disabled="false">
-                <!--v-if--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up">
-                  <path d="m18 15-6-6-6 6"></path>
-                </svg><span>Upvotes 1</span>
-              </ubutton>
-            </div><!-- visit website button --><a href="https://serp.ly/@daftfm/amazon/music/unlimited" rel="noopener noreferrer" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"> Listen Free <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg></a>
+  <header class="bg-background sticky top-0 z-40 border-b border-gray-200 transition-all duration-300 dark:border-gray-800 bg-background sticky top-0 z-10 transition-all duration-300">
+    <div class="max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-center justify-between gap-4 py-3 sm:flex-row">
+        <div class="flex min-w-0 flex-grow items-center gap-3">
+          <!--v-if-->
+          <div class="min-w-0 flex-grow">
+            <h1 class="truncate text-xl font-bold text-gray-900 transition-all duration-300 sm:text-2xl dark:text-white">Test Artist</h1>
+            <div class="truncate text-sm text-gray-500 dark:text-gray-400"></div>
           </div>
-        </div><!-- header bottom (nav links) -->
-        <div class="-mx-4 mt-4 overflow-x-auto px-4 sm:px-0">
-          <nav aria-label="page sections" class="flex space-x-4 border-t border-b whitespace-nowrap"><a href="#overview" class="sectionLinks text-muted-foreground flex-shrink-0 px-1 py-2 text-sm transition-colors duration-200 hover:text-(--ui-primary) sm:px-2 sm:text-base">Overview</a><a href="#albums" class="sectionLinks text-muted-foreground flex-shrink-0 px-1 py-2 text-sm transition-colors duration-200 hover:text-(--ui-primary) sm:px-2 sm:text-base">Albums</a><a href="#songs" class="sectionLinks text-muted-foreground flex-shrink-0 px-1 py-2 text-sm transition-colors duration-200 hover:text-(--ui-primary) sm:px-2 sm:text-base">Songs</a></nav>
+        </div>
+        <div class="flex w-full flex-shrink-0 items-center justify-end gap-3 sm:w-auto">
+          <div class="flex w-full items-center sm:w-auto"><button type="button" class="focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed aria-disabled:opacity-75 text-sm text-(--ui-bg) bg-(--ui-primary) disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800">
+              <!--v-if-->
+              <!--v-if--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up">
+                <path d="m18 15-6-6-6 6"></path>
+              </svg><span>Upvotes 1</span>
+              <!--v-if-->
+            </button></div><a href="https://serp.ly/@daftfm/amazon/music/unlimited" rel="noopener noreferrer" target="_blank" class="rounded-none font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 w-full sm:w-auto"><span class="iconify i-heroicons:arrow-top-right-on-square shrink-0 size-4" aria-hidden="true"></span><span class="truncate">Listen Free</span>
+            <!--v-if-->
+          </a>
         </div>
       </div>
-    </header>
-  </div><!-- Main content with grid -->
+      <nav class="-mx-4 flex overflow-x-auto border-t border-gray-200 px-4 sm:-mx-6 sm:px-6 dark:border-gray-800"><a href="#overview" class="font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
+          <!--v-if--><span class="truncate">Overview</span>
+          <!--v-if-->
+        </a><a href="#albums" class="font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
+          <!--v-if--><span class="truncate">Albums</span>
+          <!--v-if-->
+        </a><a href="#songs" class="font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
+          <!--v-if--><span class="truncate">Songs</span>
+          <!--v-if-->
+        </a></nav>
+    </div>
+  </header><!-- Main content wrapper -->
   <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
-    <!-- Main Content (70%) -->
+    <!-- Breadcrumbs -->
+    <nav aria-label="breadcrumb" class="relative min-w-0 mb-6">
+      <ol class="flex items-center gap-1.5"></ol>
+    </nav><!-- Grid Layout -->
     <div class="grid gap-6 lg:grid-cols-3">
+<<<<<<< HEAD
       <div class="lg:col-span-2">
         <div>
           <!-- section: overview -->
@@ -67,31 +71,98 @@ exports[`SPageArtistSingle Snapshot > renders complete artist with upvotes and a
                       </div>
                     </li>
                   </ol>
+=======
+      <!-- Main Content Column (70%) -->
+      <div class="space-y-8 lg:col-span-2">
+        <!-- Albums Section - Refactored -->
+        <section id="albums" class="scroll-mt-24">
+          <h2 class="mb-4 text-2xl font-semibold">Test Artist Albums </h2>
+          <div class="space-y-6">
+            <div class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+              <div class="p-4 sm:px-6">
+                <div class="flex items-center justify-between"><a href="/albums/album-1" class="text-primary text-lg font-medium hover:underline">Album One</a>
+                  <!--v-if-->
+>>>>>>> staging
                 </div>
               </div>
+              <div class="p-4 sm:p-6">
+                <div class="flex flex-col gap-4 sm:flex-row">
+                  <!-- Album Cover -->
+                  <!--v-if-->
+                  <!-- Tracklist -->
+                  <div class="flex-grow sm:w-3/4">
+                    <h4 class="mb-2 text-sm font-medium text-gray-500 dark:text-gray-400"></h4>
+                    <ol class="list-inside list-decimal space-y-1 text-sm">
+                      <li><a href="/songs/song-1" class="text-primary-600 dark:text-primary-400 hover:underline">Song One</a></li>
+                      <li><span class="text-gray-700 dark:text-gray-300">Song Two</span></li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+              <!--v-if-->
+            </div>
+            <!--v-if-->
+          </div>
+        </section><!-- Songs section placeholder if needed separately -->
+        <section id="songs" class="scroll-mt-24">
+          <!-- Can list individual songs here if desired, separate from albums -->
+        </section>
+      </div><!-- Sidebar Column (30%) -->
+      <div class="space-y-6 lg:col-span-1">
+        <!-- Artist Image -->
+        <!-- Fallback placeholder -->
+        <div class="flex aspect-square items-center justify-center rounded-md bg-gray-100 shadow-sm dark:bg-gray-800"><span class="iconify i-heroicons:user h-1/3 w-1/3 text-gray-400 dark:text-gray-600" aria-hidden="true"></span></div><!-- Overview Card (Added to Sidebar) -->
+        <div class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+          <div class="p-4 sm:px-6">
+            <div class="font-medium">Overview</div>
+          </div>
+          <div class="p-4 sm:p-6">
+            <div class="prose prose-sm dark:prose-invert max-w-none">
+              <p>Overview content for Test Artist.</p>
             </div>
           </div>
-        </div>
-      </div><!-- Sidebar (30%) -->
-      <div class="space-y-6 lg:col-span-1">
-        <!-- General Info Section -->
-        <div class="border p-4">
-          <ul class="list-disc pl-4">
-            <li>Founded: Test City</li>
-            <li>From: 2000</li>
-            <li>Dissolved: 2020</li>
-          </ul>
-        </div><!-- Links Section -->
-        <div class="border p-4">
-          <div class="flex space-y-4">
-            <div><a href="https://serp.ly/@daftfm/amazon/music/unlimited" rel="noopener noreferrer">Amazon Music</a></div>
+          <!--v-if-->
+        </div><!-- General Info Card -->
+        <div class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+          <div class="p-4 sm:px-6">
+            <div class="font-medium">Artist Info</div>
           </div>
-        </div><!-- Stats Section -->
-        <div class="border p-4">
-          <div>
-            <div><span>Genres: Rock, Pop</span></div><br>
-            <div><span>Tags: Live, Studio</span></div>
+          <div class="p-4 sm:p-6">
+            <div class="space-y-2 text-sm">
+              <div class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Test Artist</div>
+              <!--v-if-->
+              <div><span class="font-medium text-gray-700 dark:text-gray-300">Active From: </span><span class="text-gray-800 dark:text-gray-200">2000</span></div>
+              <div><span class="font-medium text-gray-700 dark:text-gray-300">Active Until: </span><span class="text-gray-800 dark:text-gray-200">2020</span></div>
+              <!--v-if-->
+              <div><span class="font-medium text-gray-700 dark:text-gray-300">Origin: </span><span class="text-gray-800 dark:text-gray-200">Test City</span></div>
+              <!--v-if-->
+            </div>
           </div>
+          <!--v-if-->
+        </div><!-- Stats Card -->
+        <div class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+          <div class="p-4 sm:px-6">
+            <div class="font-medium">Stats</div>
+          </div>
+          <div class="p-4 sm:p-6">
+            <div class="space-y-2 text-sm">
+              <div><span class="font-medium text-gray-700 dark:text-gray-300">Genres: </span><span class="text-gray-800 dark:text-gray-200">Rock, Pop</span></div>
+              <div><span class="font-medium text-gray-700 dark:text-gray-300">Tags: </span><span class="text-gray-800 dark:text-gray-200">Live, Studio</span></div>
+            </div>
+          </div>
+          <!--v-if-->
+        </div><!-- Links Card -->
+        <div class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+          <div class="p-4 sm:px-6">
+            <div class="font-medium">Listen On</div>
+          </div>
+          <div class="p-4 sm:p-6">
+            <div class="p-1"><a href="https://serp.ly/@daftfm/amazon/music/unlimited" rel="noopener noreferrer" class="rounded-none font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-3 py-2 text-sm gap-2 w-full justify-center text-(--ui-primary) focus-visible:bg-(--ui-primary)/15 disabled:bg-(--ui-primary)/10 aria-disabled:bg-(--ui-primary)/10 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/30">
+                <!--v-if--> Amazon Music
+                <!--v-if-->
+              </a></div>
+          </div>
+          <!--v-if-->
         </div>
       </div>
     </div>
@@ -101,66 +172,105 @@ exports[`SPageArtistSingle Snapshot > renders complete artist with upvotes and a
 
 exports[`SPageArtistSingle Snapshot > renders minimal artist without upvotes and auth disabled correctly 1`] = `
 "<div>
-  <div class="bg-background sticky top-0 z-10 transition-all duration-300">
-    <header class="bg-[var(--ui-bg)] py-2 sm:py-2">
-      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <!-- header top -->
-        <div class="flex flex-col items-center justify-between sm:flex-row">
-          <!-- image -->
-          <div class="flex w-full items-start justify-between">
-            <!--v-if-->
-            <!-- name -->
-            <div class="flex-grow">
-              <h1 class="text-xl font-bold text-(--ui-primary) transition-all duration-300 sm:text-3xl">Minimal Artist</h1><span class="text-xs"></span>
-            </div>
-          </div><!-- action buttons -->
-          <div class="flex w-full flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0">
-            <!-- upvote button slot -->
-            <!-- visit website button --><a href="https://serp.ly/@daftfm/amazon/music/unlimited" rel="noopener noreferrer" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"> Listen Free <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg></a>
+  <header class="bg-background sticky top-0 z-40 border-b border-gray-200 transition-all duration-300 dark:border-gray-800 bg-background sticky top-0 z-10 transition-all duration-300">
+    <div class="max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-center justify-between gap-4 py-3 sm:flex-row">
+        <div class="flex min-w-0 flex-grow items-center gap-3">
+          <!--v-if-->
+          <div class="min-w-0 flex-grow">
+            <h1 class="truncate text-xl font-bold text-gray-900 transition-all duration-300 sm:text-2xl dark:text-white">Minimal Artist</h1>
+            <div class="truncate text-sm text-gray-500 dark:text-gray-400"></div>
           </div>
-        </div><!-- header bottom (nav links) -->
-        <div class="-mx-4 mt-4 overflow-x-auto px-4 sm:px-0">
-          <nav aria-label="page sections" class="flex space-x-4 border-t border-b whitespace-nowrap"><a href="#overview" class="sectionLinks text-muted-foreground flex-shrink-0 px-1 py-2 text-sm transition-colors duration-200 hover:text-(--ui-primary) sm:px-2 sm:text-base">Overview</a><a href="#albums" class="sectionLinks text-muted-foreground flex-shrink-0 px-1 py-2 text-sm transition-colors duration-200 hover:text-(--ui-primary) sm:px-2 sm:text-base">Albums</a><a href="#songs" class="sectionLinks text-muted-foreground flex-shrink-0 px-1 py-2 text-sm transition-colors duration-200 hover:text-(--ui-primary) sm:px-2 sm:text-base">Songs</a></nav>
         </div>
+        <div class="flex w-full flex-shrink-0 items-center justify-end gap-3 sm:w-auto"><a href="https://serp.ly/@daftfm/amazon/music/unlimited" rel="noopener noreferrer" target="_blank" class="rounded-none font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 w-full sm:w-auto"><span class="iconify i-heroicons:arrow-top-right-on-square shrink-0 size-4" aria-hidden="true"></span><span class="truncate">Listen Free</span>
+            <!--v-if-->
+          </a></div>
       </div>
-    </header>
-  </div><!-- Main content with grid -->
+      <nav class="-mx-4 flex overflow-x-auto border-t border-gray-200 px-4 sm:-mx-6 sm:px-6 dark:border-gray-800"><a href="#overview" class="font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
+          <!--v-if--><span class="truncate">Overview</span>
+          <!--v-if-->
+        </a><a href="#albums" class="font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
+          <!--v-if--><span class="truncate">Albums</span>
+          <!--v-if-->
+        </a><a href="#songs" class="font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
+          <!--v-if--><span class="truncate">Songs</span>
+          <!--v-if-->
+        </a></nav>
+    </div>
+  </header><!-- Main content wrapper -->
   <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
-    <!-- Main Content (70%) -->
+    <!-- Breadcrumbs -->
+    <nav aria-label="breadcrumb" class="relative min-w-0 mb-6">
+      <ol class="flex items-center gap-1.5"></ol>
+    </nav><!-- Grid Layout -->
     <div class="grid gap-6 lg:grid-cols-3">
+<<<<<<< HEAD
       <div class="lg:col-span-2">
         <div>
           <!-- section: overview -->
           <h2 id="overview" class="scroll-mt-60">About Minimal Artist</h2><!-- eslint-disable-next-line vue/no-v-html-->
           <div class="prose dark:prose-invert">
             <p>Minimal overview content.</p>
+=======
+      <!-- Main Content Column (70%) -->
+      <div class="space-y-8 lg:col-span-2">
+        <!-- Albums Section - Refactored -->
+        <section id="albums" class="scroll-mt-24">
+          <h2 class="mb-4 text-2xl font-semibold">Minimal Artist Albums </h2>
+          <div class="space-y-6">
+            <p class="text-gray-500 dark:text-gray-400"> No albums found for this artist. </p>
+>>>>>>> staging
           </div>
-          <h2 id="albums" class="scroll-mt-60">Minimal Artist Albums</h2>
-        </div>
-      </div><!-- Sidebar (30%) -->
+        </section><!-- Songs section placeholder if needed separately -->
+        <section id="songs" class="scroll-mt-24">
+          <!-- Can list individual songs here if desired, separate from albums -->
+        </section>
+      </div><!-- Sidebar Column (30%) -->
       <div class="space-y-6 lg:col-span-1">
-        <!-- General Info Section -->
-        <div class="border p-4">
-          <ul class="list-disc pl-4">
-            <li>Founded: </li>
-            <li>From: </li>
-            <li>Dissolved: </li>
-          </ul>
-        </div><!-- Links Section -->
-        <div class="border p-4">
-          <div class="flex space-y-4">
-            <div><a href="https://serp.ly/@daftfm/amazon/music/unlimited" rel="noopener noreferrer">Amazon Music</a></div>
+        <!-- Artist Image -->
+        <!-- Fallback placeholder -->
+        <div class="flex aspect-square items-center justify-center rounded-md bg-gray-100 shadow-sm dark:bg-gray-800"><span class="iconify i-heroicons:user h-1/3 w-1/3 text-gray-400 dark:text-gray-600" aria-hidden="true"></span></div><!-- Overview Card (Added to Sidebar) -->
+        <div class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+          <div class="p-4 sm:px-6">
+            <div class="font-medium">Overview</div>
           </div>
-        </div><!-- Stats Section -->
-        <div class="border p-4">
-          <div>
-            <div><span>Genres: </span></div><br>
-            <div><span>Tags: </span></div>
+          <div class="p-4 sm:p-6">
+            <div class="prose prose-sm dark:prose-invert max-w-none">
+              <p>Minimal overview content.</p>
+            </div>
           </div>
+          <!--v-if-->
+        </div><!-- General Info Card -->
+        <div class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+          <div class="p-4 sm:px-6">
+            <div class="font-medium">Artist Info</div>
+          </div>
+          <div class="p-4 sm:p-6">
+            <div class="space-y-2 text-sm">
+              <div class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Minimal Artist</div>
+              <!--v-if-->
+              <!--v-if-->
+              <!--v-if-->
+              <!--v-if-->
+              <!--v-if-->
+              <!--v-if-->
+            </div>
+          </div>
+          <!--v-if-->
+        </div><!-- Stats Card -->
+        <!--v-if-->
+        <!-- Links Card -->
+        <div class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+          <div class="p-4 sm:px-6">
+            <div class="font-medium">Listen On</div>
+          </div>
+          <div class="p-4 sm:p-6">
+            <div class="p-1"><a href="https://serp.ly/@daftfm/amazon/music/unlimited" rel="noopener noreferrer" class="rounded-none font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-3 py-2 text-sm gap-2 w-full justify-center text-(--ui-primary) focus-visible:bg-(--ui-primary)/15 disabled:bg-(--ui-primary)/10 aria-disabled:bg-(--ui-primary)/10 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/30">
+                <!--v-if--> Amazon Music
+                <!--v-if-->
+              </a></div>
+          </div>
+          <!--v-if-->
         </div>
       </div>
     </div>

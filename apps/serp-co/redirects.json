@@ -1,4 +1,5 @@
 {
+  "/reviews": "/products/",
   "/reviews/11x-ai": "/products/11x.ai/reviews/",
   "/reviews/3dfy": "/products/3dfy.ai/reviews/",
   "/reviews/mood-ai-by-mindset": "/products/getmindset.com/reviews/",
@@ -16,7 +17,6 @@
   "/reviews/abtesting-ai": "/products/abtesting.ai/reviews/",
   "/reviews/minerva-ai": "/products/academicid.net/reviews/",
   "/reviews/academicgpt": "/products/academicgpt.net/reviews/",
-  "/reviews/accredible.com": "/products/accredible.com/reviews/",
   "/reviews/activazon": "/products/activazon.com/reviews/",
   "/reviews/acrostic-ai": "/products/acrostic.ai/reviews/",
   "/reviews/activechat-ai": "/products/activechat.ai/reviews/",

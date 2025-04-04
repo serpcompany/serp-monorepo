@@ -6,6 +6,7 @@
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".nuxt/**", ".output/**", "dist/**"]
     },
+    "prepare": {},
     "lint": {
       "outputLogs": "new-only"
     },
@@ -16,6 +17,7 @@
        "outputLogs": "new-only"
     },
     "test:watch": {},
+    "test:update": {},
     "dev": {
       "cache": true,
       "persistent": true

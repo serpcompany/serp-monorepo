@@ -1,29 +1,111 @@
 ---
-description: 
+description: "Rules for code style, linting, formatting, and editor configuration."
 globs: 
 alwaysApply: true
 ---
 ---
-description: "Rules for code style, linting, formatting, and editor configuration."
-globs:
-  - "*.ts"
-  - "*.vue"
+description: Development rules for consistent code quality across all SERP apps and packages
 ---
 
-- **Linting:**
-  - Tool: ESLint  
-  - Config References: Check packages/configs/eslint/ for current ESLint configurations  
-  - Application Rules: Always follow existing patterns in the specific app you're working with
+# Project Code Conventions
 
-- **Formatting:**
-  - Tool: Prettier  
-  - Config Reference: Check .prettierrc at project root  
-  - Settings:  
-    - Semi-colons: enabled  
-    - Single quotes: true  
-    - Trailing comma: none
+## File Matching Patterns
 
-- **Editor Config:**
-  - Reference: See .editorconfig at project root  
-  - Indent Style: space  
-  - Indent Size: 2
+globs:
+  # Core application files
+  - "apps/**/*.{js,ts,vue,md,json}"
+  - "packages/**/*.{js,ts,vue,md,json}"
+  
+  # Configuration files
+  - "**/*config.{ts,js,mjs}"
+  - "**/tsconfig.json"
+  - "**/tailwindcss.config.ts"
+  - "**/drizzle.config.ts"
+  
+
+
+# Linting Rules
+
+linting:
+  eslint:
+    config_strategy: "per-package"
+    base_config: "eslint:recommended"
+    framework_config: "@nuxt/eslint-config"
+    overrides:
+      - pattern: "apps/*/eslint.config.mjs"
+        config: "local"
+      - pattern: "packages/*/eslint.config.mjs"
+        config: "local"
+      - pattern: "packages/configs/eslint/**"
+        config: "shared"
+    rules:
+      vue:
+        - "plugin:vue/recommended"
+      typescript:
+        - "@typescript-eslint/recommended"
+      nuxt:
+        - "@nuxt/eslint-config"
+
+
+# Formatting Rules
+
+formatting:
+  prettier:
+    config_strategy: "cascade"
+    base_config: ".prettierrc"
+    package_configs: "packages/configs/prettier/**"
+    options:
+      semi: true
+      singleQuote: true
+      trailingComma: "none"
+      printWidth: 100
+      vueIndentScriptAndStyle: true
+    ignored_patterns:
+      - "**/*.md"
+      - "**/CHANGELOG.md"
+      - "**/package.json"
+      - "**/pnpm-lock.yaml"
+
+
+# Editor Conventions
+
+editor:
+  config_file: ".editorconfig"
+  defaults:
+    indent_style: space
+    indent_size: 2
+    end_of_line: lf
+    charset: utf-8
+    trim_trailing_whitespace: true
+    insert_final_newline: true
+  overrides:
+    "*.md":
+      trim_trailing_whitespace: false
+    "*.json":
+      indent_size: 2
+    "*.yml":
+      indent_size: 2
+
+
+# Project Structure
+
+structure:
+  apps:
+    required_files:
+      - "app.config.ts"
+      - "nuxt.config.ts"
+      - "tailwindcss.config.ts"
+      - "drizzle.config.ts"
+    conventions:
+      pages: "kebab-case"
+      components: "PascalCase"
+      composables: "camelCase"
+  
+  packages:
+    types:
+      patterns:
+        - "**/*.d.ts"
+    ui:
+      component_prefix: "Serp"
+    utils:
+      naming: "camelCase"

@@ -6,10 +6,18 @@ const NUXT_PUBLIC_SITE_URL = process.env.NUXT_PUBLIC_SITE_URL;
 export default defineEventHandler(async (event) => {
   const numPages = await $fetch('/api/__sitemap__/posts?count=true');
 
-  const sitemaps = Array.from({ length: numPages }, (_, i) => ({
+  // Convert numPages to a number
+  const pageCount = Number(numPages);
+
+  interface SitemapItem {
+    loc: string;
+    lastmod: string;
+  }
+
+  const sitemaps = Array.from({ length: pageCount }, (_, i) => ({
     loc: `${NUXT_PUBLIC_SITE_URL}/sitemap/posts/${i + 1}.xml`,
     lastmod: new Date().toISOString()
-  }));
+  })) as SitemapItem[];
 
   const xml = `
     <?xml version="1.0" encoding="UTF-8"?>

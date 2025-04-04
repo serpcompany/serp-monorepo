@@ -8,7 +8,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/eslint',
     '@nuxtjs/seo',
-    '@nuxtjs/sitemap',
     'nuxt-multi-cache',
     'nuxt-security',
     '@nuxt/scripts',
@@ -20,6 +19,12 @@ export default defineNuxtConfig({
   },
   uiPro: {
     license: process.env.NUXT_UI_PRO_LICENSE
+  },
+  sitemap: {
+    enabled: false
+  },
+  robots: {
+    enabled: false
   },
   tsConfig: {
     compilerOptions: {

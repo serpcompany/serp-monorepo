@@ -1,0 +1,29 @@
+name: "cron: submit sitemaps to GSC"
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Monday at 9:00 UTC, which is Monday at 1:00 AM PST (UTC-8)
+  workflow_dispatch:
+
+jobs:
+  cron-submit-sitemaps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Create service account file
+        run: |
+          echo '${{ secrets.GSC_SERVICE_ACCOUNT_KEY }}' > python_scripts/gsc-service-account.json
+
+      - name: Install dependencies
+        run: |
+          pip install requests google-api-python-client google-auth
+
+      - name: Run sitemap submission script
+        run: python python_scripts/sitemap_submitter.py

@@ -10,6 +10,37 @@
     ],
     [
       {
+        label: 'Submit',
+        icon: 'i-lucide-plus',
+        to: '/users/submit/company/'
+      }
+    ],
+    [
+      {
+        label: 'Manage',
+        type: 'label'
+      },
+      {
+        label: 'Submissions',
+        icon: 'i-lucide-file-text',
+        to: '/users/submissions/'
+      },
+      {
+        label: 'Billing',
+        icon: 'i-lucide-credit-card',
+        to: '/users/billing/'
+      }
+    ],
+    [
+      {
+        label: 'Get Featured',
+        icon: 'i-lucide-star',
+        to: '/users/featured/',
+        color: 'success'
+      }
+    ],
+    [
+      {
         label: 'Logout',
         icon: 'i-lucide-log-out',
         kbds: ['shift', 'meta', 'q'],

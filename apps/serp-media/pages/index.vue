@@ -3,7 +3,7 @@
   const route = useRoute();
 
   const page = ref(Number(route.query.page) || 1);
-  const limit = ref(Number(route.query.limit) || 50);
+  const limit = ref(Number(route.query.limit) || 100);
   // const categories = await useCompanyCategories();
 
   const shopData = await usePosts(page.value, limit.value, '', 'shop');
@@ -43,7 +43,7 @@
             :key="post.id"
             :post="post"
             :base-slug="`${post.module}/`"
-            :title="post.keyword"
+            :title="post.keyword || post.title"
             article-class="py-2"
           />
         </div>

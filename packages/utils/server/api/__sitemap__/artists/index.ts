@@ -1,6 +1,6 @@
+import { useDataCache } from '#nuxt-multi-cache/composables';
 import { db } from '@serp/utils/server/api/db';
 import { mbArtistMetadataCache } from '@serp/utils/server/api/db/schema';
-import { useDataCache } from '#nuxt-multi-cache/composables';
 import { sql } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
@@ -33,7 +33,9 @@ export default defineEventHandler(async (event) => {
     .offset(limit * (Number(page) - 1))
     .execute();
 
-  const response = post.map((post_) => `${post_.slug}/`);
+  const response = post.map(
+    (post_: { slug: string }) => `${encodeURIComponent(post_.slug)}/`
+  );
 
   addToCache(response, [], 60 * 60 * 10); // 10 hours
   return response;

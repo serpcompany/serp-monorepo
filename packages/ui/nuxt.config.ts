@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     '@nuxtjs/html-validator',
     '@nuxt/image',
     '@nuxt/eslint',
-    '@nuxt/scripts'
+    '@nuxt/scripts',
+    'nuxt-schema-org'
   ],
   css: ['~/assets/css/main.css'],
   runtimeConfig: {

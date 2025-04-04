@@ -1,7 +1,10 @@
-import { describe, expect, it } from 'vitest';
+import { afterAll, describe, expect, it } from 'vitest';
+// Import mocks first so they're available when components are imported
+import { cleanupDateMocks } from '../mockDateImports';
+import '../mockUseUserSession';
+// Then import components
 import CommentWrapper from '../../components/CommentWrapper.vue';
 import ComponentRender from '../componentRender';
-import '../mockUseUserSession';
 
 describe('CommentWrapper Snapshot', () => {
   const baseProps = {
@@ -24,9 +27,9 @@ describe('CommentWrapper Snapshot', () => {
       image: 'https://example.com/avatar.jpg',
       name: 'Test User',
       content: 'This is a test comment.\nIt has two lines.',
-      timestamp: '123456789',
-      createdAt: '123456789',
-      updatedAt: '123456789',
+      timestamp: '1973-04-29T21:33:09Z',
+      createdAt: '1973-04-29T21:33:09+00:00',
+      updatedAt: '1973-04-29T21:33:09+00:00',
       replies: [],
       replyCount: 0,
       email: 'test@example.com',
@@ -42,8 +45,7 @@ describe('CommentWrapper Snapshot', () => {
           ...baseProps,
           comment: {
             ...baseProps.comment,
-            // Set updatedAt 1 minute later than createdAt to simulate an update
-            updatedAt: (Number(baseProps.comment.createdAt) + 60000).toString()
+            updatedAt: '1974-04-29T21:33:09+00:00'
           }
         }
       }
@@ -61,9 +63,9 @@ describe('CommentWrapper Snapshot', () => {
                 image: 'https://example.com/reply-avatar.jpg',
                 name: 'Reply User',
                 content: 'This is a reply.',
-                timestamp: '123456789',
-                createdAt: '123456789',
-                updatedAt: '123456789',
+                timestamp: '1973-04-29T21:33:09Z',
+                createdAt: '1973-04-29T21:33:09+00:00',
+                updatedAt: '1973-04-29T21:33:09+00:00',
                 replies: [],
                 replyCount: 0,
                 email: 'reply@example.com',
@@ -88,18 +90,18 @@ describe('CommentWrapper Snapshot', () => {
                 image: 'https://example.com/reply-avatar.jpg',
                 name: 'Reply User',
                 content: 'This is a reply.',
-                timestamp: '123456789',
-                createdAt: '123456789',
-                updatedAt: '123456789',
+                timestamp: '1973-04-29T21:33:09Z',
+                createdAt: '1973-04-29T21:33:09+00:00',
+                updatedAt: '1973-04-29T21:33:09+00:00',
                 replies: [
                   {
                     id: 203,
                     image: 'https://example.com/reply-avatar.jpg',
                     name: 'Reply User',
                     content: 'This is a reply.',
-                    timestamp: '123456789',
-                    createdAt: '123456789',
-                    updatedAt: '123456789',
+                    timestamp: '1973-04-29T21:33:09Z',
+                    createdAt: '1973-04-29T21:33:09+00:00',
+                    updatedAt: '1973-04-29T21:33:09+00:00',
                     replies: [],
                     replyCount: 0,
                     email: 'reply@example.com',
@@ -110,9 +112,9 @@ describe('CommentWrapper Snapshot', () => {
                     image: 'https://example.com/reply-avatar.jpg',
                     name: 'Reply User',
                     content: 'This is a reply.',
-                    timestamp: '123456789',
-                    createdAt: '123456789',
-                    updatedAt: '123456789',
+                    timestamp: '1973-04-29T21:33:09Z',
+                    createdAt: '1973-04-29T21:33:09+00:00',
+                    updatedAt: '1973-04-29T21:33:09+00:00',
                     replies: [],
                     replyCount: 0,
                     email: 'reply@example.com',
@@ -140,4 +142,8 @@ describe('CommentWrapper Snapshot', () => {
       expect(html).toMatchSnapshot();
     }
   );
+
+  afterAll(() => {
+    cleanupDateMocks();
+  });
 });

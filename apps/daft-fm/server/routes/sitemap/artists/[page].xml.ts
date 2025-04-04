@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
   const urls_ = await $fetch(`/api/__sitemap__/artists?page=${page}`);
 
   const urls = urls_.map((slug: string) => ({
-    loc: `${NUXT_PUBLIC_SITE_URL}/artists/${encodeURIComponent(slug)}`,
+    loc: `${NUXT_PUBLIC_SITE_URL}/artists/${slug}`,
     lastmod: new Date().toISOString()
   }));
 
@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       ${urls
         .map(
-          (url) => `
+          (url: { loc: string; lastmod: string }) => `
         <url>
           <loc>${url.loc}</loc>
           <lastmod>${url.lastmod}</lastmod>

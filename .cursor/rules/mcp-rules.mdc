@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Run these MCP rules whenever relevant or in a situation that would help: [mcp-rules.mdc](mdc:.cursor/rules/mcp-rules.mdc)
+
+Monitor the browser for UI, console errors, etc.
+
+Access relevant github repos for references

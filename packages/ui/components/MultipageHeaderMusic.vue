@@ -4,7 +4,7 @@
       type: String,
       required: true
     },
-    oneLiner: {
+    subtitle: {
       type: String,
       required: false,
       default: ''
@@ -24,104 +24,88 @@
     }
   });
 
-  const header = ref(null);
+  const header = ref<HTMLElement | null>(null);
   const isScrolled = ref(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      isScrolled.value = true;
+    } else {
+      isScrolled.value = false;
+    }
+  };
+
+  onMounted(() => {
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+  });
+
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
+  });
 </script>
 
 <template>
-  <div>
-    <header
-      ref="header"
-      class="bg-[var(--ui-bg)]"
-      :class="{
-        'py-2': isScrolled,
-        'py-2 sm:py-2': !isScrolled,
-        'fixed top-0 left-0 z-50 w-full': isScrolled
-      }"
-    >
-      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <!-- header top -->
-
-        <div class="flex flex-col items-center justify-between sm:flex-row">
-          <!-- image -->
-          <div class="flex w-full items-start justify-between">
-            <NuxtImg
-              v-if="image"
-              :src="image"
-              :alt="`${name} logo`"
-              class="mr-2 object-contain transition-all duration-300"
-              :class="{ 'h-10': isScrolled, 'h-16': !isScrolled }"
-            />
-
-            <!-- name -->
-            <div class="flex-grow" :class="{ 'hidden sm:block': isScrolled }">
-              <h1
-                class="text-xl font-bold text-(--ui-primary) transition-all duration-300 sm:text-3xl"
-                :class="{
-                  'text-xl sm:text-lg': isScrolled,
-                  'mt-0': isScrolled
-                }"
-              >
-                {{ name }}
-              </h1>
-              <span class="text-xs">{{ oneLiner }}</span>
+  <header
+    ref="header"
+    class="bg-background sticky top-0 z-40 border-b border-gray-200 transition-all duration-300 dark:border-gray-800"
+  >
+    <UContainer>
+      <div
+        class="flex flex-col items-center justify-between gap-4 py-3 sm:flex-row"
+      >
+        <div class="flex min-w-0 flex-grow items-center gap-3">
+          <NuxtImg
+            v-if="image"
+            :src="image"
+            :alt="`${name} logo`"
+            class="flex-shrink-0 object-contain transition-all duration-300"
+            :class="isScrolled ? 'h-8 w-8' : 'h-12 w-12'"
+          />
+          <div class="min-w-0 flex-grow">
+            <h1
+              class="truncate text-xl font-bold text-gray-900 transition-all duration-300 sm:text-2xl dark:text-white"
+            >
+              {{ name }}
+            </h1>
+            <div class="truncate text-sm text-gray-500 dark:text-gray-400">
+              <slot name="subtitle"></slot>
             </div>
           </div>
-
-          <!-- action buttons -->
-          <div
-            class="flex w-full flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0"
-          >
-            <!-- upvote button slot -->
-            <slot name="upvote"></slot>
-
-            <!-- visit website button -->
-            <NuxtLink
-              :href="serplyLink"
-              target="_blank"
-              class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"
-            >
-              Listen Free
-              <svg
-                class="h-4 w-4"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-            </NuxtLink>
-          </div>
         </div>
 
-        <!-- header bottom (nav links) -->
         <div
-          class="-mx-4 mt-4 overflow-x-auto px-4 sm:px-0"
-          :class="{ 'mt-2': isScrolled }"
+          class="flex w-full flex-shrink-0 items-center justify-end gap-3 sm:w-auto"
         >
-          <nav
-            aria-label="page sections"
-            class="flex space-x-4 border-t border-b whitespace-nowrap"
-          >
-            <NuxtLink
-              v-for="section in sections"
-              :key="section"
-              :href="'#' + section.toLowerCase()"
-              class="sectionLinks text-muted-foreground flex-shrink-0 px-1 py-2 text-sm transition-colors duration-200 hover:text-(--ui-primary) sm:px-2 sm:text-base"
-            >
-              {{ section }}
-            </NuxtLink>
-          </nav>
+          <slot name="upvote"></slot>
+
+          <UButton
+            :to="serplyLink"
+            target="_blank"
+            label="Listen Free"
+            icon="i-heroicons-arrow-top-right-on-square"
+            color="black"
+            size="sm"
+            class="w-full sm:w-auto"
+          />
         </div>
       </div>
-    </header>
-  </div>
+
+      <nav
+        class="-mx-4 flex overflow-x-auto border-t border-gray-200 px-4 sm:-mx-6 sm:px-6 dark:border-gray-800"
+      >
+        <UButton
+          v-for="section in sections"
+          :key="section"
+          :to="'#' + section.toLowerCase()"
+          :label="section"
+          variant="ghost"
+          color="gray"
+          size="sm"
+          class="flex-shrink-0 rounded-none whitespace-nowrap"
+          :ui="{ rounded: 'rounded-none', padding: { sm: 'px-4 py-2' } }"
+        />
+      </nav>
+    </UContainer>
+  </header>
 </template>

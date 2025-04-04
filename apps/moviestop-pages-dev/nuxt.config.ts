@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/eslint',
     '@nuxtjs/seo',
-    '@nuxtjs/sitemap',
     '@nuxtjs/html-validator',
     'nuxt-security',
     '@nuxt/scripts',
@@ -22,6 +21,12 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   ui: {
     colorMode: true
+  },
+  sitemap: {
+    enabled: false
+  },
+  robots: {
+    enabled: false
   },
   uiPro: {
     license: process.env.NUXT_UI_PRO_LICENSE

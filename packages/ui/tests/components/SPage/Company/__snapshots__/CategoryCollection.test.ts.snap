@@ -50,13 +50,13 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with complete data co
                     <polyline data-v-5deb94c6="" points="15 3 21 3 21 9"></polyline>
                     <line data-v-5deb94c6="" x1="10" y1="14" x2="21" y2="3"></line>
                   </svg></a><!-- upvote button -->
-                <div data-v-5deb94c6="" class="flex w-full items-center sm:w-auto upvote-btn text-sm">
-                  <ubutton class="flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800" disabled="false">
+                <div data-v-5deb94c6="" class="flex w-full items-center sm:w-auto upvote-btn text-sm"><button type="button" class="focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed aria-disabled:opacity-75 text-sm text-(--ui-bg) bg-(--ui-primary) disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800">
+                    <!--v-if-->
                     <!--v-if--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up">
                       <path d="m18 15-6-6-6 6"></path>
                     </svg><span>Upvotes 0</span>
-                  </ubutton>
-                </div>
+                    <!--v-if-->
+                  </button></div>
               </div>
             </div>
           </div>
@@ -93,13 +93,13 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with complete data co
                     <polyline data-v-5deb94c6="" points="15 3 21 3 21 9"></polyline>
                     <line data-v-5deb94c6="" x1="10" y1="14" x2="21" y2="3"></line>
                   </svg></a><!-- upvote button -->
-                <div data-v-5deb94c6="" class="flex w-full items-center sm:w-auto upvote-btn text-sm">
-                  <ubutton class="flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800" disabled="false">
+                <div data-v-5deb94c6="" class="flex w-full items-center sm:w-auto upvote-btn text-sm"><button type="button" class="focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed aria-disabled:opacity-75 text-sm text-(--ui-bg) bg-(--ui-primary) disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800">
+                    <!--v-if-->
                     <!--v-if--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up">
                       <path d="m18 15-6-6-6 6"></path>
                     </svg><span>Upvotes 0</span>
-                  </ubutton>
-                </div>
+                    <!--v-if-->
+                  </button></div>
               </div>
             </div>
           </div>
@@ -255,13 +255,13 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with no categories co
                     <polyline data-v-5deb94c6="" points="15 3 21 3 21 9"></polyline>
                     <line data-v-5deb94c6="" x1="10" y1="14" x2="21" y2="3"></line>
                   </svg></a><!-- upvote button -->
-                <div data-v-5deb94c6="" class="flex w-full items-center sm:w-auto upvote-btn text-sm">
-                  <ubutton class="flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800" disabled="false">
+                <div data-v-5deb94c6="" class="flex w-full items-center sm:w-auto upvote-btn text-sm"><button type="button" class="focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed aria-disabled:opacity-75 text-sm text-(--ui-bg) bg-(--ui-primary) disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800">
+                    <!--v-if-->
                     <!--v-if--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up">
                       <path d="m18 15-6-6-6 6"></path>
                     </svg><span>Upvotes 0</span>
-                  </ubutton>
-                </div>
+                    <!--v-if-->
+                  </button></div>
               </div>
             </div>
           </div>
@@ -298,13 +298,13 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with no categories co
                     <polyline data-v-5deb94c6="" points="15 3 21 3 21 9"></polyline>
                     <line data-v-5deb94c6="" x1="10" y1="14" x2="21" y2="3"></line>
                   </svg></a><!-- upvote button -->
-                <div data-v-5deb94c6="" class="flex w-full items-center sm:w-auto upvote-btn text-sm">
-                  <ubutton class="flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800" disabled="false">
+                <div data-v-5deb94c6="" class="flex w-full items-center sm:w-auto upvote-btn text-sm"><button type="button" class="focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed aria-disabled:opacity-75 text-sm text-(--ui-bg) bg-(--ui-primary) disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800">
+                    <!--v-if-->
                     <!--v-if--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up">
                       <path d="m18 15-6-6-6 6"></path>
                     </svg><span>Upvotes 0</span>
-                  </ubutton>
-                </div>
+                    <!--v-if-->
+                  </button></div>
               </div>
             </div>
           </div>
@@ -397,13 +397,13 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders without category arti
                     <polyline data-v-5deb94c6="" points="15 3 21 3 21 9"></polyline>
                     <line data-v-5deb94c6="" x1="10" y1="14" x2="21" y2="3"></line>
                   </svg></a><!-- upvote button -->
-                <div data-v-5deb94c6="" class="flex w-full items-center sm:w-auto upvote-btn text-sm">
-                  <ubutton class="flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800" disabled="false">
+                <div data-v-5deb94c6="" class="flex w-full items-center sm:w-auto upvote-btn text-sm"><button type="button" class="focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed aria-disabled:opacity-75 text-sm text-(--ui-bg) bg-(--ui-primary) disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800">
+                    <!--v-if-->
                     <!--v-if--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up">
                       <path d="m18 15-6-6-6 6"></path>
                     </svg><span>Upvotes 0</span>
-                  </ubutton>
-                </div>
+                    <!--v-if-->
+                  </button></div>
               </div>
             </div>
           </div>
@@ -440,13 +440,13 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders without category arti
                     <polyline data-v-5deb94c6="" points="15 3 21 3 21 9"></polyline>
                     <line data-v-5deb94c6="" x1="10" y1="14" x2="21" y2="3"></line>
                   </svg></a><!-- upvote button -->
-                <div data-v-5deb94c6="" class="flex w-full items-center sm:w-auto upvote-btn text-sm">
-                  <ubutton class="flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800" disabled="false">
+                <div data-v-5deb94c6="" class="flex w-full items-center sm:w-auto upvote-btn text-sm"><button type="button" class="focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed aria-disabled:opacity-75 text-sm text-(--ui-bg) bg-(--ui-primary) disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800">
+                    <!--v-if-->
                     <!--v-if--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up">
                       <path d="m18 15-6-6-6 6"></path>
                     </svg><span>Upvotes 0</span>
-                  </ubutton>
-                </div>
+                    <!--v-if-->
+                  </button></div>
               </div>
             </div>
           </div>

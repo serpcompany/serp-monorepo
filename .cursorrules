@@ -7,14 +7,10 @@
     "@file .cursor/rules/project-info.mdc",
     "@file .cursor/rules/project-structure.mdc",
     "@file .cursor/rules/code-style.mdc",
-    "@file .cursor/rules/github-workflows.mdc",
     "@file .cursor/rules/deployments.mdc",
     "@file .cursor/rules/ui-guidelines.mdc",
-    "@file .cursor/rules/preferences.mdc",
     "@file .cursor/rules/naming-conventions.mdc",
-    "@file .cursor/rules/import-conventions.mdc",
     "@file .cursor/rules/configs-nuxt-config.mdc",
-    "@file .cursor/rules/writing-tests-unit-tests.mdc",
     "@file .cursor/rules/writing-tests.mdc"
   ],
   "ai_instructions": "When generating code, first apply these global guidelines, then load and merge the additional rules from the referenced files."

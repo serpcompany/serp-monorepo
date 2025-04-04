@@ -37,17 +37,18 @@ export function createConfig({
   const config = [
     {
       ignores: [
-        '**/node_modules/**',
-        '**/dist/**',
-        '**/.nuxt/**',
-        '**/.playground/**',
-        '**/coverage/**',
-        '.github/**',
-        '.vscode/**',
-        '**/.nuxt/**',
-        '**/.turbo/**',
-        '**/.wrangler',
-        '**/.data/**',
+        'node_modules/',
+        'dist/',
+        '.nuxt/',
+        '.playground/',
+        'coverage/',
+        '.github/',
+        '.vscode/',
+        '.nuxt/',
+        '.turbo/',
+        '.wrangler/',
+        '.data/',
+        '.git/',
         ...additionalIgnores
       ]
     },

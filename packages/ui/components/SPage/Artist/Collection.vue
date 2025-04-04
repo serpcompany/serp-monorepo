@@ -4,7 +4,7 @@
   const runtimeConfig = useRuntimeConfig();
 
   const page = ref(Number(route.query.page) || 1);
-  const limit = ref(Number(route.query.limit) || 50);
+  const limit = ref(Number(route.query.limit) || 100);
 
   watch(
     [page, limit],
@@ -16,7 +16,7 @@
       } else {
         delete query.page;
       }
-      if (newLimit !== 50) {
+      if (newLimit !== 100) {
         query.limit = newLimit;
       } else {
         delete query.limit;

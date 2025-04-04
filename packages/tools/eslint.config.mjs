@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const baseConfig = createConfig({
   quiet: false,
   additionalRules: {},
-  additionalIgnores: [],
+  additionalIgnores: ['**/.nuxt/**'],
   baseDirectory: __dirname
 });
 

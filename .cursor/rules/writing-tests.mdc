@@ -1,13 +1,10 @@
 ---
 description: 
-globs: 
+globs: **/*.test.ts
 alwaysApply: false
 ---
----
-description: "Guidelines for writing unit tests."
----
 
-## Frameworks
+## Test Frameworks
 
 - Vitest (https://vitest.dev/)
 - Nuxt Test Utils (https://nuxt.com/docs/getting-started/testing)

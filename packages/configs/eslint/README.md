@@ -59,3 +59,10 @@ You can use these solo, or comma separated like:
 ```
 <!-- eslint-disable-next-line vue/no-v-html -->
 ```
+
+### disable rules for an entire file
+
+**eslint rules for .js / .ts files**
+```ts
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars */
+```

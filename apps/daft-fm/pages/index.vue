@@ -3,7 +3,7 @@
   const route = useRoute();
 
   const page = ref(Number(route.query.page) || 1);
-  const limit = ref(Number(route.query.limit) || 50);
+  const limit = ref(Number(route.query.limit) || 100);
 
   const songsData = await useSongs(page.value, limit.value);
   if (!songsData) {

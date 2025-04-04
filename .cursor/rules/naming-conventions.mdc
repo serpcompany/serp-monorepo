@@ -1,18 +1,12 @@
 ---
-description: 
+description: "Naming conventions for various file types and components."
 globs: 
 alwaysApply: true
 ---
----
-description: "Naming conventions for various file types and components."
-globs:
-  - "*.vue"
-  - "*.ts"
----
 
-- **Components:** Use `PascalCase.vue`  
-- **Composables:** Use `camelCase.ts` with a `use` prefix (e.g., `useAuth`)  
-- **Pages:** Use `kebab-case.vue` or `index.vue`  
-- **APIs:** Use `kebab-case.ts`  
-- **Types:** Use `PascalCase.ts` for interfaces/types or `kebab-case.ts` for file names  
+- **Components:** Use `PascalCase.vue`
+- **Composables:** Use `camelCase.ts` with a `use` prefix (e.g., `useAuth`)
+- **Pages:** Use `kebab-case.vue` or `index.vue`
+- **APIs:** Use `kebab-case.ts`
+- **Types:** Use `PascalCase.ts` for interfaces/types or `kebab-case.ts` for file names
 - **Reference Location:** Look at existing files in the app to match patterns

@@ -1,7 +1,10 @@
-import { describe, expect, it } from 'vitest';
+import { afterAll, describe, expect, it } from 'vitest';
+// Import mocks first so they're available when components are imported
+import { cleanupDateMocks } from '../mockDateImports';
+import '../mockUseUserSession';
+// Then import components
 import CommentsContainer from '../../components/CommentsContainer.vue';
 import ComponentRender from '../componentRender';
-import '../mockUseUserSession';
 
 // Define various scenarios to snapshot test different prop combinations.
 const scenarios: [string, { props: Record<string, unknown> }][] = [
@@ -29,8 +32,8 @@ const scenarios: [string, { props: Record<string, unknown> }][] = [
             name: 'John Doe',
             image: 'https://example.com/avatar.jpg',
             content: 'Great post!',
-            createdAt: '123456789',
-            updatedAt: '123456789',
+            createdAt: '1973-04-29T21:33:09+00:00',
+            updatedAt: '1973-04-29T21:33:09+00:00',
             replies: []
           }
         ]
@@ -50,8 +53,8 @@ const scenarios: [string, { props: Record<string, unknown> }][] = [
             name: 'John Doe',
             image: 'https://example.com/avatar.jpg',
             content: 'Great post!',
-            createdAt: '123456789',
-            updatedAt: '123456789',
+            createdAt: '1973-04-29T21:33:09+00:00',
+            updatedAt: '1973-04-29T21:33:09+00:00',
             replies: [
               {
                 id: 205,
@@ -59,8 +62,8 @@ const scenarios: [string, { props: Record<string, unknown> }][] = [
                 name: 'Alice',
                 image: 'https://example.com/alice.jpg',
                 content: 'Nice work!',
-                createdAt: '123456000',
-                updatedAt: '123456000',
+                createdAt: '1973-04-29T21:33:09+00:00',
+                updatedAt: '1973-04-29T21:33:09+00:00',
                 replies: [
                   {
                     id: 206,
@@ -68,8 +71,8 @@ const scenarios: [string, { props: Record<string, unknown> }][] = [
                     name: 'Alice',
                     image: 'https://example.com/alice.jpg',
                     content: 'Nice work!',
-                    createdAt: '123456000',
-                    updatedAt: '123456000',
+                    createdAt: '1973-04-29T21:33:09+00:00',
+                    updatedAt: '1973-04-29T21:33:09+00:00',
                     replies: []
                   },
                   {
@@ -78,8 +81,8 @@ const scenarios: [string, { props: Record<string, unknown> }][] = [
                     name: 'Alice',
                     image: 'https://example.com/alice.jpg',
                     content: 'Nice work!',
-                    createdAt: '123456000',
-                    updatedAt: '123456000',
+                    createdAt: '1973-04-29T21:33:09+00:00',
+                    updatedAt: '1973-04-29T21:33:09+00:00',
                     replies: []
                   }
                 ]
@@ -107,8 +110,8 @@ const scenarios: [string, { props: Record<string, unknown> }][] = [
             name: 'Alice',
             image: 'https://example.com/alice.jpg',
             content: 'Nice work!',
-            createdAt: '123456000',
-            updatedAt: '123456000',
+            createdAt: '1973-04-29T21:33:09+00:00',
+            updatedAt: '1973-04-29T21:33:09+00:00',
             replies: []
           },
           {
@@ -117,8 +120,8 @@ const scenarios: [string, { props: Record<string, unknown> }][] = [
             name: 'Bob',
             image: 'https://example.com/bob.jpg',
             content: 'I disagree',
-            createdAt: '123456111',
-            updatedAt: '123456111',
+            createdAt: '1973-04-29T21:33:09+00:00',
+            updatedAt: '1973-04-29T21:33:09+00:00',
             replies: []
           }
         ]
@@ -136,5 +139,9 @@ describe('CommentsContainer Snapshot', () => {
       CommentsContainer
     );
     expect(html).toMatchSnapshot();
+  });
+
+  afterAll(() => {
+    cleanupDateMocks();
   });
 });

@@ -11,6 +11,7 @@
     "prettier": "prettier . --write --log-level warn",
     "preview": "nuxt preview .playground",
     "test": "vitest --coverage --run",
+    "test:update": "vitest --run --coverage --update",
     "test:watch": "vitest --coverage"
   },
   "devDependencies": {
@@ -36,6 +37,7 @@
     "eslint": "^9.20.1",
     "jsdom": "^25.0.1",
     "nuxt": "^3.16.1",
+    "nuxt-schema-org": "5.0.4",
     "playwright-core": "^1.48.2",
     "prettier-plugin-packagejson": "^2.5.3",
     "prettier-plugin-tailwindcss": "^0.6.8",

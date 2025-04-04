@@ -26,7 +26,13 @@ export default defineEventHandler(async (event) => {
   }
 
   // Retrieve query parameters
-  const { type, id, secondaryId, successRoute = '/purchase?success=true', cancelRoute = '/purchase?cancel=true' } = getQuery(event);
+  const {
+    type,
+    id,
+    secondaryId,
+    successRoute = '/purchase?success=true',
+    cancelRoute = '/purchase?cancel=true'
+  } = getQuery(event);
   const { amount, currency, description, recurring, paymentId } =
     await processSuccessfulPayment(type as string, false, true);
 
@@ -87,14 +93,14 @@ export default defineEventHandler(async (event) => {
           secondaryId
         },
         subscription_data: {
-            metadata: {
-              email,
-              type,
-              id,
-              customerId: customer_.id,
-              secondaryId
-            }
+          metadata: {
+            email,
+            type,
+            id,
+            customerId: customer_.id,
+            secondaryId
           }
+        }
       });
     } catch (e) {
       throw createError({
@@ -130,14 +136,14 @@ export default defineEventHandler(async (event) => {
           secondaryId
         },
         payment_intent_data: {
-            metadata: {
-              email,
-              type,
-              id,
-              customerId: customer_.id,
-              secondaryId
-            }
+          metadata: {
+            email,
+            type,
+            id,
+            customerId: customer_.id,
+            secondaryId
           }
+        }
       });
     } catch (e) {
       throw createError({

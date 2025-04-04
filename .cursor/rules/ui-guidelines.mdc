@@ -1,24 +1,27 @@
 ---
 description: 
-globs: 
-alwaysApply: true
+globs: **/*.vue
+alwaysApply: false
 ---
 ---
-description: "Guidelines for component development, UI styling, and project-specific preferences."
-globs:
-  - "*.vue"
+Description: Guidelines for working with UI elements
+globs: ['**/*.vue']
+alwaysApply: false
 ---
 
-# README
+# Working With Nuxt UI (Components & Pages)
+
 - UI Library: Nuxt UI Pro (https://ui.nuxt.com/getting-started)
 - Our custom Nuxt UI "wrapper components" in `packages/ui/*`
-- Tailwind Config Settings: Main tailwind css styles in `packages/ui/assets/css/main.css` 
+- Tailwind Config Settings: Main tailwind css styles in `packages/ui/assets/css/main.css`
 - Find `apps/*` & `package/*` level tailwind config settings in `app.config.ts` files in each respective `apps/*` & `package/`
 
 ## Guidelines
 - Always reference other existing project UI (components/pages/etc.) to ensure consistency in style and values across the project.
 - Everything must be mobile responsive and darkmode compatible.
 - Use Tailwind classes over custom CSS, make sure to follow Tailwind V4 & Nuxt UI Pro tailwind implementation preferences
-
+- Use `<script setup lang="ts">`
+- Use the Composition API
+- Nuxt auto imports almost everything, dont add unnecessary imports
 
 

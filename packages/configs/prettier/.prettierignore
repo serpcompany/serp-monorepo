@@ -1,28 +1,22 @@
-# Dependency directories and lock files
-node_modules/
-package-lock.json
-pnpm-lock.yaml
-yarn.lock
-
-# Build outputs
-dist/
-build/
+.DS_Store
+.git/
+.idea/
 .nuxt/
 .output/
 .playground/
 .turbo/
-.wrangler/
 .vercel/
-coverage/
-
-# Generated files
 .vscode/
-.idea/
-.DS_Store
-
-# Debug logs
+.wrangler/
+build/
+coverage/
+dist/
+node_modules/
 npm-debug.log*
+package-lock.json
+pnpm-debug.log*
+pnpm-lock.yaml
+pnpm-workspace.yaml
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-
+yarn.lock

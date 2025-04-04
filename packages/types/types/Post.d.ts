@@ -1,4 +1,4 @@
-import type { Category, Pagination, Comment } from '@serp/types/types';
+import type { Category, Comment, Pagination } from '@serp/types/types';
 
 export type Post = {
   id: number;
@@ -30,6 +30,20 @@ export type PostIndex = {
   categories?: Category[];
   createdAt?: string;
   oneLiner?: string;
+  module?: string;
+  keyword?: string;
+};
+
+export type PostIndexCloudflare = {
+  id: number;
+  title: string;
+  slug: string;
+  author?: string;
+  excerpt?: string;
+  featured_image?: string;
+  categories?: Category[];
+  created_at?: string;
+  one_liner?: string;
   module?: string;
   keyword?: string;
 };

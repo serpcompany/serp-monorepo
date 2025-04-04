@@ -12,15 +12,15 @@
 </script>
 
 <template>
-  <div>
+  <UPage>
     <!-- hero -->
     <SHero
-      headline="Your submissions"
+      headline="Submissions"
       :show-search-bar="false"
       :show-buttons="false"
     />
 
-    <main>
+    <UMain>
       <!-- rows: companies -->
       <div class="space-y-4">
         <div
@@ -39,7 +39,7 @@
               :to="
                 submission.approved
                   ? `/products/${submission.domain}/reviews/`
-                  : `/edit/company?id=${submission.id}`
+                  : `/users/submit/company?id=${submission.id}`
               "
             >
               <LazyNuxtImg
@@ -80,6 +80,6 @@
           </div>
         </div>
       </div>
-    </main>
-  </div>
+    </UMain>
+  </UPage>
 </template>

@@ -50,3 +50,5 @@ dist/
 
 .dev.vars
 
+gsc-service-account.json
+.secrets

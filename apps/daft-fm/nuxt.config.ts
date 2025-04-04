@@ -8,7 +8,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/eslint',
     '@nuxtjs/seo',
-    '@nuxtjs/sitemap',
     'nuxt-multi-cache',
     'nuxt-security',
     '@nuxt/scripts',
@@ -133,6 +132,12 @@ export default defineNuxtConfig({
         }
       }
     }
+  },
+  sitemap: {
+    enabled: false
+  },
+  robots: {
+    enabled: false
   },
   schemaOrg: {
     identity: 'Organization',

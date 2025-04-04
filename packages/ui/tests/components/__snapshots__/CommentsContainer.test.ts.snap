@@ -42,7 +42,7 @@ exports[`CommentsContainer Snapshot > renders with a single comment correctly 1`
           </div>
           <div data-v-d830712d="" class="comment-wrapper">
             <div data-v-d830712d="" class="name-wrapper">
-              <div data-v-d830712d="" class="name text-(--ui-primary)">John Doe</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Invalid Date">56 years ago</span>
+              <div data-v-d830712d="" class="name text-(--ui-primary)">John Doe</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Thursday, January 1, 1970 at 9:00:01 AM">54 years ago</span>
               <!--v-if-->
               <div data-v-d830712d="" class="expand hover:text-(--ui-primary)"><span data-v-d830712d="" title="Hide Comment">−</span></div>
             </div>
@@ -91,7 +91,7 @@ exports[`CommentsContainer Snapshot > renders with multiple comments and custom 
           <div data-v-d830712d="" class="w-12 rounded-t-full"><img data-v-d830712d="" alt="Avatar" data-nuxt-img="" srcset="https://example.com/alice.jpg 1x, https://example.com/alice.jpg 2x" class="h-12 w-12 rounded-full p-1" src="https://example.com/alice.jpg"></div>
           <div data-v-d830712d="" class="comment-wrapper">
             <div data-v-d830712d="" class="name-wrapper">
-              <div data-v-d830712d="" class="name text-(--ui-primary)">Alice</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Invalid Date">56 years ago</span>
+              <div data-v-d830712d="" class="name text-(--ui-primary)">Alice</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Thursday, January 1, 1970 at 9:00:01 AM">54 years ago</span>
               <!--v-if-->
               <div data-v-d830712d="" class="expand hover:text-(--ui-primary)"><span data-v-d830712d="" title="Hide Comment">−</span></div>
             </div>
@@ -119,7 +119,7 @@ exports[`CommentsContainer Snapshot > renders with multiple comments and custom 
           <div data-v-d830712d="" class="w-12 rounded-t-full"><img data-v-d830712d="" alt="Avatar" data-nuxt-img="" srcset="https://example.com/bob.jpg 1x, https://example.com/bob.jpg 2x" class="h-12 w-12 rounded-full p-1" src="https://example.com/bob.jpg"></div>
           <div data-v-d830712d="" class="comment-wrapper">
             <div data-v-d830712d="" class="name-wrapper">
-              <div data-v-d830712d="" class="name text-(--ui-primary)">Bob</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Invalid Date">56 years ago</span>
+              <div data-v-d830712d="" class="name text-(--ui-primary)">Bob</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Thursday, January 1, 1970 at 9:00:01 AM">54 years ago</span>
               <!--v-if-->
               <div data-v-d830712d="" class="expand hover:text-(--ui-primary)"><span data-v-d830712d="" title="Hide Comment">−</span></div>
             </div>
@@ -168,7 +168,7 @@ exports[`CommentsContainer Snapshot > renders with nested comment correctly 1`] 
           <div data-v-d830712d="" class="w-12 rounded-t-full"><img data-v-d830712d="" alt="Avatar" data-nuxt-img="" srcset="https://example.com/avatar.jpg 1x, https://example.com/avatar.jpg 2x" class="h-12 w-12 rounded-full p-1" src="https://example.com/avatar.jpg"></div>
           <div data-v-d830712d="" class="comment-wrapper">
             <div data-v-d830712d="" class="name-wrapper">
-              <div data-v-d830712d="" class="name text-(--ui-primary)">John Doe</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Invalid Date">56 years ago</span>
+              <div data-v-d830712d="" class="name text-(--ui-primary)">John Doe</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Thursday, January 1, 1970 at 9:00:01 AM">54 years ago</span>
               <!--v-if-->
               <div data-v-d830712d="" class="expand hover:text-(--ui-primary)"><span data-v-d830712d="" title="Hide Comment">−</span></div>
             </div>
@@ -192,7 +192,7 @@ exports[`CommentsContainer Snapshot > renders with nested comment correctly 1`] 
                   <div data-v-d830712d="" class="w-12 rounded-t-full"><img data-v-d830712d="" alt="Avatar" data-nuxt-img="" srcset="https://example.com/alice.jpg 1x, https://example.com/alice.jpg 2x" class="h-12 w-12 rounded-full p-1" src="https://example.com/alice.jpg"></div>
                   <div data-v-d830712d="" class="comment-wrapper">
                     <div data-v-d830712d="" class="name-wrapper">
-                      <div data-v-d830712d="" class="name text-(--ui-primary)">Alice</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Invalid Date">56 years ago</span>
+                      <div data-v-d830712d="" class="name text-(--ui-primary)">Alice</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Thursday, January 1, 1970 at 9:00:01 AM">54 years ago</span>
                       <!--v-if-->
                       <div data-v-d830712d="" class="expand hover:text-(--ui-primary)"><span data-v-d830712d="" title="Hide Comment">−</span></div>
                     </div>
@@ -216,7 +216,7 @@ exports[`CommentsContainer Snapshot > renders with nested comment correctly 1`] 
                           <div data-v-d830712d="" class="w-12 rounded-t-full"><img data-v-d830712d="" alt="Avatar" data-nuxt-img="" srcset="https://example.com/alice.jpg 1x, https://example.com/alice.jpg 2x" class="h-12 w-12 rounded-full p-1" src="https://example.com/alice.jpg"></div>
                           <div data-v-d830712d="" class="comment-wrapper">
                             <div data-v-d830712d="" class="name-wrapper">
-                              <div data-v-d830712d="" class="name text-(--ui-primary)">Alice</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Invalid Date">56 years ago</span>
+                              <div data-v-d830712d="" class="name text-(--ui-primary)">Alice</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Thursday, January 1, 1970 at 9:00:01 AM">54 years ago</span>
                               <!--v-if-->
                               <div data-v-d830712d="" class="expand hover:text-(--ui-primary)"><span data-v-d830712d="" title="Hide Comment">−</span></div>
                             </div>
@@ -244,7 +244,7 @@ exports[`CommentsContainer Snapshot > renders with nested comment correctly 1`] 
                           <div data-v-d830712d="" class="w-12 rounded-t-full"><img data-v-d830712d="" alt="Avatar" data-nuxt-img="" srcset="https://example.com/alice.jpg 1x, https://example.com/alice.jpg 2x" class="h-12 w-12 rounded-full p-1" src="https://example.com/alice.jpg"></div>
                           <div data-v-d830712d="" class="comment-wrapper">
                             <div data-v-d830712d="" class="name-wrapper">
-                              <div data-v-d830712d="" class="name text-(--ui-primary)">Alice</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Invalid Date">56 years ago</span>
+                              <div data-v-d830712d="" class="name text-(--ui-primary)">Alice</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Thursday, January 1, 1970 at 9:00:01 AM">54 years ago</span>
                               <!--v-if-->
                               <div data-v-d830712d="" class="expand hover:text-(--ui-primary)"><span data-v-d830712d="" title="Hide Comment">−</span></div>
                             </div>

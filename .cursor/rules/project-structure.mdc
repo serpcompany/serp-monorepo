@@ -1,14 +1,10 @@
 ---
-description: 
+description: "Guidelines for the monorepo structure and references to code examples."
 globs: 
 alwaysApply: true
 ---
----
-description: "Guidelines for the monorepo structure and references to code examples."
-globs:
-  - "pnpm-workspace.yaml"
----
 
-- **Apps:** Check pnpm-workspace.yaml for current app directories  
-- **Packages:** Check pnpm-workspace.yaml for current package directories  
+
+- **Apps:** Check pnpm-workspace.yaml for current app directories
+- **Packages:** Check pnpm-workspace.yaml for current package directories
 - **Code Examples:** Refer to existing implementations in similar apps when creating new features

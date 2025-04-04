@@ -19,6 +19,7 @@
     "server": "node .output/server/index.mjs",
     "pretest": "vitest --coverage --run",
     "test": "vitest --coverage --run",
+    "test:update": "vitest --run --coverage --update",
     "test:watch": "vitest --coverage"
   },
   "devDependencies": {

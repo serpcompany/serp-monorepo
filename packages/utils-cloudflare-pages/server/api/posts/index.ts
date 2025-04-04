@@ -2,7 +2,7 @@ import { eq } from 'drizzle-orm';
 import { useDrizzle } from '../db';
 import { postIndexCache } from '../db/schema';
 
-import type { PostIndex } from '@serp/types/types';
+import type { PostIndex, PostIndexCloudflare } from '@serp/types/types';
 
 /**
  * Format date to human-readable format
@@ -23,9 +23,9 @@ const formatDate = (
       });
     }
     return dateString;
-  } catch (error) {
+  } catch (error: unknown) {
     // eslint-disable-next-line no-console
-    console.error(`Error formatting date: ${error.message}`);
+    console.error(`Error formatting date: ${(error as Error).message}`);
     return dateString;
   }
 };
@@ -70,7 +70,7 @@ export default defineEventHandler(async (event) => {
 
   // Parse the stored JSON string into a proper object
   const parsedData = JSON.parse(results[0].data);
-  const parsedPosts = parsedData.posts.map((post: PostIndex) => {
+  const parsedPosts = parsedData.posts.map((post: PostIndexCloudflare) => {
     let parsedCategories = [];
     try {
       if (post.categories) {
@@ -83,16 +83,16 @@ export default defineEventHandler(async (event) => {
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(
-        `Error parsing categories for post ${post.id}: ${error.message}`
+        `Error parsing categories for post ${post.id}: ${error instanceof Error ? error.message : String(error)}`
       );
     }
 
     return {
       ...post,
+      featuredImage: post.featured_image,
       categories: parsedCategories,
-      createdAt: formatDate(post.createdAt),
-      updatedAt: formatDate(post.updatedAt)
-    };
+      createdAt: formatDate(post.created_at)
+    } as PostIndex;
   });
 
   // Return the properly structured response

@@ -13,9 +13,6 @@ jobs:
   build_staging_serp_media:
     runs-on: ubuntu-latest
     steps:
-      - name: Add delay for staggering
-        run: sleep 10
-
       - name: Checkout code
         uses: actions/checkout@v2
 

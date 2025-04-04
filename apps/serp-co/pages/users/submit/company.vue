@@ -30,7 +30,7 @@
 
   const route = useRoute();
   const id = route.query.id;
-  const existingForm = ref(false)
+  const existingForm = ref(false);
   if (id) {
     const submissionData = await useCompanySubmissions(id);
     if (submissionData) {
@@ -286,7 +286,7 @@
       const response = await $fetch(
         `/api/create-checkout-session?type=company-priority-queue&id=${uuid}`,
         {
-          method: 'GET',
+          method: 'GET'
         }
       );
 
@@ -313,22 +313,21 @@
       <div class="col-span-1 space-y-4">
         <!-- Waiting Line Card -->
         <UCard>
-
-            <div v-if="!isPriority && existingForm">
-              <p class="text-sm text-neutral-500">
-                The current waiting time is > 30 days.
-              </p>
-              <p class="text-sm text-neutral-500">
-                Join the <b><i>priority queue</i></b> to get your company listed
-                within 24 hours.
-              </p>
-              <UButton
-                variant="outline"
-                class="mt-2"
-                @click="priorityQueueCheckout"
-                >Join the priority queue</UButton
-              >
-            </div>
+          <div v-if="!isPriority && existingForm">
+            <p class="text-sm text-neutral-500">
+              The current waiting time is > 30 days.
+            </p>
+            <p class="text-sm text-neutral-500">
+              Join the <b><i>priority queue</i></b> to get your company listed
+              within 24 hours.
+            </p>
+            <UButton
+              variant="outline"
+              class="mt-2"
+              @click="priorityQueueCheckout"
+              >Join the priority queue</UButton
+            >
+          </div>
           <div v-else-if="isPriority">
             <UBadge>Priority</UBadge>
             <p class="text-sm text-neutral-500">

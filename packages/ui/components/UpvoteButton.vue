@@ -87,7 +87,7 @@
 
 <template>
   <div class="flex w-full items-center sm:w-auto">
-    <Ubutton
+    <UButton
       class="flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800"
       :class="{
         'text-blue-500 dark:text-blue-400': localUpvotes.includes(user?.email)
@@ -114,6 +114,6 @@
         <path d="m18 15-6-6-6 6" />
       </svg>
       <span>Upvotes {{ localUpvotes.length }}</span>
-    </Ubutton>
+    </UButton>
   </div>
 </template>
