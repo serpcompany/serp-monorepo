@@ -45,6 +45,9 @@ export default defineNuxtConfig({
       types: ['vitest/globals', '']
     }
   },
+  robots: {
+    enabled: false
+  },
   runtimeConfig: {
     public: {
       cloudflareR2PublicUrl: process.env.CLOUDFLARE_R2_PUBLIC_URL,
