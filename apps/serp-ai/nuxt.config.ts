@@ -24,9 +24,6 @@ export default defineNuxtConfig({
       types: ['vitest/globals', '']
     }
   },
-  robots: {
-    enabled: false
-  },
   runtimeConfig: {
     public: {
       siteName: process.env.NUXT_PUBLIC_SITE_NAME,

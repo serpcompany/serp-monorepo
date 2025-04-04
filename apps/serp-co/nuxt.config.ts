@@ -34,9 +34,6 @@ export default defineNuxtConfig({
   ui: {
     colorMode: true
   },
-  robots: {
-    enabled: false
-  },
   uiPro: {
     license: process.env.NUXT_UI_PRO_LICENSE
   },
