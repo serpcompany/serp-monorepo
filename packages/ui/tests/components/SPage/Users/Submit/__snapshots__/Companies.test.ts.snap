@@ -1,0 +1,89 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SPage/Users/Submit/Companies Snapshot > renders with no submissions correctly 1`] = `
+"<div class="flex flex-col lg:grid lg:grid-cols-10 lg:gap-10">
+  <!--v-if-->
+  <div class="lg:col-span-10">
+    <!-- hero -->
+    <div>
+      <div class="py-20">
+        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div class="items-center">
+            <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+              <h1 class="my-4 text-2xl font-bold text-pretty lg:text-5xl">Submissions</h1>
+              <!--v-if-->
+              <div class="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main class="min-h-[calc(100vh-var(--ui-header-height))]">
+      <!-- rows: companies -->
+      <div class="space-y-4">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </main>
+  </div>
+  <!--v-if-->
+</div>"
+`;
+
+exports[`SPage/Users/Submit/Companies Snapshot > renders with submissions correctly 1`] = `
+"<div class="flex flex-col lg:grid lg:grid-cols-10 lg:gap-10">
+  <!--v-if-->
+  <div class="lg:col-span-10">
+    <!-- hero -->
+    <div>
+      <div class="py-20">
+        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div class="items-center">
+            <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+              <h1 class="my-4 text-2xl font-bold text-pretty lg:text-5xl">Submissions</h1>
+              <!--v-if-->
+              <div class="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
+                <!--v-if-->
+                <!--v-if-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main class="min-h-[calc(100vh-var(--ui-header-height))]">
+      <!-- rows: companies -->
+      <div class="space-y-4">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div class="rounded-lg bg-white p-4 shadow-md dark:bg-neutral-800">
+            <div><span class="font-medium inline-flex items-center text-xs px-2 py-1 gap-1 rounded-[calc(var(--ui-radius)*1.5)] bg-(--ui-primary) text-(--ui-bg)"><!--v-if-->Priority<!--v-if--></span></div><a href="/products/example.com/reviews/"><img alt="Submission Image" data-nuxt-img="" srcset="https://example.com/logo.png 1x, https://example.com/logo.png 2x" class="mb-4 h-48 w-full rounded-lg object-cover" src="https://example.com/logo.png">
+              <h2 class="text-lg font-semibold">Example Company (example.com) </h2>
+              <p class="text-neutral-600">A sample description</p>
+              <p class="text-neutral-500"> Status: Approved</p>
+              <p class="text-neutral-500"> Reviewed At: 2023-01-01</p>
+              <p class="text-neutral-500"> Review Notes: Looks good</p>
+              <p class="text-neutral-500"> Reviewed By: admin@example.com</p>
+              <p class="text-neutral-500"> Created At: 2022-12-01</p>
+            </a>
+          </div>
+          <div class="rounded-lg bg-white p-4 shadow-md dark:bg-neutral-800">
+            <!--v-if--><a href="/users/submit/company?id=2">
+              <!--v-if-->
+              <h2 class="text-lg font-semibold">Test Company (test.com) </h2>
+              <!--v-if-->
+              <p class="text-neutral-500"> Status: Pending</p>
+              <!--v-if-->
+              <!--v-if-->
+              <!--v-if-->
+              <p class="text-neutral-500"> Created At: 2022-11-15</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <!--v-if-->
+</div>"
+`;

@@ -25,9 +25,6 @@ export default defineNuxtConfig({
   sitemap: {
     enabled: false
   },
-  robots: {
-    enabled: false
-  },
   uiPro: {
     license: process.env.NUXT_UI_PRO_LICENSE
   },

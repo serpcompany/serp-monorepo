@@ -3,7 +3,7 @@ import { db } from '@serp/utils/server/api/db';
 import { customer } from '@serp/utils/server/api/db/schema';
 import { eq } from 'drizzle-orm';
 import { createError, defineEventHandler } from 'h3';
-import { processSuccessfulPayment } from '../utils/validPaymentIntentMapping';
+import { processSuccessfulPayment } from '../../utils/validPaymentIntentMapping';
 
 export default defineEventHandler(async (event) => {
   // Validate user session and email

@@ -1,0 +1,483 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SPage/Users/Submit/Company Snapshot > renders Existing Submission (with id) correctly 1`] = `
+"<div data-v-8dd619f3="" class="p-4">
+  <div data-v-8dd619f3="" class="grid grid-cols-3 gap-4">
+    <!-- Left side column -->
+    <div data-v-8dd619f3="" class="col-span-1 space-y-4">
+      <!-- Waiting Line Card -->
+      <div data-v-8dd619f3="" class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+        <!--v-if-->
+        <div class="p-4 sm:p-6"></div>
+        <!--v-if-->
+      </div><!-- Completion Status Card -->
+      <div data-v-8dd619f3="" class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+        <!--v-if-->
+        <div class="p-4 sm:p-6">
+          <div data-v-8dd619f3="" class="p-3">
+            <h3 data-v-8dd619f3="" class="text-lg font-medium">❌ Incomplete</h3>
+            <p data-v-8dd619f3="" class="mb-2 text-xs text-neutral-600"> Complete your company before launching it </p>
+            <div data-v-8dd619f3="" class="grid grid-cols-2 gap-1">
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">Name</span></div>
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">Domain</span></div>
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">Category(s)</span></div>
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">Pricing</span></div>
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">Tags</span></div>
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">One-Liner</span></div>
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">RichDescription</span></div>
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">Logo</span></div>
+            </div>
+          </div>
+        </div>
+        <!--v-if-->
+      </div><!-- Company Card Preview -->
+      <div data-v-8dd619f3="" class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+        <!--v-if-->
+        <div class="p-4 sm:p-6">
+          <div data-v-8dd619f3="" class="p-3">
+            <div data-v-5deb94c6="" data-v-8dd619f3="" class="mx-auto max-w-5xl rounded-lg border border-[var(--ui-border)] px-5 py-4 dark:border-[var(--ui-border-accented)]">
+              <!-- Featured accent border -->
+              <!--v-if-->
+              <!-- card content -->
+              <div data-v-5deb94c6="" class="flex items-start">
+                <!-- company image -->
+                <!--v-if-->
+                <!-- company content -->
+                <div data-v-5deb94c6="" class="flex-grow">
+                  <div data-v-5deb94c6="" class="flex flex-col justify-between sm:flex-row">
+                    <div data-v-5deb94c6="" class="sm:max-w-[calc(100%-180px)] sm:pr-8">
+                      <!-- company name and badge -->
+                      <div data-v-5deb94c6="" class="flex items-center"><a data-v-5deb94c6="" href="/products//reviews/" class="flex">
+                          <h2 data-v-5deb94c6="" class="font-semibold text-xl text-[var(--ui-text)] dark:text-[var(--ui-text)]"></h2>
+                        </a>
+                        <!--v-if-->
+                      </div><!-- company oneliner -->
+                      <p data-v-5deb94c6="" class="text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)] mt-2 line-clamp-2"></p><!-- show excerpt only for featured cards -->
+                      <!--v-if-->
+                      <!-- rating display -->
+                      <!--v-if-->
+                    </div><!-- right side buttons -->
+                    <div data-v-5deb94c6="" class="flex min-w-[140px] flex-col space-y-2 mt-4 sm:mt-0">
+                      <!-- view website button --><a data-v-5deb94c6="" href="https://?ref=serp.co&amp;ref_type=adv" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-[var(--ui-bg-inverted)] px-4 py-2 text-sm font-medium text-[var(--ui-bg)] transition-colors hover:bg-neutral-800 dark:bg-[var(--ui-bg)] dark:text-[var(--ui-bg-inverted)] dark:hover:bg-[var(--ui-bg-elevated)]"> Website <svg data-v-5deb94c6="" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path data-v-5deb94c6="" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline data-v-5deb94c6="" points="15 3 21 3 21 9"></polyline>
+                          <line data-v-5deb94c6="" x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg></a><!-- upvote button -->
+                      <div data-v-5deb94c6="" class="flex w-full items-center sm:w-auto upvote-btn text-sm"><button type="button" class="focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed aria-disabled:opacity-75 text-sm text-(--ui-bg) bg-(--ui-primary) disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800">
+                          <!--v-if-->
+                          <!--v-if--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up">
+                            <path d="m18 15-6-6-6 6"></path>
+                          </svg><span>Upvotes 0</span>
+                          <!--v-if-->
+                        </button></div>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- feature tags only for featured companies -->
+              <!--v-if-->
+              <!-- expanded content (if needed) -->
+              <!--v-if-->
+            </div>
+          </div>
+        </div>
+        <!--v-if-->
+      </div><!-- Action Buttons -->
+      <div data-v-8dd619f3="" class="flex space-x-2"><button type="primary" disabled="" class="rounded-none font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary)">
+          <!--v-if-->Save Company
+          <!--v-if-->
+        </button></div>
+    </div><!-- Right side column (Tabbed Card) -->
+    <div data-v-8dd619f3="" class="col-span-2">
+      <div data-v-8dd619f3="" class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+        <!--v-if-->
+        <div class="p-4 sm:p-6">
+          <div data-v-8dd619f3="" dir="ltr" data-orientation="horizontal" class="flex items-center gap-2 flex-col mb-3">
+            <div role="tablist" aria-orientation="horizontal" tabindex="0" data-orientation="horizontal" dir="ltr" style="outline-color: none; outline-style: none; outline-width: initial;" class="relative flex p-1 group bg-(--ui-bg-elevated) rounded-[calc(var(--ui-radius)*2)] w-full">
+              <div style="--reka-tabs-indicator-size: 0px; --reka-tabs-indicator-position: 0px;" class="absolute transition-[translate,width] duration-200 rounded-[calc(var(--ui-radius)*1.5)] shadow-xs left-0 w-(--reka-tabs-indicator-size) translate-x-(--reka-tabs-indicator-position) inset-y-1 bg-(--ui-primary)"></div><button id="reka-tabs-v-0-0-0-trigger-general" role="tab" type="button" aria-selected="true" aria-controls="reka-tabs-v-0-0-0-content-general" data-state="active" data-orientation="horizontal" tabindex="-1" data-active="true" class="group relative inline-flex items-center min-w-0 data-[state=inactive]:text-(--ui-text-muted) hover:data-[state=inactive]:not-disabled:text-(--ui-text) font-medium rounded-[calc(var(--ui-radius)*1.5)] disabled:cursor-not-allowed disabled:opacity-75 focus:outline-hidden transition-colors flex-1 w-full justify-center px-3 py-1.5 text-sm gap-1.5 data-[state=active]:text-(--ui-bg) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary)" data-reka-collection-item="">
+                <!--v-if--><span class="truncate">General</span>
+              </button>
+            </div>
+            <!--v-if-->
+          </div>
+          <transition-group-stub data-v-8dd619f3="" name="fade" tag="div" appear="false" persisted="false" css="true">
+            <div data-v-8dd619f3="">
+              <form data-v-8dd619f3="">
+                <div data-v-8dd619f3="" class="grid grid-cols-2 gap-2">
+                  <div data-v-8dd619f3="" class="text-sm w-full">
+                    <div class="">
+                      <div class="flex content-center items-center justify-between"><label for="v-0-0-2" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Name</label>
+                        <!--v-if-->
+                      </div>
+                      <!--v-if-->
+                    </div>
+                    <div class="mt-1 relative">
+                      <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-2" type="text" placeholder="Enter your company name" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" aria-describedby="" aria-invalid="false" value="">
+                        <!--v-if-->
+                        <!--v-if-->
+                      </div>
+                      <p class="mt-2 text-(--ui-text-muted)">Enter your company name</p>
+                    </div>
+                  </div>
+                  <div data-v-8dd619f3="" class="text-sm w-full">
+                    <div class="">
+                      <div class="flex content-center items-center justify-between"><label for="v-0-0-3" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Domain</label>
+                        <!--v-if-->
+                      </div>
+                      <!--v-if-->
+                    </div>
+                    <div class="mt-1 relative">
+                      <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-3" type="text" placeholder="serp.co" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" aria-describedby="" aria-invalid="false" value="">
+                        <!--v-if-->
+                        <!--v-if-->
+                      </div>
+                      <p class="mt-2 text-(--ui-text-muted)">Only put the domain, we assume all submitted companies are available at the HTTPS protocol</p>
+                    </div>
+                  </div>
+                  <div data-v-8dd619f3="" class="text-sm w-full">
+                    <div class="">
+                      <div class="flex content-center items-center justify-between"><label for="v-0-0-4" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Pricing</label>
+                        <!--v-if-->
+                      </div>
+                      <!--v-if-->
+                    </div>
+                    <div class="mt-1 relative">
+                      <!---->
+                      <div dir="ltr" id="v-0-0-4" class="relative inline-flex items-center w-full"><input aria-disabled="false" type="text" aria-expanded="false" aria-controls="" aria-autocomplete="list" role="combobox" autocomplete="false" aria-describedby="" aria-invalid="false" class="rounded-[calc(var(--ui-radius)*1.5)] transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) w-full border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary) pe-9" value="">
+                        <!--v-if--><button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" aria-disabled="false" class="group absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pe-2.5"><span class="iconify i-lucide:chevron-down shrink-0 text-(--ui-text-dimmed) size-5" aria-hidden="true"></span></button>
+                        <!--teleport start-->
+                        <!--teleport end-->
+                        <!---->
+                      </div>
+                      <p class="mt-2 text-(--ui-text-muted)">Select pricing type</p>
+                    </div>
+                  </div>
+                  <div data-v-8dd619f3="" class="text-sm w-full">
+                    <div class="">
+                      <div class="flex content-center items-center justify-between"><label for="v-0-0-5" class="block font-medium text-(--ui-text)">Category(s)</label>
+                        <!--v-if-->
+                      </div>
+                      <!--v-if-->
+                    </div>
+                    <div class="mt-1 relative">
+                      <!---->
+                      <div dir="ltr" id="v-0-0-5" class="relative inline-flex items-center flex-wrap w-full rounded-[calc(var(--ui-radius)*1.5)] transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) has-focus-visible:ring-2 has-focus-visible:ring-(--ui-primary) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary) pe-9"><input type="text" autocomplete="false" autocorrect="off" autocapitalize="off" aria-describedby="" aria-invalid="false" class="border-0 bg-transparent placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75" aria-disabled="false" aria-expanded="false" aria-controls="" aria-autocomplete="list" role="combobox" dir="ltr" value="">
+                        <!---->
+                        <!--v-if--><button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" aria-disabled="false" class="group absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pe-2.5"><span class="iconify i-lucide:chevron-down shrink-0 text-(--ui-text-dimmed) size-5" aria-hidden="true"></span></button>
+                      </div>
+                      <!--teleport start-->
+                      <!--teleport end-->
+                      <!---->
+                      <p class="mt-2 text-(--ui-text-muted)">Select a category(s)</p>
+                    </div>
+                  </div>
+                  <div data-v-8dd619f3="" class="text-sm w-full">
+                    <div class="">
+                      <div class="flex content-center items-center justify-between"><label for="v-0-0-6" class="block font-medium text-(--ui-text)">Tags</label>
+                        <!--v-if-->
+                      </div>
+                      <!--v-if-->
+                    </div>
+                    <div class="mt-1 relative">
+                      <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-6" type="text" placeholder="e.g. AI, SEO, Marketing" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" aria-describedby="" aria-invalid="false" value="">
+                        <!--v-if-->
+                        <!--v-if-->
+                      </div>
+                      <p class="mt-2 text-(--ui-text-muted)">e.g. AI, SEO, Marketing</p>
+                    </div>
+                  </div>
+                  <div data-v-8dd619f3="" class="col-span-2">
+                    <div data-v-8dd619f3="" class="text-sm w-full">
+                      <div class="">
+                        <div class="flex content-center items-center justify-between"><label for="v-0-0-7" class="block font-medium text-(--ui-text)">Company Logo</label>
+                          <!--v-if-->
+                        </div>
+                        <!--v-if-->
+                      </div>
+                      <div class="mt-1 relative"><input data-v-8dd619f3="" type="file" accept="image/*">
+                        <p class="mt-2 text-(--ui-text-muted)">Upload your company logo (image file)</p>
+                      </div>
+                    </div>
+                  </div><!-- Full-width fields -->
+                  <div data-v-8dd619f3="" class="col-span-2">
+                    <div data-v-8dd619f3="" class="text-sm w-full">
+                      <div class="">
+                        <div class="flex content-center items-center justify-between"><label for="v-0-0-8" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">One-Liner</label>
+                          <!--v-if-->
+                        </div>
+                        <!--v-if-->
+                      </div>
+                      <div class="mt-1 relative">
+                        <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-8" type="text" placeholder="A short company tagline" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" maxlength="100" aria-describedby="" aria-invalid="false" value="">
+                          <!--v-if-->
+                          <!--v-if-->
+                        </div>
+                        <p class="mt-2 text-(--ui-text-muted)">A short company tagline (one-liner)</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div data-v-8dd619f3="" class="col-span-2">
+                    <div data-v-8dd619f3="" class="text-sm w-full">
+                      <div class="">
+                        <div class="flex content-center items-center justify-between"><label for="v-0-0-9" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Rich Description</label>
+                          <!--v-if-->
+                        </div>
+                        <!--v-if-->
+                      </div>
+                      <div class="mt-1 relative">
+                        <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><textarea id="v-0-0-9" rows="5" placeholder="Give a detailed overview of your company..." class="w-full rounded-none border-0 placeholder:text-[var(--ui-text-dimmed)] focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" aria-describedby="" aria-invalid="false" value=""></textarea></div>
+                        <p class="mt-2 text-(--ui-text-muted)">Detailed overview of your company</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </transition-group-stub>
+        </div>
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`SPage/Users/Submit/Company Snapshot > renders New Submission (no id) correctly 1`] = `
+"<div data-v-8dd619f3="" class="p-4">
+  <div data-v-8dd619f3="" class="grid grid-cols-3 gap-4">
+    <!-- Left side column -->
+    <div data-v-8dd619f3="" class="col-span-1 space-y-4">
+      <!-- Waiting Line Card -->
+      <div data-v-8dd619f3="" class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+        <!--v-if-->
+        <div class="p-4 sm:p-6"></div>
+        <!--v-if-->
+      </div><!-- Completion Status Card -->
+      <div data-v-8dd619f3="" class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+        <!--v-if-->
+        <div class="p-4 sm:p-6">
+          <div data-v-8dd619f3="" class="p-3">
+            <h3 data-v-8dd619f3="" class="text-lg font-medium">❌ Incomplete</h3>
+            <p data-v-8dd619f3="" class="mb-2 text-xs text-neutral-600"> Complete your company before launching it </p>
+            <div data-v-8dd619f3="" class="grid grid-cols-2 gap-1">
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">Name</span></div>
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">Domain</span></div>
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">Category(s)</span></div>
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">Pricing</span></div>
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">Tags</span></div>
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">One-Liner</span></div>
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">RichDescription</span></div>
+              <div data-v-8dd619f3="" class="flex items-center text-xs"><span data-v-8dd619f3="" class="mr-1">❌</span><span data-v-8dd619f3="">Logo</span></div>
+            </div>
+          </div>
+        </div>
+        <!--v-if-->
+      </div><!-- Company Card Preview -->
+      <div data-v-8dd619f3="" class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+        <!--v-if-->
+        <div class="p-4 sm:p-6">
+          <div data-v-8dd619f3="" class="p-3">
+            <div data-v-5deb94c6="" data-v-8dd619f3="" class="mx-auto max-w-5xl rounded-lg border border-[var(--ui-border)] px-5 py-4 dark:border-[var(--ui-border-accented)]">
+              <!-- Featured accent border -->
+              <!--v-if-->
+              <!-- card content -->
+              <div data-v-5deb94c6="" class="flex items-start">
+                <!-- company image -->
+                <!--v-if-->
+                <!-- company content -->
+                <div data-v-5deb94c6="" class="flex-grow">
+                  <div data-v-5deb94c6="" class="flex flex-col justify-between sm:flex-row">
+                    <div data-v-5deb94c6="" class="sm:max-w-[calc(100%-180px)] sm:pr-8">
+                      <!-- company name and badge -->
+                      <div data-v-5deb94c6="" class="flex items-center"><a data-v-5deb94c6="" href="/products//reviews/" class="flex">
+                          <h2 data-v-5deb94c6="" class="font-semibold text-xl text-[var(--ui-text)] dark:text-[var(--ui-text)]"></h2>
+                        </a>
+                        <!--v-if-->
+                      </div><!-- company oneliner -->
+                      <p data-v-5deb94c6="" class="text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)] mt-2 line-clamp-2"></p><!-- show excerpt only for featured cards -->
+                      <!--v-if-->
+                      <!-- rating display -->
+                      <!--v-if-->
+                    </div><!-- right side buttons -->
+                    <div data-v-5deb94c6="" class="flex min-w-[140px] flex-col space-y-2 mt-4 sm:mt-0">
+                      <!-- view website button --><a data-v-5deb94c6="" href="https://?ref=serp.co&amp;ref_type=adv" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-[var(--ui-bg-inverted)] px-4 py-2 text-sm font-medium text-[var(--ui-bg)] transition-colors hover:bg-neutral-800 dark:bg-[var(--ui-bg)] dark:text-[var(--ui-bg-inverted)] dark:hover:bg-[var(--ui-bg-elevated)]"> Website <svg data-v-5deb94c6="" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path data-v-5deb94c6="" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline data-v-5deb94c6="" points="15 3 21 3 21 9"></polyline>
+                          <line data-v-5deb94c6="" x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg></a><!-- upvote button -->
+                      <div data-v-5deb94c6="" class="flex w-full items-center sm:w-auto upvote-btn text-sm"><button type="button" class="focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed aria-disabled:opacity-75 text-sm text-(--ui-bg) bg-(--ui-primary) disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) flex w-full items-center justify-center gap-2 rounded-full border border-neutral-300 px-4 py-2 font-medium transition-colors hover:bg-neutral-100 disabled:opacity-75 sm:w-auto dark:border-neutral-600 dark:hover:bg-neutral-800">
+                          <!--v-if-->
+                          <!--v-if--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up">
+                            <path d="m18 15-6-6-6 6"></path>
+                          </svg><span>Upvotes 0</span>
+                          <!--v-if-->
+                        </button></div>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- feature tags only for featured companies -->
+              <!--v-if-->
+              <!-- expanded content (if needed) -->
+              <!--v-if-->
+            </div>
+          </div>
+        </div>
+        <!--v-if-->
+      </div><!-- Action Buttons -->
+      <div data-v-8dd619f3="" class="flex space-x-2"><button type="primary" disabled="" class="rounded-none font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary)">
+          <!--v-if-->Save Company
+          <!--v-if-->
+        </button></div>
+    </div><!-- Right side column (Tabbed Card) -->
+    <div data-v-8dd619f3="" class="col-span-2">
+      <div data-v-8dd619f3="" class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+        <!--v-if-->
+        <div class="p-4 sm:p-6">
+          <div data-v-8dd619f3="" dir="ltr" data-orientation="horizontal" class="flex items-center gap-2 flex-col mb-3">
+            <div role="tablist" aria-orientation="horizontal" tabindex="0" data-orientation="horizontal" dir="ltr" style="outline-color: none; outline-style: none; outline-width: initial;" class="relative flex p-1 group bg-(--ui-bg-elevated) rounded-[calc(var(--ui-radius)*2)] w-full">
+              <div style="--reka-tabs-indicator-size: 0px; --reka-tabs-indicator-position: 0px;" class="absolute transition-[translate,width] duration-200 rounded-[calc(var(--ui-radius)*1.5)] shadow-xs left-0 w-(--reka-tabs-indicator-size) translate-x-(--reka-tabs-indicator-position) inset-y-1 bg-(--ui-primary)"></div><button id="reka-tabs-v-0-0-0-trigger-general" role="tab" type="button" aria-selected="true" aria-controls="reka-tabs-v-0-0-0-content-general" data-state="active" data-orientation="horizontal" tabindex="-1" data-active="true" class="group relative inline-flex items-center min-w-0 data-[state=inactive]:text-(--ui-text-muted) hover:data-[state=inactive]:not-disabled:text-(--ui-text) font-medium rounded-[calc(var(--ui-radius)*1.5)] disabled:cursor-not-allowed disabled:opacity-75 focus:outline-hidden transition-colors flex-1 w-full justify-center px-3 py-1.5 text-sm gap-1.5 data-[state=active]:text-(--ui-bg) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary)" data-reka-collection-item="">
+                <!--v-if--><span class="truncate">General</span>
+              </button>
+            </div>
+            <!--v-if-->
+          </div>
+          <transition-group-stub data-v-8dd619f3="" name="fade" tag="div" appear="false" persisted="false" css="true">
+            <div data-v-8dd619f3="">
+              <form data-v-8dd619f3="">
+                <div data-v-8dd619f3="" class="grid grid-cols-2 gap-2">
+                  <div data-v-8dd619f3="" class="text-sm w-full">
+                    <div class="">
+                      <div class="flex content-center items-center justify-between"><label for="v-0-0-2" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Name</label>
+                        <!--v-if-->
+                      </div>
+                      <!--v-if-->
+                    </div>
+                    <div class="mt-1 relative">
+                      <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-2" type="text" placeholder="Enter your company name" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" aria-describedby="" aria-invalid="false" value="">
+                        <!--v-if-->
+                        <!--v-if-->
+                      </div>
+                      <p class="mt-2 text-(--ui-text-muted)">Enter your company name</p>
+                    </div>
+                  </div>
+                  <div data-v-8dd619f3="" class="text-sm w-full">
+                    <div class="">
+                      <div class="flex content-center items-center justify-between"><label for="v-0-0-3" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Domain</label>
+                        <!--v-if-->
+                      </div>
+                      <!--v-if-->
+                    </div>
+                    <div class="mt-1 relative">
+                      <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-3" type="text" placeholder="serp.co" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" aria-describedby="" aria-invalid="false" value="">
+                        <!--v-if-->
+                        <!--v-if-->
+                      </div>
+                      <p class="mt-2 text-(--ui-text-muted)">Only put the domain, we assume all submitted companies are available at the HTTPS protocol</p>
+                    </div>
+                  </div>
+                  <div data-v-8dd619f3="" class="text-sm w-full">
+                    <div class="">
+                      <div class="flex content-center items-center justify-between"><label for="v-0-0-4" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Pricing</label>
+                        <!--v-if-->
+                      </div>
+                      <!--v-if-->
+                    </div>
+                    <div class="mt-1 relative">
+                      <!---->
+                      <div dir="ltr" id="v-0-0-4" class="relative inline-flex items-center w-full"><input aria-disabled="false" type="text" aria-expanded="false" aria-controls="" aria-autocomplete="list" role="combobox" autocomplete="false" aria-describedby="" aria-invalid="false" class="rounded-[calc(var(--ui-radius)*1.5)] transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) w-full border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary) pe-9" value="">
+                        <!--v-if--><button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" aria-disabled="false" class="group absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pe-2.5"><span class="iconify i-lucide:chevron-down shrink-0 text-(--ui-text-dimmed) size-5" aria-hidden="true"></span></button>
+                        <!--teleport start-->
+                        <!--teleport end-->
+                        <!---->
+                      </div>
+                      <p class="mt-2 text-(--ui-text-muted)">Select pricing type</p>
+                    </div>
+                  </div>
+                  <div data-v-8dd619f3="" class="text-sm w-full">
+                    <div class="">
+                      <div class="flex content-center items-center justify-between"><label for="v-0-0-5" class="block font-medium text-(--ui-text)">Category(s)</label>
+                        <!--v-if-->
+                      </div>
+                      <!--v-if-->
+                    </div>
+                    <div class="mt-1 relative">
+                      <!---->
+                      <div dir="ltr" id="v-0-0-5" class="relative inline-flex items-center flex-wrap w-full rounded-[calc(var(--ui-radius)*1.5)] transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) has-focus-visible:ring-2 has-focus-visible:ring-(--ui-primary) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary) pe-9"><input type="text" autocomplete="false" autocorrect="off" autocapitalize="off" aria-describedby="" aria-invalid="false" class="border-0 bg-transparent placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75" aria-disabled="false" aria-expanded="false" aria-controls="" aria-autocomplete="list" role="combobox" dir="ltr" value="">
+                        <!---->
+                        <!--v-if--><button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" aria-disabled="false" class="group absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pe-2.5"><span class="iconify i-lucide:chevron-down shrink-0 text-(--ui-text-dimmed) size-5" aria-hidden="true"></span></button>
+                      </div>
+                      <!--teleport start-->
+                      <!--teleport end-->
+                      <!---->
+                      <p class="mt-2 text-(--ui-text-muted)">Select a category(s)</p>
+                    </div>
+                  </div>
+                  <div data-v-8dd619f3="" class="text-sm w-full">
+                    <div class="">
+                      <div class="flex content-center items-center justify-between"><label for="v-0-0-6" class="block font-medium text-(--ui-text)">Tags</label>
+                        <!--v-if-->
+                      </div>
+                      <!--v-if-->
+                    </div>
+                    <div class="mt-1 relative">
+                      <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-6" type="text" placeholder="e.g. AI, SEO, Marketing" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" aria-describedby="" aria-invalid="false" value="">
+                        <!--v-if-->
+                        <!--v-if-->
+                      </div>
+                      <p class="mt-2 text-(--ui-text-muted)">e.g. AI, SEO, Marketing</p>
+                    </div>
+                  </div>
+                  <div data-v-8dd619f3="" class="col-span-2">
+                    <div data-v-8dd619f3="" class="text-sm w-full">
+                      <div class="">
+                        <div class="flex content-center items-center justify-between"><label for="v-0-0-7" class="block font-medium text-(--ui-text)">Company Logo</label>
+                          <!--v-if-->
+                        </div>
+                        <!--v-if-->
+                      </div>
+                      <div class="mt-1 relative"><input data-v-8dd619f3="" type="file" accept="image/*">
+                        <p class="mt-2 text-(--ui-text-muted)">Upload your company logo (image file)</p>
+                      </div>
+                    </div>
+                  </div><!-- Full-width fields -->
+                  <div data-v-8dd619f3="" class="col-span-2">
+                    <div data-v-8dd619f3="" class="text-sm w-full">
+                      <div class="">
+                        <div class="flex content-center items-center justify-between"><label for="v-0-0-8" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">One-Liner</label>
+                          <!--v-if-->
+                        </div>
+                        <!--v-if-->
+                      </div>
+                      <div class="mt-1 relative">
+                        <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-8" type="text" placeholder="A short company tagline" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" maxlength="100" aria-describedby="" aria-invalid="false" value="">
+                          <!--v-if-->
+                          <!--v-if-->
+                        </div>
+                        <p class="mt-2 text-(--ui-text-muted)">A short company tagline (one-liner)</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div data-v-8dd619f3="" class="col-span-2">
+                    <div data-v-8dd619f3="" class="text-sm w-full">
+                      <div class="">
+                        <div class="flex content-center items-center justify-between"><label for="v-0-0-9" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Rich Description</label>
+                          <!--v-if-->
+                        </div>
+                        <!--v-if-->
+                      </div>
+                      <div class="mt-1 relative">
+                        <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><textarea id="v-0-0-9" rows="5" placeholder="Give a detailed overview of your company..." class="w-full rounded-none border-0 placeholder:text-[var(--ui-text-dimmed)] focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" aria-describedby="" aria-invalid="false" value=""></textarea></div>
+                        <p class="mt-2 text-(--ui-text-muted)">Detailed overview of your company</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </transition-group-stub>
+        </div>
+        <!--v-if-->
+      </div>
+    </div>
+  </div>
+</div>"
+`;

@@ -1,0 +1,57 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SPage/Users/Billing Snapshot > renders when user is logged in correctly 1`] = `
+"<div class="flex flex-col lg:grid lg:grid-cols-10 lg:gap-10">
+  <!--v-if-->
+  <div class="lg:col-span-10">
+    <main class="min-h-[calc(100vh-var(--ui-header-height))]">
+      <div class="px-4 sm:px-6 lg:px-8 mx-auto mt-96 max-w-3xl">
+        <div class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border) my-8">
+          <div class="p-4 sm:px-6">
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-semibold">Subscription Management</h2><span class="font-medium inline-flex items-center text-xs px-2 py-1 gap-1 rounded-[calc(var(--ui-radius)*1.5)] bg-(--ui-primary)/10 text-(--ui-primary)"><!--v-if-->Active<!--v-if--></span>
+            </div>
+          </div>
+          <div class="p-4 sm:p-6">
+            <div class="px-4 text-center">
+              <p class="mb-6 text-gray-500 dark:text-gray-400"> Manage your subscription, view billing history, or update payment methods. </p><button type="button" class="rounded-none font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-3 py-2 text-sm gap-2 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) mx-auto"><span class="iconify i-lucide:credit-card shrink-0 size-5" aria-hidden="true"></span><span class="truncate">Manage Billing</span>
+                <!--v-if-->
+              </button>
+            </div>
+          </div>
+          <!--v-if-->
+        </div>
+      </div>
+    </main>
+  </div>
+  <!--v-if-->
+</div>"
+`;
+
+exports[`SPage/Users/Billing Snapshot > renders when user is not logged in correctly 1`] = `
+"<div class="flex flex-col lg:grid lg:grid-cols-10 lg:gap-10">
+  <!--v-if-->
+  <div class="lg:col-span-10">
+    <main class="min-h-[calc(100vh-var(--ui-header-height))]">
+      <div class="px-4 sm:px-6 lg:px-8 mx-auto mt-96 max-w-3xl">
+        <div class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border) my-8">
+          <div class="p-4 sm:px-6">
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-semibold">Subscription Management</h2><span class="font-medium inline-flex items-center text-xs px-2 py-1 gap-1 rounded-[calc(var(--ui-radius)*1.5)] bg-(--ui-primary)/10 text-(--ui-primary)"><!--v-if-->Active<!--v-if--></span>
+            </div>
+          </div>
+          <div class="p-4 sm:p-6">
+            <div class="px-4 text-center">
+              <p class="mb-6 text-gray-500 dark:text-gray-400"> Manage your subscription, view billing history, or update payment methods. </p><button type="button" class="rounded-none font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-3 py-2 text-sm gap-2 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) mx-auto"><span class="iconify i-lucide:credit-card shrink-0 size-5" aria-hidden="true"></span><span class="truncate">Manage Billing</span>
+                <!--v-if-->
+              </button>
+            </div>
+          </div>
+          <!--v-if-->
+        </div>
+      </div>
+    </main>
+  </div>
+  <!--v-if-->
+</div>"
+`;

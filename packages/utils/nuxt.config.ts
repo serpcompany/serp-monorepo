@@ -2,7 +2,17 @@
 export default defineNuxtConfig({
   // devtools: { enabled: true }
   extends: ['@serp/types'],
-  modules: ['nuxt-auth-utils', '@nuxt/eslint'],
+  modules: ['nuxt-auth-utils', '@nuxt/eslint', '@unlok-co/nuxt-stripe'],
+  stripe: {
+    server: {
+      key: process.env.STRIPE_SECRET_KEY,
+      options: {}
+    },
+    client: {
+      key: process.env.STRIPE_API_KEY,
+      options: {}
+    }
+  },
   multiCache: {
     data: {
       enabled: true

@@ -1,7 +1,7 @@
-// server/api/stripe-webhook.ts
+// server/api/stripe/webhook.ts
 import { useServerStripe } from '#stripe/server';
 import { defineEventHandler, getHeader } from 'h3';
-import { processSuccessfulPayment } from '../utils/validPaymentIntentMapping';
+import { processSuccessfulPayment } from '../../utils/validPaymentIntentMapping';
 
 export default defineEventHandler(async (event) => {
   const stripe = await useServerStripe(event);

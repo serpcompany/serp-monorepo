@@ -1,0 +1,31 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`StripeCard Snapshot > renders with custom content slot correctly 1`] = `
+"<div>
+  <div>&lt;div&gt;Custom Payment Intent Trigger&lt;/div&gt;</div>
+  <div style="display: none;">
+    <div id="linkAuthenticationElement"></div>
+    <div id="paymentElement"></div>
+  </div>
+</div>"
+`;
+
+exports[`StripeCard Snapshot > renders with default props correctly 1`] = `
+"<div>
+  <div><button>Pay Now</button></div>
+  <div style="display: none;">
+    <div id="linkAuthenticationElement"></div>
+    <div id="paymentElement"></div>
+  </div>
+</div>"
+`;
+
+exports[`StripeCard Snapshot > renders with valid payment props correctly 1`] = `
+"<div>
+  <div><button>Pay Now</button></div>
+  <div style="display: none;">
+    <div id="linkAuthenticationElement"></div>
+    <div id="paymentElement"></div>
+  </div>
+</div>"
+`;

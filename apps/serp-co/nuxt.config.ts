@@ -9,8 +9,7 @@ export default defineNuxtConfig({
     'nuxt-multi-cache',
     'nuxt-security',
     'nuxt-link-checker',
-    '@bg-dev/nuxt-s3',
-    '@unlok-co/nuxt-stripe'
+    '@bg-dev/nuxt-s3'
   ],
   css: ['~/assets/css/main.css'],
   stripe: {
@@ -56,6 +55,39 @@ export default defineNuxtConfig({
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
       useAuth: true,
       environment: process.env.NODE_ENV,
+      profileDropdownLinks: [
+        [
+          {
+            label: 'Submit',
+            icon: 'i-lucide-plus',
+            to: '/users/submit/company/'
+          }
+        ],
+        [
+          {
+            label: 'Manage',
+            type: 'label'
+          },
+          {
+            label: 'Submissions',
+            icon: 'i-lucide-file-text',
+            to: '/users/submissions/'
+          },
+          {
+            label: 'Billing',
+            icon: 'i-lucide-credit-card',
+            to: '/users/billing/'
+          }
+        ],
+        [
+          {
+            label: 'Get Featured',
+            icon: 'i-lucide-star',
+            to: '/users/featured/',
+            color: 'success'
+          }
+        ]
+      ],
       socialLinks: [
         {
           name: 'Twitter',

@@ -36,7 +36,7 @@
     try {
       if (!props.type || !props.id) return;
       const { clientSecret: cs, error } = await $fetch(
-        `http://localhost:3000/api/create-payment-intent?type=${props.type}&id=${props.id}&secondaryId=${props.secondaryId}`,
+        `/api/stripe/create-payment-intent?type=${props.type}&id=${props.id}&secondaryId=${props.secondaryId}`,
         {
           method: 'GET'
         }
@@ -75,7 +75,7 @@
     const { error } = await stripe.value.confirmPayment({
       elements: elements.value,
       confirmParams: {
-        return_url: `http://localhost:3000/success?redirectTo=${props.redirectTo}`
+        return_url: `/users/purchase?success=true&redirectTo=${props.redirectTo}`
       }
     });
 

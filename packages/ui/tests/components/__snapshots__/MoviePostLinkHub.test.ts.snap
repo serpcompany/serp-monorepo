@@ -1,0 +1,46 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MoviePostLinkHub Snapshot > renders with no posts correctly 1`] = `"<div role="list" class="relative flex flex-col *:not-last:after:absolute *:not-last:after:inset-x-1 *:not-last:after:bottom-0 *:not-last:after:bg-(--ui-border) *:not-last:after:h-px"></div>"`;
+
+exports[`MoviePostLinkHub Snapshot > renders with posts correctly 1`] = `
+"<div role="list" class="relative flex flex-col *:not-last:after:absolute *:not-last:after:inset-x-1 *:not-last:after:bottom-0 *:not-last:after:bg-(--ui-border) *:not-last:after:h-px">
+  <div data-orientation="vertical" class="relative flex rounded-[calc(var(--ui-radius)*2)] transition hover:bg-(--ui-bg-elevated)/50">
+    <!--v-if-->
+    <div class="relative flex flex-col flex-1 lg:grid gap-x-8 gap-y-4 p-4 sm:p-6">
+      <div class="">
+        <!--v-if-->
+        <!--v-if-->
+        <div class="">
+          <div data-orientation="horizontal" class="relative group/user flex items-center gap-2.5"><span class="inline-flex items-center justify-center select-none overflow-hidden rounded-full align-middle bg-(--ui-bg-elevated) size-10 text-xl shrink-0"><img width="40" height="40" alt="Movie One" data-nuxt-img="" srcset="https://example.com/movie1.jpg 1x, https://example.com/movie1.jpg 2x" role="img" class="h-full w-full rounded-[inherit] object-cover" src="https://example.com/movie1.jpg"></span>
+            <div class="">
+              <!--v-if-->
+              <p class="font-medium text-(--ui-text-highlighted) text-base">Movie One</p>
+              <!--v-if-->
+            </div>
+          </div>
+        </div>
+        <!--v-if-->
+      </div>
+    </div><a href="/movies/movie-1" tabindex="-1" aria-label="Card link" class="focus:outline-none peer"><span class="absolute inset-0" aria-hidden="true"></span></a>
+  </div>
+  <div data-orientation="vertical" class="relative flex rounded-[calc(var(--ui-radius)*2)] transition hover:bg-(--ui-bg-elevated)/50">
+    <!--v-if-->
+    <div class="relative flex flex-col flex-1 lg:grid gap-x-8 gap-y-4 p-4 sm:p-6">
+      <div class="">
+        <!--v-if-->
+        <!--v-if-->
+        <div class="">
+          <div data-orientation="horizontal" class="relative group/user flex items-center gap-2.5"><span class="inline-flex items-center justify-center select-none overflow-hidden rounded-full align-middle bg-(--ui-bg-elevated) size-10 text-xl shrink-0"><img width="40" height="40" alt="Movie Two" data-nuxt-img="" srcset="https://example.com/movie2.jpg 1x, https://example.com/movie2.jpg 2x" role="img" class="h-full w-full rounded-[inherit] object-cover" src="https://example.com/movie2.jpg"></span>
+            <div class="">
+              <!--v-if-->
+              <p class="font-medium text-(--ui-text-highlighted) text-base">Movie Two</p>
+              <!--v-if-->
+            </div>
+          </div>
+        </div>
+        <!--v-if-->
+      </div>
+    </div><a href="/movies/movie-2" tabindex="-1" aria-label="Card link" class="focus:outline-none peer"><span class="absolute inset-0" aria-hidden="true"></span></a>
+  </div>
+</div>"
+`;

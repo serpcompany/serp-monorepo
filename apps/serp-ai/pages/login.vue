@@ -1,0 +1,3 @@
+<template>
+  <SPageLogin />
+</template>

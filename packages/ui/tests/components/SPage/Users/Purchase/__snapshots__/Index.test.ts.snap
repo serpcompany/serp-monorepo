@@ -1,0 +1,41 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SPage/Users/Purchase/Index Snapshot > renders cancelled state correctly 1`] = `
+"<div class="success-container">
+  <div>
+    <h1>❓ Unknown</h1>
+    <p>Unknown error.</p>
+  </div>
+  <p> Redirecting to <a href="#">/</a> in 10 seconds. </p>
+</div>"
+`;
+
+exports[`SPage/Users/Purchase/Index Snapshot > renders error state correctly 1`] = `
+"<div class="success-container">
+  <div>
+    <h1>❓ Unknown</h1>
+    <p>Unknown error.</p>
+  </div>
+  <p> Redirecting to <a href="#">/</a> in 10 seconds. </p>
+</div>"
+`;
+
+exports[`SPage/Users/Purchase/Index Snapshot > renders success state correctly 1`] = `
+"<div class="success-container">
+  <div>
+    <h1>❓ Unknown</h1>
+    <p>Unknown error.</p>
+  </div>
+  <p> Redirecting to <a href="#">/</a> in 10 seconds. </p>
+</div>"
+`;
+
+exports[`SPage/Users/Purchase/Index Snapshot > renders unknown state correctly 1`] = `
+"<div class="success-container">
+  <div>
+    <h1>❓ Unknown</h1>
+    <p>Unknown error.</p>
+  </div>
+  <p> Redirecting to <a href="#">/</a> in 10 seconds. </p>
+</div>"
+`;

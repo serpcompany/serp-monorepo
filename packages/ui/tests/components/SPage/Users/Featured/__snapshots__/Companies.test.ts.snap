@@ -1,0 +1,225 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SPage/Users/Featured/Companies Snapshot > renders when user is logged in with featured companies correctly 1`] = `
+"<div class="flex flex-col lg:grid lg:grid-cols-10 lg:gap-10">
+  <!--v-if-->
+  <div class="lg:col-span-10">
+    <main class="min-h-[calc(100vh-var(--ui-header-height))]">
+      <div class="px-4 sm:px-6 lg:px-8 mx-auto mt-16 max-w-3xl">
+        <div>
+          <!-- Featured Companies List -->
+          <div class="mb-12">
+            <h2 class="mb-6 text-2xl font-bold">Your Featured Companies</h2>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <div class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border) transition-all hover:shadow-lg">
+                <div class="p-4 sm:px-6">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-semibold">example.com</h3><span class="font-medium inline-flex items-center text-xs px-2 py-1 gap-1 rounded-[calc(var(--ui-radius)*1.5)] bg-(--ui-success)/10 text-(--ui-success)"><!--v-if-->Active<!--v-if--></span>
+                  </div>
+                </div>
+                <div class="p-4 sm:p-6">
+                  <div class="space-y-2"><a href="/products/best/tech/" class="text-gray-600 hover:underline"> Category: Tech</a>
+                    <p class="text-gray-600"> Placement: 1</p>
+                    <p class="text-sm text-gray-500"> Created: 2025-01-01</p>
+                  </div>
+                </div>
+                <div class="p-4 sm:px-6"><a href="/products/example.com/reviews/" class="text-primary-600 font-medium hover:underline"> View Company → </a></div>
+              </div>
+            </div>
+          </div><!-- Feature a Company Form -->
+          <div class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+            <div class="p-4 sm:px-6">
+              <div class="flex items-center justify-between">
+                <h2 class="text-xl font-semibold">Get Featured</h2><span class="font-medium inline-flex items-center text-xs px-2 py-1 gap-1 rounded-[calc(var(--ui-radius)*1.5)] bg-(--ui-info)/10 text-(--ui-info)"><!--v-if-->Promote Your Company<!--v-if--></span>
+              </div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <div class="space-y-5 py-4">
+                <p class="mb-4 text-gray-500 dark:text-gray-400"> Feature your company on the homepage and in search results for increased visibility. </p>
+                <div class="text-sm w-full">
+                  <div class="">
+                    <div class="flex content-center items-center justify-between"><label for="v-0-0-0" class="block font-medium text-(--ui-text)">Category</label>
+                      <!--v-if-->
+                    </div>
+                    <!--v-if-->
+                  </div>
+                  <div class="mt-1 relative">
+                    <!---->
+                    <div dir="ltr" id="v-0-0-0" class="relative inline-flex items-center w-full"><input aria-disabled="false" type="text" aria-expanded="false" aria-controls="" aria-autocomplete="list" role="combobox" autocomplete="false" aria-describedby="" aria-invalid="false" placeholder="Select a category" class="rounded-[calc(var(--ui-radius)*1.5)] transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) w-full border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary) pe-9" value="">
+                      <!--v-if--><button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" aria-disabled="false" class="group absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pe-2.5"><span class="iconify i-lucide:chevron-down shrink-0 text-(--ui-text-dimmed) size-5" aria-hidden="true"></span></button>
+                      <!--teleport start-->
+                      <!--teleport end-->
+                      <!---->
+                    </div>
+                    <p class="mt-2 text-(--ui-text-muted)">Select a category for your featured listing</p>
+                  </div>
+                </div>
+                <div class="text-sm w-full">
+                  <div class="">
+                    <div class="flex content-center items-center justify-between"><label for="v-0-0-1" class="block font-medium text-(--ui-text)">Company</label>
+                      <!--v-if-->
+                    </div>
+                    <!--v-if-->
+                  </div>
+                  <div class="mt-1 relative">
+                    <!---->
+                    <div dir="ltr" data-disabled="" id="v-0-0-1" class="relative inline-flex items-center w-full"><input disabled="" data-disabled="" aria-disabled="true" type="text" aria-expanded="false" aria-controls="" aria-autocomplete="list" role="combobox" autocomplete="false" aria-describedby="" aria-invalid="false" placeholder="Select a company" class="rounded-[calc(var(--ui-radius)*1.5)] transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) w-full border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary) pe-9" value="">
+                      <!--v-if--><button disabled="" type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" data-disabled="" aria-disabled="true" class="group absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pe-2.5"><span class="iconify i-lucide:chevron-down shrink-0 text-(--ui-text-dimmed) size-5" aria-hidden="true"></span></button>
+                      <!--teleport start-->
+                      <!--teleport end-->
+                      <!---->
+                    </div>
+                    <p class="mt-2 text-(--ui-text-muted)">Select a company to feature</p>
+                  </div>
+                </div>
+                <div class="text-sm w-full">
+                  <div class="">
+                    <div class="flex content-center items-center justify-between"><label for="v-0-0-2" class="block font-medium text-(--ui-text)">Placement</label>
+                      <!--v-if-->
+                    </div>
+                    <!--v-if-->
+                  </div>
+                  <div class="mt-1 relative">
+                    <!---->
+                    <div dir="ltr" data-disabled="" id="v-0-0-2" class="relative inline-flex items-center w-full"><input disabled="" data-disabled="" aria-disabled="true" type="text" aria-expanded="false" aria-controls="" aria-autocomplete="list" role="combobox" autocomplete="false" aria-describedby="" aria-invalid="false" placeholder="Select a placement" class="rounded-[calc(var(--ui-radius)*1.5)] transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) w-full border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary) pe-9" value="">
+                      <!--v-if--><button disabled="" type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" data-disabled="" aria-disabled="true" class="group absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pe-2.5"><span class="iconify i-lucide:chevron-down shrink-0 text-(--ui-text-dimmed) size-5" aria-hidden="true"></span></button>
+                      <!--teleport start-->
+                      <!--teleport end-->
+                      <!---->
+                    </div>
+                    <p class="mt-2 text-(--ui-text-muted)">Select where you want your company featured</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 sm:px-6">
+              <div class="flex justify-end"><button type="button" disabled="" class="rounded-none font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-3 py-2 text-base gap-2 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary)">
+                  <!--v-if--> Submit
+                  <!--v-if-->
+                </button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <!--v-if-->
+</div>"
+`;
+
+exports[`SPage/Users/Featured/Companies Snapshot > renders when user is logged in with no featured companies correctly 1`] = `
+"<div class="flex flex-col lg:grid lg:grid-cols-10 lg:gap-10">
+  <!--v-if-->
+  <div class="lg:col-span-10">
+    <main class="min-h-[calc(100vh-var(--ui-header-height))]">
+      <div class="px-4 sm:px-6 lg:px-8 mx-auto mt-16 max-w-3xl">
+        <div>
+          <!-- Featured Companies List -->
+          <!--v-if-->
+          <!-- Feature a Company Form -->
+          <div class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border)">
+            <div class="p-4 sm:px-6">
+              <div class="flex items-center justify-between">
+                <h2 class="text-xl font-semibold">Get Featured</h2><span class="font-medium inline-flex items-center text-xs px-2 py-1 gap-1 rounded-[calc(var(--ui-radius)*1.5)] bg-(--ui-info)/10 text-(--ui-info)"><!--v-if-->Promote Your Company<!--v-if--></span>
+              </div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <div class="space-y-5 py-4">
+                <p class="mb-4 text-gray-500 dark:text-gray-400"> Feature your company on the homepage and in search results for increased visibility. </p>
+                <div class="text-sm w-full">
+                  <div class="">
+                    <div class="flex content-center items-center justify-between"><label for="v-0-0-0" class="block font-medium text-(--ui-text)">Category</label>
+                      <!--v-if-->
+                    </div>
+                    <!--v-if-->
+                  </div>
+                  <div class="mt-1 relative">
+                    <!---->
+                    <div dir="ltr" id="v-0-0-0" class="relative inline-flex items-center w-full"><input aria-disabled="false" type="text" aria-expanded="false" aria-controls="" aria-autocomplete="list" role="combobox" autocomplete="false" aria-describedby="" aria-invalid="false" placeholder="Select a category" class="rounded-[calc(var(--ui-radius)*1.5)] transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) w-full border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary) pe-9" value="">
+                      <!--v-if--><button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" aria-disabled="false" class="group absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pe-2.5"><span class="iconify i-lucide:chevron-down shrink-0 text-(--ui-text-dimmed) size-5" aria-hidden="true"></span></button>
+                      <!--teleport start-->
+                      <!--teleport end-->
+                      <!---->
+                    </div>
+                    <p class="mt-2 text-(--ui-text-muted)">Select a category for your featured listing</p>
+                  </div>
+                </div>
+                <div class="text-sm w-full">
+                  <div class="">
+                    <div class="flex content-center items-center justify-between"><label for="v-0-0-1" class="block font-medium text-(--ui-text)">Company</label>
+                      <!--v-if-->
+                    </div>
+                    <!--v-if-->
+                  </div>
+                  <div class="mt-1 relative">
+                    <!---->
+                    <div dir="ltr" data-disabled="" id="v-0-0-1" class="relative inline-flex items-center w-full"><input disabled="" data-disabled="" aria-disabled="true" type="text" aria-expanded="false" aria-controls="" aria-autocomplete="list" role="combobox" autocomplete="false" aria-describedby="" aria-invalid="false" placeholder="Select a company" class="rounded-[calc(var(--ui-radius)*1.5)] transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) w-full border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary) pe-9" value="">
+                      <!--v-if--><button disabled="" type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" data-disabled="" aria-disabled="true" class="group absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pe-2.5"><span class="iconify i-lucide:chevron-down shrink-0 text-(--ui-text-dimmed) size-5" aria-hidden="true"></span></button>
+                      <!--teleport start-->
+                      <!--teleport end-->
+                      <!---->
+                    </div>
+                    <p class="mt-2 text-(--ui-text-muted)">Select a company to feature</p>
+                  </div>
+                </div>
+                <div class="text-sm w-full">
+                  <div class="">
+                    <div class="flex content-center items-center justify-between"><label for="v-0-0-2" class="block font-medium text-(--ui-text)">Placement</label>
+                      <!--v-if-->
+                    </div>
+                    <!--v-if-->
+                  </div>
+                  <div class="mt-1 relative">
+                    <!---->
+                    <div dir="ltr" data-disabled="" id="v-0-0-2" class="relative inline-flex items-center w-full"><input disabled="" data-disabled="" aria-disabled="true" type="text" aria-expanded="false" aria-controls="" aria-autocomplete="list" role="combobox" autocomplete="false" aria-describedby="" aria-invalid="false" placeholder="Select a placement" class="rounded-[calc(var(--ui-radius)*1.5)] transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) w-full border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary) pe-9" value="">
+                      <!--v-if--><button disabled="" type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" data-disabled="" aria-disabled="true" class="group absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pe-2.5"><span class="iconify i-lucide:chevron-down shrink-0 text-(--ui-text-dimmed) size-5" aria-hidden="true"></span></button>
+                      <!--teleport start-->
+                      <!--teleport end-->
+                      <!---->
+                    </div>
+                    <p class="mt-2 text-(--ui-text-muted)">Select where you want your company featured</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 sm:px-6">
+              <div class="flex justify-end"><button type="button" disabled="" class="rounded-none font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-3 py-2 text-base gap-2 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary)">
+                  <!--v-if--> Submit
+                  <!--v-if-->
+                </button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <!--v-if-->
+</div>"
+`;
+
+exports[`SPage/Users/Featured/Companies Snapshot > renders when user is not logged in correctly 1`] = `
+"<div class="flex flex-col lg:grid lg:grid-cols-10 lg:gap-10">
+  <!--v-if-->
+  <div class="lg:col-span-10">
+    <main class="min-h-[calc(100vh-var(--ui-header-height))]">
+      <div class="px-4 sm:px-6 lg:px-8 mx-auto mt-16 max-w-3xl">
+        <!-- Not Logged In View -->
+        <div>
+          <div class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border) py-8 text-center">
+            <!--v-if-->
+            <div class="p-4 sm:p-6">
+              <h2 class="mb-4 text-xl font-semibold">Get Featured</h2>
+              <p class="mb-6 text-gray-500 dark:text-gray-400"> Login to feature your company on our platform for increased visibility. </p><a href="/login" class="rounded-none font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary)">
+                <!--v-if--> Login to Continue
+                <!--v-if-->
+              </a>
+            </div>
+            <!--v-if-->
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <!--v-if-->
+</div>"
+`;
