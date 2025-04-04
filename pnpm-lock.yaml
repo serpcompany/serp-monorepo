@@ -1426,14 +1426,10 @@ importers:
         version: 25.0.1
       nuxt:
         specifier: ^3.16.1
-<<<<<<< HEAD
         version: 3.16.1(drizzle-orm@0.36.4)(eslint@9.20.1)(typescript@5.7.3)(vite@6.2.3)
-=======
-        version: 3.16.1(eslint@9.20.1)(typescript@5.7.3)(vite@6.2.3)
       nuxt-schema-org:
         specifier: 5.0.4
         version: 5.0.4(vue@3.5.13)
->>>>>>> staging
       playwright-core:
         specifier: ^1.48.2
         version: 1.50.1
@@ -16761,11 +16757,6 @@ packages:
       vue: 3.5.13(typescript@5.7.3)
     dev: true
 
-<<<<<<< HEAD
-  /slash@3.0.0:
-    resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
-    engines: {node: '>=8'}
-=======
   /site-config-stack@3.1.7(vue@3.5.13):
     resolution: {integrity: sha512-dBHPLosIjtGtyCNTDtl6f9mPQ1ZwwdmkXrhthjlaaCGidyg4ejr4yw88lVBFS2+Muc22Is4TvaUUxTVkh3dQDQ==}
     peerDependencies:
@@ -16773,7 +16764,11 @@ packages:
     dependencies:
       ufo: 1.5.4
       vue: 3.5.13(typescript@5.7.3)
->>>>>>> staging
+    dev: true
+
+  /slash@3.0.0:
+    resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
+    engines: {node: '>=8'}
     dev: true
 
   /slash@5.1.0:

@@ -32,19 +32,6 @@ exports[`SPageSongSingle Snapshot > renders complete song with upvotes and auth 
             <!--v-if-->
           </a></nav>
       </div>
-<<<<<<< HEAD
-    </header>
-  </div><!-- Main content with grid -->
-  <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
-    <!-- Main Content (70) -->
-    <div class="grid gap-6 lg:grid-cols-3">
-      <div class="lg:col-span-2">
-        <div>
-          <!-- section: overview -->
-          <h2 id="lyrics" class="flex scroll-mt-60 flex-row">Test Song Lyrics </h2><!-- eslint-disable-next-line vue/no-v-html -->
-          <div>
-            <p>Test lyrics content.</p>
-=======
     </header><!-- Main content with grid -->
     <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
       <!-- Breadcrumbs -->
@@ -59,7 +46,6 @@ exports[`SPageSongSingle Snapshot > renders complete song with upvotes and auth 
             <div class="prose dark:prose-invert max-w-none whitespace-pre-line">
               <p>Test lyrics content.</p>
             </div>
->>>>>>> staging
           </div>
         </div><!-- Sidebar (30%) -->
         <div class="space-y-6 lg:col-span-1">
@@ -124,33 +110,8 @@ exports[`SPageSongSingle Snapshot > renders minimal song without upvotes and aut
               <!--v-if-->
             </a></div>
         </div>
-<<<<<<< HEAD
-      </div>
-    </header>
-  </div><!-- Main content with grid -->
-  <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
-    <!-- Main Content (70) -->
-    <div class="grid gap-6 lg:grid-cols-3">
-      <div class="lg:col-span-2">
-        <div>
-          <!-- section: overview -->
-          <h2 id="lyrics" class="flex scroll-mt-60 flex-row">Minimal Song Lyrics </h2><!-- eslint-disable-next-line vue/no-v-html -->
-          <div></div>
-        </div>
-      </div><!-- Sidebar (30%) -->
-      <div class="space-y-6 lg:col-span-1">
-        <!-- General Info Section -->
-        <!--v-if-->
-        <div class="border p-4">
-          <ul class="list-disc pl-4"></ul>
-        </div><!-- Stats Section -->
-        <div class="border p-4">
-          <div>
-            <!--v-if--><br>
-=======
         <nav class="-mx-4 flex overflow-x-auto border-t border-gray-200 px-4 sm:-mx-6 sm:px-6 dark:border-gray-800"><a href="#lyrics" class="font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
             <!--v-if--><span class="truncate">Lyrics</span>
->>>>>>> staging
             <!--v-if-->
           </a></nav>
       </div>

@@ -42,36 +42,6 @@ exports[`SPageArtistSingle Snapshot > renders complete artist with upvotes and a
       <ol class="flex items-center gap-1.5"></ol>
     </nav><!-- Grid Layout -->
     <div class="grid gap-6 lg:grid-cols-3">
-<<<<<<< HEAD
-      <div class="lg:col-span-2">
-        <div>
-          <!-- section: overview -->
-          <h2 id="overview" class="scroll-mt-60">About Test Artist</h2><!-- eslint-disable-next-line vue/no-v-html-->
-          <div class="prose dark:prose-invert">
-            <p>Overview content for Test Artist.</p>
-          </div>
-          <h2 id="albums" class="scroll-mt-60">Test Artist Albums</h2>
-          <div>
-            <!-- Album Section -->
-            <div>
-              <div class="flex"><a href="/albums/album-1/" aria-label="link to the album">
-                  <div><img alt="Album One" data-nuxt-img="" srcset="/_ipx/_/album-1.jpg 1x, /_ipx/_/album-1.jpg 2x" src="/_ipx/_/album-1.jpg"> Album One</div>
-                </a>
-                <div>
-                  <!-- Songs for the Album -->
-                  <ol>
-                    <li>
-                      <div>
-                        <div>1. <a href="/songs/song-1/">Song One</a></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div>2. <span>Song Two</span></div>
-                      </div>
-                    </li>
-                  </ol>
-=======
       <!-- Main Content Column (70%) -->
       <div class="space-y-8 lg:col-span-2">
         <!-- Albums Section - Refactored -->
@@ -82,7 +52,6 @@ exports[`SPageArtistSingle Snapshot > renders complete artist with upvotes and a
               <div class="p-4 sm:px-6">
                 <div class="flex items-center justify-between"><a href="/albums/album-1" class="text-primary text-lg font-medium hover:underline">Album One</a>
                   <!--v-if-->
->>>>>>> staging
                 </div>
               </div>
               <div class="p-4 sm:p-6">
@@ -204,14 +173,6 @@ exports[`SPageArtistSingle Snapshot > renders minimal artist without upvotes and
       <ol class="flex items-center gap-1.5"></ol>
     </nav><!-- Grid Layout -->
     <div class="grid gap-6 lg:grid-cols-3">
-<<<<<<< HEAD
-      <div class="lg:col-span-2">
-        <div>
-          <!-- section: overview -->
-          <h2 id="overview" class="scroll-mt-60">About Minimal Artist</h2><!-- eslint-disable-next-line vue/no-v-html-->
-          <div class="prose dark:prose-invert">
-            <p>Minimal overview content.</p>
-=======
       <!-- Main Content Column (70%) -->
       <div class="space-y-8 lg:col-span-2">
         <!-- Albums Section - Refactored -->
@@ -219,7 +180,6 @@ exports[`SPageArtistSingle Snapshot > renders minimal artist without upvotes and
           <h2 class="mb-4 text-2xl font-semibold">Minimal Artist Albums </h2>
           <div class="space-y-6">
             <p class="text-gray-500 dark:text-gray-400"> No albums found for this artist. </p>
->>>>>>> staging
           </div>
         </section><!-- Songs section placeholder if needed separately -->
         <section id="songs" class="scroll-mt-24">

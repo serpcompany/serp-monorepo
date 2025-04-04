@@ -1,28 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`MultipageHeaderMusic Snapshot > renders default rendering correctly 1`] = `
-<<<<<<< HEAD
-"<div serply_link="https://example.com">
-  <header class="bg-[var(--ui-bg)] py-2 sm:py-2">
-    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <!-- header top -->
-      <div class="flex flex-col items-center justify-between sm:flex-row">
-        <!-- image -->
-        <div class="flex w-full items-start justify-between">
-          <!--v-if-->
-          <!-- name -->
-          <div class="flex-grow">
-            <h1 class="text-xl font-bold text-(--ui-primary) transition-all duration-300 sm:text-3xl">Music Header</h1><span class="text-xs"></span>
-          </div>
-        </div><!-- action buttons -->
-        <div class="flex w-full flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0">
-          <!-- upvote button slot -->
-          <!-- visit website button --><a rel="noopener noreferrer" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"> Listen Free <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg></a>
-=======
 "<header class="bg-background sticky top-0 z-40 border-b border-gray-200 transition-all duration-300 dark:border-gray-800" serply_link="https://example.com">
   <div class="max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col items-center justify-between gap-4 py-3 sm:flex-row">
@@ -31,7 +9,6 @@ exports[`MultipageHeaderMusic Snapshot > renders default rendering correctly 1`]
         <div class="min-w-0 flex-grow">
           <h1 class="truncate text-xl font-bold text-gray-900 transition-all duration-300 sm:text-2xl dark:text-white">Music Header</h1>
           <div class="truncate text-sm text-gray-500 dark:text-gray-400"></div>
->>>>>>> staging
         </div>
       </div>
       <div class="flex w-full flex-shrink-0 items-center justify-end gap-3 sm:w-auto"><button type="button" rel="noopener noreferrer" target="_blank" class="rounded-none font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 w-full sm:w-auto"><span class="iconify i-heroicons:arrow-top-right-on-square shrink-0 size-4" aria-hidden="true"></span><span class="truncate">Listen Free</span>
@@ -53,28 +30,6 @@ exports[`MultipageHeaderMusic Snapshot > renders default rendering correctly 1`]
 `;
 
 exports[`MultipageHeaderMusic Snapshot > renders with empty sections correctly 1`] = `
-<<<<<<< HEAD
-"<div serply_link="https://example.com">
-  <header class="bg-[var(--ui-bg)] py-2 sm:py-2">
-    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <!-- header top -->
-      <div class="flex flex-col items-center justify-between sm:flex-row">
-        <!-- image -->
-        <div class="flex w-full items-start justify-between">
-          <!--v-if-->
-          <!-- name -->
-          <div class="flex-grow">
-            <h1 class="text-xl font-bold text-(--ui-primary) transition-all duration-300 sm:text-3xl">Music Header</h1><span class="text-xs"></span>
-          </div>
-        </div><!-- action buttons -->
-        <div class="flex w-full flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0">
-          <!-- upvote button slot -->
-          <!-- visit website button --><a rel="noopener noreferrer" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"> Listen Free <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg></a>
-=======
 "<header class="bg-background sticky top-0 z-40 border-b border-gray-200 transition-all duration-300 dark:border-gray-800" serply_link="https://example.com">
   <div class="max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col items-center justify-between gap-4 py-3 sm:flex-row">
@@ -83,7 +38,6 @@ exports[`MultipageHeaderMusic Snapshot > renders with empty sections correctly 1
         <div class="min-w-0 flex-grow">
           <h1 class="truncate text-xl font-bold text-gray-900 transition-all duration-300 sm:text-2xl dark:text-white">Music Header</h1>
           <div class="truncate text-sm text-gray-500 dark:text-gray-400"></div>
->>>>>>> staging
         </div>
       </div>
       <div class="flex w-full flex-shrink-0 items-center justify-end gap-3 sm:w-auto"><button type="button" rel="noopener noreferrer" target="_blank" class="rounded-none font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 w-full sm:w-auto"><span class="iconify i-heroicons:arrow-top-right-on-square shrink-0 size-4" aria-hidden="true"></span><span class="truncate">Listen Free</span>
@@ -96,26 +50,6 @@ exports[`MultipageHeaderMusic Snapshot > renders with empty sections correctly 1
 `;
 
 exports[`MultipageHeaderMusic Snapshot > renders with oneLiner and image correctly 1`] = `
-<<<<<<< HEAD
-"<div serply_link="https://example.com">
-  <header class="bg-[var(--ui-bg)] py-2 sm:py-2">
-    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <!-- header top -->
-      <div class="flex flex-col items-center justify-between sm:flex-row">
-        <!-- image -->
-        <div class="flex w-full items-start justify-between"><img alt="Music Header logo" data-nuxt-img="" srcset="https://example.com/logo.png 1x, https://example.com/logo.png 2x" class="mr-2 object-contain transition-all duration-300 h-16" src="https://example.com/logo.png"><!-- name -->
-          <div class="flex-grow">
-            <h1 class="text-xl font-bold text-(--ui-primary) transition-all duration-300 sm:text-3xl">Music Header</h1><span class="text-xs">Rock on!</span>
-          </div>
-        </div><!-- action buttons -->
-        <div class="flex w-full flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0">
-          <!-- upvote button slot -->
-          <!-- visit website button --><a rel="noopener noreferrer" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"> Listen Free <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg></a>
-=======
 "<header class="bg-background sticky top-0 z-40 border-b border-gray-200 transition-all duration-300 dark:border-gray-800" serply_link="https://example.com" oneliner="Rock on!">
   <div class="max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col items-center justify-between gap-4 py-3 sm:flex-row">
@@ -123,7 +57,6 @@ exports[`MultipageHeaderMusic Snapshot > renders with oneLiner and image correct
         <div class="min-w-0 flex-grow">
           <h1 class="truncate text-xl font-bold text-gray-900 transition-all duration-300 sm:text-2xl dark:text-white">Music Header</h1>
           <div class="truncate text-sm text-gray-500 dark:text-gray-400"></div>
->>>>>>> staging
         </div>
       </div>
       <div class="flex w-full flex-shrink-0 items-center justify-end gap-3 sm:w-auto"><button type="button" rel="noopener noreferrer" target="_blank" class="rounded-none font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 w-full sm:w-auto"><span class="iconify i-heroicons:arrow-top-right-on-square shrink-0 size-4" aria-hidden="true"></span><span class="truncate">Listen Free</span>
@@ -145,28 +78,6 @@ exports[`MultipageHeaderMusic Snapshot > renders with oneLiner and image correct
 `;
 
 exports[`MultipageHeaderMusic Snapshot > renders with upvote slot correctly 1`] = `
-<<<<<<< HEAD
-"<div serply_link="https://example.com">
-  <header class="bg-[var(--ui-bg)] py-2 sm:py-2">
-    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <!-- header top -->
-      <div class="flex flex-col items-center justify-between sm:flex-row">
-        <!-- image -->
-        <div class="flex w-full items-start justify-between">
-          <!--v-if-->
-          <!-- name -->
-          <div class="flex-grow">
-            <h1 class="text-xl font-bold text-(--ui-primary) transition-all duration-300 sm:text-3xl">Music Header</h1><span class="text-xs"></span>
-          </div>
-        </div><!-- action buttons -->
-        <div class="flex w-full flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0">
-          <!-- upvote button slot -->&lt;button&gt;Upvote&lt;/button&gt;
-          <!-- visit website button --><a rel="noopener noreferrer" target="_blank" class="flex w-full items-center justify-center gap-2 rounded-full bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"> Listen Free <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg></a>
-=======
 "<header class="bg-background sticky top-0 z-40 border-b border-gray-200 transition-all duration-300 dark:border-gray-800" serply_link="https://example.com">
   <div class="max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col items-center justify-between gap-4 py-3 sm:flex-row">
@@ -175,7 +86,6 @@ exports[`MultipageHeaderMusic Snapshot > renders with upvote slot correctly 1`] 
         <div class="min-w-0 flex-grow">
           <h1 class="truncate text-xl font-bold text-gray-900 transition-all duration-300 sm:text-2xl dark:text-white">Music Header</h1>
           <div class="truncate text-sm text-gray-500 dark:text-gray-400"></div>
->>>>>>> staging
         </div>
       </div>
       <div class="flex w-full flex-shrink-0 items-center justify-end gap-3 sm:w-auto">&lt;button&gt;Upvote&lt;/button&gt;<button type="button" rel="noopener noreferrer" target="_blank" class="rounded-none font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 w-full sm:w-auto"><span class="iconify i-heroicons:arrow-top-right-on-square shrink-0 size-4" aria-hidden="true"></span><span class="truncate">Listen Free</span>
