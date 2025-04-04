@@ -16,7 +16,7 @@
     data = await useCompanyFeaturedSubscriptions(false);
   }
 
-  const categories = await useCompanyCategories();
+  let categories = await useCompanyCategories();
   if (!categories) {
     categories = [];
   }
