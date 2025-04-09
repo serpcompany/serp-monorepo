@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
   const props = defineProps({
     module: { type: String, required: true },
     id: { type: Number, required: true },

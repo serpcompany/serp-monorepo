@@ -1,4 +1,8 @@
 <script setup lang="ts">
+  definePageMeta({
+    layout: 'user-dashboard'
+  });
+
   import { computed } from 'vue';
   import { useRouter } from 'vue-router';
 
@@ -16,81 +20,122 @@
 </script>
 
 <template>
-  <UPage class="min-h-screen pt-20">
-    <UMain class="container mx-auto p-8">
-      <!-- User Information Card -->
-      <UCard class="mb-8 flex items-center space-x-4 p-6">
-        <UAvatar :src="user?.image" alt="User Avatar" size="lg" />
-        <div class="flex flex-col">
-          <UHeading level="3" class="text-xl font-semibold">
-            {{ userName }}
-          </UHeading>
-          <p class="text-gray-600">{{ userEmail }}</p>
+  <div>
+    <!-- GitHub-style page header -->
+    <div class="mb-5 border-b border-gray-200 pb-4 dark:border-gray-700">
+      <h1 class="text-xl font-semibold">Dashboard</h1>
+    </div>
+
+    <!-- Dashboard content -->
+    <div class="space-y-6">
+      <!-- GitHub-style welcome box -->
+      <div
+        class="mb-6 rounded-md border border-blue-100 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-900/30"
+      >
+        <div class="flex items-start">
+          <UIcon
+            name="i-lucide-info"
+            class="mt-0.5 mr-3 h-5 w-5 text-blue-500 dark:text-blue-400"
+          />
+          <div>
+            <h3 class="text-sm font-medium text-blue-800 dark:text-blue-300">
+              Welcome to your dashboard
+            </h3>
+            <p class="mt-1 text-sm text-blue-700 dark:text-blue-400">
+              This is your centralized hub for managing your SERP.co account and
+              submissions.
+            </p>
+          </div>
         </div>
-      </UCard>
-
-      <!-- Navigation Links Grid -->
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <UCard
-          class="cursor-pointer p-4 transition-shadow hover:shadow-xl"
-          @click="navigateTo('/users/get-featured')"
-        >
-          <UHeading level="4" class="mb-2">Get Featured</UHeading>
-          <p class="text-sm text-gray-600">
-            Learn how to get featured on our platform.
-          </p>
-        </UCard>
-
-        <UCard
-          class="cursor-pointer p-4 transition-shadow hover:shadow-xl"
-          @click="navigateTo('/users/manage/billing')"
-        >
-          <UHeading level="4" class="mb-2">Billing</UHeading>
-          <p class="text-sm text-gray-600">
-            Manage your billing information and subscriptions.
-          </p>
-        </UCard>
-
-        <UCard
-          class="cursor-pointer p-4 transition-shadow hover:shadow-xl"
-          @click="navigateTo('/users/manage/submissions')"
-        >
-          <UHeading level="4" class="mb-2">Submissions</UHeading>
-          <p class="text-sm text-gray-600">
-            Review your company submissions and statuses.
-          </p>
-        </UCard>
-
-        <UCard
-          class="cursor-pointer p-4 transition-shadow hover:shadow-xl"
-          @click="navigateTo('/users/submit/company/')"
-        >
-          <UHeading level="4" class="mb-2">Submit Company</UHeading>
-          <p class="text-sm text-gray-600">
-            Submit or update your company details.
-          </p>
-        </UCard>
-
-        <UCard
-          class="cursor-pointer p-4 transition-shadow hover:shadow-xl"
-          @click="navigateTo('/users/support/')"
-        >
-          <UHeading level="4" class="mb-2">Support</UHeading>
-          <p class="text-sm text-gray-600">
-            Contact our support team for assistance.
-          </p>
-        </UCard>
       </div>
-    </UMain>
-  </UPage>
-</template>
 
-<style scoped>
-  /* Optional: Additional styling for hover effects and transitions */
-  .cursor-pointer {
-    cursor: pointer;
-  }
-  .transition-shadow {
-    transition: box-shadow 0.3s ease;
-  }
-</style>
+      <!-- GitHub-style section -->
+      <div class="mb-6">
+        <h2 class="mb-3 text-base font-medium">Quick Navigation</h2>
+
+        <!-- GitHub uses subtle borders instead of shadow cards -->
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div
+            class="cursor-pointer rounded-md border border-gray-200 p-4 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"
+            @click="navigateTo('/users/get-featured')"
+          >
+            <div class="mb-2 flex items-center">
+              <UIcon
+                name="i-lucide-star"
+                class="mr-2 h-5 w-5 text-gray-500 dark:text-gray-400"
+              />
+              <h3 class="text-sm font-medium">Get Featured</h3>
+            </div>
+            <p class="text-xs text-gray-600 dark:text-gray-400">
+              Learn how to get featured on our platform.
+            </p>
+          </div>
+
+          <div
+            class="cursor-pointer rounded-md border border-gray-200 p-4 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"
+            @click="navigateTo('/users/manage/billing')"
+          >
+            <div class="mb-2 flex items-center">
+              <UIcon
+                name="i-lucide-credit-card"
+                class="mr-2 h-5 w-5 text-gray-500 dark:text-gray-400"
+              />
+              <h3 class="text-sm font-medium">Billing</h3>
+            </div>
+            <p class="text-xs text-gray-600 dark:text-gray-400">
+              Manage your billing information and subscriptions.
+            </p>
+          </div>
+
+          <div
+            class="cursor-pointer rounded-md border border-gray-200 p-4 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"
+            @click="navigateTo('/users/manage/submissions')"
+          >
+            <div class="mb-2 flex items-center">
+              <UIcon
+                name="i-lucide-file-text"
+                class="mr-2 h-5 w-5 text-gray-500 dark:text-gray-400"
+              />
+              <h3 class="text-sm font-medium">Submissions</h3>
+            </div>
+            <p class="text-xs text-gray-600 dark:text-gray-400">
+              Review your company submissions and statuses.
+            </p>
+          </div>
+
+          <div
+            class="cursor-pointer rounded-md border border-gray-200 p-4 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"
+            @click="navigateTo('/users/submit/company/')"
+          >
+            <div class="mb-2 flex items-center">
+              <UIcon
+                name="i-lucide-plus"
+                class="mr-2 h-5 w-5 text-gray-500 dark:text-gray-400"
+              />
+              <h3 class="text-sm font-medium">Submit Company</h3>
+            </div>
+            <p class="text-xs text-gray-600 dark:text-gray-400">
+              Submit or update your company details.
+            </p>
+          </div>
+
+          <div
+            class="cursor-pointer rounded-md border border-gray-200 p-4 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"
+            @click="navigateTo('/users/support/')"
+          >
+            <div class="mb-2 flex items-center">
+              <UIcon
+                name="i-lucide-circle-help"
+                class="mr-2 h-5 w-5 text-gray-500 dark:text-gray-400"
+              />
+              <h3 class="text-sm font-medium">Support</h3>
+            </div>
+            <p class="text-xs text-gray-600 dark:text-gray-400">
+              Contact our support team for assistance.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

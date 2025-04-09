@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
   const config = useRuntimeConfig();
   const headerNavItems = config.public.headerNavItems;
   const useAuth = config.public.useAuth;

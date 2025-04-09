@@ -1,4 +1,8 @@
 <script setup lang="ts">
+  definePageMeta({
+    layout: 'user-dashboard'
+  });
+
   const { loggedIn, user } = useUserSession();
   if (!loggedIn.value) {
     navigateTo('/');

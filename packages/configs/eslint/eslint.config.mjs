@@ -67,7 +67,7 @@ export function createConfig({
           'warn',
           {
             html: {
-              void: 'never',
+              void: 'always',
               normal: 'never',
               component: 'always'
             },

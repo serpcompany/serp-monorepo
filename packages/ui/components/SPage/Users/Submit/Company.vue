@@ -377,7 +377,7 @@
                 accept="image/*"
                 class="w-full text-sm"
                 @change="onImageSelected"
-              >
+              />
             </div>
           </UFormField>
 
