@@ -104,7 +104,7 @@
         <!-- Main content area (GitHub-style) -->
         <main class="min-w-0 flex-1 md:pl-5">
           <div>
-            <slot />
+            <slot></slot>
           </div>
         </main>
       </div>

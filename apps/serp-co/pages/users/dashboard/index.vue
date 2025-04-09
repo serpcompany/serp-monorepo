@@ -1,10 +1,10 @@
 <script setup lang="ts">
+  import { computed } from 'vue';
+  import { useRouter } from 'vue-router';
+
   definePageMeta({
     layout: 'user-dashboard'
   });
-
-  import { computed } from 'vue';
-  import { useRouter } from 'vue-router';
 
   const { user } = useUserSession();
   const router = useRouter();
