@@ -1,38 +1,23 @@
 {
   "name": "@serp/root",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "turbo run build",
     "eslint": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run eslint",
     "format": "prettier --write \"**/*.{ts,tsx,md,vue}\"",
     "lint": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run lint",
     "lint:windows": "turbo run lint",
+    "prepare": "husky install",
     "prettier": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run prettier",
     "test": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run test",
-    "test:watch": "turbo run test:watch",
     "test:update": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run test:update",
-    "dev": "node scripts/dev.js",
-    "list": "node scripts/dev.js list",
-    "generate": "node scripts/dev.js generate",
-    "parse-prd": "node scripts/dev.js parse-prd"
+    "test:watch": "turbo run test:watch"
   },
   "devDependencies": {
     "husky": "^9.1.7",
     "prettier": "^3.5.3",
     "turbo": "^2.4.4"
   },
-  "packageManager": "pnpm@8.15.6",
-  "dependencies": {
-    "@anthropic-ai/sdk": "^0.39.0",
-    "chalk": "^5.3.0",
-    "commander": "^11.1.0",
-    "dotenv": "^16.3.1",
-    "openai": "^4.86.1",
-    "figlet": "^1.7.0",
-    "boxen": "^7.1.1",
-    "gradient-string": "^2.0.2",
-    "cli-table3": "^0.6.3",
-    "ora": "^7.0.1"
-  },
-  "type": "module"
+  "packageManager": "pnpm@8.15.6"
 }

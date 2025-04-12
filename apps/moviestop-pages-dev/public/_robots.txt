@@ -1,4 +1,4 @@
 User-agent: *
 Allow: *
 
-Sitemap: https://serp.media/sitemap_index.xml
+Sitemap: https://moviestop.pages.dev/sitemap_index.xml

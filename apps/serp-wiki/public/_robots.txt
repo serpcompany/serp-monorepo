@@ -1,4 +1,4 @@
 User-agent: *
 Allow: *
 
-Sitemap: https://serp.media/sitemap_index.xml
+Sitemap: https://serp.wiki/sitemap_index.xml
