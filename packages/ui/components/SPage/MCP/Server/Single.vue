@@ -26,7 +26,6 @@
   const sections = computed(() => {
     const s = ['Overview'];
     if (data.contributors?.length) s.push('Contributors');
-    if (data.tags?.length) s.push('Tags');
     if (data.topics?.length) s.push('Topics');
     if (data.languages?.length) s.push('Languages');
     if (data.readme) s.push('Readme');
@@ -96,27 +95,6 @@
         >
           <li v-for="c in data.contributors" :key="c">{{ c }}</li>
         </ul>
-      </UCard>
-
-      <!-- Tags -->
-      <UCard
-        v-if="data.tags?.length"
-        id="tags"
-        class="mb-8 scroll-mt-20 rounded-md border border-gray-200 dark:border-gray-800"
-        :ui="{ body: { padding: 'p-4 sm:p-6' } }"
-      >
-        <template #header>
-          <h2 class="text-xl font-semibold">Tags</h2>
-        </template>
-        <UDivider class="my-0" />
-        <div class="mt-4 flex flex-wrap gap-2">
-          <SPill
-            base-slug="mcp/servers/tag"
-            :items="
-              data.tags.map((t) => ({ name: t, slug: encodeURIComponent(t) }))
-            "
-          />
-        </div>
       </UCard>
 
       <!-- Topics -->

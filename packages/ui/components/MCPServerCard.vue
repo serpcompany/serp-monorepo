@@ -41,18 +41,6 @@
           {{ displayDescription }}
         </p>
 
-        <!-- tags -->
-        <div v-if="server.tags?.length" class="mt-3 flex flex-wrap gap-2">
-          <NuxtLink
-            v-for="tag in server.tags"
-            :key="tag"
-            :to="`/mcp/servers/tag/${encodeURIComponent(tag)}`"
-            class="inline-flex rounded-full bg-[var(--ui-color-secondary-50)] px-3 py-1 text-xs font-medium text-[var(--ui-color-secondary-700)] dark:bg-[var(--ui-color-secondary-900)]/30 dark:text-[var(--ui-color-secondary-200)]"
-          >
-            {{ tag }}
-          </NuxtLink>
-        </div>
-
         <!-- topics -->
         <div v-if="server.topics?.length" class="mt-3 flex flex-wrap gap-2">
           <NuxtLink
