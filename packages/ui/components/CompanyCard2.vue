@@ -62,12 +62,12 @@
                 <path
                   fill="currentColor"
                   d="M12 2L2 8.5L2 15.5L12 22L22 15.5V8.5L12 2Z"
-                ></path>
+                />
                 <path
                   fill="currentColor"
                   d="M12 5L5 9.5V14.5L12 19L19 14.5V9.5L12 5Z"
                   fill-opacity="0.3"
-                ></path>
+                />
               </svg>
             </div>
           </div>
@@ -95,8 +95,7 @@
               class="rounded-full p-3"
               icon="i-lucide-heart"
               @click="$emit('upvote')"
-            >
-            </UButton>
+            />
           </div>
           <div class="flex items-center gap-2">
             <UButton
@@ -118,7 +117,7 @@
               >
                 <path
                   d="M6.579 3.467c.71-1.067 2.132-1.067 2.842 0L12.975 8.8c.878 1.318.043 3.2-1.422 3.2H4.447c-1.464 0-2.3-1.882-1.422-3.2z"
-                ></path></svg
+                /></svg
               >Upvote
             </UButton>
           </div>

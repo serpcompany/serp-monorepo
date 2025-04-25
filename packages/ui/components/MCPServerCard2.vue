@@ -75,7 +75,7 @@
                 :src="`https://github.com/${server.owner}.png`"
                 alt="Logo"
                 class="h-12 w-12 rounded-lg object-cover"
-              ></LazyNuxtImg>
+              />
             </div>
           </div>
 
@@ -110,8 +110,7 @@
               size="sm"
               :icon="`i-${category.icon || 'lucide-tag'}`"
               :to="`/mcp/servers/category/${category.slug}/`"
-            >
-            </UButton>
+            />
           </div>
         </div>
       </div>
