@@ -35,17 +35,17 @@
     }
   });
 
-  defineEmits(['upload', 'bookmark', 'read-more']);
+  defineEmits(['upvote', 'bookmark', 'read-more']);
 </script>
 
 <template>
   <UCard
-    class="mx-auto max-w-3xl"
+    class="mx-auto flex h-full max-w-4xl flex-col"
     variant="outline"
     :ui="{
-      root: 'rounded-sm',
+      root: 'rounded-sm min-h-[320px]',
       header: 'p-2 sm:px-6',
-      body: 'p-2 sm:p-6',
+      body: 'p-2 sm:p-6 flex-grow',
       footer: 'p-2 sm:px-6'
     }"
   >
@@ -78,15 +78,9 @@
               <h2 class="flex items-center gap-1 text-2xl font-bold">
                 <NuxtLink :to="url" target="_blank" class="hover:text-primary">
                   {{ title }}
+                  <UIcon name="i-lucide-external-link" class="ml-1 h-4 w-4" />
                 </NuxtLink>
               </h2>
-              <UBadge
-                v-if="badge"
-                :color="badgeColor"
-                class="border"
-                variant="soft"
-                >{{ badge }}
-              </UBadge>
             </div>
           </div>
         </div>
@@ -98,11 +92,10 @@
               color="primary"
               variant="outline"
               size="sm"
-              class="rounded-lg px-4 py-2"
+              class="rounded-full p-3"
               icon="i-lucide-heart"
-              @click="$emit('upload')"
+              @click="$emit('upvote')"
             >
-              <span class="text-xs">Likes {{ rating }}</span>
             </UButton>
           </div>
           <div class="flex items-center gap-2">
@@ -110,22 +103,34 @@
               color="primary"
               variant="outline"
               size="sm"
-              class="rounded-lg px-4 py-2"
-              icon="i-lucide-bookmark"
+              class="rounded-full p-3"
               @click="$emit('bookmark')"
             >
-              Bookmark
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="none"
+                viewBox="0 0 16 16"
+                class="fill-white stroke-gray-700 stroke-[1.5px] transition-all duration-300"
+                data-sentry-element="Icon"
+                data-sentry-source-file="index.tsx"
+              >
+                <path
+                  d="M6.579 3.467c.71-1.067 2.132-1.067 2.842 0L12.975 8.8c.878 1.318.043 3.2-1.422 3.2H4.447c-1.464 0-2.3-1.882-1.422-3.2z"
+                ></path></svg
+              >Upvote
             </UButton>
           </div>
         </div>
       </div>
 
-      <!-- Cateogires -->
+      <!-- Categories -->
       <div v-if="categories && categories.length" class="mt-2 flex gap-2"></div>
     </template>
 
-    <!-- Card body with description -->
-    <div>
+    <!-- Card body with description - now with flex-grow to fill available space -->
+    <div class="flex-grow">
       <p class="text-primary lg">
         {{ description }}
       </p>
