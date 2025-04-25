@@ -3,7 +3,7 @@
   <div class="container mx-auto p-4">
     <h1 class="mb-8 text-3xl font-bold">Developer Tools</h1>
 
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
       <!-- Using our CompanyCard2 component -->
       <CompanyCard2
         title="Continue"
