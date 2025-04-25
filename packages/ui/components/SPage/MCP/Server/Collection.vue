@@ -88,9 +88,9 @@
     :show-search-bar="false"
     :show-buttons="false"
   />
-  <main>
+  <UMain>
     <div class="space-y-4">
-      <MCPServerCard
+      <MCPServerCard2
         v-for="server in data.servers"
         :key="server.slug"
         :server="server"
@@ -137,6 +137,6 @@
         </template>
       </UPageAccordion>
     </UPageSection>
-  </main>
+  </UMain>
   <NewsletterSignupPageSection />
 </template>
