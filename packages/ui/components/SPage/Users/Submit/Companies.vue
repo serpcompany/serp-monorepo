@@ -6,6 +6,60 @@
 
   const data = await useCompanySubmissions();
 
+  const toast = useToast();
+  const loading = ref(false);
+
+  async function verifyCompanyBacklink(submissionId: string) {
+    try {
+      loading.value = true;
+      const { data: response, error } = await useFetch(
+        `/api/company/submit-verify-backlink?id=${submissionId}`,
+        {
+          method: 'POST',
+          headers: useRequestHeaders(['cookie'])
+        }
+      );
+
+      if (error.value) {
+        toast.add({
+          id: 'verify-backlink-error',
+          title: 'Error Verifying Backlink',
+          description: error.value,
+          icon: 'exclamation-circle'
+        });
+        return;
+      }
+      if (response.value && response.value.verified) {
+        const submission = data.find((s) => s.id === submissionId);
+        if (submission) {
+          submission.backlinkVerified = true;
+        }
+        toast.add({
+          id: 'verify-backlink-success',
+          title: 'Backlink Verified',
+          description: 'The backlink has been verified successfully.',
+          icon: 'check-circle'
+        });
+      } else {
+        toast.add({
+          id: 'verify-backlink-failure',
+          title: 'Backlink Verification Failed',
+          description: 'The backlink could not be verified.',
+          icon: 'exclamation-circle'
+        });
+      }
+    } catch (error) {
+      toast.add({
+        id: 'verify-backlink-error',
+        title: 'Error Verifying Backlink',
+        description: error.message,
+        icon: 'exclamation-circle'
+      });
+    } finally {
+      loading.value = false;
+    }
+  }
+
   useSeoMeta({
     title: 'Submissions'
   });
@@ -75,6 +129,19 @@
               </p>
               <p class="text-neutral-500">
                 Created At: {{ submission.createdAt }}
+              </p>
+              <UButton
+                v-if="!submission.backlinkVerified"
+                class="mt-2"
+                :loading="loading"
+                :disabled="loading"
+                variant="primary"
+                size="sm"
+                @click.prevent="verifyCompanyBacklink(submission.id)"
+                >Verify Backlink</UButton
+              >
+              <p v-if="submission.backlinkVerified" class="text-green-500">
+                Backlink Verified
               </p>
             </NuxtLink>
           </div>

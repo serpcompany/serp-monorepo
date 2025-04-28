@@ -32,7 +32,8 @@ export default defineEventHandler(async (event) => {
           logo: companySubmitForm.logo,
           reviewedAt: companySubmitForm.reviewedAt,
           reviewedBy: companySubmitForm.reviewedBy,
-          reviewedNotes: companySubmitForm.reviewedNotes
+          reviewedNotes: companySubmitForm.reviewedNotes,
+          backlinkVerified: companySubmitForm.backlinkVerified
         })
         .from(companySubmitForm)
         .where(eq(companySubmitForm.submittingEmail, email))

@@ -296,7 +296,9 @@ export const companySubmitForm = formSchema.table('company_submit', {
   reviewedNotes: text('reviewed_notes'),
   isPriority: boolean('is_priority').notNull().default(false),
   priorityPaymentFk: integer('priority_payment_fk'),
-  uuid: uuid('uuid').unique().notNull()
+  uuid: uuid('uuid').unique().notNull(),
+  backlinkVerified: boolean('backlink_verified').notNull().default(false),
+  backlinkVerifiedAt: timestamp('backlink_verified_at', { withTimezone: true })
 });
 // End Company
 
