@@ -31,6 +31,9 @@ export default defineEventHandler(async (event) => {
     )
     .execute();
 
+  if (results.length === 0) {
+    return { ok: false, error: 'No matching record found' };
+  }
   if (results[0].backlinkVerified) {
     return { ok: true, verified: true };
   }
