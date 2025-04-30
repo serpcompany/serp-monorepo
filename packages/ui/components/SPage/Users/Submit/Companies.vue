@@ -138,8 +138,7 @@
                 variant="primary"
                 size="sm"
                 @click.prevent="verifyCompanyBacklink(submission.id)"
-                >Verify Backlink</UButton
-              >
+              >Verify Backlink</UButton>
               <p v-if="submission.backlinkVerified" class="text-green-500">
                 Backlink Verified
               </p>
