@@ -1,19 +1,24 @@
 <script setup lang="ts">
   import type { Boxer, Comment } from '@serp/types/types';
+  import boxersData from '@/pages/boxers/data.json';
 
   const { user } = useUserSession();
   const route = useRoute();
   const router = useRouter();
   const { slug } = route.params;
 
-  // @ts-expect-error: Auto-imported from another layer
-  const data = (await useBoxer(`${slug}`)) as Boxer;
-  if (!data) {
+  // Load boxer data from JSON file instead of useBoxer composable
+  const data = computed(() => {
+    return boxersData.find(boxer => boxer.slug === slug);
+  });
+
+  // Redirect if boxer not found
+  if (!data.value) {
     router.push('/404');
   }
 
   const isVerified = computed(() => {
-    return data?.verifiedEmail === user.value?.email;
+    return data.value?.verifiedEmail === user.value?.email;
   });
 
   const config = useRuntimeConfig();
@@ -24,25 +29,23 @@
     return {};
   });
 
-  // @ts-expect-error: Auto-imported from another layer
-  const { comments } = (await useBoxerUpvotesAndComments(data?.id)) as {
-    upvotes: string[];
-    comments: Comment[];
-  };
+  // Comment out the upvotes and comments for now since we don't have the ID
+  // const { comments } = (await useBoxerUpvotesAndComments(data?.id)) as {
+  //   upvotes: string[];
+  //   comments: Comment[];
+  // };
 
-  // @ts-expect-error: Auto-imported from another layer
-  const reviews = await useBoxerReviews(data?.id);
-  reviews.boxerId = data?.id;
+  // const reviews = await useBoxerReviews(data?.id);
+  // reviews.boxerId = data?.id;
 
   // State for review modal
   const showReviewModal = ref(false);
 
   // Handle review submission - refresh reviews data
   async function handleReviewSubmitted() {
-    // @ts-expect-error: Auto-imported from another layer
-    const updatedReviews = await useBoxerReviews(data?.id);
-    Object.assign(reviews, updatedReviews);
-    reviews.boxerId = data?.id;
+    // const updatedReviews = await useBoxerReviews(data?.id);
+    // Object.assign(reviews, updatedReviews);
+    // reviews.boxerId = data?.id;
   }
 
   // State for sections
@@ -72,7 +75,7 @@
 
   // Re-extract if data changes
   watch(
-    () => data,
+    () => data.value,
     () => {
       extractSections();
     },
@@ -81,8 +84,8 @@
 
   useSeoMeta({
     title: computed(() =>
-      data?.name
-        ? `${data.name} - Record, Fights, News, and More`
+      data.value?.name
+        ? `${data.value.name} - Record, Fights, News, and More`
         : 'Boxer - Record, Fights, News, and More'
     )
   });
@@ -95,14 +98,14 @@
       :one-liner="data.description"
       :sections="sections"
       class="bg-background sticky top-0 z-50 transition-all duration-300"
-      :image="data.logoUrl"
-      :serply-link="data.serplyLink"
+      :image="data.boxrec_image"
+      :serply-link="data.boxrec_url"
     >
       <template #upvote>
-        <BoxerEditButton v-if="useAuth" :id="data.id" />
+        <BoxerEditButton v-if="useAuth" :id="data.boxrec_id" />
         <BoxerVerificationButton
           v-if="useAuth"
-          :id="data.id"
+          :id="data.boxrec_id"
           :domain="data.slug"
           :is-verified-prop="data.verified"
         />

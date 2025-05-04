@@ -23,7 +23,6 @@
   // remove these from showing on the frontend
   const blacklistKeys = [
     'id',
-    'name',
     'createdAt',
     'updatedAt',
     'deletedAt',
@@ -32,12 +31,37 @@
     'deleted_at',
     'slug',
     'logoUrl',
-    'title',
     'excerpt'
   ];
   // rename these keys to show on the frontend
   const renameKeysMapping = {
-    basicInfo: 'Overview'
+    birth_name: 'Birth Name',
+    boxrec_image: 'Image',
+    boxrec_url: 'BoxRec URL',
+    career: 'Career Timeline',
+    debut: 'Professional Debut',
+    boxrec_id: 'BoxRec ID',
+    status: 'Status',
+    gender: 'Gender',
+    nationality: 'Nationality',
+    height_cm: 'Height (cm)',
+    residence: 'Residence',
+    nicknames: 'Nicknames',
+    stance: 'Stance',
+    birth_place: 'Birth Place',
+    reach_cm: 'Reach (cm)',
+    content: 'About',
+    weight_class: 'Weight Class',
+    fights: 'Fight History',
+    name: 'Fighter Name',
+    date: 'Date',
+    result: 'Result',
+    result_round: 'Round',
+    scheduled_rounds: 'Scheduled Rounds',
+    venue: 'Venue',
+    location: 'Location',
+    boxer_a: 'Fighter A',
+    boxer_b: 'Fighter B'
   };
 
   // Convert camelCase/PascalCase to human-readable format
@@ -139,7 +163,7 @@
             v-if="value.length > 1"
             :class="getHeadingClass(nestingLevel)"
           >
-            Item {{ index + 1 }}
+            {{ key_ === 'fights' ? `Fight ${value.length - index}` : `Item ${index + 1}` }}
           </component>
           <div class="space-y-6">
             <template v-for="(itemValue, itemKey) in item" :key="itemKey">
@@ -153,10 +177,11 @@
                 <component
                   :is="getHeadingTag(nestingLevel + 1)"
                   :class="getHeadingClass(nestingLevel + 1)"
+                  v-if="!shouldDisplayInline(itemValue, nestingLevel)"
                 >
                   {{ formatKey(itemKey) }}
                 </component>
-                <div class="ml-4">
+                <div :class="shouldDisplayInline(itemValue, nestingLevel) ? '' : 'ml-4'">
                   <JSONRenderer :value="itemValue" :key_="itemKey" />
                 </div>
               </div>
@@ -228,10 +253,11 @@
           <component
             :is="getHeadingTag(nestingLevel)"
             :class="getHeadingClass(nestingLevel)"
+            v-if="!['name'].includes(k)"
           >
             {{ formatKey(k) }}
           </component>
-          <div :class="nestingLevel > 0 ? 'ml-4' : ''">
+          <div :class="['name'].includes(k) ? '' : (nestingLevel > 0 ? 'ml-4' : '')">
             <JSONRenderer :value="v" :key_="k" />
           </div>
         </div>
