@@ -26,14 +26,14 @@
 
     // Get keys that have values in the first object
     const firstKeys = Object.keys(objects[0])
-      .filter(key => !isEmptyValue(objects[0][key]))
+      .filter((key) => !isEmptyValue(objects[0][key]))
       .sort()
       .join(',');
 
     // Check if all objects have the same keys with values
-    return objects.every(obj => {
+    return objects.every((obj) => {
       const objKeys = Object.keys(obj)
-        .filter(key => !isEmptyValue(obj[key]))
+        .filter((key) => !isEmptyValue(obj[key]))
         .sort()
         .join(',');
       return objKeys === firstKeys;
@@ -52,8 +52,16 @@
 
     // Define specific column order for fights
     if (props.key_ === 'fights') {
-      const fightColumns = ['date', 'result', 'result_round', 'scheduled_rounds', 'venue', 'boxer_a', 'boxer_b'];
-      return fightColumns.filter(col => keySet.has(col));
+      const fightColumns = [
+        'date',
+        'result',
+        'result_round',
+        'scheduled_rounds',
+        'venue',
+        'boxer_a',
+        'boxer_b'
+      ];
+      return fightColumns.filter((col) => keySet.has(col));
     }
 
     return [...keySet];
@@ -194,7 +202,8 @@
     if (value === null || value === undefined) return true;
     if (typeof value === 'string' && value.trim() === '') return true;
     if (Array.isArray(value) && value.length === 0) return true;
-    if (typeof value === 'object' && Object.keys(value).length === 0) return true;
+    if (typeof value === 'object' && Object.keys(value).length === 0)
+      return true;
     return false;
   };
 
@@ -205,8 +214,8 @@
     const items = props.value as Record<string, unknown>[];
     const allKeys = new Set<string>();
 
-    items.forEach(item => {
-      Object.keys(item).forEach(key => {
+    items.forEach((item) => {
+      Object.keys(item).forEach((key) => {
         if (!blacklistKeys.includes(key) && !isEmptyValue(item[key])) {
           allKeys.add(key);
         }
@@ -217,11 +226,19 @@
 
     // Define specific column order for fights
     if (props.key_ === 'fights') {
-      const fightColumns = ['date', 'result', 'result_round', 'scheduled_rounds', 'venue', 'boxer_a', 'boxer_b'];
-      cols = fightColumns.filter(col => allKeys.has(col));
+      const fightColumns = [
+        'date',
+        'result',
+        'result_round',
+        'scheduled_rounds',
+        'venue',
+        'boxer_a',
+        'boxer_b'
+      ];
+      cols = fightColumns.filter((col) => allKeys.has(col));
     }
 
-    return cols.map(key => ({
+    return cols.map((key) => ({
       key,
       label: formatKey(key),
       sortable: true
@@ -233,7 +250,7 @@
     if (!shouldRenderAsTable.value || !itemsAreObjects.value) return [];
 
     const items = props.value as Record<string, unknown>[];
-    return items.map(item => {
+    return items.map((item) => {
       const processedItem = {};
 
       Object.entries(item).forEach(([key, value]) => {
@@ -243,7 +260,10 @@
           // Handle nested objects by extracting specific values
           if (key === 'venue' && 'location' in value) {
             processedItem[key] = value.location || 'TBA';
-          } else if ((key === 'boxer_a' || key === 'boxer_b') && 'name' in value) {
+          } else if (
+            (key === 'boxer_a' || key === 'boxer_b') &&
+            'name' in value
+          ) {
             processedItem[key] = value.name;
           } else {
             // For other objects, stringify them
@@ -276,7 +296,11 @@
             { key: 'date', label: 'Date', sortable: true },
             { key: 'result', label: 'Result', sortable: true },
             { key: 'result_round', label: 'Round', sortable: true },
-            { key: 'scheduled_rounds', label: 'Scheduled Rounds', sortable: true },
+            {
+              key: 'scheduled_rounds',
+              label: 'Scheduled Rounds',
+              sortable: true
+            },
             { key: 'venue', label: 'Venue', sortable: true },
             { key: 'boxer_a', label: 'Fighter A', sortable: true },
             { key: 'boxer_b', label: 'Fighter B', sortable: true }
@@ -305,45 +329,101 @@
       <div v-else-if="itemsAreObjects" class="space-y-8">
         <div v-for="(item, index) in value" :key="index" class="space-y-4">
           <!-- Dynamic heading based on nesting level -->
-          <h2 v-if="nestingLevel === 0 && value.length > 1" :class="getHeadingClass(0)">
-            {{ key_ === 'fights' ? `Fight ${value.length - index}` : `Item ${index + 1}` }}
+          <h2
+            v-if="nestingLevel === 0 && value.length > 1"
+            :class="getHeadingClass(0)"
+          >
+            {{
+              key_ === 'fights'
+                ? `Fight ${value.length - index}`
+                : `Item ${index + 1}`
+            }}
           </h2>
-          <h3 v-else-if="nestingLevel === 1 && value.length > 1" :class="getHeadingClass(1)">
-            {{ key_ === 'fights' ? `Fight ${value.length - index}` : `Item ${index + 1}` }}
+          <h3
+            v-else-if="nestingLevel === 1 && value.length > 1"
+            :class="getHeadingClass(1)"
+          >
+            {{
+              key_ === 'fights'
+                ? `Fight ${value.length - index}`
+                : `Item ${index + 1}`
+            }}
           </h3>
-          <h4 v-else-if="nestingLevel === 2 && value.length > 1" :class="getHeadingClass(2)">
-            {{ key_ === 'fights' ? `Fight ${value.length - index}` : `Item ${index + 1}` }}
+          <h4
+            v-else-if="nestingLevel === 2 && value.length > 1"
+            :class="getHeadingClass(2)"
+          >
+            {{
+              key_ === 'fights'
+                ? `Fight ${value.length - index}`
+                : `Item ${index + 1}`
+            }}
           </h4>
-          <h5 v-else-if="nestingLevel === 3 && value.length > 1" :class="getHeadingClass(3)">
-            {{ key_ === 'fights' ? `Fight ${value.length - index}` : `Item ${index + 1}` }}
+          <h5
+            v-else-if="nestingLevel === 3 && value.length > 1"
+            :class="getHeadingClass(3)"
+          >
+            {{
+              key_ === 'fights'
+                ? `Fight ${value.length - index}`
+                : `Item ${index + 1}`
+            }}
           </h5>
           <h6 v-else-if="value.length > 1" :class="getHeadingClass(4)">
-            {{ key_ === 'fights' ? `Fight ${value.length - index}` : `Item ${index + 1}` }}
+            {{
+              key_ === 'fights'
+                ? `Fight ${value.length - index}`
+                : `Item ${index + 1}`
+            }}
           </h6>
 
           <div class="space-y-6">
             <template v-for="(itemValue, itemKey) in item" :key="itemKey">
               <div
                 v-if="
-                  !isEmptyValue(itemValue) &&
-                  !blacklistKeys.includes(itemKey)
+                  !isEmptyValue(itemValue) && !blacklistKeys.includes(itemKey)
                 "
               >
                 <!-- Nested heading based on level -->
-                <h3 v-if="nestingLevel === 0 && !shouldDisplayInline(itemValue, nestingLevel + 1)" :class="getHeadingClass(1)">
+                <h3
+                  v-if="
+                    nestingLevel === 0 &&
+                    !shouldDisplayInline(itemValue, nestingLevel + 1)
+                  "
+                  :class="getHeadingClass(1)"
+                >
                   {{ formatKey(itemKey) }}
                 </h3>
-                <h4 v-else-if="nestingLevel === 1 && !shouldDisplayInline(itemValue, nestingLevel + 1)" :class="getHeadingClass(2)">
+                <h4
+                  v-else-if="
+                    nestingLevel === 1 &&
+                    !shouldDisplayInline(itemValue, nestingLevel + 1)
+                  "
+                  :class="getHeadingClass(2)"
+                >
                   {{ formatKey(itemKey) }}
                 </h4>
-                <h5 v-else-if="nestingLevel === 2 && !shouldDisplayInline(itemValue, nestingLevel + 1)" :class="getHeadingClass(3)">
+                <h5
+                  v-else-if="
+                    nestingLevel === 2 &&
+                    !shouldDisplayInline(itemValue, nestingLevel + 1)
+                  "
+                  :class="getHeadingClass(3)"
+                >
                   {{ formatKey(itemKey) }}
                 </h5>
-                <h6 v-else-if="!shouldDisplayInline(itemValue, nestingLevel + 1)" :class="getHeadingClass(4)">
+                <h6
+                  v-else-if="!shouldDisplayInline(itemValue, nestingLevel + 1)"
+                  :class="getHeadingClass(4)"
+                >
                   {{ formatKey(itemKey) }}
                 </h6>
 
-                <div :class="shouldDisplayInline(itemValue, nestingLevel) ? '' : 'ml-4'">
+                <div
+                  :class="
+                    shouldDisplayInline(itemValue, nestingLevel) ? '' : 'ml-4'
+                  "
+                >
                   <JSONRenderer :value="itemValue" :key_="itemKey" />
                 </div>
               </div>
@@ -363,9 +443,7 @@
       <template v-for="(v, k) in value" :key="k">
         <!-- Wrap top-level sections in UCard -->
         <UCard
-          v-if="
-            shouldWrapInCard(k, nestingLevel) && !isEmptyValue(v)
-          "
+          v-if="shouldWrapInCard(k, nestingLevel) && !isEmptyValue(v)"
           :id="k"
           class="mb-8 scroll-mt-30 rounded-md border border-gray-200 dark:border-gray-800"
           :ui="{ body: { padding: 'p-4 sm:p-6' } }"
@@ -406,29 +484,41 @@
 
         <!-- Standard rendering for h2 level content and non-primitive values -->
         <div
-          v-else-if="
-            !isEmptyValue(v) && !blacklistKeys.includes(k)
-          "
+          v-else-if="!isEmptyValue(v) && !blacklistKeys.includes(k)"
           class="mb-4 space-y-2"
         >
           <!-- Dynamic heading based on nesting level -->
-          <h2 v-if="nestingLevel === 0 && !['name'].includes(k)" :class="getHeadingClass(0)">
+          <h2
+            v-if="nestingLevel === 0 && !['name'].includes(k)"
+            :class="getHeadingClass(0)"
+          >
             {{ formatKey(k) }}
           </h2>
-          <h3 v-else-if="nestingLevel === 1 && !['name'].includes(k)" :class="getHeadingClass(1)">
+          <h3
+            v-else-if="nestingLevel === 1 && !['name'].includes(k)"
+            :class="getHeadingClass(1)"
+          >
             {{ formatKey(k) }}
           </h3>
-          <h4 v-else-if="nestingLevel === 2 && !['name'].includes(k)" :class="getHeadingClass(2)">
+          <h4
+            v-else-if="nestingLevel === 2 && !['name'].includes(k)"
+            :class="getHeadingClass(2)"
+          >
             {{ formatKey(k) }}
           </h4>
-          <h5 v-else-if="nestingLevel === 3 && !['name'].includes(k)" :class="getHeadingClass(3)">
+          <h5
+            v-else-if="nestingLevel === 3 && !['name'].includes(k)"
+            :class="getHeadingClass(3)"
+          >
             {{ formatKey(k) }}
           </h5>
           <h6 v-else-if="!['name'].includes(k)" :class="getHeadingClass(4)">
             {{ formatKey(k) }}
           </h6>
 
-          <div :class="['name'].includes(k) ? '' : (nestingLevel > 0 ? 'ml-4' : '')">
+          <div
+            :class="['name'].includes(k) ? '' : nestingLevel > 0 ? 'ml-4' : ''"
+          >
             <JSONRenderer :value="v" :key_="k" />
           </div>
         </div>
