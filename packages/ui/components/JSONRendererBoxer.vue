@@ -12,12 +12,50 @@
         (v) => v !== null && typeof v === 'object' && !Array.isArray(v)
       )
   );
+
+  // Check if the array of objects should be rendered as a table
+  const shouldRenderAsTable = computed(() => {
+    if (!itemsAreObjects.value) return false;
+
+    // For fights, always render as table
+    if (props.key_ === 'fights') return true;
+
+    // For other arrays, check if they have consistent structure
+    const objects = props.value as Record<string, unknown>[];
+    if (objects.length < 2) return false;
+
+    // Get keys that have values in the first object
+    const firstKeys = Object.keys(objects[0])
+      .filter(key => !isEmptyValue(objects[0][key]))
+      .sort()
+      .join(',');
+
+    // Check if all objects have the same keys with values
+    return objects.every(obj => {
+      const objKeys = Object.keys(obj)
+        .filter(key => !isEmptyValue(obj[key]))
+        .sort()
+        .join(',');
+      return objKeys === firstKeys;
+    });
+  });
   const columns = computed(() => {
     if (!itemsAreObjects.value) return [];
     const keySet = new Set<string>();
-    (props.value as Record<string, unknown>[]).forEach((obj) =>
-      Object.keys(obj).forEach((k) => keySet.add(k))
-    );
+    (props.value as Record<string, unknown>[]).forEach((obj) => {
+      Object.keys(obj).forEach((k) => {
+        if (!isEmptyValue(obj[k])) {
+          keySet.add(k);
+        }
+      });
+    });
+
+    // Define specific column order for fights
+    if (props.key_ === 'fights') {
+      const fightColumns = ['date', 'result', 'result_round', 'scheduled_rounds', 'venue', 'boxer_a', 'boxer_b'];
+      return fightColumns.filter(col => keySet.has(col));
+    }
+
     return [...keySet];
   });
   // remove these from showing on the frontend
@@ -117,6 +155,13 @@
     return classes[Math.min(level, classes.length - 1)];
   };
 
+  // Helper to render the appropriate heading element
+  const renderHeading = (level: number, text: string) => {
+    const tag = getHeadingTag(level);
+    const className = getHeadingClass(level);
+    return { tag, className, text };
+  };
+
   // Determine if a key should be wrapped in a card (top-level sections)
   const shouldWrapInCard = (key: string, level: number) => {
     // Only wrap top-level keys in cards
@@ -143,6 +188,75 @@
   const shouldDisplayInline = (value: unknown, level: number): boolean => {
     return isPrimitive(value) && level >= 2; // Only inline for h3+ level content
   };
+
+  // Check if a value is empty
+  const isEmptyValue = (value: unknown): boolean => {
+    if (value === null || value === undefined) return true;
+    if (typeof value === 'string' && value.trim() === '') return true;
+    if (Array.isArray(value) && value.length === 0) return true;
+    if (typeof value === 'object' && Object.keys(value).length === 0) return true;
+    return false;
+  };
+
+  // Format table columns for UTable
+  const tableColumns = computed(() => {
+    if (!itemsAreObjects.value) return [];
+
+    const items = props.value as Record<string, unknown>[];
+    const allKeys = new Set<string>();
+
+    items.forEach(item => {
+      Object.keys(item).forEach(key => {
+        if (!blacklistKeys.includes(key) && !isEmptyValue(item[key])) {
+          allKeys.add(key);
+        }
+      });
+    });
+
+    let cols = Array.from(allKeys);
+
+    // Define specific column order for fights
+    if (props.key_ === 'fights') {
+      const fightColumns = ['date', 'result', 'result_round', 'scheduled_rounds', 'venue', 'boxer_a', 'boxer_b'];
+      cols = fightColumns.filter(col => allKeys.has(col));
+    }
+
+    return cols.map(key => ({
+      key,
+      label: formatKey(key),
+      sortable: true
+    }));
+  });
+
+  // Process table data to extract nested values
+  const tableData = computed(() => {
+    if (!shouldRenderAsTable.value || !itemsAreObjects.value) return [];
+
+    const items = props.value as Record<string, unknown>[];
+    return items.map(item => {
+      const processedItem = {};
+
+      Object.entries(item).forEach(([key, value]) => {
+        if (isEmptyValue(value)) return; // Skip empty values
+
+        if (typeof value === 'object' && value !== null) {
+          // Handle nested objects by extracting specific values
+          if (key === 'venue' && 'location' in value) {
+            processedItem[key] = value.location || 'TBA';
+          } else if ((key === 'boxer_a' || key === 'boxer_b') && 'name' in value) {
+            processedItem[key] = value.name;
+          } else {
+            // For other objects, stringify them
+            processedItem[key] = JSON.stringify(value);
+          }
+        } else {
+          processedItem[key] = value || 'TBA';
+        }
+      });
+
+      return processedItem;
+    });
+  });
 </script>
 <template>
   <div>
@@ -155,32 +269,80 @@
     <BooleanRenderer v-else-if="typeofValue === 'boolean'" :value="value" />
     <!-- arrays -->
     <div v-else-if="Array.isArray(value)" class="space-y-4">
+      <!-- Force table for fights data -->
+      <div v-if="key_ === 'fights' && itemsAreObjects">
+        <UTable
+          :columns="[
+            { key: 'date', label: 'Date', sortable: true },
+            { key: 'result', label: 'Result', sortable: true },
+            { key: 'result_round', label: 'Round', sortable: true },
+            { key: 'scheduled_rounds', label: 'Scheduled Rounds', sortable: true },
+            { key: 'venue', label: 'Venue', sortable: true },
+            { key: 'boxer_a', label: 'Fighter A', sortable: true },
+            { key: 'boxer_b', label: 'Fighter B', sortable: true }
+          ]"
+          :rows="tableData"
+          class="w-full"
+          :ui="{
+            td: { base: 'whitespace-nowrap' },
+            th: { base: 'whitespace-nowrap' }
+          }"
+        />
+      </div>
+      <!-- array of objects that should be rendered as table -->
+      <div v-else-if="shouldRenderAsTable && !key_.startsWith('fights')">
+        <UTable
+          :columns="tableColumns"
+          :rows="tableData"
+          class="w-full"
+          :ui="{
+            td: { base: 'whitespace-nowrap' },
+            th: { base: 'whitespace-nowrap' }
+          }"
+        />
+      </div>
       <!-- array of objects -> structured sections -->
-      <div v-if="itemsAreObjects" class="space-y-8">
+      <div v-else-if="itemsAreObjects" class="space-y-8">
         <div v-for="(item, index) in value" :key="index" class="space-y-4">
-          <component
-            :is="getHeadingTag(nestingLevel)"
-            v-if="value.length > 1"
-            :class="getHeadingClass(nestingLevel)"
-          >
+          <!-- Dynamic heading based on nesting level -->
+          <h2 v-if="nestingLevel === 0 && value.length > 1" :class="getHeadingClass(0)">
             {{ key_ === 'fights' ? `Fight ${value.length - index}` : `Item ${index + 1}` }}
-          </component>
+          </h2>
+          <h3 v-else-if="nestingLevel === 1 && value.length > 1" :class="getHeadingClass(1)">
+            {{ key_ === 'fights' ? `Fight ${value.length - index}` : `Item ${index + 1}` }}
+          </h3>
+          <h4 v-else-if="nestingLevel === 2 && value.length > 1" :class="getHeadingClass(2)">
+            {{ key_ === 'fights' ? `Fight ${value.length - index}` : `Item ${index + 1}` }}
+          </h4>
+          <h5 v-else-if="nestingLevel === 3 && value.length > 1" :class="getHeadingClass(3)">
+            {{ key_ === 'fights' ? `Fight ${value.length - index}` : `Item ${index + 1}` }}
+          </h5>
+          <h6 v-else-if="value.length > 1" :class="getHeadingClass(4)">
+            {{ key_ === 'fights' ? `Fight ${value.length - index}` : `Item ${index + 1}` }}
+          </h6>
+
           <div class="space-y-6">
             <template v-for="(itemValue, itemKey) in item" :key="itemKey">
               <div
                 v-if="
-                  itemValue !== null &&
-                  itemValue !== undefined &&
+                  !isEmptyValue(itemValue) &&
                   !blacklistKeys.includes(itemKey)
                 "
               >
-                <component
-                  :is="getHeadingTag(nestingLevel + 1)"
-                  :class="getHeadingClass(nestingLevel + 1)"
-                  v-if="!shouldDisplayInline(itemValue, nestingLevel)"
-                >
+                <!-- Nested heading based on level -->
+                <h3 v-if="nestingLevel === 0 && !shouldDisplayInline(itemValue, nestingLevel + 1)" :class="getHeadingClass(1)">
                   {{ formatKey(itemKey) }}
-                </component>
+                </h3>
+                <h4 v-else-if="nestingLevel === 1 && !shouldDisplayInline(itemValue, nestingLevel + 1)" :class="getHeadingClass(2)">
+                  {{ formatKey(itemKey) }}
+                </h4>
+                <h5 v-else-if="nestingLevel === 2 && !shouldDisplayInline(itemValue, nestingLevel + 1)" :class="getHeadingClass(3)">
+                  {{ formatKey(itemKey) }}
+                </h5>
+                <h6 v-else-if="!shouldDisplayInline(itemValue, nestingLevel + 1)" :class="getHeadingClass(4)">
+                  {{ formatKey(itemKey) }}
+                </h6>
+
                 <div :class="shouldDisplayInline(itemValue, nestingLevel) ? '' : 'ml-4'">
                   <JSONRenderer :value="itemValue" :key_="itemKey" />
                 </div>
@@ -202,7 +364,7 @@
         <!-- Wrap top-level sections in UCard -->
         <UCard
           v-if="
-            shouldWrapInCard(k, nestingLevel) && v !== null && v !== undefined
+            shouldWrapInCard(k, nestingLevel) && !isEmptyValue(v)
           "
           :id="k"
           class="mb-8 scroll-mt-30 rounded-md border border-gray-200 dark:border-gray-800"
@@ -230,8 +392,7 @@
         <!-- Display primitive values on the same line ONLY for h3+ levels -->
         <div
           v-else-if="
-            v !== null &&
-            v !== undefined &&
+            !isEmptyValue(v) &&
             !blacklistKeys.includes(k) &&
             shouldDisplayInline(v, nestingLevel)
           "
@@ -246,17 +407,27 @@
         <!-- Standard rendering for h2 level content and non-primitive values -->
         <div
           v-else-if="
-            v !== null && v !== undefined && !blacklistKeys.includes(k)
+            !isEmptyValue(v) && !blacklistKeys.includes(k)
           "
           class="mb-4 space-y-2"
         >
-          <component
-            :is="getHeadingTag(nestingLevel)"
-            :class="getHeadingClass(nestingLevel)"
-            v-if="!['name'].includes(k)"
-          >
+          <!-- Dynamic heading based on nesting level -->
+          <h2 v-if="nestingLevel === 0 && !['name'].includes(k)" :class="getHeadingClass(0)">
             {{ formatKey(k) }}
-          </component>
+          </h2>
+          <h3 v-else-if="nestingLevel === 1 && !['name'].includes(k)" :class="getHeadingClass(1)">
+            {{ formatKey(k) }}
+          </h3>
+          <h4 v-else-if="nestingLevel === 2 && !['name'].includes(k)" :class="getHeadingClass(2)">
+            {{ formatKey(k) }}
+          </h4>
+          <h5 v-else-if="nestingLevel === 3 && !['name'].includes(k)" :class="getHeadingClass(3)">
+            {{ formatKey(k) }}
+          </h5>
+          <h6 v-else-if="!['name'].includes(k)" :class="getHeadingClass(4)">
+            {{ formatKey(k) }}
+          </h6>
+
           <div :class="['name'].includes(k) ? '' : (nestingLevel > 0 ? 'ml-4' : '')">
             <JSONRenderer :value="v" :key_="k" />
           </div>

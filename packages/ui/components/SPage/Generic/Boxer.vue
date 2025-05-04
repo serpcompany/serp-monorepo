@@ -9,7 +9,7 @@
 
   // Load boxer data from JSON file instead of useBoxer composable
   const data = computed(() => {
-    return boxersData.find(boxer => boxer.slug === slug);
+    return boxersData.find((boxer) => boxer.slug === slug);
   });
 
   // Redirect if boxer not found
