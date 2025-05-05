@@ -9,7 +9,8 @@
     "generate": "nuxt generate .playground",
     "lint": "prettier . --write --log-level warn && eslint . --fix",
     "prettier": "prettier . --write --log-level warn",
-    "preview": "nuxt preview .playground"
+    "preview": "nuxt preview .playground",
+    "typecheck": "nuxi typecheck"
   },
   "devDependencies": {
     "@nuxt/eslint": "latest",
@@ -18,6 +19,7 @@
     "eslint": "^9.20.1",
     "nuxt": "^3.16.1",
     "typescript": "^5.7.3",
-    "vue": "latest"
+    "vue": "latest",
+    "vue-tsc": "^2.2.0"
   }
 }

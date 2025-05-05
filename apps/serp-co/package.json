@@ -20,7 +20,8 @@
     "pretest": "vitest --coverage --run",
     "test": "vitest --coverage --run",
     "test:update": "vitest --run --coverage --update",
-    "test:watch": "vitest --coverage"
+    "test:watch": "vitest --coverage",
+    "typecheck": "nuxi typecheck"
   },
   "devDependencies": {
     "@bg-dev/nuxt-s3": "2.0.2",
@@ -73,12 +74,13 @@
     "postgres": "^3.4.5",
     "prettier-plugin-packagejson": "^2.5.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
-    "typescript": "^5.6.3",
+    "typescript": "^5.7.3",
     "unhead": "^2.0.8",
     "uuid": "^11.1.0",
     "vitest": "^2.1.5",
     "vue": "latest",
     "vue-router": "latest",
+    "vue-tsc": "^2.2.0",
     "zod": "^3.24.2"
   },
   "packageManager": "pnpm@8.11.0+sha512.9df87c16c98db27b4e051d787e67f2207ec47e809ccb07bf7b5ec4acdcd1613355839a38d0b900144923d6a7057700b74d2a0ccb1558beb241647a1206a9a7ab"

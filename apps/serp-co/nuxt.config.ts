@@ -129,6 +129,9 @@ export default defineNuxtConfig({
   image: {
     format: ['webp']
   },
+  typescript: {
+    typeCheck: true
+  },
   security: {
     strict: true,
     rateLimiter: false,

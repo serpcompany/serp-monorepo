@@ -12,7 +12,8 @@
     "prettier": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run prettier",
     "test": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run test",
     "test:update": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run test:update",
-    "test:watch": "turbo run test:watch"
+    "test:watch": "turbo run test:watch",
+    "typecheck": "turbo run typecheck"
   },
   "resolutions": {
     "unimport": "4.1.1",

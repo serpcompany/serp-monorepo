@@ -10,7 +10,8 @@
     "lint": "prettier . --write --log-level warn && eslint . --fix",
     "prepare": "nuxt prepare",
     "prettier": "prettier . --write --log-level warn",
-    "preview": "nuxt preview .playground"
+    "preview": "nuxt preview .playground",
+    "typecheck": "nuxi typecheck"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
@@ -31,6 +32,7 @@
     "prettier-plugin-tailwindcss": "^0.6.8",
     "typescript": "^5.7.3",
     "vitest": "^2.1.5",
-    "vue": "latest"
+    "vue": "latest",
+    "vue-tsc": "^2.2.0"
   }
 }

@@ -95,6 +95,9 @@ export default defineNuxtConfig({
   image: {
     format: ['webp']
   },
+  typescript: {
+    typeCheck: true
+  },
   security: {
     headers: {
       contentSecurityPolicy: {

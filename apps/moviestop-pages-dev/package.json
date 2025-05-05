@@ -17,7 +17,8 @@
     "lint": "prettier . --write --log-level warn && eslint . --fix",
     "prettier": "prettier . --write --log-level warn",
     "preview": "nuxt preview",
-    "server": "node .output/server/index.mjs"
+    "server": "node .output/server/index.mjs",
+    "typecheck": "nuxi typecheck"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
@@ -61,11 +62,12 @@
     "playwright-core": "^1.48.2",
     "prettier-plugin-packagejson": "^2.5.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
-    "typescript": "^5.6.3",
+    "typescript": "^5.7.3",
     "unhead": "^2.0.8",
     "vitest": "^2.1.5",
     "vue": "latest",
     "vue-router": "latest",
+    "vue-tsc": "^2.2.0",
     "wrangler": "^3.112.0"
   },
   "packageManager": "pnpm@8.11.0+sha512.9df87c16c98db27b4e051d787e67f2207ec47e809ccb07bf7b5ec4acdcd1613355839a38d0b900144923d6a7057700b74d2a0ccb1558beb241647a1206a9a7ab"

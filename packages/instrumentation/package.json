@@ -9,7 +9,8 @@
     "generate": "nuxt generate .playground",
     "lint": "prettier . --write --log-level warn && eslint . --fix",
     "prettier": "prettier . --write --log-level warn",
-    "preview": "nuxt preview .playground"
+    "preview": "nuxt preview .playground",
+    "typecheck": "nuxi typecheck"
   },
   "dependencies": {
     "@opentelemetry/auto-instrumentations-web": "^0.43.0",
@@ -39,6 +40,7 @@
     "prettier-plugin-tailwindcss": "^0.6.8",
     "typescript": "^5.7.3",
     "vitest": "^2.1.5",
-    "vue": "latest"
+    "vue": "latest",
+    "vue-tsc": "^2.2.0"
   }
 }
