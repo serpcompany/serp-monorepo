@@ -5,5 +5,5 @@
   "vueIndentScriptAndStyle": true,
   "plugins": ["prettier-plugin-packagejson", "prettier-plugin-tailwindcss"],
   "tailwindFunctions": ["cn", "clsx", "twMerge"],
-  "htmlWhitespaceSensitivity": "css"
+  "htmlWhitespaceSensitivity": "css",
 }
