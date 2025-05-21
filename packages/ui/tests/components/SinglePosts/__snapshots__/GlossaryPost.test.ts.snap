@@ -8,7 +8,7 @@ exports[`SinglePostsGlossaryPost Snapshot > renders with full post and auth disa
       <p class="prose dark:prose-invert mt-4">A quick guide on snapshot testing.</p>
     </div>
     <div class="col-span-1 pb-10">
-      <div aria-busy="false" aria-label="YouTube Player - Loaded" role="application" style="position: relative; background-color: black; max-width: 100%; width: 640px; aspect-ratio: 640 / 360;" thumbnail-size="maxresdefault">
+      <div aria-busy="false" aria-label="YouTube Player - Loaded" role="application" style="position: relative; background-color: black; max-width: 100%; width: 640px; aspect-ratio: 640 / 360;">
         <div style="width: 100%; height: 100%; position: absolute; top: 0px; left: 0px;"></div><img src="https://i.ytimg.com/vi_webp/abc123/sddefault.webp" alt="" loading="lazy" style="width: 100%; object-fit: cover; height: 100%;">
         <!--v-if-->
       </div>
@@ -50,9 +50,9 @@ exports[`SinglePostsGlossaryPost Snapshot > renders with full post and auth enab
       <p class="prose dark:prose-invert mt-4">A quick guide on snapshot testing.</p>
     </div>
     <div class="col-span-1 pb-10">
-      <div aria-busy="true" aria-label="YouTube Player - Loading" role="application" style="position: relative; background-color: black; max-width: 100%; width: 640px; aspect-ratio: 640 / 360;" thumbnail-size="maxresdefault">
+      <div aria-busy="true" aria-label="YouTube Player - Loading" role="application" style="position: relative; background-color: black; max-width: 100%; width: 640px; aspect-ratio: 640 / 360;">
         <div style="width: 100%; height: 100%; position: absolute; top: 0px; left: 0px;"></div><img src="https://i.ytimg.com/vi_webp/abc123/sddefault.webp" alt="" loading="lazy" style="width: 100%; object-fit: cover; height: 100%;">
-        <div data-v-e49d796d="" class="loader" styles="[object Object]" aria-label="Loading..." role="status"></div>
+        <div data-v-e25baa79="" class="loader" styles="[object Object]" aria-label="Loading..." role="status"></div>
       </div>
     </div>
     <div data-orientation="horizontal" role="separator" class="flex items-center align-center text-center w-full flex-row col-span-3 my-4">
@@ -142,7 +142,7 @@ exports[`SinglePostsGlossaryPost Snapshot > renders with non-empty relatedPosts 
       <p class="prose dark:prose-invert mt-4">Post with related posts</p>
     </div>
     <div class="col-span-1 pb-10">
-      <div aria-busy="false" aria-label="YouTube Player - Loaded" role="application" style="position: relative; background-color: black; max-width: 100%; width: 640px; aspect-ratio: 640 / 360;" thumbnail-size="maxresdefault">
+      <div aria-busy="false" aria-label="YouTube Player - Loaded" role="application" style="position: relative; background-color: black; max-width: 100%; width: 640px; aspect-ratio: 640 / 360;">
         <div style="width: 100%; height: 100%; position: absolute; top: 0px; left: 0px;"></div><img src="https://i.ytimg.com/vi_webp/def456/sddefault.webp" alt="" loading="lazy" style="width: 100%; object-fit: cover; height: 100%;">
         <!--v-if-->
       </div>

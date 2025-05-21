@@ -1,3 +1,6 @@
 {
-  "extends": ["@serp/configs/tsconfig", "./.nuxt/tsconfig.json"]
+  "extends": [
+    "../../packages/configs/tsconfig/base.json",
+    "./.nuxt/tsconfig.json"
+  ]
 }

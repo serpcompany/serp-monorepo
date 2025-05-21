@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import countCharacters from '../../../../tools/utils/countCharacters';
   const str = ref('');
   const characterCount = ref();
 
