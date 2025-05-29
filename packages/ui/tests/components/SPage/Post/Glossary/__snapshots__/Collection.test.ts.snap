@@ -1,122 +1,146 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPagePostGlossaryCollection Snapshot > renders with posts and categories (with auth) correctly 1`] = `
+exports[`SPagePostGlossaryCollection Snapshot > renders with posts (with auth) correctly 1`] = `
 "<div>
-  <section>
-    <section class="py-20">
-      <h1 class="md:text-center">Glossary</h1>
+  <div data-orientation="vertical" class="relative isolate">
+    <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:grid py-24 sm:py-32 lg:py-40 gap-16 sm:gap-y-24">
+      <div class="text-center">
+        <!--v-if-->
+        <h1 class="text-5xl sm:text-7xl text-pretty tracking-tight font-bold text-highlighted">Glossary</h1>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
       <!--v-if-->
-    </section>
-    <nav class="mx-auto flex justify-between overflow-x-scroll"><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->A
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->B
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->C
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->D
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->E
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->F
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->G
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->H
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->I
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->J
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->K
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->L
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->M
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->N
-        <!--v-if-->
-      </a><a href="#O" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->O
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->P
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->Q
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->R
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->S
-        <!--v-if-->
-      </a><a href="#T" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->T
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->U
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->V
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->W
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->X
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->Y
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->Z
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->*
-        <!--v-if-->
-      </a></nav>
-  </section><!-- character section (character + cards) -->
-  <main>
-    <div class="px-6 lg:px-8">
-      <div id="O" class="pt-12 lg:pt-24">
-        <div>
-          <!-- character section top (character) -->
-          <h2 class="text-4xl font-semibold">O</h2><!-- character section bottom (cards) -->
-          <div class="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-            <div><a href="/posts/post-one/" class="group hover:border-primary relative flex flex-col border-2 px-4 pt-4 pb-8">
-                <h2 class="text-sm font-medium">One</h2>
-                <p class="mt-4 text-sm"></p>
-              </a></div>
-          </div>
-        </div>
-      </div>
-      <div id="T" class="pt-12 lg:pt-24">
-        <div>
-          <!-- character section top (character) -->
-          <h2 class="text-4xl font-semibold">T</h2><!-- character section bottom (cards) -->
-          <div class="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-            <div><a href="/posts/post-two/" class="group hover:border-primary relative flex flex-col border-2 px-4 pt-4 pb-8">
-                <h2 class="text-sm font-medium">Two</h2>
-                <p class="mt-4 text-sm">Test one-liner</p>
-              </a></div>
-          </div>
-        </div>
-      </div>
     </div>
+  </div>
+  <nav class="flex w-full flex-wrap gap-1 md:justify-between sticky top-8 z-20 rounded-md border border-(--ui-border) bg-white p-2"><a href="#A" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">A</span>
+      <!--v-if-->
+    </a><a href="#B" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">B</span>
+      <!--v-if-->
+    </a><a href="#C" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">C</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">D</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">E</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">F</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">G</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">H</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">I</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">J</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">K</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">L</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">M</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">N</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">O</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">P</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">Q</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">R</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">S</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">T</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">U</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">V</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">W</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">X</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">Y</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">Z</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">&amp;</span>
+      <!--v-if-->
+    </a></nav>
+  <main>
+    <section data-orientation="vertical" class="relative isolate" id="A">
+      <div class="w-full max-w-(--ui-container) mx-auto sm:px-6 flex flex-col lg:grid py-16 sm:py-24 lg:py-32 gap-8 sm:gap-16 px-0 lg:px-0">
+        <div class="">
+          <!--v-if-->
+          <!--v-if-->
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted text-left">A</h2>
+          <!--v-if-->
+          <!--v-if-->
+          <!--v-if-->
+        </div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-8 lg:grid-cols-3"><a href="/posts/arc/" class="focus-visible:outline-primary text-muted hover:text-default transition-colors group flex items-center gap-3"><span class="iconify i-lucide:arrow-right text-dimmed size-4 transition-transform group-hover:translate-x-1" aria-hidden="true"></span><span class="truncate text-base font-medium">Arc</span>
+            <hr class="min-w-0 flex-1 border-(--ui-border)">
+          </a></div>
+      </div>
+    </section>
+    <section data-orientation="vertical" class="relative isolate" id="B">
+      <div class="w-full max-w-(--ui-container) mx-auto sm:px-6 flex flex-col lg:grid py-16 sm:py-24 lg:py-32 gap-8 sm:gap-16 px-0 lg:px-0">
+        <div class="">
+          <!--v-if-->
+          <!--v-if-->
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted text-left">B</h2>
+          <!--v-if-->
+          <!--v-if-->
+          <!--v-if-->
+        </div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-8 lg:grid-cols-3"><a href="/posts/barc/" class="focus-visible:outline-primary text-muted hover:text-default transition-colors group flex items-center gap-3"><span class="iconify i-lucide:arrow-right text-dimmed size-4 transition-transform group-hover:translate-x-1" aria-hidden="true"></span><span class="truncate text-base font-medium">Barc</span>
+            <hr class="min-w-0 flex-1 border-(--ui-border)">
+          </a></div>
+      </div>
+    </section>
+    <section data-orientation="vertical" class="relative isolate" id="C">
+      <div class="w-full max-w-(--ui-container) mx-auto sm:px-6 flex flex-col lg:grid py-16 sm:py-24 lg:py-32 gap-8 sm:gap-16 px-0 lg:px-0">
+        <div class="">
+          <!--v-if-->
+          <!--v-if-->
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted text-left">C</h2>
+          <!--v-if-->
+          <!--v-if-->
+          <!--v-if-->
+        </div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-8 lg:grid-cols-3"><a href="/posts/carc/" class="focus-visible:outline-primary text-muted hover:text-default transition-colors group flex items-center gap-3"><span class="iconify i-lucide:arrow-right text-dimmed size-4 transition-transform group-hover:translate-x-1" aria-hidden="true"></span><span class="truncate text-base font-medium">Carc</span>
+            <hr class="min-w-0 flex-1 border-(--ui-border)">
+          </a></div>
+      </div>
+    </section>
   </main>
   <section data-orientation="vertical" class="relative isolate text-center">
     <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:grid py-16 sm:py-24 lg:py-32 gap-8 sm:gap-16">
@@ -142,123 +166,147 @@ exports[`SPagePostGlossaryCollection Snapshot > renders with posts and categorie
 </div>"
 `;
 
-exports[`SPagePostGlossaryCollection Snapshot > renders with posts and categories (without auth) correctly 1`] = `
+exports[`SPagePostGlossaryCollection Snapshot > renders with posts (without auth) correctly 1`] = `
 "<div>
-  <section>
-    <section class="py-20">
-      <h1 class="md:text-center">Glossary</h1>
+  <div data-orientation="vertical" class="relative isolate">
+    <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:grid py-24 sm:py-32 lg:py-40 gap-16 sm:gap-y-24">
+      <div class="text-center">
+        <!--v-if-->
+        <h1 class="text-5xl sm:text-7xl text-pretty tracking-tight font-bold text-highlighted">Glossary</h1>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
       <!--v-if-->
-    </section>
-    <nav class="mx-auto flex justify-between overflow-x-scroll"><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->A
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->B
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->C
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->D
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->E
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->F
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->G
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->H
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->I
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->J
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->K
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->L
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->M
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->N
-        <!--v-if-->
-      </a><a href="#O" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->O
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->P
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->Q
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->R
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->S
-        <!--v-if-->
-      </a><a href="#T" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->T
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->U
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->V
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->W
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->X
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->Y
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->Z
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->*
-        <!--v-if-->
-      </a></nav>
-  </section><!-- character section (character + cards) -->
-  <main>
-    <div class="px-6 lg:px-8">
-      <div id="O" class="pt-12 lg:pt-24">
-        <div>
-          <!-- character section top (character) -->
-          <h2 class="text-4xl font-semibold">O</h2><!-- character section bottom (cards) -->
-          <div class="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-            <div><a href="/posts/post-one/" class="group hover:border-primary relative flex flex-col border-2 px-4 pt-4 pb-8">
-                <h2 class="text-sm font-medium">One</h2>
-                <p class="mt-4 text-sm"></p>
-              </a></div>
-          </div>
-        </div>
-      </div>
-      <div id="T" class="pt-12 lg:pt-24">
-        <div>
-          <!-- character section top (character) -->
-          <h2 class="text-4xl font-semibold">T</h2><!-- character section bottom (cards) -->
-          <div class="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-            <div><a href="/posts/post-two/" class="group hover:border-primary relative flex flex-col border-2 px-4 pt-4 pb-8">
-                <h2 class="text-sm font-medium">Two</h2>
-                <p class="mt-4 text-sm">Test one-liner</p>
-              </a></div>
-          </div>
-        </div>
-      </div>
     </div>
+  </div>
+  <nav class="flex w-full flex-wrap gap-1 md:justify-between sticky top-8 z-20 rounded-md border border-(--ui-border) bg-white p-2"><a href="#A" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">A</span>
+      <!--v-if-->
+    </a><a href="#B" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">B</span>
+      <!--v-if-->
+    </a><a href="#C" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">C</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">D</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">E</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">F</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">G</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">H</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">I</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">J</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">K</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">L</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">M</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">N</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">O</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">P</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">Q</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">R</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">S</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">T</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">U</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">V</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">W</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">X</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">Y</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">Z</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">&amp;</span>
+      <!--v-if-->
+    </a></nav>
+  <main>
+    <section data-orientation="vertical" class="relative isolate" id="A">
+      <div class="w-full max-w-(--ui-container) mx-auto sm:px-6 flex flex-col lg:grid py-16 sm:py-24 lg:py-32 gap-8 sm:gap-16 px-0 lg:px-0">
+        <div class="">
+          <!--v-if-->
+          <!--v-if-->
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted text-left">A</h2>
+          <!--v-if-->
+          <!--v-if-->
+          <!--v-if-->
+        </div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-8 lg:grid-cols-3"><a href="/posts/arc/" class="focus-visible:outline-primary text-muted hover:text-default transition-colors group flex items-center gap-3"><span class="iconify i-lucide:arrow-right text-dimmed size-4 transition-transform group-hover:translate-x-1" aria-hidden="true"></span><span class="truncate text-base font-medium">Arc</span>
+            <hr class="min-w-0 flex-1 border-(--ui-border)">
+          </a></div>
+      </div>
+    </section>
+    <section data-orientation="vertical" class="relative isolate" id="B">
+      <div class="w-full max-w-(--ui-container) mx-auto sm:px-6 flex flex-col lg:grid py-16 sm:py-24 lg:py-32 gap-8 sm:gap-16 px-0 lg:px-0">
+        <div class="">
+          <!--v-if-->
+          <!--v-if-->
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted text-left">B</h2>
+          <!--v-if-->
+          <!--v-if-->
+          <!--v-if-->
+        </div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-8 lg:grid-cols-3"><a href="/posts/barc/" class="focus-visible:outline-primary text-muted hover:text-default transition-colors group flex items-center gap-3"><span class="iconify i-lucide:arrow-right text-dimmed size-4 transition-transform group-hover:translate-x-1" aria-hidden="true"></span><span class="truncate text-base font-medium">Barc</span>
+            <hr class="min-w-0 flex-1 border-(--ui-border)">
+          </a></div>
+      </div>
+    </section>
+    <section data-orientation="vertical" class="relative isolate" id="C">
+      <div class="w-full max-w-(--ui-container) mx-auto sm:px-6 flex flex-col lg:grid py-16 sm:py-24 lg:py-32 gap-8 sm:gap-16 px-0 lg:px-0">
+        <div class="">
+          <!--v-if-->
+          <!--v-if-->
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted text-left">C</h2>
+          <!--v-if-->
+          <!--v-if-->
+          <!--v-if-->
+        </div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-8 lg:grid-cols-3"><a href="/posts/carc/" class="focus-visible:outline-primary text-muted hover:text-default transition-colors group flex items-center gap-3"><span class="iconify i-lucide:arrow-right text-dimmed size-4 transition-transform group-hover:translate-x-1" aria-hidden="true"></span><span class="truncate text-base font-medium">Carc</span>
+            <hr class="min-w-0 flex-1 border-(--ui-border)">
+          </a></div>
+      </div>
+    </section>
   </main>
   <section data-orientation="vertical" class="relative isolate text-center">
     <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:grid py-16 sm:py-24 lg:py-32 gap-8 sm:gap-16">
@@ -284,124 +332,102 @@ exports[`SPagePostGlossaryCollection Snapshot > renders with posts and categorie
 </div>"
 `;
 
-exports[`SPagePostGlossaryCollection Snapshot > renders with posts but no categories (with auth) correctly 1`] = `
+exports[`SPagePostGlossaryCollection Snapshot > renders without posts (with auth) correctly 1`] = `
 "<div>
-  <section>
-    <section class="py-20">
-      <h1 class="md:text-center">Glossary</h1>
+  <div data-orientation="vertical" class="relative isolate">
+    <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:grid py-24 sm:py-32 lg:py-40 gap-16 sm:gap-y-24">
+      <div class="text-center">
+        <!--v-if-->
+        <h1 class="text-5xl sm:text-7xl text-pretty tracking-tight font-bold text-highlighted">Glossary</h1>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
       <!--v-if-->
-    </section>
-    <nav class="mx-auto flex justify-between overflow-x-scroll"><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->A
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->B
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->C
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->D
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->E
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->F
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->G
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->H
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->I
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->J
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->K
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->L
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->M
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->N
-        <!--v-if-->
-      </a><a href="#O" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->O
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->P
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->Q
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->R
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->S
-        <!--v-if-->
-      </a><a href="#T" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->T
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->U
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->V
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->W
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->X
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->Y
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->Z
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->*
-        <!--v-if-->
-      </a></nav>
-  </section><!-- character section (character + cards) -->
-  <main>
-    <div class="px-6 lg:px-8">
-      <div id="O" class="pt-12 lg:pt-24">
-        <div>
-          <!-- character section top (character) -->
-          <h2 class="text-4xl font-semibold">O</h2><!-- character section bottom (cards) -->
-          <div class="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-            <div><a href="/posts/post-one/" class="group hover:border-primary relative flex flex-col border-2 px-4 pt-4 pb-8">
-                <h2 class="text-sm font-medium">One</h2>
-                <p class="mt-4 text-sm"></p>
-              </a></div>
-          </div>
-        </div>
-      </div>
-      <div id="T" class="pt-12 lg:pt-24">
-        <div>
-          <!-- character section top (character) -->
-          <h2 class="text-4xl font-semibold">T</h2><!-- character section bottom (cards) -->
-          <div class="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-            <div><a href="/posts/post-two/" class="group hover:border-primary relative flex flex-col border-2 px-4 pt-4 pb-8">
-                <h2 class="text-sm font-medium">Two</h2>
-                <p class="mt-4 text-sm">Test one-liner</p>
-              </a></div>
-          </div>
-        </div>
-      </div>
     </div>
-  </main>
+  </div>
+  <nav class="flex w-full flex-wrap gap-1 md:justify-between sticky top-8 z-20 rounded-md border border-(--ui-border) bg-white p-2"><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">A</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">B</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">C</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">D</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">E</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">F</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">G</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">H</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">I</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">J</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">K</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">L</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">M</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">N</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">O</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">P</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">Q</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">R</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">S</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">T</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">U</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">V</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">W</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">X</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">Y</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">Z</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">&amp;</span>
+      <!--v-if-->
+    </a></nav>
+  <main></main>
   <section data-orientation="vertical" class="relative isolate text-center">
     <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:grid py-16 sm:py-24 lg:py-32 gap-8 sm:gap-16">
       <div class="">
@@ -426,124 +452,102 @@ exports[`SPagePostGlossaryCollection Snapshot > renders with posts but no catego
 </div>"
 `;
 
-exports[`SPagePostGlossaryCollection Snapshot > renders with posts but no categories (without auth) correctly 1`] = `
+exports[`SPagePostGlossaryCollection Snapshot > renders without posts (without auth) correctly 1`] = `
 "<div>
-  <section>
-    <section class="py-20">
-      <h1 class="md:text-center">Glossary</h1>
+  <div data-orientation="vertical" class="relative isolate">
+    <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:grid py-24 sm:py-32 lg:py-40 gap-16 sm:gap-y-24">
+      <div class="text-center">
+        <!--v-if-->
+        <h1 class="text-5xl sm:text-7xl text-pretty tracking-tight font-bold text-highlighted">Glossary</h1>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
       <!--v-if-->
-    </section>
-    <nav class="mx-auto flex justify-between overflow-x-scroll"><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->A
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->B
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->C
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->D
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->E
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->F
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->G
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->H
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->I
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->J
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->K
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->L
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->M
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->N
-        <!--v-if-->
-      </a><a href="#O" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->O
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->P
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->Q
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->R
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->S
-        <!--v-if-->
-      </a><a href="#T" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->T
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->U
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->V
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->W
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->X
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->Y
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->Z
-        <!--v-if-->
-      </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-        <!--v-if-->*
-        <!--v-if-->
-      </a></nav>
-  </section><!-- character section (character + cards) -->
-  <main>
-    <div class="px-6 lg:px-8">
-      <div id="O" class="pt-12 lg:pt-24">
-        <div>
-          <!-- character section top (character) -->
-          <h2 class="text-4xl font-semibold">O</h2><!-- character section bottom (cards) -->
-          <div class="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-            <div><a href="/posts/post-one/" class="group hover:border-primary relative flex flex-col border-2 px-4 pt-4 pb-8">
-                <h2 class="text-sm font-medium">One</h2>
-                <p class="mt-4 text-sm"></p>
-              </a></div>
-          </div>
-        </div>
-      </div>
-      <div id="T" class="pt-12 lg:pt-24">
-        <div>
-          <!-- character section top (character) -->
-          <h2 class="text-4xl font-semibold">T</h2><!-- character section bottom (cards) -->
-          <div class="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-            <div><a href="/posts/post-two/" class="group hover:border-primary relative flex flex-col border-2 px-4 pt-4 pb-8">
-                <h2 class="text-sm font-medium">Two</h2>
-                <p class="mt-4 text-sm">Test one-liner</p>
-              </a></div>
-          </div>
-        </div>
-      </div>
     </div>
-  </main>
+  </div>
+  <nav class="flex w-full flex-wrap gap-1 md:justify-between sticky top-8 z-20 rounded-md border border-(--ui-border) bg-white p-2"><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">A</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">B</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">C</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">D</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">E</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">F</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">G</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">H</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">I</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">J</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">K</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">L</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">M</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">N</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">O</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">P</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">Q</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">R</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">S</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">T</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">U</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">V</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">W</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">X</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">Y</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">Z</span>
+      <!--v-if-->
+    </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-md font-medium inline-flex disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted size-8 items-center justify-center aria-disabled:opacity-50">
+      <!--v-if--><span class="truncate">&amp;</span>
+      <!--v-if-->
+    </a></nav>
+  <main></main>
   <section data-orientation="vertical" class="relative isolate text-center">
     <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:grid py-16 sm:py-24 lg:py-32 gap-8 sm:gap-16">
       <div class="">
