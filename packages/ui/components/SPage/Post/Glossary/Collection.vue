@@ -4,7 +4,7 @@
   const letterRegex = /^[a-zA-Z]/;
   const noLetterCharacter = '&';
 
-  const { data: posts } = await useAsyncData(
+  const { data: posts, status } = await useAsyncData(
     'glossary',
     () => usePosts(1, 1000000, '', 'Glossary'),
     {
@@ -55,13 +55,18 @@
       :filtered-characters="filteredCharacters"
     />
     <main>
-      <GlossarySection
-        v-for="character in filteredCharacters"
-        :id="character"
-        :key="character"
-        :title="character"
-        :items="termsByFirstCharacter(character)"
-      />
+      <template v-if="status === 'pending' || status === 'idle'">
+        <SkeletonGlossarySection />
+      </template>
+      <template v-else>
+        <GlossarySection
+          v-for="character in filteredCharacters"
+          :id="character"
+          :key="character"
+          :title="character"
+          :items="termsByFirstCharacter(character)"
+        />
+      </template>
     </main>
     <NewsletterSignupPageSection />
   </div>

@@ -28,6 +28,9 @@ mockNuxtImport('useAsyncData', () => {
   return async () => ({
     data: {
       value: data
+    },
+    status: {
+      value: 'success'
     }
   });
 });
