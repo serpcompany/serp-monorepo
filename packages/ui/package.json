@@ -49,6 +49,7 @@
     "typescript": "^5.7.3",
     "vitest": "^2.1.5",
     "vue": "latest",
+    "vue3-snapshot-serializer": "^2.10.0",
     "zod": "^3.24.2"
   }
 }
