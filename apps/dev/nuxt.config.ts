@@ -109,6 +109,12 @@ export default defineNuxtConfig({
   security: {
     strict: true,
     rateLimiter: false,
+    nonce: true, // Enable nonce for CSP
+    ssg: {
+      meta: true,
+      hashScripts: true,
+      hashStyles: false // Disable hash for styles to avoid hydration issues
+    },
     headers: {
       contentSecurityPolicy: {
         'default-src': ["'self'"],
@@ -116,6 +122,8 @@ export default defineNuxtConfig({
         // SCRIPT SOURCES - Fixed domain issues
         'script-src-elem': [
           "'self'",
+          "'nonce-{{nonce}}'", // Add nonce support
+          "'strict-dynamic'", // Enable strict-dynamic for better security
 
           // YOUR OWN INFRASTRUCTURE (all domains)
           'https://serp.co',
@@ -224,7 +232,11 @@ export default defineNuxtConfig({
           'https://maps.google.com',
 
           // Ads
+          'https://pagead2.googlesyndication.com',
+          'https://googleads.g.doubleclick.net',
           'https://*.googlesyndication.com',
+          'https://*.doubleclick.net',
+          'https://*.googleapis.com',
 
           // Other embeds
           'https://js.stripe.com' // ← Changed from https://stripe.com for Stripe Elements
@@ -254,9 +266,6 @@ export default defineNuxtConfig({
         ]
       },
       crossOriginEmbedderPolicy: 'unsafe-none'
-    },
-    ssg: {
-      hashStyles: false
     }
   },
   $development: {
@@ -267,6 +276,8 @@ export default defineNuxtConfig({
           'script-src-elem': [
             "'self'",
             "'unsafe-eval'", // ← REQUIRED for Vite HMR
+            "'nonce-{{nonce}}'", // Add nonce support for dev
+            "'strict-dynamic'", // Enable strict-dynamic for dev
 
             // YOUR OWN INFRASTRUCTURE (all domains)
             'https://serp.co',
