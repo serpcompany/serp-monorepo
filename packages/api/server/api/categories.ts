@@ -6,8 +6,8 @@ import { eq, and, inArray } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
   const { module = '', slugs = '' } = getQuery(event);
-  const slugList = slugs ? String(slugs).split(',').filter(Boolean) : [];
-  const cacheKey = `categories-${module}-${slugs}`;
+  const slugList = slugs ? String(slugs).split(',').filter(Boolean).sort() : [];
+  const cacheKey = `categories-${module}-${slugList.join(',')}`;
   const { value, addToCache } = await useDataCache(cacheKey, event);
   if (value) {
     return value;
