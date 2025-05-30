@@ -25,7 +25,7 @@ WITH RECURSIVE top_level AS (
     c.path,
     c."user" AS user_id,
     u.name AS name,
-    u.image AS image,
+    u.avatar_url AS image,
     nlevel(c.path) AS depth
   FROM ${comment} c
   LEFT JOIN "user"."user" u ON c."user" = u.id
@@ -45,7 +45,7 @@ full_tree AS (
     c.path,
     c."user" AS user_id,
     u.name AS name,
-    u.image AS image,
+    u.avatar_url AS image,
     nlevel(c.path) AS depth
   FROM ${comment} c
   LEFT JOIN "user"."user" u ON c."user" = u.id

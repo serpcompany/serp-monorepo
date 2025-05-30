@@ -348,7 +348,11 @@ configs.append(
           'writeEarlyHints',
           '__buildAssetsURL',
           '__publicAssetsURL',
-          'defineAppConfig'
+          'defineAppConfig',
+          'validateBody',
+          'generateNumericCode',
+          'generateAlphaNumericCode',
+          'generateRandomId'
         ].map((i) => [i, 'readonly'])
       )
     }

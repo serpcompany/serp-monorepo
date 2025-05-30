@@ -52,7 +52,7 @@ export default defineEventHandler(async (event) => {
         .where(
           and(
             eq(vote.entity, id),
-            user?.siteId ? eq(vote.user, user?.siteId) : sql`false`
+            user?.id ? eq(vote.user, user?.id) : sql`false`
           )
         )
         .limit(1)
@@ -137,7 +137,7 @@ export default defineEventHandler(async (event) => {
         vote,
         and(
           eq(entity.id, vote.entity),
-          user?.siteId ? eq(vote.user, user?.siteId) : sql`false`
+          user?.id ? eq(vote.user, user?.id) : sql`false`
         )
       )
       .leftJoin(verification, eq(entity.id, verification.entity));

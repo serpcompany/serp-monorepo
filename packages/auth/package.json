@@ -10,15 +10,18 @@
     "postinstall": "nuxt prepare",
     "lint": "prettier . --write --log-level warn && eslint . --fix",
     "prettier": "prettier . --write --log-level warn",
-    "preview": "nuxt preview .playground",
-    "test": "vitest run",
-    "test:coverage": "vitest run --coverage",
-    "test:watch": "vitest"
+    "preview": "nuxt preview .playground"
   },
   "dependencies": {
     "@serp/db": "workspace:^",
     "@serp/types": "workspace:^",
-    "nuxt-auth-utils": "^0.5.17"
+    "@simplewebauthn/browser": "^13.1.0",
+    "@simplewebauthn/server": "^13.1.1",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "@vue-email/components": "^0.0.21",
+    "@vue-email/render": "^0.0.9",
+    "nuxt-auth-utils": "^0.5.20",
+    "stripe": "18.1.0"
   },
   "devDependencies": {
     "@nuxt/eslint": "^0.6.1",

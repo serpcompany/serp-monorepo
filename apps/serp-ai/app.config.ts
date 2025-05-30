@@ -1,7 +1,10 @@
+import redirects from './redirects.json';
+
 export default defineAppConfig({
   myLayer: {
     name: '@serp/ui'
   },
+  redirects,
   site: {
     footerColumns: [
       {

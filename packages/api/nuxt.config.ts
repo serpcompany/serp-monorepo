@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     '@serp/types',
     '@serp/db',
     '@serp/auth',
-    '@serp/mail',
+    '@serp/utils',
     '@serp/notifications'
   ],
   modules: ['@nuxt/eslint', '@unlok-co/nuxt-stripe', '@nuxt/test-utils/module'],

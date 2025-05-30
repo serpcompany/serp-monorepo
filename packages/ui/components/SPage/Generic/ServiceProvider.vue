@@ -11,7 +11,7 @@
   const { data } = toRefs(props);
 
   const isVerified = computed(() => {
-    return data.value?.verification === user.value?.siteId;
+    return data.value?.verification === user.value?.id;
   });
 
   const config = useRuntimeConfig();

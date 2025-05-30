@@ -1,14 +1,13 @@
 /* eslint-disable no-unused-vars, @typescript-eslint/no-unused-vars */
 
 // Mock for Date.now() to always return a fixed timestamp
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { mockNuxtImport } from '@nuxt/test-utils/runtime';
 import { computed } from 'vue';
 
 const originalDate = global.Date;
 class MockDate extends originalDate {
-  constructor(...args: any[]) {
+  constructor(...args: unknown[]) {
     if (args.length === 0) {
       super(1970, 0, 1); // January 1, 1970
     } else {
@@ -72,7 +71,6 @@ mockNuxtImport(
 ): { value: string } => computed(() => '56 years ago');
 (globalThis as unknown).parseISO = (dateString: string): Date =>
   new Date(1970, 0, 1);
-/* eslint-enable @typescript-eslint/no-explicit-any */
 
 // Cleanup function to restore original Date functionality in afterAll
 export const cleanupDateMocks = (): void => {

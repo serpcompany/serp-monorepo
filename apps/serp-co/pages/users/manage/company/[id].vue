@@ -12,12 +12,16 @@
     error: companyError
   } = await useFetch<Record<string, unknown>>(`/api/entity/${companyId}`);
 
+  console.log('Company Data:', companyData);
+
   const {
     data: editsData,
     pending: editsPending,
     error: editsError,
     refresh: refreshEdits
   } = await useFetch<{ edits: unknown[] }>(`/api/entity/edit?id=${companyId}`);
+
+  console.log('Edits Data:', editsData);
 
   const dynamicFields = computed(() => {
     if (!companyData.value) return [];
@@ -360,7 +364,9 @@
               </thead>
               <tbody>
                 <tr
-                  v-for="(val, key) in JSON.parse(edit.proposedChanges)"
+                  v-for="(val, key) in typeof edit.proposedChanges === 'string'
+                    ? JSON.parse(edit.proposedChanges)
+                    : edit.proposedChanges"
                   :key="key"
                 >
                   <td class="pt-1">{{ humanize(key) }}</td>
@@ -370,7 +376,7 @@
               </tbody>
             </table>
 
-            <div v-if="user?.siteId === companyData?.verification">
+            <div v-if="user?.id === companyData?.verification">
               <div class="mt-4 grid grid-cols-2 gap-4">
                 <UFormField label="Status">
                   <UInputMenu

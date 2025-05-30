@@ -2,8 +2,7 @@ import * as XLSX from './vendor/xlsx.full.min.js';
 
 export function combineCsvs(files: FileList): Promise<string> {
   return new Promise((resolve, reject) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const combinedData: any[] = [];
+    const combinedData: unknown[] = [];
     let filesProcessed = 0;
 
     const processFile = (file: File) => {

@@ -142,8 +142,8 @@
     <template #header>
       <div class="flex items-center space-x-4">
         <LazyNuxtImg
-          v-if="review.user && review.user.image"
-          :src="review.user.image"
+          v-if="review.user && (review.user.image || review.user.avatarUrl)"
+          :src="review.user.image || review.user.avatarUrl"
           alt="User Image"
           class="h-12 w-12 rounded-full object-cover"
         />
