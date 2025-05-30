@@ -1,53 +1,255 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`SPage/Users/Billing Snapshot > renders when user is logged in correctly 1`] = `
-"<div class="flex flex-col lg:grid lg:grid-cols-10 lg:gap-10">
-  <!--v-if-->
+<div class="
+  flex
+  flex-col
+  lg:gap-10
+  lg:grid
+  lg:grid-cols-10
+">
+  <!-- v-if -->
   <div class="lg:col-span-10">
-    <div class="w-full px-4 sm:px-6 lg:px-8 mx-auto mt-48 max-w-3xl">
-      <div class="rounded-lg bg-default ring ring-default divide-y divide-default my-8">
-        <div class="p-4 sm:px-6">
-          <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold">Billing</h2><span class="font-medium inline-flex items-center text-xs px-2 py-1 gap-1 rounded-md bg-primary/10 text-primary"><!--v-if-->Active<!--v-if--></span>
+    <div class="
+      lg:px-8
+      max-w-3xl
+      mt-48
+      mx-auto
+      px-4
+      sm:px-6
+      w-full
+    ">
+      <div class="
+        bg-default
+        divide-default
+        divide-y
+        my-8
+        ring
+        ring-default
+        rounded-lg
+      ">
+        <div class="
+          p-4
+          sm:px-6
+        ">
+          <div class="
+            flex
+            items-center
+            justify-between
+          ">
+            <h2 class="
+              font-semibold
+              text-xl
+            ">
+              Billing
+            </h2>
+            <span class="
+              bg-primary/10
+              font-medium
+              gap-1
+              inline-flex
+              items-center
+              px-2
+              py-1
+              rounded-md
+              text-primary
+              text-xs
+            ">
+              <!-- v-if -->
+              Active
+              <!-- v-if -->
+            </span>
           </div>
         </div>
-        <div class="p-4 sm:p-6">
-          <div class="px-4 text-center">
-            <p class="mb-6 text-gray-500 dark:text-gray-400"> Manage your subscription, view purchase history, or update payment methods. </p><button type="button" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-3 py-2 text-sm gap-2 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary mx-auto"><span class="iconify i-lucide:credit-card shrink-0 size-5" aria-hidden="true"></span><span class="truncate">Manage Billing</span>
-              <!--v-if-->
+        <div class="
+          p-4
+          sm:p-6
+        ">
+          <div class="
+            px-4
+            text-center
+          ">
+            <p class="
+              dark:text-gray-400
+              mb-6
+              text-gray-500
+            ">
+              Manage your subscription, view purchase history, or update payment methods.
+            </p>
+            <button
+              class="
+                aria-disabled:bg-primary
+                aria-disabled:cursor-not-allowed
+                aria-disabled:opacity-75
+                bg-primary
+                disabled:bg-primary
+                disabled:cursor-not-allowed
+                disabled:opacity-75
+                focus-visible:outline-2
+                focus-visible:outline-offset-2
+                focus-visible:outline-primary
+                font-medium
+                gap-2
+                hover:bg-primary/75
+                inline-flex
+                items-center
+                mx-auto
+                px-3
+                py-2
+                rounded-md
+                text-inverted
+                text-sm
+                transition-colors
+              "
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+                class="
+                  i-lucide:credit-card
+                  iconify
+                  shrink-0
+                  size-5
+                "
+              ></span>
+              <span class="truncate">
+                Manage Billing
+              </span>
+              <!-- v-if -->
             </button>
           </div>
         </div>
-        <!--v-if-->
+        <!-- v-if -->
       </div>
     </div>
   </div>
-  <!--v-if-->
-</div>"
+  <!-- v-if -->
+</div>
 `;
 
 exports[`SPage/Users/Billing Snapshot > renders when user is not logged in correctly 1`] = `
-"<div class="flex flex-col lg:grid lg:grid-cols-10 lg:gap-10">
-  <!--v-if-->
+<div class="
+  flex
+  flex-col
+  lg:gap-10
+  lg:grid
+  lg:grid-cols-10
+">
+  <!-- v-if -->
   <div class="lg:col-span-10">
-    <div class="w-full px-4 sm:px-6 lg:px-8 mx-auto mt-48 max-w-3xl">
-      <div class="rounded-lg bg-default ring ring-default divide-y divide-default my-8">
-        <div class="p-4 sm:px-6">
-          <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold">Billing</h2><span class="font-medium inline-flex items-center text-xs px-2 py-1 gap-1 rounded-md bg-primary/10 text-primary"><!--v-if-->Active<!--v-if--></span>
+    <div class="
+      lg:px-8
+      max-w-3xl
+      mt-48
+      mx-auto
+      px-4
+      sm:px-6
+      w-full
+    ">
+      <div class="
+        bg-default
+        divide-default
+        divide-y
+        my-8
+        ring
+        ring-default
+        rounded-lg
+      ">
+        <div class="
+          p-4
+          sm:px-6
+        ">
+          <div class="
+            flex
+            items-center
+            justify-between
+          ">
+            <h2 class="
+              font-semibold
+              text-xl
+            ">
+              Billing
+            </h2>
+            <span class="
+              bg-primary/10
+              font-medium
+              gap-1
+              inline-flex
+              items-center
+              px-2
+              py-1
+              rounded-md
+              text-primary
+              text-xs
+            ">
+              <!-- v-if -->
+              Active
+              <!-- v-if -->
+            </span>
           </div>
         </div>
-        <div class="p-4 sm:p-6">
-          <div class="px-4 text-center">
-            <p class="mb-6 text-gray-500 dark:text-gray-400"> Manage your subscription, view purchase history, or update payment methods. </p><button type="button" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-3 py-2 text-sm gap-2 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary mx-auto"><span class="iconify i-lucide:credit-card shrink-0 size-5" aria-hidden="true"></span><span class="truncate">Manage Billing</span>
-              <!--v-if-->
+        <div class="
+          p-4
+          sm:p-6
+        ">
+          <div class="
+            px-4
+            text-center
+          ">
+            <p class="
+              dark:text-gray-400
+              mb-6
+              text-gray-500
+            ">
+              Manage your subscription, view purchase history, or update payment methods.
+            </p>
+            <button
+              class="
+                aria-disabled:bg-primary
+                aria-disabled:cursor-not-allowed
+                aria-disabled:opacity-75
+                bg-primary
+                disabled:bg-primary
+                disabled:cursor-not-allowed
+                disabled:opacity-75
+                focus-visible:outline-2
+                focus-visible:outline-offset-2
+                focus-visible:outline-primary
+                font-medium
+                gap-2
+                hover:bg-primary/75
+                inline-flex
+                items-center
+                mx-auto
+                px-3
+                py-2
+                rounded-md
+                text-inverted
+                text-sm
+                transition-colors
+              "
+              type="button"
+            >
+              <span
+                aria-hidden="true"
+                class="
+                  i-lucide:credit-card
+                  iconify
+                  shrink-0
+                  size-5
+                "
+              ></span>
+              <span class="truncate">
+                Manage Billing
+              </span>
+              <!-- v-if -->
             </button>
           </div>
         </div>
-        <!--v-if-->
+        <!-- v-if -->
       </div>
     </div>
   </div>
-  <!--v-if-->
-</div>"
+  <!-- v-if -->
+</div>
 `;

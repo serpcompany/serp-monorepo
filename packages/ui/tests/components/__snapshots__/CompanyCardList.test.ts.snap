@@ -1,18 +1,36 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`CompanyCardList Snapshot > renders with a single company and default props correctly 1`] = `
-"<div class="mb-4 border p-4">
-  <div class="company-card-stub">Test Company</div>
-</div>"
+<div class="
+  border
+  mb-4
+  p-4
+">
+  <div class="company-card-stub">
+    Test Company
+  </div>
+</div>
 `;
 
 exports[`CompanyCardList Snapshot > renders with an empty companies list correctly 1`] = `""`;
 
 exports[`CompanyCardList Snapshot > renders with multiple companies and all toggles enabled correctly 1`] = `
-"<div class="mb-4 border p-4">
-  <div class="company-card-stub">Company One</div>
+<div class="
+  border
+  mb-4
+  p-4
+">
+  <div class="company-card-stub">
+    Company One
+  </div>
 </div>
-<div class="mb-4 border p-4">
-  <div class="company-card-stub">Company Two</div>
-</div>"
+<div class="
+  border
+  mb-4
+  p-4
+">
+  <div class="company-card-stub">
+    Company Two
+  </div>
+</div>
 `;

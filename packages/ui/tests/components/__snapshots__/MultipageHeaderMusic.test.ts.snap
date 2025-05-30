@@ -1,107 +1,748 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`MultipageHeaderMusic Snapshot > renders default rendering correctly 1`] = `
-"<header class="bg-background sticky top-0 z-40 border-b border-gray-200 transition-all duration-300 dark:border-gray-800" serply_link="https://example.com">
-  <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col items-center justify-between gap-4 py-3 sm:flex-row">
-      <div class="flex min-w-0 flex-grow items-center gap-3">
-        <!--v-if-->
-        <div class="min-w-0 flex-grow">
-          <h1 class="truncate text-xl font-bold text-gray-900 transition-all duration-300 sm:text-2xl dark:text-white">Music Header</h1>
-          <div class="truncate text-sm text-gray-500 dark:text-gray-400"></div>
+<header
+  class="
+    bg-background
+    border-b
+    border-gray-200
+    dark:border-gray-800
+    duration-300
+    sticky
+    top-0
+    transition-all
+    z-40
+  "
+  serply_link="https://example.com"
+>
+  <div class="
+    lg:px-8
+    max-w-(--ui-container)
+    mx-auto
+    px-4
+    sm:px-6
+    w-full
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+      items-center
+      justify-between
+      py-3
+      sm:flex-row
+    ">
+      <div class="
+        flex
+        flex-grow
+        gap-3
+        items-center
+        min-w-0
+      ">
+        <!-- v-if -->
+        <div class="
+          flex-grow
+          min-w-0
+        ">
+          <h1 class="
+            dark:text-white
+            duration-300
+            font-bold
+            sm:text-2xl
+            text-gray-900
+            text-xl
+            transition-all
+            truncate
+          ">
+            Music Header
+          </h1>
+          <div class="
+            dark:text-gray-400
+            text-gray-500
+            text-sm
+            truncate
+          "></div>
         </div>
       </div>
-      <div class="flex w-full flex-shrink-0 items-center justify-end gap-3 sm:w-auto"><button type="button" rel="noopener noreferrer" target="_blank" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 w-full sm:w-auto"><span class="iconify i-heroicons:arrow-top-right-on-square shrink-0 size-4" aria-hidden="true"></span><span class="truncate">Listen Free</span>
-          <!--v-if-->
-        </button></div>
+      <div class="
+        flex
+        flex-shrink-0
+        gap-3
+        items-center
+        justify-end
+        sm:w-auto
+        w-full
+      ">
+        <button
+          class="
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            font-medium
+            gap-1.5
+            inline-flex
+            items-center
+            px-2.5
+            py-1.5
+            rounded-md
+            sm:w-auto
+            text-xs
+            transition-colors
+            w-full
+          "
+          rel="noopener noreferrer"
+          target="_blank"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-heroicons:arrow-top-right-on-square
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <span class="truncate">
+            Listen Free
+          </span>
+          <!-- v-if -->
+        </button>
+      </div>
     </div>
-    <nav class="-mx-4 flex overflow-x-auto border-t border-gray-200 px-4 sm:-mx-6 sm:px-6 dark:border-gray-800"><a href="#home" class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
-        <!--v-if--><span class="truncate">Home</span>
-        <!--v-if-->
-      </a><a href="#about" class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
-        <!--v-if--><span class="truncate">About</span>
-        <!--v-if-->
-      </a><a href="#contact" class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
-        <!--v-if--><span class="truncate">Contact</span>
-        <!--v-if-->
-      </a></nav>
+    <nav class="
+      -mx-4
+      border-gray-200
+      border-t
+      dark:border-gray-800
+      flex
+      overflow-x-auto
+      px-4
+      sm:-mx-6
+      sm:px-6
+    ">
+      <a
+        class="
+          aria-disabled:cursor-not-allowed
+          aria-disabled:opacity-75
+          disabled:cursor-not-allowed
+          disabled:opacity-75
+          flex-shrink-0
+          font-medium
+          gap-1.5
+          inline-flex
+          items-center
+          px-2.5
+          py-1.5
+          rounded-none
+          text-xs
+          transition-colors
+          whitespace-nowrap
+        "
+        href="#home"
+      >
+        
+      <!-- v-if --><span class="truncate">Home</span>
+        
+      <!-- v-if -->
+      </a>
+      <a
+        class="
+          aria-disabled:cursor-not-allowed
+          aria-disabled:opacity-75
+          disabled:cursor-not-allowed
+          disabled:opacity-75
+          flex-shrink-0
+          font-medium
+          gap-1.5
+          inline-flex
+          items-center
+          px-2.5
+          py-1.5
+          rounded-none
+          text-xs
+          transition-colors
+          whitespace-nowrap
+        "
+        href="#about"
+      >
+        
+      <!-- v-if --><span class="truncate">About</span>
+        
+      <!-- v-if -->
+      </a>
+      <a
+        class="
+          aria-disabled:cursor-not-allowed
+          aria-disabled:opacity-75
+          disabled:cursor-not-allowed
+          disabled:opacity-75
+          flex-shrink-0
+          font-medium
+          gap-1.5
+          inline-flex
+          items-center
+          px-2.5
+          py-1.5
+          rounded-none
+          text-xs
+          transition-colors
+          whitespace-nowrap
+        "
+        href="#contact"
+      >
+        
+      <!-- v-if --><span class="truncate">Contact</span>
+        
+      <!-- v-if -->
+      </a>
+    </nav>
   </div>
-</header>"
+</header>
 `;
 
 exports[`MultipageHeaderMusic Snapshot > renders with empty sections correctly 1`] = `
-"<header class="bg-background sticky top-0 z-40 border-b border-gray-200 transition-all duration-300 dark:border-gray-800" serply_link="https://example.com">
-  <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col items-center justify-between gap-4 py-3 sm:flex-row">
-      <div class="flex min-w-0 flex-grow items-center gap-3">
-        <!--v-if-->
-        <div class="min-w-0 flex-grow">
-          <h1 class="truncate text-xl font-bold text-gray-900 transition-all duration-300 sm:text-2xl dark:text-white">Music Header</h1>
-          <div class="truncate text-sm text-gray-500 dark:text-gray-400"></div>
+<header
+  class="
+    bg-background
+    border-b
+    border-gray-200
+    dark:border-gray-800
+    duration-300
+    sticky
+    top-0
+    transition-all
+    z-40
+  "
+  serply_link="https://example.com"
+>
+  <div class="
+    lg:px-8
+    max-w-(--ui-container)
+    mx-auto
+    px-4
+    sm:px-6
+    w-full
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+      items-center
+      justify-between
+      py-3
+      sm:flex-row
+    ">
+      <div class="
+        flex
+        flex-grow
+        gap-3
+        items-center
+        min-w-0
+      ">
+        <!-- v-if -->
+        <div class="
+          flex-grow
+          min-w-0
+        ">
+          <h1 class="
+            dark:text-white
+            duration-300
+            font-bold
+            sm:text-2xl
+            text-gray-900
+            text-xl
+            transition-all
+            truncate
+          ">
+            Music Header
+          </h1>
+          <div class="
+            dark:text-gray-400
+            text-gray-500
+            text-sm
+            truncate
+          "></div>
         </div>
       </div>
-      <div class="flex w-full flex-shrink-0 items-center justify-end gap-3 sm:w-auto"><button type="button" rel="noopener noreferrer" target="_blank" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 w-full sm:w-auto"><span class="iconify i-heroicons:arrow-top-right-on-square shrink-0 size-4" aria-hidden="true"></span><span class="truncate">Listen Free</span>
-          <!--v-if-->
-        </button></div>
+      <div class="
+        flex
+        flex-shrink-0
+        gap-3
+        items-center
+        justify-end
+        sm:w-auto
+        w-full
+      ">
+        <button
+          class="
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            font-medium
+            gap-1.5
+            inline-flex
+            items-center
+            px-2.5
+            py-1.5
+            rounded-md
+            sm:w-auto
+            text-xs
+            transition-colors
+            w-full
+          "
+          rel="noopener noreferrer"
+          target="_blank"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-heroicons:arrow-top-right-on-square
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <span class="truncate">
+            Listen Free
+          </span>
+          <!-- v-if -->
+        </button>
+      </div>
     </div>
-    <nav class="-mx-4 flex overflow-x-auto border-t border-gray-200 px-4 sm:-mx-6 sm:px-6 dark:border-gray-800"></nav>
+    <nav class="
+      -mx-4
+      border-gray-200
+      border-t
+      dark:border-gray-800
+      flex
+      overflow-x-auto
+      px-4
+      sm:-mx-6
+      sm:px-6
+    "></nav>
   </div>
-</header>"
+</header>
 `;
 
 exports[`MultipageHeaderMusic Snapshot > renders with oneLiner and image correctly 1`] = `
-"<header class="bg-background sticky top-0 z-40 border-b border-gray-200 transition-all duration-300 dark:border-gray-800" serply_link="https://example.com" oneliner="Rock on!">
-  <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col items-center justify-between gap-4 py-3 sm:flex-row">
-      <div class="flex min-w-0 flex-grow items-center gap-3"><img alt="Music Header logo" data-nuxt-img="" srcset="https://example.com/logo.png 1x, https://example.com/logo.png 2x" class="flex-shrink-0 object-contain transition-all duration-300 h-12 w-12" src="https://example.com/logo.png">
-        <div class="min-w-0 flex-grow">
-          <h1 class="truncate text-xl font-bold text-gray-900 transition-all duration-300 sm:text-2xl dark:text-white">Music Header</h1>
-          <div class="truncate text-sm text-gray-500 dark:text-gray-400"></div>
+<header
+  class="
+    bg-background
+    border-b
+    border-gray-200
+    dark:border-gray-800
+    duration-300
+    sticky
+    top-0
+    transition-all
+    z-40
+  "
+  oneliner="Rock on!"
+  serply_link="https://example.com"
+>
+  <div class="
+    lg:px-8
+    max-w-(--ui-container)
+    mx-auto
+    px-4
+    sm:px-6
+    w-full
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+      items-center
+      justify-between
+      py-3
+      sm:flex-row
+    ">
+      <div class="
+        flex
+        flex-grow
+        gap-3
+        items-center
+        min-w-0
+      ">
+        <img
+          alt="Music Header logo"
+          class="
+            duration-300
+            flex-shrink-0
+            h-12
+            object-contain
+            transition-all
+            w-12
+          "
+          data-nuxt-img=""
+          src="https://example.com/logo.png"
+          srcset="https://example.com/logo.png 1x, https://example.com/logo.png 2x"
+        />
+        <div class="
+          flex-grow
+          min-w-0
+        ">
+          <h1 class="
+            dark:text-white
+            duration-300
+            font-bold
+            sm:text-2xl
+            text-gray-900
+            text-xl
+            transition-all
+            truncate
+          ">
+            Music Header
+          </h1>
+          <div class="
+            dark:text-gray-400
+            text-gray-500
+            text-sm
+            truncate
+          "></div>
         </div>
       </div>
-      <div class="flex w-full flex-shrink-0 items-center justify-end gap-3 sm:w-auto"><button type="button" rel="noopener noreferrer" target="_blank" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 w-full sm:w-auto"><span class="iconify i-heroicons:arrow-top-right-on-square shrink-0 size-4" aria-hidden="true"></span><span class="truncate">Listen Free</span>
-          <!--v-if-->
-        </button></div>
+      <div class="
+        flex
+        flex-shrink-0
+        gap-3
+        items-center
+        justify-end
+        sm:w-auto
+        w-full
+      ">
+        <button
+          class="
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            font-medium
+            gap-1.5
+            inline-flex
+            items-center
+            px-2.5
+            py-1.5
+            rounded-md
+            sm:w-auto
+            text-xs
+            transition-colors
+            w-full
+          "
+          rel="noopener noreferrer"
+          target="_blank"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-heroicons:arrow-top-right-on-square
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <span class="truncate">
+            Listen Free
+          </span>
+          <!-- v-if -->
+        </button>
+      </div>
     </div>
-    <nav class="-mx-4 flex overflow-x-auto border-t border-gray-200 px-4 sm:-mx-6 sm:px-6 dark:border-gray-800"><a href="#home" class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
-        <!--v-if--><span class="truncate">Home</span>
-        <!--v-if-->
-      </a><a href="#about" class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
-        <!--v-if--><span class="truncate">About</span>
-        <!--v-if-->
-      </a><a href="#contact" class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
-        <!--v-if--><span class="truncate">Contact</span>
-        <!--v-if-->
-      </a></nav>
+    <nav class="
+      -mx-4
+      border-gray-200
+      border-t
+      dark:border-gray-800
+      flex
+      overflow-x-auto
+      px-4
+      sm:-mx-6
+      sm:px-6
+    ">
+      <a
+        class="
+          aria-disabled:cursor-not-allowed
+          aria-disabled:opacity-75
+          disabled:cursor-not-allowed
+          disabled:opacity-75
+          flex-shrink-0
+          font-medium
+          gap-1.5
+          inline-flex
+          items-center
+          px-2.5
+          py-1.5
+          rounded-none
+          text-xs
+          transition-colors
+          whitespace-nowrap
+        "
+        href="#home"
+      >
+        
+      <!-- v-if --><span class="truncate">Home</span>
+        
+      <!-- v-if -->
+      </a>
+      <a
+        class="
+          aria-disabled:cursor-not-allowed
+          aria-disabled:opacity-75
+          disabled:cursor-not-allowed
+          disabled:opacity-75
+          flex-shrink-0
+          font-medium
+          gap-1.5
+          inline-flex
+          items-center
+          px-2.5
+          py-1.5
+          rounded-none
+          text-xs
+          transition-colors
+          whitespace-nowrap
+        "
+        href="#about"
+      >
+        
+      <!-- v-if --><span class="truncate">About</span>
+        
+      <!-- v-if -->
+      </a>
+      <a
+        class="
+          aria-disabled:cursor-not-allowed
+          aria-disabled:opacity-75
+          disabled:cursor-not-allowed
+          disabled:opacity-75
+          flex-shrink-0
+          font-medium
+          gap-1.5
+          inline-flex
+          items-center
+          px-2.5
+          py-1.5
+          rounded-none
+          text-xs
+          transition-colors
+          whitespace-nowrap
+        "
+        href="#contact"
+      >
+        
+      <!-- v-if --><span class="truncate">Contact</span>
+        
+      <!-- v-if -->
+      </a>
+    </nav>
   </div>
-</header>"
+</header>
 `;
 
 exports[`MultipageHeaderMusic Snapshot > renders with upvote slot correctly 1`] = `
-"<header class="bg-background sticky top-0 z-40 border-b border-gray-200 transition-all duration-300 dark:border-gray-800" serply_link="https://example.com">
-  <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col items-center justify-between gap-4 py-3 sm:flex-row">
-      <div class="flex min-w-0 flex-grow items-center gap-3">
-        <!--v-if-->
-        <div class="min-w-0 flex-grow">
-          <h1 class="truncate text-xl font-bold text-gray-900 transition-all duration-300 sm:text-2xl dark:text-white">Music Header</h1>
-          <div class="truncate text-sm text-gray-500 dark:text-gray-400"></div>
+<header
+  class="
+    bg-background
+    border-b
+    border-gray-200
+    dark:border-gray-800
+    duration-300
+    sticky
+    top-0
+    transition-all
+    z-40
+  "
+  serply_link="https://example.com"
+>
+  <div class="
+    lg:px-8
+    max-w-(--ui-container)
+    mx-auto
+    px-4
+    sm:px-6
+    w-full
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+      items-center
+      justify-between
+      py-3
+      sm:flex-row
+    ">
+      <div class="
+        flex
+        flex-grow
+        gap-3
+        items-center
+        min-w-0
+      ">
+        <!-- v-if -->
+        <div class="
+          flex-grow
+          min-w-0
+        ">
+          <h1 class="
+            dark:text-white
+            duration-300
+            font-bold
+            sm:text-2xl
+            text-gray-900
+            text-xl
+            transition-all
+            truncate
+          ">
+            Music Header
+          </h1>
+          <div class="
+            dark:text-gray-400
+            text-gray-500
+            text-sm
+            truncate
+          "></div>
         </div>
       </div>
-      <div class="flex w-full flex-shrink-0 items-center justify-end gap-3 sm:w-auto">&lt;button&gt;Upvote&lt;/button&gt;<button type="button" rel="noopener noreferrer" target="_blank" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 w-full sm:w-auto"><span class="iconify i-heroicons:arrow-top-right-on-square shrink-0 size-4" aria-hidden="true"></span><span class="truncate">Listen Free</span>
-          <!--v-if-->
-        </button></div>
+      <div class="
+        flex
+        flex-shrink-0
+        gap-3
+        items-center
+        justify-end
+        sm:w-auto
+        w-full
+      ">
+        &lt;button&gt;Upvote&lt;/button&gt;
+        <button
+          class="
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            font-medium
+            gap-1.5
+            inline-flex
+            items-center
+            px-2.5
+            py-1.5
+            rounded-md
+            sm:w-auto
+            text-xs
+            transition-colors
+            w-full
+          "
+          rel="noopener noreferrer"
+          target="_blank"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-heroicons:arrow-top-right-on-square
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <span class="truncate">
+            Listen Free
+          </span>
+          <!-- v-if -->
+        </button>
+      </div>
     </div>
-    <nav class="-mx-4 flex overflow-x-auto border-t border-gray-200 px-4 sm:-mx-6 sm:px-6 dark:border-gray-800"><a href="#home" class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
-        <!--v-if--><span class="truncate">Home</span>
-        <!--v-if-->
-      </a><a href="#about" class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
-        <!--v-if--><span class="truncate">About</span>
-        <!--v-if-->
-      </a><a href="#contact" class="font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-xs gap-1.5 flex-shrink-0 rounded-none whitespace-nowrap">
-        <!--v-if--><span class="truncate">Contact</span>
-        <!--v-if-->
-      </a></nav>
+    <nav class="
+      -mx-4
+      border-gray-200
+      border-t
+      dark:border-gray-800
+      flex
+      overflow-x-auto
+      px-4
+      sm:-mx-6
+      sm:px-6
+    ">
+      <a
+        class="
+          aria-disabled:cursor-not-allowed
+          aria-disabled:opacity-75
+          disabled:cursor-not-allowed
+          disabled:opacity-75
+          flex-shrink-0
+          font-medium
+          gap-1.5
+          inline-flex
+          items-center
+          px-2.5
+          py-1.5
+          rounded-none
+          text-xs
+          transition-colors
+          whitespace-nowrap
+        "
+        href="#home"
+      >
+        
+      <!-- v-if --><span class="truncate">Home</span>
+        
+      <!-- v-if -->
+      </a>
+      <a
+        class="
+          aria-disabled:cursor-not-allowed
+          aria-disabled:opacity-75
+          disabled:cursor-not-allowed
+          disabled:opacity-75
+          flex-shrink-0
+          font-medium
+          gap-1.5
+          inline-flex
+          items-center
+          px-2.5
+          py-1.5
+          rounded-none
+          text-xs
+          transition-colors
+          whitespace-nowrap
+        "
+        href="#about"
+      >
+        
+      <!-- v-if --><span class="truncate">About</span>
+        
+      <!-- v-if -->
+      </a>
+      <a
+        class="
+          aria-disabled:cursor-not-allowed
+          aria-disabled:opacity-75
+          disabled:cursor-not-allowed
+          disabled:opacity-75
+          flex-shrink-0
+          font-medium
+          gap-1.5
+          inline-flex
+          items-center
+          px-2.5
+          py-1.5
+          rounded-none
+          text-xs
+          transition-colors
+          whitespace-nowrap
+        "
+        href="#contact"
+      >
+        
+      <!-- v-if --><span class="truncate">Contact</span>
+        
+      <!-- v-if -->
+      </a>
+    </nav>
   </div>
-</header>"
+</header>
 `;
