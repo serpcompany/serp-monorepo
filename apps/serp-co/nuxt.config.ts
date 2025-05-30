@@ -1,13 +1,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  extends: [
-    '@serp/utils',
-    '@serp/stripe',
-    '@serp/tools',
-    '@serp/types',
-    '@serp/ui'
-  ],
+  extends: ['@serp/utils', '@serp/tools', '@serp/types', '@serp/ui'],
   modules: [
     '@nuxt/ui-pro',
     '@nuxtjs/seo',
@@ -109,6 +103,12 @@ export default defineNuxtConfig({
   security: {
     strict: true,
     rateLimiter: false,
+    nonce: true, // Enable nonce for CSP
+    ssg: {
+      meta: true,
+      hashScripts: true,
+      hashStyles: false // Disable hash for styles to avoid hydration issues
+    },
     headers: {
       contentSecurityPolicy: {
         'default-src': ["'self'"],
@@ -116,6 +116,8 @@ export default defineNuxtConfig({
         // SCRIPT SOURCES - Fixed domain issues
         'script-src-elem': [
           "'self'",
+          "'nonce-{{nonce}}'", // Add nonce support
+          "'strict-dynamic'", // Enable strict-dynamic for better security
 
           // YOUR OWN INFRASTRUCTURE (all domains)
           'https://serp.co',
@@ -223,8 +225,12 @@ export default defineNuxtConfig({
           'https://www.google.com',
           'https://maps.google.com',
 
-          // Ads
+          // GOOGLE ADS
+          'https://pagead2.googlesyndication.com',
           'https://*.googlesyndication.com',
+          'https://googleads.g.doubleclick.net',
+          'https://*.doubleclick.net',
+          'https://*.googleapis.com',
 
           // Other embeds
           'https://js.stripe.com' // ← Changed from https://stripe.com for Stripe Elements
@@ -254,9 +260,6 @@ export default defineNuxtConfig({
         ]
       },
       crossOriginEmbedderPolicy: 'unsafe-none'
-    },
-    ssg: {
-      hashStyles: false
     }
   },
   $development: {
@@ -267,6 +270,8 @@ export default defineNuxtConfig({
           'script-src-elem': [
             "'self'",
             "'unsafe-eval'", // ← REQUIRED for Vite HMR
+            "'nonce-{{nonce}}'", // Add nonce support for dev
+            "'strict-dynamic'", // Enable strict-dynamic for dev
 
             // YOUR OWN INFRASTRUCTURE (all domains)
             'https://serp.co',

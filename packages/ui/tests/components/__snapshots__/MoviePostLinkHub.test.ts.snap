@@ -1,46 +1,238 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MoviePostLinkHub Snapshot > renders with no posts correctly 1`] = `"<div role="list" class="relative flex flex-col *:not-last:after:absolute *:not-last:after:inset-x-1 *:not-last:after:bottom-0 *:not-last:after:bg-border *:not-last:after:h-px"></div>"`;
+exports[`MoviePostLinkHub Snapshot > renders with no posts correctly 1`] = `
+<div
+  class="
+    *:not-last:after:absolute
+    *:not-last:after:bg-border
+    *:not-last:after:bottom-0
+    *:not-last:after:h-px
+    *:not-last:after:inset-x-1
+    flex
+    flex-col
+    relative
+  "
+  role="list"
+></div>
+`;
 
 exports[`MoviePostLinkHub Snapshot > renders with posts correctly 1`] = `
-"<div role="list" class="relative flex flex-col *:not-last:after:absolute *:not-last:after:inset-x-1 *:not-last:after:bottom-0 *:not-last:after:bg-border *:not-last:after:h-px">
-  <div data-orientation="vertical" class="relative flex rounded-lg transition hover:bg-elevated/50">
-    <!--v-if-->
-    <div class="relative flex flex-col flex-1 lg:grid gap-x-8 gap-y-4 p-4 sm:p-6">
-      <div class="flex flex-col flex-1 items-start">
-        <!--v-if-->
-        <!--v-if-->
+<div
+  class="
+    *:not-last:after:absolute
+    *:not-last:after:bg-border
+    *:not-last:after:bottom-0
+    *:not-last:after:h-px
+    *:not-last:after:inset-x-1
+    flex
+    flex-col
+    relative
+  "
+  role="list"
+>
+  <div
+    class="
+      flex
+      hover:bg-elevated/50
+      relative
+      rounded-lg
+      transition
+    "
+    data-orientation="vertical"
+  >
+    <!-- v-if -->
+    <div class="
+      flex
+      flex-1
+      flex-col
+      gap-x-8
+      gap-y-4
+      lg:grid
+      p-4
+      relative
+      sm:p-6
+    ">
+      <div class="
+        flex
+        flex-1
+        flex-col
+        items-start
+      ">
+        <!-- v-if -->
+        <!-- v-if -->
         <div class="flex-1">
-          <div data-orientation="horizontal" class="relative group/user flex items-center gap-2.5"><span class="inline-flex items-center justify-center select-none overflow-hidden rounded-full align-middle bg-elevated size-10 text-xl shrink-0"><img width="40" height="40" alt="Movie One" data-nuxt-img="" srcset="https://example.com/movie1.jpg 1x, https://example.com/movie1.jpg 2x" role="img" class="h-full w-full rounded-[inherit] object-cover" src="https://example.com/movie1.jpg"></span>
+          <div
+            class="
+              flex
+              gap-2.5
+              group/user
+              items-center
+              relative
+            "
+            data-orientation="horizontal"
+          >
+            <span class="
+              align-middle
+              bg-elevated
+              inline-flex
+              items-center
+              justify-center
+              overflow-hidden
+              rounded-full
+              select-none
+              shrink-0
+              size-10
+              text-xl
+            ">
+              <img
+                alt="Movie One"
+                class="
+                  h-full
+                  object-cover
+                  rounded-[inherit]
+                  w-full
+                "
+                data-nuxt-img=""
+                height="40"
+                role="img"
+                src="https://example.com/movie1.jpg"
+                srcset="https://example.com/movie1.jpg 1x, https://example.com/movie1.jpg 2x"
+                width="40"
+              />
+            </span>
             <div class="">
-              <!--v-if-->
-              <p class="font-medium text-highlighted text-base">Movie One</p>
-              <!--v-if-->
+              <!-- v-if -->
+              <p class="
+                font-medium
+                text-base
+                text-highlighted
+              ">
+                Movie One
+              </p>
+              <!-- v-if -->
             </div>
           </div>
         </div>
-        <!--v-if-->
+        <!-- v-if -->
       </div>
-    </div><a href="/movies/movie-1" tabindex="-1" aria-label="Card link" class="focus:outline-none peer"><span class="absolute inset-0" aria-hidden="true"></span></a>
+    </div>
+    <a
+      aria-label="Card link"
+      class="
+        focus:outline-none
+        peer
+      "
+      href="/movies/movie-1"
+      tabindex="-1"
+    ><span
+      aria-hidden="true"
+      class="
+        absolute
+        inset-0
+      "
+    ></span></a>
   </div>
-  <div data-orientation="vertical" class="relative flex rounded-lg transition hover:bg-elevated/50">
-    <!--v-if-->
-    <div class="relative flex flex-col flex-1 lg:grid gap-x-8 gap-y-4 p-4 sm:p-6">
-      <div class="flex flex-col flex-1 items-start">
-        <!--v-if-->
-        <!--v-if-->
+  <div
+    class="
+      flex
+      hover:bg-elevated/50
+      relative
+      rounded-lg
+      transition
+    "
+    data-orientation="vertical"
+  >
+    <!-- v-if -->
+    <div class="
+      flex
+      flex-1
+      flex-col
+      gap-x-8
+      gap-y-4
+      lg:grid
+      p-4
+      relative
+      sm:p-6
+    ">
+      <div class="
+        flex
+        flex-1
+        flex-col
+        items-start
+      ">
+        <!-- v-if -->
+        <!-- v-if -->
         <div class="flex-1">
-          <div data-orientation="horizontal" class="relative group/user flex items-center gap-2.5"><span class="inline-flex items-center justify-center select-none overflow-hidden rounded-full align-middle bg-elevated size-10 text-xl shrink-0"><img width="40" height="40" alt="Movie Two" data-nuxt-img="" srcset="https://example.com/movie2.jpg 1x, https://example.com/movie2.jpg 2x" role="img" class="h-full w-full rounded-[inherit] object-cover" src="https://example.com/movie2.jpg"></span>
+          <div
+            class="
+              flex
+              gap-2.5
+              group/user
+              items-center
+              relative
+            "
+            data-orientation="horizontal"
+          >
+            <span class="
+              align-middle
+              bg-elevated
+              inline-flex
+              items-center
+              justify-center
+              overflow-hidden
+              rounded-full
+              select-none
+              shrink-0
+              size-10
+              text-xl
+            ">
+              <img
+                alt="Movie Two"
+                class="
+                  h-full
+                  object-cover
+                  rounded-[inherit]
+                  w-full
+                "
+                data-nuxt-img=""
+                height="40"
+                role="img"
+                src="https://example.com/movie2.jpg"
+                srcset="https://example.com/movie2.jpg 1x, https://example.com/movie2.jpg 2x"
+                width="40"
+              />
+            </span>
             <div class="">
-              <!--v-if-->
-              <p class="font-medium text-highlighted text-base">Movie Two</p>
-              <!--v-if-->
+              <!-- v-if -->
+              <p class="
+                font-medium
+                text-base
+                text-highlighted
+              ">
+                Movie Two
+              </p>
+              <!-- v-if -->
             </div>
           </div>
         </div>
-        <!--v-if-->
+        <!-- v-if -->
       </div>
-    </div><a href="/movies/movie-2" tabindex="-1" aria-label="Card link" class="focus:outline-none peer"><span class="absolute inset-0" aria-hidden="true"></span></a>
+    </div>
+    <a
+      aria-label="Card link"
+      class="
+        focus:outline-none
+        peer
+      "
+      href="/movies/movie-2"
+      tabindex="-1"
+    ><span
+      aria-hidden="true"
+      class="
+        absolute
+        inset-0
+      "
+    ></span></a>
   </div>
-</div>"
+</div>
 `;

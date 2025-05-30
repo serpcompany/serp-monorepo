@@ -10,7 +10,7 @@
   const { data } = toRefs(props);
 
   const isVerified = computed(() => {
-    return data.value?.verification === user.value?.siteId;
+    return data.value?.verification === user.value?.id;
   });
 
   const config = useRuntimeConfig();
@@ -24,6 +24,7 @@
 
   const reviews = await useCompanyReviews(data.value?.id);
   reviews.companyId = data.value?.id;
+  reviews.entityId = data.value?.id;
 
   // State for review modal
   const showReviewModal = ref(false);
@@ -33,6 +34,7 @@
     const updatedReviews = await useCompanyReviews(data.value?.id);
     Object.assign(reviews, updatedReviews);
     reviews.companyId = data.value?.id;
+    reviews.entityId = data.value?.id;
   }
 
   const faqItems = computed(() => {
@@ -475,7 +477,7 @@
 
       <ReviewModal
         v-model:open="showReviewModal"
-        :company-id="data.id"
+        :entity-id="data.id"
         :result="reviews"
         @close="showReviewModal = false"
         @review-submitted="handleReviewSubmitted"

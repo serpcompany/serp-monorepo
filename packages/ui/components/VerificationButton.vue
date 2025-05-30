@@ -49,7 +49,7 @@
           description: 'Entity claimed successfully.',
           icon: 'check-circle'
         });
-        isVerified.value = user?.siteId;
+        isVerified.value = user?.id;
         modalOpen.value = false;
       } else {
         toast.add({

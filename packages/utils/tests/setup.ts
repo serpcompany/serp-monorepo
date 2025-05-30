@@ -8,11 +8,12 @@ vi.stubGlobal('navigateTo', mockNavigateTo);
 export const mockDefineNuxtRouteMiddleware = vi.fn((handler) => handler);
 vi.stubGlobal('defineNuxtRouteMiddleware', mockDefineNuxtRouteMiddleware);
 
-// Create a mock redirects.json file
-vi.mock('@/redirects.json', () => ({
-  default: {
+// Mock useAppConfig function
+export const mockUseAppConfig = vi.fn(() => ({
+  redirects: {
     '/old-path': '/new-path',
     '/blog': '/posts',
     '/about-us': '/about'
   }
 }));
+vi.stubGlobal('useAppConfig', mockUseAppConfig);

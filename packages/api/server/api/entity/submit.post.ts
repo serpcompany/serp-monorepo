@@ -11,12 +11,21 @@ import { and, eq, inArray } from 'drizzle-orm';
 export default defineEventHandler(async (event) => {
   try {
     const session = await requireUserSession(event);
-    const userId = session?.user?.siteId;
+    const userId = session?.user?.id;
     if (!userId) return { status: 401, message: 'Unauthorized' };
 
     const { module = '' } = getQuery(event);
 
     const data = await readBody(event);
+
+    const blacklistKeys = ['id', 'uuid'];
+
+    // Remove blacklisted keys from data
+    for (const key of blacklistKeys) {
+      if (key in data) {
+        Reflect.deleteProperty(data, key as keyof typeof data);
+      }
+    }
 
     // Ensure categories is an array of ids and that all exist in category
     if (data.categories) {

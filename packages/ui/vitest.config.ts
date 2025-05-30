@@ -12,6 +12,7 @@ export default defineVitestConfig({
       reportsDirectory: './coverage',
       exclude: ['node_modules', 'tests']
     },
+    snapshotSerializers: ['./node_modules/vue3-snapshot-serializer/index.js'],
     setupFiles: ['./tests/setupTests.ts']
   }
 });

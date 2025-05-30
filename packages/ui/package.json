@@ -18,6 +18,8 @@
   "dependencies": {
     "@nuxt/content": "^3.4.0",
     "@serp/api": "workspace:^",
+    "@serp/auth": "workspace:^",
+    "@serp/db": "workspace:^",
     "@serp/types": "workspace:^"
   },
   "devDependencies": {
@@ -49,6 +51,7 @@
     "typescript": "^5.7.3",
     "vitest": "^2.1.5",
     "vue": "latest",
+    "vue3-snapshot-serializer": "^2.10.0",
     "zod": "^3.24.2"
   }
 }

@@ -52,27 +52,18 @@
         return;
       }
       newsletterLoading.value = true;
-      const { data: res } = await useFetch('/api/newsletter/subscribe', {
+      const { data: res } = await useFetch('/api/subscribe', {
         method: 'POST',
         body: {
           email: newsletterEmail.value
         }
       });
-      if (res.value.status === 200) {
-        toast.add({
-          id: 'newsletter-success',
-          title: 'Subscribed to Newsletter',
-          description: 'You have successfully subscribed to the newsletter.',
-          icon: 'check-circle'
-        });
-      } else {
-        toast.add({
-          id: 'newsletter-error',
-          title: 'Error Subscribing to Newsletter',
-          description: res.value.message,
-          icon: 'exclamation-circle'
-        });
-      }
+      toast.add({
+        id: 'newsletter-success',
+        title: 'Subscribed to Newsletter',
+        description: 'You have successfully subscribed to the newsletter.',
+        icon: 'check-circle'
+      });
     } catch (error) {
       toast.add({
         id: 'newsletter-error',

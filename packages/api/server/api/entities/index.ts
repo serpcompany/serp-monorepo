@@ -4,7 +4,7 @@ import {
   category,
   entity,
   entityAggregate,
-  featuredSubscription,
+  subscription,
   vote
 } from '@serp/db/server/database/schema';
 import { and, asc, desc, eq, inArray, or, sql } from 'drizzle-orm';
@@ -63,7 +63,7 @@ export default defineEventHandler(async (event) => {
         .where(
           and(
             inArray(vote.entity, ids),
-            user?.siteId ? eq(vote.user, user?.siteId) : sql`FALSE`
+            user?.id ? eq(vote.user, user?.id) : sql`FALSE`
           )
         )
         .execute();
@@ -148,8 +148,8 @@ export default defineEventHandler(async (event) => {
         createdAt: entity.createdAt,
         updatedAt: entity.updatedAt,
         module: entity.module,
-        featured: featuredSubscription.isActive,
-        featuredOrder: featuredSubscription.placement,
+        featured: sql<boolean>`CASE WHEN ${subscription.status} IN ('active', 'trialing') THEN true ELSE false END`,
+        featuredOrder: sql<number>`CAST(${subscription.metadata}->>'placement' AS INTEGER)`,
         numReviews: entityAggregate.numReviews,
         numOneStarReviews: entityAggregate.numOneStarReviews,
         numTwoStarReviews: entityAggregate.numTwoStarReviews,
@@ -173,19 +173,19 @@ export default defineEventHandler(async (event) => {
         vote,
         and(
           eq(entity.id, vote.entity),
-          user?.siteId ? eq(vote.user, user?.siteId) : sql`FALSE`
+          user?.id ? eq(vote.user, user?.id) : sql`FALSE`
         )
       )
       .leftJoin(
-        featuredSubscription,
+        subscription,
         and(
-          eq(entity.id, featuredSubscription.entity),
+          sql`${subscription.metadata}->>'entityId' = ${entity.id}::text`,
+          sql`${subscription.metadata}->>'type' = 'featured'`,
+          sql`${subscription.metadata}->>'module' = ${entity.module}`,
+          inArray(subscription.status, ['active', 'trialing']),
           categorySlug
-            ? eq(
-                featuredSubscription.category,
-                sql<number>`(select id from ${category} where ${category.slug} = ${categorySlug} limit 1)`
-              )
-            : sql`FALSE`
+            ? sql`${subscription.metadata}->>'categorySlug' = ${categorySlug}`
+            : sql`${subscription.metadata}->>'categorySlug' IS NULL`
         )
       );
 
@@ -258,8 +258,8 @@ export default defineEventHandler(async (event) => {
     };
 
     const orderByList = [
-      asc(featuredSubscription.isActive),
-      asc(featuredSubscription.placement)
+      sql`CASE WHEN ${subscription.status} IN ('active', 'trialing') THEN 0 ELSE 1 END`,
+      sql`CAST(${subscription.metadata}->>'placement' AS INTEGER)`
     ];
 
     if (sort && sorts[sort]) {

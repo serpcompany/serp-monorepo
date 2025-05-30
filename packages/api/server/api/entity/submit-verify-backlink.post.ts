@@ -7,7 +7,7 @@ import { defineEventHandler, getQuery } from 'h3';
 
 export default defineEventHandler(async (event) => {
   const session = await requireUserSession(event);
-  const userId = session?.user?.siteId;
+  const userId = session?.user?.id;
   if (!userId) return { status: 401, message: 'Unauthorized' };
 
   const { id, module = '' } = getQuery(event);

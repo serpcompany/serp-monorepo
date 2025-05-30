@@ -16,8 +16,9 @@
   },
   "dependencies": {
     "@serp/types": "workspace:^",
-    "drizzle-kit": "^0.28.1",
-    "drizzle-orm": "^0.36.2",
+    "drizzle-kit": "^0.31.0",
+    "drizzle-orm": "^0.43.1",
+    "drizzle-zod": "^0.7.1",
     "postgres": "^3.4.3"
   },
   "devDependencies": {
