@@ -1,0 +1,195 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SPage/Users/Submit/Companies Snapshot > renders with no submissions correctly 1`] = `
+<div class="
+  flex
+  flex-col
+  lg:gap-10
+  lg:grid
+  lg:grid-cols-10
+">
+  <!-- v-if -->
+  <div class="lg:col-span-10">
+    <!-- hero -->
+    <div class="py-20">
+      <div class="
+        lg:px-8
+        max-w-5xl
+        mx-auto
+        px-4
+        sm:px-6
+      ">
+        <div class="
+          flex
+          flex-col
+          gap-4
+          items-center
+          lg:items-start
+          lg:text-left
+          text-center
+        ">
+          <h1 class="
+            font-bold
+            lg:text-5xl
+            text-3xl
+            text-pretty
+          ">
+            Submissions
+          </h1>
+          <!-- v-if -->
+          <!-- v-if -->
+        </div>
+      </div>
+    </div>
+    <main class="min-h-[calc(100vh-var(--ui-header-height))]">
+      <!-- rows: companies -->
+      <div class="space-y-4">
+        <div class="
+          gap-4
+          grid
+          grid-cols-1
+          lg:grid-cols-3
+          md:grid-cols-2
+        "></div>
+      </div>
+    </main>
+  </div>
+  <!-- v-if -->
+</div>
+`;
+
+exports[`SPage/Users/Submit/Companies Snapshot > renders with submissions correctly 1`] = `
+<div class="
+  flex
+  flex-col
+  lg:gap-10
+  lg:grid
+  lg:grid-cols-10
+">
+  <!-- v-if -->
+  <div class="lg:col-span-10">
+    <!-- hero -->
+    <div class="py-20">
+      <div class="
+        lg:px-8
+        max-w-5xl
+        mx-auto
+        px-4
+        sm:px-6
+      ">
+        <div class="
+          flex
+          flex-col
+          gap-4
+          items-center
+          lg:items-start
+          lg:text-left
+          text-center
+        ">
+          <h1 class="
+            font-bold
+            lg:text-5xl
+            text-3xl
+            text-pretty
+          ">
+            Submissions
+          </h1>
+          <!-- v-if -->
+          <!-- v-if -->
+        </div>
+      </div>
+    </div>
+    <main class="min-h-[calc(100vh-var(--ui-header-height))]">
+      <!-- rows: companies -->
+      <div class="space-y-4">
+        <div class="
+          gap-4
+          grid
+          grid-cols-1
+          lg:grid-cols-3
+          md:grid-cols-2
+        ">
+          <div class="
+            bg-white
+            dark:bg-neutral-800
+            p-4
+            rounded-lg
+            shadow-md
+          ">
+            <div>
+              <span class="
+                bg-primary
+                font-medium
+                gap-1
+                inline-flex
+                items-center
+                px-2
+                py-1
+                rounded-md
+                text-inverted
+                text-xs
+              ">
+                <!-- v-if -->
+                Priority
+                <!-- v-if -->
+              </span>
+            </div>
+            <a href="/products/example.com/reviews/"><img
+              alt="Submission Image"
+              class="
+                h-48
+                mb-4
+                object-cover
+                rounded-lg
+                w-full
+              "
+              data-nuxt-img=""
+              src="https://example.com/logo.png"
+              srcset="https://example.com/logo.png 1x, https://example.com/logo.png 2x"
+            />
+              <h2 class="
+              font-semibold
+              text-lg
+            ">Example Company (example.com) </h2>
+              <p class="text-neutral-600">A sample description</p>
+              <p class="text-neutral-500"> Status: Approved</p>
+              <p class="text-neutral-500"> Reviewed At: 2023-01-01</p>
+              <p class="text-neutral-500"> Review Notes: Looks good</p>
+              <p class="text-neutral-500"> Reviewed By: admin@example.com</p>
+              <p class="text-neutral-500"> Created At: 2022-12-01</p>
+            </a>
+          </div>
+          <div class="
+            bg-white
+            dark:bg-neutral-800
+            p-4
+            rounded-lg
+            shadow-md
+          ">
+            <!-- v-if -->
+            <a href="/users/submit/company?id=2">
+              
+            <!-- v-if -->
+              <h2 class="
+              font-semibold
+              text-lg
+            ">Test Company (test.com) </h2>
+              
+            <!-- v-if -->
+              <p class="text-neutral-500"> Status: Pending</p>
+              
+            <!-- v-if -->
+              
+            <!-- v-if -->
+              
+            <!-- v-if -->
+              <p class="text-neutral-500"> Created At: 2022-11-15</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <!-- v-if -->
+</div>
+`;

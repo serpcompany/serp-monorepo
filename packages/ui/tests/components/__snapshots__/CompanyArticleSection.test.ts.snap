@@ -1,0 +1,116 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CompanyArticleSection Snapshot > renders with empty article correctly 1`] = `
+<section
+  class="
+    bg-(--ui-bg)
+    isolate
+    relative
+  "
+  data-orientation="vertical"
+>
+  <div class="
+    flex
+    flex-col
+    gap-8
+    lg:grid
+    lg:px-8
+    lg:py-32
+    max-w-(--ui-container)
+    mx-auto
+    px-4
+    py-16
+    sm:gap-16
+    sm:px-6
+    sm:py-24
+    w-full
+  ">
+    <div class="">
+      <!-- v-if -->
+      <!-- v-if -->
+      <h2 class="
+        font-bold
+        lg:text-5xl
+        sm:text-4xl
+        text-3xl
+        text-center
+        text-highlighted
+        text-pretty
+        tracking-tight
+      ">
+        Buying Advice
+      </h2>
+      <!-- v-if -->
+      <!-- v-if -->
+      <!-- v-if -->
+    </div>
+  </div>
+</section>
+`;
+
+exports[`CompanyArticleSection Snapshot > renders with valid article content correctly 1`] = `
+<section
+  class="
+    bg-(--ui-bg)
+    isolate
+    relative
+  "
+  data-orientation="vertical"
+>
+  <div class="
+    flex
+    flex-col
+    gap-8
+    lg:grid
+    lg:px-8
+    lg:py-32
+    max-w-(--ui-container)
+    mx-auto
+    px-4
+    py-16
+    sm:gap-16
+    sm:px-6
+    sm:py-24
+    w-full
+  ">
+    <div class="">
+      <!-- v-if -->
+      <!-- v-if -->
+      <h2 class="
+        font-bold
+        lg:text-5xl
+        sm:text-4xl
+        text-3xl
+        text-center
+        text-highlighted
+        text-pretty
+        tracking-tight
+      ">
+        Buying Advice
+      </h2>
+      <!-- v-if -->
+      <!-- v-if -->
+      <!-- v-if -->
+    </div>
+    <article>
+      <!-- eslint-disable vue/no-v-html -->
+      <div
+        class="
+          dark:prose-invert
+          max-w-full
+          mx-auto
+          prose
+        "
+        role="document"
+      >
+        <h1 id="article-title">
+          Breaking News
+        </h1>
+        <p>
+          This is an amazing article content!
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+`;

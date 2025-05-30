@@ -1,0 +1,1991 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CompanyCard Snapshot > renders company with expanded content correctly (with auth) 1`] = `
+<div class="
+  bg-default
+  dark:hover:ring-secondary-500
+  dark:ring-secondary-600
+  divide-dashed
+  divide-default
+  divide-y
+  flex
+  flex-col
+  hover:ring-secondary-300
+  lg:col-span-2
+  ring-2
+  ring-secondary-400
+  rounded-lg
+  transition-all
+">
+  <!-- v-if -->
+  <div class="
+    flex-grow
+    p-5
+    sm:p-5
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+    ">
+      <div class="
+        flex
+        flex-row
+        gap-4
+      ">
+        <div class="
+          bg-muted
+          border
+          border-(--ui-border)
+          rounded-sm
+          size-auto
+        ">
+          <span class="
+            align-middle
+            bg-elevated
+            inline-flex
+            items-center
+            justify-center
+            overflow-hidden
+            rounded-sm
+            select-none
+            shrink-0
+            size-12
+            text-2xl
+          ">
+            <img
+              class="
+                h-full
+                object-cover
+                rounded-[inherit]
+                w-full
+              "
+              data-nuxt-img=""
+              height="48"
+              role="img"
+              src="https://expanded.example.com/screenshot.png"
+              srcset="https://expanded.example.com/screenshot.png 1x, https://expanded.example.com/screenshot.png 2x"
+              width="48"
+            />
+          </span>
+        </div>
+        <div class="
+          flex
+          flex-1
+          gap-x-2
+          items-center
+        ">
+          <h2 class="
+            font-semibold
+            text-dark
+            text-xl
+          ">
+            <a
+              class="
+                hover:underline
+                transition-all
+              "
+              href="/products/expanded/reviews/"
+            >Expanded Co.</a>
+          </h2>
+          <a
+            class="
+              aria-disabled:bg-default
+              aria-disabled:cursor-not-allowed
+              aria-disabled:opacity-75
+              bg-default
+              disabled:bg-default
+              disabled:cursor-not-allowed
+              disabled:opacity-75
+              focus-visible:ring-2
+              focus-visible:ring-inverted
+              focus:outline-none
+              font-medium
+              gap-1.5
+              hover:bg-elevated
+              inline-flex
+              items-center
+              ml-auto
+              px-2.5
+              py-1.5
+              ring
+              ring-accented
+              ring-inset
+              rounded-md
+              text-default
+              text-xs
+              transition-colors
+            "
+            href="https://expanded.example.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            
+          <!-- v-if --><span class="truncate">Website</span><span
+            aria-hidden="true"
+            class="
+              i-lucide:external-link
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          </a>
+        </div>
+      </div>
+      <div class="
+        flex
+        flex-col
+        gap-4
+      ">
+        <p class="
+          text-muted
+          text-sm
+        ">
+          Expanded content goes here.
+        </p>
+        <!-- v-if -->
+      </div>
+    </div>
+  </div>
+  <div class="
+    bg-gray-50
+    dark:bg-black/10
+    p-4
+    px-5
+    py-4
+    rounded-b-lg
+    sm:px-5
+  ">
+    <div class="
+      flex
+      flex-row
+      gap-3
+      items-center
+    ">
+      <div
+        class="
+          -space-x-px
+          inline-flex
+          relative
+        "
+        module="company"
+      >
+        <button
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus-visible:z-[1]
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            not-last:not-first:rounded-none
+            not-only:first:rounded-e-none
+            not-only:last:rounded-s-none
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-xs
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:arrow-big-up
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <span class="
+          bg-default
+          focus-visible:z-[1]
+          font-medium
+          gap-1
+          inline-flex
+          items-center
+          justify-center
+          not-last:not-first:rounded-none
+          not-only:first:rounded-e-none
+          not-only:last:rounded-s-none
+          p-1
+          ring
+          ring-accented
+          ring-inset
+          rounded-sm
+          text-default
+          text-sm
+          w-8
+        ">
+          <!-- v-if -->
+          <span class="truncate">
+            NaN
+          </span>
+          <!-- v-if -->
+        </span>
+        <button
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus-visible:z-[1]
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            not-last:not-first:rounded-none
+            not-only:first:rounded-e-none
+            not-only:last:rounded-s-none
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-xs
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:arrow-big-down
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+      </div>
+      <a
+        class="
+          aria-disabled:bg-default
+          aria-disabled:cursor-not-allowed
+          aria-disabled:opacity-75
+          bg-default
+          disabled:bg-default
+          disabled:cursor-not-allowed
+          disabled:opacity-75
+          focus-visible:ring-2
+          focus-visible:ring-inverted
+          focus:outline-none
+          font-medium
+          gap-1.5
+          hover:bg-elevated
+          inline-flex
+          items-center
+          ml-auto
+          p-1.5
+          ring
+          ring-accented
+          ring-inset
+          rounded-md
+          text-default
+          text-xs
+          transition-colors
+        "
+        href="https://expanded.example.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      ><span
+        aria-hidden="true"
+        class="
+          i-lucide:bookmark
+          iconify
+          shrink-0
+          size-4
+        "
+      ></span>
+        
+      <!-- v-if -->
+        
+      <!-- v-if -->
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CompanyCard Snapshot > renders company with expanded content correctly (without auth) 1`] = `
+<div class="
+  bg-default
+  dark:hover:ring-secondary-500
+  dark:ring-secondary-600
+  divide-dashed
+  divide-default
+  divide-y
+  flex
+  flex-col
+  hover:ring-secondary-300
+  lg:col-span-2
+  ring-2
+  ring-secondary-400
+  rounded-lg
+  transition-all
+">
+  <!-- v-if -->
+  <div class="
+    flex-grow
+    p-5
+    sm:p-5
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+    ">
+      <div class="
+        flex
+        flex-row
+        gap-4
+      ">
+        <div class="
+          bg-muted
+          border
+          border-(--ui-border)
+          rounded-sm
+          size-auto
+        ">
+          <span class="
+            align-middle
+            bg-elevated
+            inline-flex
+            items-center
+            justify-center
+            overflow-hidden
+            rounded-sm
+            select-none
+            shrink-0
+            size-12
+            text-2xl
+          ">
+            <img
+              class="
+                h-full
+                object-cover
+                rounded-[inherit]
+                w-full
+              "
+              data-nuxt-img=""
+              height="48"
+              role="img"
+              src="https://expanded.example.com/screenshot.png"
+              srcset="https://expanded.example.com/screenshot.png 1x, https://expanded.example.com/screenshot.png 2x"
+              width="48"
+            />
+          </span>
+        </div>
+        <div class="
+          flex
+          flex-1
+          gap-x-2
+          items-center
+        ">
+          <h2 class="
+            font-semibold
+            text-dark
+            text-xl
+          ">
+            <a
+              class="
+                hover:underline
+                transition-all
+              "
+              href="/products/expanded/reviews/"
+            >Expanded Co.</a>
+          </h2>
+          <a
+            class="
+              aria-disabled:bg-default
+              aria-disabled:cursor-not-allowed
+              aria-disabled:opacity-75
+              bg-default
+              disabled:bg-default
+              disabled:cursor-not-allowed
+              disabled:opacity-75
+              focus-visible:ring-2
+              focus-visible:ring-inverted
+              focus:outline-none
+              font-medium
+              gap-1.5
+              hover:bg-elevated
+              inline-flex
+              items-center
+              ml-auto
+              px-2.5
+              py-1.5
+              ring
+              ring-accented
+              ring-inset
+              rounded-md
+              text-default
+              text-xs
+              transition-colors
+            "
+            href="https://expanded.example.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            
+          <!-- v-if --><span class="truncate">Website</span><span
+            aria-hidden="true"
+            class="
+              i-lucide:external-link
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          </a>
+        </div>
+      </div>
+      <div class="
+        flex
+        flex-col
+        gap-4
+      ">
+        <p class="
+          text-muted
+          text-sm
+        ">
+          Expanded content goes here.
+        </p>
+        <!-- v-if -->
+      </div>
+    </div>
+  </div>
+  <div class="
+    bg-gray-50
+    dark:bg-black/10
+    p-4
+    px-5
+    py-4
+    rounded-b-lg
+    sm:px-5
+  ">
+    <div class="
+      flex
+      flex-row
+      gap-3
+      items-center
+    ">
+      <div
+        class="
+          -space-x-px
+          inline-flex
+          relative
+        "
+        module="company"
+      >
+        <button
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus-visible:z-[1]
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            not-last:not-first:rounded-none
+            not-only:first:rounded-e-none
+            not-only:last:rounded-s-none
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-xs
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:arrow-big-up
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <span class="
+          bg-default
+          focus-visible:z-[1]
+          font-medium
+          gap-1
+          inline-flex
+          items-center
+          justify-center
+          not-last:not-first:rounded-none
+          not-only:first:rounded-e-none
+          not-only:last:rounded-s-none
+          p-1
+          ring
+          ring-accented
+          ring-inset
+          rounded-sm
+          text-default
+          text-sm
+          w-8
+        ">
+          <!-- v-if -->
+          <span class="truncate">
+            NaN
+          </span>
+          <!-- v-if -->
+        </span>
+        <button
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus-visible:z-[1]
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            not-last:not-first:rounded-none
+            not-only:first:rounded-e-none
+            not-only:last:rounded-s-none
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-xs
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:arrow-big-down
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+      </div>
+      <a
+        class="
+          aria-disabled:bg-default
+          aria-disabled:cursor-not-allowed
+          aria-disabled:opacity-75
+          bg-default
+          disabled:bg-default
+          disabled:cursor-not-allowed
+          disabled:opacity-75
+          focus-visible:ring-2
+          focus-visible:ring-inverted
+          focus:outline-none
+          font-medium
+          gap-1.5
+          hover:bg-elevated
+          inline-flex
+          items-center
+          ml-auto
+          p-1.5
+          ring
+          ring-accented
+          ring-inset
+          rounded-md
+          text-default
+          text-xs
+          transition-colors
+        "
+        href="https://expanded.example.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      ><span
+        aria-hidden="true"
+        class="
+          i-lucide:bookmark
+          iconify
+          shrink-0
+          size-4
+        "
+      ></span>
+        
+      <!-- v-if -->
+        
+      <!-- v-if -->
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CompanyCard Snapshot > renders featured company with complete details correctly (with auth) 1`] = `
+<div class="
+  bg-default
+  dark:hover:ring-secondary-500
+  dark:ring-secondary-600
+  divide-dashed
+  divide-default
+  divide-y
+  flex
+  flex-col
+  hover:ring-secondary-300
+  lg:col-span-2
+  ring-2
+  ring-secondary-400
+  rounded-lg
+  transition-all
+">
+  <!-- v-if -->
+  <div class="
+    flex-grow
+    p-5
+    sm:p-5
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+    ">
+      <div class="
+        flex
+        flex-row
+        gap-4
+      ">
+        <div class="
+          bg-muted
+          border
+          border-(--ui-border)
+          rounded-sm
+          size-auto
+        ">
+          <span class="
+            align-middle
+            bg-elevated
+            inline-flex
+            items-center
+            justify-center
+            overflow-hidden
+            rounded-sm
+            select-none
+            shrink-0
+            size-12
+            text-2xl
+          ">
+            <img
+              class="
+                h-full
+                object-cover
+                rounded-[inherit]
+                w-full
+              "
+              data-nuxt-img=""
+              height="48"
+              role="img"
+              src="https://featured.example.com/logo.png"
+              srcset="https://featured.example.com/logo.png 1x, https://featured.example.com/logo.png 2x"
+              width="48"
+            />
+          </span>
+        </div>
+        <div class="
+          flex
+          flex-1
+          gap-x-2
+          items-center
+        ">
+          <h2 class="
+            font-semibold
+            text-dark
+            text-xl
+          ">
+            <a
+              class="
+                hover:underline
+                transition-all
+              "
+              href="/products/featured/reviews/"
+            >Featured Co.</a>
+          </h2>
+          <a
+            class="
+              aria-disabled:bg-default
+              aria-disabled:cursor-not-allowed
+              aria-disabled:opacity-75
+              bg-default
+              disabled:bg-default
+              disabled:cursor-not-allowed
+              disabled:opacity-75
+              focus-visible:ring-2
+              focus-visible:ring-inverted
+              focus:outline-none
+              font-medium
+              gap-1.5
+              hover:bg-elevated
+              inline-flex
+              items-center
+              ml-auto
+              px-2.5
+              py-1.5
+              ring
+              ring-accented
+              ring-inset
+              rounded-md
+              text-default
+              text-xs
+              transition-colors
+            "
+            href="https://featured.example.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            
+          <!-- v-if --><span class="truncate">Website</span><span
+            aria-hidden="true"
+            class="
+              i-lucide:external-link
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          </a>
+        </div>
+      </div>
+      <div class="
+        flex
+        flex-col
+        gap-4
+      ">
+        <p class="
+          text-muted
+          text-sm
+        ">
+          This company is truly awesome and innovative.
+        </p>
+        <!-- v-if -->
+      </div>
+    </div>
+  </div>
+  <div class="
+    bg-gray-50
+    dark:bg-black/10
+    p-4
+    px-5
+    py-4
+    rounded-b-lg
+    sm:px-5
+  ">
+    <div class="
+      flex
+      flex-row
+      gap-3
+      items-center
+    ">
+      <div
+        class="
+          -space-x-px
+          inline-flex
+          relative
+        "
+        module="company"
+      >
+        <button
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus-visible:z-[1]
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            not-last:not-first:rounded-none
+            not-only:first:rounded-e-none
+            not-only:last:rounded-s-none
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-xs
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:arrow-big-up
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <span class="
+          bg-default
+          focus-visible:z-[1]
+          font-medium
+          gap-1
+          inline-flex
+          items-center
+          justify-center
+          not-last:not-first:rounded-none
+          not-only:first:rounded-e-none
+          not-only:last:rounded-s-none
+          p-1
+          ring
+          ring-accented
+          ring-inset
+          rounded-sm
+          text-default
+          text-sm
+          w-8
+        ">
+          <!-- v-if -->
+          <span class="truncate">
+            NaN
+          </span>
+          <!-- v-if -->
+        </span>
+        <button
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus-visible:z-[1]
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            not-last:not-first:rounded-none
+            not-only:first:rounded-e-none
+            not-only:last:rounded-s-none
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-xs
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:arrow-big-down
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+      </div>
+      <a
+        class="
+          aria-disabled:bg-default
+          aria-disabled:cursor-not-allowed
+          aria-disabled:opacity-75
+          bg-default
+          disabled:bg-default
+          disabled:cursor-not-allowed
+          disabled:opacity-75
+          focus-visible:ring-2
+          focus-visible:ring-inverted
+          focus:outline-none
+          font-medium
+          gap-1.5
+          hover:bg-elevated
+          inline-flex
+          items-center
+          ml-auto
+          p-1.5
+          ring
+          ring-accented
+          ring-inset
+          rounded-md
+          text-default
+          text-xs
+          transition-colors
+        "
+        href="https://featured.example.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      ><span
+        aria-hidden="true"
+        class="
+          i-lucide:bookmark
+          iconify
+          shrink-0
+          size-4
+        "
+      ></span>
+        
+      <!-- v-if -->
+        
+      <!-- v-if -->
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CompanyCard Snapshot > renders featured company with complete details correctly (without auth) 1`] = `
+<div class="
+  bg-default
+  dark:hover:ring-secondary-500
+  dark:ring-secondary-600
+  divide-dashed
+  divide-default
+  divide-y
+  flex
+  flex-col
+  hover:ring-secondary-300
+  lg:col-span-2
+  ring-2
+  ring-secondary-400
+  rounded-lg
+  transition-all
+">
+  <!-- v-if -->
+  <div class="
+    flex-grow
+    p-5
+    sm:p-5
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+    ">
+      <div class="
+        flex
+        flex-row
+        gap-4
+      ">
+        <div class="
+          bg-muted
+          border
+          border-(--ui-border)
+          rounded-sm
+          size-auto
+        ">
+          <span class="
+            align-middle
+            bg-elevated
+            inline-flex
+            items-center
+            justify-center
+            overflow-hidden
+            rounded-sm
+            select-none
+            shrink-0
+            size-12
+            text-2xl
+          ">
+            <img
+              class="
+                h-full
+                object-cover
+                rounded-[inherit]
+                w-full
+              "
+              data-nuxt-img=""
+              height="48"
+              role="img"
+              src="https://featured.example.com/logo.png"
+              srcset="https://featured.example.com/logo.png 1x, https://featured.example.com/logo.png 2x"
+              width="48"
+            />
+          </span>
+        </div>
+        <div class="
+          flex
+          flex-1
+          gap-x-2
+          items-center
+        ">
+          <h2 class="
+            font-semibold
+            text-dark
+            text-xl
+          ">
+            <a
+              class="
+                hover:underline
+                transition-all
+              "
+              href="/products/featured/reviews/"
+            >Featured Co.</a>
+          </h2>
+          <a
+            class="
+              aria-disabled:bg-default
+              aria-disabled:cursor-not-allowed
+              aria-disabled:opacity-75
+              bg-default
+              disabled:bg-default
+              disabled:cursor-not-allowed
+              disabled:opacity-75
+              focus-visible:ring-2
+              focus-visible:ring-inverted
+              focus:outline-none
+              font-medium
+              gap-1.5
+              hover:bg-elevated
+              inline-flex
+              items-center
+              ml-auto
+              px-2.5
+              py-1.5
+              ring
+              ring-accented
+              ring-inset
+              rounded-md
+              text-default
+              text-xs
+              transition-colors
+            "
+            href="https://featured.example.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            
+          <!-- v-if --><span class="truncate">Website</span><span
+            aria-hidden="true"
+            class="
+              i-lucide:external-link
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          </a>
+        </div>
+      </div>
+      <div class="
+        flex
+        flex-col
+        gap-4
+      ">
+        <p class="
+          text-muted
+          text-sm
+        ">
+          This company is truly awesome and innovative.
+        </p>
+        <!-- v-if -->
+      </div>
+    </div>
+  </div>
+  <div class="
+    bg-gray-50
+    dark:bg-black/10
+    p-4
+    px-5
+    py-4
+    rounded-b-lg
+    sm:px-5
+  ">
+    <div class="
+      flex
+      flex-row
+      gap-3
+      items-center
+    ">
+      <div
+        class="
+          -space-x-px
+          inline-flex
+          relative
+        "
+        module="company"
+      >
+        <button
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus-visible:z-[1]
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            not-last:not-first:rounded-none
+            not-only:first:rounded-e-none
+            not-only:last:rounded-s-none
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-xs
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:arrow-big-up
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <span class="
+          bg-default
+          focus-visible:z-[1]
+          font-medium
+          gap-1
+          inline-flex
+          items-center
+          justify-center
+          not-last:not-first:rounded-none
+          not-only:first:rounded-e-none
+          not-only:last:rounded-s-none
+          p-1
+          ring
+          ring-accented
+          ring-inset
+          rounded-sm
+          text-default
+          text-sm
+          w-8
+        ">
+          <!-- v-if -->
+          <span class="truncate">
+            NaN
+          </span>
+          <!-- v-if -->
+        </span>
+        <button
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus-visible:z-[1]
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            not-last:not-first:rounded-none
+            not-only:first:rounded-e-none
+            not-only:last:rounded-s-none
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-xs
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:arrow-big-down
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+      </div>
+      <a
+        class="
+          aria-disabled:bg-default
+          aria-disabled:cursor-not-allowed
+          aria-disabled:opacity-75
+          bg-default
+          disabled:bg-default
+          disabled:cursor-not-allowed
+          disabled:opacity-75
+          focus-visible:ring-2
+          focus-visible:ring-inverted
+          focus:outline-none
+          font-medium
+          gap-1.5
+          hover:bg-elevated
+          inline-flex
+          items-center
+          ml-auto
+          p-1.5
+          ring
+          ring-accented
+          ring-inset
+          rounded-md
+          text-default
+          text-xs
+          transition-colors
+        "
+        href="https://featured.example.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      ><span
+        aria-hidden="true"
+        class="
+          i-lucide:bookmark
+          iconify
+          shrink-0
+          size-4
+        "
+      ></span>
+        
+      <!-- v-if -->
+        
+      <!-- v-if -->
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CompanyCard Snapshot > renders non-featured company correctly (with auth) 1`] = `
+<div class="
+  bg-default
+  divide-dashed
+  divide-default
+  divide-y
+  flex
+  flex-col
+  hover:ring-(--ui-border-accented)
+  ring
+  ring-default
+  rounded-lg
+  transition-all
+">
+  <!-- v-if -->
+  <div class="
+    flex-grow
+    p-5
+    sm:p-5
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+    ">
+      <div class="
+        flex
+        flex-row
+        gap-4
+      ">
+        <div class="
+          bg-muted
+          border
+          border-(--ui-border)
+          rounded-sm
+          size-auto
+        ">
+          <span class="
+            align-middle
+            bg-elevated
+            inline-flex
+            items-center
+            justify-center
+            overflow-hidden
+            rounded-sm
+            select-none
+            shrink-0
+            size-12
+            text-2xl
+          ">
+            <span
+              aria-hidden="true"
+              class="
+                i-lucide:asterisk
+                iconify
+                shrink-0
+                text-muted
+              "
+            ></span>
+          </span>
+        </div>
+        <div class="
+          flex
+          flex-1
+          gap-x-2
+          items-center
+        ">
+          <h2 class="
+            font-semibold
+            text-dark
+            text-xl
+          ">
+            <a
+              class="
+                hover:underline
+                transition-all
+              "
+              href="/products/non-featured/reviews/"
+            >Non Featured Co.</a>
+          </h2>
+          <a
+            class="
+              aria-disabled:bg-default
+              aria-disabled:cursor-not-allowed
+              aria-disabled:opacity-75
+              bg-default
+              disabled:bg-default
+              disabled:cursor-not-allowed
+              disabled:opacity-75
+              focus-visible:ring-2
+              focus-visible:ring-inverted
+              focus:outline-none
+              font-medium
+              gap-1.5
+              hover:bg-elevated
+              inline-flex
+              items-center
+              ml-auto
+              px-2.5
+              py-1.5
+              ring
+              ring-accented
+              ring-inset
+              rounded-md
+              text-default
+              text-xs
+              transition-colors
+            "
+            href="https://nonfeatured.example.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            
+          <!-- v-if --><span class="truncate">Website</span><span
+            aria-hidden="true"
+            class="
+              i-lucide:external-link
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          </a>
+        </div>
+      </div>
+      <div class="
+        flex
+        flex-col
+        gap-4
+      ">
+        <p class="
+          text-muted
+          text-sm
+        "></p>
+        <!-- v-if -->
+      </div>
+    </div>
+  </div>
+  <div class="
+    bg-gray-50
+    dark:bg-black/10
+    p-4
+    px-5
+    py-4
+    rounded-b-lg
+    sm:px-5
+  ">
+    <div class="
+      flex
+      flex-row
+      gap-3
+      items-center
+    ">
+      <div
+        class="
+          -space-x-px
+          inline-flex
+          relative
+        "
+        module="company"
+      >
+        <button
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus-visible:z-[1]
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            not-last:not-first:rounded-none
+            not-only:first:rounded-e-none
+            not-only:last:rounded-s-none
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-xs
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:arrow-big-up
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <span class="
+          bg-default
+          focus-visible:z-[1]
+          font-medium
+          gap-1
+          inline-flex
+          items-center
+          justify-center
+          not-last:not-first:rounded-none
+          not-only:first:rounded-e-none
+          not-only:last:rounded-s-none
+          p-1
+          ring
+          ring-accented
+          ring-inset
+          rounded-sm
+          text-default
+          text-sm
+          w-8
+        ">
+          <!-- v-if -->
+          <span class="truncate">
+            NaN
+          </span>
+          <!-- v-if -->
+        </span>
+        <button
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus-visible:z-[1]
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            not-last:not-first:rounded-none
+            not-only:first:rounded-e-none
+            not-only:last:rounded-s-none
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-xs
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:arrow-big-down
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+      </div>
+      <a
+        class="
+          aria-disabled:bg-default
+          aria-disabled:cursor-not-allowed
+          aria-disabled:opacity-75
+          bg-default
+          disabled:bg-default
+          disabled:cursor-not-allowed
+          disabled:opacity-75
+          focus-visible:ring-2
+          focus-visible:ring-inverted
+          focus:outline-none
+          font-medium
+          gap-1.5
+          hover:bg-elevated
+          inline-flex
+          items-center
+          ml-auto
+          p-1.5
+          ring
+          ring-accented
+          ring-inset
+          rounded-md
+          text-default
+          text-xs
+          transition-colors
+        "
+        href="https://nonfeatured.example.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      ><span
+        aria-hidden="true"
+        class="
+          i-lucide:bookmark
+          iconify
+          shrink-0
+          size-4
+        "
+      ></span>
+        
+      <!-- v-if -->
+        
+      <!-- v-if -->
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CompanyCard Snapshot > renders non-featured company correctly (without auth) 1`] = `
+<div class="
+  bg-default
+  divide-dashed
+  divide-default
+  divide-y
+  flex
+  flex-col
+  hover:ring-(--ui-border-accented)
+  ring
+  ring-default
+  rounded-lg
+  transition-all
+">
+  <!-- v-if -->
+  <div class="
+    flex-grow
+    p-5
+    sm:p-5
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+    ">
+      <div class="
+        flex
+        flex-row
+        gap-4
+      ">
+        <div class="
+          bg-muted
+          border
+          border-(--ui-border)
+          rounded-sm
+          size-auto
+        ">
+          <span class="
+            align-middle
+            bg-elevated
+            inline-flex
+            items-center
+            justify-center
+            overflow-hidden
+            rounded-sm
+            select-none
+            shrink-0
+            size-12
+            text-2xl
+          ">
+            <span
+              aria-hidden="true"
+              class="
+                i-lucide:asterisk
+                iconify
+                shrink-0
+                text-muted
+              "
+            ></span>
+          </span>
+        </div>
+        <div class="
+          flex
+          flex-1
+          gap-x-2
+          items-center
+        ">
+          <h2 class="
+            font-semibold
+            text-dark
+            text-xl
+          ">
+            <a
+              class="
+                hover:underline
+                transition-all
+              "
+              href="/products/non-featured/reviews/"
+            >Non Featured Co.</a>
+          </h2>
+          <a
+            class="
+              aria-disabled:bg-default
+              aria-disabled:cursor-not-allowed
+              aria-disabled:opacity-75
+              bg-default
+              disabled:bg-default
+              disabled:cursor-not-allowed
+              disabled:opacity-75
+              focus-visible:ring-2
+              focus-visible:ring-inverted
+              focus:outline-none
+              font-medium
+              gap-1.5
+              hover:bg-elevated
+              inline-flex
+              items-center
+              ml-auto
+              px-2.5
+              py-1.5
+              ring
+              ring-accented
+              ring-inset
+              rounded-md
+              text-default
+              text-xs
+              transition-colors
+            "
+            href="https://nonfeatured.example.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            
+          <!-- v-if --><span class="truncate">Website</span><span
+            aria-hidden="true"
+            class="
+              i-lucide:external-link
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          </a>
+        </div>
+      </div>
+      <div class="
+        flex
+        flex-col
+        gap-4
+      ">
+        <p class="
+          text-muted
+          text-sm
+        "></p>
+        <!-- v-if -->
+      </div>
+    </div>
+  </div>
+  <div class="
+    bg-gray-50
+    dark:bg-black/10
+    p-4
+    px-5
+    py-4
+    rounded-b-lg
+    sm:px-5
+  ">
+    <div class="
+      flex
+      flex-row
+      gap-3
+      items-center
+    ">
+      <div
+        class="
+          -space-x-px
+          inline-flex
+          relative
+        "
+        module="company"
+      >
+        <button
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus-visible:z-[1]
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            not-last:not-first:rounded-none
+            not-only:first:rounded-e-none
+            not-only:last:rounded-s-none
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-xs
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:arrow-big-up
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <span class="
+          bg-default
+          focus-visible:z-[1]
+          font-medium
+          gap-1
+          inline-flex
+          items-center
+          justify-center
+          not-last:not-first:rounded-none
+          not-only:first:rounded-e-none
+          not-only:last:rounded-s-none
+          p-1
+          ring
+          ring-accented
+          ring-inset
+          rounded-sm
+          text-default
+          text-sm
+          w-8
+        ">
+          <!-- v-if -->
+          <span class="truncate">
+            NaN
+          </span>
+          <!-- v-if -->
+        </span>
+        <button
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus-visible:z-[1]
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            not-last:not-first:rounded-none
+            not-only:first:rounded-e-none
+            not-only:last:rounded-s-none
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-xs
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:arrow-big-down
+              iconify
+              shrink-0
+              size-4
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+      </div>
+      <a
+        class="
+          aria-disabled:bg-default
+          aria-disabled:cursor-not-allowed
+          aria-disabled:opacity-75
+          bg-default
+          disabled:bg-default
+          disabled:cursor-not-allowed
+          disabled:opacity-75
+          focus-visible:ring-2
+          focus-visible:ring-inverted
+          focus:outline-none
+          font-medium
+          gap-1.5
+          hover:bg-elevated
+          inline-flex
+          items-center
+          ml-auto
+          p-1.5
+          ring
+          ring-accented
+          ring-inset
+          rounded-md
+          text-default
+          text-xs
+          transition-colors
+        "
+        href="https://nonfeatured.example.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      ><span
+        aria-hidden="true"
+        class="
+          i-lucide:bookmark
+          iconify
+          shrink-0
+          size-4
+        "
+      ></span>
+        
+      <!-- v-if -->
+        
+      <!-- v-if -->
+      </a>
+    </div>
+  </div>
+</div>
+`;
