@@ -1,57 +1,218 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`SPageToolCollection Snapshot > renders the default snapshot correctly 1`] = `
-"<div class="container">
-  <div class="px-4 py-10 sm:px-6 sm:py-16 md:px-8 md:py-20">
+<div class="container">
+  <div class="
+    md:px-8
+    md:py-20
+    px-4
+    py-10
+    sm:px-6
+    sm:py-16
+  ">
     <section class="py-20">
-      <h1 class="md:text-center">Tools</h1>
-      <p data-testid="subtitle" class="sm:text-md text-left text-base md:text-center">Free online tools and apps for combining, converting, compressing &amp; convenience.</p>
+      <h1 class="md:text-center">
+        Tools
+      </h1>
+      <p class="
+        md:text-center
+        sm:text-md
+        text-base
+        text-left
+      ">
+        Free online tools and apps for combining, converting, compressing &amp; convenience.
+      </p>
     </section>
-    <section class="md:container md:mx-auto">
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+    <section class="
+      md:container
+      md:mx-auto
+    ">
+      <div class="
+        gap-4
+        grid
+        grid-cols-1
+        md:grid-cols-3
+        sm:grid-cols-2
+      ">
         <!-- Col 1 -->
         <div>
-          <h2 class="mb-4 text-xs uppercase">Combine</h2>
+          <h2 class="
+            mb-4
+            text-xs
+            uppercase
+          ">
+            Combine
+          </h2>
           <ul>
-            <li><a href="/tools/combine-csv-files/" class="flex items-center"> Combine CSVs </a></li>
+            <li>
+              <a
+                class="
+                  flex
+                  items-center
+                "
+                href="/tools/combine-csv-files/"
+              > Combine CSVs </a>
+            </li>
           </ul>
-        </div><!-- Col 2 -->
+        </div>
+        <!-- Col 2 -->
         <div>
-          <h2 class="mb-4 text-xs uppercase">Convert</h2>
+          <h2 class="
+            mb-4
+            text-xs
+            uppercase
+          ">
+            Convert
+          </h2>
           <ul>
-            <li><a href="/tools/convert-json-to-csv/" class="flex items-center"> JSON to CSV </a></li>
+            <li>
+              <a
+                class="
+                  flex
+                  items-center
+                "
+                href="/tools/convert-json-to-csv/"
+              > JSON to CSV </a>
+            </li>
           </ul>
-        </div><!-- Col 3 -->
+        </div>
+        <!-- Col 3 -->
         <div>
-          <h2 class="mb-4 text-xs uppercase">Counters</h2>
+          <h2 class="
+            mb-4
+            text-xs
+            uppercase
+          ">
+            Counters
+          </h2>
           <ul>
-            <li class="mb-2"><a href="/tools/count-characters/" class="flex items-center"> Character Counter </a></li>
-            <li class="mb-2"><a href="/tools/paragraph-counter/" class="flex items-center"> Paragraph Counter </a></li>
+            <li class="mb-2">
+              <a
+                class="
+                  flex
+                  items-center
+                "
+                href="/tools/count-characters/"
+              > Character Counter </a>
+            </li>
+            <li class="mb-2">
+              <a
+                class="
+                  flex
+                  items-center
+                "
+                href="/tools/paragraph-counter/"
+              > Paragraph Counter </a>
+            </li>
           </ul>
         </div>
       </div>
     </section>
   </div>
-  <section data-orientation="vertical" class="relative isolate text-center">
-    <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:grid py-16 sm:py-24 lg:py-32 gap-8 sm:gap-16">
+  <section
+    class="
+      isolate
+      relative
+      text-center
+    "
+    data-orientation="vertical"
+  >
+    <div class="
+      flex
+      flex-col
+      gap-8
+      lg:grid
+      lg:px-8
+      lg:py-32
+      max-w-(--ui-container)
+      mx-auto
+      px-4
+      py-16
+      sm:gap-16
+      sm:px-6
+      sm:py-24
+      w-full
+    ">
       <div class="">
-        <!--v-if-->
-        <!--v-if-->
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted text-center">Subscribe to the newsletter</h2>
-        <div class="text-base sm:text-lg text-muted text-center text-balance mt-6">Join a trillion other readers getting the best info on AI &amp; technology and stay ahead of the curve.</div>
-        <!--v-if-->
-        <!--v-if-->
+        <!-- v-if -->
+        <!-- v-if -->
+        <h2 class="
+          font-bold
+          lg:text-5xl
+          sm:text-4xl
+          text-3xl
+          text-center
+          text-highlighted
+          text-pretty
+          tracking-tight
+        ">
+          Subscribe to the newsletter
+        </h2>
+        <div class="
+          mt-6
+          sm:text-lg
+          text-balance
+          text-base
+          text-center
+          text-muted
+        ">
+          Join a trillion other readers getting the best info on AI &amp; technology and stay ahead of the curve.
+        </div>
+        <!-- v-if -->
+        <!-- v-if -->
       </div>
-      <div class="flex justify-center">
-        <!-- For white background --><button type="button" class="disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary my-4 inline-flex items-center gap-2 rounded-md border border-neutral-800 bg-(--ui-background) px-8 py-3 text-lg font-semibold transition-colors hover:bg-neutral-100 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-(--ui-primary) disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:cursor-not-allowed aria-disabled:opacity-75 dark:bg-(--ui-background) dark:text-white dark:border-white dark:hover:bg-neutral-700 text-neutral-800">
-          <!--v-if--><span class="truncate">Subscribe</span>
-          <!--v-if-->
+      <div class="
+        flex
+        justify-center
+      ">
+        <!-- For white background -->
+        <button
+          class="
+            aria-disabled:bg-primary
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-(--ui-background)
+            border
+            border-neutral-800
+            dark:bg-(--ui-background)
+            dark:border-white
+            dark:hover:bg-neutral-700
+            dark:text-white
+            disabled:bg-primary
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:outline-2
+            focus-visible:outline-offset-2
+            focus-visible:outline-primary
+            focus-visible:ring-(--ui-primary)
+            focus-visible:ring-2
+            focus:outline-hidden
+            font-semibold
+            gap-2
+            hover:bg-neutral-100
+            inline-flex
+            items-center
+            my-4
+            px-8
+            py-3
+            rounded-md
+            text-lg
+            text-neutral-800
+            transition-colors
+          "
+          type="button"
+        >
+          <!-- v-if -->
+          <span class="truncate">
+            Subscribe
+          </span>
+          <!-- v-if -->
         </button>
-        <!--v-if-->
-        <!--teleport start-->
-        <!--teleport end-->
+        <!-- v-if -->
+        <!-- teleport start -->
+        <!-- teleport end -->
       </div>
     </div>
   </section>
-</div>"
+</div>
 `;

@@ -1,301 +1,2069 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`CompanyCard Snapshot > renders company with expanded content correctly (with auth) 1`] = `
-"<div data-v-5deb94c6="" class="mx-auto max-w-5xl rounded-lg relative overflow-hidden border border-neutral-200 bg-gradient-to-b from-blue-50/50 to-transparent px-6 py-10 dark:border-blue-500/40 dark:from-blue-900/30 dark:to-neutral-900/60 dark:shadow-[0_0_15px_rgba(30,64,175,0.15)]">
+<div class="
+  bg-gradient-to-b
+  border
+  border-neutral-200
+  dark:border-blue-500/40
+  dark:from-blue-900/30
+  dark:shadow-[0_0_15px_rgba(30,64,175,0.15)]
+  dark:to-neutral-900/60
+  from-blue-50/50
+  max-w-5xl
+  mx-auto
+  overflow-hidden
+  px-6
+  py-10
+  relative
+  rounded-lg
+  to-transparent
+">
   <!-- Featured accent border -->
-  <div data-v-5deb94c6="" class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-400 to-purple-400" aria-hidden="true"></div><!-- card content -->
-  <div data-v-5deb94c6="" class="flex items-start">
+  <div
+    aria-hidden="true"
+    class="
+      absolute
+      bg-gradient-to-r
+      from-blue-400
+      h-1
+      inset-x-0
+      to-purple-400
+      top-0
+    "
+  ></div>
+  <!-- card content -->
+  <div class="
+    flex
+    items-start
+  ">
     <!-- company image -->
-    <div data-v-5deb94c6="" class="mr-5 flex-shrink-0 mb-4 sm:mb-0"><a data-v-5deb94c6="" href="/products/expanded/reviews/">
-        <div data-v-5deb94c6="" class="overflow-hidden rounded-lg bg-[var(--ui-bg-muted)] dark:bg-[var(--ui-bg-elevated)] h-36 w-36 ring-1 ring-blue-100 dark:ring-blue-500/50"><img data-v-5deb94c6="" alt="Expanded Co." data-nuxt-img="" srcset="https://expanded.example.com/screenshot.png 1x, https://expanded.example.com/screenshot.png 2x" class="h-full w-full object-contain" src="https://expanded.example.com/screenshot.png"></div>
-      </a></div><!-- company content -->
-    <div data-v-5deb94c6="" class="flex-grow">
-      <div data-v-5deb94c6="" class="flex flex-col justify-between sm:flex-row">
-        <div data-v-5deb94c6="" class="sm:max-w-[calc(100%-180px)] sm:pr-8">
+    <div class="
+      flex-shrink-0
+      mb-4
+      mr-5
+      sm:mb-0
+    ">
+      <a href="/products/expanded/reviews/">
+        <div class="
+        bg-[var(--ui-bg-muted)]
+        dark:bg-[var(--ui-bg-elevated)]
+        dark:ring-blue-500/50
+        h-36
+        overflow-hidden
+        ring-1
+        ring-blue-100
+        rounded-lg
+        w-36
+      "><img
+        alt="Expanded Co."
+        class="
+          h-full
+          object-contain
+          w-full
+        "
+        data-nuxt-img=""
+        src="https://expanded.example.com/screenshot.png"
+        srcset="https://expanded.example.com/screenshot.png 1x, https://expanded.example.com/screenshot.png 2x"
+      /></div>
+      </a>
+    </div>
+    <!-- company content -->
+    <div class="flex-grow">
+      <div class="
+        flex
+        flex-col
+        justify-between
+        sm:flex-row
+      ">
+        <div class="
+          sm:max-w-[calc(100%-180px)]
+          sm:pr-8
+        ">
           <!-- company name and badge -->
-          <div data-v-5deb94c6="" class="flex items-center"><a data-v-5deb94c6="" href="/products/expanded/reviews/" class="flex">
-              <h2 data-v-5deb94c6="" class="font-semibold mb-1 text-2xl text-blue-700 dark:text-blue-300">Expanded Co.</h2>
-            </a><span data-v-5deb94c6="" class="font-medium inline-flex items-center text-xs px-2 py-1 gap-1 rounded-md ml-4"><span class="inline-flex items-center justify-center select-none overflow-hidden rounded-full align-middle bg-elevated size-4 text-[8px] shrink-0"><img width="16" height="16" data-nuxt-img="" srcset="https://github.com/serpcompany.png 1x, https://github.com/serpcompany.png 2x" role="img" class="h-full w-full rounded-[inherit] object-cover" src="https://github.com/serpcompany.png"></span> Featured
-            <!--v-if--></span>
-          </div><!-- company oneliner -->
-          <p data-v-5deb94c6="" class="text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)] mt-3 text-base leading-relaxed dark:text-[var(--ui-text)]">Company with extra details.</p><!-- show excerpt only for featured cards -->
-          <p data-v-5deb94c6="" class="mt-5 mb-1 line-clamp-3 text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)]">Expanded content goes here.</p><!-- rating display -->
-          <div data-v-5deb94c6="" class="mt-6"><span data-v-5deb94c6="" class="text-lg font-medium">3.8/5</span></div>
-        </div><!-- right side buttons -->
-        <div data-v-5deb94c6="" class="flex min-w-[140px] flex-col space-y-2 mt-5 sm:mt-0 sm:ml-4">
-          <!-- view website button --><a data-v-5deb94c6="" href="https://expanded.example.com" rel="noopener noreferrer" target="_blank" class="flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[var(--ui-bg-inverted)] px-4 py-2 text-sm font-medium text-[var(--ui-bg)] transition-colors hover:bg-neutral-800 dark:bg-[var(--ui-bg)] dark:text-[var(--ui-bg-inverted)] dark:hover:bg-[var(--ui-bg-elevated)]"> Website <svg data-v-5deb94c6="" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path data-v-5deb94c6="" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline data-v-5deb94c6="" points="15 3 21 3 21 9"></polyline>
-              <line data-v-5deb94c6="" x1="10" y1="14" x2="21" y2="3"></line>
-            </svg></a><!-- upvote button -->
-          <div data-v-5deb94c6="" module="company">
-            <div class="relative inline-flex -space-x-px"><button type="button" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted p-1.5"><span class="iconify i-lucide:arrow-big-up shrink-0 size-5" aria-hidden="true"></span>
-                <!--v-if-->
-                <!--v-if-->
-              </button><span class="font-medium inline-flex items-center not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-xs gap-1 rounded-md ring ring-inset ring-accented text-default bg-default p-1 w-8 justify-center"><!--v-if--><span class="truncate">NaN</span>
-              <!--v-if--></span><button type="button" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted p-1.5"><span class="iconify i-lucide:arrow-big-down shrink-0 size-5" aria-hidden="true"></span>
-                <!--v-if-->
-                <!--v-if-->
+          <div class="
+            flex
+            items-center
+          ">
+            <a
+              class="flex"
+              href="/products/expanded/reviews/"
+            >
+              <h2 class="
+              dark:text-blue-300
+              font-semibold
+              mb-1
+              text-2xl
+              text-blue-700
+            ">Expanded Co.</h2>
+            </a>
+            <span class="
+              font-medium
+              gap-1
+              inline-flex
+              items-center
+              ml-4
+              px-2
+              py-1
+              rounded-md
+              text-xs
+            ">
+              <span class="
+                align-middle
+                bg-elevated
+                inline-flex
+                items-center
+                justify-center
+                overflow-hidden
+                rounded-full
+                select-none
+                shrink-0
+                size-4
+                text-[8px]
+              ">
+                <img
+                  class="
+                    h-full
+                    object-cover
+                    rounded-[inherit]
+                    w-full
+                  "
+                  data-nuxt-img=""
+                  height="16"
+                  role="img"
+                  src="https://github.com/serpcompany.png"
+                  srcset="https://github.com/serpcompany.png 1x, https://github.com/serpcompany.png 2x"
+                  width="16"
+                />
+              </span>
+              Featured
+              <!-- v-if -->
+            </span>
+          </div>
+          <!-- company oneliner -->
+          <p class="
+            dark:text-[var(--ui-text)]
+            dark:text-[var(--ui-text-toned)]
+            leading-relaxed
+            mt-3
+            text-[var(--ui-text-muted)]
+            text-base
+          ">
+            Company with extra details.
+          </p>
+          <!-- show excerpt only for featured cards -->
+          <p class="
+            dark:text-[var(--ui-text-toned)]
+            line-clamp-3
+            mb-1
+            mt-5
+            text-[var(--ui-text-muted)]
+          ">
+            Expanded content goes here.
+          </p>
+          <!-- rating display -->
+          <div class="mt-6">
+            <span class="
+              font-medium
+              text-lg
+            ">
+              3.8/5
+            </span>
+          </div>
+        </div>
+        <!-- right side buttons -->
+        <div class="
+          flex
+          flex-col
+          min-w-[140px]
+          mt-5
+          sm:ml-4
+          sm:mt-0
+          space-y-2
+        ">
+          <!-- view website button -->
+          <a
+            class="
+              bg-[var(--ui-bg-inverted)]
+              dark:bg-[var(--ui-bg)]
+              dark:hover:bg-[var(--ui-bg-elevated)]
+              dark:text-[var(--ui-bg-inverted)]
+              flex
+              font-medium
+              gap-2
+              h-10
+              hover:bg-neutral-800
+              items-center
+              justify-center
+              px-4
+              py-2
+              rounded-md
+              text-[var(--ui-bg)]
+              text-sm
+              transition-colors
+              w-full
+            "
+            href="https://expanded.example.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          > Website <svg
+            class="
+              h-4
+              w-4
+            "
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
+          />
+            </svg></a>
+          <!-- upvote button -->
+          <div module="company">
+            <div class="
+              -space-x-px
+              inline-flex
+              relative
+            ">
+              <button
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus-visible:z-[1]
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  not-last:not-first:rounded-none
+                  not-only:first:rounded-e-none
+                  not-only:last:rounded-s-none
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:arrow-big-up
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
+              </button>
+              <span class="
+                bg-default
+                focus-visible:z-[1]
+                font-medium
+                gap-1
+                inline-flex
+                items-center
+                justify-center
+                not-last:not-first:rounded-none
+                not-only:first:rounded-e-none
+                not-only:last:rounded-s-none
+                p-1
+                ring
+                ring-accented
+                ring-inset
+                rounded-md
+                text-default
+                text-xs
+                w-8
+              ">
+                <!-- v-if -->
+                <span class="truncate">
+                  NaN
+                </span>
+                <!-- v-if -->
+              </span>
+              <button
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus-visible:z-[1]
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  not-last:not-first:rounded-none
+                  not-only:first:rounded-e-none
+                  not-only:last:rounded-s-none
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:arrow-big-down
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
               </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div><!-- feature tags only for featured companies -->
-  <div data-v-5deb94c6="" class="mt-8">
-    <div data-v-5deb94c6="" class="flex flex-wrap gap-2"><span data-v-5deb94c6="" class="inline-flex rounded-full bg-[var(--ui-color-secondary-50)] px-3 py-1 text-xs font-medium text-[var(--ui-color-secondary-700)] dark:bg-[var(--ui-color-secondary-900)]/30 dark:text-[var(--ui-color-secondary-200)]">Flexibility</span></div>
-  </div><!-- expanded content (if needed) -->
-  <!--v-if-->
-</div>"
+  </div>
+  <!-- feature tags only for featured companies -->
+  <div class="mt-8">
+    <div class="
+      flex
+      flex-wrap
+      gap-2
+    ">
+      <span class="
+        bg-[var(--ui-color-secondary-50)]
+        dark:bg-[var(--ui-color-secondary-900)]/30
+        dark:text-[var(--ui-color-secondary-200)]
+        font-medium
+        inline-flex
+        px-3
+        py-1
+        rounded-full
+        text-[var(--ui-color-secondary-700)]
+        text-xs
+      ">
+        Flexibility
+      </span>
+    </div>
+  </div>
+  <!-- expanded content (if needed) -->
+  <!-- v-if -->
+</div>
 `;
 
 exports[`CompanyCard Snapshot > renders company with expanded content correctly (without auth) 1`] = `
-"<div data-v-5deb94c6="" class="mx-auto max-w-5xl rounded-lg relative overflow-hidden border border-neutral-200 bg-gradient-to-b from-blue-50/50 to-transparent px-6 py-10 dark:border-blue-500/40 dark:from-blue-900/30 dark:to-neutral-900/60 dark:shadow-[0_0_15px_rgba(30,64,175,0.15)]">
+<div class="
+  bg-gradient-to-b
+  border
+  border-neutral-200
+  dark:border-blue-500/40
+  dark:from-blue-900/30
+  dark:shadow-[0_0_15px_rgba(30,64,175,0.15)]
+  dark:to-neutral-900/60
+  from-blue-50/50
+  max-w-5xl
+  mx-auto
+  overflow-hidden
+  px-6
+  py-10
+  relative
+  rounded-lg
+  to-transparent
+">
   <!-- Featured accent border -->
-  <div data-v-5deb94c6="" class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-400 to-purple-400" aria-hidden="true"></div><!-- card content -->
-  <div data-v-5deb94c6="" class="flex items-start">
+  <div
+    aria-hidden="true"
+    class="
+      absolute
+      bg-gradient-to-r
+      from-blue-400
+      h-1
+      inset-x-0
+      to-purple-400
+      top-0
+    "
+  ></div>
+  <!-- card content -->
+  <div class="
+    flex
+    items-start
+  ">
     <!-- company image -->
-    <div data-v-5deb94c6="" class="mr-5 flex-shrink-0 mb-4 sm:mb-0"><a data-v-5deb94c6="" href="/products/expanded/reviews/">
-        <div data-v-5deb94c6="" class="overflow-hidden rounded-lg bg-[var(--ui-bg-muted)] dark:bg-[var(--ui-bg-elevated)] h-36 w-36 ring-1 ring-blue-100 dark:ring-blue-500/50"><img data-v-5deb94c6="" alt="Expanded Co." data-nuxt-img="" srcset="https://expanded.example.com/screenshot.png 1x, https://expanded.example.com/screenshot.png 2x" class="h-full w-full object-contain" src="https://expanded.example.com/screenshot.png"></div>
-      </a></div><!-- company content -->
-    <div data-v-5deb94c6="" class="flex-grow">
-      <div data-v-5deb94c6="" class="flex flex-col justify-between sm:flex-row">
-        <div data-v-5deb94c6="" class="sm:max-w-[calc(100%-180px)] sm:pr-8">
+    <div class="
+      flex-shrink-0
+      mb-4
+      mr-5
+      sm:mb-0
+    ">
+      <a href="/products/expanded/reviews/">
+        <div class="
+        bg-[var(--ui-bg-muted)]
+        dark:bg-[var(--ui-bg-elevated)]
+        dark:ring-blue-500/50
+        h-36
+        overflow-hidden
+        ring-1
+        ring-blue-100
+        rounded-lg
+        w-36
+      "><img
+        alt="Expanded Co."
+        class="
+          h-full
+          object-contain
+          w-full
+        "
+        data-nuxt-img=""
+        src="https://expanded.example.com/screenshot.png"
+        srcset="https://expanded.example.com/screenshot.png 1x, https://expanded.example.com/screenshot.png 2x"
+      /></div>
+      </a>
+    </div>
+    <!-- company content -->
+    <div class="flex-grow">
+      <div class="
+        flex
+        flex-col
+        justify-between
+        sm:flex-row
+      ">
+        <div class="
+          sm:max-w-[calc(100%-180px)]
+          sm:pr-8
+        ">
           <!-- company name and badge -->
-          <div data-v-5deb94c6="" class="flex items-center"><a data-v-5deb94c6="" href="/products/expanded/reviews/" class="flex">
-              <h2 data-v-5deb94c6="" class="font-semibold mb-1 text-2xl text-blue-700 dark:text-blue-300">Expanded Co.</h2>
-            </a><span data-v-5deb94c6="" class="font-medium inline-flex items-center text-xs px-2 py-1 gap-1 rounded-md ml-4"><span class="inline-flex items-center justify-center select-none overflow-hidden rounded-full align-middle bg-elevated size-4 text-[8px] shrink-0"><img width="16" height="16" data-nuxt-img="" srcset="https://github.com/serpcompany.png 1x, https://github.com/serpcompany.png 2x" role="img" class="h-full w-full rounded-[inherit] object-cover" src="https://github.com/serpcompany.png"></span> Featured
-            <!--v-if--></span>
-          </div><!-- company oneliner -->
-          <p data-v-5deb94c6="" class="text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)] mt-3 text-base leading-relaxed dark:text-[var(--ui-text)]">Company with extra details.</p><!-- show excerpt only for featured cards -->
-          <p data-v-5deb94c6="" class="mt-5 mb-1 line-clamp-3 text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)]">Expanded content goes here.</p><!-- rating display -->
-          <div data-v-5deb94c6="" class="mt-6"><span data-v-5deb94c6="" class="text-lg font-medium">3.8/5</span></div>
-        </div><!-- right side buttons -->
-        <div data-v-5deb94c6="" class="flex min-w-[140px] flex-col space-y-2 mt-5 sm:mt-0 sm:ml-4">
-          <!-- view website button --><a data-v-5deb94c6="" href="https://expanded.example.com" rel="noopener noreferrer" target="_blank" class="flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[var(--ui-bg-inverted)] px-4 py-2 text-sm font-medium text-[var(--ui-bg)] transition-colors hover:bg-neutral-800 dark:bg-[var(--ui-bg)] dark:text-[var(--ui-bg-inverted)] dark:hover:bg-[var(--ui-bg-elevated)]"> Website <svg data-v-5deb94c6="" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path data-v-5deb94c6="" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline data-v-5deb94c6="" points="15 3 21 3 21 9"></polyline>
-              <line data-v-5deb94c6="" x1="10" y1="14" x2="21" y2="3"></line>
-            </svg></a><!-- upvote button -->
-          <div data-v-5deb94c6="" module="company">
-            <div class="relative inline-flex -space-x-px"><button type="button" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted p-1.5"><span class="iconify i-lucide:arrow-big-up shrink-0 size-5" aria-hidden="true"></span>
-                <!--v-if-->
-                <!--v-if-->
-              </button><span class="font-medium inline-flex items-center not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-xs gap-1 rounded-md ring ring-inset ring-accented text-default bg-default p-1 w-8 justify-center"><!--v-if--><span class="truncate">NaN</span>
-              <!--v-if--></span><button type="button" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted p-1.5"><span class="iconify i-lucide:arrow-big-down shrink-0 size-5" aria-hidden="true"></span>
-                <!--v-if-->
-                <!--v-if-->
+          <div class="
+            flex
+            items-center
+          ">
+            <a
+              class="flex"
+              href="/products/expanded/reviews/"
+            >
+              <h2 class="
+              dark:text-blue-300
+              font-semibold
+              mb-1
+              text-2xl
+              text-blue-700
+            ">Expanded Co.</h2>
+            </a>
+            <span class="
+              font-medium
+              gap-1
+              inline-flex
+              items-center
+              ml-4
+              px-2
+              py-1
+              rounded-md
+              text-xs
+            ">
+              <span class="
+                align-middle
+                bg-elevated
+                inline-flex
+                items-center
+                justify-center
+                overflow-hidden
+                rounded-full
+                select-none
+                shrink-0
+                size-4
+                text-[8px]
+              ">
+                <img
+                  class="
+                    h-full
+                    object-cover
+                    rounded-[inherit]
+                    w-full
+                  "
+                  data-nuxt-img=""
+                  height="16"
+                  role="img"
+                  src="https://github.com/serpcompany.png"
+                  srcset="https://github.com/serpcompany.png 1x, https://github.com/serpcompany.png 2x"
+                  width="16"
+                />
+              </span>
+              Featured
+              <!-- v-if -->
+            </span>
+          </div>
+          <!-- company oneliner -->
+          <p class="
+            dark:text-[var(--ui-text)]
+            dark:text-[var(--ui-text-toned)]
+            leading-relaxed
+            mt-3
+            text-[var(--ui-text-muted)]
+            text-base
+          ">
+            Company with extra details.
+          </p>
+          <!-- show excerpt only for featured cards -->
+          <p class="
+            dark:text-[var(--ui-text-toned)]
+            line-clamp-3
+            mb-1
+            mt-5
+            text-[var(--ui-text-muted)]
+          ">
+            Expanded content goes here.
+          </p>
+          <!-- rating display -->
+          <div class="mt-6">
+            <span class="
+              font-medium
+              text-lg
+            ">
+              3.8/5
+            </span>
+          </div>
+        </div>
+        <!-- right side buttons -->
+        <div class="
+          flex
+          flex-col
+          min-w-[140px]
+          mt-5
+          sm:ml-4
+          sm:mt-0
+          space-y-2
+        ">
+          <!-- view website button -->
+          <a
+            class="
+              bg-[var(--ui-bg-inverted)]
+              dark:bg-[var(--ui-bg)]
+              dark:hover:bg-[var(--ui-bg-elevated)]
+              dark:text-[var(--ui-bg-inverted)]
+              flex
+              font-medium
+              gap-2
+              h-10
+              hover:bg-neutral-800
+              items-center
+              justify-center
+              px-4
+              py-2
+              rounded-md
+              text-[var(--ui-bg)]
+              text-sm
+              transition-colors
+              w-full
+            "
+            href="https://expanded.example.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          > Website <svg
+            class="
+              h-4
+              w-4
+            "
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
+          />
+            </svg></a>
+          <!-- upvote button -->
+          <div module="company">
+            <div class="
+              -space-x-px
+              inline-flex
+              relative
+            ">
+              <button
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus-visible:z-[1]
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  not-last:not-first:rounded-none
+                  not-only:first:rounded-e-none
+                  not-only:last:rounded-s-none
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:arrow-big-up
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
+              </button>
+              <span class="
+                bg-default
+                focus-visible:z-[1]
+                font-medium
+                gap-1
+                inline-flex
+                items-center
+                justify-center
+                not-last:not-first:rounded-none
+                not-only:first:rounded-e-none
+                not-only:last:rounded-s-none
+                p-1
+                ring
+                ring-accented
+                ring-inset
+                rounded-md
+                text-default
+                text-xs
+                w-8
+              ">
+                <!-- v-if -->
+                <span class="truncate">
+                  NaN
+                </span>
+                <!-- v-if -->
+              </span>
+              <button
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus-visible:z-[1]
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  not-last:not-first:rounded-none
+                  not-only:first:rounded-e-none
+                  not-only:last:rounded-s-none
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:arrow-big-down
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
               </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div><!-- feature tags only for featured companies -->
-  <div data-v-5deb94c6="" class="mt-8">
-    <div data-v-5deb94c6="" class="flex flex-wrap gap-2"><span data-v-5deb94c6="" class="inline-flex rounded-full bg-[var(--ui-color-secondary-50)] px-3 py-1 text-xs font-medium text-[var(--ui-color-secondary-700)] dark:bg-[var(--ui-color-secondary-900)]/30 dark:text-[var(--ui-color-secondary-200)]">Flexibility</span></div>
-  </div><!-- expanded content (if needed) -->
-  <!--v-if-->
-</div>"
+  </div>
+  <!-- feature tags only for featured companies -->
+  <div class="mt-8">
+    <div class="
+      flex
+      flex-wrap
+      gap-2
+    ">
+      <span class="
+        bg-[var(--ui-color-secondary-50)]
+        dark:bg-[var(--ui-color-secondary-900)]/30
+        dark:text-[var(--ui-color-secondary-200)]
+        font-medium
+        inline-flex
+        px-3
+        py-1
+        rounded-full
+        text-[var(--ui-color-secondary-700)]
+        text-xs
+      ">
+        Flexibility
+      </span>
+    </div>
+  </div>
+  <!-- expanded content (if needed) -->
+  <!-- v-if -->
+</div>
 `;
 
 exports[`CompanyCard Snapshot > renders featured company with complete details correctly (with auth) 1`] = `
-"<div data-v-5deb94c6="" class="mx-auto max-w-5xl rounded-lg relative overflow-hidden border border-neutral-200 bg-gradient-to-b from-blue-50/50 to-transparent px-6 py-10 dark:border-blue-500/40 dark:from-blue-900/30 dark:to-neutral-900/60 dark:shadow-[0_0_15px_rgba(30,64,175,0.15)]">
+<div class="
+  bg-gradient-to-b
+  border
+  border-neutral-200
+  dark:border-blue-500/40
+  dark:from-blue-900/30
+  dark:shadow-[0_0_15px_rgba(30,64,175,0.15)]
+  dark:to-neutral-900/60
+  from-blue-50/50
+  max-w-5xl
+  mx-auto
+  overflow-hidden
+  px-6
+  py-10
+  relative
+  rounded-lg
+  to-transparent
+">
   <!-- Featured accent border -->
-  <div data-v-5deb94c6="" class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-400 to-purple-400" aria-hidden="true"></div><!-- card content -->
-  <div data-v-5deb94c6="" class="flex items-start">
+  <div
+    aria-hidden="true"
+    class="
+      absolute
+      bg-gradient-to-r
+      from-blue-400
+      h-1
+      inset-x-0
+      to-purple-400
+      top-0
+    "
+  ></div>
+  <!-- card content -->
+  <div class="
+    flex
+    items-start
+  ">
     <!-- company image -->
-    <div data-v-5deb94c6="" class="mr-5 flex-shrink-0 mb-4 sm:mb-0"><a data-v-5deb94c6="" href="/products/featured/reviews/">
-        <div data-v-5deb94c6="" class="overflow-hidden rounded-lg bg-[var(--ui-bg-muted)] dark:bg-[var(--ui-bg-elevated)] h-36 w-36 ring-1 ring-blue-100 dark:ring-blue-500/50"><img data-v-5deb94c6="" alt="Featured Co." data-nuxt-img="" srcset="https://featured.example.com/logo.png 1x, https://featured.example.com/logo.png 2x" class="h-full w-full object-contain" src="https://featured.example.com/logo.png"></div>
-      </a></div><!-- company content -->
-    <div data-v-5deb94c6="" class="flex-grow">
-      <div data-v-5deb94c6="" class="flex flex-col justify-between sm:flex-row">
-        <div data-v-5deb94c6="" class="sm:max-w-[calc(100%-180px)] sm:pr-8">
+    <div class="
+      flex-shrink-0
+      mb-4
+      mr-5
+      sm:mb-0
+    ">
+      <a href="/products/featured/reviews/">
+        <div class="
+        bg-[var(--ui-bg-muted)]
+        dark:bg-[var(--ui-bg-elevated)]
+        dark:ring-blue-500/50
+        h-36
+        overflow-hidden
+        ring-1
+        ring-blue-100
+        rounded-lg
+        w-36
+      "><img
+        alt="Featured Co."
+        class="
+          h-full
+          object-contain
+          w-full
+        "
+        data-nuxt-img=""
+        src="https://featured.example.com/logo.png"
+        srcset="https://featured.example.com/logo.png 1x, https://featured.example.com/logo.png 2x"
+      /></div>
+      </a>
+    </div>
+    <!-- company content -->
+    <div class="flex-grow">
+      <div class="
+        flex
+        flex-col
+        justify-between
+        sm:flex-row
+      ">
+        <div class="
+          sm:max-w-[calc(100%-180px)]
+          sm:pr-8
+        ">
           <!-- company name and badge -->
-          <div data-v-5deb94c6="" class="flex items-center"><a data-v-5deb94c6="" href="/products/featured/reviews/" class="flex">
-              <h2 data-v-5deb94c6="" class="font-semibold mb-1 text-2xl text-blue-700 dark:text-blue-300">Featured Co.</h2>
-            </a><span data-v-5deb94c6="" class="font-medium inline-flex items-center text-xs px-2 py-1 gap-1 rounded-md ml-4"><span class="inline-flex items-center justify-center select-none overflow-hidden rounded-full align-middle bg-elevated size-4 text-[8px] shrink-0"><img width="16" height="16" data-nuxt-img="" srcset="https://github.com/serpcompany.png 1x, https://github.com/serpcompany.png 2x" role="img" class="h-full w-full rounded-[inherit] object-cover" src="https://github.com/serpcompany.png"></span> Featured
-            <!--v-if--></span>
-          </div><!-- company oneliner -->
-          <p data-v-5deb94c6="" class="text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)] mt-3 text-base leading-relaxed dark:text-[var(--ui-text)]">A standout company.</p><!-- show excerpt only for featured cards -->
-          <p data-v-5deb94c6="" class="mt-5 mb-1 line-clamp-3 text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)]">This company is truly awesome and innovative.</p><!-- rating display -->
-          <div data-v-5deb94c6="" class="mt-6"><span data-v-5deb94c6="" class="text-lg font-medium">4.5/5</span></div>
-        </div><!-- right side buttons -->
-        <div data-v-5deb94c6="" class="flex min-w-[140px] flex-col space-y-2 mt-5 sm:mt-0 sm:ml-4">
-          <!-- view website button --><a data-v-5deb94c6="" href="https://featured.example.com" rel="noopener noreferrer" target="_blank" class="flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[var(--ui-bg-inverted)] px-4 py-2 text-sm font-medium text-[var(--ui-bg)] transition-colors hover:bg-neutral-800 dark:bg-[var(--ui-bg)] dark:text-[var(--ui-bg-inverted)] dark:hover:bg-[var(--ui-bg-elevated)]"> Website <svg data-v-5deb94c6="" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path data-v-5deb94c6="" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline data-v-5deb94c6="" points="15 3 21 3 21 9"></polyline>
-              <line data-v-5deb94c6="" x1="10" y1="14" x2="21" y2="3"></line>
-            </svg></a><!-- upvote button -->
-          <div data-v-5deb94c6="" module="company">
-            <div class="relative inline-flex -space-x-px"><button type="button" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted p-1.5"><span class="iconify i-lucide:arrow-big-up shrink-0 size-5" aria-hidden="true"></span>
-                <!--v-if-->
-                <!--v-if-->
-              </button><span class="font-medium inline-flex items-center not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-xs gap-1 rounded-md ring ring-inset ring-accented text-default bg-default p-1 w-8 justify-center"><!--v-if--><span class="truncate">NaN</span>
-              <!--v-if--></span><button type="button" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted p-1.5"><span class="iconify i-lucide:arrow-big-down shrink-0 size-5" aria-hidden="true"></span>
-                <!--v-if-->
-                <!--v-if-->
+          <div class="
+            flex
+            items-center
+          ">
+            <a
+              class="flex"
+              href="/products/featured/reviews/"
+            >
+              <h2 class="
+              dark:text-blue-300
+              font-semibold
+              mb-1
+              text-2xl
+              text-blue-700
+            ">Featured Co.</h2>
+            </a>
+            <span class="
+              font-medium
+              gap-1
+              inline-flex
+              items-center
+              ml-4
+              px-2
+              py-1
+              rounded-md
+              text-xs
+            ">
+              <span class="
+                align-middle
+                bg-elevated
+                inline-flex
+                items-center
+                justify-center
+                overflow-hidden
+                rounded-full
+                select-none
+                shrink-0
+                size-4
+                text-[8px]
+              ">
+                <img
+                  class="
+                    h-full
+                    object-cover
+                    rounded-[inherit]
+                    w-full
+                  "
+                  data-nuxt-img=""
+                  height="16"
+                  role="img"
+                  src="https://github.com/serpcompany.png"
+                  srcset="https://github.com/serpcompany.png 1x, https://github.com/serpcompany.png 2x"
+                  width="16"
+                />
+              </span>
+              Featured
+              <!-- v-if -->
+            </span>
+          </div>
+          <!-- company oneliner -->
+          <p class="
+            dark:text-[var(--ui-text)]
+            dark:text-[var(--ui-text-toned)]
+            leading-relaxed
+            mt-3
+            text-[var(--ui-text-muted)]
+            text-base
+          ">
+            A standout company.
+          </p>
+          <!-- show excerpt only for featured cards -->
+          <p class="
+            dark:text-[var(--ui-text-toned)]
+            line-clamp-3
+            mb-1
+            mt-5
+            text-[var(--ui-text-muted)]
+          ">
+            This company is truly awesome and innovative.
+          </p>
+          <!-- rating display -->
+          <div class="mt-6">
+            <span class="
+              font-medium
+              text-lg
+            ">
+              4.5/5
+            </span>
+          </div>
+        </div>
+        <!-- right side buttons -->
+        <div class="
+          flex
+          flex-col
+          min-w-[140px]
+          mt-5
+          sm:ml-4
+          sm:mt-0
+          space-y-2
+        ">
+          <!-- view website button -->
+          <a
+            class="
+              bg-[var(--ui-bg-inverted)]
+              dark:bg-[var(--ui-bg)]
+              dark:hover:bg-[var(--ui-bg-elevated)]
+              dark:text-[var(--ui-bg-inverted)]
+              flex
+              font-medium
+              gap-2
+              h-10
+              hover:bg-neutral-800
+              items-center
+              justify-center
+              px-4
+              py-2
+              rounded-md
+              text-[var(--ui-bg)]
+              text-sm
+              transition-colors
+              w-full
+            "
+            href="https://featured.example.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          > Website <svg
+            class="
+              h-4
+              w-4
+            "
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
+          />
+            </svg></a>
+          <!-- upvote button -->
+          <div module="company">
+            <div class="
+              -space-x-px
+              inline-flex
+              relative
+            ">
+              <button
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus-visible:z-[1]
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  not-last:not-first:rounded-none
+                  not-only:first:rounded-e-none
+                  not-only:last:rounded-s-none
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:arrow-big-up
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
+              </button>
+              <span class="
+                bg-default
+                focus-visible:z-[1]
+                font-medium
+                gap-1
+                inline-flex
+                items-center
+                justify-center
+                not-last:not-first:rounded-none
+                not-only:first:rounded-e-none
+                not-only:last:rounded-s-none
+                p-1
+                ring
+                ring-accented
+                ring-inset
+                rounded-md
+                text-default
+                text-xs
+                w-8
+              ">
+                <!-- v-if -->
+                <span class="truncate">
+                  NaN
+                </span>
+                <!-- v-if -->
+              </span>
+              <button
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus-visible:z-[1]
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  not-last:not-first:rounded-none
+                  not-only:first:rounded-e-none
+                  not-only:last:rounded-s-none
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:arrow-big-down
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
               </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div><!-- feature tags only for featured companies -->
-  <div data-v-5deb94c6="" class="mt-8">
-    <div data-v-5deb94c6="" class="flex flex-wrap gap-2"><span data-v-5deb94c6="" class="inline-flex rounded-full bg-[var(--ui-color-secondary-50)] px-3 py-1 text-xs font-medium text-[var(--ui-color-secondary-700)] dark:bg-[var(--ui-color-secondary-900)]/30 dark:text-[var(--ui-color-secondary-200)]">Innovation</span><span data-v-5deb94c6="" class="inline-flex rounded-full bg-[var(--ui-color-secondary-50)] px-3 py-1 text-xs font-medium text-[var(--ui-color-secondary-700)] dark:bg-[var(--ui-color-secondary-900)]/30 dark:text-[var(--ui-color-secondary-200)]">Quality</span></div>
-  </div><!-- expanded content (if needed) -->
-  <!--v-if-->
-</div>"
+  </div>
+  <!-- feature tags only for featured companies -->
+  <div class="mt-8">
+    <div class="
+      flex
+      flex-wrap
+      gap-2
+    ">
+      <span class="
+        bg-[var(--ui-color-secondary-50)]
+        dark:bg-[var(--ui-color-secondary-900)]/30
+        dark:text-[var(--ui-color-secondary-200)]
+        font-medium
+        inline-flex
+        px-3
+        py-1
+        rounded-full
+        text-[var(--ui-color-secondary-700)]
+        text-xs
+      ">
+        Innovation
+      </span>
+      <span class="
+        bg-[var(--ui-color-secondary-50)]
+        dark:bg-[var(--ui-color-secondary-900)]/30
+        dark:text-[var(--ui-color-secondary-200)]
+        font-medium
+        inline-flex
+        px-3
+        py-1
+        rounded-full
+        text-[var(--ui-color-secondary-700)]
+        text-xs
+      ">
+        Quality
+      </span>
+    </div>
+  </div>
+  <!-- expanded content (if needed) -->
+  <!-- v-if -->
+</div>
 `;
 
 exports[`CompanyCard Snapshot > renders featured company with complete details correctly (without auth) 1`] = `
-"<div data-v-5deb94c6="" class="mx-auto max-w-5xl rounded-lg relative overflow-hidden border border-neutral-200 bg-gradient-to-b from-blue-50/50 to-transparent px-6 py-10 dark:border-blue-500/40 dark:from-blue-900/30 dark:to-neutral-900/60 dark:shadow-[0_0_15px_rgba(30,64,175,0.15)]">
+<div class="
+  bg-gradient-to-b
+  border
+  border-neutral-200
+  dark:border-blue-500/40
+  dark:from-blue-900/30
+  dark:shadow-[0_0_15px_rgba(30,64,175,0.15)]
+  dark:to-neutral-900/60
+  from-blue-50/50
+  max-w-5xl
+  mx-auto
+  overflow-hidden
+  px-6
+  py-10
+  relative
+  rounded-lg
+  to-transparent
+">
   <!-- Featured accent border -->
-  <div data-v-5deb94c6="" class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-400 to-purple-400" aria-hidden="true"></div><!-- card content -->
-  <div data-v-5deb94c6="" class="flex items-start">
+  <div
+    aria-hidden="true"
+    class="
+      absolute
+      bg-gradient-to-r
+      from-blue-400
+      h-1
+      inset-x-0
+      to-purple-400
+      top-0
+    "
+  ></div>
+  <!-- card content -->
+  <div class="
+    flex
+    items-start
+  ">
     <!-- company image -->
-    <div data-v-5deb94c6="" class="mr-5 flex-shrink-0 mb-4 sm:mb-0"><a data-v-5deb94c6="" href="/products/featured/reviews/">
-        <div data-v-5deb94c6="" class="overflow-hidden rounded-lg bg-[var(--ui-bg-muted)] dark:bg-[var(--ui-bg-elevated)] h-36 w-36 ring-1 ring-blue-100 dark:ring-blue-500/50"><img data-v-5deb94c6="" alt="Featured Co." data-nuxt-img="" srcset="https://featured.example.com/logo.png 1x, https://featured.example.com/logo.png 2x" class="h-full w-full object-contain" src="https://featured.example.com/logo.png"></div>
-      </a></div><!-- company content -->
-    <div data-v-5deb94c6="" class="flex-grow">
-      <div data-v-5deb94c6="" class="flex flex-col justify-between sm:flex-row">
-        <div data-v-5deb94c6="" class="sm:max-w-[calc(100%-180px)] sm:pr-8">
+    <div class="
+      flex-shrink-0
+      mb-4
+      mr-5
+      sm:mb-0
+    ">
+      <a href="/products/featured/reviews/">
+        <div class="
+        bg-[var(--ui-bg-muted)]
+        dark:bg-[var(--ui-bg-elevated)]
+        dark:ring-blue-500/50
+        h-36
+        overflow-hidden
+        ring-1
+        ring-blue-100
+        rounded-lg
+        w-36
+      "><img
+        alt="Featured Co."
+        class="
+          h-full
+          object-contain
+          w-full
+        "
+        data-nuxt-img=""
+        src="https://featured.example.com/logo.png"
+        srcset="https://featured.example.com/logo.png 1x, https://featured.example.com/logo.png 2x"
+      /></div>
+      </a>
+    </div>
+    <!-- company content -->
+    <div class="flex-grow">
+      <div class="
+        flex
+        flex-col
+        justify-between
+        sm:flex-row
+      ">
+        <div class="
+          sm:max-w-[calc(100%-180px)]
+          sm:pr-8
+        ">
           <!-- company name and badge -->
-          <div data-v-5deb94c6="" class="flex items-center"><a data-v-5deb94c6="" href="/products/featured/reviews/" class="flex">
-              <h2 data-v-5deb94c6="" class="font-semibold mb-1 text-2xl text-blue-700 dark:text-blue-300">Featured Co.</h2>
-            </a><span data-v-5deb94c6="" class="font-medium inline-flex items-center text-xs px-2 py-1 gap-1 rounded-md ml-4"><span class="inline-flex items-center justify-center select-none overflow-hidden rounded-full align-middle bg-elevated size-4 text-[8px] shrink-0"><img width="16" height="16" data-nuxt-img="" srcset="https://github.com/serpcompany.png 1x, https://github.com/serpcompany.png 2x" role="img" class="h-full w-full rounded-[inherit] object-cover" src="https://github.com/serpcompany.png"></span> Featured
-            <!--v-if--></span>
-          </div><!-- company oneliner -->
-          <p data-v-5deb94c6="" class="text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)] mt-3 text-base leading-relaxed dark:text-[var(--ui-text)]">A standout company.</p><!-- show excerpt only for featured cards -->
-          <p data-v-5deb94c6="" class="mt-5 mb-1 line-clamp-3 text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)]">This company is truly awesome and innovative.</p><!-- rating display -->
-          <div data-v-5deb94c6="" class="mt-6"><span data-v-5deb94c6="" class="text-lg font-medium">4.5/5</span></div>
-        </div><!-- right side buttons -->
-        <div data-v-5deb94c6="" class="flex min-w-[140px] flex-col space-y-2 mt-5 sm:mt-0 sm:ml-4">
-          <!-- view website button --><a data-v-5deb94c6="" href="https://featured.example.com" rel="noopener noreferrer" target="_blank" class="flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[var(--ui-bg-inverted)] px-4 py-2 text-sm font-medium text-[var(--ui-bg)] transition-colors hover:bg-neutral-800 dark:bg-[var(--ui-bg)] dark:text-[var(--ui-bg-inverted)] dark:hover:bg-[var(--ui-bg-elevated)]"> Website <svg data-v-5deb94c6="" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path data-v-5deb94c6="" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline data-v-5deb94c6="" points="15 3 21 3 21 9"></polyline>
-              <line data-v-5deb94c6="" x1="10" y1="14" x2="21" y2="3"></line>
-            </svg></a><!-- upvote button -->
-          <div data-v-5deb94c6="" module="company">
-            <div class="relative inline-flex -space-x-px"><button type="button" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted p-1.5"><span class="iconify i-lucide:arrow-big-up shrink-0 size-5" aria-hidden="true"></span>
-                <!--v-if-->
-                <!--v-if-->
-              </button><span class="font-medium inline-flex items-center not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-xs gap-1 rounded-md ring ring-inset ring-accented text-default bg-default p-1 w-8 justify-center"><!--v-if--><span class="truncate">NaN</span>
-              <!--v-if--></span><button type="button" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted p-1.5"><span class="iconify i-lucide:arrow-big-down shrink-0 size-5" aria-hidden="true"></span>
-                <!--v-if-->
-                <!--v-if-->
+          <div class="
+            flex
+            items-center
+          ">
+            <a
+              class="flex"
+              href="/products/featured/reviews/"
+            >
+              <h2 class="
+              dark:text-blue-300
+              font-semibold
+              mb-1
+              text-2xl
+              text-blue-700
+            ">Featured Co.</h2>
+            </a>
+            <span class="
+              font-medium
+              gap-1
+              inline-flex
+              items-center
+              ml-4
+              px-2
+              py-1
+              rounded-md
+              text-xs
+            ">
+              <span class="
+                align-middle
+                bg-elevated
+                inline-flex
+                items-center
+                justify-center
+                overflow-hidden
+                rounded-full
+                select-none
+                shrink-0
+                size-4
+                text-[8px]
+              ">
+                <img
+                  class="
+                    h-full
+                    object-cover
+                    rounded-[inherit]
+                    w-full
+                  "
+                  data-nuxt-img=""
+                  height="16"
+                  role="img"
+                  src="https://github.com/serpcompany.png"
+                  srcset="https://github.com/serpcompany.png 1x, https://github.com/serpcompany.png 2x"
+                  width="16"
+                />
+              </span>
+              Featured
+              <!-- v-if -->
+            </span>
+          </div>
+          <!-- company oneliner -->
+          <p class="
+            dark:text-[var(--ui-text)]
+            dark:text-[var(--ui-text-toned)]
+            leading-relaxed
+            mt-3
+            text-[var(--ui-text-muted)]
+            text-base
+          ">
+            A standout company.
+          </p>
+          <!-- show excerpt only for featured cards -->
+          <p class="
+            dark:text-[var(--ui-text-toned)]
+            line-clamp-3
+            mb-1
+            mt-5
+            text-[var(--ui-text-muted)]
+          ">
+            This company is truly awesome and innovative.
+          </p>
+          <!-- rating display -->
+          <div class="mt-6">
+            <span class="
+              font-medium
+              text-lg
+            ">
+              4.5/5
+            </span>
+          </div>
+        </div>
+        <!-- right side buttons -->
+        <div class="
+          flex
+          flex-col
+          min-w-[140px]
+          mt-5
+          sm:ml-4
+          sm:mt-0
+          space-y-2
+        ">
+          <!-- view website button -->
+          <a
+            class="
+              bg-[var(--ui-bg-inverted)]
+              dark:bg-[var(--ui-bg)]
+              dark:hover:bg-[var(--ui-bg-elevated)]
+              dark:text-[var(--ui-bg-inverted)]
+              flex
+              font-medium
+              gap-2
+              h-10
+              hover:bg-neutral-800
+              items-center
+              justify-center
+              px-4
+              py-2
+              rounded-md
+              text-[var(--ui-bg)]
+              text-sm
+              transition-colors
+              w-full
+            "
+            href="https://featured.example.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          > Website <svg
+            class="
+              h-4
+              w-4
+            "
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
+          />
+            </svg></a>
+          <!-- upvote button -->
+          <div module="company">
+            <div class="
+              -space-x-px
+              inline-flex
+              relative
+            ">
+              <button
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus-visible:z-[1]
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  not-last:not-first:rounded-none
+                  not-only:first:rounded-e-none
+                  not-only:last:rounded-s-none
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:arrow-big-up
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
+              </button>
+              <span class="
+                bg-default
+                focus-visible:z-[1]
+                font-medium
+                gap-1
+                inline-flex
+                items-center
+                justify-center
+                not-last:not-first:rounded-none
+                not-only:first:rounded-e-none
+                not-only:last:rounded-s-none
+                p-1
+                ring
+                ring-accented
+                ring-inset
+                rounded-md
+                text-default
+                text-xs
+                w-8
+              ">
+                <!-- v-if -->
+                <span class="truncate">
+                  NaN
+                </span>
+                <!-- v-if -->
+              </span>
+              <button
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus-visible:z-[1]
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  not-last:not-first:rounded-none
+                  not-only:first:rounded-e-none
+                  not-only:last:rounded-s-none
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:arrow-big-down
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
               </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div><!-- feature tags only for featured companies -->
-  <div data-v-5deb94c6="" class="mt-8">
-    <div data-v-5deb94c6="" class="flex flex-wrap gap-2"><span data-v-5deb94c6="" class="inline-flex rounded-full bg-[var(--ui-color-secondary-50)] px-3 py-1 text-xs font-medium text-[var(--ui-color-secondary-700)] dark:bg-[var(--ui-color-secondary-900)]/30 dark:text-[var(--ui-color-secondary-200)]">Innovation</span><span data-v-5deb94c6="" class="inline-flex rounded-full bg-[var(--ui-color-secondary-50)] px-3 py-1 text-xs font-medium text-[var(--ui-color-secondary-700)] dark:bg-[var(--ui-color-secondary-900)]/30 dark:text-[var(--ui-color-secondary-200)]">Quality</span></div>
-  </div><!-- expanded content (if needed) -->
-  <!--v-if-->
-</div>"
+  </div>
+  <!-- feature tags only for featured companies -->
+  <div class="mt-8">
+    <div class="
+      flex
+      flex-wrap
+      gap-2
+    ">
+      <span class="
+        bg-[var(--ui-color-secondary-50)]
+        dark:bg-[var(--ui-color-secondary-900)]/30
+        dark:text-[var(--ui-color-secondary-200)]
+        font-medium
+        inline-flex
+        px-3
+        py-1
+        rounded-full
+        text-[var(--ui-color-secondary-700)]
+        text-xs
+      ">
+        Innovation
+      </span>
+      <span class="
+        bg-[var(--ui-color-secondary-50)]
+        dark:bg-[var(--ui-color-secondary-900)]/30
+        dark:text-[var(--ui-color-secondary-200)]
+        font-medium
+        inline-flex
+        px-3
+        py-1
+        rounded-full
+        text-[var(--ui-color-secondary-700)]
+        text-xs
+      ">
+        Quality
+      </span>
+    </div>
+  </div>
+  <!-- expanded content (if needed) -->
+  <!-- v-if -->
+</div>
 `;
 
 exports[`CompanyCard Snapshot > renders non-featured company correctly (with auth) 1`] = `
-"<div data-v-5deb94c6="" class="mx-auto max-w-5xl rounded-lg border border-[var(--ui-border)] px-5 py-4 dark:border-[var(--ui-border-accented)]">
+<div class="
+  border
+  border-[var(--ui-border)]
+  dark:border-[var(--ui-border-accented)]
+  max-w-5xl
+  mx-auto
+  px-5
+  py-4
+  rounded-lg
+">
   <!-- Featured accent border -->
-  <!--v-if-->
+  <!-- v-if -->
   <!-- card content -->
-  <div data-v-5deb94c6="" class="flex items-start">
+  <div class="
+    flex
+    items-start
+  ">
     <!-- company image -->
-    <!--v-if-->
+    <!-- v-if -->
     <!-- company content -->
-    <div data-v-5deb94c6="" class="flex-grow">
-      <div data-v-5deb94c6="" class="flex flex-col justify-between sm:flex-row">
-        <div data-v-5deb94c6="" class="sm:max-w-[calc(100%-180px)] sm:pr-8">
+    <div class="flex-grow">
+      <div class="
+        flex
+        flex-col
+        justify-between
+        sm:flex-row
+      ">
+        <div class="
+          sm:max-w-[calc(100%-180px)]
+          sm:pr-8
+        ">
           <!-- company name and badge -->
-          <div data-v-5deb94c6="" class="flex items-center"><a data-v-5deb94c6="" href="/products/non-featured/reviews/" class="flex">
-              <h2 data-v-5deb94c6="" class="font-semibold text-xl text-[var(--ui-text)] dark:text-[var(--ui-text)]">Non Featured Co.</h2>
+          <div class="
+            flex
+            items-center
+          ">
+            <a
+              class="flex"
+              href="/products/non-featured/reviews/"
+            >
+              <h2 class="
+              dark:text-[var(--ui-text)]
+              font-semibold
+              text-[var(--ui-text)]
+              text-xl
+            ">Non Featured Co.</h2>
             </a>
-            <!--v-if-->
-          </div><!-- company oneliner -->
-          <p data-v-5deb94c6="" class="text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)] mt-2 line-clamp-2">Just a regular company.</p><!-- show excerpt only for featured cards -->
-          <!--v-if-->
+            <!-- v-if -->
+          </div>
+          <!-- company oneliner -->
+          <p class="
+            dark:text-[var(--ui-text-toned)]
+            line-clamp-2
+            mt-2
+            text-[var(--ui-text-muted)]
+          ">
+            Just a regular company.
+          </p>
+          <!-- show excerpt only for featured cards -->
+          <!-- v-if -->
           <!-- rating display -->
-          <!--v-if-->
-        </div><!-- right side buttons -->
-        <div data-v-5deb94c6="" class="flex min-w-[140px] flex-col space-y-2 mt-4 sm:mt-0">
-          <!-- view website button --><a data-v-5deb94c6="" href="https://nonfeatured.example.com" rel="noopener noreferrer" target="_blank" class="flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[var(--ui-bg-inverted)] px-4 py-2 text-sm font-medium text-[var(--ui-bg)] transition-colors hover:bg-neutral-800 dark:bg-[var(--ui-bg)] dark:text-[var(--ui-bg-inverted)] dark:hover:bg-[var(--ui-bg-elevated)]"> Website <svg data-v-5deb94c6="" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path data-v-5deb94c6="" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline data-v-5deb94c6="" points="15 3 21 3 21 9"></polyline>
-              <line data-v-5deb94c6="" x1="10" y1="14" x2="21" y2="3"></line>
-            </svg></a><!-- upvote button -->
-          <div data-v-5deb94c6="" module="company">
-            <div class="relative inline-flex -space-x-px"><button type="button" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted p-1.5"><span class="iconify i-lucide:arrow-big-up shrink-0 size-5" aria-hidden="true"></span>
-                <!--v-if-->
-                <!--v-if-->
-              </button><span class="font-medium inline-flex items-center not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-xs gap-1 rounded-md ring ring-inset ring-accented text-default bg-default p-1 w-8 justify-center"><!--v-if--><span class="truncate">NaN</span>
-              <!--v-if--></span><button type="button" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted p-1.5"><span class="iconify i-lucide:arrow-big-down shrink-0 size-5" aria-hidden="true"></span>
-                <!--v-if-->
-                <!--v-if-->
+          <!-- v-if -->
+        </div>
+        <!-- right side buttons -->
+        <div class="
+          flex
+          flex-col
+          min-w-[140px]
+          mt-4
+          sm:mt-0
+          space-y-2
+        ">
+          <!-- view website button -->
+          <a
+            class="
+              bg-[var(--ui-bg-inverted)]
+              dark:bg-[var(--ui-bg)]
+              dark:hover:bg-[var(--ui-bg-elevated)]
+              dark:text-[var(--ui-bg-inverted)]
+              flex
+              font-medium
+              gap-2
+              h-10
+              hover:bg-neutral-800
+              items-center
+              justify-center
+              px-4
+              py-2
+              rounded-md
+              text-[var(--ui-bg)]
+              text-sm
+              transition-colors
+              w-full
+            "
+            href="https://nonfeatured.example.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          > Website <svg
+            class="
+              h-4
+              w-4
+            "
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
+          />
+            </svg></a>
+          <!-- upvote button -->
+          <div module="company">
+            <div class="
+              -space-x-px
+              inline-flex
+              relative
+            ">
+              <button
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus-visible:z-[1]
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  not-last:not-first:rounded-none
+                  not-only:first:rounded-e-none
+                  not-only:last:rounded-s-none
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:arrow-big-up
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
+              </button>
+              <span class="
+                bg-default
+                focus-visible:z-[1]
+                font-medium
+                gap-1
+                inline-flex
+                items-center
+                justify-center
+                not-last:not-first:rounded-none
+                not-only:first:rounded-e-none
+                not-only:last:rounded-s-none
+                p-1
+                ring
+                ring-accented
+                ring-inset
+                rounded-md
+                text-default
+                text-xs
+                w-8
+              ">
+                <!-- v-if -->
+                <span class="truncate">
+                  NaN
+                </span>
+                <!-- v-if -->
+              </span>
+              <button
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus-visible:z-[1]
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  not-last:not-first:rounded-none
+                  not-only:first:rounded-e-none
+                  not-only:last:rounded-s-none
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:arrow-big-down
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
               </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div><!-- feature tags only for featured companies -->
-  <!--v-if-->
+  </div>
+  <!-- feature tags only for featured companies -->
+  <!-- v-if -->
   <!-- expanded content (if needed) -->
-  <!--v-if-->
-</div>"
+  <!-- v-if -->
+</div>
 `;
 
 exports[`CompanyCard Snapshot > renders non-featured company correctly (without auth) 1`] = `
-"<div data-v-5deb94c6="" class="mx-auto max-w-5xl rounded-lg border border-[var(--ui-border)] px-5 py-4 dark:border-[var(--ui-border-accented)]">
+<div class="
+  border
+  border-[var(--ui-border)]
+  dark:border-[var(--ui-border-accented)]
+  max-w-5xl
+  mx-auto
+  px-5
+  py-4
+  rounded-lg
+">
   <!-- Featured accent border -->
-  <!--v-if-->
+  <!-- v-if -->
   <!-- card content -->
-  <div data-v-5deb94c6="" class="flex items-start">
+  <div class="
+    flex
+    items-start
+  ">
     <!-- company image -->
-    <!--v-if-->
+    <!-- v-if -->
     <!-- company content -->
-    <div data-v-5deb94c6="" class="flex-grow">
-      <div data-v-5deb94c6="" class="flex flex-col justify-between sm:flex-row">
-        <div data-v-5deb94c6="" class="sm:max-w-[calc(100%-180px)] sm:pr-8">
+    <div class="flex-grow">
+      <div class="
+        flex
+        flex-col
+        justify-between
+        sm:flex-row
+      ">
+        <div class="
+          sm:max-w-[calc(100%-180px)]
+          sm:pr-8
+        ">
           <!-- company name and badge -->
-          <div data-v-5deb94c6="" class="flex items-center"><a data-v-5deb94c6="" href="/products/non-featured/reviews/" class="flex">
-              <h2 data-v-5deb94c6="" class="font-semibold text-xl text-[var(--ui-text)] dark:text-[var(--ui-text)]">Non Featured Co.</h2>
+          <div class="
+            flex
+            items-center
+          ">
+            <a
+              class="flex"
+              href="/products/non-featured/reviews/"
+            >
+              <h2 class="
+              dark:text-[var(--ui-text)]
+              font-semibold
+              text-[var(--ui-text)]
+              text-xl
+            ">Non Featured Co.</h2>
             </a>
-            <!--v-if-->
-          </div><!-- company oneliner -->
-          <p data-v-5deb94c6="" class="text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)] mt-2 line-clamp-2">Just a regular company.</p><!-- show excerpt only for featured cards -->
-          <!--v-if-->
+            <!-- v-if -->
+          </div>
+          <!-- company oneliner -->
+          <p class="
+            dark:text-[var(--ui-text-toned)]
+            line-clamp-2
+            mt-2
+            text-[var(--ui-text-muted)]
+          ">
+            Just a regular company.
+          </p>
+          <!-- show excerpt only for featured cards -->
+          <!-- v-if -->
           <!-- rating display -->
-          <!--v-if-->
-        </div><!-- right side buttons -->
-        <div data-v-5deb94c6="" class="flex min-w-[140px] flex-col space-y-2 mt-4 sm:mt-0">
-          <!-- view website button --><a data-v-5deb94c6="" href="https://nonfeatured.example.com" rel="noopener noreferrer" target="_blank" class="flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[var(--ui-bg-inverted)] px-4 py-2 text-sm font-medium text-[var(--ui-bg)] transition-colors hover:bg-neutral-800 dark:bg-[var(--ui-bg)] dark:text-[var(--ui-bg-inverted)] dark:hover:bg-[var(--ui-bg-elevated)]"> Website <svg data-v-5deb94c6="" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path data-v-5deb94c6="" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline data-v-5deb94c6="" points="15 3 21 3 21 9"></polyline>
-              <line data-v-5deb94c6="" x1="10" y1="14" x2="21" y2="3"></line>
-            </svg></a><!-- upvote button -->
-          <div data-v-5deb94c6="" module="company">
-            <div class="relative inline-flex -space-x-px"><button type="button" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted p-1.5"><span class="iconify i-lucide:arrow-big-up shrink-0 size-5" aria-hidden="true"></span>
-                <!--v-if-->
-                <!--v-if-->
-              </button><span class="font-medium inline-flex items-center not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-xs gap-1 rounded-md ring ring-inset ring-accented text-default bg-default p-1 w-8 justify-center"><!--v-if--><span class="truncate">NaN</span>
-              <!--v-if--></span><button type="button" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors not-only:first:rounded-e-none not-only:last:rounded-s-none not-last:not-first:rounded-none focus-visible:z-[1] text-sm gap-1.5 ring ring-inset ring-accented text-default bg-default hover:bg-elevated disabled:bg-default aria-disabled:bg-default focus:outline-none focus-visible:ring-2 focus-visible:ring-inverted p-1.5"><span class="iconify i-lucide:arrow-big-down shrink-0 size-5" aria-hidden="true"></span>
-                <!--v-if-->
-                <!--v-if-->
+          <!-- v-if -->
+        </div>
+        <!-- right side buttons -->
+        <div class="
+          flex
+          flex-col
+          min-w-[140px]
+          mt-4
+          sm:mt-0
+          space-y-2
+        ">
+          <!-- view website button -->
+          <a
+            class="
+              bg-[var(--ui-bg-inverted)]
+              dark:bg-[var(--ui-bg)]
+              dark:hover:bg-[var(--ui-bg-elevated)]
+              dark:text-[var(--ui-bg-inverted)]
+              flex
+              font-medium
+              gap-2
+              h-10
+              hover:bg-neutral-800
+              items-center
+              justify-center
+              px-4
+              py-2
+              rounded-md
+              text-[var(--ui-bg)]
+              text-sm
+              transition-colors
+              w-full
+            "
+            href="https://nonfeatured.example.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          > Website <svg
+            class="
+              h-4
+              w-4
+            "
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
+          />
+            </svg></a>
+          <!-- upvote button -->
+          <div module="company">
+            <div class="
+              -space-x-px
+              inline-flex
+              relative
+            ">
+              <button
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus-visible:z-[1]
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  not-last:not-first:rounded-none
+                  not-only:first:rounded-e-none
+                  not-only:last:rounded-s-none
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:arrow-big-up
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
+              </button>
+              <span class="
+                bg-default
+                focus-visible:z-[1]
+                font-medium
+                gap-1
+                inline-flex
+                items-center
+                justify-center
+                not-last:not-first:rounded-none
+                not-only:first:rounded-e-none
+                not-only:last:rounded-s-none
+                p-1
+                ring
+                ring-accented
+                ring-inset
+                rounded-md
+                text-default
+                text-xs
+                w-8
+              ">
+                <!-- v-if -->
+                <span class="truncate">
+                  NaN
+                </span>
+                <!-- v-if -->
+              </span>
+              <button
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus-visible:z-[1]
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  not-last:not-first:rounded-none
+                  not-only:first:rounded-e-none
+                  not-only:last:rounded-s-none
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:arrow-big-down
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
               </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div><!-- feature tags only for featured companies -->
-  <!--v-if-->
+  </div>
+  <!-- feature tags only for featured companies -->
+  <!-- v-if -->
   <!-- expanded content (if needed) -->
-  <!--v-if-->
-</div>"
+  <!-- v-if -->
+</div>
 `;

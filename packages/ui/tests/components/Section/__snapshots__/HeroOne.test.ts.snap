@@ -1,15 +1,26 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`SectionHeroOne Snapshot > renders with title and subtitle correctly 1`] = `
-"<section class="py-20">
-  <h1 class="md:text-center">Welcome to HeroOne</h1>
-  <p data-testid="subtitle" class="sm:text-md text-left text-base md:text-center">This is a subtitle</p>
-</section>"
+<section class="py-20">
+  <h1 class="md:text-center">
+    Welcome to HeroOne
+  </h1>
+  <p class="
+    md:text-center
+    sm:text-md
+    text-base
+    text-left
+  ">
+    This is a subtitle
+  </p>
+</section>
 `;
 
 exports[`SectionHeroOne Snapshot > renders with title only correctly 1`] = `
-"<section class="py-20">
-  <h1 class="md:text-center">Welcome to HeroOne</h1>
-  <!--v-if-->
-</section>"
+<section class="py-20">
+  <h1 class="md:text-center">
+    Welcome to HeroOne
+  </h1>
+  <!-- v-if -->
+</section>
 `;
