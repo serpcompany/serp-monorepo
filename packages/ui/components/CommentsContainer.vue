@@ -100,7 +100,7 @@
       });
       return;
     }
-    if (!user?.value?.siteId) {
+    if (!user?.value?.id) {
       toast.add({
         id: 'comment-login',
         title: 'Login required',

@@ -66,7 +66,7 @@
   const isAuthorOrAdmin = computed(
     () =>
       loggedIn.value &&
-      (user?.value?.siteId === props.comment.user_id || user?.value?.isAdmin)
+      (user?.value?.id === props.comment.user_id || user?.value?.isAdmin)
   );
 
   const displayedReplies = computed(() =>
@@ -170,10 +170,7 @@
       return;
     }
 
-    if (
-      user?.value?.siteId !== props.comment.user_id &&
-      !user?.value?.isAdmin
-    ) {
+    if (user?.value?.id !== props.comment.user_id && !user?.value?.isAdmin) {
       toast.add({
         id: 'update-comment-author',
         title: 'Permission denied',
@@ -258,10 +255,7 @@
       return;
     }
 
-    if (
-      user?.value?.siteId !== props.comment.user_id &&
-      !user?.value?.isAdmin
-    ) {
+    if (user?.value?.id !== props.comment.user_id && !user?.value?.isAdmin) {
       toast.add({
         id: 'delete-comment-author',
         title: 'Permission denied',
@@ -341,7 +335,7 @@
   }
 
   async function reply() {
-    if (!loggedIn.value || !user?.value?.siteId) {
+    if (!loggedIn.value || !user?.value?.id) {
       toast.add({
         id: 'reply-comment-login',
         title: 'Login required',

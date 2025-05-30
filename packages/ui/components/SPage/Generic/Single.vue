@@ -22,7 +22,7 @@
   }
 
   const isVerified = computed(() => {
-    return data.verification === user.value?.siteId;
+    return data.verification === user.value?.id;
   });
 
   const config = useRuntimeConfig();
