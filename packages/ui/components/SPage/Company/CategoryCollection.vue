@@ -1,110 +1,107 @@
 <script setup lang="ts">
-  import type { Faq } from '@serp/types/types';
+  import type { Category } from '@serp/types/types';
 
-  const router = useRouter();
   const route = useRoute();
+  const { slug } = useRoute().params;
+
+  const { data: category } = await useAsyncData(
+    `category-${slug}`,
+    async () => {
+      const response = await useCompanies(1, 1, slug as string);
+      const category = response.category as Category;
+      return category;
+    }
+  );
 
   const page = ref(Number(route.query.page) || 1);
-  const limit = ref(Number(route.query.limit) || 50);
-  const categories = await useCompanyCategories();
 
-  const slug = route.params.slug as string;
+  const filters = computed(() => ({
+    page: page.value,
+    limit: Number(route.query.limit) || 50,
+    category: slug as string,
+    name: route.query.q as string,
+    sort: route.query.sor as string
+  }));
 
-  let data = await useCompanies(page.value, limit.value, slug);
-  if (!data) {
-    router.push('/404');
-  }
-  const faqItems = computed(() => {
-    if (!data?.category?.faqs || !data?.category?.faqs.length) {
-      return [];
+  const { data, status } = await useAsyncData(
+    `companies-${slug}`,
+    () =>
+      useCompanies(
+        filters.value.page,
+        filters.value.limit,
+        filters.value.category,
+        filters.value.name,
+        filters.value.sort
+      ),
+    {
+      lazy: true,
+      watch: [filters]
     }
-    // @todo - improve the typesafety of this after implementing zod
-    return data?.category?.faqs.map((faq: Faq) => ({
-      label: faq.question,
-      content: faq.answer
-    }));
-  });
+  );
 
-  watch([page, limit], async ([newPage, newLimit]) => {
-    const query = { ...route.query };
-    if (newPage !== 1) {
-      query.page = String(newPage);
-    } else {
-      delete query.page;
+  const { data: categories } = await useAsyncData(
+    'categories',
+    () => useCompanyCategories(),
+    {
+      default: () => []
     }
-    if (newLimit !== 50) {
-      query.limit = String(newLimit);
-    } else {
-      delete query.limit;
-    }
-    data = await useCompanies(page.value, limit.value, slug);
-    router.push({ query });
-  });
+  );
 
   useSeoMeta({
-    title: () => `The Best ${data?.category?.name} Providers`
+    title: () => `The Best ${category.value?.name} Providers`
   });
 </script>
 
 <template>
-  <UPage>
-    <!-- hero -->
+  <div>
     <SHero
-      :headline="`The Best ${data?.category?.name}`"
+      class="-mt-22"
+      :headline="`The Best ${category?.name}`"
+      :subheadline="`Discover ${category?.name} products & services.`"
       :show-search-bar="false"
       :show-buttons="false"
     />
 
-    <UMain>
-      <!-- rows: companies -->
-      <div class="space-y-4">
-        <CompanyCard
-          v-for="company in data.companies"
-          :key="company.slug"
-          :company="company"
+    <main>
+      <div class="flex flex-col gap-y-6">
+        <CollectionFilters :loading="status === 'pending'" />
+        <CompanyCardList
+          v-model:page="page"
+          :loading="status === 'pending'"
+          :items="data?.companies || []"
+          :pagination-limit="filters.limit"
+          :pagination-total="data?.pagination.totalItems"
         />
       </div>
 
-      <UPagination
-        v-model:page="page"
-        :total="data?.pagination?.totalItems"
-        :items-per-page="limit"
-        :sibling-count="3"
-        aria-label="pagination"
-        class="mt-20 flex justify-center overflow-x-auto rounded-none"
-      />
+      <template v-if="category && category.data">
+        <CompanyArticleSection
+          v-if="category.data.buyers_guide"
+          :article="category.data.buyers_guide"
+        />
 
-      <!-- article -->
-      <section v-if="data?.category?.buyersGuide" class="mt-20">
-        <CompanyArticleSection :article="data?.category?.buyersGuide" />
-      </section>
-
-      <!-- faqs -->
-      <UPageSection
-        v-if="data?.category?.faqs"
-        title="FAQs"
-        class="mx-auto max-w-5xl"
-      >
-        <UPageAccordion
-          :items="faqItems"
-          :ui="{ body: { class: 'prose dark:prose-invert' } }"
+        <UPageSection
+          v-if="category.data.faqs && category.data.faqs.length"
+          title="FAQs"
         >
-          <template #body="{ item }">
-            <div
-              class="prose dark:prose-invert max-w-full"
-              v-html="item.content"
-            ></div>
-          </template>
-        </UPageAccordion>
-      </UPageSection>
+          <UPageAccordion :items="category.data.faqs" label-key="question">
+            <template #body="{ item }">
+              <!-- eslint-disable vue/no-v-html -->
+              <div
+                class="prose dark:prose-invert max-w-full"
+                v-html="item.answer"
+              ></div>
+            </template>
+          </UPageAccordion>
+        </UPageSection>
+      </template>
 
       <SLinkHub
         v-if="categories && categories.length"
         :categories="categories"
         headline="Categories"
-        class="mt-20"
         base-slug="products/best"
       />
-    </UMain>
-  </UPage>
+    </main>
+  </div>
 </template>

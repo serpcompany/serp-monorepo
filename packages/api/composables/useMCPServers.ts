@@ -6,10 +6,12 @@ export const useMCPServers = async (
   tag = '',
   topic = '',
   owner = '',
-  categorySlug = ''
+  categorySlug = '',
+  name = '',
+  sort = ''
 ) => {
   const data = await useFetchWithCache<Entities>(
-    `/entities?page=${page}&limit=${limit}&tag=${tag}&topic=${topic}&owner=${owner}&categorySlug=${categorySlug}&module=mcp_server`
+    `/entities?page=${page}&limit=${limit}&name=${name}&tag=${tag}&topic=${topic}&owner=${owner}&categorySlug=${categorySlug}&sort=${sort}&module=mcp_server`
   );
   if (!data) {
     return data;

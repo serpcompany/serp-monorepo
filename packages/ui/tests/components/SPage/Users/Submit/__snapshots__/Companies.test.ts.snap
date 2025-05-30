@@ -11,48 +11,33 @@ exports[`SPage/Users/Submit/Companies Snapshot > renders with no submissions cor
   <!-- v-if -->
   <div class="lg:col-span-10">
     <!-- hero -->
-    <div>
-      <div class="py-20">
+    <div class="py-20">
+      <div class="
+        lg:px-8
+        max-w-5xl
+        mx-auto
+        px-4
+        sm:px-6
+      ">
         <div class="
-          lg:px-8
-          max-w-5xl
-          mx-auto
-          px-4
-          sm:px-6
+          flex
+          flex-col
+          gap-4
+          items-center
+          lg:items-start
+          lg:text-left
+          text-center
         ">
-          <div class="items-center">
-            <div class="
-              flex
-              flex-col
-              items-center
-              lg:items-start
-              lg:text-left
-              text-center
-            ">
-              <h1 class="
-                font-bold
-                lg:text-5xl
-                my-4
-                text-2xl
-                text-pretty
-              ">
-                Submissions
-              </h1>
-              <!-- v-if -->
-              <div class="
-                flex
-                flex-col
-                gap-2
-                justify-center
-                lg:justify-start
-                sm:flex-row
-                w-full
-              ">
-                <!-- v-if -->
-                <!-- v-if -->
-              </div>
-            </div>
-          </div>
+          <h1 class="
+            font-bold
+            lg:text-5xl
+            text-3xl
+            text-pretty
+          ">
+            Submissions
+          </h1>
+          <!-- v-if -->
+          <!-- v-if -->
         </div>
       </div>
     </div>
@@ -84,48 +69,33 @@ exports[`SPage/Users/Submit/Companies Snapshot > renders with submissions correc
   <!-- v-if -->
   <div class="lg:col-span-10">
     <!-- hero -->
-    <div>
-      <div class="py-20">
+    <div class="py-20">
+      <div class="
+        lg:px-8
+        max-w-5xl
+        mx-auto
+        px-4
+        sm:px-6
+      ">
         <div class="
-          lg:px-8
-          max-w-5xl
-          mx-auto
-          px-4
-          sm:px-6
+          flex
+          flex-col
+          gap-4
+          items-center
+          lg:items-start
+          lg:text-left
+          text-center
         ">
-          <div class="items-center">
-            <div class="
-              flex
-              flex-col
-              items-center
-              lg:items-start
-              lg:text-left
-              text-center
-            ">
-              <h1 class="
-                font-bold
-                lg:text-5xl
-                my-4
-                text-2xl
-                text-pretty
-              ">
-                Submissions
-              </h1>
-              <!-- v-if -->
-              <div class="
-                flex
-                flex-col
-                gap-2
-                justify-center
-                lg:justify-start
-                sm:flex-row
-                w-full
-              ">
-                <!-- v-if -->
-                <!-- v-if -->
-              </div>
-            </div>
-          </div>
+          <h1 class="
+            font-bold
+            lg:text-5xl
+            text-3xl
+            text-pretty
+          ">
+            Submissions
+          </h1>
+          <!-- v-if -->
+          <!-- v-if -->
         </div>
       </div>
     </div>

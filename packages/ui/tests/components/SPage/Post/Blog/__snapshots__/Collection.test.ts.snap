@@ -350,52 +350,120 @@ exports[`SPagePostBlogCollection Snapshot > renders with posts and categories (w
         </button>
       </div>
     </nav>
-    <section class="
-      mt-20
-      my-30
-    ">
-      <div class="mx-auto">
-        <div class="pt-12">
-          <div>
-            <span class="
-              font-bold
-              inline-block
-              py-4
-              text-3xl
-            ">
-              Categories
-            </span>
-          </div>
+    <section
+      class="
+        isolate
+        mt-20
+        relative
+      "
+      data-orientation="vertical"
+    >
+      <div class="
+        flex
+        flex-col
+        gap-8
+        lg:grid
+        lg:px-8
+        lg:py-32
+        max-w-(--ui-container)
+        mx-auto
+        px-4
+        py-16
+        sm:gap-16
+        sm:px-6
+        sm:py-24
+        w-full
+      ">
+        <div class="">
+          <!-- v-if -->
+          <!-- v-if -->
+          <h2 class="
+            font-bold
+            lg:text-5xl
+            sm:text-4xl
+            text-3xl
+            text-highlighted
+            text-left
+            text-pretty
+            tracking-tight
+          ">
+            Categories
+          </h2>
+          <!-- v-if -->
+          <!-- v-if -->
+          <!-- v-if -->
         </div>
         <div class="
-          gap-4
+          gap-x-8
+          gap-y-6
           grid
           grid-cols-1
           lg:grid-cols-4
           md:grid-cols-3
-          mt-5
           sm:grid-cols-2
         ">
-          <div class="border-t">
-            <a
-              class="
-                flex
-                font-medium
-                mt-3
-              "
-              href="/posts/category/tech/"
-            >Tech</a>
-          </div>
-          <div class="border-t">
-            <a
-              class="
-                flex
-                font-medium
-                mt-3
-              "
-              href="/posts/category/lifestyle/"
-            >Lifestyle</a>
-          </div>
+          <a
+            class="
+              flex
+              focus-visible:outline-primary
+              font-medium
+              gap-3
+              group
+              hover:text-default
+              items-center
+              text-base
+              text-muted
+              transition-all
+            "
+            href="/posts/category/tech/"
+          ><span
+            aria-hidden="true"
+            class="
+              group-hover:translate-x-1
+              i-lucide:arrow-right
+              iconify
+              size-4
+              text-dimmed
+              transition-all
+            "
+          ></span><span>Tech</span>
+            <hr class="
+            border-(--ui-border)
+            flex-1
+            min-w-2
+          " />
+          </a>
+          <a
+            class="
+              flex
+              focus-visible:outline-primary
+              font-medium
+              gap-3
+              group
+              hover:text-default
+              items-center
+              text-base
+              text-muted
+              transition-all
+            "
+            href="/posts/category/lifestyle/"
+          ><span
+            aria-hidden="true"
+            class="
+              group-hover:translate-x-1
+              i-lucide:arrow-right
+              iconify
+              size-4
+              text-dimmed
+              transition-all
+            "
+          ></span><span>Lifestyle</span>
+            <hr class="
+            border-(--ui-border)
+            flex-1
+            min-w-2
+          " />
+          </a>
         </div>
       </div>
     </section>
@@ -858,52 +926,120 @@ exports[`SPagePostBlogCollection Snapshot > renders with posts and categories (w
         </button>
       </div>
     </nav>
-    <section class="
-      mt-20
-      my-30
-    ">
-      <div class="mx-auto">
-        <div class="pt-12">
-          <div>
-            <span class="
-              font-bold
-              inline-block
-              py-4
-              text-3xl
-            ">
-              Categories
-            </span>
-          </div>
+    <section
+      class="
+        isolate
+        mt-20
+        relative
+      "
+      data-orientation="vertical"
+    >
+      <div class="
+        flex
+        flex-col
+        gap-8
+        lg:grid
+        lg:px-8
+        lg:py-32
+        max-w-(--ui-container)
+        mx-auto
+        px-4
+        py-16
+        sm:gap-16
+        sm:px-6
+        sm:py-24
+        w-full
+      ">
+        <div class="">
+          <!-- v-if -->
+          <!-- v-if -->
+          <h2 class="
+            font-bold
+            lg:text-5xl
+            sm:text-4xl
+            text-3xl
+            text-highlighted
+            text-left
+            text-pretty
+            tracking-tight
+          ">
+            Categories
+          </h2>
+          <!-- v-if -->
+          <!-- v-if -->
+          <!-- v-if -->
         </div>
         <div class="
-          gap-4
+          gap-x-8
+          gap-y-6
           grid
           grid-cols-1
           lg:grid-cols-4
           md:grid-cols-3
-          mt-5
           sm:grid-cols-2
         ">
-          <div class="border-t">
-            <a
-              class="
-                flex
-                font-medium
-                mt-3
-              "
-              href="/posts/category/tech/"
-            >Tech</a>
-          </div>
-          <div class="border-t">
-            <a
-              class="
-                flex
-                font-medium
-                mt-3
-              "
-              href="/posts/category/lifestyle/"
-            >Lifestyle</a>
-          </div>
+          <a
+            class="
+              flex
+              focus-visible:outline-primary
+              font-medium
+              gap-3
+              group
+              hover:text-default
+              items-center
+              text-base
+              text-muted
+              transition-all
+            "
+            href="/posts/category/tech/"
+          ><span
+            aria-hidden="true"
+            class="
+              group-hover:translate-x-1
+              i-lucide:arrow-right
+              iconify
+              size-4
+              text-dimmed
+              transition-all
+            "
+          ></span><span>Tech</span>
+            <hr class="
+            border-(--ui-border)
+            flex-1
+            min-w-2
+          " />
+          </a>
+          <a
+            class="
+              flex
+              focus-visible:outline-primary
+              font-medium
+              gap-3
+              group
+              hover:text-default
+              items-center
+              text-base
+              text-muted
+              transition-all
+            "
+            href="/posts/category/lifestyle/"
+          ><span
+            aria-hidden="true"
+            class="
+              group-hover:translate-x-1
+              i-lucide:arrow-right
+              iconify
+              size-4
+              text-dimmed
+              transition-all
+            "
+          ></span><span>Lifestyle</span>
+            <hr class="
+            border-(--ui-border)
+            flex-1
+            min-w-2
+          " />
+          </a>
         </div>
       </div>
     </section>

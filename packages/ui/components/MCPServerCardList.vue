@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import type { Company } from '@serp/types/types';
+  import type { MCPServer } from '@serp/types/types';
 
   interface Props {
-    items: Company[];
+    items: MCPServer[];
     paginationTotal?: number;
     paginationLimit?: number;
     loading?: boolean;
@@ -19,16 +19,16 @@
   <div class="flex flex-col gap-y-6">
     <template v-if="loading">
       <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <SkeletonCompanyCard />
-        <SkeletonCompanyCard />
+        <SkeletonMCPServerCard />
+        <SkeletonMCPServerCard />
       </div>
     </template>
     <template v-else-if="items.length">
       <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <CompanyCard
-          v-for="company in items"
-          :key="company.slug"
-          :company="company"
+        <MCPServerCard
+          v-for="server in items"
+          :key="server.slug"
+          :server="server"
         />
       </div>
       <div class="flex justify-center">

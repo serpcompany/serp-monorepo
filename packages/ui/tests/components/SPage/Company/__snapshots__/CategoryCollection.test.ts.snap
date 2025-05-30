@@ -1,2903 +1,3094 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`SPageCompanyCategoryCollection Snapshot > renders with complete data correctly 1`] = `
-<div class="
-  flex
-  flex-col
-  lg:gap-10
-  lg:grid
-  lg:grid-cols-10
-">
-  <!-- v-if -->
-  <div class="lg:col-span-10">
-    <!-- hero -->
-    <div>
-      <div class="py-20">
-        <div class="
-          lg:px-8
-          max-w-5xl
-          mx-auto
-          px-4
-          sm:px-6
+<div>
+  <div class="
+    -mt-22
+    py-20
+  ">
+    <div class="
+      lg:px-8
+      max-w-5xl
+      mx-auto
+      px-4
+      sm:px-6
+    ">
+      <div class="
+        flex
+        flex-col
+        gap-4
+        items-center
+        lg:items-start
+        lg:text-left
+        text-center
+      ">
+        <h1 class="
+          font-bold
+          lg:text-5xl
+          text-3xl
+          text-pretty
         ">
-          <div class="items-center">
+          The Best undefined
+        </h1>
+        <p class="
+          lg:text-xl
+          max-w-2xl
+          text-muted
+        ">
+          Discover undefined products &amp; services.
+        </p>
+        <!-- v-if -->
+      </div>
+    </div>
+  </div>
+  <main>
+    <div class="
+      flex
+      flex-col
+      gap-y-6
+    ">
+      <div class="
+        gap-4
+        grid
+        grid-cols-2
+        md:flex
+        md:flex-row
+      ">
+        <div class="
+          col-span-2
+          inline-flex
+          items-center
+          md:col-auto
+          relative
+          w-full
+        ">
+          <input
+            autocomplete="off"
+            class="
+              bg-default
+              border-0
+              disabled:cursor-not-allowed
+              disabled:opacity-75
+              focus-visible:ring-2
+              focus-visible:ring-inset
+              focus-visible:ring-primary
+              focus:outline-none
+              gap-2
+              placeholder:text-dimmed
+              ps-10
+              px-3
+              py-2
+              ring
+              ring-accented
+              ring-inset
+              rounded-md
+              text-highlighted
+              text-sm
+              transition-colors
+              w-full
+            "
+            placeholder="Search products..."
+            type="text"
+            value=""
+          />
+          <span class="
+            absolute
+            flex
+            inset-y-0
+            items-center
+            ps-3
+            start-0
+          ">
+            <span
+              aria-hidden="true"
+              class="
+                i-lucide:search
+                iconify
+                shrink-0
+                size-5
+                text-dimmed
+              "
+            ></span>
+          </span>
+          <!-- v-if -->
+        </div>
+        <!-- v-if -->
+        <!---->
+        <button
+          aria-controls=""
+          aria-disabled="false"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Show popup"
+          class="
+            bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inset
+            focus-visible:ring-primary
+            focus:outline-none
+            gap-2
+            group
+            inline-flex
+            items-center
+            md:w-48
+            pe-10
+            px-3
+            py-2
+            relative
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-highlighted
+            text-sm
+            transition-colors
+            w-full
+          "
+          data-state="closed"
+          dir="ltr"
+          tabindex="0"
+          type="button"
+        >
+          <!-- v-if -->
+          <span class="
+            text-dimmed
+            truncate
+          ">
+            Order by
+          </span>
+          <span class="
+            absolute
+            end-0
+            flex
+            inset-y-0
+            items-center
+            pe-3
+          ">
+            <span
+              aria-hidden="true"
+              class="
+                i-lucide:chevrons-up-down
+                iconify
+                shrink-0
+                size-5
+                text-dimmed
+              "
+            ></span>
+          </span>
+        </button>
+        <!-- teleport start -->
+        <!-- teleport end -->
+        <!---->
+      </div>
+      <div class="
+        flex
+        flex-col
+        gap-y-6
+      ">
+        <div class="
+          gap-4
+          grid
+          grid-cols-1
+          lg:grid-cols-2
+        ">
+          <div class="
+            bg-default
+            divide-dashed
+            divide-default
+            divide-y
+            flex
+            flex-col
+            hover:ring-(--ui-border-accented)
+            ring
+            ring-default
+            rounded-lg
+            transition-all
+          ">
+            <!-- v-if -->
             <div class="
-              flex
-              flex-col
-              items-center
-              lg:items-start
-              lg:text-left
-              text-center
+              flex-grow
+              p-5
+              sm:p-5
             ">
-              <h1 class="
-                font-bold
-                lg:text-5xl
-                my-4
-                text-2xl
-                text-pretty
-              ">
-                The Best undefined
-              </h1>
-              <!-- v-if -->
               <div class="
                 flex
                 flex-col
-                gap-2
-                justify-center
-                lg:justify-start
-                sm:flex-row
-                w-full
+                gap-4
               ">
-                <!-- v-if -->
-                <!-- v-if -->
+                <div class="
+                  flex
+                  flex-row
+                  gap-4
+                ">
+                  <div class="
+                    bg-muted
+                    border
+                    border-(--ui-border)
+                    rounded-sm
+                    size-auto
+                  ">
+                    <span class="
+                      align-middle
+                      bg-elevated
+                      inline-flex
+                      items-center
+                      justify-center
+                      overflow-hidden
+                      rounded-sm
+                      select-none
+                      shrink-0
+                      size-12
+                      text-2xl
+                    ">
+                      <span
+                        aria-hidden="true"
+                        class="
+                          i-lucide:asterisk
+                          iconify
+                          shrink-0
+                          text-muted
+                        "
+                      ></span>
+                    </span>
+                  </div>
+                  <div class="
+                    flex
+                    flex-1
+                    gap-x-2
+                    items-center
+                  ">
+                    <h2 class="
+                      font-semibold
+                      text-dark
+                      text-xl
+                    ">
+                      <a
+                        class="
+                          hover:underline
+                          transition-all
+                        "
+                        href="/products/company-one/reviews/"
+                      >Company One</a>
+                    </h2>
+                    <button
+                      class="
+                        aria-disabled:bg-default
+                        aria-disabled:cursor-not-allowed
+                        aria-disabled:opacity-75
+                        bg-default
+                        disabled:bg-default
+                        disabled:cursor-not-allowed
+                        disabled:opacity-75
+                        focus-visible:ring-2
+                        focus-visible:ring-inverted
+                        focus:outline-none
+                        font-medium
+                        gap-1.5
+                        hover:bg-elevated
+                        inline-flex
+                        items-center
+                        ml-auto
+                        px-2.5
+                        py-1.5
+                        ring
+                        ring-accented
+                        ring-inset
+                        rounded-md
+                        text-default
+                        text-xs
+                        transition-colors
+                      "
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      type="button"
+                    >
+                      <!-- v-if -->
+                      <span class="truncate">
+                        Website
+                      </span>
+                      <span
+                        aria-hidden="true"
+                        class="
+                          i-lucide:external-link
+                          iconify
+                          shrink-0
+                          size-4
+                        "
+                      ></span>
+                    </button>
+                  </div>
+                </div>
+                <div class="
+                  flex
+                  flex-col
+                  gap-4
+                ">
+                  <p class="
+                    text-muted
+                    text-sm
+                  "></p>
+                  <!-- v-if -->
+                </div>
+              </div>
+            </div>
+            <div class="
+              bg-gray-50
+              dark:bg-black/10
+              p-4
+              px-5
+              py-4
+              rounded-b-lg
+              sm:px-5
+            ">
+              <div class="
+                flex
+                flex-row
+                gap-3
+                items-center
+              ">
+                <div
+                  class="
+                    -space-x-px
+                    inline-flex
+                    relative
+                  "
+                  module="company"
+                >
+                  <button
+                    class="
+                      aria-disabled:bg-default
+                      aria-disabled:cursor-not-allowed
+                      aria-disabled:opacity-75
+                      bg-default
+                      disabled:bg-default
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus-visible:ring-2
+                      focus-visible:ring-inverted
+                      focus-visible:z-[1]
+                      focus:outline-none
+                      font-medium
+                      gap-1.5
+                      hover:bg-elevated
+                      inline-flex
+                      items-center
+                      not-last:not-first:rounded-none
+                      not-only:first:rounded-e-none
+                      not-only:last:rounded-s-none
+                      p-1.5
+                      ring
+                      ring-accented
+                      ring-inset
+                      rounded-md
+                      text-default
+                      text-xs
+                      transition-colors
+                    "
+                    type="button"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="
+                        i-lucide:arrow-big-up
+                        iconify
+                        shrink-0
+                        size-4
+                      "
+                    ></span>
+                    <!-- v-if -->
+                    <!-- v-if -->
+                  </button>
+                  <span class="
+                    bg-default
+                    focus-visible:z-[1]
+                    font-medium
+                    gap-1
+                    inline-flex
+                    items-center
+                    justify-center
+                    not-last:not-first:rounded-none
+                    not-only:first:rounded-e-none
+                    not-only:last:rounded-s-none
+                    p-1
+                    ring
+                    ring-accented
+                    ring-inset
+                    rounded-sm
+                    text-default
+                    text-sm
+                    w-8
+                  ">
+                    <!-- v-if -->
+                    <span class="truncate">
+                      NaN
+                    </span>
+                    <!-- v-if -->
+                  </span>
+                  <button
+                    class="
+                      aria-disabled:bg-default
+                      aria-disabled:cursor-not-allowed
+                      aria-disabled:opacity-75
+                      bg-default
+                      disabled:bg-default
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus-visible:ring-2
+                      focus-visible:ring-inverted
+                      focus-visible:z-[1]
+                      focus:outline-none
+                      font-medium
+                      gap-1.5
+                      hover:bg-elevated
+                      inline-flex
+                      items-center
+                      not-last:not-first:rounded-none
+                      not-only:first:rounded-e-none
+                      not-only:last:rounded-s-none
+                      p-1.5
+                      ring
+                      ring-accented
+                      ring-inset
+                      rounded-md
+                      text-default
+                      text-xs
+                      transition-colors
+                    "
+                    type="button"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="
+                        i-lucide:arrow-big-down
+                        iconify
+                        shrink-0
+                        size-4
+                      "
+                    ></span>
+                    <!-- v-if -->
+                    <!-- v-if -->
+                  </button>
+                </div>
+                <button
+                  class="
+                    aria-disabled:bg-default
+                    aria-disabled:cursor-not-allowed
+                    aria-disabled:opacity-75
+                    bg-default
+                    disabled:bg-default
+                    disabled:cursor-not-allowed
+                    disabled:opacity-75
+                    focus-visible:ring-2
+                    focus-visible:ring-inverted
+                    focus:outline-none
+                    font-medium
+                    gap-1.5
+                    hover:bg-elevated
+                    inline-flex
+                    items-center
+                    ml-auto
+                    p-1.5
+                    ring
+                    ring-accented
+                    ring-inset
+                    rounded-md
+                    text-default
+                    text-xs
+                    transition-colors
+                  "
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  type="button"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="
+                      i-lucide:bookmark
+                      iconify
+                      shrink-0
+                      size-4
+                    "
+                  ></span>
+                  <!-- v-if -->
+                  <!-- v-if -->
+                </button>
               </div>
             </div>
           </div>
+          <div class="
+            bg-default
+            divide-dashed
+            divide-default
+            divide-y
+            flex
+            flex-col
+            hover:ring-(--ui-border-accented)
+            ring
+            ring-default
+            rounded-lg
+            transition-all
+          ">
+            <!-- v-if -->
+            <div class="
+              flex-grow
+              p-5
+              sm:p-5
+            ">
+              <div class="
+                flex
+                flex-col
+                gap-4
+              ">
+                <div class="
+                  flex
+                  flex-row
+                  gap-4
+                ">
+                  <div class="
+                    bg-muted
+                    border
+                    border-(--ui-border)
+                    rounded-sm
+                    size-auto
+                  ">
+                    <span class="
+                      align-middle
+                      bg-elevated
+                      inline-flex
+                      items-center
+                      justify-center
+                      overflow-hidden
+                      rounded-sm
+                      select-none
+                      shrink-0
+                      size-12
+                      text-2xl
+                    ">
+                      <span
+                        aria-hidden="true"
+                        class="
+                          i-lucide:asterisk
+                          iconify
+                          shrink-0
+                          text-muted
+                        "
+                      ></span>
+                    </span>
+                  </div>
+                  <div class="
+                    flex
+                    flex-1
+                    gap-x-2
+                    items-center
+                  ">
+                    <h2 class="
+                      font-semibold
+                      text-dark
+                      text-xl
+                    ">
+                      <a
+                        class="
+                          hover:underline
+                          transition-all
+                        "
+                        href="/products/company-two/reviews/"
+                      >Company Two</a>
+                    </h2>
+                    <button
+                      class="
+                        aria-disabled:bg-default
+                        aria-disabled:cursor-not-allowed
+                        aria-disabled:opacity-75
+                        bg-default
+                        disabled:bg-default
+                        disabled:cursor-not-allowed
+                        disabled:opacity-75
+                        focus-visible:ring-2
+                        focus-visible:ring-inverted
+                        focus:outline-none
+                        font-medium
+                        gap-1.5
+                        hover:bg-elevated
+                        inline-flex
+                        items-center
+                        ml-auto
+                        px-2.5
+                        py-1.5
+                        ring
+                        ring-accented
+                        ring-inset
+                        rounded-md
+                        text-default
+                        text-xs
+                        transition-colors
+                      "
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      type="button"
+                    >
+                      <!-- v-if -->
+                      <span class="truncate">
+                        Website
+                      </span>
+                      <span
+                        aria-hidden="true"
+                        class="
+                          i-lucide:external-link
+                          iconify
+                          shrink-0
+                          size-4
+                        "
+                      ></span>
+                    </button>
+                  </div>
+                </div>
+                <div class="
+                  flex
+                  flex-col
+                  gap-4
+                ">
+                  <p class="
+                    text-muted
+                    text-sm
+                  "></p>
+                  <!-- v-if -->
+                </div>
+              </div>
+            </div>
+            <div class="
+              bg-gray-50
+              dark:bg-black/10
+              p-4
+              px-5
+              py-4
+              rounded-b-lg
+              sm:px-5
+            ">
+              <div class="
+                flex
+                flex-row
+                gap-3
+                items-center
+              ">
+                <div
+                  class="
+                    -space-x-px
+                    inline-flex
+                    relative
+                  "
+                  module="company"
+                >
+                  <button
+                    class="
+                      aria-disabled:bg-default
+                      aria-disabled:cursor-not-allowed
+                      aria-disabled:opacity-75
+                      bg-default
+                      disabled:bg-default
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus-visible:ring-2
+                      focus-visible:ring-inverted
+                      focus-visible:z-[1]
+                      focus:outline-none
+                      font-medium
+                      gap-1.5
+                      hover:bg-elevated
+                      inline-flex
+                      items-center
+                      not-last:not-first:rounded-none
+                      not-only:first:rounded-e-none
+                      not-only:last:rounded-s-none
+                      p-1.5
+                      ring
+                      ring-accented
+                      ring-inset
+                      rounded-md
+                      text-default
+                      text-xs
+                      transition-colors
+                    "
+                    type="button"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="
+                        i-lucide:arrow-big-up
+                        iconify
+                        shrink-0
+                        size-4
+                      "
+                    ></span>
+                    <!-- v-if -->
+                    <!-- v-if -->
+                  </button>
+                  <span class="
+                    bg-default
+                    focus-visible:z-[1]
+                    font-medium
+                    gap-1
+                    inline-flex
+                    items-center
+                    justify-center
+                    not-last:not-first:rounded-none
+                    not-only:first:rounded-e-none
+                    not-only:last:rounded-s-none
+                    p-1
+                    ring
+                    ring-accented
+                    ring-inset
+                    rounded-sm
+                    text-default
+                    text-sm
+                    w-8
+                  ">
+                    <!-- v-if -->
+                    <span class="truncate">
+                      NaN
+                    </span>
+                    <!-- v-if -->
+                  </span>
+                  <button
+                    class="
+                      aria-disabled:bg-default
+                      aria-disabled:cursor-not-allowed
+                      aria-disabled:opacity-75
+                      bg-default
+                      disabled:bg-default
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus-visible:ring-2
+                      focus-visible:ring-inverted
+                      focus-visible:z-[1]
+                      focus:outline-none
+                      font-medium
+                      gap-1.5
+                      hover:bg-elevated
+                      inline-flex
+                      items-center
+                      not-last:not-first:rounded-none
+                      not-only:first:rounded-e-none
+                      not-only:last:rounded-s-none
+                      p-1.5
+                      ring
+                      ring-accented
+                      ring-inset
+                      rounded-md
+                      text-default
+                      text-xs
+                      transition-colors
+                    "
+                    type="button"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="
+                        i-lucide:arrow-big-down
+                        iconify
+                        shrink-0
+                        size-4
+                      "
+                    ></span>
+                    <!-- v-if -->
+                    <!-- v-if -->
+                  </button>
+                </div>
+                <button
+                  class="
+                    aria-disabled:bg-default
+                    aria-disabled:cursor-not-allowed
+                    aria-disabled:opacity-75
+                    bg-default
+                    disabled:bg-default
+                    disabled:cursor-not-allowed
+                    disabled:opacity-75
+                    focus-visible:ring-2
+                    focus-visible:ring-inverted
+                    focus:outline-none
+                    font-medium
+                    gap-1.5
+                    hover:bg-elevated
+                    inline-flex
+                    items-center
+                    ml-auto
+                    p-1.5
+                    ring
+                    ring-accented
+                    ring-inset
+                    rounded-md
+                    text-default
+                    text-xs
+                    transition-colors
+                  "
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  type="button"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="
+                      i-lucide:bookmark
+                      iconify
+                      shrink-0
+                      size-4
+                    "
+                  ></span>
+                  <!-- v-if -->
+                  <!-- v-if -->
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="
+          flex
+          justify-center
+        ">
+          <nav aria-label="pagination">
+            <div class="
+              flex
+              gap-1
+              items-center
+            ">
+              <button
+                aria-label="First Page"
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                disabled=""
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:chevrons-left
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
+              </button>
+              <button
+                aria-label="Previous Page"
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                disabled=""
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:chevron-left
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
+              </button>
+              <button
+                aria-current="page"
+                aria-label="Page 1"
+                class="
+                  aria-disabled:bg-primary
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-primary
+                  disabled:bg-primary
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:outline-2
+                  focus-visible:outline-offset-2
+                  focus-visible:outline-primary
+                  font-medium
+                  gap-1.5
+                  hover:bg-primary/75
+                  inline-flex
+                  items-center
+                  p-1.5
+                  rounded-md
+                  text-inverted
+                  text-sm
+                  transition-colors
+                "
+                data-selected="true"
+                data-type="page"
+                type="button"
+                value="1"
+              >
+                <!-- v-if -->
+                <span class="
+                  min-w-5
+                  text-center
+                  truncate
+                ">
+                  1
+                </span>
+                <!-- v-if -->
+              </button>
+              <button
+                aria-label="Page 2"
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                data-type="page"
+                type="button"
+                value="2"
+              >
+                <!-- v-if -->
+                <span class="
+                  min-w-5
+                  text-center
+                  truncate
+                ">
+                  2
+                </span>
+                <!-- v-if -->
+              </button>
+              <button
+                aria-label="Next Page"
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:chevron-right
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
+              </button>
+              <button
+                aria-label="Last Page"
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:chevrons-right
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
+              </button>
+            </div>
+          </nav>
         </div>
       </div>
     </div>
-    <main class="min-h-[calc(100vh-var(--ui-header-height))]">
-      <!-- rows: companies -->
-      <div class="space-y-4">
-        <div class="
-          border
-          border-[var(--ui-border)]
-          dark:border-[var(--ui-border-accented)]
-          max-w-5xl
-          mx-auto
-          px-5
-          py-4
-          rounded-lg
-        ">
-          <!-- Featured accent border -->
+    <!-- v-if -->
+    <section
+      class="
+        isolate
+        relative
+      "
+      data-orientation="vertical"
+    >
+      <div class="
+        flex
+        flex-col
+        gap-8
+        lg:grid
+        lg:px-8
+        lg:py-32
+        max-w-(--ui-container)
+        mx-auto
+        px-4
+        py-16
+        sm:gap-16
+        sm:px-6
+        sm:py-24
+        w-full
+      ">
+        <div class="">
           <!-- v-if -->
-          <!-- card content -->
-          <div class="
-            flex
-            items-start
+          <!-- v-if -->
+          <h2 class="
+            font-bold
+            lg:text-5xl
+            sm:text-4xl
+            text-3xl
+            text-highlighted
+            text-left
+            text-pretty
+            tracking-tight
           ">
-            <!-- company image -->
-            <!-- v-if -->
-            <!-- company content -->
-            <div class="flex-grow">
-              <div class="
-                flex
-                flex-col
-                justify-between
-                sm:flex-row
-              ">
-                <div class="
-                  sm:max-w-[calc(100%-180px)]
-                  sm:pr-8
-                ">
-                  <!-- company name and badge -->
-                  <div class="
-                    flex
-                    items-center
-                  ">
-                    <a
-                      class="flex"
-                      href="/products/company-one/reviews/"
-                    >
-                      <h2 class="
-                      dark:text-[var(--ui-text)]
-                      font-semibold
-                      text-[var(--ui-text)]
-                      text-xl
-                    ">Company One</h2>
-                    </a>
-                    <!-- v-if -->
-                  </div>
-                  <!-- company oneliner -->
-                  <p class="
-                    dark:text-[var(--ui-text-toned)]
-                    line-clamp-2
-                    mt-2
-                    text-[var(--ui-text-muted)]
-                  "></p>
-                  <!-- show excerpt only for featured cards -->
-                  <!-- v-if -->
-                  <!-- rating display -->
-                  <!-- v-if -->
-                </div>
-                <!-- right side buttons -->
-                <div class="
-                  flex
-                  flex-col
-                  min-w-[140px]
-                  mt-4
-                  sm:mt-0
-                  space-y-2
-                ">
-                  <!-- view website button -->
-                  <a
-                    class="
-                      bg-[var(--ui-bg-inverted)]
-                      dark:bg-[var(--ui-bg)]
-                      dark:hover:bg-[var(--ui-bg-elevated)]
-                      dark:text-[var(--ui-bg-inverted)]
-                      flex
-                      font-medium
-                      gap-2
-                      h-10
-                      hover:bg-neutral-800
-                      items-center
-                      justify-center
-                      px-4
-                      py-2
-                      rounded-md
-                      text-[var(--ui-bg)]
-                      text-sm
-                      transition-colors
-                      w-full
-                    "
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  > Website <svg
-                    class="
-                      h-4
-                      w-4
-                    "
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                      <polyline points="15 3 21 3 21 9" />
-                      <line
-                    x1="10"
-                    x2="21"
-                    y1="14"
-                    y2="3"
-                  />
-                    </svg></a>
-                  <!-- upvote button -->
-                  <div module="company">
-                    <div class="
-                      -space-x-px
-                      inline-flex
-                      relative
-                    ">
-                      <button
-                        class="
-                          aria-disabled:bg-default
-                          aria-disabled:cursor-not-allowed
-                          aria-disabled:opacity-75
-                          bg-default
-                          disabled:bg-default
-                          disabled:cursor-not-allowed
-                          disabled:opacity-75
-                          focus-visible:ring-2
-                          focus-visible:ring-inverted
-                          focus-visible:z-[1]
-                          focus:outline-none
-                          font-medium
-                          gap-1.5
-                          hover:bg-elevated
-                          inline-flex
-                          items-center
-                          not-last:not-first:rounded-none
-                          not-only:first:rounded-e-none
-                          not-only:last:rounded-s-none
-                          p-1.5
-                          ring
-                          ring-accented
-                          ring-inset
-                          rounded-md
-                          text-default
-                          text-sm
-                          transition-colors
-                        "
-                        type="button"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="
-                            i-lucide:arrow-big-up
-                            iconify
-                            shrink-0
-                            size-5
-                          "
-                        ></span>
-                        <!-- v-if -->
-                        <!-- v-if -->
-                      </button>
-                      <span class="
-                        bg-default
-                        focus-visible:z-[1]
-                        font-medium
-                        gap-1
-                        inline-flex
-                        items-center
-                        justify-center
-                        not-last:not-first:rounded-none
-                        not-only:first:rounded-e-none
-                        not-only:last:rounded-s-none
-                        p-1
-                        ring
-                        ring-accented
-                        ring-inset
-                        rounded-md
-                        text-default
-                        text-xs
-                        w-8
-                      ">
-                        <!-- v-if -->
-                        <span class="truncate">
-                          NaN
-                        </span>
-                        <!-- v-if -->
-                      </span>
-                      <button
-                        class="
-                          aria-disabled:bg-default
-                          aria-disabled:cursor-not-allowed
-                          aria-disabled:opacity-75
-                          bg-default
-                          disabled:bg-default
-                          disabled:cursor-not-allowed
-                          disabled:opacity-75
-                          focus-visible:ring-2
-                          focus-visible:ring-inverted
-                          focus-visible:z-[1]
-                          focus:outline-none
-                          font-medium
-                          gap-1.5
-                          hover:bg-elevated
-                          inline-flex
-                          items-center
-                          not-last:not-first:rounded-none
-                          not-only:first:rounded-e-none
-                          not-only:last:rounded-s-none
-                          p-1.5
-                          ring
-                          ring-accented
-                          ring-inset
-                          rounded-md
-                          text-default
-                          text-sm
-                          transition-colors
-                        "
-                        type="button"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="
-                            i-lucide:arrow-big-down
-                            iconify
-                            shrink-0
-                            size-5
-                          "
-                        ></span>
-                        <!-- v-if -->
-                        <!-- v-if -->
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- feature tags only for featured companies -->
+            Categories
+          </h2>
           <!-- v-if -->
-          <!-- expanded content (if needed) -->
+          <!-- v-if -->
           <!-- v-if -->
         </div>
         <div class="
-          border
-          border-[var(--ui-border)]
-          dark:border-[var(--ui-border-accented)]
-          max-w-5xl
-          mx-auto
-          px-5
-          py-4
-          rounded-lg
+          gap-x-8
+          gap-y-6
+          grid
+          grid-cols-1
+          lg:grid-cols-4
+          md:grid-cols-3
+          sm:grid-cols-2
         ">
-          <!-- Featured accent border -->
-          <!-- v-if -->
-          <!-- card content -->
-          <div class="
-            flex
-            items-start
-          ">
-            <!-- company image -->
-            <!-- v-if -->
-            <!-- company content -->
-            <div class="flex-grow">
-              <div class="
-                flex
-                flex-col
-                justify-between
-                sm:flex-row
-              ">
-                <div class="
-                  sm:max-w-[calc(100%-180px)]
-                  sm:pr-8
-                ">
-                  <!-- company name and badge -->
-                  <div class="
-                    flex
-                    items-center
-                  ">
-                    <a
-                      class="flex"
-                      href="/products/company-two/reviews/"
-                    >
-                      <h2 class="
-                      dark:text-[var(--ui-text)]
-                      font-semibold
-                      text-[var(--ui-text)]
-                      text-xl
-                    ">Company Two</h2>
-                    </a>
-                    <!-- v-if -->
-                  </div>
-                  <!-- company oneliner -->
-                  <p class="
-                    dark:text-[var(--ui-text-toned)]
-                    line-clamp-2
-                    mt-2
-                    text-[var(--ui-text-muted)]
-                  "></p>
-                  <!-- show excerpt only for featured cards -->
-                  <!-- v-if -->
-                  <!-- rating display -->
-                  <!-- v-if -->
-                </div>
-                <!-- right side buttons -->
-                <div class="
-                  flex
-                  flex-col
-                  min-w-[140px]
-                  mt-4
-                  sm:mt-0
-                  space-y-2
-                ">
-                  <!-- view website button -->
-                  <a
-                    class="
-                      bg-[var(--ui-bg-inverted)]
-                      dark:bg-[var(--ui-bg)]
-                      dark:hover:bg-[var(--ui-bg-elevated)]
-                      dark:text-[var(--ui-bg-inverted)]
-                      flex
-                      font-medium
-                      gap-2
-                      h-10
-                      hover:bg-neutral-800
-                      items-center
-                      justify-center
-                      px-4
-                      py-2
-                      rounded-md
-                      text-[var(--ui-bg)]
-                      text-sm
-                      transition-colors
-                      w-full
-                    "
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  > Website <svg
-                    class="
-                      h-4
-                      w-4
-                    "
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                      <polyline points="15 3 21 3 21 9" />
-                      <line
-                    x1="10"
-                    x2="21"
-                    y1="14"
-                    y2="3"
-                  />
-                    </svg></a>
-                  <!-- upvote button -->
-                  <div module="company">
-                    <div class="
-                      -space-x-px
-                      inline-flex
-                      relative
-                    ">
-                      <button
-                        class="
-                          aria-disabled:bg-default
-                          aria-disabled:cursor-not-allowed
-                          aria-disabled:opacity-75
-                          bg-default
-                          disabled:bg-default
-                          disabled:cursor-not-allowed
-                          disabled:opacity-75
-                          focus-visible:ring-2
-                          focus-visible:ring-inverted
-                          focus-visible:z-[1]
-                          focus:outline-none
-                          font-medium
-                          gap-1.5
-                          hover:bg-elevated
-                          inline-flex
-                          items-center
-                          not-last:not-first:rounded-none
-                          not-only:first:rounded-e-none
-                          not-only:last:rounded-s-none
-                          p-1.5
-                          ring
-                          ring-accented
-                          ring-inset
-                          rounded-md
-                          text-default
-                          text-sm
-                          transition-colors
-                        "
-                        type="button"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="
-                            i-lucide:arrow-big-up
-                            iconify
-                            shrink-0
-                            size-5
-                          "
-                        ></span>
-                        <!-- v-if -->
-                        <!-- v-if -->
-                      </button>
-                      <span class="
-                        bg-default
-                        focus-visible:z-[1]
-                        font-medium
-                        gap-1
-                        inline-flex
-                        items-center
-                        justify-center
-                        not-last:not-first:rounded-none
-                        not-only:first:rounded-e-none
-                        not-only:last:rounded-s-none
-                        p-1
-                        ring
-                        ring-accented
-                        ring-inset
-                        rounded-md
-                        text-default
-                        text-xs
-                        w-8
-                      ">
-                        <!-- v-if -->
-                        <span class="truncate">
-                          NaN
-                        </span>
-                        <!-- v-if -->
-                      </span>
-                      <button
-                        class="
-                          aria-disabled:bg-default
-                          aria-disabled:cursor-not-allowed
-                          aria-disabled:opacity-75
-                          bg-default
-                          disabled:bg-default
-                          disabled:cursor-not-allowed
-                          disabled:opacity-75
-                          focus-visible:ring-2
-                          focus-visible:ring-inverted
-                          focus-visible:z-[1]
-                          focus:outline-none
-                          font-medium
-                          gap-1.5
-                          hover:bg-elevated
-                          inline-flex
-                          items-center
-                          not-last:not-first:rounded-none
-                          not-only:first:rounded-e-none
-                          not-only:last:rounded-s-none
-                          p-1.5
-                          ring
-                          ring-accented
-                          ring-inset
-                          rounded-md
-                          text-default
-                          text-sm
-                          transition-colors
-                        "
-                        type="button"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="
-                            i-lucide:arrow-big-down
-                            iconify
-                            shrink-0
-                            size-5
-                          "
-                        ></span>
-                        <!-- v-if -->
-                        <!-- v-if -->
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- feature tags only for featured companies -->
-          <!-- v-if -->
-          <!-- expanded content (if needed) -->
-          <!-- v-if -->
-        </div>
-      </div>
-      <nav
-        aria-label="pagination"
-        class="
-          flex
-          justify-center
-          mt-20
-          overflow-x-auto
-          rounded-none
-        "
-      >
-        <div class="
-          flex
-          gap-1
-          items-center
-        ">
-          <button
-            aria-label="First Page"
+          <a
             class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            disabled=""
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevrons-left
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
-          <button
-            aria-label="Previous Page"
-            class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            disabled=""
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevron-left
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
-          <button
-            aria-current="page"
-            aria-label="Page 1"
-            class="
-              aria-disabled:bg-primary
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-primary
-              disabled:bg-primary
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:outline-2
-              focus-visible:outline-offset-2
+              flex
               focus-visible:outline-primary
               font-medium
-              gap-1.5
-              hover:bg-primary/75
-              inline-flex
+              gap-3
+              group
+              hover:text-default
               items-center
-              p-1.5
-              rounded-md
-              text-inverted
-              text-sm
-              transition-colors
+              text-base
+              text-muted
+              transition-all
             "
-            data-selected="true"
-            data-type="page"
-            type="button"
-            value="1"
-          >
-            <!-- v-if -->
-            <span class="
-              min-w-5
-              text-center
-              truncate
-            ">
-              1
-            </span>
-            <!-- v-if -->
-          </button>
-          <button
-            aria-label="Page 2"
+            href="/products/best/cat-tech/"
+          ><span
+            aria-hidden="true"
             class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
+              group-hover:translate-x-1
+              i-lucide:arrow-right
+              iconify
+              size-4
+              text-dimmed
+              transition-all
             "
-            data-type="page"
-            type="button"
-            value="2"
-          >
-            <!-- v-if -->
-            <span class="
-              min-w-5
-              text-center
-              truncate
-            ">
-              2
-            </span>
-            <!-- v-if -->
-          </button>
-          <button
-            aria-label="Next Page"
-            class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevron-right
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
-          <button
-            aria-label="Last Page"
-            class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevrons-right
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
+          ></span><span>Tech</span>
+            <hr class="
+            border-(--ui-border)
+            flex-1
+            min-w-2
+          " />
+          </a>
         </div>
-      </nav>
-      <!-- article -->
-      <!-- v-if -->
-      <!-- faqs -->
-      <!-- v-if -->
-      <section class="
-        mt-20
-        my-30
-      ">
-        <div class="mx-auto">
-          <div class="pt-12">
-            <div>
-              <span class="
-                font-bold
-                inline-block
-                py-4
-                text-3xl
-              ">
-                Categories
-              </span>
-            </div>
-          </div>
-          <div class="
-            gap-4
-            grid
-            grid-cols-1
-            lg:grid-cols-4
-            md:grid-cols-3
-            mt-5
-            sm:grid-cols-2
-          ">
-            <div class="border-t">
-              <a
-                class="
-                  flex
-                  font-medium
-                  mt-3
-                "
-                href="/products/best/cat-tech/"
-              >Tech</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-  <!-- v-if -->
+      </div>
+    </section>
+  </main>
 </div>
 `;
 
 exports[`SPageCompanyCategoryCollection Snapshot > renders with empty companies correctly 1`] = `
-<div class="
-  flex
-  flex-col
-  lg:gap-10
-  lg:grid
-  lg:grid-cols-10
-">
-  <!-- v-if -->
-  <div class="lg:col-span-10">
-    <!-- hero -->
-    <div>
-      <div class="py-20">
-        <div class="
-          lg:px-8
-          max-w-5xl
-          mx-auto
-          px-4
-          sm:px-6
+<div>
+  <div class="
+    -mt-22
+    py-20
+  ">
+    <div class="
+      lg:px-8
+      max-w-5xl
+      mx-auto
+      px-4
+      sm:px-6
+    ">
+      <div class="
+        flex
+        flex-col
+        gap-4
+        items-center
+        lg:items-start
+        lg:text-left
+        text-center
+      ">
+        <h1 class="
+          font-bold
+          lg:text-5xl
+          text-3xl
+          text-pretty
         ">
-          <div class="items-center">
+          The Best undefined
+        </h1>
+        <p class="
+          lg:text-xl
+          max-w-2xl
+          text-muted
+        ">
+          Discover undefined products &amp; services.
+        </p>
+        <!-- v-if -->
+      </div>
+    </div>
+  </div>
+  <main>
+    <div class="
+      flex
+      flex-col
+      gap-y-6
+    ">
+      <div class="
+        gap-4
+        grid
+        grid-cols-2
+        md:flex
+        md:flex-row
+      ">
+        <div class="
+          col-span-2
+          inline-flex
+          items-center
+          md:col-auto
+          relative
+          w-full
+        ">
+          <input
+            autocomplete="off"
+            class="
+              bg-default
+              border-0
+              disabled:cursor-not-allowed
+              disabled:opacity-75
+              focus-visible:ring-2
+              focus-visible:ring-inset
+              focus-visible:ring-primary
+              focus:outline-none
+              gap-2
+              placeholder:text-dimmed
+              ps-10
+              px-3
+              py-2
+              ring
+              ring-accented
+              ring-inset
+              rounded-md
+              text-highlighted
+              text-sm
+              transition-colors
+              w-full
+            "
+            placeholder="Search products..."
+            type="text"
+            value=""
+          />
+          <span class="
+            absolute
+            flex
+            inset-y-0
+            items-center
+            ps-3
+            start-0
+          ">
+            <span
+              aria-hidden="true"
+              class="
+                animate-spin
+                i-lucide:refresh-cw
+                iconify
+                shrink-0
+                size-5
+                text-dimmed
+              "
+            ></span>
+          </span>
+          <!-- v-if -->
+        </div>
+        <!-- v-if -->
+        <!---->
+        <button
+          aria-controls=""
+          aria-disabled="false"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Show popup"
+          class="
+            bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inset
+            focus-visible:ring-primary
+            focus:outline-none
+            gap-2
+            group
+            inline-flex
+            items-center
+            md:w-48
+            pe-10
+            px-3
+            py-2
+            relative
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-highlighted
+            text-sm
+            transition-colors
+            w-full
+          "
+          data-state="closed"
+          dir="ltr"
+          tabindex="0"
+          type="button"
+        >
+          <!-- v-if -->
+          <span class="
+            text-dimmed
+            truncate
+          ">
+            Order by
+          </span>
+          <span class="
+            absolute
+            end-0
+            flex
+            inset-y-0
+            items-center
+            pe-3
+          ">
+            <span
+              aria-hidden="true"
+              class="
+                i-lucide:chevrons-up-down
+                iconify
+                shrink-0
+                size-5
+                text-dimmed
+              "
+            ></span>
+          </span>
+        </button>
+        <!-- teleport start -->
+        <!-- teleport end -->
+        <!---->
+      </div>
+      <div class="
+        flex
+        flex-col
+        gap-y-6
+      ">
+        <div class="
+          gap-4
+          grid
+          grid-cols-1
+          lg:grid-cols-2
+        ">
+          <div class="
+            bg-default
+            divide-dashed
+            divide-default
+            divide-y
+            flex
+            flex-col
+            ring
+            ring-default
+            rounded-lg
+            transition-all
+          ">
+            <!-- v-if -->
             <div class="
-              flex
-              flex-col
-              items-center
-              lg:items-start
-              lg:text-left
-              text-center
+              flex-grow
+              p-5
+              sm:p-5
             ">
-              <h1 class="
-                font-bold
-                lg:text-5xl
-                my-4
-                text-2xl
-                text-pretty
-              ">
-                The Best undefined
-              </h1>
-              <!-- v-if -->
               <div class="
                 flex
                 flex-col
-                gap-2
-                justify-center
-                lg:justify-start
-                sm:flex-row
-                w-full
+                gap-4
               ">
-                <!-- v-if -->
-                <!-- v-if -->
+                <div class="
+                  flex
+                  flex-row
+                  gap-4
+                ">
+                  <div class="
+                    bg-muted
+                    border
+                    border-(--ui-border)
+                    rounded-sm
+                    size-auto
+                  ">
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-12
+                        rounded-sm
+                        w-12
+                      "
+                      role="alert"
+                    ></div>
+                  </div>
+                  <div class="
+                    flex
+                    flex-1
+                    gap-x-2
+                    items-center
+                  ">
+                    <div class="
+                      flex
+                      flex-col
+                      gap-2
+                    ">
+                      <div
+                        aria-busy="true"
+                        aria-label="loading"
+                        aria-live="polite"
+                        class="
+                          animate-pulse
+                          bg-elevated
+                          h-7
+                          rounded-md
+                          w-32
+                        "
+                        role="alert"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="
+                  flex
+                  flex-col
+                  gap-6
+                ">
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-live="polite"
+                    class="
+                      animate-pulse
+                      bg-elevated
+                      h-3.5
+                      rounded-md
+                    "
+                    role="alert"
+                  ></div>
+                  <div class="
+                    flex-wrap
+                    gap-2
+                    inline-flex
+                    items-center
+                  ">
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="
+              bg-gray-50
+              dark:bg-black/10
+              p-4
+              px-5
+              py-4
+              rounded-b-lg
+              sm:px-5
+            ">
+              <div class="
+                flex
+                flex-row
+                gap-3
+                items-center
+              ">
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-live="polite"
+                  class="
+                    animate-pulse
+                    bg-elevated
+                    h-7
+                    rounded-md
+                    w-20
+                  "
+                  role="alert"
+                ></div>
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-live="polite"
+                  class="
+                    animate-pulse
+                    bg-elevated
+                    h-7
+                    ml-auto
+                    rounded-md
+                    w-7
+                  "
+                  role="alert"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="
+            bg-default
+            divide-dashed
+            divide-default
+            divide-y
+            flex
+            flex-col
+            ring
+            ring-default
+            rounded-lg
+            transition-all
+          ">
+            <!-- v-if -->
+            <div class="
+              flex-grow
+              p-5
+              sm:p-5
+            ">
+              <div class="
+                flex
+                flex-col
+                gap-4
+              ">
+                <div class="
+                  flex
+                  flex-row
+                  gap-4
+                ">
+                  <div class="
+                    bg-muted
+                    border
+                    border-(--ui-border)
+                    rounded-sm
+                    size-auto
+                  ">
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-12
+                        rounded-sm
+                        w-12
+                      "
+                      role="alert"
+                    ></div>
+                  </div>
+                  <div class="
+                    flex
+                    flex-1
+                    gap-x-2
+                    items-center
+                  ">
+                    <div class="
+                      flex
+                      flex-col
+                      gap-2
+                    ">
+                      <div
+                        aria-busy="true"
+                        aria-label="loading"
+                        aria-live="polite"
+                        class="
+                          animate-pulse
+                          bg-elevated
+                          h-7
+                          rounded-md
+                          w-32
+                        "
+                        role="alert"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="
+                  flex
+                  flex-col
+                  gap-6
+                ">
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-live="polite"
+                    class="
+                      animate-pulse
+                      bg-elevated
+                      h-3.5
+                      rounded-md
+                    "
+                    role="alert"
+                  ></div>
+                  <div class="
+                    flex-wrap
+                    gap-2
+                    inline-flex
+                    items-center
+                  ">
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="
+              bg-gray-50
+              dark:bg-black/10
+              p-4
+              px-5
+              py-4
+              rounded-b-lg
+              sm:px-5
+            ">
+              <div class="
+                flex
+                flex-row
+                gap-3
+                items-center
+              ">
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-live="polite"
+                  class="
+                    animate-pulse
+                    bg-elevated
+                    h-7
+                    rounded-md
+                    w-20
+                  "
+                  role="alert"
+                ></div>
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-live="polite"
+                  class="
+                    animate-pulse
+                    bg-elevated
+                    h-7
+                    ml-auto
+                    rounded-md
+                    w-7
+                  "
+                  role="alert"
+                ></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <main class="min-h-[calc(100vh-var(--ui-header-height))]">
-      <!-- rows: companies -->
-      <div class="space-y-4"></div>
-      <nav
-        aria-label="pagination"
-        class="
-          flex
-          justify-center
-          mt-20
-          overflow-x-auto
-          rounded-none
-        "
-      >
+    <!-- v-if -->
+    <section
+      class="
+        isolate
+        relative
+      "
+      data-orientation="vertical"
+    >
+      <div class="
+        flex
+        flex-col
+        gap-8
+        lg:grid
+        lg:px-8
+        lg:py-32
+        max-w-(--ui-container)
+        mx-auto
+        px-4
+        py-16
+        sm:gap-16
+        sm:px-6
+        sm:py-24
+        w-full
+      ">
+        <div class="">
+          <!-- v-if -->
+          <!-- v-if -->
+          <h2 class="
+            font-bold
+            lg:text-5xl
+            sm:text-4xl
+            text-3xl
+            text-highlighted
+            text-left
+            text-pretty
+            tracking-tight
+          ">
+            Categories
+          </h2>
+          <!-- v-if -->
+          <!-- v-if -->
+          <!-- v-if -->
+        </div>
         <div class="
-          flex
-          gap-1
-          items-center
+          gap-x-8
+          gap-y-6
+          grid
+          grid-cols-1
+          lg:grid-cols-4
+          md:grid-cols-3
+          sm:grid-cols-2
         ">
-          <button
-            aria-label="First Page"
+          <a
             class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            disabled=""
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevrons-left
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
-          <button
-            aria-label="Previous Page"
-            class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            disabled=""
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevron-left
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
-          <button
-            aria-current="page"
-            aria-label="Page 1"
-            class="
-              aria-disabled:bg-primary
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-primary
-              disabled:bg-primary
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:outline-2
-              focus-visible:outline-offset-2
+              flex
               focus-visible:outline-primary
               font-medium
-              gap-1.5
-              hover:bg-primary/75
-              inline-flex
+              gap-3
+              group
+              hover:text-default
               items-center
-              p-1.5
-              rounded-md
-              text-inverted
-              text-sm
-              transition-colors
+              text-base
+              text-muted
+              transition-all
             "
-            data-selected="true"
-            data-type="page"
-            type="button"
-            value="1"
-          >
-            <!-- v-if -->
-            <span class="
-              min-w-5
-              text-center
-              truncate
-            ">
-              1
-            </span>
-            <!-- v-if -->
-          </button>
-          <button
-            aria-label="Next Page"
+            href="/products/best/cat-tech/"
+          ><span
+            aria-hidden="true"
             class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
+              group-hover:translate-x-1
+              i-lucide:arrow-right
+              iconify
+              size-4
+              text-dimmed
+              transition-all
             "
-            disabled=""
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevron-right
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
-          <button
-            aria-label="Last Page"
-            class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            disabled=""
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevrons-right
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
+          ></span><span>Tech</span>
+            <hr class="
+            border-(--ui-border)
+            flex-1
+            min-w-2
+          " />
+          </a>
         </div>
-      </nav>
-      <!-- article -->
-      <!-- v-if -->
-      <!-- faqs -->
-      <!-- v-if -->
-      <section class="
-        mt-20
-        my-30
-      ">
-        <div class="mx-auto">
-          <div class="pt-12">
-            <div>
-              <span class="
-                font-bold
-                inline-block
-                py-4
-                text-3xl
-              ">
-                Categories
-              </span>
-            </div>
-          </div>
-          <div class="
-            gap-4
-            grid
-            grid-cols-1
-            lg:grid-cols-4
-            md:grid-cols-3
-            mt-5
-            sm:grid-cols-2
-          ">
-            <div class="border-t">
-              <a
-                class="
-                  flex
-                  font-medium
-                  mt-3
-                "
-                href="/products/best/cat-tech/"
-              >Tech</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-  <!-- v-if -->
+      </div>
+    </section>
+  </main>
 </div>
 `;
 
 exports[`SPageCompanyCategoryCollection Snapshot > renders with no categories correctly 1`] = `
-<div class="
-  flex
-  flex-col
-  lg:gap-10
-  lg:grid
-  lg:grid-cols-10
-">
-  <!-- v-if -->
-  <div class="lg:col-span-10">
-    <!-- hero -->
-    <div>
-      <div class="py-20">
-        <div class="
-          lg:px-8
-          max-w-5xl
-          mx-auto
-          px-4
-          sm:px-6
+<div>
+  <div class="
+    -mt-22
+    py-20
+  ">
+    <div class="
+      lg:px-8
+      max-w-5xl
+      mx-auto
+      px-4
+      sm:px-6
+    ">
+      <div class="
+        flex
+        flex-col
+        gap-4
+        items-center
+        lg:items-start
+        lg:text-left
+        text-center
+      ">
+        <h1 class="
+          font-bold
+          lg:text-5xl
+          text-3xl
+          text-pretty
         ">
-          <div class="items-center">
+          The Best undefined
+        </h1>
+        <p class="
+          lg:text-xl
+          max-w-2xl
+          text-muted
+        ">
+          Discover undefined products &amp; services.
+        </p>
+        <!-- v-if -->
+      </div>
+    </div>
+  </div>
+  <main>
+    <div class="
+      flex
+      flex-col
+      gap-y-6
+    ">
+      <div class="
+        gap-4
+        grid
+        grid-cols-2
+        md:flex
+        md:flex-row
+      ">
+        <div class="
+          col-span-2
+          inline-flex
+          items-center
+          md:col-auto
+          relative
+          w-full
+        ">
+          <input
+            autocomplete="off"
+            class="
+              bg-default
+              border-0
+              disabled:cursor-not-allowed
+              disabled:opacity-75
+              focus-visible:ring-2
+              focus-visible:ring-inset
+              focus-visible:ring-primary
+              focus:outline-none
+              gap-2
+              placeholder:text-dimmed
+              ps-10
+              px-3
+              py-2
+              ring
+              ring-accented
+              ring-inset
+              rounded-md
+              text-highlighted
+              text-sm
+              transition-colors
+              w-full
+            "
+            placeholder="Search products..."
+            type="text"
+            value=""
+          />
+          <span class="
+            absolute
+            flex
+            inset-y-0
+            items-center
+            ps-3
+            start-0
+          ">
+            <span
+              aria-hidden="true"
+              class="
+                animate-spin
+                i-lucide:refresh-cw
+                iconify
+                shrink-0
+                size-5
+                text-dimmed
+              "
+            ></span>
+          </span>
+          <!-- v-if -->
+        </div>
+        <!-- v-if -->
+        <!---->
+        <button
+          aria-controls=""
+          aria-disabled="false"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Show popup"
+          class="
+            bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inset
+            focus-visible:ring-primary
+            focus:outline-none
+            gap-2
+            group
+            inline-flex
+            items-center
+            md:w-48
+            pe-10
+            px-3
+            py-2
+            relative
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-highlighted
+            text-sm
+            transition-colors
+            w-full
+          "
+          data-state="closed"
+          dir="ltr"
+          tabindex="0"
+          type="button"
+        >
+          <!-- v-if -->
+          <span class="
+            text-dimmed
+            truncate
+          ">
+            Order by
+          </span>
+          <span class="
+            absolute
+            end-0
+            flex
+            inset-y-0
+            items-center
+            pe-3
+          ">
+            <span
+              aria-hidden="true"
+              class="
+                i-lucide:chevrons-up-down
+                iconify
+                shrink-0
+                size-5
+                text-dimmed
+              "
+            ></span>
+          </span>
+        </button>
+        <!-- teleport start -->
+        <!-- teleport end -->
+        <!---->
+      </div>
+      <div class="
+        flex
+        flex-col
+        gap-y-6
+      ">
+        <div class="
+          gap-4
+          grid
+          grid-cols-1
+          lg:grid-cols-2
+        ">
+          <div class="
+            bg-default
+            divide-dashed
+            divide-default
+            divide-y
+            flex
+            flex-col
+            ring
+            ring-default
+            rounded-lg
+            transition-all
+          ">
+            <!-- v-if -->
             <div class="
-              flex
-              flex-col
-              items-center
-              lg:items-start
-              lg:text-left
-              text-center
+              flex-grow
+              p-5
+              sm:p-5
             ">
-              <h1 class="
-                font-bold
-                lg:text-5xl
-                my-4
-                text-2xl
-                text-pretty
-              ">
-                The Best undefined
-              </h1>
-              <!-- v-if -->
               <div class="
                 flex
                 flex-col
-                gap-2
-                justify-center
-                lg:justify-start
-                sm:flex-row
-                w-full
+                gap-4
               ">
-                <!-- v-if -->
-                <!-- v-if -->
+                <div class="
+                  flex
+                  flex-row
+                  gap-4
+                ">
+                  <div class="
+                    bg-muted
+                    border
+                    border-(--ui-border)
+                    rounded-sm
+                    size-auto
+                  ">
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-12
+                        rounded-sm
+                        w-12
+                      "
+                      role="alert"
+                    ></div>
+                  </div>
+                  <div class="
+                    flex
+                    flex-1
+                    gap-x-2
+                    items-center
+                  ">
+                    <div class="
+                      flex
+                      flex-col
+                      gap-2
+                    ">
+                      <div
+                        aria-busy="true"
+                        aria-label="loading"
+                        aria-live="polite"
+                        class="
+                          animate-pulse
+                          bg-elevated
+                          h-7
+                          rounded-md
+                          w-32
+                        "
+                        role="alert"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="
+                  flex
+                  flex-col
+                  gap-6
+                ">
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-live="polite"
+                    class="
+                      animate-pulse
+                      bg-elevated
+                      h-3.5
+                      rounded-md
+                    "
+                    role="alert"
+                  ></div>
+                  <div class="
+                    flex-wrap
+                    gap-2
+                    inline-flex
+                    items-center
+                  ">
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="
+              bg-gray-50
+              dark:bg-black/10
+              p-4
+              px-5
+              py-4
+              rounded-b-lg
+              sm:px-5
+            ">
+              <div class="
+                flex
+                flex-row
+                gap-3
+                items-center
+              ">
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-live="polite"
+                  class="
+                    animate-pulse
+                    bg-elevated
+                    h-7
+                    rounded-md
+                    w-20
+                  "
+                  role="alert"
+                ></div>
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-live="polite"
+                  class="
+                    animate-pulse
+                    bg-elevated
+                    h-7
+                    ml-auto
+                    rounded-md
+                    w-7
+                  "
+                  role="alert"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="
+            bg-default
+            divide-dashed
+            divide-default
+            divide-y
+            flex
+            flex-col
+            ring
+            ring-default
+            rounded-lg
+            transition-all
+          ">
+            <!-- v-if -->
+            <div class="
+              flex-grow
+              p-5
+              sm:p-5
+            ">
+              <div class="
+                flex
+                flex-col
+                gap-4
+              ">
+                <div class="
+                  flex
+                  flex-row
+                  gap-4
+                ">
+                  <div class="
+                    bg-muted
+                    border
+                    border-(--ui-border)
+                    rounded-sm
+                    size-auto
+                  ">
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-12
+                        rounded-sm
+                        w-12
+                      "
+                      role="alert"
+                    ></div>
+                  </div>
+                  <div class="
+                    flex
+                    flex-1
+                    gap-x-2
+                    items-center
+                  ">
+                    <div class="
+                      flex
+                      flex-col
+                      gap-2
+                    ">
+                      <div
+                        aria-busy="true"
+                        aria-label="loading"
+                        aria-live="polite"
+                        class="
+                          animate-pulse
+                          bg-elevated
+                          h-7
+                          rounded-md
+                          w-32
+                        "
+                        role="alert"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="
+                  flex
+                  flex-col
+                  gap-6
+                ">
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-live="polite"
+                    class="
+                      animate-pulse
+                      bg-elevated
+                      h-3.5
+                      rounded-md
+                    "
+                    role="alert"
+                  ></div>
+                  <div class="
+                    flex-wrap
+                    gap-2
+                    inline-flex
+                    items-center
+                  ">
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="
+              bg-gray-50
+              dark:bg-black/10
+              p-4
+              px-5
+              py-4
+              rounded-b-lg
+              sm:px-5
+            ">
+              <div class="
+                flex
+                flex-row
+                gap-3
+                items-center
+              ">
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-live="polite"
+                  class="
+                    animate-pulse
+                    bg-elevated
+                    h-7
+                    rounded-md
+                    w-20
+                  "
+                  role="alert"
+                ></div>
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-live="polite"
+                  class="
+                    animate-pulse
+                    bg-elevated
+                    h-7
+                    ml-auto
+                    rounded-md
+                    w-7
+                  "
+                  role="alert"
+                ></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <main class="min-h-[calc(100vh-var(--ui-header-height))]">
-      <!-- rows: companies -->
-      <div class="space-y-4">
-        <div class="
-          border
-          border-[var(--ui-border)]
-          dark:border-[var(--ui-border-accented)]
-          max-w-5xl
-          mx-auto
-          px-5
-          py-4
-          rounded-lg
-        ">
-          <!-- Featured accent border -->
-          <!-- v-if -->
-          <!-- card content -->
-          <div class="
-            flex
-            items-start
-          ">
-            <!-- company image -->
-            <!-- v-if -->
-            <!-- company content -->
-            <div class="flex-grow">
-              <div class="
-                flex
-                flex-col
-                justify-between
-                sm:flex-row
-              ">
-                <div class="
-                  sm:max-w-[calc(100%-180px)]
-                  sm:pr-8
-                ">
-                  <!-- company name and badge -->
-                  <div class="
-                    flex
-                    items-center
-                  ">
-                    <a
-                      class="flex"
-                      href="/products/company-one/reviews/"
-                    >
-                      <h2 class="
-                      dark:text-[var(--ui-text)]
-                      font-semibold
-                      text-[var(--ui-text)]
-                      text-xl
-                    ">Company One</h2>
-                    </a>
-                    <!-- v-if -->
-                  </div>
-                  <!-- company oneliner -->
-                  <p class="
-                    dark:text-[var(--ui-text-toned)]
-                    line-clamp-2
-                    mt-2
-                    text-[var(--ui-text-muted)]
-                  "></p>
-                  <!-- show excerpt only for featured cards -->
-                  <!-- v-if -->
-                  <!-- rating display -->
-                  <!-- v-if -->
-                </div>
-                <!-- right side buttons -->
-                <div class="
-                  flex
-                  flex-col
-                  min-w-[140px]
-                  mt-4
-                  sm:mt-0
-                  space-y-2
-                ">
-                  <!-- view website button -->
-                  <a
-                    class="
-                      bg-[var(--ui-bg-inverted)]
-                      dark:bg-[var(--ui-bg)]
-                      dark:hover:bg-[var(--ui-bg-elevated)]
-                      dark:text-[var(--ui-bg-inverted)]
-                      flex
-                      font-medium
-                      gap-2
-                      h-10
-                      hover:bg-neutral-800
-                      items-center
-                      justify-center
-                      px-4
-                      py-2
-                      rounded-md
-                      text-[var(--ui-bg)]
-                      text-sm
-                      transition-colors
-                      w-full
-                    "
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  > Website <svg
-                    class="
-                      h-4
-                      w-4
-                    "
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                      <polyline points="15 3 21 3 21 9" />
-                      <line
-                    x1="10"
-                    x2="21"
-                    y1="14"
-                    y2="3"
-                  />
-                    </svg></a>
-                  <!-- upvote button -->
-                  <div module="company">
-                    <div class="
-                      -space-x-px
-                      inline-flex
-                      relative
-                    ">
-                      <button
-                        class="
-                          aria-disabled:bg-default
-                          aria-disabled:cursor-not-allowed
-                          aria-disabled:opacity-75
-                          bg-default
-                          disabled:bg-default
-                          disabled:cursor-not-allowed
-                          disabled:opacity-75
-                          focus-visible:ring-2
-                          focus-visible:ring-inverted
-                          focus-visible:z-[1]
-                          focus:outline-none
-                          font-medium
-                          gap-1.5
-                          hover:bg-elevated
-                          inline-flex
-                          items-center
-                          not-last:not-first:rounded-none
-                          not-only:first:rounded-e-none
-                          not-only:last:rounded-s-none
-                          p-1.5
-                          ring
-                          ring-accented
-                          ring-inset
-                          rounded-md
-                          text-default
-                          text-sm
-                          transition-colors
-                        "
-                        type="button"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="
-                            i-lucide:arrow-big-up
-                            iconify
-                            shrink-0
-                            size-5
-                          "
-                        ></span>
-                        <!-- v-if -->
-                        <!-- v-if -->
-                      </button>
-                      <span class="
-                        bg-default
-                        focus-visible:z-[1]
-                        font-medium
-                        gap-1
-                        inline-flex
-                        items-center
-                        justify-center
-                        not-last:not-first:rounded-none
-                        not-only:first:rounded-e-none
-                        not-only:last:rounded-s-none
-                        p-1
-                        ring
-                        ring-accented
-                        ring-inset
-                        rounded-md
-                        text-default
-                        text-xs
-                        w-8
-                      ">
-                        <!-- v-if -->
-                        <span class="truncate">
-                          NaN
-                        </span>
-                        <!-- v-if -->
-                      </span>
-                      <button
-                        class="
-                          aria-disabled:bg-default
-                          aria-disabled:cursor-not-allowed
-                          aria-disabled:opacity-75
-                          bg-default
-                          disabled:bg-default
-                          disabled:cursor-not-allowed
-                          disabled:opacity-75
-                          focus-visible:ring-2
-                          focus-visible:ring-inverted
-                          focus-visible:z-[1]
-                          focus:outline-none
-                          font-medium
-                          gap-1.5
-                          hover:bg-elevated
-                          inline-flex
-                          items-center
-                          not-last:not-first:rounded-none
-                          not-only:first:rounded-e-none
-                          not-only:last:rounded-s-none
-                          p-1.5
-                          ring
-                          ring-accented
-                          ring-inset
-                          rounded-md
-                          text-default
-                          text-sm
-                          transition-colors
-                        "
-                        type="button"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="
-                            i-lucide:arrow-big-down
-                            iconify
-                            shrink-0
-                            size-5
-                          "
-                        ></span>
-                        <!-- v-if -->
-                        <!-- v-if -->
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- feature tags only for featured companies -->
-          <!-- v-if -->
-          <!-- expanded content (if needed) -->
-          <!-- v-if -->
-        </div>
-        <div class="
-          border
-          border-[var(--ui-border)]
-          dark:border-[var(--ui-border-accented)]
-          max-w-5xl
-          mx-auto
-          px-5
-          py-4
-          rounded-lg
-        ">
-          <!-- Featured accent border -->
-          <!-- v-if -->
-          <!-- card content -->
-          <div class="
-            flex
-            items-start
-          ">
-            <!-- company image -->
-            <!-- v-if -->
-            <!-- company content -->
-            <div class="flex-grow">
-              <div class="
-                flex
-                flex-col
-                justify-between
-                sm:flex-row
-              ">
-                <div class="
-                  sm:max-w-[calc(100%-180px)]
-                  sm:pr-8
-                ">
-                  <!-- company name and badge -->
-                  <div class="
-                    flex
-                    items-center
-                  ">
-                    <a
-                      class="flex"
-                      href="/products/company-two/reviews/"
-                    >
-                      <h2 class="
-                      dark:text-[var(--ui-text)]
-                      font-semibold
-                      text-[var(--ui-text)]
-                      text-xl
-                    ">Company Two</h2>
-                    </a>
-                    <!-- v-if -->
-                  </div>
-                  <!-- company oneliner -->
-                  <p class="
-                    dark:text-[var(--ui-text-toned)]
-                    line-clamp-2
-                    mt-2
-                    text-[var(--ui-text-muted)]
-                  "></p>
-                  <!-- show excerpt only for featured cards -->
-                  <!-- v-if -->
-                  <!-- rating display -->
-                  <!-- v-if -->
-                </div>
-                <!-- right side buttons -->
-                <div class="
-                  flex
-                  flex-col
-                  min-w-[140px]
-                  mt-4
-                  sm:mt-0
-                  space-y-2
-                ">
-                  <!-- view website button -->
-                  <a
-                    class="
-                      bg-[var(--ui-bg-inverted)]
-                      dark:bg-[var(--ui-bg)]
-                      dark:hover:bg-[var(--ui-bg-elevated)]
-                      dark:text-[var(--ui-bg-inverted)]
-                      flex
-                      font-medium
-                      gap-2
-                      h-10
-                      hover:bg-neutral-800
-                      items-center
-                      justify-center
-                      px-4
-                      py-2
-                      rounded-md
-                      text-[var(--ui-bg)]
-                      text-sm
-                      transition-colors
-                      w-full
-                    "
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  > Website <svg
-                    class="
-                      h-4
-                      w-4
-                    "
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                      <polyline points="15 3 21 3 21 9" />
-                      <line
-                    x1="10"
-                    x2="21"
-                    y1="14"
-                    y2="3"
-                  />
-                    </svg></a>
-                  <!-- upvote button -->
-                  <div module="company">
-                    <div class="
-                      -space-x-px
-                      inline-flex
-                      relative
-                    ">
-                      <button
-                        class="
-                          aria-disabled:bg-default
-                          aria-disabled:cursor-not-allowed
-                          aria-disabled:opacity-75
-                          bg-default
-                          disabled:bg-default
-                          disabled:cursor-not-allowed
-                          disabled:opacity-75
-                          focus-visible:ring-2
-                          focus-visible:ring-inverted
-                          focus-visible:z-[1]
-                          focus:outline-none
-                          font-medium
-                          gap-1.5
-                          hover:bg-elevated
-                          inline-flex
-                          items-center
-                          not-last:not-first:rounded-none
-                          not-only:first:rounded-e-none
-                          not-only:last:rounded-s-none
-                          p-1.5
-                          ring
-                          ring-accented
-                          ring-inset
-                          rounded-md
-                          text-default
-                          text-sm
-                          transition-colors
-                        "
-                        type="button"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="
-                            i-lucide:arrow-big-up
-                            iconify
-                            shrink-0
-                            size-5
-                          "
-                        ></span>
-                        <!-- v-if -->
-                        <!-- v-if -->
-                      </button>
-                      <span class="
-                        bg-default
-                        focus-visible:z-[1]
-                        font-medium
-                        gap-1
-                        inline-flex
-                        items-center
-                        justify-center
-                        not-last:not-first:rounded-none
-                        not-only:first:rounded-e-none
-                        not-only:last:rounded-s-none
-                        p-1
-                        ring
-                        ring-accented
-                        ring-inset
-                        rounded-md
-                        text-default
-                        text-xs
-                        w-8
-                      ">
-                        <!-- v-if -->
-                        <span class="truncate">
-                          NaN
-                        </span>
-                        <!-- v-if -->
-                      </span>
-                      <button
-                        class="
-                          aria-disabled:bg-default
-                          aria-disabled:cursor-not-allowed
-                          aria-disabled:opacity-75
-                          bg-default
-                          disabled:bg-default
-                          disabled:cursor-not-allowed
-                          disabled:opacity-75
-                          focus-visible:ring-2
-                          focus-visible:ring-inverted
-                          focus-visible:z-[1]
-                          focus:outline-none
-                          font-medium
-                          gap-1.5
-                          hover:bg-elevated
-                          inline-flex
-                          items-center
-                          not-last:not-first:rounded-none
-                          not-only:first:rounded-e-none
-                          not-only:last:rounded-s-none
-                          p-1.5
-                          ring
-                          ring-accented
-                          ring-inset
-                          rounded-md
-                          text-default
-                          text-sm
-                          transition-colors
-                        "
-                        type="button"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="
-                            i-lucide:arrow-big-down
-                            iconify
-                            shrink-0
-                            size-5
-                          "
-                        ></span>
-                        <!-- v-if -->
-                        <!-- v-if -->
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- feature tags only for featured companies -->
-          <!-- v-if -->
-          <!-- expanded content (if needed) -->
-          <!-- v-if -->
-        </div>
-      </div>
-      <nav
-        aria-label="pagination"
-        class="
-          flex
-          justify-center
-          mt-20
-          overflow-x-auto
-          rounded-none
-        "
-      >
-        <div class="
-          flex
-          gap-1
-          items-center
-        ">
-          <button
-            aria-label="First Page"
-            class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            disabled=""
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevrons-left
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
-          <button
-            aria-label="Previous Page"
-            class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            disabled=""
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevron-left
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
-          <button
-            aria-current="page"
-            aria-label="Page 1"
-            class="
-              aria-disabled:bg-primary
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-primary
-              disabled:bg-primary
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:outline-2
-              focus-visible:outline-offset-2
-              focus-visible:outline-primary
-              font-medium
-              gap-1.5
-              hover:bg-primary/75
-              inline-flex
-              items-center
-              p-1.5
-              rounded-md
-              text-inverted
-              text-sm
-              transition-colors
-            "
-            data-selected="true"
-            data-type="page"
-            type="button"
-            value="1"
-          >
-            <!-- v-if -->
-            <span class="
-              min-w-5
-              text-center
-              truncate
-            ">
-              1
-            </span>
-            <!-- v-if -->
-          </button>
-          <button
-            aria-label="Page 2"
-            class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            data-type="page"
-            type="button"
-            value="2"
-          >
-            <!-- v-if -->
-            <span class="
-              min-w-5
-              text-center
-              truncate
-            ">
-              2
-            </span>
-            <!-- v-if -->
-          </button>
-          <button
-            aria-label="Next Page"
-            class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevron-right
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
-          <button
-            aria-label="Last Page"
-            class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevrons-right
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
-        </div>
-      </nav>
-      <!-- article -->
-      <!-- v-if -->
-      <!-- faqs -->
-      <!-- v-if -->
-      <!-- v-if -->
-    </main>
-  </div>
-  <!-- v-if -->
+    <!-- v-if -->
+    <!-- v-if -->
+  </main>
 </div>
 `;
 
 exports[`SPageCompanyCategoryCollection Snapshot > renders without category article correctly 1`] = `
-<div class="
-  flex
-  flex-col
-  lg:gap-10
-  lg:grid
-  lg:grid-cols-10
-">
-  <!-- v-if -->
-  <div class="lg:col-span-10">
-    <!-- hero -->
-    <div>
-      <div class="py-20">
-        <div class="
-          lg:px-8
-          max-w-5xl
-          mx-auto
-          px-4
-          sm:px-6
+<div>
+  <div class="
+    -mt-22
+    py-20
+  ">
+    <div class="
+      lg:px-8
+      max-w-5xl
+      mx-auto
+      px-4
+      sm:px-6
+    ">
+      <div class="
+        flex
+        flex-col
+        gap-4
+        items-center
+        lg:items-start
+        lg:text-left
+        text-center
+      ">
+        <h1 class="
+          font-bold
+          lg:text-5xl
+          text-3xl
+          text-pretty
         ">
-          <div class="items-center">
+          The Best undefined
+        </h1>
+        <p class="
+          lg:text-xl
+          max-w-2xl
+          text-muted
+        ">
+          Discover undefined products &amp; services.
+        </p>
+        <!-- v-if -->
+      </div>
+    </div>
+  </div>
+  <main>
+    <div class="
+      flex
+      flex-col
+      gap-y-6
+    ">
+      <div class="
+        gap-4
+        grid
+        grid-cols-2
+        md:flex
+        md:flex-row
+      ">
+        <div class="
+          col-span-2
+          inline-flex
+          items-center
+          md:col-auto
+          relative
+          w-full
+        ">
+          <input
+            autocomplete="off"
+            class="
+              bg-default
+              border-0
+              disabled:cursor-not-allowed
+              disabled:opacity-75
+              focus-visible:ring-2
+              focus-visible:ring-inset
+              focus-visible:ring-primary
+              focus:outline-none
+              gap-2
+              placeholder:text-dimmed
+              ps-10
+              px-3
+              py-2
+              ring
+              ring-accented
+              ring-inset
+              rounded-md
+              text-highlighted
+              text-sm
+              transition-colors
+              w-full
+            "
+            placeholder="Search products..."
+            type="text"
+            value=""
+          />
+          <span class="
+            absolute
+            flex
+            inset-y-0
+            items-center
+            ps-3
+            start-0
+          ">
+            <span
+              aria-hidden="true"
+              class="
+                animate-spin
+                i-lucide:refresh-cw
+                iconify
+                shrink-0
+                size-5
+                text-dimmed
+              "
+            ></span>
+          </span>
+          <!-- v-if -->
+        </div>
+        <!-- v-if -->
+        <!---->
+        <button
+          aria-controls=""
+          aria-disabled="false"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-label="Show popup"
+          class="
+            bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inset
+            focus-visible:ring-primary
+            focus:outline-none
+            gap-2
+            group
+            inline-flex
+            items-center
+            md:w-48
+            pe-10
+            px-3
+            py-2
+            relative
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-highlighted
+            text-sm
+            transition-colors
+            w-full
+          "
+          data-state="closed"
+          dir="ltr"
+          tabindex="0"
+          type="button"
+        >
+          <!-- v-if -->
+          <span class="
+            text-dimmed
+            truncate
+          ">
+            Order by
+          </span>
+          <span class="
+            absolute
+            end-0
+            flex
+            inset-y-0
+            items-center
+            pe-3
+          ">
+            <span
+              aria-hidden="true"
+              class="
+                i-lucide:chevrons-up-down
+                iconify
+                shrink-0
+                size-5
+                text-dimmed
+              "
+            ></span>
+          </span>
+        </button>
+        <!-- teleport start -->
+        <!-- teleport end -->
+        <!---->
+      </div>
+      <div class="
+        flex
+        flex-col
+        gap-y-6
+      ">
+        <div class="
+          gap-4
+          grid
+          grid-cols-1
+          lg:grid-cols-2
+        ">
+          <div class="
+            bg-default
+            divide-dashed
+            divide-default
+            divide-y
+            flex
+            flex-col
+            ring
+            ring-default
+            rounded-lg
+            transition-all
+          ">
+            <!-- v-if -->
             <div class="
-              flex
-              flex-col
-              items-center
-              lg:items-start
-              lg:text-left
-              text-center
+              flex-grow
+              p-5
+              sm:p-5
             ">
-              <h1 class="
-                font-bold
-                lg:text-5xl
-                my-4
-                text-2xl
-                text-pretty
-              ">
-                The Best undefined
-              </h1>
-              <!-- v-if -->
               <div class="
                 flex
                 flex-col
-                gap-2
-                justify-center
-                lg:justify-start
-                sm:flex-row
-                w-full
+                gap-4
               ">
-                <!-- v-if -->
-                <!-- v-if -->
+                <div class="
+                  flex
+                  flex-row
+                  gap-4
+                ">
+                  <div class="
+                    bg-muted
+                    border
+                    border-(--ui-border)
+                    rounded-sm
+                    size-auto
+                  ">
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-12
+                        rounded-sm
+                        w-12
+                      "
+                      role="alert"
+                    ></div>
+                  </div>
+                  <div class="
+                    flex
+                    flex-1
+                    gap-x-2
+                    items-center
+                  ">
+                    <div class="
+                      flex
+                      flex-col
+                      gap-2
+                    ">
+                      <div
+                        aria-busy="true"
+                        aria-label="loading"
+                        aria-live="polite"
+                        class="
+                          animate-pulse
+                          bg-elevated
+                          h-7
+                          rounded-md
+                          w-32
+                        "
+                        role="alert"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="
+                  flex
+                  flex-col
+                  gap-6
+                ">
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-live="polite"
+                    class="
+                      animate-pulse
+                      bg-elevated
+                      h-3.5
+                      rounded-md
+                    "
+                    role="alert"
+                  ></div>
+                  <div class="
+                    flex-wrap
+                    gap-2
+                    inline-flex
+                    items-center
+                  ">
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="
+              bg-gray-50
+              dark:bg-black/10
+              p-4
+              px-5
+              py-4
+              rounded-b-lg
+              sm:px-5
+            ">
+              <div class="
+                flex
+                flex-row
+                gap-3
+                items-center
+              ">
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-live="polite"
+                  class="
+                    animate-pulse
+                    bg-elevated
+                    h-7
+                    rounded-md
+                    w-20
+                  "
+                  role="alert"
+                ></div>
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-live="polite"
+                  class="
+                    animate-pulse
+                    bg-elevated
+                    h-7
+                    ml-auto
+                    rounded-md
+                    w-7
+                  "
+                  role="alert"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="
+            bg-default
+            divide-dashed
+            divide-default
+            divide-y
+            flex
+            flex-col
+            ring
+            ring-default
+            rounded-lg
+            transition-all
+          ">
+            <!-- v-if -->
+            <div class="
+              flex-grow
+              p-5
+              sm:p-5
+            ">
+              <div class="
+                flex
+                flex-col
+                gap-4
+              ">
+                <div class="
+                  flex
+                  flex-row
+                  gap-4
+                ">
+                  <div class="
+                    bg-muted
+                    border
+                    border-(--ui-border)
+                    rounded-sm
+                    size-auto
+                  ">
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-12
+                        rounded-sm
+                        w-12
+                      "
+                      role="alert"
+                    ></div>
+                  </div>
+                  <div class="
+                    flex
+                    flex-1
+                    gap-x-2
+                    items-center
+                  ">
+                    <div class="
+                      flex
+                      flex-col
+                      gap-2
+                    ">
+                      <div
+                        aria-busy="true"
+                        aria-label="loading"
+                        aria-live="polite"
+                        class="
+                          animate-pulse
+                          bg-elevated
+                          h-7
+                          rounded-md
+                          w-32
+                        "
+                        role="alert"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="
+                  flex
+                  flex-col
+                  gap-6
+                ">
+                  <div
+                    aria-busy="true"
+                    aria-label="loading"
+                    aria-live="polite"
+                    class="
+                      animate-pulse
+                      bg-elevated
+                      h-3.5
+                      rounded-md
+                    "
+                    role="alert"
+                  ></div>
+                  <div class="
+                    flex-wrap
+                    gap-2
+                    inline-flex
+                    items-center
+                  ">
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                    <div
+                      aria-busy="true"
+                      aria-label="loading"
+                      aria-live="polite"
+                      class="
+                        animate-pulse
+                        bg-elevated
+                        h-4
+                        rounded-full
+                        w-16
+                      "
+                      role="alert"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="
+              bg-gray-50
+              dark:bg-black/10
+              p-4
+              px-5
+              py-4
+              rounded-b-lg
+              sm:px-5
+            ">
+              <div class="
+                flex
+                flex-row
+                gap-3
+                items-center
+              ">
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-live="polite"
+                  class="
+                    animate-pulse
+                    bg-elevated
+                    h-7
+                    rounded-md
+                    w-20
+                  "
+                  role="alert"
+                ></div>
+                <div
+                  aria-busy="true"
+                  aria-label="loading"
+                  aria-live="polite"
+                  class="
+                    animate-pulse
+                    bg-elevated
+                    h-7
+                    ml-auto
+                    rounded-md
+                    w-7
+                  "
+                  role="alert"
+                ></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <main class="min-h-[calc(100vh-var(--ui-header-height))]">
-      <!-- rows: companies -->
-      <div class="space-y-4">
-        <div class="
-          border
-          border-[var(--ui-border)]
-          dark:border-[var(--ui-border-accented)]
-          max-w-5xl
-          mx-auto
-          px-5
-          py-4
-          rounded-lg
-        ">
-          <!-- Featured accent border -->
+    <!-- v-if -->
+    <section
+      class="
+        isolate
+        relative
+      "
+      data-orientation="vertical"
+    >
+      <div class="
+        flex
+        flex-col
+        gap-8
+        lg:grid
+        lg:px-8
+        lg:py-32
+        max-w-(--ui-container)
+        mx-auto
+        px-4
+        py-16
+        sm:gap-16
+        sm:px-6
+        sm:py-24
+        w-full
+      ">
+        <div class="">
           <!-- v-if -->
-          <!-- card content -->
-          <div class="
-            flex
-            items-start
+          <!-- v-if -->
+          <h2 class="
+            font-bold
+            lg:text-5xl
+            sm:text-4xl
+            text-3xl
+            text-highlighted
+            text-left
+            text-pretty
+            tracking-tight
           ">
-            <!-- company image -->
-            <!-- v-if -->
-            <!-- company content -->
-            <div class="flex-grow">
-              <div class="
-                flex
-                flex-col
-                justify-between
-                sm:flex-row
-              ">
-                <div class="
-                  sm:max-w-[calc(100%-180px)]
-                  sm:pr-8
-                ">
-                  <!-- company name and badge -->
-                  <div class="
-                    flex
-                    items-center
-                  ">
-                    <a
-                      class="flex"
-                      href="/products/company-one/reviews/"
-                    >
-                      <h2 class="
-                      dark:text-[var(--ui-text)]
-                      font-semibold
-                      text-[var(--ui-text)]
-                      text-xl
-                    ">Company One</h2>
-                    </a>
-                    <!-- v-if -->
-                  </div>
-                  <!-- company oneliner -->
-                  <p class="
-                    dark:text-[var(--ui-text-toned)]
-                    line-clamp-2
-                    mt-2
-                    text-[var(--ui-text-muted)]
-                  "></p>
-                  <!-- show excerpt only for featured cards -->
-                  <!-- v-if -->
-                  <!-- rating display -->
-                  <!-- v-if -->
-                </div>
-                <!-- right side buttons -->
-                <div class="
-                  flex
-                  flex-col
-                  min-w-[140px]
-                  mt-4
-                  sm:mt-0
-                  space-y-2
-                ">
-                  <!-- view website button -->
-                  <a
-                    class="
-                      bg-[var(--ui-bg-inverted)]
-                      dark:bg-[var(--ui-bg)]
-                      dark:hover:bg-[var(--ui-bg-elevated)]
-                      dark:text-[var(--ui-bg-inverted)]
-                      flex
-                      font-medium
-                      gap-2
-                      h-10
-                      hover:bg-neutral-800
-                      items-center
-                      justify-center
-                      px-4
-                      py-2
-                      rounded-md
-                      text-[var(--ui-bg)]
-                      text-sm
-                      transition-colors
-                      w-full
-                    "
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  > Website <svg
-                    class="
-                      h-4
-                      w-4
-                    "
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                      <polyline points="15 3 21 3 21 9" />
-                      <line
-                    x1="10"
-                    x2="21"
-                    y1="14"
-                    y2="3"
-                  />
-                    </svg></a>
-                  <!-- upvote button -->
-                  <div module="company">
-                    <div class="
-                      -space-x-px
-                      inline-flex
-                      relative
-                    ">
-                      <button
-                        class="
-                          aria-disabled:bg-default
-                          aria-disabled:cursor-not-allowed
-                          aria-disabled:opacity-75
-                          bg-default
-                          disabled:bg-default
-                          disabled:cursor-not-allowed
-                          disabled:opacity-75
-                          focus-visible:ring-2
-                          focus-visible:ring-inverted
-                          focus-visible:z-[1]
-                          focus:outline-none
-                          font-medium
-                          gap-1.5
-                          hover:bg-elevated
-                          inline-flex
-                          items-center
-                          not-last:not-first:rounded-none
-                          not-only:first:rounded-e-none
-                          not-only:last:rounded-s-none
-                          p-1.5
-                          ring
-                          ring-accented
-                          ring-inset
-                          rounded-md
-                          text-default
-                          text-sm
-                          transition-colors
-                        "
-                        type="button"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="
-                            i-lucide:arrow-big-up
-                            iconify
-                            shrink-0
-                            size-5
-                          "
-                        ></span>
-                        <!-- v-if -->
-                        <!-- v-if -->
-                      </button>
-                      <span class="
-                        bg-default
-                        focus-visible:z-[1]
-                        font-medium
-                        gap-1
-                        inline-flex
-                        items-center
-                        justify-center
-                        not-last:not-first:rounded-none
-                        not-only:first:rounded-e-none
-                        not-only:last:rounded-s-none
-                        p-1
-                        ring
-                        ring-accented
-                        ring-inset
-                        rounded-md
-                        text-default
-                        text-xs
-                        w-8
-                      ">
-                        <!-- v-if -->
-                        <span class="truncate">
-                          NaN
-                        </span>
-                        <!-- v-if -->
-                      </span>
-                      <button
-                        class="
-                          aria-disabled:bg-default
-                          aria-disabled:cursor-not-allowed
-                          aria-disabled:opacity-75
-                          bg-default
-                          disabled:bg-default
-                          disabled:cursor-not-allowed
-                          disabled:opacity-75
-                          focus-visible:ring-2
-                          focus-visible:ring-inverted
-                          focus-visible:z-[1]
-                          focus:outline-none
-                          font-medium
-                          gap-1.5
-                          hover:bg-elevated
-                          inline-flex
-                          items-center
-                          not-last:not-first:rounded-none
-                          not-only:first:rounded-e-none
-                          not-only:last:rounded-s-none
-                          p-1.5
-                          ring
-                          ring-accented
-                          ring-inset
-                          rounded-md
-                          text-default
-                          text-sm
-                          transition-colors
-                        "
-                        type="button"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="
-                            i-lucide:arrow-big-down
-                            iconify
-                            shrink-0
-                            size-5
-                          "
-                        ></span>
-                        <!-- v-if -->
-                        <!-- v-if -->
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- feature tags only for featured companies -->
+            Categories
+          </h2>
           <!-- v-if -->
-          <!-- expanded content (if needed) -->
+          <!-- v-if -->
           <!-- v-if -->
         </div>
         <div class="
-          border
-          border-[var(--ui-border)]
-          dark:border-[var(--ui-border-accented)]
-          max-w-5xl
-          mx-auto
-          px-5
-          py-4
-          rounded-lg
+          gap-x-8
+          gap-y-6
+          grid
+          grid-cols-1
+          lg:grid-cols-4
+          md:grid-cols-3
+          sm:grid-cols-2
         ">
-          <!-- Featured accent border -->
-          <!-- v-if -->
-          <!-- card content -->
-          <div class="
-            flex
-            items-start
-          ">
-            <!-- company image -->
-            <!-- v-if -->
-            <!-- company content -->
-            <div class="flex-grow">
-              <div class="
-                flex
-                flex-col
-                justify-between
-                sm:flex-row
-              ">
-                <div class="
-                  sm:max-w-[calc(100%-180px)]
-                  sm:pr-8
-                ">
-                  <!-- company name and badge -->
-                  <div class="
-                    flex
-                    items-center
-                  ">
-                    <a
-                      class="flex"
-                      href="/products/company-two/reviews/"
-                    >
-                      <h2 class="
-                      dark:text-[var(--ui-text)]
-                      font-semibold
-                      text-[var(--ui-text)]
-                      text-xl
-                    ">Company Two</h2>
-                    </a>
-                    <!-- v-if -->
-                  </div>
-                  <!-- company oneliner -->
-                  <p class="
-                    dark:text-[var(--ui-text-toned)]
-                    line-clamp-2
-                    mt-2
-                    text-[var(--ui-text-muted)]
-                  "></p>
-                  <!-- show excerpt only for featured cards -->
-                  <!-- v-if -->
-                  <!-- rating display -->
-                  <!-- v-if -->
-                </div>
-                <!-- right side buttons -->
-                <div class="
-                  flex
-                  flex-col
-                  min-w-[140px]
-                  mt-4
-                  sm:mt-0
-                  space-y-2
-                ">
-                  <!-- view website button -->
-                  <a
-                    class="
-                      bg-[var(--ui-bg-inverted)]
-                      dark:bg-[var(--ui-bg)]
-                      dark:hover:bg-[var(--ui-bg-elevated)]
-                      dark:text-[var(--ui-bg-inverted)]
-                      flex
-                      font-medium
-                      gap-2
-                      h-10
-                      hover:bg-neutral-800
-                      items-center
-                      justify-center
-                      px-4
-                      py-2
-                      rounded-md
-                      text-[var(--ui-bg)]
-                      text-sm
-                      transition-colors
-                      w-full
-                    "
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  > Website <svg
-                    class="
-                      h-4
-                      w-4
-                    "
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                      <polyline points="15 3 21 3 21 9" />
-                      <line
-                    x1="10"
-                    x2="21"
-                    y1="14"
-                    y2="3"
-                  />
-                    </svg></a>
-                  <!-- upvote button -->
-                  <div module="company">
-                    <div class="
-                      -space-x-px
-                      inline-flex
-                      relative
-                    ">
-                      <button
-                        class="
-                          aria-disabled:bg-default
-                          aria-disabled:cursor-not-allowed
-                          aria-disabled:opacity-75
-                          bg-default
-                          disabled:bg-default
-                          disabled:cursor-not-allowed
-                          disabled:opacity-75
-                          focus-visible:ring-2
-                          focus-visible:ring-inverted
-                          focus-visible:z-[1]
-                          focus:outline-none
-                          font-medium
-                          gap-1.5
-                          hover:bg-elevated
-                          inline-flex
-                          items-center
-                          not-last:not-first:rounded-none
-                          not-only:first:rounded-e-none
-                          not-only:last:rounded-s-none
-                          p-1.5
-                          ring
-                          ring-accented
-                          ring-inset
-                          rounded-md
-                          text-default
-                          text-sm
-                          transition-colors
-                        "
-                        type="button"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="
-                            i-lucide:arrow-big-up
-                            iconify
-                            shrink-0
-                            size-5
-                          "
-                        ></span>
-                        <!-- v-if -->
-                        <!-- v-if -->
-                      </button>
-                      <span class="
-                        bg-default
-                        focus-visible:z-[1]
-                        font-medium
-                        gap-1
-                        inline-flex
-                        items-center
-                        justify-center
-                        not-last:not-first:rounded-none
-                        not-only:first:rounded-e-none
-                        not-only:last:rounded-s-none
-                        p-1
-                        ring
-                        ring-accented
-                        ring-inset
-                        rounded-md
-                        text-default
-                        text-xs
-                        w-8
-                      ">
-                        <!-- v-if -->
-                        <span class="truncate">
-                          NaN
-                        </span>
-                        <!-- v-if -->
-                      </span>
-                      <button
-                        class="
-                          aria-disabled:bg-default
-                          aria-disabled:cursor-not-allowed
-                          aria-disabled:opacity-75
-                          bg-default
-                          disabled:bg-default
-                          disabled:cursor-not-allowed
-                          disabled:opacity-75
-                          focus-visible:ring-2
-                          focus-visible:ring-inverted
-                          focus-visible:z-[1]
-                          focus:outline-none
-                          font-medium
-                          gap-1.5
-                          hover:bg-elevated
-                          inline-flex
-                          items-center
-                          not-last:not-first:rounded-none
-                          not-only:first:rounded-e-none
-                          not-only:last:rounded-s-none
-                          p-1.5
-                          ring
-                          ring-accented
-                          ring-inset
-                          rounded-md
-                          text-default
-                          text-sm
-                          transition-colors
-                        "
-                        type="button"
-                      >
-                        <span
-                          aria-hidden="true"
-                          class="
-                            i-lucide:arrow-big-down
-                            iconify
-                            shrink-0
-                            size-5
-                          "
-                        ></span>
-                        <!-- v-if -->
-                        <!-- v-if -->
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- feature tags only for featured companies -->
-          <!-- v-if -->
-          <!-- expanded content (if needed) -->
-          <!-- v-if -->
-        </div>
-      </div>
-      <nav
-        aria-label="pagination"
-        class="
-          flex
-          justify-center
-          mt-20
-          overflow-x-auto
-          rounded-none
-        "
-      >
-        <div class="
-          flex
-          gap-1
-          items-center
-        ">
-          <button
-            aria-label="First Page"
+          <a
             class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            disabled=""
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevrons-left
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
-          <button
-            aria-label="Previous Page"
-            class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            disabled=""
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevron-left
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
-          <button
-            aria-current="page"
-            aria-label="Page 1"
-            class="
-              aria-disabled:bg-primary
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-primary
-              disabled:bg-primary
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:outline-2
-              focus-visible:outline-offset-2
+              flex
               focus-visible:outline-primary
               font-medium
-              gap-1.5
-              hover:bg-primary/75
-              inline-flex
+              gap-3
+              group
+              hover:text-default
               items-center
-              p-1.5
-              rounded-md
-              text-inverted
-              text-sm
-              transition-colors
+              text-base
+              text-muted
+              transition-all
             "
-            data-selected="true"
-            data-type="page"
-            type="button"
-            value="1"
-          >
-            <!-- v-if -->
-            <span class="
-              min-w-5
-              text-center
-              truncate
-            ">
-              1
-            </span>
-            <!-- v-if -->
-          </button>
-          <button
-            aria-label="Page 2"
+            href="/products/best/cat-tech/"
+          ><span
+            aria-hidden="true"
             class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
+              group-hover:translate-x-1
+              i-lucide:arrow-right
+              iconify
+              size-4
+              text-dimmed
+              transition-all
             "
-            data-type="page"
-            type="button"
-            value="2"
-          >
-            <!-- v-if -->
-            <span class="
-              min-w-5
-              text-center
-              truncate
-            ">
-              2
-            </span>
-            <!-- v-if -->
-          </button>
-          <button
-            aria-label="Next Page"
-            class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevron-right
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
-          <button
-            aria-label="Last Page"
-            class="
-              aria-disabled:bg-default
-              aria-disabled:cursor-not-allowed
-              aria-disabled:opacity-75
-              bg-default
-              disabled:bg-default
-              disabled:cursor-not-allowed
-              disabled:opacity-75
-              focus-visible:ring-2
-              focus-visible:ring-inverted
-              focus:outline-none
-              font-medium
-              gap-1.5
-              hover:bg-elevated
-              inline-flex
-              items-center
-              p-1.5
-              ring
-              ring-accented
-              ring-inset
-              rounded-md
-              text-default
-              text-sm
-              transition-colors
-            "
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="
-                i-lucide:chevrons-right
-                iconify
-                shrink-0
-                size-5
-              "
-            ></span>
-            <!-- v-if -->
-            <!-- v-if -->
-          </button>
+          ></span><span>Tech</span>
+            <hr class="
+            border-(--ui-border)
+            flex-1
+            min-w-2
+          " />
+          </a>
         </div>
-      </nav>
-      <!-- article -->
-      <!-- v-if -->
-      <!-- faqs -->
-      <!-- v-if -->
-      <section class="
-        mt-20
-        my-30
-      ">
-        <div class="mx-auto">
-          <div class="pt-12">
-            <div>
-              <span class="
-                font-bold
-                inline-block
-                py-4
-                text-3xl
-              ">
-                Categories
-              </span>
-            </div>
-          </div>
-          <div class="
-            gap-4
-            grid
-            grid-cols-1
-            lg:grid-cols-4
-            md:grid-cols-3
-            mt-5
-            sm:grid-cols-2
-          ">
-            <div class="border-t">
-              <a
-                class="
-                  flex
-                  font-medium
-                  mt-3
-                "
-                href="/products/best/cat-tech/"
-              >Tech</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-  <!-- v-if -->
+      </div>
+    </section>
+  </main>
 </div>
 `;

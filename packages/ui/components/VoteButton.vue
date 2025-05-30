@@ -75,28 +75,26 @@
 </script>
 
 <template>
-  <div>
-    <UButtonGroup>
-      <UButton
-        :disabled="loading"
-        :color="currentVote === 1 ? 'secondary' : 'neutral'"
-        variant="outline"
-        icon="lucide:arrow-big-up"
-        @click="vote(1)"
-      />
-      <UBadge
-        :label="upvotes - downvotes"
-        variant="outline"
-        color="neutral"
-        class="w-8 justify-center"
-      />
-      <UButton
-        :disabled="loading"
-        :color="currentVote === -1 ? 'error' : 'neutral'"
-        variant="outline"
-        icon="lucide:arrow-big-down"
-        @click="vote(-1)"
-      />
-    </UButtonGroup>
-  </div>
+  <UButtonGroup>
+    <UButton
+      :disabled="loading"
+      :color="currentVote === 1 ? 'secondary' : 'neutral'"
+      variant="outline"
+      icon="lucide:arrow-big-up"
+      @click="vote(1)"
+    />
+    <UBadge
+      :label="upvotes - downvotes"
+      variant="outline"
+      color="neutral"
+      class="w-8 justify-center text-sm"
+    />
+    <UButton
+      :disabled="loading"
+      :color="currentVote === -1 ? 'error' : 'neutral'"
+      variant="outline"
+      icon="lucide:arrow-big-down"
+      @click="vote(-1)"
+    />
+  </UButtonGroup>
 </template>

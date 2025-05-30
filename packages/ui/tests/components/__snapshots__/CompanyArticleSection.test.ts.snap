@@ -3,8 +3,7 @@
 exports[`CompanyArticleSection Snapshot > renders with empty article correctly 1`] = `
 <section
   class="
-    bg-white
-    dark:bg-gray-900
+    bg-(--ui-bg)
     isolate
     relative
   "
@@ -52,8 +51,7 @@ exports[`CompanyArticleSection Snapshot > renders with empty article correctly 1
 exports[`CompanyArticleSection Snapshot > renders with valid article content correctly 1`] = `
 <section
   class="
-    bg-white
-    dark:bg-gray-900
+    bg-(--ui-bg)
     isolate
     relative
   "
@@ -94,15 +92,12 @@ exports[`CompanyArticleSection Snapshot > renders with valid article content cor
       <!-- v-if -->
       <!-- v-if -->
     </div>
-    <article
-      aria-labelledby="article-title"
-      role="article"
-    >
-      <!-- eslint-disable-next-line vue/no-v-html -->
+    <article>
+      <!-- eslint-disable vue/no-v-html -->
       <div
         class="
           dark:prose-invert
-          max-w-5xl
+          max-w-full
           mx-auto
           prose
         "

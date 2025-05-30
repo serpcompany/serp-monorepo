@@ -20,14 +20,14 @@ describe('CompanyCardList Snapshot', () => {
     [
       'with an empty companies list',
       {
-        props: { companies: [] },
+        props: { items: [] },
         global: { stubs: { CompanyCard: CompanyCardStub } }
       }
     ],
     [
       'with a single company and default props',
       {
-        props: { companies: [{ id: 1, name: 'Test Company' }] },
+        props: { items: [{ id: 1, name: 'Test Company' }] },
         global: { stubs: { CompanyCard: CompanyCardStub } }
       }
     ],
@@ -35,7 +35,7 @@ describe('CompanyCardList Snapshot', () => {
       'with multiple companies and all toggles enabled',
       {
         props: {
-          companies: [
+          items: [
             { id: 1, name: 'Company One' },
             { id: 2, name: 'Company Two' }
           ],

@@ -1,50 +1,50 @@
 <script setup lang="ts">
   import type { Category } from '@serp/types/types';
 
-  defineProps({
-    categories: {
-      type: Array as PropType<Category[]>,
-      required: true
-    },
-    headline: {
-      type: String,
-      default: null
-    },
-    baseSlug: {
-      type: String,
-      default: ''
-    }
-  });
+  interface Props {
+    categories: Category[];
+    headline?: string;
+    baseSlug?: string;
+  }
+
+  defineProps<Props>();
 </script>
 
 <template>
-  <section v-if="baseSlug" class="my-30">
-    <div class="mx-auto">
-      <div class="pt-12">
-        <div>
-          <span class="inline-block py-4 text-3xl font-bold">{{
-            headline
-          }}</span>
-        </div>
-      </div>
-
+  <UPageSection
+    :ui="{ title: 'text-left' }"
+    :title="headline"
+    orientation="vertical"
+  >
+    <template v-if="categories.length">
       <div
-        class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
       >
-        <div
-          v-for="category in categories"
-          :key="category.slug"
-          class="border-t"
-        >
-          <NuxtLink
+        <template v-for="category in categories" :key="category.slug">
+          <ULink
             v-if="category.slug"
             :to="`/${baseSlug}/${category.slug}/`"
-            class="mt-3 flex font-medium"
+            class="group flex items-center gap-3 text-base font-medium transition-all"
+            active-class="text-secondary"
           >
-            {{ category.name }}
-          </NuxtLink>
-        </div>
+            <UIcon
+              name="lucide:arrow-right"
+              class="text-dimmed size-4 transition-all group-hover:translate-x-1"
+            />
+            <span>
+              {{ category.name }}
+            </span>
+            <hr class="min-w-2 flex-1 border-(--ui-border)" />
+          </ULink>
+        </template>
       </div>
-    </div>
-  </section>
+    </template>
+    <template v-else>
+      <UAlert
+        variant="outline"
+        color="neutral"
+        description="No items listed."
+      />
+    </template>
+  </UPageSection>
 </template>
