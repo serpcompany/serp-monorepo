@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: [
     '@serp/utils',
-    '@serp/stripe',
     '@serp/tools',
     '@serp/types',
     '@serp/ui'

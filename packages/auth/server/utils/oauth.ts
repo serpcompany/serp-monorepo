@@ -1,103 +1,83 @@
-import { getDb } from '@serp/db/server/database';
-import { getAuthDb } from '@serp/db/server/database/auth';
+// OAuth Authentication Flow
+// 1. Validate OAuth user data from provider (handled by Nuxt OAuth module)
+// 2. Check if user exists (@method findUserByEmail)
+// 3. If new user, create user with OAuth data (@method createUserWithOAuth)
+// 4. Update avatar if not set (@method updateUser)
+// 5. Link OAuth account to user (@method linkOAuthAccount)
+// 6. Check if user is banned
+// 7. Sanitize user data (@method sanitizeUser)
+// 8. Set user session and redirect to dashboard
+
+// Used in:
+// - server/api/auth/oauth/google.ts
+// - server/api/auth/oauth/github.ts
+
 import {
-  user as authUserModel,
-  domain,
-  lDomainUser
-} from '@serp/db/server/database/auth/schema';
-import { user } from '@serp/db/server/database/schema';
-import { eq, sql } from 'drizzle-orm';
+  findUserByEmail,
+  createUserWithOAuth,
+  updateUser,
+  linkOAuthAccount
+} from '@serp/db/server/database/queries/users';
+import { sanitizeUser, sendLoginNotification } from './auth';
+import type { H3Event } from 'h3';
 
 export interface OAuthUserData {
   email: string;
   name: string;
-  image: string;
+  avatarUrl: string;
   provider: 'google' | 'github';
   providerUserId: string;
-  centralAuthId?: number;
-  siteId?: number;
 }
 
-// @todo - improve the typesafety of this after implementing zod
 export const handleOAuthSuccess = async (
   event: H3Event,
   oauthUser: OAuthUserData
 ) => {
-  if (!oauthUser || !oauthUser.email) {
-    // eslint-disable-next-line no-console
-    console.error('No user data returned from OAuth provider');
-    return sendRedirect(event, '/login?error=invalidUserData');
-  }
+  // 2. Check if user exists
+  let dbUser = await findUserByEmail(oauthUser.email);
 
-  const now = sql`now()`;
-  const domainName = process.env.NUXT_PUBLIC_DOMAIN;
-  await getAuthDb().transaction(async (tx) => {
-    const [domainRow] = await tx
-      .insert(domain)
-      .values({ name: domainName, created_at: now, updated_at: now })
-      .onConflictDoNothing()
-      .returning({ id: domain.id });
-
-    const domainId =
-      domainRow?.id ??
-      (
-        await tx
-          .select({ id: domain.id })
-          .from(domain)
-          .where(eq(domain.name, domainName))
-      )[0].id;
-
-    const [authUser] = await tx
-      .insert(authUserModel)
-      .values({
-        email: oauthUser.email,
-        name: oauthUser.name,
-        image: oauthUser.image,
-        createdAt: now,
-        updatedAt: now
-      })
-      .onConflictDoUpdate({
-        target: authUserModel.email,
-        set: {
-          name: oauthUser.name,
-          image: oauthUser.image,
-          updatedAt: now
-        }
-      })
-      .returning({ id: user.id });
-
-    const userId = authUser.id;
-
-    oauthUser.centralAuthId = userId;
-
-    await tx
-      .insert(lDomainUser)
-      .values({ userId, domainId })
-      .onConflictDoNothing();
-  });
-
-  const [dbUser] = await getDb()
-    .insert(user)
-    .values({
+  // 3. If new user, create user with OAuth data
+  if (!dbUser) {
+    dbUser = await createUserWithOAuth({
       email: oauthUser.email,
       name: oauthUser.name,
-      image: oauthUser.image,
-      createdAt: now,
-      updatedAt: now
-    })
-    .onConflictDoUpdate({
-      target: user.email,
-      set: {
-        name: oauthUser.name,
-        image: oauthUser.image,
-        updatedAt: now
-      }
-    })
-    .returning({ id: user.id });
+      avatarUrl: oauthUser.avatarUrl,
+      emailVerified: true
+    });
+  }
 
-  const dbUserId = dbUser.id;
-  oauthUser.siteId = dbUserId;
+  // 4. Update avatar if not set
+  if (!dbUser.avatarUrl && oauthUser.avatarUrl) {
+    dbUser = await updateUser(dbUser.id, {
+      avatarUrl: oauthUser.avatarUrl
+    });
+  }
 
-  await setUserSession(event, { user: oauthUser });
-  return sendRedirect(event, '/');
+  // 5. Link OAuth account to user
+  await linkOAuthAccount(
+    dbUser.id,
+    oauthUser.provider,
+    oauthUser.providerUserId
+  );
+
+  // 6. Check if user is banned
+  if (dbUser.banned) {
+    throw createError({
+      statusCode: 403,
+      statusMessage: 'Your account has been banned'
+    });
+  }
+
+  // 7. Sanitize user data
+  const sanitizedUser = sanitizeUser(dbUser);
+
+  // 8. Set user session and redirect to dashboard
+  await setUserSession(event, { user: sanitizedUser });
+
+  // Send login notification
+  await sendLoginNotification({
+    name: sanitizedUser.name,
+    email: sanitizedUser.email
+  });
+  return sendRedirect(event, '/dashboard');
 };

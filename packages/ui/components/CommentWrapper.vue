@@ -584,7 +584,7 @@
           <div class="add-comment">
             <div class="w-12 rounded-t-full">
               <LazyNuxtImg
-                :src="user?.image"
+                :src="user?.image || user?.avatarUrl"
                 alt="Avatar"
                 class="h-12 w-12 rounded-full p-1"
               />

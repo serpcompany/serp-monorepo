@@ -118,7 +118,7 @@ describe('Verified Entities API', () => {
 
     // Mock user session without siteId
     mockRequireUserSession.mockResolvedValue({
-      user: { id: 'user-123' } // No siteId
+      user: { id_: 'user-123' } // No siteId
     });
 
     // Call the handler

@@ -153,7 +153,11 @@
             <span class="text-muted">(must be @{{ domain }})</span>:
           </p>
           <UButtonGroup class="w-full">
-            <UInput placeholder="name@yourcompany.com" class="w-full" />
+            <UInput
+              v-model="customEmail"
+              placeholder="name@yourcompany.com"
+              class="w-full"
+            />
             <UButton
               :loading="emailLoading"
               color="secondary"

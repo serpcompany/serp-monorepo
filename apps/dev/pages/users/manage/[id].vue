@@ -378,7 +378,7 @@
               </tbody>
             </table>
 
-            <div v-if="user?.siteId === entityData?.verification">
+            <div v-if="user?.id === entityData?.verification">
               <div class="mt-4 grid grid-cols-2 gap-4">
                 <UFormField label="Status">
                   <UInputMenu

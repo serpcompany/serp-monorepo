@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import vue from '@vitejs/plugin-vue';
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['nuxt-auth-utils', '@nuxt/eslint'],
@@ -20,6 +22,25 @@ export default defineNuxtConfig({
     public: {
       useAuth: process.env.USE_AUTH === 'true',
       apiUrl: process.env.NUXT_PUBLIC_API_URL || '/api'
+    }
+  },
+  nitro: {
+    rollupConfig: {
+      // @ts-expect-error - Rollup plugin type definitions are incomplete for vue plugin
+      plugins: [vue()]
+    }
+  },
+  auth: {
+    webAuthn: true
+  },
+  stripe: {
+    server: {
+      key: process.env.STRIPE_SECRET_KEY,
+      options: {}
+    },
+    client: {
+      key: process.env.STRIPE_API_KEY,
+      options: {}
     }
   }
 });

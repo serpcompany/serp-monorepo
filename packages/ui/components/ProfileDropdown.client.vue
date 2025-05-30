@@ -50,7 +50,7 @@
     <!-- Avatar trigger -->
     <div>
       <UAvatar
-        :src="user?.image"
+        :src="user?.image || user?.avatarUrl"
         role="button"
         class="cursor-pointer transition-opacity hover:opacity-80"
         size="xl"
@@ -74,7 +74,7 @@
       <!-- User profile header -->
       <template #header>
         <div class="flex items-center gap-3 bg-white">
-          <UAvatar :src="user?.image" size="md" />
+          <UAvatar :src="user?.image || user?.avatarUrl" size="md" />
           <div class="text-sm leading-tight font-semibold text-gray-900">
             {{ user?.name }}
           </div>

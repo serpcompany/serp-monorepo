@@ -28,7 +28,7 @@
         return;
       }
 
-      if (!user?.value?.siteId) throw new Error('User not authenticated');
+      if (!user?.value?.id) throw new Error('User not authenticated');
 
       const { data: response, error } = await useFetch('/api/vote', {
         method: 'POST',

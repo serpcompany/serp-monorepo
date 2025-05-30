@@ -11,7 +11,7 @@
   ];
 
   const signIn = async (provider: string) => {
-    window.location.href = `/api/auth/${provider}`;
+    window.location.href = `/api/auth/oauth/${provider}`;
   };
 </script>
 

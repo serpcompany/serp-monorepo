@@ -10,8 +10,10 @@ import {
   timestamp,
   uuid,
   varchar,
-  vector
+  vector,
+  pgTable
 } from 'drizzle-orm/pg-core';
+import { relations } from 'drizzle-orm';
 
 export const ltree = customType<{ data: string }>({
   dataType() {
@@ -24,16 +26,147 @@ export const formSchema = pgSchema('form');
 export const stripeSchema = pgSchema('stripe');
 export const userSchema = pgSchema('user');
 
+// Public
+export const image = pgTable('image', {
+  id: serial('id').primaryKey(),
+  userId: integer('user_id').references(() => user.id, { onDelete: 'cascade' }),
+  contentType: text('content_type'),
+  pathname: text('pathname').notNull(),
+  size: integer('size'),
+  uploadedAt: timestamp('uploaded_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true })
+    .notNull()
+    .defaultNow()
+});
+
+// Admin tables
+export const feedback = userSchema.table('feedback', {
+  id: serial('id').primaryKey(),
+  user: integer('user').references(() => user.id, { onDelete: 'cascade' }),
+  message: text('message').notNull(),
+  status: varchar('status', { length: 50 }).default('pending'),
+  reply: text('reply'),
+  meta: jsonb('meta'),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow()
+});
+
+export const subscriber = userSchema.table('subscriber', {
+  id: serial('id').primaryKey(),
+  email: text('email').notNull().unique(),
+  referrer: text('referrer'),
+  meta: jsonb('meta'),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true })
+    .notNull()
+    .defaultNow()
+});
+
+// Entity Verification
+export const verification = userSchema.table('verification', {
+  id: serial('id').primaryKey(),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  entity: integer('entity').notNull(),
+  user: integer('user').notNull()
+});
+
+export const verificationRequest = userSchema.table('verification_request', {
+  id: serial('id').primaryKey(),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  entity: integer('entity').notNull(),
+  email: varchar('email', { length: 255 }).notNull(),
+  code: varchar('code', { length: 32 }).notNull(),
+  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
+  verification: integer('verification'),
+  user: integer('user').notNull()
+});
+
+// Teams
+export const team = userSchema.table('team', {
+  id: serial('id').primaryKey(),
+  name: varchar('name', { length: 255 }).notNull(),
+  ownerId: integer('owner_id')
+    .notNull()
+    .references(() => user.id, { onDelete: 'set null' }),
+  entityId: integer('entity_id').references(() => entity.id, {
+    onDelete: 'set null'
+  }),
+  logo: varchar('logo', { length: 255 }),
+  slug: varchar('slug', { length: 255 }).notNull().unique(),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true })
+});
+
+export const teamMember = userSchema.table('team_member', {
+  id: serial('id').primaryKey(),
+  teamId: integer('team_id')
+    .notNull()
+    .references(() => team.id, { onDelete: 'cascade' }),
+  userId: integer('user_id')
+    .notNull()
+    .references(() => user.id, { onDelete: 'cascade' }),
+  role: varchar('role', { length: 50 }).notNull().default('member'), // 'owner', 'admin', 'member'
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true })
+});
+
+export const teamInvite = userSchema.table('team_invite', {
+  id: serial('id').primaryKey(),
+  teamId: integer('team_id')
+    .notNull()
+    .references(() => team.id, { onDelete: 'cascade' }),
+  email: varchar('email', { length: 255 }).notNull(),
+  role: varchar('role', { length: 50 }).notNull().default('member'),
+  token: varchar('token', { length: 255 }).notNull(),
+  status: varchar('status', { length: 50 }).notNull().default('pending'),
+  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
+  acceptedAt: timestamp('accepted_at', { withTimezone: true }),
+  acceptedBy: integer('accepted_by').references(() => user.id),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow()
+});
+
 // User
 export const user = userSchema.table('user', {
   id: serial('id').primaryKey(),
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
     .defaultNow(),
-  updatedAt: timestamp('updated_at', { withTimezone: true }),
+  updatedAt: timestamp('updated_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
   email: varchar('email', { length: 255 }).unique().notNull(),
   name: varchar('name', { length: 255 }),
-  image: varchar('image', { length: 255 })
+  avatarUrl: varchar('avatar_url', { length: 255 }),
+  hashedPassword: text('hashed_password'),
+  superAdmin: boolean('super_admin').default(false),
+  banned: boolean('banned').default(false),
+  bannedReason: text('banned_reason'),
+  bannedUntil: timestamp('banned_until', { withTimezone: true }),
+  emailVerified: boolean('email_verified').notNull().default(false),
+  phoneNumber: varchar('phone_number', { length: 32 }),
+  onboarded: boolean('onboarded').default(false),
+  proAccount: boolean('pro_account').default(false),
+  lastActive: timestamp('last_active', { withTimezone: true })
+    .notNull()
+    .defaultNow()
 });
 
 export const vote = userSchema.table('vote', {
@@ -78,26 +211,71 @@ export const review = userSchema.table('review', {
   user: integer('user').notNull()
 });
 
-export const verification = userSchema.table('verification', {
+export const oauthAccount = userSchema.table('oauth_account', {
   id: serial('id').primaryKey(),
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
     .defaultNow(),
-  entity: integer('entity').notNull(),
-  user: integer('user').notNull()
+  updatedAt: timestamp('updated_at', { withTimezone: true }),
+  userId: integer('user_id')
+    .notNull()
+    .references(() => user.id, { onDelete: 'cascade' }),
+  provider: varchar('provider', { length: 255 }).notNull(),
+  providerUserId: varchar('provider_user_id', { length: 255 }).notNull()
 });
 
-export const verificationRequest = userSchema.table('verification_request', {
+export const emailVerificationCode = userSchema.table(
+  'email_verification_code',
+  {
+    id: serial('id').primaryKey(),
+    userId: integer('user_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'cascade' }),
+    code: varchar('code', { length: 32 }).notNull(),
+    expiresAt: timestamp('expires_at', { withTimezone: true }).notNull()
+  }
+);
+
+export const passwordResetToken = userSchema.table('password_reset_token', {
   id: serial('id').primaryKey(),
+  userId: integer('user_id')
+    .notNull()
+    .references(() => user.id, { onDelete: 'cascade' }),
+  code: varchar('code', { length: 32 }).notNull(),
+  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull()
+});
+
+export const oneTimePassword = userSchema.table('one_time_password', {
+  id: serial('id').primaryKey(),
+  userId: integer('user_id')
+    .notNull()
+    .references(() => user.id, { onDelete: 'cascade' }),
+  identifier: varchar('identifier', { length: 255 }).notNull(),
+  code: varchar('code', { length: 6 }).notNull(),
+  type: varchar('type', { length: 50 }).notNull().default('signup'),
+  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull()
+});
+
+export const webAuthnCredential = userSchema.table('webauthn_credential', {
+  id: varchar('id', { length: 255 }).primaryKey(),
+  userId: integer('user_id')
+    .notNull()
+    .references(() => user.id, { onDelete: 'cascade' }),
+  name: varchar('name', { length: 255 }).notNull(),
+  publicKey: text('public_key').notNull(),
+  counter: integer('counter').notNull(),
+  backedUp: boolean('backed_up').notNull(),
+  transports: jsonb('transports').notNull(),
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
     .defaultNow(),
-  entity: integer('entity').notNull(),
-  email: varchar('email', { length: 255 }).notNull(),
-  code: varchar('code', { length: 32 }).notNull(),
-  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
-  verification: integer('verification'),
-  user: integer('user').notNull()
+  updatedAt: timestamp('updated_at', { withTimezone: true })
+});
+
+export const webAuthnChallenge = userSchema.table('webauthn_challenge', {
+  id: varchar('id', { length: 255 }).primaryKey(),
+  challenge: text('challenge').notNull(),
+  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull()
 });
 
 export const edit = userSchema.table('edit', {
@@ -135,6 +313,25 @@ export const submitForm = userSchema.table('submit_form', {
   backlinkVerified: boolean('backlink_verified').notNull().default(false),
   backlinkVerifiedAt: timestamp('backlink_verified_at', { withTimezone: true }),
   uuid: uuid('uuid').notNull()
+});
+
+export const post = userSchema.table('post', {
+  id: serial('id').primaryKey(),
+  userId: integer('user_id')
+    .notNull()
+    .references(() => user.id, { onDelete: 'cascade' }),
+  teamId: integer('team_id')
+    .notNull()
+    .references(() => team.id, { onDelete: 'cascade' }),
+  image: varchar('image', { length: 255 }),
+  title: varchar('title', { length: 255 }).notNull(),
+  content: text('content').notNull(),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true })
+    .notNull()
+    .defaultNow()
 });
 
 // Generic
@@ -220,11 +417,53 @@ export const topic = cacheSchema.table('topic', {
 // Stripe
 export const customer = stripeSchema.table('customer', {
   id: varchar('id', { length: 255 }).primaryKey(),
+  userId: integer('user_id').references(() => user.id),
+  teamId: integer('team_id').references(() => team.id),
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
     .defaultNow(),
-  email: varchar('email', { length: 255 }).unique().notNull(),
-  user: integer('user')
+  updatedAt: timestamp('updated_at', { withTimezone: true })
+    .notNull()
+    .defaultNow()
+});
+
+export const product = stripeSchema.table('product', {
+  id: varchar('id', { length: 255 }).primaryKey(),
+  name: varchar('name', { length: 255 }).notNull(),
+  description: text('description'),
+  active: boolean('active').notNull().default(true),
+  image: varchar('image', { length: 255 }),
+  metadata: jsonb('metadata'),
+  features: jsonb('features'),
+  productOrders: integer('product_orders').notNull().default(0),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true })
+    .notNull()
+    .defaultNow()
+});
+
+export const price = stripeSchema.table('price', {
+  id: varchar('id', { length: 255 }).primaryKey(),
+  description: text('description'),
+  currency: varchar('currency', { length: 10 }).notNull(),
+  unitAmount: integer('unit_amount').notNull(),
+  type: varchar('type', { length: 50 }).notNull(),
+  interval: varchar('interval', { length: 50 }).notNull(),
+  intervalCount: integer('interval_count').notNull(),
+  trialPeriodDays: integer('trial_period_days'),
+  active: boolean('active').notNull().default(true),
+  metadata: jsonb('metadata'),
+  productId: varchar('product_id', { length: 255 })
+    .notNull()
+    .references(() => product.id, { onDelete: 'cascade' }),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true })
+    .notNull()
+    .defaultNow()
 });
 
 export const payment = stripeSchema.table('payment', {
@@ -236,6 +475,50 @@ export const payment = stripeSchema.table('payment', {
   data: jsonb('data').notNull(),
   type: varchar('type', { length: 255 }).notNull()
 });
+
+export const subscription = stripeSchema.table('subscription', {
+  id: varchar('id', { length: 255 }).primaryKey(),
+  customerId: varchar('customer_id', { length: 255 })
+    .notNull()
+    .references(() => customer.id, { onDelete: 'cascade' }),
+  priceId: varchar('price_id', { length: 255 })
+    .notNull()
+    .references(() => price.id, { onDelete: 'cascade' }),
+  teamId: integer('team_id').references(() => team.id, { onDelete: 'cascade' }),
+  userId: integer('user_id').references(() => user.id, { onDelete: 'cascade' }),
+  status: varchar('status', { length: 50 }).notNull(),
+  metadata: jsonb('metadata'),
+  quantity: integer('quantity').notNull().default(1),
+  cancelAtPeriodEnd: boolean('cancel_at_period_end').notNull().default(false),
+  currentPeriodEnd: timestamp('current_period_end', { withTimezone: true }),
+  currentPeriodStart: timestamp('current_period_start', { withTimezone: true }),
+  endedAt: timestamp('ended_at', { withTimezone: true }),
+  cancelAt: timestamp('cancel_at', { withTimezone: true }),
+  trialStart: timestamp('trial_start', { withTimezone: true }),
+  trialEnd: timestamp('trial_end', { withTimezone: true }),
+  createdAt: timestamp('created_at', { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true })
+    .notNull()
+    .defaultNow()
+});
+
+export const newsletterSubscription = userSchema.table(
+  'newsletter_subscription',
+  {
+    id: serial('id').primaryKey(),
+    createdAt: timestamp('created_at', { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+    email: varchar('email', { length: 255 }).notNull(),
+    userId: integer('user_id').references(() => user.id, {
+      onDelete: 'set null'
+    }),
+    status: varchar('status', { length: 50 }).default('active'),
+    unsubscribedAt: timestamp('unsubscribed_at', { withTimezone: true })
+  }
+);
 
 export const featuredSubscription = stripeSchema.table(
   'featured_subscription',
@@ -263,3 +546,82 @@ export const featuredSubscription = stripeSchema.table(
     customerId: varchar('customer')
   }
 );
+
+export const subscriptionRelations = relations(subscription, ({ one }) => ({
+  customer: one(customer, {
+    fields: [subscription.customerId],
+    references: [customer.id]
+  }),
+  price: one(price, {
+    fields: [subscription.priceId],
+    references: [price.id]
+  }),
+  team: one(team, {
+    fields: [subscription.teamId],
+    references: [team.id]
+  }),
+  user: one(user, {
+    fields: [subscription.userId],
+    references: [user.id]
+  })
+}));
+
+export const feedbackRelations = relations(feedback, ({ one }) => ({
+  user: one(user, {
+    fields: [feedback.user],
+    references: [user.id]
+  })
+}));
+
+export const oauthAccountRelations = relations(oauthAccount, ({ one }) => ({
+  user: one(user, {
+    fields: [oauthAccount.userId],
+    references: [user.id]
+  })
+}));
+
+export const postRelations = relations(post, ({ one }) => ({
+  userId: one(user, {
+    fields: [post.userId],
+    references: [user.id]
+  }),
+  teamId: one(team, {
+    fields: [post.teamId],
+    references: [team.id]
+  })
+}));
+
+export const priceRelations = relations(price, ({ one }) => ({
+  product: one(product, {
+    fields: [price.productId],
+    references: [product.id]
+  })
+}));
+
+export const teamRelations = relations(team, ({ many, one }) => ({
+  members: many(teamMember),
+  owner: one(user, {
+    fields: [team.ownerId],
+    references: [user.id]
+  }),
+  subscription: one(subscription, {
+    fields: [team.id],
+    references: [subscription.teamId]
+  })
+}));
+
+export const teamMembersRelations = relations(teamMember, ({ one }) => ({
+  team: one(team, {
+    fields: [teamMember.teamId],
+    references: [team.id]
+  }),
+  user: one(user, {
+    fields: [teamMember.userId],
+    references: [user.id]
+  })
+}));
+
+export const userRelations = relations(user, ({ many }) => ({
+  oauthAccounts: many(oauthAccount),
+  teamMembers: many(teamMember)
+}));

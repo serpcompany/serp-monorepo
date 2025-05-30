@@ -14,16 +14,20 @@
     "test": "vitest run",
     "test:watch": "vitest"
   },
+  "dependencies": {
+    "nanoid": "5.1.5",
+    "use-email": "^0.0.9"
+  },
   "devDependencies": {
     "@nuxt/eslint": "^0.6.1",
+    "@vue-email/components": "^0.0.21",
+    "@vue-email/render": "^0.0.9",
     "@vue/test-utils": "^2.4.6",
     "eslint": "^9.14.0",
     "nuxt": "^3.17.3",
     "typescript": "^5.7.3",
-    "vitest": "^1.2.2",
-    "@vue-email/components": "^0.0.21",
-    "@vue-email/render": "^0.0.9",
     "use-email": "^0.0.9",
+    "vitest": "^1.2.2",
     "vue": "latest"
   }
 }

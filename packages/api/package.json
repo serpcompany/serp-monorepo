@@ -17,9 +17,9 @@
   "dependencies": {
     "@serp/auth": "workspace:^",
     "@serp/db": "workspace:^",
-    "@serp/utils": "workspace:^",
     "@serp/notifications": "workspace:^",
     "@serp/types": "workspace:^",
+    "@serp/utils": "workspace:^",
     "nuxt-multi-cache": "^3.4.0"
   },
   "devDependencies": {
