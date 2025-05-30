@@ -1,38 +1,121 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`CompanyArticleSection Snapshot > renders with empty article correctly 1`] = `
-"<section data-orientation="vertical" class="relative isolate bg-white dark:bg-gray-900">
-  <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:grid py-16 sm:py-24 lg:py-32 gap-8 sm:gap-16">
+<section
+  class="
+    bg-white
+    dark:bg-gray-900
+    isolate
+    relative
+  "
+  data-orientation="vertical"
+>
+  <div class="
+    flex
+    flex-col
+    gap-8
+    lg:grid
+    lg:px-8
+    lg:py-32
+    max-w-(--ui-container)
+    mx-auto
+    px-4
+    py-16
+    sm:gap-16
+    sm:px-6
+    sm:py-24
+    w-full
+  ">
     <div class="">
-      <!--v-if-->
-      <!--v-if-->
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted text-center">Buying Advice</h2>
-      <!--v-if-->
-      <!--v-if-->
-      <!--v-if-->
+      <!-- v-if -->
+      <!-- v-if -->
+      <h2 class="
+        font-bold
+        lg:text-5xl
+        sm:text-4xl
+        text-3xl
+        text-center
+        text-highlighted
+        text-pretty
+        tracking-tight
+      ">
+        Buying Advice
+      </h2>
+      <!-- v-if -->
+      <!-- v-if -->
+      <!-- v-if -->
     </div>
   </div>
-</section>"
+</section>
 `;
 
 exports[`CompanyArticleSection Snapshot > renders with valid article content correctly 1`] = `
-"<section data-orientation="vertical" class="relative isolate bg-white dark:bg-gray-900">
-  <div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:grid py-16 sm:py-24 lg:py-32 gap-8 sm:gap-16">
+<section
+  class="
+    bg-white
+    dark:bg-gray-900
+    isolate
+    relative
+  "
+  data-orientation="vertical"
+>
+  <div class="
+    flex
+    flex-col
+    gap-8
+    lg:grid
+    lg:px-8
+    lg:py-32
+    max-w-(--ui-container)
+    mx-auto
+    px-4
+    py-16
+    sm:gap-16
+    sm:px-6
+    sm:py-24
+    w-full
+  ">
     <div class="">
-      <!--v-if-->
-      <!--v-if-->
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight font-bold text-highlighted text-center">Buying Advice</h2>
-      <!--v-if-->
-      <!--v-if-->
-      <!--v-if-->
+      <!-- v-if -->
+      <!-- v-if -->
+      <h2 class="
+        font-bold
+        lg:text-5xl
+        sm:text-4xl
+        text-3xl
+        text-center
+        text-highlighted
+        text-pretty
+        tracking-tight
+      ">
+        Buying Advice
+      </h2>
+      <!-- v-if -->
+      <!-- v-if -->
+      <!-- v-if -->
     </div>
-    <article role="article" aria-labelledby="article-title">
+    <article
+      aria-labelledby="article-title"
+      role="article"
+    >
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div role="document" class="prose dark:prose-invert mx-auto max-w-5xl">
-        <h1 id="article-title">Breaking News</h1>
-        <p>This is an amazing article content!</p>
+      <div
+        class="
+          dark:prose-invert
+          max-w-5xl
+          mx-auto
+          prose
+        "
+        role="document"
+      >
+        <h1 id="article-title">
+          Breaking News
+        </h1>
+        <p>
+          This is an amazing article content!
+        </p>
       </div>
     </article>
   </div>
-</section>"
+</section>
 `;

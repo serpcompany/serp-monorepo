@@ -1,22 +1,100 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`SPageToolParagraphCounter Snapshot > renders the default snapshot correctly 1`] = `
-"<div class="container">
-  <div class="px-4 py-10 sm:px-6 sm:py-16 md:px-8 md:py-20">
+<div class="container">
+  <div class="
+    md:px-8
+    md:py-20
+    px-4
+    py-10
+    sm:px-6
+    sm:py-16
+  ">
     <section class="py-20">
-      <h1 class="md:text-center">Paragraph Counter</h1>
-      <p data-testid="subtitle" class="sm:text-md text-left text-base md:text-center">A free online tool to count the number of paragraphs in text.</p>
-    </section><!-- box -->
+      <h1 class="md:text-center">
+        Paragraph Counter
+      </h1>
+      <p class="
+        md:text-center
+        sm:text-md
+        text-base
+        text-left
+      ">
+        A free online tool to count the number of paragraphs in text.
+      </p>
+    </section>
+    <!-- box -->
     <div>
-      <div class="relative inline-flex items-center mb-10 w-full"><textarea rows="15" placeholder="Paste your content here" class="w-full rounded-md border-0 placeholder:text-dimmed focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-highlighted bg-default ring ring-inset ring-accented focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary" value=""></textarea>
-        <!--v-if-->
-        <!--v-if-->
+      <div class="
+        inline-flex
+        items-center
+        mb-10
+        relative
+        w-full
+      ">
+        <textarea
+          class="
+            bg-default
+            border-0
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inset
+            focus-visible:ring-primary
+            focus:outline-none
+            gap-1.5
+            placeholder:text-dimmed
+            px-2.5
+            py-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-highlighted
+            text-sm
+            transition-colors
+            w-full
+          "
+          placeholder="Paste your content here"
+          rows="15"
+          value=""
+        ></textarea>
+        <!-- v-if -->
+        <!-- v-if -->
       </div>
-    </div><!-- button --><button type="button" class="rounded-md font-medium inline-flex items-center disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-inverted bg-primary hover:bg-primary/75 disabled:bg-primary aria-disabled:bg-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
-      <!--v-if-->Submit
-      <!--v-if-->
+    </div>
+    <!-- button -->
+    <button
+      class="
+        aria-disabled:bg-primary
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-75
+        bg-primary
+        disabled:bg-primary
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:outline-2
+        focus-visible:outline-offset-2
+        focus-visible:outline-primary
+        font-medium
+        gap-1.5
+        hover:bg-primary/75
+        inline-flex
+        items-center
+        px-2.5
+        py-1.5
+        rounded-md
+        text-inverted
+        text-sm
+        transition-colors
+      "
+      type="button"
+    >
+      <!-- v-if -->
+      Submit
+      <!-- v-if -->
     </button>
-    <!--v-if-->
+    <!-- v-if -->
   </div>
-</div>"
+</div>
 `;

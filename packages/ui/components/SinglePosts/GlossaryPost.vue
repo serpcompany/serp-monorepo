@@ -14,15 +14,13 @@
   const commentsData = await usePostComments(data.value.id);
   comments = commentsData.comments;
 
-  // Add safe array of video refs
-  const videoRefs = ref<HTMLElement[]>([]);
+  // Video ref for the YouTube player
+  const videoRef = ref<HTMLElement | null>(null);
 
-  // Function to register each video ref as it's mounted
-  const setVideoRef = (el: HTMLElement | null, index: number) => {
+  // Function to set the video ref
+  const setVideoRef = (el: HTMLElement | null) => {
     if (el) {
-      if (!videoRefs.value[index]) {
-        videoRefs.value[index] = el;
-      }
+      videoRef.value = el;
     }
   };
 </script>
@@ -41,7 +39,7 @@
       <div class="col-span-1 pb-10">
         <SScriptYouTubePlayer
           v-if="data.videoId"
-          :ref="(el) => setVideoRef(el as HTMLElement, index)"
+          :ref="(el) => setVideoRef(el as HTMLElement)"
           :video-id="data.videoId"
           thumbnail-size="maxresdefault"
         >
