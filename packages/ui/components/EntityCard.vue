@@ -3,7 +3,7 @@
 
   const props = defineProps({
     entity: {
-      type: Object as PropType<Company>,
+      type: Object as PropType<Entity>,
       required: true
     },
     baseSlug: {

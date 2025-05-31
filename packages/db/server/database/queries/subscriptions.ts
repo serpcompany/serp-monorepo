@@ -1,6 +1,6 @@
 import { getDb } from '../index';
 import { subscription, price } from '../schema';
-import { and, eq, sql } from 'drizzle-orm';
+import { and, eq, isNull, sql } from 'drizzle-orm';
 import { createError } from 'h3';
 
 type Subscription = typeof subscription.$inferSelect;

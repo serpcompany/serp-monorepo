@@ -78,3 +78,5 @@ tasks/
 
 tsconfig.tsbuildinfo
 **/tsconfig.tsbuildinfo
+.claude/rules/context7/*.llms.txt
+gh-users/

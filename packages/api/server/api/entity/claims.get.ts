@@ -1,6 +1,6 @@
 import { getDb } from '@serp/db/server/database';
 import { entity, verification } from '@serp/db/server/database/schema';
-import { and, eq, or } from 'drizzle-orm';
+import { and, eq, or, sql } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
   try {

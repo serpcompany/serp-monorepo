@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import type { Faq } from '@serp/types/types';
   const router = useRouter();
   const route = useRoute();
   const page = ref(Number(route.query.page) || 1);
