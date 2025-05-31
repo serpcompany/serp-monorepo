@@ -41,7 +41,9 @@ SOURCE: https://github.com/nuxt/test-utils/blob/main/CONTRIBUTING.md#_snippet_4
 LANGUAGE: bash
 CODE:
 ```
-pnpm prepack\npnpm test:examples\npnpm dev:prepare
+pnpm prepack
+pnpm test:examples
+pnpm dev:prepare
 ```
 
 ----------------------------------------
