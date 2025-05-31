@@ -1,0 +1,33 @@
+
+## context7
+
+- https://context7.com/antfu/eslint-config
+- https://context7.com/atinux/nuxt-auth-utils
+- https://context7.com/baroshem/nuxt-security
+- https://context7.com/colinhacks/zod
+- https://context7.com/drizzle-team/drizzle-orm-docs
+- https://context7.com/eslint/eslint
+- https://context7.com/github/docs
+- https://context7.com/jestjs/jest
+- https://context7.com/jsdoc/jsdoc.github.io
+- https://context7.com/microsoft/typescript
+- https://context7.com/nuxt-modules/i18n
+- https://context7.com/nuxt-modules/sitemap
+- https://context7.com/nuxt-modules/tailwindcss
+- https://context7.com/nuxt-ui-pro
+- https://context7.com/nuxt/content
+- https://context7.com/nuxt/fonts
+- https://context7.com/nuxt/icon
+- https://context7.com/nuxt/image
+- https://context7.com/nuxt/scripts
+- https://context7.com/nuxt/ui
+- https://context7.com/serp-y/clean-components-docs
+- https://context7.com/serp-y/nuxt-tips-collection
+- https://context7.com/serp-y/reusable-components-docs
+- https://context7.com/testing-library/jest-dom
+- https://context7.com/testing-library/testing-library-docs
+- https://context7.com/trpc/trpc
+- https://context7.com/typescript-eslint/typescript-eslint
+- https://context7.com/vitest-dev/vitest
+- https://context7.com/vuejs/core
+- https://context7.com/vuejs/docs

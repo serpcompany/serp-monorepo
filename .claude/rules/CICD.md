@@ -1,0 +1,2 @@
+- If anything fails in pre-commit, the commit should fail. Never use `--no-verify` or try to bypass it. It's in place for a reason.
+- If anything fails in CI/CD, the push/PR/merge should fail. Never try to disable or force by it. It's there for a reason.

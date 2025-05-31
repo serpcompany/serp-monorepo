@@ -69,6 +69,8 @@ export default antfu(
         math: 'always'
       }],
       'vue/multi-word-component-names': 'off',
+      'vue/no-v-html': 'warn', // Disable inline HTML
+      'vue/no-template-shadow': 'error', // Prohibit inline templates
       
       // TypeScript rules
       '@typescript-eslint/no-unused-vars': 'warn',
