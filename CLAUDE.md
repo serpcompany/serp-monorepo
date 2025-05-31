@@ -7,6 +7,7 @@ This project contains comprehensive coding rules and guidelines that must be fol
 - Work on ISSUES from repository https://github.com/serpcompany/serp-monorepo for this project with a label of `claude`.
 - Always research the most up to date documentation relevant to the issue AND our tech stack to find best practices, code patterns, snippets, and configuration settings. Add the findings to the issue comments before starting.
 - Use `task-manager` to break up larger issues into smaller issues
+- We have global shared 'types' in packages/types - always reference these when working on anything type-related
 
 ## Core Principles
 
