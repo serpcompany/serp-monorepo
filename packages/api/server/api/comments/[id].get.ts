@@ -1,18 +1,31 @@
-import { getDb } from '@serp/db/server/database';
-import { comment } from '@serp/db/server/database/schema';
-import { sql } from 'drizzle-orm';
-import type { Comment } from '@serp/types/types';
+/* eslint-disable max-lines-per-function */
+import type { Comment } from '@serp/types/types'
+import { getDb } from '@serp/db/server/database'
+import { comment } from '@serp/db/server/database/schema'
+import { sql } from 'drizzle-orm'
 
+/**
+ * Retrieves paginated comments for a specific entity with nested reply structure.
+ * Uses recursive SQL to build comment trees with replies.
+ *
+ * @param {H3Event} event - The event object containing entity ID and pagination params
+ * @returns {Promise<{comments: Comment[], pagination: Pagination}>} Nested comments with pagination
+ * @throws {Error} If entity ID is missing or database query fails
+ * @example
+ * // GET /api/comments/123?page=1&pageSize=10
+ * // Returns comments for entity 123 with nested replies
+ */
 export default defineEventHandler(async (event) => {
   try {
-    const { id } = getRouterParams(event);
-    const { page = '1', pageSize = '10' } = getQuery(event);
+    const { id } = getRouterParams(event)
+    const { page = '1', pageSize = '10' } = getQuery(event)
 
-    if (!id) return { status: 400, message: 'ID is required' };
+    if (!id)
+      return { status: 400, message: 'ID is required' }
 
-    const pageInt = parseInt(page, 10);
-    const pageSizeInt = parseInt(pageSize, 10);
-    const offset = (pageInt - 1) * pageSizeInt;
+    const pageInt = Number.parseInt(page, 10)
+    const pageSizeInt = Number.parseInt(pageSize, 10)
+    const offset = (pageInt - 1) * pageSizeInt
 
     const recursiveQuery = sql`
 WITH RECURSIVE top_level AS (
@@ -60,51 +73,54 @@ SELECT
   (SELECT total FROM top_level_count) AS total_count,
   json_agg(full_tree.*) AS comments
 FROM full_tree;
-`;
+`
 
-    const result = await getDb().execute(recursiveQuery);
-    const totalCount = result[0]?.total_count || 0;
-    const flatComments = result[0]?.comments || [];
+    const result = await getDb().execute(recursiveQuery)
+    const totalCount = result[0]?.total_count || 0
+    const flatComments = result[0]?.comments || []
 
     // Convert the flat list into a nested structure.
     // @todo - improve the typesafety of this after implementing zod
     const nestComments = (comments: Comment[]) => {
-      const commentMap: Record<string, Comment> = {};
+      const commentMap: Record<string, Comment> = {}
       // initialize map with each comment, and initialize replies array
       comments.forEach((comment: Comment) => {
-        comment.replies = [];
-        commentMap[comment.id] = comment;
-      });
+        comment.replies = []
+        commentMap[comment.id] = comment
+      })
 
-      const nested: Comment[] = [];
+      const nested: Comment[] = []
       comments.forEach((comment: Comment) => {
         // if comment has a parent, attach to parent's replies, otherwise it's a top-level comment.
         if (comment.parent_id) {
           if (commentMap[comment.parent_id]) {
-            commentMap[comment.parent_id].replies.push(comment);
-          } else {
-            // edge case: parent not found (could log or handle differently)
-            nested.push(comment);
+            commentMap[comment.parent_id].replies.push(comment)
           }
-        } else {
-          nested.push(comment);
+          else {
+            // edge case: parent not found (could log or handle differently)
+            nested.push(comment)
+          }
         }
-      });
+        else {
+          nested.push(comment)
+        }
+      })
 
-      return nested;
-    };
+      return nested
+    }
 
-    const nestedComments = nestComments(flatComments);
+    const nestedComments = nestComments(flatComments)
 
     return {
       comments: nestedComments,
       pagination: {
         currentPage: pageInt,
         pageSize: pageSizeInt,
-        totalItems: totalCount
-      }
-    };
-  } catch (error) {
-    return { status: 500, message: error.message };
+        totalItems: totalCount,
+      },
+    }
   }
-});
+  catch (error) {
+    return { status: 500, message: error.message }
+  }
+})
