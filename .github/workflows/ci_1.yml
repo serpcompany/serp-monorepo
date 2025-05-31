@@ -56,5 +56,5 @@ jobs:
       - name: Test
         run: pnpm test
 
-      - name: TypeScript Check - No TS7006 errors
-        run: pnpm typecheck:ts7006
+      - name: TypeScript Check - Phase 1 (TS7006, TS7053, TS7034, TS7005)
+        run: pnpm typecheck:phase1
