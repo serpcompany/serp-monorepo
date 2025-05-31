@@ -1,0 +1,3274 @@
+TITLE: Implementing a Reactive Counter Composable in Vue.js
+DESCRIPTION: This Vue.js composable (`useCounter`) provides reactive state management for a counter. It leverages `ref` for reactive state, `computed` for derived state, and integrates pure business logic functions from `counter.js`. It demonstrates how to interact with underlying primitive values using `.value` and `toValue` and includes a side effect (`setInterval`) within the composable layer.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables.md#_snippet_0
+
+LANGUAGE: JavaScript
+CODE:
+```
+import { ref, toValue, computed } from "vue";
+import * as counter from "./counter.js";
+export default function (initialCount) {
+const count = ref(initialCount || 0);
+function increment() {
+// Use .value to pass in the underlying value
+count.value = counter.increment(count.value);
+}
+function decrement() {
+// toValue does the same thing, is more reliable when you might have
+// a ref, non-ref, or getter
+count.value = counter.decrement(toValue(count));
+}
+const double = computed(
+() => counter.double(count.value)
+);
+// All side effects go in the composable layer
+setInterval(decrement, 2000);
+return {
+count,
+increment,
+decrement,
+double,
+};
+}
+```
+
+----------------------------------------
+
+TITLE: Implementing a Vue Data Store Composable
+DESCRIPTION: This composable demonstrates the Data Store Pattern in Vue.js. It creates a reactive global state for user settings, exposes specific properties as refs, and provides a method to modify the theme. The 'theme' property is exposed as 'readonly' to prevent direct modification from consumers, enforcing updates via the 'changeTheme' method.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/data-store.md#_snippet_0
+
+LANGUAGE: JavaScript
+CODE:
+```
+import { reactive, toRefs, readonly } from 'vue';
+import { themes } from './utils';
+// 1. Create global state shared every time we
+// use this composable
+const state = reactive({
+darkMode: false,
+sidebarCollapsed: false,
+// 2. This theme value is kept private to this composable
+theme: 'nord',
+});
+export default () => {
+// 2. Expose only some of the state
+const { darkMode, sidebarCollapsed, theme } = toRefs(state);
+// 3. Modify our underlying state
+const changeTheme = (newTheme) => {
+if (themes.includes(newTheme)) {
+// Only update if it's a valid theme
+state.theme = newTheme;
+}
+}
+return {
+// 2. Only return some of the state
+darkMode,
+sidebarCollapsed,
+// 2. Only expose a readonly version of state
+theme: readonly(theme),
+// 3. We return a method to modify underlying state
+changeTheme,
+}
+}
+```
+
+----------------------------------------
+
+TITLE: Implementing Data Store Composable in Vue.js
+DESCRIPTION: This composable demonstrates the Data Store Pattern in Vue.js. It uses `reactive` for global state, `toRefs` to expose specific properties, and defines methods to modify state, including exposing a `readonly` version to prevent direct modification.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/data-store/intro.md#_snippet_0
+
+LANGUAGE: JavaScript
+CODE:
+```
+import { reactive, toRefs, readonly } from 'vue';
+import { themes } from './utils';
+// 1. Create global state shared every time we
+// use this composable
+const state = reactive({
+  darkMode: false,
+  sidebarCollapsed: false,
+  // 2. This theme value is kept private to this composable
+  theme: 'nord',
+});
+export default () => {
+  // 2. Expose only some of the state
+  const { darkMode, sidebarCollapsed, theme } = toRefs(state);
+  // 3. Modify our underlying state
+  const changeTheme = (newTheme) => {
+    if (themes.includes(newTheme)) {
+      // Only update if it's a valid theme
+      state.theme = newTheme;
+    }
+  }
+  return {
+    // 2. Only return some of the state
+    darkMode,
+    sidebarCollapsed,
+    // 2. Only expose a readonly version of state
+    theme: readonly(theme),
+    // 3. We return a method to modify underlying state
+    changeTheme,
+  }
+}
+```
+
+----------------------------------------
+
+TITLE: Handling Child Events in Parent Component (Vue)
+DESCRIPTION: This Vue parent component demonstrates the 'Props Down, Events Up' pattern. It passes a `message` prop to `ChildComponent` and listens for an `update-message` event. The `handleUpdate` method, defined in the parent, controls how the `message` state is updated, ensuring the parent remains the single source of truth for its state.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/props-down-events-up.md#_snippet_0
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+<ChildComponent
+:message="message"
+@update-message="handleUpdate"
+/>
+</template>
+<script setup>
+import { ref } from 'vue';
+const message = ref('Message from the parent');
+const handleUpdate = (newMessage) => {
+// The parent has the choice on how to update the value.
+// It could decide to ignore the child component.
+message.value = 'Not today!';
+};
+
+```
+
+----------------------------------------
+
+TITLE: Implementing Controlled State Updates in Vue Composable (JavaScript)
+DESCRIPTION: This `useUserSettings` composable manages user settings, including a `theme` property. It uses Vue's `reactive` for the state and `toRefs` to expose individual properties. The `changeTheme` method provides a controlled way to update the `theme`, ensuring only valid themes are set. The `theme` property is returned as `readonly` to prevent direct external modification, enforcing updates only through `changeTheme`.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/data-store/intro.md#_snippet_7
+
+LANGUAGE: JavaScript
+CODE:
+```
+const state = reactive({
+// ...
+theme: 'nord',
+});
+export default () => {
+const { darkMode, sidebarCollapsed, theme } = toRefs(state);
+// ...
+const changeTheme = (newTheme) => {
+if (themes.includes(newTheme)) {
+// Only update if it's a valid theme
+state.theme = newTheme;
+}
+}
+return {
+// ...
+theme: readonly(theme),
+changeTheme,
+};
+}
+```
+
+----------------------------------------
+
+TITLE: Emitting Events from Child Component (Vue)
+DESCRIPTION: This Vue child component receives a `message` prop but is explicitly shown *not* to modify it directly, adhering to the 'Props Down' rule. Instead, it uses `defineEmits` to declare an `update-message` event and then emits this event with a new value, allowing the parent component to decide how to update the state, thus following the 'Events Up' principle.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/props-down-events-up.md#_snippet_1
+
+LANGUAGE: Vue
+CODE:
+```
+<script setup>
+const props = defineProps({
+message: string,
+});
+// 🚫 We cannot update props from the child
+props.message = 'Updating it from the Child';
+// Instead, we emit an event and then parent
+// can decide how to update the value
+const emit = defineEmits(['update-message']);
+emit('update-message', 'Updating it from the Child');
+</script>
+```
+
+----------------------------------------
+
+TITLE: Defining a Data Processing Composable in TypeScript
+DESCRIPTION: This composable, `useDataProcessor`, encapsulates data submission logic, including API calls and error handling. It takes a reactive input and an API URL, returning reactive error states and a `submitData` function. It's designed to be reusable across different Vue components.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-composable.md#_snippet_2
+
+LANGUAGE: TypeScript
+CODE:
+```
+import { ref, emit } from 'vue';
+export function useDataProcessor(
+input: Ref<string>,
+apiUrl: string,
+) {
+const error = ref(false);
+const errorMessage = ref('');
+const submitData = async () => {
+try {
+error.value = false;
+errorMessage.value = '';
+const response = await fetch(apiUrl, {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ data: input.value })
+});
+if (!response.ok) {
+throw new Error('Failed to submit data');
+}
+const result = await response.json();
+return result.message;
+} catch (err) {
+error.value = true;
+errorMessage.value = err.message ||
+'An unknown error occurred';
+}
+};
+return { error, errorMessage, submitData };
+}
+```
+
+----------------------------------------
+
+TITLE: Implementing a Reactive Counter Composable in Vue.js
+DESCRIPTION: This Vue.js composable (`useCounter`) manages a reactive counter. It imports pure business logic functions from `counter.js` and applies reactivity using `ref`, `toValue`, and `computed`. It provides `count`, `increment`, `decrement`, and `double` as reactive properties and methods, demonstrating how to bridge pure functions with Vue's reactivity system. It also includes a side effect (`setInterval`) within the composable layer.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables/intro.md#_snippet_0
+
+LANGUAGE: JavaScript
+CODE:
+```
+import { ref, toValue, computed } from "vue";
+import * as counter from "./counter.js";
+export default function (initialCount) {
+const count = ref(initialCount || 0);
+function increment() {
+// Use .value to pass in the underlying value
+count.value = counter.increment(count.value);
+}
+function decrement() {
+// toValue does the same thing, is more reliable when you might have
+// a ref, non-ref, or getter
+count.value = counter.decrement(toValue(count));
+}
+const double = computed(
+() => counter.double(count.value)
+);
+// All side effects go in the composable layer
+setInterval(decrement, 2000);
+return {
+count,
+increment,
+decrement,
+double,
+};
+}
+```
+
+----------------------------------------
+
+TITLE: Building a Dynamic Form Generator in Vue.js
+DESCRIPTION: This partial snippet demonstrates the structure for a dynamic form generator. It iterates over a `formSchema` to render form fields, handling form submission with `@submit.prevent`. The component is designed to display various input types based on the schema, showcasing how Humble Components can manage complex UI structures while delegating logic.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/humble-components.md#_snippet_2
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+<form
+@submit.prevent="submitForm"
+class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+>
+<div
+v-for="(field, index) in formSchema"
+:key="index"
+class="mb-4"
+>
+<label
+class="block text-gray-700 text-sm font-bold mb-2"
+:for="field.name"
+>
+{{ field.label }}
+</label>
+<input
+v-if="field.type === 'text'"
+:id="field.name"
+:name="field.name"
+```
+
+----------------------------------------
+
+TITLE: Refactoring Form Submission to Inline Composable - Vue.js
+DESCRIPTION: This refactored Vue.js component demonstrates extracting the form submission and error handling logic into an inline composable named `useDataProcessor`. The component now consumes this composable, making the component's script section cleaner and separating concerns.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-composable.md#_snippet_1
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<div>
+<input v-model="userInput" />
+<button @click="$emit('submission', submitData)">
+Submit
+</button>
+<p v-if="error">{{ errorMessage }}</p>
+</div>
+</template>
+<script setup lang="ts">
+import { ref } from 'vue';
+const emit = defineEmits<{
+(e: 'submission', data: string): void
+}>();
+const props = defineProps<{ apiUrl: string }>();
+const userInput = ref('');
+// Use it like any other composable
+const {
+error,
+errorMessage,
+submitData
+} = useDataProcessor(userInput, props.apiUrl);
+// Define our inline composable
+function useDataProcessor(input, apiUrl) {
+const error = ref(false);
+const errorMessage = ref('');
+const submitData = async () => {
+try {
+error.value = false;
+errorMessage.value = '';
+const response = await fetch(apiUrl, {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ data: input.value })
+});
+if (!response.ok) {
+throw new Error('Failed to submit data');
+}
+const result = await response.json();
+return result.message;
+} catch (err) {
+error.value = true;
+errorMessage.value = err.message ||
+'An unknown error occurred';
+}
+};
+return { error, errorMessage, submitData };
+}
+</script>
+```
+
+----------------------------------------
+
+TITLE: Consuming a Data Processing Composable in a Vue Component
+DESCRIPTION: This Vue component demonstrates how to integrate the `useDataProcessor` composable. It binds user input, triggers data submission via a button, and displays error messages. The component's script section imports and destructures the composable's reactive properties and methods, keeping the component's logic clean.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-composable.md#_snippet_3
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+<div>
+<input v-model="userInput" />
+<button @click="$emit('submission', submitData)">
+Submit
+</button>
+<p v-if="error">{{ errorMessage }}</p>
+</div>
+</template>
+<script setup lang="ts">
+import { ref } from 'vue';
+const emit = defineEmits<{
+(e: 'submission', data: string): void
+}>();
+const props = defineProps<{ apiUrl: string }>();
+const userInput = ref('');
+// Use it like any other composable
+const {
+error,
+errorMessage,
+submitData
+} = useDataProcessor(userInput, props.apiUrl);
+</script>
+```
+
+----------------------------------------
+
+TITLE: Emitting Events from Child Component (Vue.js)
+DESCRIPTION: This Vue.js child component illustrates how to receive props ('message') and emit an event ('update-message') to its parent. It explicitly shows that props cannot be directly modified by the child; instead, an event must be emitted for the parent to handle state updates.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/props-down-events-up/intro.md#_snippet_1
+
+LANGUAGE: Vue.js
+CODE:
+```
+<script setup>
+const props = defineProps({
+message: String
+});
+// 🚫 We cannot update props from the child
+// props.message = 'Updating it from the Child';
+// Instead, we emit an event and then parent
+// can decide how to update the value
+const emit = defineEmits(['update-message']);
+emit('update-message', 'Updating it from the Child');
+</script>
+```
+
+----------------------------------------
+
+TITLE: Managing State and Logic in a Controller Component in Vue.js
+DESCRIPTION: This script snippet for `DogList.vue` illustrates the 'Controller Component' role by managing application state and business logic. It uses `useDogs()` to fetch dog data, `useSearchFilter()` for filtering, and defines a `handleClick` function to navigate, demonstrating how it combines data, logic, and interaction for its child 'Humble Components'.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/layers-of-abstraction/intro.md#_snippet_3
+
+LANGUAGE: JavaScript
+CODE:
+```
+const dogs = useDogs();
+const filterValues = useSearchFilter(dogs);
+const handleClick = (dog) => navigateTo(dog.url)
+```
+
+----------------------------------------
+
+TITLE: Consuming Data Store Composable in Vue Component
+DESCRIPTION: This Vue component demonstrates how to consume the `useUserSettings` composable. It imports the composable and destructures the exposed state properties (`theme`) and methods (`changeTheme`) for use within the component's script setup.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/data-store/intro.md#_snippet_1
+
+LANGUAGE: Vue
+CODE:
+```
+<script setup>
+import useUserSettings from '~/composables/useUserState';
+const { theme, changeTheme } = useUserSettings();
+</script>
+```
+
+----------------------------------------
+
+TITLE: Consuming a Vue Data Store Composable
+DESCRIPTION: This Vue component demonstrates how to consume the `useUserSettings` composable. It imports the composable and destructures the `theme` and `changeTheme` properties, allowing the component to access the shared state and modify it.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/data-store.md#_snippet_1
+
+LANGUAGE: Vue
+CODE:
+```
+<script setup>
+import useUserSettings from '~/composables/useUserState';
+const { theme, changeTheme } = useUserSettings();
+</script>
+```
+
+----------------------------------------
+
+TITLE: Implementing a Task Controller Component in Vue.js
+DESCRIPTION: This Vue.js component, `TaskController.vue`, demonstrates the Controller Component pattern. It imports the `useTasks` composable to manage task-related business logic (adding and removing tasks) and passes these functions and the `tasks` data to its child UI components, `TaskInput` and `TaskList`. This centralizes state management and logic orchestration.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/controller-components/summary.md#_snippet_0
+
+LANGUAGE: Vue
+CODE:
+```
+<script setup lang="ts">\nimport useTasks from './composables/useTasks';\nconst { tasks, addTask, removeTask } = useTasks();\n</script>\n<template>\n<TaskInput @add-task="addTask" />\n<TaskList :tasks="tasks" @remove-task="removeTask" />\n</template>
+```
+
+----------------------------------------
+
+TITLE: Defining State Management with useUserSettings Composable
+DESCRIPTION: This code defines the `useUserSettings` composable, managing application state using Vue's `reactive` and `toRefs` for reactivity. It includes a `changeTheme` method that validates and updates the `theme` property, returning `theme` as `readonly` to enforce controlled updates and prevent direct modification.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/data-store.md#_snippet_7
+
+LANGUAGE: JavaScript
+CODE:
+```
+const state = reactive({
+// ...
+theme: 'nord',
+});
+export default () => {
+const { darkMode, sidebarCollapsed, theme } = toRefs(state);
+// ...
+const changeTheme = (newTheme) => {
+if (themes.includes(newTheme)) {
+// Only update if it's a valid theme
+state.theme = newTheme;
+}
+}
+return {
+// ...
+theme: readonly(theme),
+changeTheme,
+};
+}
+```
+
+----------------------------------------
+
+TITLE: Implementing a Vue Controller Component for Task Management
+DESCRIPTION: This snippet showcases a `TaskController.vue` component, demonstrating how a Controller Component integrates UI (Humble Components) with business logic (composables). It imports the `useTasks` composable to manage task data and operations, then passes these to `TaskInput` for adding tasks and `TaskList` for displaying and removing tasks, acting as the central orchestrator.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/controller-components/intro.md#_snippet_0
+
+LANGUAGE: Vue
+CODE:
+```
+<script setup lang="ts">
+import useTasks from './composables/useTasks';
+const { tasks, addTask, removeTask } = useTasks();
+</script>
+<template>
+<div>
+<TaskInput @add-task="addTask" />
+<TaskList :tasks="tasks" @remove-task="removeTask" />
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Defining a Humble Component Template in Vue.js
+DESCRIPTION: This snippet defines the template for a `SimpleCard` component, illustrating a 'Humble Component'. It takes `title` and `description` as props and uses a slot for additional content. It also emits a `title-clicked` event when the title area is clicked, demonstrating basic UI interaction without internal state.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/layers-of-abstraction/intro.md#_snippet_0
+
+LANGUAGE: HTML
+CODE:
+```
+<template>
+<div>s
+<div @click="$emit('title-clicked')">
+<h1>{{ title }}</h1>
+<p>{{ description }}</p>
+</div>
+<div>
+<slot />
+</div>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Generic Customer Display Component (Vue.js)
+DESCRIPTION: This Vue.js component demonstrates how to create a generic display component that accepts a `customer` prop and accesses only the common properties (name, age, address) shared across various customer types. It also passes a sub-object (`purchaseHistory`) to another component, showcasing how to handle complex object structures while maintaining reusability.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/preserve-whole-object/intro.md#_snippet_3
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<div class="p-4 bg-white shadow rounded">
+<p class="text-xl font-semibold">Customer Details</p>
+<p class="mt-2">Name: {{ customer.name }}</p>
+<p class="mt-2">Age: {{ customer.age }}</p>
+<p class="mt-2">Address: {{ customer.address }}</p>
+</div>
+<PurchaseHistory :history="customer.purchaseHistory" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Implementing Strategy Pattern with Dynamic Components in Vue.js
+DESCRIPTION: This snippet shows how to implement the Strategy Pattern in Vue.js using the `<component :is='currentComponent' />` syntax. It allows dynamically swapping different components (strategies) at runtime based on the `currentComponent` variable, simplifying complex conditional logic into distinct, interchangeable components that share a common interface.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/strategy.md#_snippet_1
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<component :is="currentComponent" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Defining Pure Business Logic Functions for Counter Operations
+DESCRIPTION: This JavaScript file (`counter.js`) contains pure functions for basic arithmetic operations: `increment`, `decrement`, and `double`. These functions are designed to be side-effect free, accepting inputs and producing outputs without modifying external state, making them highly testable and framework-agnostic. They serve as the core business logic for the counter example.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables/intro.md#_snippet_1
+
+LANGUAGE: JavaScript
+CODE:
+```
+export const increment = (num) => num + 1;
+export const decrement = (num) => num - 1;
+export const double = (num) => num * 2;
+```
+
+----------------------------------------
+
+TITLE: Passing Whole Object as Prop in Vue
+DESCRIPTION: Demonstrates passing an entire `activeCustomer` object as a prop to the `CustomerDisplay` component. This approach simplifies the component interface and is generally recommended for better maintainability and type safety, especially when the component is likely to use more properties of the object in the future.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/preserve-whole-object.md#_snippet_0
+
+LANGUAGE: Vue
+CODE:
+```
+<template>\n<CustomerDisplay :customer="activeCustomer" />\n</template>
+```
+
+----------------------------------------
+
+TITLE: Passing a Whole Object as a Prop (Vue.js)
+DESCRIPTION: This Vue.js template demonstrates the recommended approach of passing an entire `activeCustomer` object as a single prop to the `CustomerDisplay` component. This simplifies the component's interface, enhances type safety, and reduces refactoring efforts if more properties are needed later.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/preserve-whole-object/intro.md#_snippet_0
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<CustomerDisplay :customer="activeCustomer" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Recommended: Passing Whole Object as Prop in Vue.js
+DESCRIPTION: This snippet demonstrates the recommended pattern for passing data: the entire `item` object is passed as a single prop named `item`. This adheres to the 'Preserve Whole Object' pattern, improving clarity and maintainability, especially when using TypeScript.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component.md#_snippet_5
+
+LANGUAGE: Vue.js
+CODE:
+```
+<ProductItem :item="item" />
+```
+
+----------------------------------------
+
+TITLE: Creating a Data Processing Composable in Vue (TypeScript)
+DESCRIPTION: This TypeScript composable, `useDataProcessor`, encapsulates asynchronous data submission logic. It accepts a reactive input string and an API URL, providing reactive states for error handling and a function to post data. It handles API responses and potential errors, returning a success message or updating error states.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-composable/intro.md#_snippet_2
+
+LANGUAGE: TypeScript
+CODE:
+```
+import { ref, emit } from 'vue';
+export function useDataProcessor(
+  input: Ref<string>,
+  apiUrl: string,
+) {
+  const error = ref(false);
+  const errorMessage = ref('');
+  const submitData = async () => {
+    try {
+      error.value = false;
+      errorMessage.value = '';
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data: input.value })
+      });
+      if (!response.ok) {
+        throw new Error('Failed to submit data');
+      }
+      const result = await response.json();
+      return result.message;
+    } catch (err) {
+      error.value = true;
+      errorMessage.value = err.message ||
+        'An unknown error occurred';
+    }
+  };
+  return { error, errorMessage, submitData };
+}
+```
+
+----------------------------------------
+
+TITLE: Creating a Reusable Counter Composable in Vue.js
+DESCRIPTION: This Vue.js snippet defines a `useCount` composable that encapsulates counter logic, including `count`, `increment`, and `decrement` functions. It takes an `id` parameter and returns an object containing the `id`, reactive `count`, and methods to modify it. The example then demonstrates populating `listOfCounters` by instantiating this composable ten times, showcasing its reusability for managing multiple independent counters within a component.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/inline-composables/summary.md#_snippet_0
+
+LANGUAGE: Vue.js
+CODE:
+```
+const useCount = (i) => {
+const count = ref(0);
+const increment = () => count.value += 1;
+const decrement = () => count.value -= 1;
+return { id: i, count, increment, decrement };
+};
+const listOfCounters = [];
+for (let i = 0; i < 10; i++) {
+listOfCounters.push(useCount(i));
+}
+// ...more logic
+```
+
+----------------------------------------
+
+TITLE: Importing and Destructuring Vue.js Composition API Hooks
+DESCRIPTION: This JavaScript snippet demonstrates the use of Vue 3's `<script setup>` syntax to import and destructure reactive variables and functions from custom composition API hooks (`useParts`, `useDroids`, `useRepair`). This pattern centralizes state management and logic, making components cleaner and more reusable.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/humble-components/refactoring-steps.md#_snippet_4
+
+LANGUAGE: javascript
+CODE:
+```
+import { useParts, useDroids, useRepair } from './useDroidRepair';
+const { missingParts, filteredAndSortedParts, partSearchTerm } = useParts();
+const { repairInProgress, repairProgress, initiateRepair, completedRepairs } =
+useRepair();
+const {
+droidSearchTerm,
+filteredAndSortedDroids,
+selectedDroid,
+toggleSelectedDroid,
+} = useDroids();
+```
+
+----------------------------------------
+
+TITLE: Recommended: Passing Whole Object as Prop in Vue.js Parent Component
+DESCRIPTION: This snippet demonstrates the recommended 'Preserve Whole Object' pattern, where the entire `item` object is passed as a single prop to `ProductItem`. This maintains data integrity and simplifies prop management.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component/intro.md#_snippet_5
+
+LANGUAGE: Vue
+CODE:
+```
+<ProductItem :item="item" />
+```
+
+----------------------------------------
+
+TITLE: Implementing Dynamic Components with Strategy Pattern in Vue.js
+DESCRIPTION: This snippet illustrates the core mechanism for implementing the Strategy Pattern in Vue.js using dynamic components. By binding the `:is` attribute of the `<component>` tag to a reactive property `currentComponent`, different components (strategies) can be swapped at runtime based on application logic, promoting cleaner and more maintainable code compared to deeply nested conditionals.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/strategy/intro.md#_snippet_1
+
+LANGUAGE: HTML
+CODE:
+```
+<component :is="currentComponent" />
+```
+
+----------------------------------------
+
+TITLE: Defining Props and Emits for a Humble Component in Vue.js
+DESCRIPTION: This snippet defines the props (`title`, `description`) and custom events (`title-clicked`) for the `SimpleCard` component using Vue's `defineProps` and `defineEmits` Composition API. This reinforces its role as a 'dumb' or 'presentational' component, receiving data and emitting events without managing its own state.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/layers-of-abstraction/intro.md#_snippet_1
+
+LANGUAGE: JavaScript
+CODE:
+```
+defineProps({
+title: String,
+description: String,
+});
+defineEmits(['title-clicked']);
+```
+
+----------------------------------------
+
+TITLE: Refactoring Vue.js Components Based on Exclusive Usage Patterns
+DESCRIPTION: This snippet shows the result of refactoring based on the observed exclusive prop usage. The original MyComponent is replaced by two specialized components, FirstComponent and SecondComponent, each handling one of the previously distinct functionalities.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/hidden-components/intro.md#_snippet_5
+
+LANGUAGE: Vue.js
+CODE:
+```
+<FirstComponent />
+<FirstComponent />
+<FirstComponent />
+<FirstComponent />
+<SecondComponent />
+<SecondComponent />
+<SecondComponent />
+<SecondComponent />
+```
+
+----------------------------------------
+
+TITLE: Defining Global State Singleton in Vue.js Composable
+DESCRIPTION: This snippet illustrates defining a global state object with `reactive` outside the composable's function. This ensures every call to `useUserSettings` accesses the same shared state instance, establishing a singleton pattern.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/data-store/intro.md#_snippet_2
+
+LANGUAGE: JavaScript
+CODE:
+```
+const state = reactive({
+  darkMode: false,
+  sidebarCollapsed: false,
+  theme: 'nord',
+});
+export default () => {
+  // ...
+}
+```
+
+----------------------------------------
+
+TITLE: Implementing a User Profile Card Component in Vue.js
+DESCRIPTION: This component displays user data (name, image, bio) passed via the `userData` prop. It includes an 'Edit Profile' button that emits an `edit-profile` event when clicked. The component focuses on data presentation and event emission, keeping business logic external.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/humble-components.md#_snippet_1
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+<div class="max-w-sm rounded overflow-hidden shadow-lg">
+<img class="w-full" :src="userData.image" alt="User Image" />
+<div class="px-6 py-4">
+<div class="font-bold text-xl mb-2">
+{{ userData.name }}
+</div>
+<p class="text-gray-700 text-base">
+{{ userData.bio }}
+</p>
+</div>
+<div class="px-6 pt-4 pb-2">
+<button
+@click="emitEditProfile"
+class="bg-blue-500 hover:bg-blue-700 text-white\nfont-bold py-2 px-4 rounded"
+>
+Edit Profile
+</button>
+</div>
+</div>
+</template>
+<script setup>
+const props = defineProps({
+userData: Object,
+});
+const emitEditProfile = () => {
+emit('edit-profile');
+};
+</script>
+```
+
+----------------------------------------
+
+TITLE: Recommended: Defining Whole Object Prop in Vue.js
+DESCRIPTION: This snippet shows the `defineProps` declaration for the recommended pattern, where a single `item` prop of type `Object` is expected. This simplifies prop definition and aligns with the 'Preserve Whole Object' principle, making it easier to manage data flow.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component.md#_snippet_6
+
+LANGUAGE: Vue.js
+CODE:
+```
+defineProps({
+item: Object,
+});
+```
+
+----------------------------------------
+
+TITLE: Integrating Data Processing Composable into a Vue Component
+DESCRIPTION: This Vue component, `MyComponent.vue`, demonstrates the consumption of the `useDataProcessor` composable. It manages user input, triggers the `submitData` function from the composable via a button click, and displays any error messages. The component's primary role is UI presentation and interaction, offloading business logic to the composable.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-composable/intro.md#_snippet_3
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+  <div>
+    <input v-model="userInput" />
+    <button @click="$emit('submission', submitData)">
+      Submit
+    </button>
+    <p v-if="error">{{ errorMessage }}</p>
+  </div>
+</template>
+<script setup lang="ts">
+import { ref } from 'vue';
+const emit = defineEmits<{
+  (e: 'submission', data: string): void
+}>();
+const props = defineProps<{ apiUrl: string }>();
+const userInput = ref('');
+// Use it like any other composable
+const {
+  error,
+  errorMessage,
+  submitData
+} = useDataProcessor(userInput, props.apiUrl);
+</script>
+```
+
+----------------------------------------
+
+TITLE: Filtering and Sorting Parts in Vue.js Computed Property
+DESCRIPTION: The `filteredAndSortedParts` computed property in `useParts` filters the `parts` array based on the `partSearchTerm`. It performs a case-insensitive search on the part's name, providing a dynamic, reactive list of parts that match the current search criteria.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables/refactoring-steps.md#_snippet_3
+
+LANGUAGE: JavaScript
+CODE:
+```
+const filteredAndSortedParts = computed(() => {
+return parts.filter((part) => {
+return part.name
+.toLowerCase()
+.includes(partSearchTerm.value.toLowerCase());
+});
+});
+```
+
+----------------------------------------
+
+TITLE: Filtering Parts by Name in JavaScript (Vue.js Computed)
+DESCRIPTION: This `computed` property filters a list of 'parts' based on a search term matching their 'name'. It ensures the search is case-insensitive by converting both the part name and the search term to lowercase. This pattern is common in Vue.js for creating reactive, derived data.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-composable/refactoring-steps.md#_snippet_8
+
+LANGUAGE: JavaScript
+CODE:
+```
+const filteredAndSortedParts = computed(() => {
+return parts.filter((part) => {
+return part.name.toLowerCase().includes(partSearchTerm.value.toLowerCase());
+});
+});
+```
+
+----------------------------------------
+
+TITLE: Abstracting Vue.js Looping Logic into List Component
+DESCRIPTION: This snippet illustrates the recommended 'List Component Pattern' where the entire `v-for` looping logic is encapsulated within a dedicated `NewComponentList`. The parent component's template becomes much cleaner, only needing to pass the `list` prop, abstracting away all iteration details.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/list-component/intro.md#_snippet_2
+
+LANGUAGE: html
+CODE:
+```
+<NewComponentList :list="list" />
+```
+
+----------------------------------------
+
+TITLE: Identifying Hidden Components with Multiple Independent v-if Conditions in Vue.js
+DESCRIPTION: This snippet presents a component with two independent `v-if` conditions, where both could potentially be true simultaneously. The text suggests that observing how this component is used in practice (e.g., props never used together) can reveal that it implicitly contains multiple hidden components.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/hidden-components.md#_snippet_3
+
+LANGUAGE: HTML
+CODE:
+```
+<template>
+<div v-if="conditional">
+<!-- ... -->
+</div>
+<div v-if="someOtherConditional">
+<!-- ... -->
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Implementing a Task Controller Component in Vue.js
+DESCRIPTION: This Vue.js Controller Component (`TaskController.vue`) orchestrates the task list application. It imports `useTasks` (a composable for business logic) and passes its state (`tasks`) and actions (`addTask`, `removeTask`) to `TaskInput` (for adding tasks) and `TaskList` (for displaying/removing tasks) Humble Components. This centralizes interaction logic and manages the flow between UI and business logic.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/controller-components.md#_snippet_0
+
+LANGUAGE: Vue
+CODE:
+```
+<script setup lang="ts">\nimport useTasks from './composables/useTasks';\nconst { tasks, addTask, removeTask } = useTasks();\n</script>\n<template>\n<div>\n<TaskInput @add-task="addTask" />\n<TaskList :tasks="tasks" @remove-task="removeTask" />\n</div>\n</template>
+```
+
+----------------------------------------
+
+TITLE: Displaying Common Customer Details in Vue
+DESCRIPTION: A Vue component designed to display common customer details (name, age, address) and delegate purchase history display to a `PurchaseHistory` component. This component expects a `customer` prop that conforms to a type containing these common fields, demonstrating how to build components that work with a subset of properties from various object types.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/preserve-whole-object.md#_snippet_3
+
+LANGUAGE: Vue
+CODE:
+```
+<template>\n<div class="p-4 bg-white shadow rounded">\n<p class="text-xl font-semibold">Customer Details</p>\n<p class="mt-2">Name: {{ customer.name }}</p>\n<p class="mt-2">Age: {{ customer.age }}</p>\n<p class="mt-2">Address: {{ customer.address }}</p>\n</div>\n<PurchaseHistory :history="customer.purchaseHistory" />\n</template>
+```
+
+----------------------------------------
+
+TITLE: Safely Unwrapping Reactive Values with `toValue` in Vue.js
+DESCRIPTION: This snippet illustrates the use of Vue's `toValue` utility to safely unwrap a reactive reference (or getter, or plain value) into its non-reactive primitive. This ensures that pure functions receive a simple value, preventing unintended reactivity issues and making the interaction with business logic more robust.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables.md#_snippet_4
+
+LANGUAGE: JavaScript
+CODE:
+```
+function decrement() {
+count.value = counter.decrement(toValue(count));
+}
+```
+
+----------------------------------------
+
+TITLE: Simplified Refactored Component with Extracted Branches in Vue.js
+DESCRIPTION: This snippet shows a further simplification of the refactored component, where the wrapper `div` elements around the new components are removed, directly applying the `v-if` and `v-else` directives to the extracted components themselves. This is a more concise and often preferred way to implement conditional rendering with extracted components in Vue.js, especially when the wrapper `div` serves no additional purpose.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-conditional.md#_snippet_2
+
+LANGUAGE: HTML
+CODE:
+```
+<NewComponent v-if="condition" />
+<OtherComponent v-else />
+```
+
+----------------------------------------
+
+TITLE: Observing Usage Patterns to Uncover Hidden Components in Vue.js
+DESCRIPTION: This snippet demonstrates a usage pattern where a `MyComponent` is consistently invoked with either `conditional` or `someOtherConditional` props, but never both together. This pattern is a strong indicator that the single component is serving two distinct purposes and can be refactored into separate, more focused components.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/hidden-components.md#_snippet_4
+
+LANGUAGE: HTML
+CODE:
+```
+<MyComponent conditional />
+<MyComponent conditional />
+<MyComponent conditional />
+<MyComponent conditional />
+<MyComponent someOtherConditional />
+<MyComponent someOtherConditional />
+<MyComponent someOtherConditional />
+<MyComponent someOtherConditional />
+```
+
+----------------------------------------
+
+TITLE: Defining the `ProductItem` Component in Vue.js
+DESCRIPTION: This snippet defines the `ProductItem` component, which encapsulates the display logic for a single item. It expects an `item` prop and renders its `title`, `price`, and `description`, effectively separating the item's presentation from the looping logic.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component.md#_snippet_1
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<div>
+<h3>{{ item.title }}</h3>
+<p>${{ item.price }}</h3>
+<p>{{ item.description }}</p>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Rendering Dynamic Form Fields in Vue Template
+DESCRIPTION: This snippet demonstrates how to dynamically render form input fields within a Vue 3 template using `v-model` for two-way data binding. It iterates over a `formSchema` prop to create inputs and includes a submit button. Dependencies: `formSchema` prop.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/humble-components/intro.md#_snippet_3
+
+LANGUAGE: Vue
+CODE:
+```
+v-model="formData[field.name]"\nclass="shadow appearance-none border rounded\nw-full py-2 px-3 text-gray-700 leading-tight\nfocus:outline-none focus:shadow-outline"\n/>\n<!-- More input types like 'select', 'checkbox', etc. -->\n</div>\n<button\nclass="bg-blue-500 hover:bg-blue-700 text-white\nfont-bold py-2 px-4 rounded"\ntype="submit"\n>\nSubmit\n</button>\n</form>\n</template>
+```
+
+----------------------------------------
+
+TITLE: Creating a Simple Button Component in Vue.js
+DESCRIPTION: This component accepts `label` and `color` as props and emits a `click` event when interacted with. It uses `defineProps` for prop definition and a `computed` property for dynamic CSS class generation, ensuring the component remains focused on presentation and interaction without complex logic.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/humble-components.md#_snippet_0
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+<button @click="emitClick" :class="buttonClasses">
+{{ label }}
+</button>
+</template>
+<script setup>
+import { computed } from 'vue';
+const props = defineProps({
+label: String,
+color: {
+type: String,
+default: 'blue'
+}
+});
+const emitClick = () => {
+emit('click');
+}
+const buttonClasses = computed(() => {
+return `bg-${props.color}-500 hover:bg-${props.color}-700\ntext-white font-bold py-2 px-4 rounded`;
+});
+</script>
+```
+
+----------------------------------------
+
+TITLE: Using TypeScript Type for Props in Vue.js `defineProps`
+DESCRIPTION: This snippet demonstrates how to use the previously defined `ProductItem` TypeScript type within Vue's `defineProps`. By importing and assigning the type to the `item` prop, it ensures type safety and provides better developer tooling for component props.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component.md#_snippet_8
+
+LANGUAGE: TypeScript
+CODE:
+```
+import { ProductItem } from './types';
+defineProps<{
+item: ProductItem;
+}>();
+```
+
+----------------------------------------
+
+TITLE: Accessing Reactive `ref` Values in Vue.js
+DESCRIPTION: This example shows how to access and update the underlying primitive value of a Vue `ref` using the `.value` property. It demonstrates passing the primitive value to a pure function (`counter.increment`) and re-assigning the result back to the `ref`, maintaining reactivity.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables.md#_snippet_3
+
+LANGUAGE: JavaScript
+CODE:
+```
+const count = ref(initialCount || 0);
+function increment() {
+// Use .value to pass in the underlying value
+count.value = counter.increment(count.value);
+}
+```
+
+----------------------------------------
+
+TITLE: Identifying High Coupling in Vue Components
+DESCRIPTION: This Vue template snippet demonstrates a 'component smell' where a `ChildComponent` is excessively coupled to its parent. The large number of props and event listeners passed between them indicates a potential need for refactoring to improve component decomposition and reduce dependencies.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/insider-trading/intro.md#_snippet_0
+
+LANGUAGE: HTML
+CODE:
+```
+<template>
+<div>
+<h1>{{ title }}</h1>
+<ChildComponent
+:one-prop="someValue"
+:another-prop="yetAnotherValue"
+:prop-three="thirdValue"
+:options="options"
+:configuration="configuration"
+:specifications="specifications"
+@click="handleClick"
+@drag="handleDrag"
+@special-key-press="handleKeypress"
+@show-modal="handleShowModal"
+@another-event="handleAnotherEvent"
+/>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Identifying Exclusive Conditional Components in Vue.js
+DESCRIPTION: This snippet demonstrates a common pattern where a single component contains two mutually exclusive branches of functionality, typically controlled by a v-if/v-else directive. This suggests that the component is effectively acting as two separate components, one for each branch.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/hidden-components/intro.md#_snippet_0
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<div v-if="conditional">
+<!-- ... -->
+</div>
+<div v-else>
+<!-- ... -->
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Refactoring Vue.js Parent Component with ProductItem for Looping
+DESCRIPTION: This refactored `Parent` component demonstrates how to use the `ProductItem` component within a `v-for` loop. It passes the entire `item` object as a prop to `ProductItem`, adhering to the 'Preserve Whole Object' pattern.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component/intro.md#_snippet_2
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+<ProductItem
+v-for="item in list"
+:item="item"
+:key="item.id"
+/>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Refactoring Vue.js Components with Exclusive Props
+DESCRIPTION: This example illustrates the refactoring process from a single OriginalComponent used with mutually exclusive props (conditional: true or conditional: false) to two distinct, specialized components (Component1 and Component2). This improves clarity and reduces component length.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/hidden-components/intro.md#_snippet_2
+
+LANGUAGE: Vue.js
+CODE:
+```
+<!-- Before -->
+<OriginalComponent :conditional="true" />
+<OriginalComponent :conditional="false" />
+<!-- After -->
+<Component1 />
+<Component2 />
+```
+
+----------------------------------------
+
+TITLE: Identifying Component Boundaries in Vue.js Templates
+DESCRIPTION: This snippet illustrates how top-level semantic HTML elements like <header> and <article> within a Vue.js template can serve as natural boundaries for splitting a large component into smaller, more focused ones. This approach promotes high cohesion and single responsibility by grouping related content, making components easier to manage and understand.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/component-boundaries/intro.md#_snippet_0
+
+LANGUAGE: HTML
+CODE:
+```
+<template>
+<header>
+<!-- ... -->
+</header>
+<article>
+<!-- ... -->
+</article>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Vue.js Script Setup for Form Data Management
+DESCRIPTION: This Vue.js `<script setup>` block defines the reactive logic for the form component. It imports `reactive` from Vue, defines `props` to accept a `formSchema` array, initializes `formData` as a reactive object, and defines a `submitForm` function to emit the collected data.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/humble-components.md#_snippet_4
+
+LANGUAGE: Vue
+CODE:
+```
+import { reactive } from 'vue';
+const props = defineProps({
+formSchema: Array,
+});
+const formData = reactive({});
+const submitForm = () => {
+emit('form-submit', formData);
+};
+```
+
+----------------------------------------
+
+TITLE: Integrating Components and Handling User Interactions in App.vue (Vue)
+DESCRIPTION: This snippet showcases the main App.vue component, responsible for integrating various chat-related components like ChatSidebar, DirectMessage, MessageInput, and NotificationArea. It manages the application's state, including online users, selected user, notifications, and messages, and defines methods for user selection and message handling. It utilizes Vue's Composition API with TypeScript for reactive data management and component logic.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/inline-composables/refactoring-steps.md#_snippet_0
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+<div class="demo bg-gray-100 rounded-lg">
+<div class="container mx-auto grid grid-cols-4 gap-4 p-4">
+<ChatSidebar
+class="col-span-1"
+:online-users="onlineUsers"
+:selected-user="selectedUser"
+@select-user="selectUser"
+/>
+<div class="col-span-2">
+<DirectMessage :selected-user="selectedUser" :messages="messages" />
+<MessageInput @send-message="handleMessage" />
+</div>
+<NotificationArea class="col-span-1" :notifications="notifications" />
+</div>
+</div>
+<button
+class="mt-4 font-sans bg-mt-coral rounded-md py-1 px-2 font-bold text-white"
+@click="initialize"
+>
+Reset Demo
+</button>
+</template>
+<script setup lang="ts">
+import { ref } from 'vue';
+import ChatSidebar from './ChatSidebar.vue';
+import DirectMessage from './DirectMessage.vue';
+import MessageInput from './MessageInput.vue';
+import NotificationArea from './NotificationArea.vue';
+import { User } from './types';
+import useFakeData from './useFakeData';
+// Mock a live API using fake data
+const { onlineUsers, notifications, messages, initialize } = useFakeData();
+const selectedUser = ref<User>(onlineUsers.value[0]);
+const selectUser = (user: User) => {
+selectedUser.value = user;
+};
+const handleMessage = (message) => {
+messages.value.unshift({
+id: messages.value.length + 1,
+from: 'You',
+to: selectedUser.value.name,
+content: message,
+time: new Date().toLocaleTimeString(),
+});
+};
+</script>
+```
+
+----------------------------------------
+
+TITLE: Abstracting Vue.js Looping Logic into a Dedicated List Component
+DESCRIPTION: This Vue.js template snippet illustrates the recommended approach for abstracting `v-for` logic by encapsulating the entire looping mechanism within a dedicated `NewComponentList` component. This component receives the `list` as a prop, keeping the parent component's template clean and readable by only rendering a single, self-contained list component.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/list-component.md#_snippet_2
+
+LANGUAGE: Vue.js
+CODE:
+```
+<NewComponentList :list="list" />
+```
+
+----------------------------------------
+
+TITLE: Refactoring Complex Conditionals with v-if/v-else-if in Vue.js
+DESCRIPTION: This snippet demonstrates a common pattern of complex conditional rendering in Vue.js using `v-if`, `v-else-if`, and `v-else` directives. It represents a 'before' state where the Strategy Pattern can be applied to simplify the logic by replacing multiple conditional branches with dynamic components, reducing template complexity.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/strategy.md#_snippet_0
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<div v-if="isOne">
+<!-- ... -->
+</div>
+<div v-else-if="isTwo">
+<!-- ... -->
+</div>
+<div v-else-if="isThree">
+<!-- ... -->
+</div>
+<div v-else>
+<!-- ... -->
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Defining ProductItem Type in TypeScript
+DESCRIPTION: This TypeScript snippet defines the `ProductItem` type, specifying the structure and types of its properties (id, price, title, description). This type definition ensures strong typing and improves code maintainability when working with item objects.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component/intro.md#_snippet_7
+
+LANGUAGE: TypeScript
+CODE:
+```
+export type ProductItem = {
+id: string;
+price: Monetary;
+title: string;
+description: string;
+}
+```
+
+----------------------------------------
+
+TITLE: Refactoring Component Usage Based on Observed Patterns in Vue.js
+DESCRIPTION: This snippet shows the refactored usage pattern after identifying and extracting hidden components. Instead of using a single `MyComponent` with varying props, the application now directly uses `FirstComponent` and `SecondComponent`, leading to clearer intent and better component separation.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/hidden-components.md#_snippet_5
+
+LANGUAGE: HTML
+CODE:
+```
+<FirstComponent />
+<FirstComponent />
+<FirstComponent />
+<FirstComponent />
+<SecondComponent />
+<SecondComponent />
+<SecondComponent />
+<SecondComponent />
+```
+
+----------------------------------------
+
+TITLE: Refactored Vue Conditional Directly on Components
+DESCRIPTION: This snippet shows a more concise refactoring approach where the `v-if` and `v-else` directives are applied directly to the extracted components (`NewComponent` and `OtherComponent`). This eliminates the need for wrapper `div` elements, resulting in cleaner template code.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-conditional/intro.md#_snippet_2
+
+LANGUAGE: HTML
+CODE:
+```
+<NewComponent v-if="condition" />
+<OtherComponent v-else />
+```
+
+----------------------------------------
+
+TITLE: Defining State Modification Method in Vue Composable
+DESCRIPTION: This snippet illustrates how to define a method within a composable to handle mutations of the global state. Centralizing state update logic ensures predictability, maintainability, and consistency when modifying shared data.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/data-store/summary.md#_snippet_2
+
+LANGUAGE: Vue
+CODE:
+```
+const changeState = (newValue) => {
+// logic to update state
+};
+```
+
+----------------------------------------
+
+TITLE: Conditional Article Rendering in Vue Template
+DESCRIPTION: This Vue.js template defines the structure for an 'Articles' component, enabling dynamic display of articles. It uses `v-if` and `v-else-if` to switch between collapsed, grid, list, carousel, and default card views, each rendering a specific child component (e.g., ArticleCollapsed, ArticleExpanded). Articles are iterated using `v-for`, and `v-show` is applied in grid and card views to limit the number of displayed items based on `currentLimit`.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/strategy/refactoring-example.md#_snippet_0
+
+LANGUAGE: Vue Template
+CODE:
+```
+<template>
+<div v-if="collapse" class="flex flex-col space-y-6 md:space-y-8">
+<ArticleCollapsed
+v-for="article in filtered"
+:key="article.slug"
+:article="article"
+/>
+</div>
+<div
+v-else-if="gridView"
+class="grid gap-y-16 gap-x-24 xl:gap-x-32 grid-cols-1 lg:grid-cols-2 mt-8"
+>
+<ArticleExpanded
+v-for="(article, index) in filtered"
+v-show="index < currentLimit"
+:key="article.slug"
+:article="article"
+/>
+</div>
+<div
+v-else-if="listView"
+class="flex flex-col space-y-6 md:space-y-8"
+>
+<ArticleList
+v-for="article in filtered"
+:key="article.slug"
+:article="article"
+/>
+</div>
+<div
+v-else-if="carouselView"
+class="carousel-container"
+>
+<ArticleCarousel
+:articles="filtered"
+/>
+</div>
+<div
+v-else
+class="grid gap-y-16 gap-x-24 xl:gap-x-32 grid-cols-1 lg:grid-cols-3 mt-8"
+>
+<ArticleCard
+v-for="(article, index) in filtered"
+v-show="index < currentLimit"
+:key="article.slug"
+:article="article"
+/>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Anti-Pattern: Spreading Props with v-bind in Vue.js
+DESCRIPTION: This snippet illustrates an anti-pattern where `v-bind` is used to spread an object's properties as individual props. This approach can lead to less explicit prop definitions and potential issues, especially with TypeScript.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component/intro.md#_snippet_3
+
+LANGUAGE: Vue
+CODE:
+```
+<ProductItem v-bind="item" />
+```
+
+----------------------------------------
+
+TITLE: Anti-Pattern: Defining Individual Props for Spread Object in Vue.js
+DESCRIPTION: This `defineProps` configuration corresponds to the `v-bind` anti-pattern, where each property of the `item` object is defined as a separate prop. This makes the component less flexible and harder to maintain.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component/intro.md#_snippet_4
+
+LANGUAGE: JavaScript
+CODE:
+```
+defineProps({
+id: String,
+price: Number,
+title: String,
+description: String,
+});
+```
+
+----------------------------------------
+
+TITLE: Defining useDroids Composable in Vue.js
+DESCRIPTION: This composable manages droid-related logic, including adding new droids, toggling droid selection, and filtering droids based on a search term. It exposes functions and computed properties to interact with the droids state, centralizing droid management within the application.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables/refactoring-steps.md#_snippet_5
+
+LANGUAGE: JavaScript
+CODE:
+```
+export const useDroids = () => {
+const droidSearchTerm = ref('');
+const remainingDroids = randomDroids.value.slice(4);
+function addRandomDroid() {
+const randomIndex = Math.floor(Math.random() * remainingDroids.length);
+const randomDroid = remainingDroids.splice(randomIndex, 1)[0];
+droids.push(randomDroid);
+if (remainingDroids.length) {
+setTimeout(addRandomDroid, getRandomTime());
+
+```
+
+----------------------------------------
+
+TITLE: Implementing Droid Repair Logic in Vue.js Composable
+DESCRIPTION: This Vue.js composable (`useRepair`) provides functionality to initiate and manage the repair process for a selected droid. It simulates repair progress, updates droid status, removes necessary parts from inventory, and handles the completion of repairs, including asynchronous UI updates and droid removal from the active list.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables/refactoring-steps.md#_snippet_7
+
+LANGUAGE: JavaScript
+CODE:
+```
+export const useRepair = () => {
+const repairProgress = ref(0);
+function initiateRepair() {
+repairInProgress.value = true;
+repairProgress.value = 0;
+selectedDroid.value.status = 'Repairing...';
+// Remove parts from inventory
+selectedDroid.value.partsNeeded.forEach((part) => {
+const matchingPart = parts.find((p) => p.name === part);
+if (matchingPart) {
+matchingPart.quantity--;
+matchingPart.removed = true;
+setTimeout(() => {
+matchingPart.removed = false;
+}, 1000);
+}
+});
+let start = null;
+const duration = Math.random() * 1000 + 1000;
+async function step(timestamp) {
+if (!start) start = timestamp;
+const progress = timestamp - start;
+repairProgress.value = Math.min(progress / (duration / 100), 100);
+if (progress < duration) {
+window.requestAnimationFrame((timestamp) => step(timestamp, duration));
+} else {
+repairProgress.value = 100;
+selectedDroid.value.status = 'Repaired';
+repairInProgress.value = false;
+completedRepairs.value.push(selectedDroid.value);
+const indexToDelete = droids.indexOf(selectedDroid.value);
+selectedDroid.value = null;
+await nextTick();
+droids.splice(indexToDelete, 1);
+console.log(completedRepairs);
+}
+}
+window.requestAnimationFrame(step);
+}
+return {
+initiateRepair,
+completedRepairs,
+repairInProgress,
+repairProgress,
+};
+};
+
+```
+
+----------------------------------------
+
+TITLE: Defining useParts Composable in Vue.js
+DESCRIPTION: This composable encapsulates all logic related to managing parts, including adding new parts, filtering, and identifying missing parts for a selected droid. It exposes reactive state and computed properties for consumption by Vue components, promoting modularity and reusability of part-related functionalities.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables/refactoring-steps.md#_snippet_1
+
+LANGUAGE: JavaScript
+CODE:
+```
+export const useParts = () => {
+const partSearchTerm = ref('');
+// Randomly add parts
+async function addRandomPart() {
+const randomIndex = Math.floor(Math.random() * allParts.length);
+const randomPart = allParts[randomIndex];
+const matchingPart = parts.find((p) => p.name === randomPart.name);
+let updated;
+if (matchingPart) {
+matchingPart.quantity++;
+updated = matchingPart;
+} else {
+parts.push(randomPart);
+updated = randomPart;
+}
+if (updated) {
+// Trigger animation
+updated.added = true;
+setTimeout(() => {
+updated.added = false;
+}, 1000);
+}
+setTimeout(addRandomPart, getRandomTime());
+}
+setTimeout(addRandomPart, getRandomTime());
+const filteredAndSortedParts = computed(() => {
+return parts.filter((part) => {
+return part.name
+.toLowerCase()
+.includes(partSearchTerm.value.toLowerCase());
+});
+});
+const missingParts = computed(() => {
+if (!selectedDroid.value || repairInProgress.value) {
+return [];
+}
+return selectedDroid.value.partsNeeded.filter((part) => {
+const matchingPart = parts.find((p) => p.name === part);
+return !matchingPart || matchingPart.quantity === 0;
+});
+});
+return {
+partSearchTerm,
+filteredAndSortedParts,
+missingParts,
+};
+};
+```
+
+----------------------------------------
+
+TITLE: Articles Component Template in Vue.js
+DESCRIPTION: This Vue.js template defines the structure for the 'Articles' component, which displays a list of articles. It includes conditional rendering for a tag list and a 'load more' button, and integrates sub-components like 'TagList', 'ArticleListWithLimit', and 'EndOfArticles'. The component supports both collapsed and expanded views of articles.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/hidden-components/refactoring-example.md#_snippet_0
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+<div
+ref="container"
+class="w-full pb-12 md:pb-24 flex flex-col"
+:class="!collapse && 'pt-16 md:pt-20'"
+>
+<div class="flex flex-col justify-center">
+<div
+v-if="!collapse"
+class="border-b-2 border-gray-300 border-dotted pb-3"
+>
+<h2 ref="title" class="text-4xl font-bold mb-6">Articles</h2>
+<TagList
+:tags="tagList"
+:selected-tag-index="selectedTagIndex"
+@select-tag="index => selectTag(index)"
+/>
+</div>
+<ArticleListWithLimit
+:articles="filtered"
+:current-limit="currentLimit"
+:collapse="collapse"
+/>
+<div v-if="!collapse" class="flex justify-center">
+<button
+v-if="hasMoreArticles"
+class="article-btn focus-outline"
+@click="currentLimit += limit"
+>
+Load more
+</button>
+<EndOfArticles
+v-else
+:selected-tag="selectedTag"
+@filter-by-tag="scrollToTagList"
+@see-all-articles="selectTag(tagList.length - 1)"
+/>
+</div>
+</div>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Using Collapsed and Expanded Article Components in JSX
+DESCRIPTION: This snippet illustrates the usage of two distinct components, `ArticlesCollapsed` and `ArticlesExpanded`, to represent different states of content display. This pattern is often employed in UI development to dynamically switch between a summarized view and a detailed view, avoiding hard-coded content and promoting reusability.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/hidden-components/going-deeper.md#_snippet_0
+
+LANGUAGE: JSX
+CODE:
+```
+<ArticlesCollapsed />
+<ArticlesExpanded />
+```
+
+----------------------------------------
+
+TITLE: Accessing and Destructuring Reactive Object Properties - Vue.js
+DESCRIPTION: Highlights the behavior of accessing properties from a reactive object directly versus destructuring them. Direct access (`counter.count`) maintains reactivity, while destructuring (`const { count } = counter`) causes the destructured variable to lose reactivity, a key limitation of the `reactive` API.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/lightweight-state-management/intro.md#_snippet_3
+
+LANGUAGE: JavaScript
+CODE:
+```
+// Access through root object
+counter.count;
+// Not reactive any more :/
+const { count } = counter;
+```
+
+----------------------------------------
+
+TITLE: Exposing Specific State Properties with toRefs in Vue.js
+DESCRIPTION: This snippet demonstrates selectively exposing reactive properties from global state using `toRefs`. This allows individual properties to be passed while maintaining reactivity and enables keeping some state properties private within the composable.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/data-store/intro.md#_snippet_4
+
+LANGUAGE: JavaScript
+CODE:
+```
+const state = reactive({
+  darkMode: false,
+  sidebarCollapsed: false,
+  theme: 'nord',
+});
+export default () => {
+  const { darkMode, sidebarCollapsed } = toRefs(state);
+  // ...
+  return {
+    darkMode,
+    sidebarCollapsed,
+  };
+}
+```
+
+----------------------------------------
+
+TITLE: Exposing Specific State Properties with `toRefs` in Vue
+DESCRIPTION: This snippet demonstrates how to selectively expose reactive properties from a global state object using Vue's `toRefs` utility. It allows individual properties like `darkMode` and `sidebarCollapsed` to be destructured and passed around while maintaining their reactivity link to the original `state` object.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/data-store.md#_snippet_4
+
+LANGUAGE: JavaScript
+CODE:
+```
+const state = reactive({
+darkMode: false,
+sidebarCollapsed: false,
+theme: 'nord',
+});
+export default () => {
+const { darkMode, sidebarCollapsed } = toRefs(state);
+// ...
+return {
+darkMode,
+sidebarCollapsed,
+};
+}
+```
+
+----------------------------------------
+
+TITLE: Adding Random Parts in Vue.js useParts Composable
+DESCRIPTION: The `addRandomPart` function within `useParts` asynchronously adds a random part to the `parts` list. It either increments the quantity of an existing part or adds a new one, triggering a temporary 'added' animation state. This function is called recursively with a random delay, simulating a continuous supply of parts.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables/refactoring-steps.md#_snippet_2
+
+LANGUAGE: JavaScript
+CODE:
+```
+async function addRandomPart() {
+const randomIndex = Math.floor(Math.random() * allParts.length);
+const randomPart = allParts[randomIndex];
+const matchingPart = parts.find((p) => p.name === randomPart.name);
+let updated;
+if (matchingPart) {
+matchingPart.quantity++;
+updated = matchingPart;
+} else {
+parts.push(randomPart);
+updated = randomPart;
+}
+if (updated) {
+// Trigger animation
+updated.added = true;
+setTimeout(() => {
+updated.added = false;
+}, 1000);
+}
+setTimeout(addRandomPart, getRandomTime());
+}
+setTimeout(addRandomPart, getRandomTime());
+```
+
+----------------------------------------
+
+TITLE: Safely Unwrapping Reactive Values with `toValue` in Vue.js
+DESCRIPTION: This Vue.js snippet illustrates the use of `toValue` to safely unwrap reactive values (refs, getters, or plain values) before passing them to pure functions. This ensures that the business logic receives a non-reactive primitive, maintaining the reactivity boundary and making the interaction with pure functions more robust.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables/intro.md#_snippet_5
+
+LANGUAGE: JavaScript
+CODE:
+```
+function decrement() {
+count.value = counter.decrement(toValue(count));
+}
+```
+
+----------------------------------------
+
+TITLE: Defining `ProductItem` Type in TypeScript
+DESCRIPTION: This snippet defines a TypeScript type alias `ProductItem` for the structure of an individual product item. It specifies the expected types for `id`, `price`, `title`, and `description`, providing strong typing for data passed to components.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component.md#_snippet_7
+
+LANGUAGE: TypeScript
+CODE:
+```
+export type ProductItem = {
+id: string;
+price: Monetary;
+title: string;
+description: string;
+}
+```
+
+----------------------------------------
+
+TITLE: Refactored Component with Extracted Branches (v-if/v-else) in Vue.js
+DESCRIPTION: This snippet demonstrates the initial step of refactoring the previous example. Instead of embedding large code blocks directly, the content of each `v-if` and `v-else` branch is extracted into new, dedicated components (`<NewComponent />` and `<OtherComponent />`). This improves the main component's readability and delegates specific responsibilities to the new components.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-conditional.md#_snippet_1
+
+LANGUAGE: HTML
+CODE:
+```
+<div v-if="condition">
+<NewComponent />
+</div>
+<div v-else>
+<OtherComponent />
+</div>
+```
+
+----------------------------------------
+
+TITLE: Factory Function for Ref-Based Counter Instances - Vue.js
+DESCRIPTION: Introduces a factory function `createCounter` to encapsulate the creation logic for counter objects that use `ref` for their state. This pattern improves readability and reusability when generating multiple instances of complex state containers, especially when creation logic is more involved.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/lightweight-state-management/intro.md#_snippet_5
+
+LANGUAGE: JavaScript
+CODE:
+```
+const createCounter = (i) => ({
+id: i,
+count: ref(0),
+increment() {
+this.count.value += 1;
+},
+decrement() {
+this.count.value -= 1;
+},
+});
+const listOfCounters = [];
+for (const i = 0; i < 10; i++) {
+listOfCounters.push(createCounter(i));
+}
+```
+
+----------------------------------------
+
+TITLE: Refactoring Form Component with Inline Composable - Vue.js
+DESCRIPTION: This snippet demonstrates the first step in refactoring the form component by extracting its core logic into an inline composable named `useDataProcessor`. The component now utilizes this composable to manage data processing, separating the concerns of UI rendering from business logic while keeping the composable definition within the same file for initial refactoring.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-composable/intro.md#_snippet_1
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<div>
+<input v-model="userInput" />
+<button @click="$emit('submission', submitData)">
+Submit
+</button>
+<p v-if="error">{{ errorMessage }}</p>
+</div>
+</template>
+<script setup lang="ts">
+import { ref } from 'vue';
+const emit = defineEmits<{
+(e: 'submission', data: string): void
+}>();
+const props = defineProps<{ apiUrl: string }>();
+const userInput = ref('');
+// Use it like any other composable
+const {
+error,
+errorMessage,
+submitData
+} = useDataProcessor(userInput, props.apiUrl);
+// Define our inline composable
+function useDataProcessor(input, apiUrl) {
+const error = ref(false);
+const errorMessage = ref('');
+const submitData = async () => {
+try {
+error.value = false;
+errorMessage.value = '';
+const response = await fetch(apiUrl, {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ data: input.value })
+});
+if (!response.ok) {
+throw new Error('Failed to submit data');
+}
+const result = await response.json();
+return result.message;
+} catch (err) {
+error.value = true;
+errorMessage.value = err.message ||
+'An unknown error occurred';
+}
+};
+return { error, errorMessage, submitData };
+}
+</script>
+```
+
+----------------------------------------
+
+TITLE: Conditionally Rendering Article Lists in Vue.js Template
+DESCRIPTION: This snippet illustrates a Vue.js template for `ArticleList.vue` that dynamically renders a list of articles. It uses a `v-if`/`v-else` directive to switch between `ArticleCollapsed` and `ArticleExpanded` components based on a `collapse` prop. Both components iterate over a `filtered` array, passing article data as props, with the expanded view also limiting displayed items via `currentLimit`.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/combine-branches/refactoring-example.md#_snippet_0
+
+LANGUAGE: Vue.js Template
+CODE:
+```
+<template>
+<div v-if="collapse" class="flex flex-col space-y-6 md:space-y-8">
+<ArticleCollapsed
+v-for="article in filtered"
+:key="article.slug"
+:article="article"
+/>
+</div>
+<div
+v-else
+class="grid gap-y-16 gap-x-24 xl:gap-x-32 grid-cols-1 lg:grid-cols-2 mt-8"
+>
+<ArticleExpanded
+v-for="(article, index) in filtered"
+v-show="index < currentLimit"
+:key="article.slug"
+:article="article"
+/>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Demonstrating a Pure Function in JavaScript
+DESCRIPTION: This JavaScript snippet provides an example of a pure function (`pureFunction`) that takes an input (`msg`) and returns a new value without causing any side effects or modifying external state. It highlights the principle of functional purity, where the output depends solely on the inputs, making the function predictable and easy to test.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables/intro.md#_snippet_3
+
+LANGUAGE: JavaScript
+CODE:
+```
+function pureFunction(msg) {
+// No side effects here
+return `${msg}!`;
+}
+someString = pureFunction('Hello World');
+```
+
+----------------------------------------
+
+TITLE: Droid Filtering and Reactive State Exposure in Vue.js
+DESCRIPTION: This snippet illustrates the conclusion of a droid filtering operation, likely within a computed property, followed by the exposure of reactive state variables and functions from a Vue.js setup function or composable. It includes properties for selected droid, search term, a toggle function, and filtered/sorted droids.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables/refactoring-steps.md#_snippet_6
+
+LANGUAGE: JavaScript
+CODE:
+```
+droid.status.toLowerCase().includes(droidSearchTerm.value.toLowerCase())
+);
+});
+});
+return {
+selectedDroid,
+droidSearchTerm,
+toggleSelectedDroid,
+filteredAndSortedDroids,
+};
+
+```
+
+----------------------------------------
+
+TITLE: Fetching Notifications in Vue Script Setup (TypeScript)
+DESCRIPTION: This `<script setup>` block in a Vue component handles data fetching. It imports `useFakeData` to destructure and expose the `notifications` reactive reference, making it accessible to the component's template. This setup demonstrates a common pattern for managing component-local state and dependencies.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/lifting-state/refactoring-steps.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+<script setup lang="ts">
+import useFakeData from './useFakeData';
+const { notifications } = useFakeData();
+</script>
+```
+
+----------------------------------------
+
+TITLE: Consuming Individual Reactive Properties in Vue Component
+DESCRIPTION: This component snippet shows how to consume individual reactive properties (like `darkMode` and `sidebarCollapsed`) that have been exposed from a composable using `toRefs`. These properties can be used directly in the component's script setup.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/data-store/intro.md#_snippet_5
+
+LANGUAGE: Vue
+CODE:
+```
+<script setup>
+```
+
+----------------------------------------
+
+TITLE: Refactored Parent Component with `ProductItem` Loop in Vue.js
+DESCRIPTION: This snippet shows the refactored parent component, which now uses the `ProductItem` component within a `v-for` loop. It passes each `item` as a prop to `ProductItem`, demonstrating how to delegate rendering responsibility to the child component while maintaining the looping logic in the parent.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component.md#_snippet_2
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<ProductItem
+v-for="item in list"
+:item="item"
+:key="item.id"
+/>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Toggling Dark Mode with Vue Composable (JavaScript)
+DESCRIPTION: This snippet demonstrates how to toggle a `darkMode` state using a `useUserSettings` composable. It imports the composable, destructures `darkMode` from it, and defines a `toggleDarkMode` function that inverts the `darkMode.value`. This relies on `darkMode` being a ref or similar reactive property exposed by the composable.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/data-store/intro.md#_snippet_6
+
+LANGUAGE: JavaScript
+CODE:
+```
+import useUserSettings from '~/composables/useUserState';
+const { darkMode } = useUserSettings();
+const toggleDarkMode = () => {
+darkMode.value = !darkMode.value;
+}
+```
+
+----------------------------------------
+
+TITLE: Extracting Item Display Logic into Vue.js ProductItem Component
+DESCRIPTION: This `ProductItem` component encapsulates the display logic for a single item, extracted from a `v-for` loop. It receives an `item` prop and renders its title, price, and description, promoting reusability.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component/intro.md#_snippet_1
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+<div>
+<h3>{{ item.title }}</h3>
+<p>${{ item.price }}</h3>
+<p>{{ item.description }}</p>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Passing Individual Properties vs. v-bind (Vue.js)
+DESCRIPTION: This Vue.js template illustrates two alternative methods for passing data: explicitly passing individual properties (e.g., `name`, `age`, `address`) or using `v-bind` to pass all properties of an object. While `v-bind` can simplify syntax, passing individual properties is generally less flexible than passing the whole object for future expansion.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/preserve-whole-object/intro.md#_snippet_1
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<CustomerDisplay
+:name="activeCustomer.name"
+:age="activeCustomer.age"
+:address="activeCustomer.address"
+/>
+<!-- Or using v-bind -->
+<CustomerDisplay v-bind:="activeCustomer" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Rendering List of Reactive Counters in Template - Vue.js
+DESCRIPTION: Shows how to iterate over a `listOfCounters` array in a Vue template using `v-for`. Each counter's `id` is used as a unique key, and buttons are bound to the `increment` and `decrement` methods of individual counter objects, demonstrating interactive UI with local reactive state.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/lightweight-state-management/intro.md#_snippet_2
+
+LANGUAGE: Vue
+CODE:
+```
+<div
+v-for="counter in listOfCounters"
+:key="counter.id"
+>
+<button @click="counter.decrement()">
+-
+</button>
+{{ counter.count }}
+<button @click="counter.increment()">
++
+</button>
+</div>
+```
+
+----------------------------------------
+
+TITLE: Handling Droid Selection Toggle in Vue.js
+DESCRIPTION: This function allows users to select or deselect a droid. It prevents selection changes if a repair is currently in progress. If the clicked droid is already selected, it deselects it; otherwise, it sets the clicked droid as the new `selectedDroid`. This function directly updates the `selectedDroid` reactive reference.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-composable/refactoring-steps.md#_snippet_4
+
+LANGUAGE: JavaScript
+CODE:
+```
+function toggleSelectedDroid(droid) {
+if (repairInProgress.value) {
+return;
+}
+if (selectedDroid.value && selectedDroid.value.id === droid.id) {
+selectedDroid.value = null;
+} else {
+selectedDroid.value = droid;
+}
+}
+```
+
+----------------------------------------
+
+TITLE: Defining Reactive Object for Local State in JavaScript
+DESCRIPTION: This snippet demonstrates defining a simple reactive object for localized state management. It initializes a `counter` object with a `count` property and methods for `incrementing` and `decrementing` the count. This approach is suitable for simpler state needs without the overhead of a full data store.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/lightweight-state-management/summary.md#_snippet_0
+
+LANGUAGE: JavaScript
+CODE:
+```
+const counter = reactive({
+count: 0,
+increment() {
+this.count += 1;
+},
+decrement() {
+this.count -= 1;
+},
+});
+```
+
+----------------------------------------
+
+TITLE: Illustrating a Function with a Side Effect in JavaScript
+DESCRIPTION: This JavaScript snippet demonstrates a function (`hasSideEffect`) that modifies an external variable (`someString`), illustrating what constitutes a 'side effect' in programming. It contrasts with pure functions by showing how external state can be altered, making testing and reasoning about the code more complex.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables/intro.md#_snippet_2
+
+LANGUAGE: JavaScript
+CODE:
+```
+let someString = 'Hello';
+function hasSideEffect(msg) {
+// Has a side effect
+someString = `${msg}!`;
+}
+hasSideEffect('Hello World');
+```
+
+----------------------------------------
+
+TITLE: Illustrating Side Effects in JavaScript Functions
+DESCRIPTION: This snippet demonstrates a JavaScript function (`hasSideEffect`) that modifies a variable outside its scope, illustrating a side effect. It contrasts this with a `pureFunction` that only returns a value without altering external state, emphasizing the difference between impure and pure functions.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables.md#_snippet_2
+
+LANGUAGE: JavaScript
+CODE:
+```
+let someString = 'Hello';
+function hasSideEffect(msg) {
+// Has a side effect
+someString = `${msg}!`;
+}
+hasSideEffect('Hello World');
+function pureFunction(msg) {
+// No side effects here
+return `${msg}!`;
+}
+someString = pureFunction('Hello World');
+```
+
+----------------------------------------
+
+TITLE: Automatic Ref Unwrapping with `watch` in Vue.js
+DESCRIPTION: This Vue.js snippet demonstrates that the `watch` method automatically unwraps refs when used as a source. The callback receives the raw, non-reactive value of the ref, simplifying state observation without needing explicit `.value` access within the watcher's callback.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables/intro.md#_snippet_6
+
+LANGUAGE: JavaScript
+CODE:
+```
+watch(count, (newCount) => {
+// Using a watch also automatically unwraps your refs
+console.log(`Count changed to ${newCount}`);
+});
+```
+
+----------------------------------------
+
+TITLE: Conditionally Rendering Article Lists in Vue.js
+DESCRIPTION: This Vue.js component, ArticleList.vue, demonstrates how to conditionally render different layouts for a list of articles. It uses a 'collapse' property to switch between a collapsed view (using ArticleCollapsed component) and an expanded grid view (using ArticleExpanded component), both iterating over a 'filtered' articles array. The expanded view also limits the number of displayed articles using 'v-show' and 'currentLimit'.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/list-component/refactoring-example.md#_snippet_0
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<div v-if="collapse" class="flex flex-col space-y-6 md:space-y-8">
+<ArticleCollapsed
+v-for="article in filtered"
+:key="article.slug"
+:article="article"
+/>
+</div>
+<div
+v-else
+class="grid gap-y-16 gap-x-24 xl:gap-x-32
+grid-cols-1 lg:grid-cols-2 mt-8"
+>
+<ArticleExpanded
+v-for="(article, index) in filtered"
+v-show="index < currentLimit"
+:key="article.slug"
+:article="article"
+/>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Passing Individual Properties or Using v-bind in Vue
+DESCRIPTION: Illustrates two ways to pass individual properties: explicitly listing each property or using `v-bind` to spread all properties of an object. While explicit listing can be verbose, `v-bind` offers a concise alternative. This approach might be suitable for highly reusable components that only need a subset of an object's properties.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/preserve-whole-object.md#_snippet_1
+
+LANGUAGE: Vue
+CODE:
+```
+<template>\n<CustomerDisplay\n:name="activeCustomer.name"\n:age="activeCustomer.age"\n:address="activeCustomer.address"\n/>\n<!-- Or using v-bind -->\n<CustomerDisplay v-bind="activeCustomer" />\n</template>
+```
+
+----------------------------------------
+
+TITLE: Defining Reactive Object with Methods - Vue.js
+DESCRIPTION: Demonstrates creating a simple reactive object using Vue's `reactive` API, directly embedding `increment` and `decrement` methods. This pattern allows for local state management where `this` correctly refers to the reactive object, avoiding the need for separate composables for simple cases.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/lightweight-state-management/intro.md#_snippet_0
+
+LANGUAGE: JavaScript
+CODE:
+```
+const counter = reactive({
+count: 0,
+increment() {
+this.count += 1;
+},
+decrement() {
+this.count -= 1;
+},
+});
+```
+
+----------------------------------------
+
+TITLE: Consuming Individual Reactive Properties in Vue Component
+DESCRIPTION: This Vue component snippet illustrates how to consume individual reactive properties (refs) returned from a composable. By destructuring `darkMode` and `sidebarCollapsed`, the component can directly use these reactive values, which are still linked to the original shared state.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/data-store.md#_snippet_5
+
+LANGUAGE: Vue
+CODE:
+```
+<script setup>
+import useUserSettings from '~/composables/useUserState';
+const { darkMode, sidebarCollapsed } = useUserSettings();
+</script>
+```
+
+----------------------------------------
+
+TITLE: Displaying Articles in Vue Component
+DESCRIPTION: This Vue template iterates over an 'articles' array to display each article's title as a clickable link. It uses Vue's `v-for` directive for list rendering and `NuxtLink` for navigation, applying Tailwind CSS classes for styling. The component expects an 'articles' prop, where each article object has 'slug' and 'title' properties.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component/refactoring-example.md#_snippet_0
+
+LANGUAGE: HTML
+CODE:
+```
+<template>
+<div
+v-for="article in articles"
+:key="article.slug"
+class="flex flex-col space-y-6 md:space-y-8"
+>
+<NuxtLink class="article-link" :to="article.slug">
+<h3 class="header-5 text-mt-light-blue">
+{{ article.title }}
+</h3>
+</NuxtLink>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Long Vue Article List Component Template
+DESCRIPTION: This Vue.js template defines a component responsible for displaying a list of articles, allowing users to filter them by tags and load more articles. It includes conditional rendering for collapsed/expanded views, tag selection buttons, and 'load more' functionality, demonstrating a complex, monolithic component structure.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/long-components/refactoring-example.md#_snippet_0
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+<div
+ref="container"
+class="w-full pb-12 md:pb-24 flex flex-col"
+:class="!collapse && 'pt-16 md:pt-20'"
+>
+<div class="flex flex-col justify-center">
+<div
+v-if="!collapse"
+class="border-b-2 border-gray-300 border-dotted pb-3"
+>
+<h2 ref="title" class="text-4xl font-bold mb-6">Articles</h2>
+<div class="flex flex-wrap -mx-1">
+<button
+v-for="({ name, tag }, index) in tagList"
+:key="tag"
+class="py-1 px-2 m-1 rounded border font-sans font-bold"
+@click="selectTag(index)"
+>
+{{ name }}
+</button>
+</div>
+</div>
+<div v-if="collapse" class="flex flex-col space-y-6 md:space-y-8">
+<div v-for="article in filtered" :key="article.slug">
+<NuxtLink class="article-link" :to="article.slug">
+<h3 class="header-5 text-mt-light-blue">
+{{ article.title }}
+</h3>
+</NuxtLink>
+</div>
+</div>
+<div
+v-else
+class="grid gap-y-16 gap-x-24 xl:gap-x-32 grid-cols-1 lg:grid-cols-2 mt-8"
+>
+<div
+v-for="(article, index) in filtered"
+v-show="index < currentLimit"
+:key="article.slug"
+class="space-y-5"
+>
+<NuxtLink class="article-link" :to="article.slug">
+<h3 class="header-4 text-mt-light-blue">
+{{ article.title }}
+</h3>
+</NuxtLink>
+<p class="subheader-4">
+{{ article.formattedDate }}
+</p>
+<p>{{ article.description }}</p>
+</div>
+</div>
+<div v-if="!collapse" class="flex justify-center">
+<button
+v-if="hasMoreArticles"
+class="article-btn focus-outline"
+@click="currentLimit += limit"
+>
+Load more
+</button>
+<div v-else class="mt-16 text-center">
+<template v-if="selectedTag.tag === 'all'">
+<div class="subheader-3">
+You've reached the end of the articles! 😅
+</div>
+<button class="article-btn focus-outline" @click="scrollToTaglist">
+Filter by a tag
+</button>
+</template>
+<template v-else>
+<div class="subheader-3">
+You've reached the end of the
+{{ selectedTag.name }} articles!
+</div>
+<button
+class="article-btn focus-outline"
+@click="selectTag(tagList.length - 1)"
+>
+See all articles
+</button>
+</template>
+</div>
+</div>
+</div>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Visualizing Separate Components within Vue.js Conditionals
+DESCRIPTION: This snippet re-emphasizes the previous point, explicitly labeling the v-if and v-else blocks as "Component 1" and "Component 2" respectively. It highlights that despite being within one template, these sections represent distinct functional units that could be extracted.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/hidden-components/intro.md#_snippet_1
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<!-- Component 1 -->
+<div v-if="conditional">
+<!-- ... -->
+</div>
+<!-- Component 2 -->
+<div v-else>
+<!-- ... -->
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Incorrect Local State Declaration in Vue Composable
+DESCRIPTION: This example shows an incorrect way to declare state within a Vue composable. When `state` is declared inside the `export default` function, a new reactive state object is created every time the composable is called, leading to independent state instances instead of a shared global state.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/data-store.md#_snippet_3
+
+LANGUAGE: JavaScript
+CODE:
+```
+export default () => {
+// This state is unique to each call
+const state = reactive({
+darkMode: false,
+sidebarCollapsed: false,
+theme: 'nord',
+});
+}
+```
+
+----------------------------------------
+
+TITLE: Displaying a List of Counters in Vue.js Template
+DESCRIPTION: This HTML snippet demonstrates how to render a list of counter objects using Vue.js's `v-for` directive. Each counter displays its `count` and provides buttons to `increment` and `decrement` its value, leveraging methods defined on the counter object.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/inline-composables/intro.md#_snippet_0
+
+LANGUAGE: HTML
+CODE:
+```
+<div
+v-for="counter in listOfCounters"
+:key="counter.id"
+>
+<button @click="counter.decrement()">
+-
+</button>
+{{ counter.count }}
+<button @click="counter.increment()">
++
+</button>
+</div>
+```
+
+----------------------------------------
+
+TITLE: Declaring UI State Variables in Vue.js
+DESCRIPTION: This section declares several reactive state variables using Vue's `ref` function. These variables manage the current UI state, including the currently `selectedDroid`, search terms for `droids` and `parts`, and flags to track whether a `repairInProgress` and its `repairProgress` percentage. These are central to user interaction and display logic.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-composable/refactoring-steps.md#_snippet_3
+
+LANGUAGE: JavaScript
+CODE:
+```
+const selectedDroid = ref(null);
+const droidSearchTerm = ref('');
+const partSearchTerm = ref('');
+const repairInProgress = ref(false);
+const repairProgress = ref(0);
+```
+
+----------------------------------------
+
+TITLE: Initial `v-for` Loop in Vue.js Parent Component
+DESCRIPTION: This snippet shows an initial Vue.js template where a `v-for` directive directly renders item details within the parent component. It iterates over a `list` and displays `title`, `price`, and `description` for each `item` directly in the template.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component.md#_snippet_0
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<div v-for="item in list" :key="item.id">
+<h3>{{ item.title }}</h3>
+<p>${{ item.price }}</h3>
+<p>{{ item.description }}</p>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Defining Customer Types with TypeScript
+DESCRIPTION: Defines multiple TypeScript types for different customer categories: `RegularCustomer`, `PremiumCustomer`, and `BusinessCustomer`. Each type extends common properties like `name`, `age`, `address`, and `purchaseHistory`, but also includes specific details relevant to their category. This demonstrates how different object shapes can exist for similar entities.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/preserve-whole-object.md#_snippet_2
+
+LANGUAGE: TypeScript
+CODE:
+```
+type RegularCustomer = {\nname: string;\nage: number;\naddress: string;\npurchaseHistory: Record<string, number>;\n};\ntype PremiumCustomer = {\nname: string;\nage: number;\naddress: string;\npurchaseHistory: Record<string, number>;\nmembershipExpiry: Date;\n};\ntype BusinessCustomer = {\nname: string;\nage: number;\naddress: string;\npurchaseHistory: Record<string, number>;\nbusinessDetails: {\nregistrationNumber: string;\nbusinessName: string;\n};\n};
+```
+
+----------------------------------------
+
+TITLE: Conceptualizing Separate Components from v-if/v-else Branches in Vue.js
+DESCRIPTION: This snippet visually highlights how the `v-if` and `v-else` branches within a single Vue.js template can be conceptually viewed as two independent components. It reinforces the idea that exclusive conditional logic often indicates the presence of hidden, separable functionalities.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/hidden-components.md#_snippet_1
+
+LANGUAGE: HTML
+CODE:
+```
+<template>
+<!-- Component 1 -->
+<div v-if="conditional">
+<!-- ... -->
+</div>
+<!-- Component 2 -->
+<div v-else>
+<!-- ... -->
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Initial Vue.js v-for Loop in Parent Component
+DESCRIPTION: This snippet shows a common starting point where a `v-for` directive is directly applied to an element within a parent component's template. This can lead to cluttered templates when the looped content is extensive or when many such loops exist.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/list-component/intro.md#_snippet_0
+
+LANGUAGE: html
+CODE:
+```
+<div v-for="item in list" :key="item.id">
+<!-- Lots of code -->
+</div>
+```
+
+----------------------------------------
+
+TITLE: Anti-pattern: Spreading Props with `v-bind` in Vue.js
+DESCRIPTION: This snippet illustrates an anti-pattern where `v-bind` is used to 'spread' an `item` object's properties directly as props to `ProductItem`. This approach can lead to less maintainable code and is discouraged, especially when dealing with complex objects or TypeScript.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component.md#_snippet_3
+
+LANGUAGE: Vue.js
+CODE:
+```
+<ProductItem v-bind="item" />
+```
+
+----------------------------------------
+
+TITLE: Defining Diverse Customer Types (TypeScript)
+DESCRIPTION: This TypeScript snippet defines three distinct customer types: `RegularCustomer`, `PremiumCustomer`, and `BusinessCustomer`. Each type extends common properties with specific fields, illustrating how different data structures can share a common interface, which is crucial when designing generic components that only rely on a subset of properties.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/preserve-whole-object/intro.md#_snippet_2
+
+LANGUAGE: TypeScript
+CODE:
+```
+type RegularCustomer = {
+name: string;
+age: number;
+address: string;
+purchaseHistory: Record<string, number>;
+};
+type PremiumCustomer = {
+name: string;
+age: number;
+address: string;
+purchaseHistory: Record<string, number>;
+membershipExpiry: Date;
+};
+type BusinessCustomer = {
+name: string;
+age: number;
+address: string;
+purchaseHistory: Record<string, number>;
+businessDetails: {
+registrationNumber: string;
+businessName: string;
+};
+};
+```
+
+----------------------------------------
+
+TITLE: Anti-pattern: Defining Individual Props for Spread Object in Vue.js
+DESCRIPTION: This snippet shows the `defineProps` declaration corresponding to the `v-bind` anti-pattern. It individually defines each expected property (`id`, `price`, `title`, `description`) that would be spread from the `item` object. This approach breaks the 'Preserve Whole Object' pattern.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/item-component.md#_snippet_4
+
+LANGUAGE: Vue.js
+CODE:
+```
+defineProps({
+id: String,
+price: Number,
+title: String,
+description: String,
+});
+```
+
+----------------------------------------
+
+TITLE: Applying Vue.js Item Component Pattern (Exposed Loop)
+DESCRIPTION: This snippet demonstrates an intermediate refactoring step where the content inside the `v-for` loop is moved into a new `NewComponentItem`. While it cleans up the inner content, the `v-for` directive itself remains in the parent component, still contributing to template clutter.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/list-component/intro.md#_snippet_1
+
+LANGUAGE: html
+CODE:
+```
+<NewComponentItem
+v-for="item in list"
+:key="item.id"
+:item="item"
+/>
+```
+
+----------------------------------------
+
+TITLE: Initial Form Submission Component - Vue.js
+DESCRIPTION: This snippet presents a standard Vue.js component responsible for handling user input, submitting data to an API, and displaying error messages. It directly manages state for user input, error status, and messages, and contains the asynchronous data processing logic within the component's script setup.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-composable/intro.md#_snippet_0
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<div>
+<input v-model="userInput" />
+<button @click="processData">Submit</button>
+<p v-if="error">{{ errorMessage }}</p>
+</div>
+</template>
+<script setup lang="ts">
+import { ref } from 'vue';
+const emit = defineEmits<{
+(e: 'submission', data: string): void
+}>();
+const props = defineProps<{ apiUrl: string }>();
+const userInput = ref('');
+const error = ref(false);
+const errorMessage = ref('');
+const processData = async () => {
+try {
+error.value = false;
+errorMessage.value = '';
+const response = await fetch(props.apiUrl, {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ data: userInput.value })
+});
+if (!response.ok) {
+throw new Error('Failed to submit data');
+}
+const result = await response.json();
+emit('submission', result.message);
+} catch (err) {
+error.value = true;
+errorMessage.value = err.message ||
+'An unknown error occurred';
+}
+};
+</script>
+```
+
+----------------------------------------
+
+TITLE: Refactored Vue Conditional with Wrapper Divs
+DESCRIPTION: This snippet demonstrates the first step of refactoring, where the content of each `v-if` and `v-else` branch is extracted into its own dedicated Vue component (`NewComponent` and `OtherComponent`). The conditional logic remains on wrapper `div` elements.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-conditional/intro.md#_snippet_1
+
+LANGUAGE: HTML
+CODE:
+```
+<div v-if="condition">
+<NewComponent />
+</div>
+<div v-else>
+<OtherComponent />
+</div>
+```
+
+----------------------------------------
+
+TITLE: Defining User Type in TypeScript
+DESCRIPTION: This snippet defines the `User` type in TypeScript, which is a fundamental data structure used across the application. It includes properties for a user's unique identifier (`id`), their `name`, and their online status (`isOnline`). This type serves as a contract for user data throughout the application.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/preserve-whole-object/refactoring-steps.md#_snippet_0
+
+LANGUAGE: TypeScript
+CODE:
+```
+export type User = {
+id: number;
+name: string;
+isOnline: boolean;
+}
+```
+
+----------------------------------------
+
+TITLE: Vue.js Droid Repair Application Template Structure
+DESCRIPTION: This Vue.js template defines the user interface for a Droid Repair application. It includes a section for displaying a searchable list of droids, allowing users to select a droid, and a 'Repair Bay' area that shows details of the selected droid, including parts needed and any missing parts. The template uses Vue directives like `v-model` for input binding, `v-if` for conditional rendering, `v-for` for list rendering, and event handlers (`@click`, `@keydown.enter`) for user interaction. It also incorporates `TransitionGroup` and `Transition` for UI animations.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/humble-components/refactoring-steps.md#_snippet_0
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<div class="demo font-sans">
+<!-- Droid List Display -->
+<div class="mb-8 rounded-lg border border-gray-300 bg-gray-100 p-4">
+<h3 class="text-xl font-bold mb-2">Droids for Repair</h3>
+<div class="my-4">
+<input
+v-model="droidSearchTerm"
+placeholder="Search Droids"
+class="px-4 py-2 w-full rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-mt-blue focus:border-transparent"
+/>
+</div>
+<div
+class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[800px] overflow-y-auto overflow-x-clip"
+>
+<div v-if="!filteredAndSortedDroids.length" class="text-gray-700">
+No droids found
+</div>
+<TransitionGroup name="list">
+<div
+v-for="droid in filteredAndSortedDroids"
+:key="droid.id"
+class="bg-gray-200 border-2 rounded-lg p-4 duration-200 ease-in-out"
+:class="{
+'border-mt-blue': selectedDroid && selectedDroid.id === droid.id,
+'border-transparent':
+selectedDroid && selectedDroid.id !== droid.id,
+// Pulsing background when repairing
+'animate-pulse':
+repairInProgress &&
+selectedDroid &&
+selectedDroid.id === droid.id,
+'cursor-pointer': !repairInProgress,
+'cursor-not-allowed': repairInProgress,
+}"
+tabindex="0"
+@click="toggleSelectedDroid(droid)"
+@keydown.enter="toggleSelectedDroid(droid)"
+>
+<h4 class="text-lg font-bold mb-2">{{ droid.type }}</h4>
+<p class="mb-2">
+<span class="font-bold text-gray-500">Status:</span>
+{{ droid.status }}
+</p>
+<p class="text-gray-700 mb-2">
+<span class="font-bold text-gray-500">Parts Needed:</span>
+{{ droid.partsNeeded.join(', ') }}
+</p>
+</div>
+</TransitionGroup>
+</div>
+</div>
+<!-- Repair Bay -->
+<div
+ref="repairList"
+class="mb-8 rounded-lg border border-gray-300 bg-gray-100 p-4"
+>
+<h3 class="text-xl font-bold">Repair Bay</h3>
+<Transition name="list" mode="out-in">
+<div
+class="bg-gray-200 rounded-lg p-4 mt-4"
+v-if="selectedDroid"
+:key="selectedDroid.type"
+>
+<div class="flex flex-row justify-between">
+<div class="flex flex-col justify-between">
+<div>
+<h4
+class="text-lg font-bold mb-2 flex flex-row items-center justify-between"
+>
+Selected Droid: {{ selectedDroid.type }}
+</h4>
+<ul class="list-disc list-inside mb-4">
+<li
+v-for="part in selectedDroid.partsNeeded"
+:key="part"
+class="text-gray-700"
+>
+{{ part }}
+</li>
+</ul>
+</div>
+</div>
+<!-- Missing Parts Notification -->
+<div class="w-1/2" v-if="missingParts.length">
+<h4 class="text-lg font-bold mb-2 text-red-500">Missing Parts</h4>
+<ul class="list-disc list-inside">
+<li
+v-for="missing in missingParts"
+:key="missing.part"
+class="text-gray-700"
+>
+{{ missing }}
+</li>
+</ul>
+</div>
+</div>
+```
+
+----------------------------------------
+
+TITLE: Mixed Logic Component Script Example in Vue.js
+DESCRIPTION: This script snippet for `DogList.vue` accompanies the mixed-logic template, showing how state management (`useDogs`, `useSearchFilter`) is still present, but the direct rendering of dog details in the template (as seen in the corresponding template snippet) makes the component less modular. It highlights how combining UI rendering with data fetching and filtering in one component can lead to 'whiplash' and reduced clarity.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/layers-of-abstraction/intro.md#_snippet_5
+
+LANGUAGE: JavaScript
+CODE:
+```
+const dogs = useDogs();
+const filterValues = useSearchFilter(dogs);
+```
+
+----------------------------------------
+
+TITLE: Automatic Ref Unwrapping with `watch` in Vue.js
+DESCRIPTION: This example demonstrates that Vue's `watch` function automatically unwraps reactive references passed to it. The callback receives the primitive value directly, simplifying reactive side effects and logging without needing explicit `.value` access.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables.md#_snippet_5
+
+LANGUAGE: JavaScript
+CODE:
+```
+watch(count, (newCount) => {
+// Using a watch also automatically unwraps your refs
+console.log(`Count changed to ${newCount}`);
+});
+```
+
+----------------------------------------
+
+TITLE: Mixed Logic Component Template Example in Vue.js
+DESCRIPTION: This snippet presents an example of a `DogList` component where presentation logic and business logic are mixed within the same template. Instead of using a `SimpleCard` humble component, it directly renders the dog details and handles the click event inline, illustrating the complexity and reduced maintainability that arises from not separating concerns.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/layers-of-abstraction/intro.md#_snippet_4
+
+LANGUAGE: HTML
+CODE:
+```
+<template>
+<div>
+<DogFilter v-model="filterValues"/>
+<div v-for="dog in dogs" :key="dog.id">
+<div @click="() => handleClick(dog)">
+<h1>{{ dog.breed }}</h1>
+<p>{{ dog.description }}</p>
+</div>
+<div>
+{{ dog.content }}
+</div>
+</div>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Tracking Completed Repairs and Filtered Droids in Vue.js
+DESCRIPTION: This snippet initializes a reactive array `completedRepairs` to store droids that have successfully undergone repair. It also begins the definition of `filteredAndSortedDroids`, a computed property intended to dynamically filter and sort the list of active droids based on search terms or other criteria, preparing them for display in the UI.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-composable/refactoring-steps.md#_snippet_6
+
+LANGUAGE: JavaScript
+CODE:
+```
+const completedRepairs = ref([]);
+const filteredAndSortedDroids = computed(() => {
+```
+
+----------------------------------------
+
+TITLE: Original Component with Conditional Rendering (v-if/v-else) in Vue.js
+DESCRIPTION: This snippet shows a typical Vue.js component structure before refactoring, where a `v-if` directive controls the rendering of large blocks of HTML. The `<!-- Lots of code here -->` and `<!-- Lots of other code -->` comments indicate significant, potentially complex, logic within each branch. This pattern often leads to large, hard-to-maintain components.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-conditional.md#_snippet_0
+
+LANGUAGE: HTML
+CODE:
+```
+<div v-if="condition">
+<div>
+<!-- Lots of code here -->
+</div>
+</div>
+<div v-else>
+<div>
+<!-- Lots of other code -->
+</div>
+</div>
+```
+
+----------------------------------------
+
+TITLE: Initial Conditional Rendering in Vue.js
+DESCRIPTION: This snippet illustrates a common Vue.js template structure where `v-if` and `v-else` directives are used to conditionally render different components. This is the starting point before applying the 'Combine Branches' refactoring pattern.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/combine-branches/intro.md#_snippet_0
+
+LANGUAGE: Vue
+CODE:
+```
+<div v-if="condition">\n<!-- Does something cool -->\n<FirstComponent />\n</div>\n<div v-else>\n<!-- Does something different, but the same (almost) -->\n<SecondComponent />\n</div>
+```
+
+----------------------------------------
+
+TITLE: Original Vue Conditional Structure
+DESCRIPTION: This snippet shows a common pattern of using `v-if` and `v-else` directives within a single Vue component template. It represents the initial state before refactoring, where large blocks of code are conditionally rendered directly within the parent component.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-conditional/intro.md#_snippet_0
+
+LANGUAGE: HTML
+CODE:
+```
+<div v-if="condition">
+<div>
+<!-- Lots of code here -->
+</div>
+</div>
+<div v-else>
+<div>
+<!-- Lots of other code -->
+</div>
+</div>
+```
+
+----------------------------------------
+
+TITLE: Preventing Naming Collisions with `import * as` in JavaScript
+DESCRIPTION: This JavaScript snippet shows how to use `import * as` to import all exports from a module under a namespace (e.g., `counter`). This practice helps prevent naming collisions when functions in different modules (like a composable and a pure business logic file) share the same name, improving code clarity and maintainability.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/thin-composables/intro.md#_snippet_7
+
+LANGUAGE: JavaScript
+CODE:
+```
+import * as counter from "./counter.js";
+// ...
+function increment() {
+// Use .value to pass in the underlying value
+count.value = counter.increment(count.value);
+}
+```
+
+----------------------------------------
+
+TITLE: Initializing Droid and Part Data in Vue.js
+DESCRIPTION: This snippet initializes the application's core data: droids and their associated parts. It imports droid data, randomizes their order, and then processes this data to create a comprehensive list of all unique parts. It also sets up initial reactive states for `droids` and `parts` based on a subset of the randomized data, ensuring the UI has immediate content.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-composable/refactoring-steps.md#_snippet_0
+
+LANGUAGE: JavaScript
+CODE:
+```
+import droidData from './droids.js';
+// Randomize droid order
+const randomDroids = useState('droids', () =>
+droidData.sort(() => Math.random() - 0.5)
+);
+const allParts = randomDroids.value.reduce((acc, droid) => {
+droid.partsNeeded.forEach((part) => {
+if (acc.findIndex((el) => el.name === part) === -1) {
+acc.push({
+id: acc.length + 1,
+name: part,
+quantity: Math.floor(Math.random() * 10),
+});
+}
+});
+return acc;
+}, []);
+const initialDroids = randomDroids.value.slice(0, 4);
+const remainingDroids = randomDroids.value.slice(4);
+const droids = reactive(initialDroids);
+// Initial parts should cover the first two droids
+const initialParts = allParts.filter((part) => {
+return initialDroids.some((droid) => {
+return droid.partsNeeded.includes(part.name);
+});
+});
+const parts = reactive(initialParts);
+```
+
+----------------------------------------
+
+TITLE: Preferring Functional Array Methods over Traditional Loops in JavaScript
+DESCRIPTION: This JavaScript snippet provides an analogy for abstracting iteration details, contrasting a traditional `for` loop with the more modern and functional `forEach` array method. It highlights the preference for abstracting iteration logic, which parallels the benefits of encapsulating `v-for` directives within a dedicated list component in Vue.js.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/list-component.md#_snippet_3
+
+LANGUAGE: JavaScript
+CODE:
+```
+// Instead of this
+for (let i = 0; i < array.length; i++) {
+// ...
+}
+// Use a functional-style method
+array.forEach((item) => {
+// ...
+})
+```
+
+----------------------------------------
+
+TITLE: Managing Droid Repair Lifecycle in Vue.js
+DESCRIPTION: This function orchestrates the droid repair process. It sets `repairInProgress` to true, updates the droid's status, and decrements quantities of required parts from the inventory, triggering a temporary `removed` flag for animation. It then uses `requestAnimationFrame` to simulate repair progress over a random duration, updating `repairProgress`. Upon completion, the droid's status changes to 'Repaired', it's moved to `completedRepairs`, and removed from the active `droids` list.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-composable/refactoring-steps.md#_snippet_5
+
+LANGUAGE: JavaScript
+CODE:
+```
+function initiateRepair() {
+repairInProgress.value = true;
+repairProgress.value = 0;
+selectedDroid.value.status = 'Repairing...';
+// Remove parts from inventory
+selectedDroid.value.partsNeeded.forEach((part) => {
+const matchingPart = parts.find((p) => p.name === part);
+if (matchingPart) {
+matchingPart.quantity--;
+matchingPart.removed = true;
+setTimeout(() => {
+matchingPart.removed = false;
+}, 1000);
+}
+});
+let start = null;
+const duration = Math.random() * 1000 + 1000;
+async function step(timestamp) {
+if (!start) start = timestamp;
+const progress = timestamp - start;
+repairProgress.value = Math.min(progress / (duration / 100), 100);
+if (progress < duration) {
+window.requestAnimationFrame((timestamp) => step(timestamp, duration));
+} else {
+repairProgress.value = 100;
+selectedDroid.value.status = 'Repaired';
+repairInProgress.value = false;
+completedRepairs.value.push(selectedDroid.value);
+const indexToDelete = droids.indexOf(selectedDroid.value);
+selectedDroid.value = null;
+await nextTick();
+droids.splice(indexToDelete, 1);
+}
+}
+window.requestAnimationFrame(step);
+}
+```
+
+----------------------------------------
+
+TITLE: Vue.js Articles Component Template
+DESCRIPTION: This snippet defines the template structure for an 'Articles' Vue component. It conditionally renders different layouts based on a 'collapse' state, displaying either a tag filter section and a detailed article list, or a simplified list of article titles. It uses Vue directives like 'v-if', 'v-for', and '@click' for dynamic rendering and interaction.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/component-boundaries/refactoring-example.md#_snippet_0
+
+LANGUAGE: HTML
+CODE:
+```
+<div
+v-if="!collapse"
+class="border-b-2 border-gray-300 border-dotted pb-3"
+>
+<h2 ref="title" class="text-4xl font-bold mb-6">Articles</h2>
+<div class="flex flex-wrap -mx-1">
+<button
+v-for="({ name, tag }, index) in tagList"
+:key="tag"
+class="py-1 px-2 m-1 rounded border font-sans font-bold"
+@click="selectTag(index)"
+>
+{{ name }}
+</button>
+</div>
+</div>
+<div v-if="collapse" class="flex flex-col space-y-6 md:space-y-8">
+<div v-for="article in filtered" :key="article.slug">
+<NuxtLink class="article-link" :to="article.slug">
+<h3 class="header-5 text-mt-light-blue">
+{{ article.title }}
+</h3>
+</NuxtLink>
+</div>
+</div>
+<div
+v-else
+class="grid gap-y-16 gap-x-24 xl:gap-x-32 grid-cols-1 lg:grid-cols-2 mt-8"
+>
+<div
+v-for="(article, index) in filtered"
+v-show="index < currentLimit"
+:key="article.slug"
+class="space-y-5"
+>
+<NuxtLink class="article-link" :to="article.slug">
+<h3 class="header-4 text-mt-light-blue">
+{{ article.title }}
+</h3>
+</NuxtLink>
+<p class="subheader-4">
+{{ article.formattedDate }}
+</p>
+<p>{{ article.description }}</p>
+</div>
+</div>
+```
+
+----------------------------------------
+
+TITLE: Filtering Droids by Type or Status in JavaScript
+DESCRIPTION: This snippet filters a list of 'droids' based on a search term. It checks if the droid's 'type' or 'status' includes the lowercase version of the search term, providing a flexible search mechanism. It is typically used within a reactive context like a Vue.js computed property.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-composable/refactoring-steps.md#_snippet_7
+
+LANGUAGE: JavaScript
+CODE:
+```
+return droids.filter((droid) => {
+return (
+droid.type.toLowerCase().includes(droidSearchTerm.value.toLowerCase()) ||
+droid.status.toLowerCase().includes(droidSearchTerm.value.toLowerCase())
+);
+});
+```
+
+----------------------------------------
+
+TITLE: Rendering Video Feed with Highly Coupled VideoItem Component in Vue.js
+DESCRIPTION: This Vue.js template snippet from the VideoFeed.vue component demonstrates how a list of video items is rendered. It iterates over a 'videoFeed' array and renders a 'VideoItem' component for each video. The snippet explicitly shows the high degree of coupling by passing a large number of props (e.g., id, url, thumbnail, title) and handling multiple events (e.g., @subscribe, @save-for-later) directly from the parent, indicating a need for refactoring to reduce complexity and improve maintainability.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/insider-trading/refactoring-example.md#_snippet_0
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<div
+v-for="video in videoFeed"
+class="flex flex-col space-y-4"
+:key="video.id"
+>
+<VideoItem
+:id="video.id"
+:url="video.url"
+:thumbnail="video.thumbnail"
+:title="video.title"
+:preview="video.preview"
+:description="video.description"
+:author="video.author"
+:uploadDate="video.uploadDate"
+:views="video.views"
+:isSavedForLater="video.isSavedForLater"
+:isSubscribed="video.isSubscribed"
+:isWatched="video.isWatched"
+:isLiked="video.isLiked"
+@subscribe="subscribe"
+@save-for-later="saveForLater"
+@mark-watched="markWatched"
+@like="like"
+@share="share"
+@add-to-playlist="addToPlaylist"
+/>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Main Application Component (App.vue) Implementation
+DESCRIPTION: This snippet defines the root 'App.vue' component, which serves as the main layout for the demo application. It integrates various sub-components like ChatSidebar, DirectMessage, MessageInput, and NotificationArea. The component manages user selection, handles message sending, and initializes mock data using the 'useFakeData' composable.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/data-store/refactoring-steps.md#_snippet_0
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<div class="demo bg-gray-100 rounded-lg">
+<div class="container mx-auto grid grid-cols-4 gap-4 p-4">
+<ChatSidebar
+class="col-span-1"
+:online-users="onlineUsers"
+:selected-user="selectedUser"
+@select-user="selectUser"
+/>
+<div class="col-span-2">
+<DirectMessage :selected-user="selectedUser" :messages="messages" />
+<MessageInput @send-message="handleMessage" />
+</div>
+<NotificationArea class="col-span-1" :notifications="notifications" />
+</div>
+</div>
+<button
+class="mt-4 font-sans bg-mt-coral rounded-md py-1 px-2 font-bold text-white"
+@click="initialize"
+>
+Reset Demo
+</button>
+</template>
+<script setup lang="ts">
+import { ref } from 'vue';
+import ChatSidebar from './ChatSidebar.vue';
+import DirectMessage from './DirectMessage.vue';
+import MessageInput from './MessageInput.vue';
+import NotificationArea from './NotificationArea.vue';
+import { User } from './types';
+import useFakeData from './useFakeData';
+// Mock a live API using fake data
+const { onlineUsers, notifications, messages, initialize } = useFakeData();
+const selectedUser = ref<User>(onlineUsers.value[0]);
+const selectUser = (user: User) => {
+selectedUser.value = user;
+};
+const handleMessage = (message) => {
+messages.value.unshift({
+id: messages.value.length + 1,
+from: 'You',
+to: selectedUser.value.name,
+content: message,
+time: new Date().toLocaleTimeString(),
+});
+};
+</script>
+```
+
+----------------------------------------
+
+TITLE: Displaying Articles with Conditional Layouts in Vue.js
+DESCRIPTION: This Vue.js template renders a list of articles with two distinct layouts: a collapsed view and an expanded grid view. It uses `v-if` and `v-else` to switch between layouts based on the `collapse` prop. Articles are iterated using `v-for`, displaying titles, dates, and descriptions, and linking to individual article pages using `NuxtLink`. The expanded view also limits the number of displayed articles using `v-show` and `currentLimit`.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/extract-conditional/refactoring-example.md#_snippet_0
+
+LANGUAGE: Vue.js Template
+CODE:
+```
+<template>
+<div v-if="collapse" class="flex flex-col space-y-6 md:space-y-8">
+<div v-for="article in filtered" :key="article.slug">
+<NuxtLink class="article-link" :to="article.slug">
+<h3 class="header-5 text-mt-light-blue">
+{{ article.title }}
+</h3>
+</NuxtLink>
+</div>
+</div>
+<div
+v-else
+class="grid gap-y-16 gap-x-24 xl:gap-x-32 grid-cols-1 lg:grid-cols-2 mt-8"
+>
+<div
+v-for="(article, index) in filtered"
+v-show="index < currentLimit"
+:key="article.slug"
+class="space-y-5"
+>
+<NuxtLink class="article-link" :to="article.slug">
+<h3 class="header-4 text-mt-light-blue">
+{{ article.title }}
+</h3>
+</NuxtLink>
+<p class="subheader-4">
+{{ article.formattedDate }}
+</p>
+<p>{{ article.description }}</p>
+</div>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Defining Click Handler for Navigation in JavaScript
+DESCRIPTION: This JavaScript arrow function defines a click handler that navigates to a URL. It takes a 'dog' object as an argument, which is expected to have a 'url' property. The function then calls a 'navigateTo' function, passing the 'dog.url' as the destination.
+SOURCE: https://github.com/serp-y/clean-components-docs/blob/main/layers-of-abstraction/intro.md#_snippet_6
+
+LANGUAGE: JavaScript
+CODE:
+```
+const handleClick = (dog) => navigateTo(dog.url)
+```

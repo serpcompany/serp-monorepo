@@ -1,0 +1,318 @@
+TITLE: Basic Usage of NuxtLink vs Anchor Tag (Vue)
+DESCRIPTION: Compares the use of a standard HTML `<a>` tag with the `NuxtLink` component for internal navigation. It demonstrates that `NuxtLink` is a drop-in replacement, automatically providing client-side navigation and resource prefetching, with the `to` prop being the preferred way to specify the destination.
+SOURCE: https://github.com/serp-y/nuxt-tips-collection/blob/main/Nuxt-Tips-Collection.md#_snippet_11
+
+LANGUAGE: Vue
+CODE:
+```
+<!-- Using an anchor tag -->
+<a href="/articles">Articles</a>
+
+<NuxtLink href="/articles">Articles</NuxtLink>
+```
+
+LANGUAGE: Vue
+CODE:
+```
+<!-- Using an anchor tag -->
+<a href="/articles">Articles</a>
+
+<NuxtLink to="/articles">Articles</NuxtLink>
+```
+
+----------------------------------------
+
+TITLE: Preserving NuxtPage State with KeepAlive Attribute
+DESCRIPTION: This snippet shows how to apply the `keepalive` attribute directly to the `<NuxtPage />` component in `app.vue`. This ensures that all child components rendered by NuxtPage preserve their state across route changes, preventing re-creation and state loss.
+SOURCE: https://github.com/serp-y/nuxt-tips-collection/blob/main/Nuxt-Tips-Collection.md#_snippet_1
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+  <NuxtPage keepalive />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Controlling Page Prefetching with NuxtLink (Vue)
+DESCRIPTION: Demonstrates how `NuxtLink` automatically prefetches data for internal links when they enter the viewport, improving perceived performance. It also shows how to explicitly enable or disable this prefetching behavior using the `prefetch` prop.
+SOURCE: https://github.com/serp-y/nuxt-tips-collection/blob/main/Nuxt-Tips-Collection.md#_snippet_14
+
+LANGUAGE: Vue
+CODE:
+```
+<NuxtLink to="/articles" prefetch>Articles</NuxtLink>
+```
+
+LANGUAGE: Vue
+CODE:
+```
+<NuxtLink to="/articles" :prefetch="false">Articles</NuxtLink>
+```
+
+----------------------------------------
+
+TITLE: Lazy Loading Components with Nuxt (Vue)
+DESCRIPTION: Illustrates how to lazy load components in Nuxt by prefixing their name with `Lazy`. This defers the component's loading until it's actually needed (e.g., when a `v-if` condition becomes true), enabling automatic code splitting and improving initial page load performance.
+SOURCE: https://github.com/serp-y/nuxt-tips-collection/blob/main/Nuxt-Tips-Collection.md#_snippet_9
+
+LANGUAGE: Vue
+CODE:
+```
+<!-- Loads as soon as possible -->
+<Modal v-if="showModal" />
+
+<!-- Only loads when showModal = true -->
+<LazyModal v-if="showModal" />
+```
+
+----------------------------------------
+
+TITLE: ClientOnly Component with Fallback Slot for Server-Side Loading in Nuxt.js
+DESCRIPTION: This example demonstrates using the `<ClientOnly>` component with a `#fallback` slot. The fallback content is rendered on the server while the client-only content is loading or hydrating, providing a smooth user experience by showing a loading state before the client-side component becomes interactive.
+SOURCE: https://github.com/serp-y/nuxt-tips-collection/blob/main/Nuxt-Tips-Collection.md#_snippet_7
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+  <div>
+    <p>A regular component rendered on the server and client.</p>
+    <ClientOnly>
+      <p>But this part shouldn't be rendered on the server</p>
+      <WillBreakOnTheServer />
+      <template #fallback>
+        <Spinner>
+          Just give me a moment while I load some things.
+        </Spinner>
+      </template>
+    </ClientOnly>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Handling External Links with NuxtLink (Vue)
+DESCRIPTION: Illustrates how `NuxtLink` automatically handles external URLs by adding `noopener` and `noreferrer` attributes for security. It also shows how to explicitly mark a link as external using the `external` prop when NuxtLink might not detect it automatically, such as with redirects.
+SOURCE: https://github.com/serp-y/nuxt-tips-collection/blob/main/Nuxt-Tips-Collection.md#_snippet_12
+
+LANGUAGE: Vue
+CODE:
+```
+<!-- Using an anchor tag -->
+<a href="www.masteringnuxt.com" rel="noopener noreferrer">
+  Mastering Nuxt
+</a>
+
+<NuxtLink to="www.masteringnuxt.com">
+  Mastering Nuxt
+</NuxtLink>
+```
+
+LANGUAGE: Vue
+CODE:
+```
+<NuxtLink
+  to="www.masteringnuxt.com"
+  external
+>
+  Mastering Nuxt
+</NuxtLink>
+```
+
+----------------------------------------
+
+TITLE: Rendering Components Only on the Client-Side in Nuxt.js
+DESCRIPTION: This snippet illustrates the basic usage of the `<ClientOnly>` component. Content wrapped within `<ClientOnly>` will only be rendered on the client-side, and is tree-shaken from the server build, which is useful for components that rely on browser APIs or should not be server-rendered.
+SOURCE: https://github.com/serp-y/nuxt-tips-collection/blob/main/Nuxt-Tips-Collection.md#_snippet_6
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+  <div>
+    <p>A regular component rendered on the server and client.</p>
+    <ClientOnly>
+      <p>But this part shouldn't be rendered on the server</p>
+      <WillBreakOnTheServer />
+    </ClientOnly>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Opening Links in New Tab with NuxtLink (Vue)
+DESCRIPTION: Explains how to make a `NuxtLink` open its destination in a new browser tab or window by utilizing the standard HTML `target="_blank"` attribute. Since `NuxtLink` renders an `<a>` tag, it supports all standard anchor element attributes.
+SOURCE: https://github.com/serp-y/nuxt-tips-collection/blob/main/Nuxt-Tips-Collection.md#_snippet_13
+
+LANGUAGE: Vue
+CODE:
+```
+<NuxtLink
+  to="/articles"
+  target="_blank"
+>
+  Mastering Nuxt 3
+</NuxtLink>
+```
+
+----------------------------------------
+
+TITLE: Configuring Custom Global Component Folders in Nuxt (JavaScript)
+DESCRIPTION: Shows how to configure Nuxt to recognize a custom folder (`~/globalComponents`) as containing global components. This allows components within that folder to be auto-imported and treated as global, leading to separate async chunks and potentially faster initial page loads.
+SOURCE: https://github.com/serp-y/nuxt-tips-collection/blob/main/Nuxt-Tips-Collection.md#_snippet_10
+
+LANGUAGE: JavaScript
+CODE:
+```
+export default defineNuxtConfig({
+  components: [
+    // Keep the default component folder
+    '~/components',
+    // Add in a custom global folder,
+    {
+      path: '~/globalComponents',
+      global: true,
+    },
+  ],
+});
+```
+
+----------------------------------------
+
+TITLE: Configuring KeepAlive via definePageMeta in Nuxt.js
+DESCRIPTION: This example demonstrates setting the `keepalive` property within `definePageMeta` for a Nuxt page. When `keepalive` is set to `true` here, all child pages rendered by the `<NuxtPage />` component within this parent will have their state preserved, even if the parent itself is not kept alive.
+SOURCE: https://github.com/serp-y/nuxt-tips-collection/blob/main/Nuxt-Tips-Collection.md#_snippet_2
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+  <div>
+    Keepin it alive.
+    <NuxtPage />
+  </div>
+</template>
+
+<script setup>
+definePageMeta({
+  keepalive: true,
+});
+</script>
+```
+
+----------------------------------------
+
+TITLE: Using DevOnly Component for Development Builds in Nuxt.js
+DESCRIPTION: This snippet demonstrates wrapping a component, `<DevAccountSwitcher />`, with the `<DevOnly>` component. This ensures that the wrapped content is only included and rendered during development builds, and completely removed from production builds, ideal for debugging or admin tools.
+SOURCE: https://github.com/serp-y/nuxt-tips-collection/blob/main/Nuxt-Tips-Collection.md#_snippet_4
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+  <div>
+    <DevOnly>
+      <DevAccountSwitcher />
+    </DevOnly>
+    <slot />
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: DevOnly Component with Fallback Slot for Production in Nuxt.js
+DESCRIPTION: This example extends the `<DevOnly>` component by adding a `#fallback` slot. Content within this slot will only be rendered in production builds, providing a way to display alternative content or messages when the development-only component is not present.
+SOURCE: https://github.com/serp-y/nuxt-tips-collection/blob/main/Nuxt-Tips-Collection.md#_snippet_5
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+  <div>
+    <DevOnly>
+      <DevAccountSwitcher />
+      <template #fallback>
+        <div>This is rendered only in the production build.</div>
+      </template>
+    </DevOnly>
+    <slot />
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Accessing Template Elements in Nuxt Client Components (Vue)
+DESCRIPTION: Demonstrates how to correctly access DOM elements within a Nuxt client component (`.client.vue`) after it has been mounted and rendered. It highlights the need to wait for `nextTick()` because client components are not server-rendered and their HTML is not immediately available upon `onMounted`.
+SOURCE: https://github.com/serp-y/nuxt-tips-collection/blob/main/Nuxt-Tips-Collection.md#_snippet_8
+
+LANGUAGE: Vue
+CODE:
+```
+// ~/components/CoolComponent.client.vue
+<template>
+  <div ref="container">
+    <!-- Do some cool stuff here -->
+  </div>
+</template>
+
+<script setup>
+const container = ref(null);
+
+onMounted(async () => {
+  // Nothing has been rendered yet
+  console.log(container.value); // -> null
+  
+  // Wait one tick for the render
+  await nextTick();
+  
+  // Now we can access it!
+  console.log(container.value) // -> <div ...>
+});
+</script>
+```
+
+----------------------------------------
+
+TITLE: Implementing KeepAlive for Page Components in Nuxt.js
+DESCRIPTION: This Vue component demonstrates a simple counter that increments every second. It's used to illustrate how component state is reset on route changes by default, setting up the context for KeepAlive functionality.
+SOURCE: https://github.com/serp-y/nuxt-tips-collection/blob/main/Nuxt-Tips-Collection.md#_snippet_0
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+  {{ count }}
+</template>
+
+<script setup>
+const count = ref(0);
+
+onMounted(() => {
+  setInterval(() => count.value++, 1000);
+});
+</script>
+```
+
+----------------------------------------
+
+TITLE: Including Development-Only Components in Nuxt Layouts
+DESCRIPTION: This initial layout snippet shows a `<DevAccountSwitcher />` component directly included. This setup would render the component in both development and production builds, which is undesirable for debug-specific functionalities.
+SOURCE: https://github.com/serp-y/nuxt-tips-collection/blob/main/Nuxt-Tips-Collection.md#_snippet_3
+
+LANGUAGE: Vue
+CODE:
+```
+<template>
+  <div>
+    <DevAccountSwitcher />
+    <slot />
+  </div>
+</template>
+```

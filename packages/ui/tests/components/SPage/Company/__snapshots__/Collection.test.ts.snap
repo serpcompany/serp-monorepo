@@ -486,7 +486,7 @@ exports[`SPageCompanyCollection Snapshot > renders correctly with categories (wi
                   ">
                     <!-- v-if -->
                     <span class="truncate">
-                      NaN
+                      0
                     </span>
                     <!-- v-if -->
                   </span>
@@ -810,7 +810,7 @@ exports[`SPageCompanyCollection Snapshot > renders correctly with categories (wi
                   ">
                     <!-- v-if -->
                     <span class="truncate">
-                      NaN
+                      0
                     </span>
                     <!-- v-if -->
                   </span>
