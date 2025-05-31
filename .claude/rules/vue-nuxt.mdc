@@ -1,5 +1,5 @@
 ---
-description: 
+description:
 globs: **/*.vue,**/*..ts,**/*..js
 alwaysApply: false
 ---
@@ -38,7 +38,7 @@ Nuxt 3 Specifics
 - use app.config.ts for app theme configuration.
 
 Fetching Data
-1. Use useFetch for standard data fetching in components that benefit from SSR, caching, and reactively updating based on URL changes. 
+1. Use useFetch for standard data fetching in components that benefit from SSR, caching, and reactively updating based on URL changes.
 2. Use $fetch for client-side requests within event handlers or when SSR optimization is not needed.
 3. Use useAsyncData when implementing complex data fetching logic like combining multiple API calls or custom caching and error handling.
 4. Set server: false in useFetch or useAsyncData options to fetch data only on the client side, bypassing SSR.

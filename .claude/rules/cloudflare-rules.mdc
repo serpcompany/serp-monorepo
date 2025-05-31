@@ -1,0 +1,2 @@
+- llms.txt - https://developers.cloudflare.com/llms.txt - 
+- https://developers.cloudflare.com/workers/prompt.txt
