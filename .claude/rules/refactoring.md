@@ -1,1 +1,1 @@
-- Large code changes might be right. They also might not be. Whenever presented with a pretty large change (diff) from the original code - take a second to question it, play devils advocate, do additional research before moving forward. Let's be sure about our decisions.
+- Large code changes might be right. They also might not be. Whenever presented with a pretty large change (diff) from the original code - take a second to question it, play devil's advocate, do additional research before moving forward. Let's be sure about our decisions.
