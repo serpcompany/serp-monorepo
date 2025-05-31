@@ -486,7 +486,7 @@ exports[`SPageCompanyCollection Snapshot > renders correctly with categories (wi
                   ">
                     <!-- v-if -->
                     <span class="truncate">
-                      NaN
+                      0
                     </span>
                     <!-- v-if -->
                   </span>
@@ -810,7 +810,7 @@ exports[`SPageCompanyCollection Snapshot > renders correctly with categories (wi
                   ">
                     <!-- v-if -->
                     <span class="truncate">
-                      NaN
+                      0
                     </span>
                     <!-- v-if -->
                   </span>
@@ -1184,12 +1184,10 @@ exports[`SPageCompanyCollection Snapshot > renders correctly with categories (wi
             class="
               flex
               focus-visible:outline-primary
-              font-medium
               gap-3
               group
               hover:text-default
               items-center
-              text-base
               text-muted
               transition-all
             "
@@ -1204,23 +1202,25 @@ exports[`SPageCompanyCollection Snapshot > renders correctly with categories (wi
               text-dimmed
               transition-all
             "
-          ></span><span>Tech</span>
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Tech</span>
             <hr class="
             border-(--ui-border)
             flex-1
-            min-w-2
+            min-w-0
           " />
           </a>
           <a
             class="
               flex
               focus-visible:outline-primary
-              font-medium
               gap-3
               group
               hover:text-default
               items-center
-              text-base
               text-muted
               transition-all
             "
@@ -1235,11 +1235,15 @@ exports[`SPageCompanyCollection Snapshot > renders correctly with categories (wi
               text-dimmed
               transition-all
             "
-          ></span><span>Finance</span>
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Finance</span>
             <hr class="
             border-(--ui-border)
             flex-1
-            min-w-2
+            min-w-0
           " />
           </a>
         </div>
@@ -2044,12 +2048,10 @@ exports[`SPageCompanyCollection Snapshot > renders correctly with categories (wi
             class="
               flex
               focus-visible:outline-primary
-              font-medium
               gap-3
               group
               hover:text-default
               items-center
-              text-base
               text-muted
               transition-all
             "
@@ -2064,23 +2066,25 @@ exports[`SPageCompanyCollection Snapshot > renders correctly with categories (wi
               text-dimmed
               transition-all
             "
-          ></span><span>Tech</span>
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Tech</span>
             <hr class="
             border-(--ui-border)
             flex-1
-            min-w-2
+            min-w-0
           " />
           </a>
           <a
             class="
               flex
               focus-visible:outline-primary
-              font-medium
               gap-3
               group
               hover:text-default
               items-center
-              text-base
               text-muted
               transition-all
             "
@@ -2095,11 +2099,15 @@ exports[`SPageCompanyCollection Snapshot > renders correctly with categories (wi
               text-dimmed
               transition-all
             "
-          ></span><span>Finance</span>
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Finance</span>
             <hr class="
             border-(--ui-border)
             flex-1
-            min-w-2
+            min-w-0
           " />
           </a>
         </div>

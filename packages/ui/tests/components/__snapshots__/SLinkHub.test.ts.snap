@@ -56,12 +56,10 @@ exports[`SLinkHub > renders with multiple categories correctly 1`] = `
         class="
           flex
           focus-visible:outline-primary
-          font-medium
           gap-3
           group
           hover:text-default
           items-center
-          text-base
           text-muted
           transition-all
         "
@@ -76,23 +74,25 @@ exports[`SLinkHub > renders with multiple categories correctly 1`] = `
           text-dimmed
           transition-all
         "
-      ></span><span>Category One</span>
+      ></span><span class="
+        font-medium
+        text-base
+        truncate
+      ">Category One</span>
         <hr class="
         border-(--ui-border)
         flex-1
-        min-w-2
+        min-w-0
       " />
       </a>
       <a
         class="
           flex
           focus-visible:outline-primary
-          font-medium
           gap-3
           group
           hover:text-default
           items-center
-          text-base
           text-muted
           transition-all
         "
@@ -107,23 +107,25 @@ exports[`SLinkHub > renders with multiple categories correctly 1`] = `
           text-dimmed
           transition-all
         "
-      ></span><span>Category Two</span>
+      ></span><span class="
+        font-medium
+        text-base
+        truncate
+      ">Category Two</span>
         <hr class="
         border-(--ui-border)
         flex-1
-        min-w-2
+        min-w-0
       " />
       </a>
       <a
         class="
           flex
           focus-visible:outline-primary
-          font-medium
           gap-3
           group
           hover:text-default
           items-center
-          text-base
           text-muted
           transition-all
         "
@@ -138,11 +140,15 @@ exports[`SLinkHub > renders with multiple categories correctly 1`] = `
           text-dimmed
           transition-all
         "
-      ></span><span>Category Three</span>
+      ></span><span class="
+        font-medium
+        text-base
+        truncate
+      ">Category Three</span>
         <hr class="
         border-(--ui-border)
         flex-1
-        min-w-2
+        min-w-0
       " />
       </a>
     </div>
@@ -271,12 +277,10 @@ exports[`SLinkHub > renders with one category correctly 1`] = `
         class="
           flex
           focus-visible:outline-primary
-          font-medium
           gap-3
           group
           hover:text-default
           items-center
-          text-base
           text-muted
           transition-all
         "
@@ -291,11 +295,15 @@ exports[`SLinkHub > renders with one category correctly 1`] = `
           text-dimmed
           transition-all
         "
-      ></span><span>Category 1</span>
+      ></span><span class="
+        font-medium
+        text-base
+        truncate
+      ">Category 1</span>
         <hr class="
         border-(--ui-border)
         flex-1
-        min-w-2
+        min-w-0
       " />
       </a>
     </div>

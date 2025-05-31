@@ -422,7 +422,7 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with complete data co
                   ">
                     <!-- v-if -->
                     <span class="truncate">
-                      NaN
+                      0
                     </span>
                     <!-- v-if -->
                   </span>
@@ -746,7 +746,7 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with complete data co
                   ">
                     <!-- v-if -->
                     <span class="truncate">
-                      NaN
+                      0
                     </span>
                     <!-- v-if -->
                   </span>
@@ -1160,12 +1160,10 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with complete data co
             class="
               flex
               focus-visible:outline-primary
-              font-medium
               gap-3
               group
               hover:text-default
               items-center
-              text-base
               text-muted
               transition-all
             "
@@ -1180,11 +1178,15 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with complete data co
               text-dimmed
               transition-all
             "
-          ></span><span>Tech</span>
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Tech</span>
             <hr class="
             border-(--ui-border)
             flex-1
-            min-w-2
+            min-w-0
           " />
           </a>
         </div>
@@ -1821,12 +1823,10 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with empty companies 
             class="
               flex
               focus-visible:outline-primary
-              font-medium
               gap-3
               group
               hover:text-default
               items-center
-              text-base
               text-muted
               transition-all
             "
@@ -1841,11 +1841,15 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with empty companies 
               text-dimmed
               transition-all
             "
-          ></span><span>Tech</span>
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Tech</span>
             <hr class="
             border-(--ui-border)
             flex-1
-            min-w-2
+            min-w-0
           " />
           </a>
         </div>
@@ -3059,12 +3063,10 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders without category arti
             class="
               flex
               focus-visible:outline-primary
-              font-medium
               gap-3
               group
               hover:text-default
               items-center
-              text-base
               text-muted
               transition-all
             "
@@ -3079,11 +3081,15 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders without category arti
               text-dimmed
               transition-all
             "
-          ></span><span>Tech</span>
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Tech</span>
             <hr class="
             border-(--ui-border)
             flex-1
-            min-w-2
+            min-w-0
           " />
           </a>
         </div>

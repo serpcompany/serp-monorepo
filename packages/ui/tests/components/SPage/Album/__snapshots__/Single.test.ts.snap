@@ -533,7 +533,7 @@ exports[`SPageAlbumSingle Snapshot > renders with auth enabled and full album da
             ">
               <!-- v-if -->
               <span class="truncate">
-                NaN
+                0
               </span>
               <!-- v-if -->
             </span>
@@ -1222,7 +1222,7 @@ exports[`SPageAlbumSingle Snapshot > renders with auth enabled and no recordings
             ">
               <!-- v-if -->
               <span class="truncate">
-                NaN
+                0
               </span>
               <!-- v-if -->
             </span>

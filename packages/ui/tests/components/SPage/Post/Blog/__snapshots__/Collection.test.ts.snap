@@ -406,12 +406,10 @@ exports[`SPagePostBlogCollection Snapshot > renders with posts and categories (w
             class="
               flex
               focus-visible:outline-primary
-              font-medium
               gap-3
               group
               hover:text-default
               items-center
-              text-base
               text-muted
               transition-all
             "
@@ -426,23 +424,25 @@ exports[`SPagePostBlogCollection Snapshot > renders with posts and categories (w
               text-dimmed
               transition-all
             "
-          ></span><span>Tech</span>
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Tech</span>
             <hr class="
             border-(--ui-border)
             flex-1
-            min-w-2
+            min-w-0
           " />
           </a>
           <a
             class="
               flex
               focus-visible:outline-primary
-              font-medium
               gap-3
               group
               hover:text-default
               items-center
-              text-base
               text-muted
               transition-all
             "
@@ -457,11 +457,15 @@ exports[`SPagePostBlogCollection Snapshot > renders with posts and categories (w
               text-dimmed
               transition-all
             "
-          ></span><span>Lifestyle</span>
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Lifestyle</span>
             <hr class="
             border-(--ui-border)
             flex-1
-            min-w-2
+            min-w-0
           " />
           </a>
         </div>
@@ -982,12 +986,10 @@ exports[`SPagePostBlogCollection Snapshot > renders with posts and categories (w
             class="
               flex
               focus-visible:outline-primary
-              font-medium
               gap-3
               group
               hover:text-default
               items-center
-              text-base
               text-muted
               transition-all
             "
@@ -1002,23 +1004,25 @@ exports[`SPagePostBlogCollection Snapshot > renders with posts and categories (w
               text-dimmed
               transition-all
             "
-          ></span><span>Tech</span>
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Tech</span>
             <hr class="
             border-(--ui-border)
             flex-1
-            min-w-2
+            min-w-0
           " />
           </a>
           <a
             class="
               flex
               focus-visible:outline-primary
-              font-medium
               gap-3
               group
               hover:text-default
               items-center
-              text-base
               text-muted
               transition-all
             "
@@ -1033,11 +1037,15 @@ exports[`SPagePostBlogCollection Snapshot > renders with posts and categories (w
               text-dimmed
               transition-all
             "
-          ></span><span>Lifestyle</span>
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Lifestyle</span>
             <hr class="
             border-(--ui-border)
             flex-1
-            min-w-2
+            min-w-0
           " />
           </a>
         </div>

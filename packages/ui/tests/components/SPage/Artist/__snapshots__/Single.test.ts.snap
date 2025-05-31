@@ -151,7 +151,7 @@ exports[`SPageArtistSingle Snapshot > renders complete artist with upvotes and a
             ">
               <!-- v-if -->
               <span class="truncate">
-                NaN
+                0
               </span>
               <!-- v-if -->
             </span>

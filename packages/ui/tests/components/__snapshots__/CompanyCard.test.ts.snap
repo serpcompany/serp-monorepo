@@ -237,7 +237,7 @@ exports[`CompanyCard Snapshot > renders company with expanded content correctly 
         ">
           <!-- v-if -->
           <span class="truncate">
-            NaN
+            0
           </span>
           <!-- v-if -->
         </span>
@@ -572,7 +572,7 @@ exports[`CompanyCard Snapshot > renders company with expanded content correctly 
         ">
           <!-- v-if -->
           <span class="truncate">
-            NaN
+            0
           </span>
           <!-- v-if -->
         </span>
@@ -907,7 +907,7 @@ exports[`CompanyCard Snapshot > renders featured company with complete details c
         ">
           <!-- v-if -->
           <span class="truncate">
-            NaN
+            0
           </span>
           <!-- v-if -->
         </span>
@@ -1242,7 +1242,7 @@ exports[`CompanyCard Snapshot > renders featured company with complete details c
         ">
           <!-- v-if -->
           <span class="truncate">
-            NaN
+            0
           </span>
           <!-- v-if -->
         </span>
@@ -1567,7 +1567,7 @@ exports[`CompanyCard Snapshot > renders non-featured company correctly (with aut
         ">
           <!-- v-if -->
           <span class="truncate">
-            NaN
+            0
           </span>
           <!-- v-if -->
         </span>
@@ -1892,7 +1892,7 @@ exports[`CompanyCard Snapshot > renders non-featured company correctly (without 
         ">
           <!-- v-if -->
           <span class="truncate">
-            NaN
+            0
           </span>
           <!-- v-if -->
         </span>
