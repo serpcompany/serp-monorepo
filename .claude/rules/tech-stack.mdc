@@ -7,10 +7,15 @@ alwaysApply: true
 # Tech Stack Guidelines
 
 - Nuxt 3
-- Nuxt UI Provides
+- Nuxt UI
+- Nuxt Scripts
+- Nuxt Security
 - Drizzle
 - Vitest
 - Nuxt Security: https://nuxt-security.vercel.app/getting-started/installation
 - pnpm
-- turborepo
-- vitest, nuxt test utils, vue test utils, testing library
+- Turbo Repo
+- Vitest, nuxt test utils, vue test utils, testing library
+- TypeScript:
+  - https://www.totaltypescript.com/
+  - https://www.typescriptlang.org/docs/

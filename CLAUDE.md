@@ -2,7 +2,11 @@
 
 This project contains comprehensive coding rules and guidelines that must be followed when working on any codebase. All rules in this documentation are mandatory and should be applied consistently.
 
-Work on ISSUES from https://github.com/serpcompany/serp-monorepo for this project, you are to work on issues with a label of `claude`
+## Workflow
+
+- Work on ISSUES from repository https://github.com/serpcompany/serp-monorepo for this project with a label of `claude`.
+- Always research the most up to date documentation relevant to the issue AND our tech stack to find best practices, code patterns, snippets, and configuration settings. Add the findings to the issue comments before starting.
+- Use `task-manager` to break up larger issues into smaller issues
 
 ## Core Principles
 
