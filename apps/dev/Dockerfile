@@ -3,8 +3,8 @@ FROM node:22-slim as builder
 RUN apt-get update -y && apt-get upgrade -y
 RUN apt-get install -y git make g++ python3
 
-# install pnpm
-RUN npm install -g pnpm
+# enable corepack and install pnpm from packageManager field
+RUN corepack enable
 
 ARG NUXT_UI_PRO_LICENSE
 
