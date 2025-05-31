@@ -4,6 +4,17 @@ import { and, eq, or, sql } from 'drizzle-orm';
 
 import type { EntitySearchResult } from '@serp/types/types';
 
+/**
+ * Searches entities by text with pagination and filtering capabilities.
+ * Supports full-text search across entity names and data fields.
+ * 
+ * @param {H3Event} event - The event object containing search parameters
+ * @returns {Promise<{entities: EntitySearchResult[], pagination: Pagination}>}
+ * @throws {Error} If search text is missing or validation fails
+ * @example
+ * // GET /api/entities/search?searchText=AI&module=seo&page=1&limit=20
+ * // Searches for entities containing "AI" in SEO module
+ */
 export default defineEventHandler(async (event) => {
   try {
     const {
@@ -24,14 +35,14 @@ export default defineEventHandler(async (event) => {
 
     const pageNumber = Number(page);
     const limitNumber = Math.min(Number(limit), 100);
-    if (isNaN(pageNumber) || pageNumber < 1 || !Number.isInteger(pageNumber)) {
+    if (Number.isNaN(pageNumber) || pageNumber < 1 || !Number.isInteger(pageNumber)) {
       throw createError({
         statusCode: 400,
         message: 'Page must be a positive integer.'
       });
     }
     if (
-      isNaN(limitNumber) ||
+      Number.isNaN(limitNumber) ||
       limitNumber < 1 ||
       !Number.isInteger(limitNumber)
     ) {
@@ -44,11 +55,16 @@ export default defineEventHandler(async (event) => {
     const offset = (pageNumber - 1) * limitNumber;
 
     // @todo - improve the typesafety of this after implementing zod
-    const modules = module
+    const modules = (typeof module === 'string' ? module : String(module || ''))
       .split(',')
       .map((mod: string) => mod.trim())
       .filter(Boolean);
 
+    /**
+     * Parses filter string into key-value pairs.
+     * @param {string} raw - The raw filter string (e.g., "key1:value1,key2:value2")
+     * @returns {[string, string][]} Array of filter key-value pairs
+     */
     const parseFilters = (raw: string) =>
       raw
         .split(',')
@@ -59,7 +75,7 @@ export default defineEventHandler(async (event) => {
         })
         .filter(Boolean) as [string, string][];
 
-    const parsedFilters = parseFilters(filters);
+    const parsedFilters = parseFilters(typeof filters === 'string' ? filters : String(filters));
     for (const [k] of parsedFilters) {
       if (!/^[a-zA-Z0-9_.]+$/.test(k)) {
         throw createError({ statusCode: 400, message: 'Bad filter key' });

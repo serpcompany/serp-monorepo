@@ -7,11 +7,23 @@ import {
 } from '@serp/db/server/database/schema';
 import { eq } from 'drizzle-orm';
 
+/**
+ * Claims ownership of an entity by verifying user's email domain matches entity domain.
+ * Creates team structures and verification records for entity ownership.
+ * 
+ * @param {H3Event} event - The event object containing entity ID in route params
+ * @returns {Promise<{status: number, message: string, id?: string, teamId?: string}>}
+ * @throws {Error} If entity verification or team creation fails
+ * @example
+ * // POST /api/entity/claim/123
+ * // Claims entity 123 for authenticated user with matching email domain
+ */
 export default defineEventHandler(async (event) => {
   try {
     const session = await requireUserSession(event);
-    const userId = session?.user?.id;
-    const email = session?.user?.email;
+    const user = session?.user as { id: string; email: string } | undefined;
+    const userId = user?.id;
+    const email = user?.email;
     if (!userId) return { status: 401, message: 'Unauthorized' };
     if (!email) return { status: 401, message: 'Email is required' };
 

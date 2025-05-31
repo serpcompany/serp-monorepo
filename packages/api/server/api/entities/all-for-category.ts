@@ -6,6 +6,17 @@ import {
 } from '@serp/db/server/database/schema';
 import { and, eq, isNull, or, sql } from 'drizzle-orm';
 
+/**
+ * Retrieves all entities for a specific category with available featured placements.
+ * Returns entities and available placement slots (1-5) for featured subscriptions.
+ * 
+ * @param {H3Event} event - The event object containing category and module filters
+ * @returns {Promise<{entities: Entity[], availablePlacements: number[]}>}
+ * @throws {Error} If database query fails
+ * @example
+ * // GET /api/entities/all-for-category?categorySlug=ai-tools&module=seo,marketing
+ * // Returns entities in ai-tools category for seo/marketing modules with available placements
+ */
 export default defineEventHandler(async (event) => {
   const { categorySlug, module = '' } = getQuery(event);
 
@@ -17,7 +28,7 @@ export default defineEventHandler(async (event) => {
     .from(entity);
 
   // @todo - improve the typesafety of this after implementing zod
-  const modules = module
+  const modules = (typeof module === 'string' ? module : String(module))
     .split(',')
     .map((mod: string) => mod.trim())
     .filter(Boolean);

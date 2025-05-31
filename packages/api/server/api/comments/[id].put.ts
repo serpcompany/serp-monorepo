@@ -2,10 +2,22 @@ import { getDb } from '@serp/db/server/database';
 import { comment } from '@serp/db/server/database/schema';
 import { and, eq } from 'drizzle-orm';
 
+/**
+ * Updates an existing comment for authenticated user.
+ * Only allows users to update their own comments.
+ * 
+ * @param {H3Event} event - The event object containing comment update data
+ * @returns {Promise<{status: number, message: string, id?: string}>}
+ * @throws {Error} If comment update fails or user lacks permission
+ * @example
+ * // PUT /api/comments/123 with body: { commentId: "456", comment: "Updated text", timestamp: "..." }
+ * // Updates comment 456 for entity 123 if user owns the comment
+ */
 export default defineEventHandler(async (event) => {
   try {
     const session = await requireUserSession(event);
-    const userId = session?.user?.id;
+    const user = session?.user as { id: string } | undefined;
+    const userId = user?.id;
     if (!userId) return { status: 401, message: 'Unauthorized' };
 
     const { id } = getRouterParams(event);
