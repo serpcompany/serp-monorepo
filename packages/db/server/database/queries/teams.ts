@@ -200,8 +200,10 @@ export async function cancelInvite(inviteId: string) {
 }
 
 /**
- * @param token
- * @throws {H3Error}
+ * Retrieves a team invite by token
+ * @param token - The invite token to look up
+ * @returns Promise that resolves to the team invite
+ * @throws {H3Error} When invite is not found or expired
  */
 export async function getInvite(token: string): Promise<TeamInvite> {
   const [invite] = await getDb()

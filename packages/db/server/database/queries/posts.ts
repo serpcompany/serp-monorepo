@@ -75,8 +75,9 @@ export async function getPostById(id: number, teamId: number, userId: number) {
   }
 }
 
-export async function updatePost(id: number, teamId: number, userId: number, postData: Partial<Post>) {
+export async function updatePost(identifiers: { id: number, teamId: number, userId: number }, postData: Partial<Post>) {
   try {
+    const { id, teamId, userId } = identifiers
     const result = await getDb()
       .update(post)
       .set(postData)

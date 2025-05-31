@@ -1,4 +1,4 @@
-import { and, eq, sql } from 'drizzle-orm'
+import { and, eq, isNull, sql } from 'drizzle-orm'
 import { createError } from 'h3'
 import { getDb } from '../index'
 import { price, subscription } from '../schema'
@@ -50,7 +50,7 @@ export async function getSubscriptionByTeamId(teamId: number): Promise<Subscript
     return { ...row.subscription, price: row.price }
   }
   catch (error) {
-    console.log('getSubscriptionByTeamId', teamId)
+    console.warn('getSubscriptionByTeamId', teamId)
     console.error(error)
     throw createError({
       statusCode: 500,
@@ -81,7 +81,7 @@ export async function getSubscriptionByUserId(userId: number): Promise<Subscript
     return { ...row.subscription, price: row.price }
   }
   catch (error) {
-    console.log('getSubscriptionByTeamId', teamId)
+    console.warn('getSubscriptionByTeamId', teamId)
     console.error(error)
     throw createError({
       statusCode: 500,

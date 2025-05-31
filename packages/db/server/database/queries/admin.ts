@@ -25,6 +25,7 @@ export async function getAllFeedback() {
 
   const feedbackRecords = rows.map(({ feedback: fb, user: usr }) => {
     if (usr) {
+      // eslint-disable-next-line ts/no-unused-vars
       const { hashedPassword, ...safeUser } = usr as unknown
       return { ...fb, user: safeUser }
     }

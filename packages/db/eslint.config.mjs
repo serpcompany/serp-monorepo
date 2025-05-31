@@ -58,12 +58,8 @@ export default antfu({
     'no-debugger': 'error',
     'prefer-const': 'error',
 
-    // Component size limits
-    'max-lines': ['warn', 300],
+    // Component size limits and complexity
     'complexity': ['warn', 10],
-
-    // Other helpful limits
-    'max-lines-per-function': ['warn', 50],
     'max-depth': ['warn', 4],
     'max-params': ['warn', 3],
 
