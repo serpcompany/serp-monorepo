@@ -1,5 +1,8 @@
 <script setup lang="ts">
-  defineProps<{ value; baseSlug }>();
+  defineProps<{
+    value: unknown;
+    baseSlug: string;
+  }>();
 </script>
 
 <template>
