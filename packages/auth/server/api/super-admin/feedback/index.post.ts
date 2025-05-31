@@ -1,6 +1,6 @@
-import { z } from 'zod';
-import { validateBody } from '@serp/utils/server';
-import { createFeedback } from '@serp/db/server/database/queries/admin';
+import { createFeedback } from '@serp/db/server/database/queries/admin'
+import { validateBody } from '@serp/utils/server'
+import { z } from 'zod'
 
 const schema = z.object({
   user: z.string(),
@@ -13,18 +13,18 @@ const schema = z.object({
       platform: z.string().optional(),
       colorScheme: z.string().optional(),
       timezone: z.string().optional(),
-      url: z.string().optional()
+      url: z.string().optional(),
     })
-    .optional()
-});
+    .optional(),
+})
 
 export default defineEventHandler(async (event) => {
-  await requireUserSession(event);
-  const data = await validateBody(event, schema);
+  await requireUserSession(event)
+  const data = await validateBody(event, schema)
   const feedback = await createFeedback({
     user: data.user,
     message: data.message,
-    meta: data.meta
-  });
-  return feedback;
-});
+    meta: data.meta,
+  })
+  return feedback
+})

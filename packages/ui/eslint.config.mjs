@@ -1,9 +1,6 @@
 import antfu from '@antfu/eslint-config'
 
-import withNuxt from './.nuxt/eslint.config.mjs'
-
-export default withNuxt(
-  antfu({
+export default antfu({
     // JSDoc for documentation standards
     jsonc: false,
     jsdoc: {
@@ -14,7 +11,6 @@ export default withNuxt(
 
     // TypeScript with type-aware rules
     typescript: {
-      tsconfigPath: 'tsconfig.json',
       overrides: {
         'ts/no-unused-vars': 'warn',
         'ts/no-explicit-any': 'warn',
@@ -78,5 +74,4 @@ export default withNuxt(
       'jsdoc/check-alignment': 'error',
       'jsdoc/check-param-names': 'error',
     },
-  }),
-)
+})

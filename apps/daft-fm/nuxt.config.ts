@@ -1,3 +1,5 @@
+import process from 'node:process'
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
@@ -11,33 +13,33 @@ export default defineNuxtConfig({
     'nuxt-multi-cache',
     'nuxt-security',
     '@nuxt/scripts',
-    'nuxt-link-checker'
+    'nuxt-link-checker',
   ],
   css: ['~/assets/css/main.css'],
   multiCache: {
     data: {
-      enabled: true
+      enabled: true,
     },
     api: {
       enabled: true,
       prefix: '/__nuxt_multi_cache',
-      authorization: process.env.CACHE_PURGE_API_KEY || 'xv12378asdfSDA123'
-    }
+      authorization: process.env.CACHE_PURGE_API_KEY || 'xv12378asdfSDA123',
+    },
   },
   ui: {
-    colorMode: true
+    colorMode: true,
   },
   uiPro: {
-    license: process.env.NUXT_UI_PRO_LICENSE
+    license: process.env.NUXT_UI_PRO_LICENSE,
   },
   tsConfig: {
     compilerOptions: {
       baseUrl: '.',
       paths: {
-        '@/*': ['src/*']
+        '@/*': ['src/*'],
       },
-      types: ['vitest/globals', '']
-    }
+      types: ['vitest/globals', ''],
+    },
   },
   runtimeConfig: {
     public: {
@@ -47,81 +49,81 @@ export default defineNuxtConfig({
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
       environment: process.env.NODE_ENV,
       forCloudflare: false,
-      copyrightText: '© DAFT FM'
-    }
+      copyrightText: '© DAFT FM',
+    },
   },
   app: {
     head: {
       title: process.env.NUXT_PUBLIC_SITE_NAME,
       htmlAttrs: {
-        lang: 'en'
+        lang: 'en',
       },
       meta: [
         ...(process.env.ROBOTS_ENV === 'staging'
           ? [{ name: 'robots', content: 'noindex' }]
-          : [])
-      ]
-    }
+          : []),
+      ],
+    },
   },
   scripts: {
     registry: {
       googleTagManager: {
-        id: 'GTM-NC8CG9R'
+        id: 'GTM-NC8CG9R',
       },
       googleAdsense: {
         client: 'ca-pub-2343633734899216', // infisical-scan:ignore
-        autoAds: true
-      }
-    }
+        autoAds: true,
+      },
+    },
   },
   sitemap: {
-    enabled: false
+    enabled: false,
   },
   robots: {
-    enabled: false
+    enabled: false,
   },
   schemaOrg: {
     identity: 'Organization',
-    host: 'https://daft.fm'
+    host: 'https://daft.fm',
   },
   experimental: {
     defaults: {
       nuxthref: {
-        trailingSlash: 'append'
-      }
-    }
+        trailingSlash: 'append',
+      },
+    },
   },
   site: {
     url: process.env.NUXT_PUBLIC_URL,
     name: process.env.NUXT_PUBLIC_SITE_NAME,
-    trailingSlash: true
+    trailingSlash: true,
   },
   icon: {
     customCollections: [
       {
         prefix: 'custom',
-        dir: './assets/icons'
-      }
-    ]
+        dir: './assets/icons',
+      },
+    ],
   },
   image: {
-    format: ['webp']
+    format: ['webp'],
   },
   security: {
-    rateLimiter: false
+    rateLimiter: false,
   },
   htmlValidator: {
     usePrettier: false,
     failOnError: true,
-    logLevel: 'verbose'
+    logLevel: 'verbose',
   },
   linkChecker: {
     failOnError: true,
     report: {
-      html: true
-    }
+      html: true,
+    },
   },
   ogImage: {
-    enabled: false
-  }
-});
+    enabled: false,
+  },
+})

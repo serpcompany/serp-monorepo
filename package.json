@@ -47,5 +47,9 @@
   "packageManager": "pnpm@8.15.6",
   "engines": {
     "node": "^22.16.0"
+  },
+  "dependencies": {
+    "eslint-plugin-format": "^1.0.1",
+    "eslint-plugin-vuejs-accessibility": "^2.4.1"
   }
 }

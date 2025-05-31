@@ -2,5 +2,5 @@
 export default defineNuxtConfig({
   // devtools: { enabled: true }
   extends: ['@serp/types'],
-  modules: ['@nuxt/eslint']
-});
+  modules: ['@nuxt/eslint'],
+})
