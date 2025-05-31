@@ -36,6 +36,10 @@
     "browser-tools": {
       "command": "npx",
       "args": ["-y", "@agentdeskai/browser-tools-mcp@latest"]
+    },
+    "taskmanager": {
+      "command": "npx",
+      "args": ["-y", "@kazuph/mcp-taskmanager"]
     }
   }
 }

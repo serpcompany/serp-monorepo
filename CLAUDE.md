@@ -41,6 +41,7 @@ This project contains comprehensive coding rules and guidelines that must be fol
 - Include proper documentation and tests
 - Never overwrite .env files without confirmation
 - Consider dev, test, and prod environments in all code changes
+- Never run a commit with --no-verify
 
 ### UI Development (NuxtUI + NuxtUI Pro)
 

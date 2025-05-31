@@ -1,0 +1,929 @@
+TITLE: Basic Nuxt Fonts Configuration Structure - TypeScript
+DESCRIPTION: Demonstrates the basic configuration structure for the `@nuxt/fonts` module within the `nuxt.config.ts` file. It shows how to add the module to the `modules` array and include the main `fonts` configuration object.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/2.configuration.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  modules: ['@nuxt/fonts'],
+  fonts: {
+    // Options
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Installing Nuxt Fonts automatically with nuxi CLI (Bash)
+DESCRIPTION: Use the official Nuxt CLI tool, `nuxi`, to automatically add the `@nuxt/fonts` module to your project. This command handles adding the module to your dependencies and updating the `nuxt.config.ts` file.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/1.installation.md#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+npx nuxi@latest module add fonts
+```
+
+----------------------------------------
+
+TITLE: Adding Nuxt Fonts module to Nuxt config (TypeScript)
+DESCRIPTION: After manual installation, you need to explicitly add the `@nuxt/fonts` module to the `modules` array in your `nuxt.config.ts` file. This registers the module with Nuxt.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/1.installation.md#_snippet_2
+
+LANGUAGE: ts
+CODE:
+```
+export default defineNuxtConfig({
+  modules: [
+    '@nuxt/fonts',
+  ]
+})
+```
+
+----------------------------------------
+
+TITLE: Installing Nuxt Fonts manually using package managers (Bash)
+DESCRIPTION: Alternatively, manually install the `@nuxt/fonts` module using your preferred Node.js package manager. Choose the command corresponding to pnpm, yarn, or npm to add the module to your project's dependencies.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/1.installation.md#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+pnpm i @nuxt/fonts
+```
+
+LANGUAGE: bash
+CODE:
+```
+yarn add @nuxt/fonts
+```
+
+LANGUAGE: bash
+CODE:
+```
+npm i @nuxt/fonts
+```
+
+----------------------------------------
+
+TITLE: Setting Default Font Options in Nuxt Fonts - TypeScript
+DESCRIPTION: Illustrates how to configure default weights, styles, and subsets for all fonts managed by the `@nuxt/fonts` module using the `defaults` property in `nuxt.config.ts`. These settings apply unless overridden by per-family options.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/2.configuration.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  modules: ['@nuxt/fonts'],
+  fonts: {
+    defaults: {
+      weights: [400],
+      styles: ['normal', 'italic'],
+      subsets: [
+        'cyrillic-ext',
+        'cyrillic',
+        'greek-ext',
+        'greek',
+        'vietnamese',
+        'latin-ext',
+        'latin'
+      ]
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Specific Font Families in Nuxt Fonts - TypeScript
+DESCRIPTION: Shows how to configure options for individual font families using the `families` array within the `fonts` configuration. It demonstrates examples for disabling providers, specifying a single provider, and providing a direct font source URL.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/2.configuration.md#_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  modules: ['@nuxt/fonts'],
+  fonts: {
+    families: [
+      // do not resolve this font with any provider from `@nuxt/fonts`
+      { name: 'Custom Font', provider: 'none' },
+      // only resolve this font with the `google` provider
+      { name: 'My Font Family', provider: 'google' },
+      // specify specific font data - this will bypass any providers
+      { name: 'Other Font', src: 'https://example.com/font.woff2', weight: 'bold' }
+    ]
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Nuxt Fonts Provider Options - TypeScript
+DESCRIPTION: Demonstrates how to pass specific configuration options to different font providers like `google`, `local`, and `adobe` within the main `fonts` object. These options are provider-specific and control their behavior, such as specifying Adobe font kit IDs.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/2.configuration.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  modules: ['@nuxt/fonts'],
+  fonts: {
+    google: {},
+    local: {},
+    adobe: {
+      id: ['fontkitId1', 'fontkitId2']
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Managing Nuxt Fonts Providers - TypeScript
+DESCRIPTION: Illustrates how to configure the behavior of font providers using the `providers` object within the `fonts` configuration. It shows examples for adding a custom provider by specifying its file path and disabling a built-in provider like `google`.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/2.configuration.md#_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  modules: ['@nuxt/fonts'],
+  fonts: {
+    providers: {
+      // You can pass a new custom provider - see more in the providers documentation
+      // for what this file should look like
+      custom: '~/providers/custom',
+      // Or you can disable a built-in provider
+      google: false
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Applying Font Family in Pure CSS
+DESCRIPTION: Demonstrates how to apply a font provided by Nuxt Fonts using a standard CSS `font-family` declaration in a CSS file. This is a basic method requiring the font to be registered by Nuxt Fonts. Nuxt Fonts will primarily process the first font for metric generation.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/3.usage.md#_snippet_0
+
+LANGUAGE: css
+CODE:
+```
+div {
+  font-family: 'Inter', sans-serif;
+}
+```
+
+----------------------------------------
+
+TITLE: Using font-family with Nuxt Fonts in Vue component (Vue)
+DESCRIPTION: Apply a font to an element within a Vue component using the standard `font-family` CSS property. Nuxt Fonts automatically detects this usage and optimizes the loading of the specified font (e.g., Roboto).
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/1.installation.md#_snippet_4
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <div>
+    Hello Nuxt Fonts!
+  </div>
+</template>
+
+<style scoped>
+div {
+  font-family: Roboto, sans-serif;
+}
+</style>
+```
+
+----------------------------------------
+
+TITLE: Defining Font Family with Fallbacks in CSS (Nuxt Fonts)
+DESCRIPTION: This CSS snippet demonstrates how to define font families including fallback options. By listing multiple font names (like `Roboto, Helvetica, Arial`) or including a generic family (`serif`), Nuxt Fonts can generate adjusted fallback `@font-face` rules for local system fonts to minimize Cumulative Layout Shift (CLS).
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/2.advanced.md#_snippet_2
+
+LANGUAGE: css
+CODE:
+```
+:root {
+  /* This will generate fallbacks for local versions of Helvetica and Arial, adjusted to match Roboto's metrics. */
+  font-family: Roboto, Helvetica, Arial;
+  /* If you provide a generic family (like serif or sans-serif), we will use a system font from that family. */
+  font-family: Merriweather, serif;
+}
+```
+
+----------------------------------------
+
+TITLE: Declaring Font Family in CSS with Nuxt Fonts
+DESCRIPTION: This CSS snippet shows a standard declaration of a font family (`Poppins`) on the `:root` element. Nuxt Fonts processes such declarations to automatically resolve and inject `@font-face` rules. It serves as an example of the input CSS that Nuxt Fonts analyzes.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/2.advanced.md#_snippet_0
+
+LANGUAGE: css
+CODE:
+```
+/* If you write something like this: */
+:root {
+  font-family: Poppins;
+}
+```
+
+----------------------------------------
+
+TITLE: Generated Font Face Rules by Nuxt Fonts (CSS)
+DESCRIPTION: This CSS snippet illustrates the `@font-face` rules generated by Nuxt Fonts. It defines the 'Poppins' font family, specifies local and proxied URL sources, sets `font-display` to `swap`, includes `unicode-range` for optimization, and defines weight and style. These rules are injected into the CSS to enable efficient font loading.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/2.advanced.md#_snippet_1
+
+LANGUAGE: css
+CODE:
+```
+/* Then Nuxt fonts will add declarations that look like this at the beginning of the CSS file: */
+@font-face {
+  font-family: 'Poppins';
+  src: local("Poppins"), url("/_fonts/<hash>.woff2") format(woff2);
+  font-display: swap;
+  unicode-range: U+0000-00FF,U+0131, /* ... */;
+  font-weight: 400;
+  font-style: normal;
+}
+/* ... plus more font-face declarations for other unicode ranges/weights */
+```
+
+----------------------------------------
+
+TITLE: Defining Tailwind v4 Font with CSS Variable
+DESCRIPTION: Illustrates the new method for defining fonts in Tailwind CSS v4 using CSS variables within the `@theme` block in a CSS file. This approach replaces the previous JavaScript configuration method for font definitions in v4.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/3.usage.md#_snippet_2
+
+LANGUAGE: css
+CODE:
+```
+@theme {
+  --font-display: "Inter", "sans-serif";
+}
+```
+
+----------------------------------------
+
+TITLE: Configuring UnoCSS Font Family in JS
+DESCRIPTION: Explains how to configure a custom font family using the `fontFamily` property within the `theme` object in the UnoCSS configuration file (`uno.config.js`). This makes the font available as a utility class within UnoCSS.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/3.usage.md#_snippet_3
+
+LANGUAGE: javascript
+CODE:
+```
+import { defineConfig } from 'unocss'
+
+export default defineConfig({
+  theme: {
+    fontFamily: {
+      inter: 'Inter',
+    },
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Tailwind v3 Font Family in JS
+DESCRIPTION: Shows how to add a custom font family, provided by Nuxt Fonts, to the Tailwind CSS configuration file (`tailwind.config.js`) for versions 3 and below. The font name is added to the `extend.fontFamily` object, making it available as a Tailwind utility.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/3.usage.md#_snippet_1
+
+LANGUAGE: javascript
+CODE:
+```
+export default {
+  theme: {
+    extend: {
+      fontFamily: {
+        custom: ['Inter'],
+      },
+    },
+  },
+}
+```
+
+----------------------------------------
+
+TITLE: Setting Nuxt Fonts Provider Priority - TypeScript
+DESCRIPTION: Demonstrates how to customize the order in which font providers are checked when resolving font families using the `priority` array. Providers listed earlier in the array are checked before those listed later.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/2.configuration.md#_snippet_7
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  modules: ['@nuxt/fonts'],
+  fonts: {
+    priority: ['bunny', 'google']
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Specifying a Single Nuxt Fonts Provider - TypeScript
+DESCRIPTION: Illustrates how to configure the `@nuxt/fonts` module to use only a single specified font provider, effectively disabling all others. This is achieved using the singular `provider` property.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/2.configuration.md#_snippet_8
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  modules: ['@nuxt/fonts'],
+  fonts: {
+    provider: 'google'
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring CSS Variable Processing in Nuxt Fonts - TypeScript
+DESCRIPTION: Demonstrates how to enable or configure support for processing CSS variables used for font family names with the `processCSSVariables` option. Available options include `true`, `false`, or `'font-prefixed-only'` (default). Note that `true` may impact performance.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/2.configuration.md#_snippet_10
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  modules: ['@nuxt/fonts'],
+  fonts: {
+    // You can enable support for processing CSS variables for font family names.
+    processCSSVariables: true
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Controlling Nuxt Fonts Devtools Integration - TypeScript
+DESCRIPTION: Shows how to enable or disable the integration of the `@nuxt/fonts` module with Nuxt Devtools using the `devtools` boolean property within the `fonts` configuration. The default value for `devtools` is `true`.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/2.configuration.md#_snippet_9
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  modules: ['@nuxt/fonts'],
+  fonts: {
+    // Disable the Nuxt Devtools integration
+    devtools: false
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Default Font Fallback Configuration - TypeScript
+DESCRIPTION: Provides the default mapping for generic font families (`serif`, `sans-serif`, `monospace`, etc.) to specific font families used for generating fallback metrics. This configuration is used by default if the `fallbacks` property is not explicitly overridden.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/2.configuration.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+{
+  'serif': ['Times New Roman'],
+  'sans-serif': ['Arial'],
+  'monospace': ['Courier New'],
+  'cursive': [],
+  'fantasy': [],
+  'system-ui': [
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Roboto',
+    'Helvetica Neue',
+    'Arial'
+  ],
+  'ui-serif': ['Times New Roman'],
+  'ui-sans-serif': ['Arial'],
+  'ui-monospace': ['Courier New'],
+  'ui-rounded': [],
+  'emoji': [],
+  'math': [],
+  'fangsong': []
+}
+```
+
+----------------------------------------
+
+TITLE: Configuring UnoCSS Wind4 Font in JS
+DESCRIPTION: Provides the configuration snippet for UnoCSS when using the Wind4 (Tailwind4) preset. It shows that the `font` property should be used instead of `fontFamily` within the `theme` object to define custom fonts for this specific preset.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/3.usage.md#_snippet_4
+
+LANGUAGE: javascript
+CODE:
+```
+font: {
+  inter: 'Inter',
+},
+```
+
+----------------------------------------
+
+TITLE: Configuring Nuxt Fonts Assets Prefix - TypeScript
+DESCRIPTION: Shows how to configure the base URL path where font files are served by the `@nuxt/fonts` module using the `assets` property. The `prefix` option defines this base path, defaulting to `/_fonts/`.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/2.configuration.md#_snippet_6
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  modules: ['@nuxt/fonts'],
+  fonts: {
+    assets: {
+      // The baseURL where font files are served.
+      prefix: '/_fonts/'
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Adobe Fonts Provider (Nuxt/TypeScript)
+DESCRIPTION: This snippet demonstrates how to configure the Adobe Fonts provider within your Nuxt project's configuration. It requires adding the `@nuxt/fonts` module and specifying the `adobe` provider with an array of `id`s corresponding to your Adobe Fonts Web Projects.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/4.providers.md#_snippet_0
+
+LANGUAGE: TypeScript
+CODE:
+```
+export default defineNuxtConfig({
+  modules: ['@nuxt/fonts'],
+  fonts: {
+    adobe: {
+      id: ['<some-id>', '<another-kit-id>'],
+    },
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Enabling Experimental Features in Nuxt Fonts - TypeScript
+DESCRIPTION: Illustrates how to enable experimental features within the `@nuxt/fonts` module using the `experimental` object in the `fonts` configuration. The example shows enabling `disableLocalFallbacks`, which is `false` by default.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/2.configuration.md#_snippet_11
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  modules: ['@nuxt/fonts'],
+  fonts: {
+    experimental: {
+      // Defines whether to enable adding local fallbacks. Default is `false`.
+      disableLocalFallbacks: true
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Ignoring .data directory in .gitignore (gitignore)
+DESCRIPTION: Nuxt Fonts uses a `.data` directory to store downloaded font files. It is recommended to add this directory to your `.gitignore` file to prevent committing generated files to version control.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/1.installation.md#_snippet_3
+
+LANGUAGE: ignore
+CODE:
+```
+.data
+```
+
+----------------------------------------
+
+TITLE: Upgrading Nuxt Fonts module using package managers (Bash)
+DESCRIPTION: If you encounter issues, try upgrading the `@nuxt/fonts` module to the latest version using your package manager. This can resolve compatibility or bug-related problems.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/1.installation.md#_snippet_5
+
+LANGUAGE: bash
+CODE:
+```
+pnpm up @nuxt/fonts
+```
+
+LANGUAGE: bash
+CODE:
+```
+yarn upgrade @nuxt/fonts
+```
+
+LANGUAGE: bash
+CODE:
+```
+npm up @nuxt/fonts
+```
+
+----------------------------------------
+
+TITLE: Recreating Nuxt lock-file with nuxi CLI (Bash)
+DESCRIPTION: Another troubleshooting step is to force an upgrade and recreate the lock file using the `nuxi upgrade --force` command. This can help resolve dependency conflicts or corrupted lock files.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/1.installation.md#_snippet_6
+
+LANGUAGE: bash
+CODE:
+```
+npx nuxt@latest upgrade --force
+```
+
+----------------------------------------
+
+TITLE: Defining a Custom Font Provider (unifont/TypeScript)
+DESCRIPTION: This snippet shows how to create a custom font provider using the `defineFontProvider` function from the `unifont` library. It defines a provider named 'some-custom-provider' that returns an object with an asynchronous `resolveFont` method to handle font family resolution.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/4.providers.md#_snippet_1
+
+LANGUAGE: TypeScript
+CODE:
+```
+import { defineFontProvider } from 'unifont'
+
+export default defineFontProvider('some-custom-provider', async (options) => {
+  // do some setup
+  return {
+    async resolveFont (fontFamily, options) {
+      if (fontFamily === 'My Font Family') {
+        return {
+          fonts: [
+            {
+              src: [
+                { url: 'https://cdn.org/my-font.woff2', format: 'woff2' },
+              ],
+              weight: 400,
+              style: 'normal',
+            }
+          ]
+        }
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Modifying Font Providers via Nuxt Hook (Nuxt/TypeScript)
+DESCRIPTION: This snippet demonstrates how a Nuxt module can use the `fonts:providers` hook to dynamically modify the available font providers. It shows how to remove the 'adobe' provider and add a new 'custom-provider' by defining it directly within the hook callback.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/1.get-started/4.providers.md#_snippet_2
+
+LANGUAGE: TypeScript
+CODE:
+```
+nuxt.hook('fonts:providers', providers => {
+  delete providers.adobe
+
+  providers['custom-provider'] = defineFontProvider('custom-provider', async () => {
+    /** some setup */
+    return {
+      async resolveFont (fontFamily, options) {
+        /** resolve font faces */
+      }
+    }
+  })
+})
+```
+
+----------------------------------------
+
+TITLE: Installing Dependencies with pnpm in Shell
+DESCRIPTION: This command uses the pnpm package manager to install all project dependencies listed in the `package.json` file. pnpm is known for efficient disk usage and faster installation times compared to other managers.
+SOURCE: https://github.com/nuxt/fonts/blob/main/README.md#_snippet_1
+
+LANGUAGE: Shell
+CODE:
+```
+pnpm install
+```
+
+----------------------------------------
+
+TITLE: Installing Dependencies with pnpm - Shell
+DESCRIPTION: Installs the project's required dependencies using the pnpm package manager. This command reads the project's package.json file to fetch and install necessary packages.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/3.contributing.md#_snippet_1
+
+LANGUAGE: Shell
+CODE:
+```
+pnpm install
+```
+
+----------------------------------------
+
+TITLE: Installing Project Dependencies - Bash
+DESCRIPTION: Install all necessary project dependencies using your preferred Node.js package manager. This step is required after cloning or initializing the project before running development or build commands.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/README.md#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+# npm
+npm install
+```
+
+LANGUAGE: bash
+CODE:
+```
+# pnpm
+pnpm install
+```
+
+LANGUAGE: bash
+CODE:
+```
+# yarn
+yarn install
+```
+
+LANGUAGE: bash
+CODE:
+```
+# bun
+bun install
+```
+
+----------------------------------------
+
+TITLE: Starting Development Server - Bash
+DESCRIPTION: Run the application in development mode with hot-reloading and other development features. The server typically starts on `http://localhost:3000`. Requires dependencies to be installed.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/README.md#_snippet_2
+
+LANGUAGE: bash
+CODE:
+```
+# npm
+npm run dev
+```
+
+LANGUAGE: bash
+CODE:
+```
+# pnpm
+pnpm run dev
+```
+
+LANGUAGE: bash
+CODE:
+```
+# yarn
+yarn dev
+```
+
+LANGUAGE: bash
+CODE:
+```
+# bun
+bun run dev
+```
+
+----------------------------------------
+
+TITLE: Adding Nuxt Studio Module - TypeScript
+DESCRIPTION: Include the `@nuxthq/studio` module in your `nuxt.config.ts` file to enable its functionality within the Nuxt application. Add it to the `modules` array.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/README.md#_snippet_6
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  ...
+  modules: [
+    ...
+    '@nuxthq/studio'
+  ]
+})
+```
+
+----------------------------------------
+
+TITLE: Adding Nuxt Studio Dev Dependency - Bash
+DESCRIPTION: Install the `@nuxthq/studio` module as a development dependency using different package managers. This module is needed to integrate the project with Nuxt Studio features.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/README.md#_snippet_5
+
+LANGUAGE: bash
+CODE:
+```
+# npm
+npm install --save-dev @nuxthq/studio
+```
+
+LANGUAGE: bash
+CODE:
+```
+# pnpm
+pnpm add -D @nuxthq/studio
+```
+
+LANGUAGE: bash
+CODE:
+```
+# yarn
+yarn add -D @nuxthq/studio
+```
+
+LANGUAGE: bash
+CODE:
+```
+# bun
+bun add -d @nuxthq/studio
+```
+
+----------------------------------------
+
+TITLE: Generating Type Stubs with pnpm in Shell
+DESCRIPTION: This command executes a pnpm script defined in the project's `package.json` (`dev:prepare`). Its purpose is typically to generate necessary type definition files or stubs required for development, especially in TypeScript projects.
+SOURCE: https://github.com/nuxt/fonts/blob/main/README.md#_snippet_2
+
+LANGUAGE: Shell
+CODE:
+```
+pnpm dev:prepare
+```
+
+----------------------------------------
+
+TITLE: Preparing Development Environment with pnpm - Shell
+DESCRIPTION: Executes the 'dev:prepare' script defined in the project's package.json. This step is typically used to generate necessary files, such as TypeScript type stubs, before starting development.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/3.contributing.md#_snippet_2
+
+LANGUAGE: Shell
+CODE:
+```
+pnpm dev:prepare
+```
+
+----------------------------------------
+
+TITLE: Building Project with pnpm - Shell
+DESCRIPTION: Executes the 'build' script defined in the project's package.json. This command compiles, bundles, or prepares the project for distribution or production deployment.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/3.contributing.md#_snippet_6
+
+LANGUAGE: Shell
+CODE:
+```
+pnpm build
+```
+
+----------------------------------------
+
+TITLE: Building Production Application - Bash
+DESCRIPTION: Generate an optimized build of the application for production deployment. This command compiles and bundles your code.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/README.md#_snippet_3
+
+LANGUAGE: bash
+CODE:
+```
+# npm
+npm run build
+```
+
+LANGUAGE: bash
+CODE:
+```
+# pnpm
+pnpm run build
+```
+
+LANGUAGE: bash
+CODE:
+```
+# yarn
+yarn run build
+```
+
+LANGUAGE: bash
+CODE:
+```
+# bun
+bun run build
+```
+
+----------------------------------------
+
+TITLE: Previewing Production Build - Bash
+DESCRIPTION: Serve the previously generated production build locally to test it before deploying. Requires running the `build` command first.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/README.md#_snippet_4
+
+LANGUAGE: bash
+CODE:
+```
+# npm
+npm run preview
+```
+
+LANGUAGE: bash
+CODE:
+```
+# pnpm
+pnpm run preview
+```
+
+LANGUAGE: bash
+CODE:
+```
+# yarn
+yarn run preview
+```
+
+LANGUAGE: bash
+CODE:
+```
+# bun
+bun run preview
+```
+
+----------------------------------------
+
+TITLE: Running Tests with pnpm - Shell
+DESCRIPTION: Executes the 'test' script defined in the project's package.json. This command runs the project's test suite to verify functionality and ensure changes haven't introduced regressions.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/3.contributing.md#_snippet_4
+
+LANGUAGE: Shell
+CODE:
+```
+pnpm test
+```
+
+----------------------------------------
+
+TITLE: Checking Code Style with pnpm - Shell
+DESCRIPTION: Runs the 'lint' script defined in the project's package.json. This command checks the codebase against predefined style guides and identifies potential formatting or code quality issues.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/3.contributing.md#_snippet_5
+
+LANGUAGE: Shell
+CODE:
+```
+pnpm lint
+```
+
+----------------------------------------
+
+TITLE: Starting Development Server with pnpm - Shell
+DESCRIPTION: Runs the 'dev' script defined in the project's package.json. This command initiates the local development server, typically for the project's playground or example environment.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/3.contributing.md#_snippet_3
+
+LANGUAGE: Shell
+CODE:
+```
+pnpm dev
+```
+
+----------------------------------------
+
+TITLE: Starting Development Playground with pnpm in Shell
+DESCRIPTION: This command runs the pnpm script (`pnpm dev`) that starts the project's development server and the basic playground. It allows developers to test changes and see the module in action during the development phase.
+SOURCE: https://github.com/nuxt/fonts/blob/main/README.md#_snippet_3
+
+LANGUAGE: Shell
+CODE:
+```
+pnpm dev
+```
+
+----------------------------------------
+
+TITLE: Enabling Corepack in Shell
+DESCRIPTION: This command enables Corepack, a tool that manages package managers like pnpm, yarn, and npm. It ensures that the project uses the correct package manager version specified in the `package.json`.
+SOURCE: https://github.com/nuxt/fonts/blob/main/README.md#_snippet_0
+
+LANGUAGE: Shell
+CODE:
+```
+corepack enable
+```
+
+----------------------------------------
+
+TITLE: Enabling Corepack - Shell
+DESCRIPTION: Enables Corepack, a tool to manage package managers like pnpm, yarn, and npm. This is required for using pnpm effectively in the project's development workflow.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/3.contributing.md#_snippet_0
+
+LANGUAGE: Shell
+CODE:
+```
+corepack enable
+```
+
+----------------------------------------
+
+TITLE: Starting Documentation Development Server with pnpm - Shell
+DESCRIPTION: Runs the 'docs:dev' script defined in the project's package.json. This command starts a local server dedicated to previewing and developing the project's documentation.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/content/3.contributing.md#_snippet_7
+
+LANGUAGE: Shell
+CODE:
+```
+pnpm docs:dev
+```
+
+----------------------------------------
+
+TITLE: Initializing Nuxt UI Pro Docs Template Project - Bash
+DESCRIPTION: Use the `npx nuxi init` command to scaffold a new project based on the Nuxt UI Pro Docs template from the specified GitHub repository. This is the recommended quick start method.
+SOURCE: https://github.com/nuxt/fonts/blob/main/docs/README.md#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+npx nuxi init -t github:nuxt-ui-pro/docs
+```

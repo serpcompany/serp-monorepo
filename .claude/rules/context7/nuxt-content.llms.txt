@@ -1,0 +1,3713 @@
+TITLE: Updating app.vue for Nuxt Content Page Rendering
+DESCRIPTION: This snippet provides the necessary `app.vue` configuration for new Nuxt projects that may not yet have a `pages` directory. It ensures that Nuxt can correctly render pages by including the `NuxtLayout` and `NuxtPage` components.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/2.installation.md#_snippet_6
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Basic Nuxt Content Configuration
+DESCRIPTION: Basic configuration setup for Nuxt Content module in nuxt.config.ts file.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/3.configuration.md#2025-04-23_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  content: {
+    // Options
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Defining Data Collection Type in Nuxt Content
+DESCRIPTION: This snippet shows how to define a data-type collection in Nuxt Content. It specifies the source as YAML files in the 'authors' directory and sets the type to 'data'.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/2.collections/2.types.md#2025-04-23_snippet_1
+
+LANGUAGE: ts
+CODE:
+```
+defineCollection({
+  source: 'authors/**.yml',
+  type: 'data'
+})
+```
+
+----------------------------------------
+
+TITLE: Defining Content Collections in TypeScript
+DESCRIPTION: This snippet demonstrates how to define collections in the content.config.ts file using the defineCollection utility. It shows how to configure the database structure, specify content types, and define schemas for collections.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/v3.md#2025-04-23_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+import { defineCollection, z } from '@nuxt/content'
+
+// Export collections
+export const collections = {
+  // Define collection using `defineCollection` utility
+  posts: defineCollection({
+    // Specify the type of content in this collection
+    type: 'page',
+    // Load every file matching this pattern
+    source: 'blog/**/*.md',
+    // Define custom schema for this collection
+    schema: z.object({
+      date: z.date(),
+      image: z.object({
+        src: z.string(),
+        alt: z.string()
+      }),
+      badge: z.object({
+        label: z.string(),
+        color: z.string()
+      })
+    })
+  }),
+}
+```
+
+----------------------------------------
+
+TITLE: Creating a Markdown Page for Nuxt Content
+DESCRIPTION: This snippet shows how to create a basic Markdown file at `content/index.md`. This file will serve as the first content page for your Nuxt Content application, demonstrating the simplicity of adding static content.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/2.installation.md#_snippet_4
+
+LANGUAGE: md
+CODE:
+```
+# My First Page
+
+Here is some content.
+```
+
+----------------------------------------
+
+TITLE: Defining Page Collection Type in Nuxt Content
+DESCRIPTION: This snippet demonstrates how to define a page-type collection in Nuxt Content. It specifies the source as Markdown files and sets the type to 'page'.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/2.collections/2.types.md#2025-04-23_snippet_0
+
+LANGUAGE: ts
+CODE:
+```
+defineCollection({
+  source: '**/*.md',
+  type: 'page'
+})
+```
+
+----------------------------------------
+
+TITLE: Creating a Content Collection with Schema Validation in TypeScript
+DESCRIPTION: This snippet demonstrates how to define a blog collection with a Zod schema for data validation. It enforces a structure where each blog post must have tags, an image, and a date.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/2.collections/1.define.md#2025-04-23_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+import { defineCollection, defineContentConfig, z } from '@nuxt/content'
+
+export default defineContentConfig({
+  collections: {
+    blog: defineCollection({
+      source: 'blog/*.md',
+      type: 'page',
+      // Define custom schema for docs collection
+      schema: z.object({
+        tags: z.array(z.string()),
+        image: z.string(),
+        date: z.date()
+      })
+    })
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Creating a New Nuxt Project with Nuxt Content Pre-installed
+DESCRIPTION: These commands demonstrate how to use the `create-nuxt` CLI to scaffold a new Nuxt project. During the interactive setup, you can select `@nuxt/content` to automatically install and register the module.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/2.installation.md#_snippet_2
+
+LANGUAGE: bash
+CODE:
+```
+npm create nuxt <project-name>
+```
+
+LANGUAGE: bash
+CODE:
+```
+yarn create nuxt <project-name>
+```
+
+LANGUAGE: bash
+CODE:
+```
+pnpm create nuxt <project-name>
+```
+
+LANGUAGE: bash
+CODE:
+```
+bun create nuxt <project-name>
+```
+
+LANGUAGE: bash
+CODE:
+```
+deno -A npm:create-nuxt@latest <project-name>
+```
+
+----------------------------------------
+
+TITLE: Configuring Nuxt Content Preview API in Nuxt.js
+DESCRIPTION: This configuration snippet sets the `Preview API` URL within the `nuxt.config.ts` file. This is essential for enabling all Nuxt Studio features, including live website previews, dynamic form generation, and enhanced Markdown editors, by connecting your deployed site to the Studio platform.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/8.studio/1.setup.md#_snippet_0
+
+LANGUAGE: TypeScript
+CODE:
+```
+export default defineNuxtConfig({
+  content: {
+    preview: {
+      api: 'https://api.nuxt.studio'
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Querying Collections on the Server Side (TypeScript)
+DESCRIPTION: This snippet illustrates how to use `queryCollection` within a Nuxt server API route. The key difference from client-side usage is passing the `event` object as the first argument, which provides the necessary server-side context for the query.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_15
+
+LANGUAGE: ts
+CODE:
+```
+export default eventHandler(async (event) => {
+  const { slug } = getRouterParams(event)
+  const page = await queryCollection(event, 'docs').path(slug).first()
+  return page
+})
+```
+
+----------------------------------------
+
+TITLE: Complete Example: Listing Documents in Vue
+DESCRIPTION: This comprehensive Vue component example demonstrates fetching a list of documents from the 'docs' collection, ordering them by date, selecting specific fields, and then rendering them as a list of links. It showcases a typical usage pattern for displaying content.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_14
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { data: docs } = await useAsyncData('documents-list', () => {
+  return queryCollection('docs')
+    .order('date', 'DESC')
+    .select('title', 'path', 'description')
+    .all()
+})
+</script>
+
+<template>
+  <NuxtLink v-for="doc in docs" :key="doc.path" :to="doc.path">
+    <h2>{{ doc.title }}</h2>
+    <p>{{ doc.description }}</p>
+  </NuxtLink>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Configuring Default Content Source in Nuxt Content (TypeScript)
+DESCRIPTION: This snippet demonstrates how to define a content collection named 'docs' in Nuxt Content. It uses `defineContentConfig` and `defineCollection` to set the `source` property to `'**'`, which includes all files within the content directory and its subdirectories, and specifies the collection `type` as 'page'.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/2.collections/3.sources.md#_snippet_0
+
+LANGUAGE: TypeScript
+CODE:
+```
+import { defineCollection, defineContentConfig } from '@nuxt/content'
+
+export default defineContentConfig({
+  collections: {
+    docs: defineCollection({
+      source: '**',
+      type: 'page'
+    })
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Displaying Nuxt Content Page in a Vue Component
+DESCRIPTION: This Vue component demonstrates how to fetch and display content from a Nuxt Content collection using `useAsyncData` and `queryCollection`. It also integrates `useSeoMeta` for SEO purposes and uses `ContentRenderer` to render the fetched content dynamically.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/2.installation.md#_snippet_5
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { data: home } = await useAsyncData(() => queryCollection('content').path('/').first())
+
+useSeoMeta({
+  title: home.value?.title,
+  description: home.value?.description
+})
+</script>
+
+<template>
+  <ContentRenderer v-if="home" :value="home" />
+  <div v-else>Home not found</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Fetching All Matching Documents with queryCollection (TypeScript)
+DESCRIPTION: This example demonstrates the `all()` method, which executes the query and returns an array containing all documents that match the applied conditions. It's the final step to retrieve multiple content entries.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_10
+
+LANGUAGE: ts
+CODE:
+```
+const route = useRoute()
+const { data } = await useAsyncData(route.path, () => {
+  return queryCollection('docs').all()
+})
+```
+
+----------------------------------------
+
+TITLE: Defining Collections Schema in Nuxt Content v3
+DESCRIPTION: Demonstrates how to define content collections with schema validation using Zod in the content.config.ts file. Shows collection configuration including type specification, source pattern matching, and schema definition for content structure.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/changelog/frontmatter-form.md#2025-04-23_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+import { defineCollection, z } from '@nuxt/content'
+
+// Export collections
+export const collections = {
+  // Define collection using `defineCollection` utility
+  posts: defineCollection({
+    // Specify the type of content in this collection
+    type: 'page',
+    // Load every file matching this pattern
+    source: 'blog/**/*.md',
+    // Define custom schema for this collection
+    schema: z.object({
+      date: z.date(),
+      image: z.object({
+        src: z.string(),
+        alt: z.string()
+      }),
+      badge: z.object({
+        label: z.string(),
+        color: z.string()
+      })
+    })
+  }),
+}
+```
+
+----------------------------------------
+
+TITLE: Populating SEO Metadata for Docs Pages with Content v3 Page Type
+DESCRIPTION: Using the built-in seo field provided by the page type in Content v3 to populate useSeoMeta for documentation pages, including the site name in the Open Graph title.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/ui-pro-docs-migration.md#2025-04-23_snippet_7
+
+LANGUAGE: ts
+CODE:
+```
+useSeoMeta({
+  title: page.value.seo.title,
+  ogTitle: `${page.value.seo.title} - ${seo?.siteName}`,
+  description: page.value.seo.description,
+  ogDescription: page.value.seo.description
+})
+```
+
+----------------------------------------
+
+TITLE: Querying Blog Posts in Nuxt Content
+DESCRIPTION: This Vue component fetches blog posts using Nuxt Content's queryCollection method. It demonstrates how to use useAsyncData to query the 'blog' collection and display a list of blog post titles with links.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/index.md#2025-04-23_snippet_1
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { data: posts } = await useAsyncData('blog', () => {
+  return queryCollection('blog').all()
+})
+</script>
+
+<template>
+  <div>
+    <h1>Blog</h1>
+    <ul>
+      <li v-for="post in posts" :key="post.id">
+        <NuxtLink :to="post.path">{{ post.title }}</NuxtLink>
+      </li>
+    </ul>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Querying Content Collections in Vue Component
+DESCRIPTION: This Vue component demonstrates how to use the queryCollection utility to fetch and display blog posts from a collection. It uses the useAsyncData composable for data fetching and renders a list of blog post links.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/v3.md#2025-04-23_snippet_1
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { data: posts } = await useAsyncData('blog', () => {
+  return queryCollection('blog').all()
+})
+</script>
+
+<template>
+  <div>
+    <h1>Blog</h1>
+    <ul>
+      <li v-for="post in posts" :key="post.id">
+        <NuxtLink :to="post.path">{{ post.title }}</NuxtLink>
+      </li>
+    </ul>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Defining Content Collections in Nuxt Content
+DESCRIPTION: This TypeScript code defines a content configuration for Nuxt Content. It creates a 'blog' collection with a custom schema using Zod for type validation. This enables type-safe querying of blog post content.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/index.md#2025-04-23_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+import { defineContentConfig, defineCollection, z } from '@nuxt/content'
+
+export default defineContentConfig({
+  collections: {
+    blog: defineCollection({
+      source: 'blog/*.md',
+      type: 'page',
+      // Define custom schema for docs collection
+      schema: z.object({
+        tags: z.array(z.string()),
+        image: z.string(),
+        date: z.Date()
+      })
+    })
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Querying Markdown Content in Nuxt
+DESCRIPTION: This TypeScript snippet illustrates how to programmatically query content collections. It demonstrates fetching a single post by its path using `.first()` and retrieving all posts from a collection, ordered by a specific frontmatter property like 'date' in descending order.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_12
+
+LANGUAGE: ts
+CODE:
+```
+// Get the foo post
+const fooPost = await queryCollection('blog').path('/blog/foo').first()
+
+// Find all posts
+const allPosts = await queryCollection('blog').order('date', 'DESC').all()
+```
+
+----------------------------------------
+
+TITLE: Fetching a Single Document by Path in Vue
+DESCRIPTION: This snippet demonstrates how to use the `queryCollection` composable within a Vue component to fetch a single document from the 'docs' collection. It leverages `useAsyncData` to asynchronously retrieve content based on the current route path, ensuring data is available before rendering.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_0
+
+LANGUAGE: vue
+CODE:
+```
+<script>
+const route = useRoute()
+const { data: page } = await useAsyncData(route.path, () => {
+  return queryCollection('docs').path(route.path).first()
+})
+</script>
+```
+
+----------------------------------------
+
+TITLE: Binding Data from YAML Frontmatter - MDC
+DESCRIPTION: Shows how to define variables in the YAML frontmatter of an MDC document and then bind them within the Markdown content using the `{{ $doc.variable }}` syntax. A default value can be provided using `|| 'defaultValue'`.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_2
+
+LANGUAGE: mdc
+CODE:
+```
+---
+title: 'Title of the page'
+description: 'meta description of the page'
+customVariable: 'Custom Value'
+---
+
+# The Title is {{ $doc.title }} and customVariable is {{ $doc.customVariable || 'defaultValue' }}
+```
+
+----------------------------------------
+
+TITLE: Selecting Specific Fields with queryCollection (TypeScript)
+DESCRIPTION: This snippet demonstrates the `select` method, which allows you to specify which fields from the collection documents should be returned. This helps in optimizing data transfer by fetching only the necessary information.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_3
+
+LANGUAGE: ts
+CODE:
+```
+const route = useRoute()
+const { data } = await useAsyncData(route.path, () => {
+  return queryCollection('docs')
+    .select('path', 'title', 'description')
+    .first()
+})
+```
+
+----------------------------------------
+
+TITLE: Using queryContent Composable
+DESCRIPTION: Demonstrates using the queryContent composable to fetch content with filtering and pagination
+SOURCE: https://github.com/nuxt/content/blob/main/playground/content/1.real-content/query.md#2025-04-23_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+const post = await queryContent('posts')
+  .where({ category: { $in: ['nature', 'people'] } })
+  .limit(10)
+  .find()
+
+const doc = await queryContent('/').findOne()
+```
+
+----------------------------------------
+
+TITLE: queryCollection API Type Definitions
+DESCRIPTION: This TypeScript snippet defines the type signatures for the `queryCollection` function and the `CollectionQueryBuilder` interface. It outlines the available methods for building queries, including `where`, `andWhere`, `orWhere`, and `order`, along with their expected parameters and return types.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_1
+
+LANGUAGE: ts
+CODE:
+```
+function queryCollection<T extends keyof Collections>(collection: T): CollectionQueryBuilder<Collections[T]>
+
+interface CollectionQueryBuilder<T> {
+  where(field: keyof T | string, operator: SQLOperator, value?: unknown): CollectionQueryBuilder<T>
+  andWhere(groupFactory: QueryGroupFunction<T>): CollectionQueryBuilder<T>
+  orWhere(groupFactory: QueryGroupFunction<T>): CollectionQueryBuilder<T>
+  order(field: keyof T, direction: 'ASC' | 'DESC'): CollectionQueryBuilder<T>
+  // ... other methods
+}
+```
+
+----------------------------------------
+
+TITLE: Defining Frontmatter Metadata in Markdown
+DESCRIPTION: This snippet demonstrates how to define frontmatter metadata for a Nuxt Content post. It includes a title and an array of authors.
+SOURCE: https://github.com/nuxt/content/blob/main/playground/content/1.real-content/post.md#2025-04-23_snippet_0
+
+LANGUAGE: markdown
+CODE:
+```
+---
+title: Post 1
+authors: [ "alice", "bob" ]
+---
+```
+
+----------------------------------------
+
+TITLE: Implementing Full-Text Search with Nuxt UI Pro in Vue
+DESCRIPTION: This snippet demonstrates how to use Nuxt UI Pro's UContentSearch component for full-text search. It uses queryCollectionNavigation and queryCollectionSearchSections to fetch data for navigation and search functionality.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/7.advanced/1.fulltext-search.md#2025-04-23_snippet_0
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { data: navigation } = await useAsyncData('navigation', () => queryCollectionNavigation('docs'))
+const { data: files } = await useAsyncData('search', () => queryCollectionSearchSections('docs'))
+
+const searchTerm = ref('')
+</script>
+
+<template>
+  <UContentSearch
+    v-model:search-term="searchTerm"
+    :files="files"
+    :navigation="navigation"
+    :fuse="{ resultLimit: 42 }"
+  />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Implementing Document Driven Mode in Nuxt Content v3
+DESCRIPTION: This Vue component demonstrates how to implement a document-driven mode in Nuxt Content v3 using a catch-all page. It fetches content based on the current route path using `queryCollection('content').path(route.path).first()` and renders it with `<ContentRenderer>`. This replaces the automatic page conversion behavior of v2.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/4.migration.md#_snippet_1
+
+LANGUAGE: Vue
+CODE:
+```
+<script lang="ts" setup>
+const route = useRoute()
+const { data: page } = await useAsyncData(route.path, () => {
+  return queryCollection('content').path(route.path).first()
+})
+</script>
+
+<template>
+  <div>
+    <header><!-- ... --></header>
+
+    <ContentRenderer v-if="page" :value="page" />
+
+    <footer><!-- ... --></footer>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Implementing `content:file:beforeParse` and `content:file:afterParse` Hooks in Nuxt
+DESCRIPTION: This example demonstrates practical applications of both `content:file:beforeParse` and `content:file:afterParse` hooks in `nuxt.config.ts`. The `beforeParse` hook replaces "react" with "Vue" in Markdown files, while the `afterParse` hook calculates and adds a `readingTime` property to the content object based on word count.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/7.advanced/5.hooks.md#_snippet_2
+
+LANGUAGE: TypeScript
+CODE:
+```
+export default defineNuxtConfig({
+  // ...
+  hooks: {
+    'content:file:beforeParse'(ctx) {
+      const { file } = ctx;
+
+      if (file.id.endsWith(".md")) {
+        file.body = file.body.replace(/react/gi, "Vue");
+      }
+    },
+    'content:file:afterParse'(ctx) {
+      const { file, content } = ctx;
+
+      const wordsPerMinute = 180;
+      const text = typeof file.body === 'string' ? file.body : '';
+      const wordCount = text.split(/\s+/).length;
+
+      content.readingTime = Math.ceil(wordCount / wordsPerMinute);
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Implementing Full-Text Search with MiniSearch in Vue
+DESCRIPTION: This snippet shows how to implement full-text search using the MiniSearch library. It sets up a MiniSearch instance with custom search options and displays search results in a list.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/7.advanced/1.fulltext-search.md#2025-04-23_snippet_1
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+import MiniSearch from 'minisearch'
+
+const query = ref('')
+const { data } = await useAsyncData('search', () => queryCollectionSearchSections('docs'))
+
+const miniSearch = new MiniSearch({
+  fields: ['title', 'content'],
+  storeFields: ['title', 'content'],
+  searchOptions: {
+    prefix: true,
+    fuzzy: 0.2,
+  },
+})
+
+// Add data to the MiniSearch instance
+miniSearch.addAll(toValue(data.value))
+const result = computed(() => miniSearch.search(toValue(query)))
+</script>
+
+<template>
+  <UContainer class="p-4">
+    <UCard>
+      <UInput v-model="query" placeholder="Search..." />
+      <ul>
+        <li v-for="link of result" :key="link.id" class="mt-2">
+          <NuxtLink :to="link.id">{{ link.title }}</NuxtLink>
+          <p class="text-gray-500 text-xs">{{ link.content }}</p>
+        </li>
+      </ul>
+    </UCard>
+  </UContainer>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Handling Missing Pages with ContentRenderer in Vue
+DESCRIPTION: This example illustrates how to implement a fallback mechanism when the queried content is not found. It uses a `v-if`/`v-else` structure to display the `<ContentRenderer>` if content exists, or a custom 'Page Not Found' message with a link back home if it's missing.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/5.components/0.content-renderer.md#_snippet_1
+
+LANGUAGE: Vue
+CODE:
+```
+<script lang="ts" setup>
+const route = useRoute()
+const { data: page } = await useAsyncData(route.path, () => {
+  return queryCollection('docs').path(route.path).findOne()
+})
+</script>
+
+<template>
+  <template v-if="page">
+    <ContentRenderer :value="page" />
+  </template>
+  <template v-else>
+    <div class="empty-page">
+      <h1>Page Not Found</h1>
+      <p>Oops! The content you're looking for doesn't exist.</p>
+      <NuxtLink to="/">Go back home</NuxtLink>
+    </div>
+  </template>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Passing JSON Arrays and Objects as Inline Props to MDC Components
+DESCRIPTION: These snippets illustrate how to pass complex data structures like arrays and objects as props to MDC components using the inline method. By prefixing the prop key with a colon and providing a JSON string (using single quotes for the value to allow double quotes within the JSON), Nuxt Content automatically decodes the string into the respective data type.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_22
+
+LANGUAGE: mdc
+CODE:
+```
+::dropdown{:items='["Nuxt", "Vue", "React"]'}
+::
+```
+
+LANGUAGE: mdc
+CODE:
+```
+::dropdown{:items='[1,2,3.5]'}
+::
+```
+
+LANGUAGE: mdc
+CODE:
+```
+::chart{:options='{"responsive": true, "scales": {"y": {"beginAtZero": true}}}'}
+::
+```
+
+----------------------------------------
+
+TITLE: Declaring Frontmatter in Nuxt Markdown Files
+DESCRIPTION: This Markdown snippet shows the basic syntax for declaring a frontmatter block at the top of a Markdown file. It uses YAML key-value pairs between `---` delimiters to define metadata such as 'title' and 'description' for the page.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_14
+
+LANGUAGE: md
+CODE:
+```
+---
+title: 'Title of the page'
+description: 'meta description of the page'
+---
+
+<!-- Content of the page -->
+```
+
+----------------------------------------
+
+TITLE: Displaying Markdown Content with ContentRenderer in Nuxt
+DESCRIPTION: This Vue component demonstrates how to dynamically fetch and display Markdown content using `useAsyncData` and the `<ContentRenderer>` component. It retrieves a blog post based on the current route's slug and renders its content, including any embedded Vue components or Prose components.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_13
+
+LANGUAGE: vue
+CODE:
+```
+<script setup>
+const slug = useRoute().params.slug
+const { data: post } = await useAsyncData(`blog-${slug}`, () => {
+  return queryCollection('blog').path(`/blog/${slug}`).first()
+})
+</script>
+
+<template>
+  <!-- Render the blog post as Prose & Vue components -->
+  <ContentRenderer :value="post" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Installing Nuxt Content v3 Package with Package Managers
+DESCRIPTION: Commands for installing the Nuxt Content v3 package using different package managers including pnpm, yarn, npm, and bun.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/ui-pro-docs-migration.md#2025-04-23_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+pnpm add @nuxt/content@^3
+```
+
+LANGUAGE: bash
+CODE:
+```
+yarn add @nuxt/content@^3
+```
+
+LANGUAGE: bash
+CODE:
+```
+npm install @nuxt/content@^3
+```
+
+LANGUAGE: bash
+CODE:
+```
+bun add @nuxt/content@^3
+```
+
+----------------------------------------
+
+TITLE: Implementing Full-Text Search with Fuse.js in Vue
+DESCRIPTION: This snippet demonstrates how to use Fuse.js for full-text search. It creates a Fuse instance with custom search options and displays search results in a list with buttons.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/7.advanced/1.fulltext-search.md#2025-04-23_snippet_2
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+import Fuse from 'fuse.js'
+
+const query = ref('')
+const { data } = await useAsyncData('search-data', () => queryCollectionSearchSections('docs'))
+
+const fuse = new Fuse(data.value, {
+  keys: ['title', 'description']
+})
+
+const result = computed(() => fuse.search(toValue(query)).slice(0, 10))
+</script>
+
+<template>
+  <UContainer class="p-4">
+    <UCard>
+      <UInput v-model="query" placeholder="Search..." class="w-full" />
+      <ul>
+        <li v-for="link of result" :key="link.item.id" class="mt-2">
+          <UButton variant="ghost" class="w-full" :to="link.item.id">
+            {{ link.item.title }}
+            <span class="text-gray-500 text-xs">
+              {{ link.item.content?.slice(0, 100) }}...
+            </span>
+          </UButton>
+        </li>
+      </ul>
+    </UCard>
+  </UContainer>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Rendering Content with ContentRenderer in Vue
+DESCRIPTION: This snippet demonstrates how to fetch content for a given route path using `useAsyncData` and `queryCollection`, then conditionally render it using the `<ContentRenderer>` component. It ensures the component only renders if the `page` data is available.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/5.components/0.content-renderer.md#_snippet_0
+
+LANGUAGE: Vue
+CODE:
+```
+<script lang="ts" setup>
+const route = useRoute()
+const { data: page } = await useAsyncData(route.path, () => {
+  return queryCollection('docs').path(route.path).first()
+})
+</script>
+
+<template>
+  <ContentRenderer v-if="page" :value="page" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Rendering Content with ContentRenderer in Vue
+DESCRIPTION: This Vue component shows how to use the ContentRenderer component to display the content of a Markdown file. It fetches the 'about' page content using queryCollection and renders it, with a fallback message if the page doesn't exist.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/v3.md#2025-04-23_snippet_2
+
+LANGUAGE: vue
+CODE:
+```
+<script lang="ts" setup>
+const { data: page } = await useAsyncData(() => {
+  return queryCollection('content').path('/about').first()
+})
+</script>
+
+<template>
+  <ContentRenderer v-if="page" :value="page" />
+  <p v-else>About page not written yet.</p>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Utilizing Default and Named Slots in MDC Components
+DESCRIPTION: This snippet demonstrates how to define and use both a default slot and a named slot (`#description`) within a Vue component (`Hero.vue`). It shows how to populate these slots from a Markdown file using MDC syntax, allowing for structured content injection into the component.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_18
+
+LANGUAGE: mdc
+CODE:
+```
+::hero
+My Page Title
+
+#description
+This will be rendered inside the `description` slot.
+::
+```
+
+LANGUAGE: html
+CODE:
+```
+<template>
+  <section>
+    <h1 class="text-4xl">
+      <slot mdc-unwrap="p" />
+    </h1>
+    <slot name="description" />
+  </section>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Using ContentRenderer Component in Vue Template
+DESCRIPTION: Shows how to use the ContentRenderer component in a Vue template to render document content. It includes fetching data using useAsyncData and queryContent.
+SOURCE: https://github.com/nuxt/content/blob/main/playground/content/1.real-content/content.md#2025-04-23_snippet_1
+
+LANGUAGE: vue
+CODE:
+```
+<script setup>
+const route = useRoute()
+const { data } = await useAsyncData(`doc-${route.path}`, () => queryContent(route.path).findOne())
+</script>
+
+<template>
+  <ContentRenderer :value="data" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Configuring Page Front Matter in YAML
+DESCRIPTION: Defines page metadata using YAML front matter that specifies a title, boolean field, number field, and array field. This configuration will be processed by Nuxt Content to set up page properties.
+SOURCE: https://github.com/nuxt/content/blob/main/test/fixtures/basic/content/index.md#2025-04-23_snippet_0
+
+LANGUAGE: yaml
+CODE:
+```
+---
+title: Home page
+booleanField: true
+numberField: 1
+arrayField:
+  - item1
+  - item2
+---
+```
+
+----------------------------------------
+
+TITLE: Advanced Usage of queryCollectionItemSurroundings in Vue
+DESCRIPTION: An advanced example of using queryCollectionItemSurroundings with custom options and additional query conditions. It shows how to specify the number of items to fetch before and after, include additional fields, and apply multiple where conditions.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/3.query-collection-item-surroundings.md#2025-04-23_snippet_2
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { data } = await useAsyncData('surround', () => {
+  return queryCollectionItemSurroundings('docs', '/foo', {
+    before: 1,
+    after: 1,
+    fields: ['badge', 'description']
+  })
+    .where('_draft', '=', false)
+    .where('_partial', '=', false)
+    .order('date', 'DESC')
+})
+</script>
+```
+
+----------------------------------------
+
+TITLE: Filtering Results with `where` Clause (TypeScript)
+DESCRIPTION: This example illustrates how to use the `where` method to add a condition to the query, filtering results based on a specific field, a SQL operator, and a comparison value. It's essential for narrowing down search results.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_4
+
+LANGUAGE: ts
+CODE:
+```
+const route = useRoute()
+const { data } = await useAsyncData(route.path, () => {
+  return queryCollection('docs')
+    .where('date', '<', '2024-04-04')
+    .all()
+})
+```
+
+----------------------------------------
+
+TITLE: Defining a Content Collection in Nuxt
+DESCRIPTION: This snippet demonstrates how to configure a content collection in `content.config.ts` using `defineContentConfig` and `defineCollection`. It sets up a 'blog' collection for Markdown files in 'blog/*.md' and defines a schema using Zod to validate the 'date' frontmatter property.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_10
+
+LANGUAGE: ts
+CODE:
+```
+import { defineCollection, defineContentConfig, z } from '@nuxt/content'
+
+export default defineContentConfig({
+  collections: {
+    blog: defineCollection({
+      type: 'page',
+      source: 'blog/*.md',
+      schema: z.object({
+        date: z.string()
+      })
+    })
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Content Sources in Nuxt Config (TypeScript)
+DESCRIPTION: Demonstrates how to configure content sources in the Nuxt configuration file. It shows setting up default and additional content directories, as well as using custom drivers with options.
+SOURCE: https://github.com/nuxt/content/blob/main/playground/content/1.real-content/content.md#2025-04-23_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  content: {
+    sources: [
+      'content', // Default directory
+      'v2/content', // Additional source
+      {
+        // Checkout unstorage repository to learn more about drivers.
+        // https://github.com/unjs/unstorage
+        driver: 'fs' | 'http' | 'memory' | 'Resolved path for custom driver',
+        driverOptions: {
+          // Additional options for driver
+        }
+      }
+    ]
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Empty Page with YAML Frontmatter in Nuxt Content
+DESCRIPTION: Minimal YAML frontmatter configuration for a Nuxt Content page that defines only the page title. This represents the most basic possible page structure in Nuxt Content.
+SOURCE: https://github.com/nuxt/content/blob/main/playground/content/empty.md#2025-04-23_snippet_0
+
+LANGUAGE: yaml
+CODE:
+```
+---
+title: Empty Page
+---
+```
+
+----------------------------------------
+
+TITLE: Defining a Content Collection in Nuxt Content Configuration
+DESCRIPTION: This snippet illustrates how to create a `content.config.ts` file to define a content collection. The example sets up a default 'content' collection that processes all Markdown files as pages, establishing a 1-to-1 relationship between content files and site pages.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/2.installation.md#_snippet_3
+
+LANGUAGE: ts
+CODE:
+```
+import { defineContentConfig, defineCollection } from '@nuxt/content'
+
+export default defineContentConfig({
+  collections: {
+    content: defineCollection({
+      type: 'page',
+      source: '**/*.md'
+    })
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Accessing Frontmatter Data in Nuxt Content
+DESCRIPTION: This TypeScript example demonstrates how to access frontmatter properties (like 'title' and 'description') and the parsed Abstract Syntax Tree (AST) of the page content ('body') after querying a Markdown file. These properties are available directly on the returned content object.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_15
+
+LANGUAGE: ts
+CODE:
+```
+const home = await queryCollection('content').path('/').first()
+
+console.log(home.title)
+// => 'Title of the page'
+console.log(home.description)
+// => 'meta description of the page'
+console.log(home.body)
+// => AST object of the page content
+```
+
+----------------------------------------
+
+TITLE: Updating Navigation Fetch in app.vue with Content v3 API
+DESCRIPTION: Migrating from the fetchContentNavigation method to the new queryCollectionNavigation method in Content v3 for retrieving navigation data.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/ui-pro-docs-migration.md#2025-04-23_snippet_2
+
+LANGUAGE: ts
+CODE:
+```
+const { data: navigation } = await useAsyncData('navigation', () => queryCollectionNavigation('docs'))
+```
+
+LANGUAGE: ts
+CODE:
+```
+const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
+```
+
+----------------------------------------
+
+TITLE: Deploying Content App with Node.js Docker Image
+DESCRIPTION: Multi-stage Dockerfile for building and deploying a Content application using Node.js Alpine image. Uses pnpm for package management and includes build and production stages for optimized container size.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/6.deploy/8.docker.md#2025-04-23_snippet_0
+
+LANGUAGE: dockerfile
+CODE:
+```
+# Build Stage 1
+
+FROM node:22-alpine AS build
+WORKDIR /app
+
+RUN corepack enable
+
+# Copy package.json and your lockfile, here we add pnpm-lock.yaml for illustration
+COPY package.json pnpm-lock.yaml .npmrc ./
+
+# Install dependencies
+RUN pnpm i
+
+# Copy the entire project
+COPY . ./
+
+# Build the project
+RUN pnpm run build
+
+# Build Stage 2
+
+FROM node:22-alpine
+WORKDIR /app
+
+# Only `.output` folder is needed from the build stage
+COPY --from=build /app/.output/ ./
+
+# Change the port and host
+ENV PORT 80
+ENV HOST 0.0.0.0
+
+EXPOSE 80
+
+CMD ["node", "/app/server/index.mjs"]
+```
+
+----------------------------------------
+
+TITLE: Defining Content Schema with Zod in Nuxt Content
+DESCRIPTION: A comprehensive example of defining a content collection schema using zod in a content.config.ts file. This schema defines various field types including boolean, enum, date, nested objects, and arrays that will generate appropriate form inputs in Studio.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/changelog/studio-customisation.md#2025-04-23_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineContentConfig({
+  collections: {
+    posts: defineCollection({
+      type: 'page',
+      source: 'blog/*.md',
+      schema: z.object({
+        draft: z.boolean().default(false),
+        category: z.enum(['Alps', 'Himalaya', 'Pyrenees']).optional(),
+        date: z.date(),
+        image: z.object({
+          src: z.string().editor({ input: 'media' }),
+          alt: z.string(),
+        }),
+        slug: z.string().editor({ hidden: true }),
+        icon: z.string().optional().editor({ input: 'icon' }),
+        authors: z.array(z.object({
+          slug: z.string(),
+          username: z.string(),
+          name: z.string(),
+          to: z.string(),
+          avatar: z.object({
+            src: z.string(),
+            alt: z.string(),
+          }),
+        })),
+      }),
+    }),
+  },
+})    
+```
+
+----------------------------------------
+
+TITLE: Creating Content Configuration for Collections in Content v3
+DESCRIPTION: JavaScript configuration file for defining content collections structure in Nuxt Content v3. It defines two collections: 'landing' for the home page and 'docs' for documentation pages with custom schema validation.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/ui-pro-docs-migration.md#2025-04-23_snippet_1
+
+LANGUAGE: js
+CODE:
+```
+import { defineContentConfig, defineCollection, z } from '@nuxt/content'
+
+export default defineContentConfig({
+  collections: {
+    landing: defineCollection({
+      type: 'page',
+      source: 'index.yml'
+    }),
+    docs: defineCollection({
+      type: 'page',
+      source: {
+        include: '**',
+        exclude: ['index.yml']
+      },
+      schema: z.object({
+        links: z.array(z.object({
+          label: z.string(),
+          icon: z.string(),
+          to: z.string(),
+          target: z.string().optional()
+        })).optional()
+      })
+    })
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Defining Content Collection Schema
+DESCRIPTION: Example of defining a content collection schema using Zod for form generation in the Studio editor
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/8.studio/3.content.md#2025-04-23_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineContentConfig({
+  collections: {
+    posts: defineCollection({
+      type: 'page',
+      source: 'blog/*.md',
+      schema: z.object({
+        draft: z.boolean().default(false),
+        category: z.enum(['Alps', 'Himalaya', 'Pyrenees']).optional(),
+        date: z.date(),
+        image: z.object({
+          src: z.string().editor({ input: 'media' }),
+          alt: z.string(),
+        }),
+        slug: z.string().editor({ hidden: true }),
+        icon: z.string().optional().editor({ input: 'icon' }),
+        authors: z.array(z.object({
+          slug: z.string(),
+          username: z.string(),
+          name: z.string(),
+          to: z.string(),
+          avatar: z.object({
+            src: z.string(),
+            alt: z.string(),
+          }),
+        })),
+      }),
+    }),
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Implementing a Reusable Card Component with MDC
+DESCRIPTION: This example demonstrates how to create a simple Vue component (`Card.vue`) that accepts content via a default slot. It then shows how to use this component as a block in a Markdown file using the `::card` MDC syntax, rendering the enclosed Markdown content within the component's structure.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_17
+
+LANGUAGE: mdc
+CODE:
+```
+::card
+The content of the card
+::
+```
+
+LANGUAGE: html
+CODE:
+```
+<!-- components/content/Card.vue -->
+<template>
+  <div class="p-2 border bg-white dark:bg-black dark:border-gray-700 rounded">
+    <slot />
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Using MDC Block Components in Nuxt Markdown
+DESCRIPTION: This snippet illustrates the basic MDC syntax for embedding a Vue component as a block within a Markdown file. The `::component-name` identifier is used to declare the component, with any content between `::` and `::` serving as its default slot.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_16
+
+LANGUAGE: mdc
+CODE:
+```
+::component-name
+Default slot content
+::
+```
+
+----------------------------------------
+
+TITLE: Using a Vue Component with MDC Syntax in Markdown
+DESCRIPTION: This example demonstrates how to use the Callout component within Markdown content using MDC syntax.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/5.components/1.slot.md#2025-04-23_snippet_1
+
+LANGUAGE: mdc
+CODE:
+```
+::callout
+This is a callout.
+::
+```
+
+----------------------------------------
+
+TITLE: Installing Dependencies for Nuxt Content Project
+DESCRIPTION: Commands to install project dependencies using various package managers (npm, pnpm, yarn, bun).
+SOURCE: https://github.com/nuxt/content/blob/main/examples/i18n/README.md#2025-04-23_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+# npm
+npm install
+
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
+```
+
+----------------------------------------
+
+TITLE: Installing Dependencies for Nuxt Content Project
+DESCRIPTION: Commands to install project dependencies using different package managers (npm, pnpm, yarn, bun). This step is crucial before running or building the project.
+SOURCE: https://github.com/nuxt/content/blob/main/examples/basic/README.md#2025-04-23_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+# npm
+npm install
+
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
+```
+
+----------------------------------------
+
+TITLE: Installing Dependencies for Nuxt Content Project
+DESCRIPTION: Commands for installing project dependencies using different package managers including npm, pnpm, yarn, and bun.
+SOURCE: https://github.com/nuxt/content/blob/main/examples/ui-pro/README.md#2025-04-23_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+# npm
+npm install
+
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
+```
+
+----------------------------------------
+
+TITLE: Basic Usage Example of queryCollectionSearchSections in Vue Component
+DESCRIPTION: A simple Vue component example demonstrating how to use the queryCollectionSearchSections composable with useAsyncData to fetch searchable sections from the 'docs' collection.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/4.query-collection-search-sections.md#2025-04-23_snippet_1
+
+LANGUAGE: vue
+CODE:
+```
+<script>
+const { data: sections } = await useAsyncData('search-sections', () => {
+  return queryCollectionSearchSections('docs')
+})
+</script>
+```
+
+----------------------------------------
+
+TITLE: Configuring SEO Metadata with Content v3 Page Type
+DESCRIPTION: Using the built-in seo field provided by the page type in Content v3 to populate useSeoMeta for better SEO management.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/ui-pro-docs-migration.md#2025-04-23_snippet_5
+
+LANGUAGE: ts
+CODE:
+```
+useSeoMeta({
+  title: page.value.seo.title,
+  ogTitle: page.value.seo.title,
+  description: page.value.seo.description,
+  ogDescription: page.value.seo.description
+})
+```
+
+----------------------------------------
+
+TITLE: Ordering Query Results with queryCollection (TypeScript)
+DESCRIPTION: This snippet illustrates how to use the `order` method to sort the query results based on a specified field and direction (ascending or descending). This is crucial for presenting content in a logical sequence.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_7
+
+LANGUAGE: ts
+CODE:
+```
+const route = useRoute()
+const { data } = await useAsyncData(route.path, () => {
+  return queryCollection('docs')
+    .order('date', 'DESC')
+    .all()
+})
+```
+
+----------------------------------------
+
+TITLE: Server-side Usage of queryCollectionItemSurroundings in Nuxt
+DESCRIPTION: Demonstrates how to use queryCollectionItemSurroundings on the server side in a Nuxt application. It shows the slight difference in usage where the event object needs to be passed as the first argument to the function.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/3.query-collection-item-surroundings.md#2025-04-23_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+export default eventHandler(async (event) => {
+  const surroundings = await queryCollectionItemSurroundings(event, 'docs', '/foo')
+  return surroundings
+})
+```
+
+----------------------------------------
+
+TITLE: Starting Development Server for Nuxt Content Project
+DESCRIPTION: Commands to start the development server on http://localhost:3000 using different package managers.
+SOURCE: https://github.com/nuxt/content/blob/main/examples/i18n/README.md#2025-04-23_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
+```
+
+----------------------------------------
+
+TITLE: Starting Nuxt Development Server
+DESCRIPTION: Commands to start the development server on http://localhost:3000 using different package managers.
+SOURCE: https://github.com/nuxt/content/blob/main/examples/ui-pro/README.md#2025-04-23_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
+```
+
+----------------------------------------
+
+TITLE: Starting Nuxt Content Development Server
+DESCRIPTION: Commands to start the development server on http://localhost:3000 using different package managers. This allows for local development and testing of the Nuxt Content project.
+SOURCE: https://github.com/nuxt/content/blob/main/examples/basic/README.md#2025-04-23_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
+```
+
+----------------------------------------
+
+TITLE: Rendering Vue Component in Markdown (Nuxt Content)
+DESCRIPTION: Demonstrates how to embed a Vue component called 'counter' within Markdown content using Nuxt Content's custom syntax.
+SOURCE: https://github.com/nuxt/content/blob/main/examples/ui-pro/content/index.md#2025-04-23_snippet_0
+
+LANGUAGE: markdown
+CODE:
+```
+::counter
+::
+```
+
+----------------------------------------
+
+TITLE: Using queryCollectionItemSurroundings in Vue Component
+DESCRIPTION: Example of using the queryCollectionItemSurroundings composable in a Vue component. It demonstrates how to fetch surrounding items for a specific content path, apply additional query conditions, and use the result in the template.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/3.query-collection-item-surroundings.md#2025-04-23_snippet_1
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { data } = await useAsyncData('surround', () => {
+  return queryCollectionItemSurroundings('docs', '/foo')
+    .where('published', '=', true)
+    .order('date', 'DESC')
+})
+</script>
+
+<template>
+  <div class="flex justify-between">
+    <NuxtLink v-if="data?.[0]" :to="data[0].path">
+      ← {{ data[0].title }}
+    </NuxtLink>
+    <NuxtLink v-if="data?.[1]" :to="data[1].path">
+      {{ data[1].title }} →
+    </NuxtLink>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Binding External Data with ContentRenderer - Vue Template
+DESCRIPTION: Demonstrates how to inject dynamic data into a Markdown document using the `data` prop of the `<ContentRenderer>` component in a Vue template. It also shows how to update this data dynamically.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_3
+
+LANGUAGE: html
+CODE:
+```
+<template>
+  <div>
+    <ContentRenderer :value="data" :data="mdcVars"/>
+    <button type="button" v-on:click="mdcVars.name = 'Hugo'">Change name</button>
+  </div>
+</template>
+
+<script setup lang="ts">
+const { data } = await useAsyncData(() => queryCollection('content').path('/test').first());
+const mdcVars = ref({ name: 'Maxime'});
+</script>
+```
+
+----------------------------------------
+
+TITLE: Defining YAML Collection Configuration in TypeScript
+DESCRIPTION: Configuration setup for YAML data collection using Nuxt Content. Defines a schema for author data including name, avatar and URL fields using Zod validation.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/2.yaml.md#2025-04-23_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+import { defineCollection, defineContentConfig, z } from '@nuxt/content'
+
+export default defineContentConfig({
+  collections: {
+    authors: defineCollection({
+      type: 'data',
+      source: 'authors/**.yml',
+      schema: z.object({
+        name: z.string(),
+        avatar: z.string(),
+        url: z.string()
+      })
+    })
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Querying by Path with queryCollection (TypeScript)
+DESCRIPTION: This example shows how to use the `path` method of the `CollectionQueryBuilder` to filter content based on its file system path. This is particularly useful for matching content to a specific route in a Nuxt application.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_2
+
+LANGUAGE: ts
+CODE:
+```
+const route = useRoute()
+const { data } = await useAsyncData(route.path, () => {
+  return queryCollection('docs').path(route.path).first()
+})
+```
+
+----------------------------------------
+
+TITLE: Converting `queryContent` to `queryCollection` by Path in Nuxt Content v3
+DESCRIPTION: This snippet illustrates the migration from `queryContent` in v2 to `queryCollection` in v3 for finding content by a specific path. In v3, `queryCollection` requires specifying the collection name (e.g., 'content') and uses `.path()` and `.first()` for single document retrieval, aligning with its SQL-backed nature.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/4.migration.md#_snippet_2
+
+LANGUAGE: TypeScript
+CODE:
+```
+// Content v2
+const v2Query = await queryContent(route.path).findOne()
+// Content v3 - don't forget to create `content` collection in `content.config.ts`
+const v3Query = await queryCollection('content').path(route.path).first()
+```
+
+----------------------------------------
+
+TITLE: Querying Content Collections in Vue Component
+DESCRIPTION: This Vue component demonstrates how to fetch all items from a blog collection using the queryCollection utility and display them as a list of links.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/2.collections/1.define.md#2025-04-23_snippet_2
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { data: posts } = await useAsyncData('blog', () => queryCollection('blog').all())
+</script>
+
+<template>
+  <div>
+    <h1>Blog</h1>
+    <ul>
+      <li v-for="post in posts" :key="post.id">
+        <NuxtLink :to="post.path">{{ post.title }}</NuxtLink>
+      </li>
+    </ul>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Configuring Content Collections in Nuxt Content v3
+DESCRIPTION: This snippet shows how to configure content collections in the content.config.ts file for Nuxt Content v3, defining separate collections for landing and documentation pages.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/ui-pro-docs-migration.md#2025-04-23_snippet_17
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineContentConfig({
+  collections: {
+    landing: defineCollection({
+      type: 'page',
+      source: 'index.md'
+    }),
+    docs: defineCollection({
+      type: 'page',
+      source: {
+        include: '**',
+        exclude: ['index.md']
+      },
+      ...
+    })
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Defining Basic Content Collection Configuration in TypeScript
+DESCRIPTION: This code demonstrates how to create a basic content collection configuration file that defines a 'docs' collection which includes all content in the project.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/2.collections/1.define.md#2025-04-23_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+import { defineCollection, defineContentConfig } from '@nuxt/content'
+
+export default defineContentConfig({
+  collections: {
+    docs: defineCollection({
+      // Load every file inside the `content` directory
+      source: '**',
+      // Specify the type of content in this collection
+      type: 'page'
+    })
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Defining YAML Front Matter for Nuxt Content Home Page
+DESCRIPTION: This YAML front matter block defines the title of the page as 'Home'. It is used by Nuxt Content to set metadata for the page.
+SOURCE: https://github.com/nuxt/content/blob/main/playground/content/pages/index.md#2025-04-23_snippet_0
+
+LANGUAGE: yaml
+CODE:
+```
+---
+title: Home
+---
+```
+
+----------------------------------------
+
+TITLE: Building Nuxt Content Site for Static Hosting
+DESCRIPTION: Command to generate a static build of a Nuxt Content application. This creates a dist/ directory containing all static files ready for deployment to any static hosting service.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/6.deploy/9.static.md#2025-04-23_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+npx nuxi generate
+```
+
+----------------------------------------
+
+TITLE: Basic Navigation Vue Component
+DESCRIPTION: Complete Vue component example showing basic navigation implementation without query conditions.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/2.query-collection-navigation.md#2025-04-23_snippet_3
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { data } = await useAsyncData('navigation', () => {
+  return queryCollectionNavigation('docs')
+})
+</script>
+
+<template>
+  <nav>
+    <ul v-if="data">
+      <li v-for="item in data" :key="item.path">
+        <NuxtLink :to="item.path">{{ item.title }}</NuxtLink>
+      </li>
+    </ul>
+  </nav>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Displaying Code Blocks with ProsePre in Markdown
+DESCRIPTION: Shows how to use the `ProsePre` component to render a code block in Markdown. It supports specifying the language, filename, highlighted lines, and meta information for enhanced code presentation.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/5.components/2.prose.md#_snippet_2
+
+LANGUAGE: md
+CODE:
+```
+  ```js [file.js]{2} meta-info=val
+  export default () => {
+    console.log('Code block')
+  }
+  ```
+```
+
+----------------------------------------
+
+TITLE: Querying JSON Data in Nuxt Content with Vue and TypeScript
+DESCRIPTION: This snippet demonstrates how to query JSON data in Nuxt Content using Vue and TypeScript. It includes examples of finding a single author and retrieving all authors with sorting.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/3.json.md#2025-04-23_snippet_2
+
+LANGUAGE: vue
+CODE:
+```
+<script lang="ts" setup>
+// Find a single author
+const { data: author } = await useAsyncData('larbish', () => {
+  return queryCollection('authors')
+    .where('stem', '=', 'larbish')
+    .first()
+})
+
+// Get all authors
+const { data: authors } = await useAsyncData('authors', () => {
+  return queryCollection('authors')
+    .order('name', 'DESC')
+    .all()
+})
+</script>
+```
+
+----------------------------------------
+
+TITLE: Updating Landing Page Data Fetching with Content v3 API
+DESCRIPTION: Migrating from queryContent to the new queryCollection method for retrieving landing page data in Content v3.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/ui-pro-docs-migration.md#2025-04-23_snippet_4
+
+LANGUAGE: ts
+CODE:
+```
+const { data: page } = await useAsyncData('index', () => queryCollection('landing').path('/').first())
+```
+
+LANGUAGE: ts
+CODE:
+```
+const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
+```
+
+----------------------------------------
+
+TITLE: Fetching the First Matching Document with queryCollection (TypeScript)
+DESCRIPTION: This snippet shows how to use the `first()` method to execute the query and retrieve only the first document that matches the applied conditions. It returns `null` if no documents are found.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_11
+
+LANGUAGE: ts
+CODE:
+```
+const route = useRoute()
+const { data } = await useAsyncData(route.path, () => {
+  return queryCollection('docs').first()
+})
+```
+
+----------------------------------------
+
+TITLE: Exposing Local Development Server with Tunnel
+DESCRIPTION: Command to start the Nuxt development server with a tunnel option that exposes your local server to the internet, allowing Studio to connect to your local environment.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/8.studio/6.debug.md#2025-04-23_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+npx nuxt dev --tunnel
+```
+
+----------------------------------------
+
+TITLE: Building Nuxt Project for Production
+DESCRIPTION: Commands to build the Nuxt application for production deployment using different package managers.
+SOURCE: https://github.com/nuxt/content/blob/main/examples/ui-pro/README.md#2025-04-23_snippet_2
+
+LANGUAGE: bash
+CODE:
+```
+# npm
+npm run build
+
+# pnpm
+pnpm build
+
+# yarn
+yarn build
+
+# bun
+bun run build
+```
+
+----------------------------------------
+
+TITLE: Building Nuxt Content Project for Production
+DESCRIPTION: Commands to build the Nuxt Content application for production using different package managers. This step optimizes the project for deployment.
+SOURCE: https://github.com/nuxt/content/blob/main/examples/basic/README.md#2025-04-23_snippet_2
+
+LANGUAGE: bash
+CODE:
+```
+# npm
+npm run build
+
+# pnpm
+pnpm build
+
+# yarn
+yarn build
+
+# bun
+bun run build
+```
+
+----------------------------------------
+
+TITLE: Vue Component with Named Slots
+DESCRIPTION: This example shows how to create a Vue component with both default and named slots for more complex content structuring.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/5.components/1.slot.md#2025-04-23_snippet_5
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <div class="callout">
+    <h2 v-if="$slots.title">
+      <slot name="title" mdc-unwrap="p" />
+    </h2>
+    <slot />
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Creating Markdown Files for Nuxt Content
+DESCRIPTION: These examples show how to create basic Markdown files (`.md`) within the `content/blog/` directory. Each file includes a YAML frontmatter block at the top to define metadata like the 'date', which can be used for querying and display.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_11
+
+LANGUAGE: md
+CODE:
+```
+---
+date: 2020-11-11
+---
+
+# Foo
+
+This is Foo blog post.
+```
+
+LANGUAGE: md
+CODE:
+```
+---
+date: 2024-12-12
+---
+Hello
+I am bar. Nice to meet you.
+```
+
+----------------------------------------
+
+TITLE: Server-side TypeScript Configuration
+DESCRIPTION: JSON configuration for server-side TypeScript to avoid type errors when using queryCollectionSearchSections in server code, extending the Nuxt-generated server TypeScript configuration.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/4.query-collection-search-sections.md#2025-04-23_snippet_4
+
+LANGUAGE: json
+CODE:
+```
+{
+  "extends": "../.nuxt/tsconfig.server.json"
+}
+```
+
+----------------------------------------
+
+TITLE: Configuring Custom Source in Content Configuration
+DESCRIPTION: Demonstrates how to configure the custom Hacker News source in content.config.ts, including schema definition using Zod and collection setup.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/7.advanced/6.custom-source.md#2025-04-23_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+import { defineContentConfig, defineCollectionSource, defineCollection, z } from '@nuxt/content'
+
+const hackernewsSource = defineCollectionSource({
+  getKeys: () => {
+    return fetch('https://hacker-news.firebaseio.com/v0/topstories.json')
+      .then(res => res.json())
+      .then(data => data.map((key: string) => `${key}.json`))
+  },
+  getItem: (key: string) => {
+    const id = key.split('.')[0]
+    return fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
+      .then(res => res.json())
+  },
+})
+
+const hackernews = defineCollection({
+  type: 'data',
+  source: hackernewsSource,
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    type: z.string(),
+    score: z.number(),
+    url: z.string(),
+    by: z.string(),
+  }),
+})
+
+export default defineContentConfig({
+  collections: {
+    hackernews,
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Updating Content Search Command Palette with Content v3 API
+DESCRIPTION: Migrating from useLazyFetch to the new queryCollectionSearchSections method for retrieving search data in Content v3.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/ui-pro-docs-migration.md#2025-04-23_snippet_3
+
+LANGUAGE: ts
+CODE:
+```
+const { data: files } = useLazyAsyncData('search', () => queryCollectionSearchSections('docs'), {
+  server: false,
+})
+```
+
+LANGUAGE: ts
+CODE:
+```
+const { data: files } = useLazyFetch<ParsedContent[]>('/api/search.json', {
+  default: () => [],
+  server: false
+})
+```
+
+----------------------------------------
+
+TITLE: Basic Vue Implementation with queryCollectionNavigation
+DESCRIPTION: Demonstrates basic usage of queryCollectionNavigation in a Vue component with filtering and ordering.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/2.query-collection-navigation.md#2025-04-23_snippet_1
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { data } = await useAsyncData('navigation', () => {
+  return queryCollectionNavigation('docs')
+    .where('published', '=', true)
+    .order('date', 'DESC')
+})
+</script>
+```
+
+----------------------------------------
+
+TITLE: Defining Page Collection with Specific Inclusions and Prefix (TypeScript)
+DESCRIPTION: This example shows how to configure a 'page' type collection with a detailed `source` object. It includes all files under `en/` but explicitly excludes `en/index.md`, and sets the content path `prefix` to `/` to remove any default prefixing.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/2.collections/3.sources.md#_snippet_1
+
+LANGUAGE: TypeScript
+CODE:
+```
+defineCollection({
+  type: "page",
+  source: {
+    include: "en/**",
+    exclude: ["en/index.md"],
+    prefix: '/'
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Counting Filtered Collection Entries with queryCollection (TypeScript)
+DESCRIPTION: This snippet shows how to combine the `count()` method with other query methods like `where()` to get a count of documents that meet specific filtering criteria. This provides more granular counting capabilities.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_13
+
+LANGUAGE: ts
+CODE:
+```
+const route = useRoute()
+const { data } = await useAsyncData(route.path, () => {
+  return queryCollection('docs')
+    .where('date', '<', '2024-04-04')
+    // Count matches
+    .count()
+})
+```
+
+----------------------------------------
+
+TITLE: Consuming External Data in Markdown - MDC
+DESCRIPTION: Illustrates how a Markdown document consumes data injected externally via the `<ContentRenderer>` component. It uses the `{{ $doc.variable }}` syntax to display the bound data.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_4
+
+LANGUAGE: mdc
+CODE:
+```
+# Hello {{ $doc.name || 'World' }}
+
+```
+
+----------------------------------------
+
+TITLE: Server-side Usage in Nitro API Handler
+DESCRIPTION: An example of using queryCollectionSearchSections on the server side within a Nitro API endpoint, showing the event parameter requirement for server usage.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/4.query-collection-search-sections.md#2025-04-23_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+export default eventHandler(async (event) => {
+  const sections = await queryCollectionSearchSections(event, 'docs')
+  return sections
+})
+```
+
+----------------------------------------
+
+TITLE: Binding Frontmatter Values to MDC Component Props
+DESCRIPTION: This example shows how to use the `v-bind` shorthand (`:key="value"`) within MDC to bind a component prop directly to a value defined in the Markdown file's frontmatter. This allows for dynamic prop values based on page metadata.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_21
+
+LANGUAGE: mdc
+CODE:
+```
+---
+type: "warning"
+---
+
+::alert{:type="type"}
+Your warning
+::
+```
+
+----------------------------------------
+
+TITLE: Advanced Navigation Vue Component
+DESCRIPTION: Enhanced Vue component with additional query conditions, extra fields, and complex template rendering.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/2.query-collection-navigation.md#2025-04-23_snippet_4
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { data } = await useAsyncData('navigation', () => {
+  return queryCollectionNavigation('docs', ['description', 'badge'])
+    .where('draft', '=', false)
+    .where('partial', '=', false)
+    .order('title', 'ASC')
+})
+</script>
+
+<template>
+  <nav>
+    <ul v-if="data">
+      <li v-for="item in data" :key="item.path">
+        <NuxtLink :to="item.path">
+          {{ item.title }}
+          <span v-if="item.badge" class="badge">{{ item.badge }}</span>
+        </NuxtLink>
+        <p v-if="item.description">{{ item.description }}</p>
+      </li>
+    </ul>
+  </nav>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Applying AND Condition Groups with queryCollection (TypeScript)
+DESCRIPTION: This snippet shows how to use `andWhere` to group multiple conditions that must all be true for a document to be included in the results. The `groupFactory` function allows for nested query building.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_5
+
+LANGUAGE: ts
+CODE:
+```
+const { data } = await useAsyncData('recent-docs', () => {
+  return queryCollection('docs')
+    .where('published', '=', true)
+    .andWhere(query => query.where('date', '>', '2024-01-01').where('category', '=', 'news'))
+    .all()
+})
+```
+
+----------------------------------------
+
+TITLE: Defining JSON Collection in Nuxt Content Configuration
+DESCRIPTION: This snippet demonstrates how to define a JSON collection in the Nuxt Content configuration file. It sets up an 'authors' collection with a schema for name, avatar, and URL.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/3.json.md#2025-04-23_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+import { defineCollection, defineContentConfig, z } from '@nuxt/content'
+
+export default defineContentConfig({
+  collections: {
+    authors: defineCollection({
+      type: 'data',
+      source: 'authors/**.json',
+      schema: z.object({
+        name: z.string(),
+        avatar: z.string(),
+        url: z.string()
+      })
+    })
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Applying OR Condition Groups with queryCollection (TypeScript)
+DESCRIPTION: This example demonstrates the `orWhere` method, which allows you to group conditions where at least one must be true for a document to be included. This is useful for fetching content that matches any of several criteria.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_6
+
+LANGUAGE: ts
+CODE:
+```
+const { data } = await useAsyncData('featured-docs', () => {
+  return queryCollection('docs')
+    .where('published', '=', true)
+    .orWhere(query => query.where('featured', '=', true).where('priority', '>', 5))
+    .all()
+})
+```
+
+----------------------------------------
+
+TITLE: Rendering Custom Tip Component in Markdown (Nuxt Content)
+DESCRIPTION: Shows how to use a custom 'tip' component with a 'warning' type attribute in Nuxt Content Markdown, along with a link to the official documentation.
+SOURCE: https://github.com/nuxt/content/blob/main/examples/ui-pro/content/index.md#2025-04-23_snippet_1
+
+LANGUAGE: markdown
+CODE:
+```
+::tip{type="warning"}
+Checkout [official docs][docs] to read more about Nuxt Content
+::
+
+[docs]: https://content.nuxt.com
+```
+
+----------------------------------------
+
+TITLE: Defining Custom Content Plugin (TypeScript)
+DESCRIPTION: Demonstrates how to define a custom content plugin using defineContentPlugin. It includes options for specifying supported file extensions, parsing function, and transformation function.
+SOURCE: https://github.com/nuxt/content/blob/main/playground/content/1.real-content/content.md#2025-04-23_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineContentPlugin({
+  name: 'plugin-name',
+  extensions: ['.md'],
+  parse: async (id, content) => {},
+  transform: async content => {}
+})
+```
+
+----------------------------------------
+
+TITLE: Server-side Navigation Query Implementation
+DESCRIPTION: Example of using queryCollectionNavigation in a server-side API endpoint.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/2.query-collection-navigation.md#2025-04-23_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+export default eventHandler(async (event) => {
+  const navigation = await queryCollectionNavigation(event, 'docs')
+  return navigation
+})
+```
+
+----------------------------------------
+
+TITLE: Skipping Query Results with queryCollection (TypeScript)
+DESCRIPTION: This snippet shows how to use the `skip` method to offset the query results, effectively skipping a specified number of initial documents. This is commonly used in conjunction with `limit` for pagination.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_9
+
+LANGUAGE: ts
+CODE:
+```
+const route = useRoute()
+const { data } = await useAsyncData(route.path, () => {
+  return queryCollection('docs')
+    // Skip first 5 items
+    .skip(5)
+    .all()
+})
+```
+
+----------------------------------------
+
+TITLE: Defining a Basic Slot in a Vue Component
+DESCRIPTION: This snippet shows how to create a simple Vue component with a default slot for rendering Markdown content.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/5.components/1.slot.md#2025-04-23_snippet_0
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <div class="callout">
+    <slot />
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Configuring Nuxt Studio Preview API in Nuxt Content v3
+DESCRIPTION: This configuration snippet shows how to enable the new generic Preview API for Nuxt Studio integration in Nuxt Content v3. It involves updating the `nuxt.config.ts` file to bind the `content.preview.api` option to the Nuxt Studio API endpoint. This replaces the deprecated `@nuxthq/studio` module.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/4.migration.md#_snippet_0
+
+LANGUAGE: TypeScript
+CODE:
+```
+export default defineNuxtConfig({
+  content: {
+    preview: {
+      api: 'https://api.nuxt.studio'
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Converting `queryContent` to `queryCollection` with Custom Filter in Nuxt Content v3
+DESCRIPTION: This example demonstrates how to convert a `queryContent` call with a custom `where` filter from v2 to `queryCollection` in v3. V3 uses SQL-like `where` clauses with operator and value (e.g., `'path', 'LIKE', '/hello%'`) and requires specifying the collection name.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/4.migration.md#_snippet_3
+
+LANGUAGE: TypeScript
+CODE:
+```
+// Content v2
+const v2Query = await queryContent()
+  .where({ path: /^\/hello\/.*/ })
+  .find()
+// Content v3 - don't forget to create `content` collection in `content.config.ts`
+const v3Query = await queryCollection('content')
+  .where('path', 'LIKE', '/hello%')
+  .first()
+```
+
+----------------------------------------
+
+TITLE: Database Configuration Examples
+DESCRIPTION: Examples of configuring different database adapters for Nuxt Content including SQLite, D1, Postgres, and LibSQL.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/3.configuration.md#2025-04-23_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  content: {
+    database: {
+      type: 'sqlite',
+      filename: 'SQLITE_DB_LOCATION'
+    }
+  }
+})
+```
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  content: {
+    database: {
+      type: 'd1',
+      bindingName: 'CF_BINDING_NAME'
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Using Counter Component in Markdown
+DESCRIPTION: Demonstrates how to integrate a Vue component called 'counter' within Markdown content using MDC syntax.
+SOURCE: https://github.com/nuxt/content/blob/main/examples/basic/content/index.md#2025-04-23_snippet_0
+
+LANGUAGE: markdown
+CODE:
+```
+::counter
+::
+```
+
+----------------------------------------
+
+TITLE: Limiting Query Results with queryCollection (TypeScript)
+DESCRIPTION: This example demonstrates the `limit` method, which restricts the maximum number of results returned by the query. It's useful for pagination or fetching only a subset of data.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_8
+
+LANGUAGE: ts
+CODE:
+```
+const route = useRoute()
+const { data } = await useAsyncData(route.path, () => {
+  return queryCollection('docs')
+    .limit(10)
+    .all()
+})
+```
+
+----------------------------------------
+
+TITLE: Passing Inline Props to MDC Components
+DESCRIPTION: This snippet demonstrates the inline method for passing props to MDC components using the `{key="value"}` syntax. It shows an `alert` component accepting a `type` prop, which is then used to apply a CSS class, and how the default slot content is rendered.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_20
+
+LANGUAGE: mdc
+CODE:
+```
+::alert{type="warning"}
+The **alert** component.
+::
+```
+
+LANGUAGE: vue
+CODE:
+```
+<script setup>
+defineProps(['type'])
+</script>
+
+<template>
+  <div :class="[type]">
+    <slot mdc-unwrap="p" />
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Defining Excerpt in Collection Schema - TypeScript
+DESCRIPTION: Provides a TypeScript example for defining the `excerpt` field within a Nuxt Content collection schema using `z.object` from Zod. This ensures the excerpt feature is properly typed and recognized.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_8
+
+LANGUAGE: ts
+CODE:
+```
+const content = defineCollection({
+  type: 'page',
+  source: '**',
+  schema: z.object({
+    excerpt: z.object({
+      type: z.string(),
+      children: z.any()
+    })
+  })
+})
+```
+
+----------------------------------------
+
+TITLE: Using ContentRendererMarkdown Component in Vue Template
+DESCRIPTION: Demonstrates the usage of the ContentRendererMarkdown component to render markdown content in a Vue template.
+SOURCE: https://github.com/nuxt/content/blob/main/playground/content/1.real-content/content.md#2025-04-23_snippet_2
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ContentRendererMarkdown :value="data" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Creating Author YAML Data Files
+DESCRIPTION: Example YAML files for storing author information in the content/authors directory. Each file contains structured data for an individual author.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/2.yaml.md#2025-04-23_snippet_1
+
+LANGUAGE: yaml
+CODE:
+```
+name: Ahad Birang
+avatar: https://avatars.githubusercontent.com/u/2047945?v=4
+url: https://github.com/farnabaz
+```
+
+LANGUAGE: yaml
+CODE:
+```
+name: Baptiste Leproux
+avatar: https://avatars.githubusercontent.com/u/7290030?v=4
+url: https://github.com/larbish
+```
+
+----------------------------------------
+
+TITLE: Querying Content via Server API Endpoint
+DESCRIPTION: Example of using the /api/_content/query endpoint to fetch content with various query parameters including first, skip, limit, sort, where, only, and without filters
+SOURCE: https://github.com/nuxt/content/blob/main/playground/content/1.real-content/query.md#2025-04-23_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+$fetch('/api/_content/query', {
+  method: 'POST',
+  body: {
+    first: false, // set to true for returning only one document
+    skip: 0,
+    limit: 0,
+    sort: [],
+    where: [],
+    only:[],
+    without:[]
+  },
+})
+// returns an array
+// [{ path: 'posts/hello-world' }, ...]
+```
+
+----------------------------------------
+
+TITLE: Using HomeFeature Component in Markdown
+DESCRIPTION: Example of how to use the HomeFeature component within markdown content, demonstrating slot usage and icon prop setting
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/studio/index.md#2025-04-23_snippet_1
+
+LANGUAGE: markdown
+CODE:
+```
+::home-feature
+  ---
+  icon: i-mdi-vuejs
+  ---
+  #title
+  Embedded Vue components
+  #description
+  Edit slots and props inside the Notion-like editor.
+::
+```
+
+----------------------------------------
+
+TITLE: Defining `content:file:beforeParse` Hook in Nuxt
+DESCRIPTION: This snippet shows the basic structure for defining the `content:file:beforeParse` hook within `nuxt.config.ts`. This hook is executed before content is parsed, allowing modifications to the raw file content or transform options. It receives a `ctx` object containing file information.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/7.advanced/5.hooks.md#_snippet_0
+
+LANGUAGE: TypeScript
+CODE:
+```
+export default defineNuxtConfig({
+  hooks: {
+    'content:file:beforeParse'(ctx) {
+      // ...
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Deploying Content App with Bun Docker Image
+DESCRIPTION: Multi-stage Dockerfile for building and deploying a Content application using the official Bun image. Includes optimizations for dependency installation and production deployment configuration.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/6.deploy/8.docker.md#2025-04-23_snippet_1
+
+LANGUAGE: dockerfile
+CODE:
+```
+# use the official Bun image
+# see all versions at https://hub.docker.com/r/oven/bun/tags
+FROM oven/bun:1 AS build
+WORKDIR /app
+
+COPY package.json bun.lockb ./
+
+# use ignore-scripts to avoid builting node modules like better-sqlite3
+RUN bun install --frozen-lockfile --ignore-scripts
+
+# Copy the entire project
+COPY . .
+
+RUN bun --bun run build
+
+# copy production dependencies and source code into final image
+FROM oven/bun:1 AS production
+WORKDIR /app
+
+# Only `.output` folder is needed from the build stage
+COPY --from=build /app/.output /app
+
+# run the app
+EXPOSE 3000/tcp
+ENTRYPOINT [ "bun", "--bun", "run", "/app/server/index.mjs" ]
+```
+
+----------------------------------------
+
+TITLE: Rehype Plugin Configuration
+DESCRIPTION: Example of configuring rehype plugins in Nuxt Content build settings.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/3.configuration.md#2025-04-23_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  content: {
+    build: {
+      markdown: {
+        // Object syntax can be used to override default options
+        rehypePlugins: {
+          'rehype-figure': {
+
+          }
+        },
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Remark Plugin Configuration
+DESCRIPTION: Configuration example for remark plugins in Nuxt Content, showing how to override defaults and add new plugins.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/3.configuration.md#2025-04-23_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  content: {
+    build: {
+      markdown: {
+        // Object syntax can be used to override default options
+        remarkPlugins: {
+          // Override remark-emoji options
+          'remark-emoji': {
+            options: {
+              emoticon: true
+            }
+          },
+          // Disable remark-gfm
+          'remark-gfm': false,
+          // Add remark-oembed
+          'remark-oembed': {
+            // Options
+          }
+        },
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Pre-rendering for Serverless Optimization
+DESCRIPTION: This code snippet shows how to optimize a serverless Nuxt Content application by pre-rendering certain pages using the routeRules option. It improves performance by reducing the need for fresh server instances on every request.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/6.deploy/2.serverless.md#2025-04-23_snippet_6
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  routeRules: {
+    '/': { prerender: true }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Applying Attributes to Various Markdown Elements - Markdown
+DESCRIPTION: Illustrates the application of attributes to different Markdown elements like links, inline code, italic, and bold text. This shows the versatility of the attribute syntax beyond just `span` or MDC components.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_1
+
+LANGUAGE: md
+CODE:
+```
+Attributes work on:
+
+- [link](#attributes){style="background-color: pink;"}, `code`{style="color: cyan;"},
+- _italic_{style="background-color: yellow; color:black;"} and **bold**{style="background-color: lightgreen;"} texts.
+```
+
+----------------------------------------
+
+TITLE: Defining Complex UI Configuration Schema in TypeScript
+DESCRIPTION: Illustrates a more complex schema for UI configuration, including primary color selection and icon management. It uses nested group and field helpers to create a structured editing experience.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/8.studio/5.config.md#2025-04-23_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtSchema({
+  ui: group({
+    title: 'UI',
+    description: 'UI Customization.',
+    icon: 'i-mdi-palette-outline',
+    fields: {
+      primary: field({
+        type: 'string',
+        title: 'Primary',
+        description: 'Primary color of your UI.',
+        icon: 'i-mdi-palette-outline',
+        required: ['sky', 'mint', 'rose', 'amber', 'violet', 'emerald', 'fuchsia', '...']
+      }),
+      gray: field({ ... }),
+      icons: group({
+        title: 'Icons',
+        description: 'Manage icons used in UI Pro.',
+        icon: 'i-mdi-application-settings-outline',
+        fields: {
+          search: field({ ...}),
+          dark: field({ ... }),
+          light: field({ ... }),
+          external: field({ ...}),
+          chevron: field({ ... }),
+          hash: field({ ... })
+        }
+      })
+    }
+  })
+})
+```
+
+----------------------------------------
+
+TITLE: Using Named Slots in MDC Syntax
+DESCRIPTION: This snippet demonstrates how to use named slots within MDC syntax in Markdown content.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/5.components/1.slot.md#2025-04-23_snippet_6
+
+LANGUAGE: mdc
+CODE:
+```
+::callout
+#title
+Please be careful!
+#default
+Using MDC & Vue components is addictive.
+::
+```
+
+----------------------------------------
+
+TITLE: Navigation Metadata Configuration
+DESCRIPTION: YAML configuration file for defining navigation metadata including title and icon.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/2.query-collection-navigation.md#2025-04-23_snippet_2
+
+LANGUAGE: yaml
+CODE:
+```
+title: Getting Started
+icon: i-lucide-square-play
+```
+
+----------------------------------------
+
+TITLE: Using MDC Syntax in Markdown Content
+DESCRIPTION: Demonstrates how to integrate Vue components in Markdown files using MDC syntax
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/8.studio/3.content.md#2025-04-23_snippet_1
+
+LANGUAGE: markdown
+CODE:
+```
+::home-feature
+  ---
+  icon: i-mdi-vuejs
+  ---
+  #title
+  Embedded Vue components
+  #description
+  Edit slots and props inside the Notion-like editor.
+::
+```
+
+----------------------------------------
+
+TITLE: Counting All Collection Entries with queryCollection (TypeScript)
+DESCRIPTION: This example demonstrates the `count()` method, which returns the total number of entries in a collection that satisfy the current query conditions. It's useful for displaying counts or for pagination logic.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_12
+
+LANGUAGE: ts
+CODE:
+```
+const route = useRoute()
+const { data } = await useAsyncData(route.path, () => {
+  return queryCollection('docs')
+    // Count matches
+    .count()
+})
+```
+
+----------------------------------------
+
+TITLE: Defining Content Excerpt with Divider - Markdown
+DESCRIPTION: Demonstrates how to use the `<!--more-->` HTML comment as a divider in a Markdown file to define an excerpt or summary. Content before the divider is considered the excerpt.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_7
+
+LANGUAGE: md
+CODE:
+```
+---
+title: Introduction
+---
+
+Learn how to use `@nuxt/content`.
+
+<!--more-->
+
+Full amount of content beyond the more divider.
+```
+
+----------------------------------------
+
+TITLE: Custom Editor Input Configuration
+DESCRIPTION: Example of configuring custom editor input types using Zod schema extensions
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/8.studio/3.content.md#2025-04-23_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+mainScreen: z.string().editor({ input: 'media' })
+```
+
+----------------------------------------
+
+TITLE: Applying Attributes to Markdown Elements - MDC
+DESCRIPTION: Demonstrates how to apply inline attributes, classes, and IDs to text within MDC (Markdown Component) files. This syntax is similar to inline components and Markdown links, allowing for styling and modification of content parts.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_0
+
+LANGUAGE: mdc
+CODE:
+```
+Hello [World]{style="color: green;" .custom-class #custom-id}!
+```
+
+----------------------------------------
+
+TITLE: Defining Custom Hacker News Data Source in TypeScript
+DESCRIPTION: Creates a custom source definition for fetching Hacker News data using defineCollectionSource. Implements getKeys to fetch story IDs and getItem to fetch individual story details.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/7.advanced/6.custom-source.md#2025-04-23_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+import { defineCollectionSource } from '@nuxt/content'
+
+const hackernewsSource = defineCollectionSource({
+  getKeys: () => {
+    return fetch('https://hacker-news.firebaseio.com/v0/topstories.json')
+      .then(res => res.json())
+      .then(data => data.map((key: string) => `${key}.json`))
+  },
+  getItem: (key: string) => {
+    const id = key.split('.')[0]
+    return fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
+      .then(res => res.json())
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Embedding Images in Markdown - Markdown
+DESCRIPTION: Shows the standard Markdown syntax for embedding an image, assuming the image is located in the `public` directory and accessible via a relative path.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_6
+
+LANGUAGE: md
+CODE:
+```
+![my image](/image.png)
+```
+
+----------------------------------------
+
+TITLE: Server TypeScript Configuration for Nuxt Content
+DESCRIPTION: This JSON snippet provides the recommended `tsconfig.json` content for server-side Nuxt Content. It extends the `.nuxt/tsconfig.server.json` to ensure proper type resolution and prevent TypeScript errors when working with server utilities.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/1.query-collection.md#_snippet_16
+
+LANGUAGE: json
+CODE:
+```
+{
+  "extends": "../.nuxt/tsconfig.server.json"
+}
+```
+
+----------------------------------------
+
+TITLE: Configuring Studio Editor in Nuxt Config
+DESCRIPTION: Example of how to enable the Studio editor in Nuxt Content v3 through the nuxt.config.ts file configuration.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/changelog/yaml-json-form.md#2025-04-23_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+content.editor: true
+```
+
+----------------------------------------
+
+TITLE: Configuring Preview API for Nuxt Studio
+DESCRIPTION: Configuration for enabling Preview API functionality, particularly for use with Nuxt Studio. Sets up the API endpoint for preview mode.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/3.configuration.md#2025-04-23_snippet_10
+
+LANGUAGE: typescript
+CODE:
+```
+preview: {
+  api: 'https://api.nuxt.studio',
+}
+```
+
+----------------------------------------
+
+TITLE: Configuring Raw Content Schema in Nuxt Content
+DESCRIPTION: Defines a content configuration with a 'rawbody' field in the schema to enable shipping of raw content data to production.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/7.advanced/2.raw-content.md#2025-04-23_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+import { defineCollection, defineContentConfig, z } from '@nuxt/content'
+
+export default defineContentConfig({
+  collections: {
+    docs: defineCollection({
+      source: '**',
+      type: 'page',
+      schema: z.object({
+        rawbody: z.string()
+      })
+    })
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Select Input for App Config in TypeScript
+DESCRIPTION: Shows how to set up a select input for the primary color in the app configuration. It uses the field helper with a required array to create a dropdown selection.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/8.studio/5.config.md#2025-04-23_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+import { field, group } from '@nuxt/content/preview'
+
+export default defineNuxtSchema({
+  appConfig: {
+    parent: group({
+      title: 'UI',
+      description: 'UI configuration',
+      icon: 'i-ph-palette-fill',
+      fields: {
+        primary: field({
+          type: 'string',
+          title: 'Primary',
+          description: 'Primary color of your UI.',
+          icon: 'i-ph-palette',
+          default: 'sky',
+          required: ['sky', 'mint', 'rose', 'amber']
+        })
+      }
+    })
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Cloudflare Pages Preset in Nuxt Config
+DESCRIPTION: This snippet shows how to configure the Cloudflare Pages preset in the Nuxt configuration file. It sets the Nitro preset to 'cloudflare_pages' to ensure proper deployment to Cloudflare Pages.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/6.deploy/4.cloudflare-pages.md#2025-04-23_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  nitro: {
+    preset: 'cloudflare_pages',
+  },
+});
+```
+
+----------------------------------------
+
+TITLE: Passing Props to MDC Components using YAML Syntax
+DESCRIPTION: This example demonstrates an alternative YAML-based method for passing props to MDC components, which is useful for improved readability when dealing with multiple or complex props. The `IconCard.vue` component defines props for title, description, and icon, which are then populated from the Markdown file using the `---` identifier for each prop.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_23
+
+LANGUAGE: mdc
+CODE:
+```
+::icon-card
+---
+icon: IconNuxt
+description: Harness the full power of Nuxt and the Nuxt ecosystem.
+title: Nuxt Architecture.
+---
+::
+```
+
+LANGUAGE: html
+CODE:
+```
+<script setup>
+defineProps({
+  title: {
+    type: String,
+    default: 'Default title'
+  },
+  description: {
+    type: String,
+    default: 'Default description'
+  },
+  icon: {
+    type: String,
+    default: 'IconMarkdown'
+  }
+})
+</script>
+
+<template>
+  <div class="p-6 border bg-white dark:bg-black dark:border-gray-700 rounded">
+    <component :is="icon" class="w-20 h-20" />
+    <h2 class="text-3xl font-semibold mb-2">
+      {{ title }}
+    </h2>
+    <p>{{ description }}</p>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Updating Docs Page Data and Surroundings Fetch with Content v3 API
+DESCRIPTION: Migrating from separate queryContent calls to consolidated Promise.all with queryCollection and queryCollectionItemSurroundings methods for retrieving documentation pages data in Content v3.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/ui-pro-docs-migration.md#2025-04-23_snippet_6
+
+LANGUAGE: ts
+CODE:
+```
+const { data } = await useAsyncData(route.path, () => Promise.all([
+  queryCollection('docs').path(route.path).first(),
+  queryCollectionItemSurroundings('docs', route.path, {
+    fields: ['title', 'description'],
+  }),
+]), {
+  transform: ([page, surround]) => ({ page, surround }),
+})
+
+const page = computed(() => data.value?.page)
+const surround = computed(() => data.value?.surround)
+```
+
+LANGUAGE: ts
+CODE:
+```
+const { data: page } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
+
+const { data: surround } = await useAsyncData(`${route.path}-surround`, () => queryContent()
+  .where({ _extension: 'md', navigation: { $ne: false } })
+  .only(['title', 'description', '_path'])
+  .findSurround(withoutTrailingSlash(route.path))
+)
+```
+
+----------------------------------------
+
+TITLE: Configuring Cloudflare D1 Database for Nuxt Content
+DESCRIPTION: This code demonstrates how to set up a Cloudflare D1 database for a Nuxt Content project. It involves creating a D1 database in your Cloudflare account and linking it to your project with a binding name.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/6.deploy/2.serverless.md#2025-04-23_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  content: {
+    database: {
+      type: 'd1',
+      binding: '<YOUR_BINDING_NAME>'
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Table of Contents Configuration
+DESCRIPTION: Default configuration and type signature for table of contents settings in Nuxt Content.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/3.configuration.md#2025-04-23_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+toc: {
+  depth: 2,
+  searchDepth: 2
+}
+```
+
+LANGUAGE: typescript
+CODE:
+```
+type Toc = {
+  depth: number
+  searchDepth: number
+}
+```
+
+----------------------------------------
+
+TITLE: Fetching Raw Content in Nuxt Page Component
+DESCRIPTION: Demonstrates how to use queryCollection() to fetch raw content data and display it in a Vue component.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/7.advanced/2.raw-content.md#2025-04-23_snippet_1
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const route = useRoute()
+const { data } = useAsyncData('page-' + route.path, () => queryCollection('docs').path(route.path).first())
+</script>
+
+<template>
+  <pre>{{ data.rawbody }}</pre>
+</template>
+```
+
+----------------------------------------
+
+TITLE: TOC Implementation Example
+DESCRIPTION: Example of customizing table of contents depth in Nuxt Content configuration.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/3.configuration.md#2025-04-23_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  content: {
+    build: {
+      markdown: {
+        toc: {
+          depth: 3, // include h3 headings
+        }
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Updating Types with Content v3 Built-in TypeScript Definitions
+DESCRIPTION: Using the ContentNavigationItem type provided by Content v3 to replace custom NavItem type for better type safety.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/ui-pro-docs-migration.md#2025-04-23_snippet_8
+
+LANGUAGE: ts
+CODE:
+```
+import type { ContentNavigationItem } from '@nuxt/content'
+
+const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
+```
+
+----------------------------------------
+
+TITLE: Previewing Nuxt Content Production Build
+DESCRIPTION: Commands to locally preview the production build of the Nuxt Content project using different package managers. This allows for testing the production version before deployment.
+SOURCE: https://github.com/nuxt/content/blob/main/examples/basic/README.md#2025-04-23_snippet_3
+
+LANGUAGE: bash
+CODE:
+```
+# npm
+npm run preview
+
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+----------------------------------------
+
+TITLE: Using ProseCode for Inline Code in Markdown
+DESCRIPTION: Demonstrates how to use the `ProseCode` component for displaying inline code snippets in Markdown. It supports basic inline code and also allows specifying a language for syntax highlighting.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/5.components/2.prose.md#_snippet_4
+
+LANGUAGE: md
+CODE:
+```
+`code`
+
+`const code: string = 'highlighted code inline'`{lang="ts"}
+```
+
+----------------------------------------
+
+TITLE: Embedding Images with ProseImg in Markdown
+DESCRIPTION: Demonstrates the usage of the `ProseImg` component to embed an image in Markdown. It replaces the standard HTML `<img>` tag, allowing for custom image rendering.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/5.components/2.prose.md#_snippet_12
+
+LANGUAGE: md
+CODE:
+```
+![A Cool Image](https://nuxt.com/assets/design-kit/icon-green.png)
+```
+
+----------------------------------------
+
+TITLE: Creating Tables with ProseTable in Markdown
+DESCRIPTION: Illustrates how to use the `ProseTable` component to create a table in Markdown. This component provides a customizable way to display tabular data, including headers, body, rows, and cells.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/5.components/2.prose.md#_snippet_19
+
+LANGUAGE: md
+CODE:
+```
+| Key | Type      | Description |
+| --- | --------- | ----------- |
+| 1   | Wonderful | Table       |
+| 2   | Wonderful | Data        |
+| 3   | Wonderful | Website     |
+```
+
+----------------------------------------
+
+TITLE: Installing @nuxthub/core Module for Nuxt
+DESCRIPTION: This command installs the @nuxthub/core module and registers it in the nuxt.config.ts file. It's a quick way to set up NuxtHub integration for a Nuxt Content project.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/6.deploy/3.nuxthub.md#2025-04-23_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+npx nuxi module add hub
+```
+
+----------------------------------------
+
+TITLE: Ignoring Dot Files Except `.navigation.yml` in Nuxt Content v3 Collection Source
+DESCRIPTION: This advanced configuration shows how to exclude most dot files from a Nuxt Content v3 collection source while specifically including `.navigation.yml` files. The `exclude` pattern `**/.!(navigation.yml)` ensures that only `.navigation.yml` files are processed among dot files, which is crucial for directory-based navigation.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/4.migration.md#_snippet_6
+
+LANGUAGE: TypeScript
+CODE:
+```
+defineCollection({
+  source: {
+    include: '**',
+    exclude: ['**/.!(navigation.yml)']
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: TypeScript Interface Definition for queryCollectionNavigation
+DESCRIPTION: Defines the TypeScript function signature and interfaces for the queryCollectionNavigation utility, including chainable promise methods for query building.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/2.query-collection-navigation.md#2025-04-23_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+function queryCollectionNavigation<T extends keyof PageCollections>(
+  collection: T,
+  fields?: Array<keyof PageCollections[T]>
+): ChainablePromise<T, ContentNavigationItem[]>
+
+interface ChainablePromise<T extends keyof PageCollections, R> extends Promise<R> {
+  where(field: keyof PageCollections[T] | string, operator: SQLOperator, value?: unknown): ChainablePromise<T, R>
+  andWhere(groupFactory: QueryGroupFunction<PageCollections[T]>): ChainablePromise<T, R>
+  orWhere(groupFactory: QueryGroupFunction<PageCollections[T]>): ChainablePromise<T, R>
+  order(field: keyof PageCollections[T], direction: 'ASC' | 'DESC'): ChainablePromise<T, R>
+}
+```
+
+----------------------------------------
+
+TITLE: Defining Content Schema for Custom Properties in Nuxt
+DESCRIPTION: This snippet shows how to extend the content schema in `content.config.ts` to include custom properties like `readingTime`. This is crucial for making custom properties added via hooks, such as `content:file:afterParse`, accessible when querying content using `queryCollection()`. It uses `z.object` from Zod for schema definition.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/7.advanced/5.hooks.md#_snippet_3
+
+LANGUAGE: TypeScript
+CODE:
+```
+export default defineContentConfig({
+  collections: {
+    content: defineCollection({
+      type: 'page',
+      source: '**/*.md',
+      schema: z.object({
+        readingTime: z.number().optional()
+      })
+    })
+  }
+});
+```
+
+----------------------------------------
+
+TITLE: Building Nuxt Application with Node Preset
+DESCRIPTION: Command to build a Nuxt project using the default Node.js preset. This generates the server output in the .output directory.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/6.deploy/1.server.md#2025-04-23_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+nuxi build
+```
+
+----------------------------------------
+
+TITLE: Running Built Nuxt Server
+DESCRIPTION: Command to start the built Nuxt server from the output directory. The server will start listening on localhost port 3000.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/6.deploy/1.server.md#2025-04-23_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+$ node .output/server/index.mjs
+Listening on http://localhost:3000
+```
+
+----------------------------------------
+
+TITLE: Creating Custom Query Plugin
+DESCRIPTION: Example of creating a custom query plugin that adds version filtering functionality to the query system
+SOURCE: https://github.com/nuxt/content/blob/main/playground/content/1.real-content/query.md#2025-04-23_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+// file `~/plugin-version.ts`
+import { defineQueryPlugin } from '#imports'
+
+export default defineQueryPlugin({
+  name: 'version',
+  queries: {
+    version: params => {
+      return v => {
+        params.version = v
+      }
+    }
+  },
+  execute: (data, params) => {
+    if (params.version) {
+      return data.filter(v => v.version === params.version)
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Custom Editor Types Configuration in Nuxt Content v3
+DESCRIPTION: Shows how to configure custom editor types for form fields in the schema definition, enabling specific editor interfaces like media pickers and icon selectors in Nuxt Studio.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/changelog/frontmatter-form.md#2025-04-23_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+image: z.object({
+    src: z.string().editor({ type: 'media' })
+    alt: z.string()
+}),
+icon: z.string().editor({ type: 'icon' })
+```
+
+----------------------------------------
+
+TITLE: Including External Files with Custom CWD in Nuxt Content (TypeScript)
+DESCRIPTION: This snippet illustrates how to use the `cwd` property within the `source` configuration to include content files from a directory outside the default content folder. It sets the current working directory to an absolute path and includes all Markdown files within that directory.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/2.collections/3.sources.md#_snippet_2
+
+LANGUAGE: TypeScript
+CODE:
+```
+source: {
+  cwd: path.resolve('packages/my-pkg/docs'),
+  include: '**/*.md',
+}
+```
+
+----------------------------------------
+
+TITLE: Defining `content:file:afterParse` Hook in Nuxt
+DESCRIPTION: This snippet illustrates the basic definition of the `content:file:afterParse` hook in `nuxt.config.ts`. This hook is invoked after content parsing but before it's saved to the database, enabling further modifications to the parsed content. It receives a `ctx` object.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/7.advanced/5.hooks.md#_snippet_1
+
+LANGUAGE: TypeScript
+CODE:
+```
+export default defineNuxtConfig({
+  hooks: {
+    'content:file:afterParse'(ctx) {
+      // ...
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Setting Build Command for Nuxt Content Deployment
+DESCRIPTION: This bash command sets the build command for deploying a Nuxt Content project on various serverless platforms. It generates output compatible with the selected platform.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/6.deploy/2.serverless.md#2025-04-23_snippet_4
+
+LANGUAGE: bash
+CODE:
+```
+nuxi build
+```
+
+----------------------------------------
+
+TITLE: Defining Schema for App Config Editing in TypeScript
+DESCRIPTION: Demonstrates how to create a schema for customizing the app.config.ts editing experience in Studio. It uses group and field helpers to define the structure and properties of the configuration.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/8.studio/5.config.md#2025-04-23_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+import { field, group } from '@nuxt/content/preview'
+
+export default defineNuxtSchema({
+  appConfig: {
+    parent: group({
+      title: 'Parent title',
+      description: 'Parent description.',
+      icon: 'i-icon-to-display',
+      fields: {
+        leaf: field({
+          type: 'Type of component used to edit your field',
+          title: 'Field title',
+          description: 'Field Description',
+          icon: 'i-icon-to-display',
+          default: 'default value'
+        })
+      }
+    })
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring PostgreSQL Database for Nuxt Content
+DESCRIPTION: This snippet shows how to configure a PostgreSQL database for a Nuxt Content project. It requires creating a PostgreSQL database and setting the POSTGRES_URL environment variable.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/6.deploy/2.serverless.md#2025-04-23_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  content: {
+    database: {
+      type: 'postgres',
+      url: process.env.POSTGRES_URL
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring LibSQL Database for Nuxt Content
+DESCRIPTION: This snippet illustrates the configuration of a LibSQL database on Turso.tech for a Nuxt Content project. It requires setting up the database and adding TURSO_DATABASE_URL and TURSO_AUTH_TOKEN environment variables.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/6.deploy/2.serverless.md#2025-04-23_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  modules: ['@nuxt/content'],
+  content: {
+    database: {
+      type: 'libsql',
+      url: process.env.TURSO_DATABASE_URL,
+      authToken: process.env.TURSO_AUTH_TOKEN,
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: YAML Frontmatter Configuration for Documentation Page
+DESCRIPTION: YAML frontmatter configuration defining the navigation title, page title, and description for the Nuxt Content v3 documentation page.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/1.getting-started/1.index.md#2025-04-23_snippet_0
+
+LANGUAGE: yaml
+CODE:
+```
+---
+navigation:
+  title: Introduction
+title: Nuxt Content v3
+description: The powerful Git-based CMS designed specifically for Nuxt developers.
+---
+```
+
+----------------------------------------
+
+TITLE: Manually Resetting Nuxt Content Database
+DESCRIPTION: A series of commands to manually reset the Nuxt Content database by deleting the file, cleaning up, and restarting the development server.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/7.advanced/4.tools.md#2025-04-23_snippet_3
+
+LANGUAGE: bash
+CODE:
+```
+rm -rf .data/content/contents.sqlite
+```
+
+LANGUAGE: bash
+CODE:
+```
+npx nuxi cleanup
+```
+
+LANGUAGE: bash
+CODE:
+```
+npx nuxi dev
+```
+
+----------------------------------------
+
+TITLE: Advanced Example with Options in Vue Component
+DESCRIPTION: A more advanced Vue component example showing how to use queryCollectionSearchSections with custom options, specifically ignoring code tags when generating search sections.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/4.utils/4.query-collection-search-sections.md#2025-04-23_snippet_2
+
+LANGUAGE: vue
+CODE:
+```
+<script>
+const { data: surround } = await useAsyncData('foo-surround', () => {
+  return queryCollectionSearchSections('docs', {
+    ignoredTags: ['code']
+  })
+})
+</script>
+```
+
+----------------------------------------
+
+TITLE: Configuring Preview API in Nuxt Config
+DESCRIPTION: This snippet shows how to configure the Preview API for Nuxt Studio integration in the Nuxt configuration file. It enables the preview functionality by setting the Studio API as the Preview API in Nuxt Content settings.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/v3.md#2025-04-23_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  content: {
+    preview: {
+      api: 'https://api.nuxt.studio'
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Nuxt Content Preview API for Studio Integration
+DESCRIPTION: This code snippet demonstrates how to configure the Nuxt Content Preview API for integration with Nuxt Studio, enabling preview mode and binding to the Studio API.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/ui-pro-docs-migration.md#2025-04-23_snippet_20
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  content: {
+    preview: {
+      api: 'https://api.nuxt.studio'
+    }
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Migrating Docs Layout for Nuxt UI v3
+DESCRIPTION: This snippet shows how to migrate the docs layout in Nuxt UI v3, using the new PageAside and ContentNavigation components to display the documentation navigation.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/ui-pro-docs-migration.md#2025-04-23_snippet_19
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <UContainer>
+    <UPage>
+      <template #left>
+        <UPageAside>
+          <UContentNavigation
+            highlight
+            :navigation="navigation"
+          />
+        </UPageAside>
+      </template>
+
+      <slot />
+    </UPage>
+  </UContainer>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Configuring SQLite Database for AWS Lambda Deployment
+DESCRIPTION: This snippet demonstrates how to configure a SQLite database for deploying a Nuxt Content project on AWS Lambda. It ensures the SQLite file is in the /tmp directory, which is the only writable folder in Lambda environments.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/6.deploy/2.serverless.md#2025-04-23_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  modules: ['@nuxt/content'],
+  content: {
+    database: {
+      type: 'sqlite',
+      filename: '/tmp/contents.sqlite'
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Basic Authentication for Private Repository (TypeScript)
+DESCRIPTION: This snippet shows how to provide basic authentication credentials (`username` and `password`) for accessing content from a private Git repository. This is configured within the `source.authBasic` property of a `defineCollection` call.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/2.collections/3.sources.md#_snippet_4
+
+LANGUAGE: TypeScript
+CODE:
+```
+defineCollection({
+  type: 'page',
+  source: {
+    repository: 'https://bitbucket.org/username/repo',
+    authBasic: {
+      username: 'username',
+      password: 'password',
+    },
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Rendering Rich Text Markdown within MDC Component Slots
+DESCRIPTION: This example highlights that Markdown syntax can be directly used within component slots in MDC. The Vue component's slot will render the Markdown content, allowing for rich text formatting like links and bold text to be processed and displayed by the component.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/3.files/1.markdown.md#_snippet_19
+
+LANGUAGE: mdc
+CODE:
+```
+::the-title
+A [rich text](/) will be **rendered** by the component.
+::
+```
+
+LANGUAGE: html
+CODE:
+```
+<template>
+    <h1 class="text-4xl">
+      <slot mdc-unwrap="p" />
+    </h1>
+  </template>
+```
+
+----------------------------------------
+
+TITLE: Configuring Nuxt Content Preview API for Studio Integration
+DESCRIPTION: Adding configuration for Preview API in Nuxt Content v3 to replace the deprecated Studio module, enabling direct integration with Nuxt Studio.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/blog/ui-pro-docs-migration.md#2025-04-23_snippet_9
+
+LANGUAGE: ts
+CODE:
+```
+export default defineNuxtConfig({
+  content: {
+    preview: {
+      api: 'https://api.nuxt.studio'
+    }
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring External Git Repository as Content Source (JavaScript)
+DESCRIPTION: This example demonstrates how to configure a Nuxt Content collection to source its content from an external Git repository. It specifies the `repository` URL and uses the `include` pattern to select relevant files from within that repository, such as `docs/content/**`.
+SOURCE: https://github.com/nuxt/content/blob/main/docs/content/docs/2.collections/3.sources.md#_snippet_3
+
+LANGUAGE: JavaScript
+CODE:
+```
+import { defineCollection, defineContentConfig } from '@nuxt/content'
+
+export default defineContentConfig({
+  collections: {
+    docs: defineCollection({
+      type: 'page',
+      source: {
+        repository: 'https://github.com/nuxt/content',
+        include: 'docs/content/**',
+      },
+    })
+  }
+})
+```
