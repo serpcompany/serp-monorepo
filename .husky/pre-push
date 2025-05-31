@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Pre-push hook to prevent pushing to main branch
+echo "[husky]: Running pre-push hook..."
+
+# Get the current branch name
+current_branch=$(git branch --show-current)
+
+# Check if trying to push to main
+if [ "$current_branch" = "main" ]; then
+    echo "❌ [husky]: BLOCKED! Direct push to 'main' branch is not allowed."
+    echo "Please follow the proper workflow:"
+    echo "  1. Create/checkout a feature branch"
+    echo "  2. Make your changes"
+    echo "  3. Push to the feature branch" 
+    echo "  4. Create a PR targeting 'staging'"
+    echo "  5. After review, merge to staging, then staging to main"
+    exit 1
+fi
+
+# Check if trying to push main to remote (covers git push origin main)
+while read local_ref local_sha remote_ref remote_sha; do
+    if [[ "$remote_ref" =~ refs/heads/main$ ]]; then
+        echo "❌ [husky]: BLOCKED! Push to remote 'main' branch is not allowed."
+        echo "Please target 'staging' branch instead:"
+        echo "  git push origin your-feature-branch"
+        echo "  Then create PR: your-feature-branch → staging"
+        exit 1
+    fi
+done
+
+echo "✅ [husky]: Pre-push check passed. Branch '$current_branch' is allowed."
+echo "[husky]: Remember to target 'staging' in your PR, not 'main'!"
