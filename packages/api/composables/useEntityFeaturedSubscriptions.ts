@@ -1,3 +1,11 @@
+import useFetchWithCache from './useFetchWithCache';
+
+/**
+ * Fetches featured subscriptions for entities
+ * @param activeOnly - Whether to fetch only active subscriptions (default: true)
+ * @param module - The module type (default: empty string)
+ * @returns Promise<any> Featured subscriptions data
+ */
 export const useEntityFeaturedSubscriptions = async (
   activeOnly = true,
   module = ''
