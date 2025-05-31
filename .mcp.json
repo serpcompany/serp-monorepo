@@ -1,0 +1,41 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@executeautomation/playwright-mcp-server"]
+    },
+    "webresearch": {
+      "command": "npx",
+      "args": ["-y", "@mzxrai/mcp-webresearch@latest"]
+    },
+    "docs-manager": {
+      "command": "npx",
+      "args": ["-y", "mcp-docs-service"]
+    },
+    "mcp-installer": {
+      "command": "npx",
+      "args": ["@anaisbetts/mcp-installer"]
+    },
+    "nuxt": {
+      "command": "npx",
+      "args": ["mcp-remote", "https://mcp.nuxt.com/sse"],
+      "alwaysAllow": ["search_nuxt_docs", "list_nuxt_modules"]
+    },
+    "open-docs-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "open-docs-mcp", "--docsDir", "./docs"],
+      "alwaysAllow": ["enable_doc", "build_index", "crawl_docs", "search_docs"]
+    },
+    "Context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "alwaysAllow": ["get-library-docs", "resolve-library-id"]
+    },
+    "browser-tools": {
+      "command": "npx",
+      "args": ["-y", "@agentdeskai/browser-tools-mcp@latest"]
+    }
+  }
+}

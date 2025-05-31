@@ -64,12 +64,10 @@ export default defineNuxtConfig({
       ]
     }
   },
-  $production: {
-    scripts: {
-      registry: {
-        googleTagManager: {
-          id: ''
-        }
+  scripts: {
+    registry: {
+      googleTagManager: {
+        id: ''
       }
     }
   },
@@ -101,11 +99,6 @@ export default defineNuxtConfig({
     format: ['webp']
   },
   security: {
-    headers: {
-      contentSecurityPolicy: {
-        'img-src': ["'self'", 'data:', 'https://*']
-      }
-    },
     rateLimiter: false
   },
   htmlValidator: {

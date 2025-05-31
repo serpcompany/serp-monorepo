@@ -1,0 +1,4447 @@
+TITLE: Initializing Google Analytics Globally (Production Only) - TypeScript
+DESCRIPTION: This code snippet shows how to initialize Google Analytics globally in a Nuxt application, but only in the production environment. It uses the `$production` property in `nuxt.config.ts` to conditionally enable the Google Analytics script. Replace `YOUR_ID` with your actual Google Analytics ID.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/google-analytics.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  $production: {
+    scripts: {
+      registry: {
+        googleAnalytics: {
+          id: 'YOUR_ID',
+        }
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Loading Google Maps Immediately in Vue
+DESCRIPTION: This code snippet demonstrates how to load the Google Maps component immediately using the `trigger` prop set to "immediate". This ensures that the map is loaded as soon as the component is mounted, without waiting for any user interaction or other events.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/google-maps.md#_snippet_6
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+<ScriptGoogleMaps trigger="immediate">
+</ScriptGoogleMaps>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Opt-in to bundle a specific script
+DESCRIPTION: Shows how to use the `bundle` option with `useScript` to enable bundling for a specific script.  Also shows how to bundle a registry script.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/2.bundling.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+// Opt-in to bundle this specific script
+useScript('https://example.com/script.js', {
+  bundle: true,
+})
+```
+
+----------------------------------------
+
+TITLE: Embedding Ads with ScriptGoogleAdsense Component
+DESCRIPTION: Embeds a Google AdSense ad using the `<ScriptGoogleAdsense>` component in a Vue template.  The component requires `data-ad-client` (your AdSense Publisher ID) and `data-ad-slot` (your Ad Slot ID).  `data-ad-format` specifies the ad format.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/ads/google-adsense.md#_snippet_5
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptGoogleAdsense
+    data-ad-client="ca-pub-<your-id>"
+    data-ad-slot="1234567890"
+    data-ad-format="auto"
+  />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Loading script with consent trigger in app.vue
+DESCRIPTION: Loads a script (Google Analytics) using the useScript composable, triggered by the agreedToCookiesScriptConsent. The script will only load after the user has given consent, managed by the useScriptTriggerConsent composable.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/3.consent.md#_snippet_1
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+import { agreedToCookiesScriptConsent } from '#imports'
+
+useScript('https://www.google-analytics.com/analytics.js', {
+  trigger: agreedToCookiesScriptConsent
+})
+</script>
+```
+
+----------------------------------------
+
+TITLE: ScriptIntercom Component Usage
+DESCRIPTION: This example demonstrates how to use the ScriptIntercom component in a Vue template to load Intercom. It includes setting the app ID, API base, alignment, and horizontal padding. It also shows how to use the ready event to track when Intercom is loaded.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/support/intercom.md#_snippet_0
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const isLoaded = ref(false)
+</script>
+
+<template>
+<div>
+  <ScriptIntercom @ready="isLoaded = true" app-id="akg5rmxb" api-base="https://api-iam.intercom.io" alignment="left" :horizontal-padding="50" class="intercom">
+    <div style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px;">
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 28 32"><path d="M28 32s-4.714-1.855-8.527-3.34H3.437C1.54 28.66 0 27.026 0 25.013V3.644C0 1.633 1.54 0 3.437 0h21.125c1.898 0 3.437 1.632 3.437 3.645v18.404H28V32zm-4.139-11.982a.88.88 0 00-1.292-.105c-.03.026-3.015 2.681-8.57 2.681-5.486 0-8.517-2.636-8.571-2.684a.88.88 0 00-1.29.107 1.01 1.01 0 00-.219.708.992.992 0 00.318.664c.142.128 3.537 3.15 9.762 3.15 6.226 0 9.621-3.022 9.763-3.15a.992.992 0 00.317-.664 1.01 1.01 0 00-.218-.707z" /></svg>
+    </div>
+  </ScriptIntercom>
+  <div class="text-center">
+    <UAlert v-if="!isLoaded" class="mb-5" size="sm" color="blue" variant="soft" title="Click to load" description="Clicking the button to the right will load the Intercom script" />
+    <UAlert v-else color="green" variant="soft" title="Intercom is loaded" description="The Intercom Facade component is no longer being displayed." />
+  </div>
+</div>
+</template>
+
+<style>
+.intercom {
+  display: block;
+  position: relative; /* change to fixed */
+  z-index: 100000;
+  width: 48px;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #0071b2;
+  filter: drop-shadow(rgba(0, 0, 0, 0.06) 0px 1px 6px) drop-shadow(rgba(0, 0, 0, 0.16) 0px 2px 32px);
+}
+</style>
+```
+
+----------------------------------------
+
+TITLE: Google Tag Manager Input Types - TypeScript
+DESCRIPTION: This code defines the type `GoogleTagManagerInput` which combines the `GoogleTagManagerOptions` type with an optional `onBeforeGtmStart` function. This allows for extending the configuration options with a callback function that executes before GTM starts.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/google-tag-manager.md#_snippet_7
+
+LANGUAGE: typescript
+CODE:
+```
+type GoogleTagManagerInput = typeof GoogleTagManagerOptions & { onBeforeGtmStart?: (gtag: Gtag) => void }
+```
+
+----------------------------------------
+
+TITLE: Advanced Map Control and API Access in Vue
+DESCRIPTION: This code snippet showcases how to access and utilize internal Google Maps APIs within a Vue component using the `ScriptGoogleMaps` component. It demonstrates accessing the `google.maps` API and the `google.maps.Map` instance, resolving queries to latitude/longitude coordinates, and importing Google Maps libraries like 'geometry' to perform calculations such as distance computation. The component is mounted using `onMounted` to ensure the Google Maps API is available.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/google-maps.md#_snippet_5
+
+LANGUAGE: vue
+CODE:
+```
+<script lang="ts" setup>
+const googleMapsRef = ref()
+onMounted(async () => {
+  const api = googleMapsRef.value
+  
+  // Access internal APIs
+  const googleMaps = api.googleMaps.value // google.maps api
+  const mapInstance = api.map.value // google.maps.Map instance
+  
+  // Convert a query to lat/lng
+  const query = await api.resolveQueryToLatLang('Space Needle, Seattle, WA') // { lat: 0, lng: 0 }
+  
+  // Import a Google Maps library
+  const geometry = await api.importLibrary('geometry')
+  const distance = new googleMaps.geometry.spherical.computeDistanceBetween(
+    new googleMaps.LatLng(0, 0),
+    new googleMaps.LatLng(0, 0)
+  )
+})
+</script>
+<template>
+    <ScriptGoogleMaps ref="googleMapsRef" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Sending Conversion Events with Google Tag Manager in Vue Component
+DESCRIPTION: This code demonstrates how to use the `useScriptGoogleTagManager` composable within a Vue component to send conversion events to Google Tag Manager. It retrieves the `proxy` object and pushes events to the `dataLayer` on button clicks.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/google-tag-manager.md#_snippet_8
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { proxy } = useScriptGoogleTagManager()
+
+// noop in development, ssr
+// just works in production, client
+proxy.dataLayer.push({ event: 'conversion-step', value: 1 })
+function sendConversion() {
+  proxy.dataLayer.push({ event: 'conversion', value: 1 })
+}
+</script>
+
+<template>
+  <div>
+    <button @click="sendConversion">
+      Send Conversion
+    </button>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Using useScriptGoogleTagManager Composable - TypeScript
+DESCRIPTION: This code demonstrates how to use the `useScriptGoogleTagManager` composable to control Google Tag Manager loading and interact with the dataLayer. It retrieves the `proxy` object, which allows pushing events to the dataLayer.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/google-tag-manager.md#_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+const { proxy } = useScriptGoogleTagManager({
+  id: 'YOUR_ID' // id is only needed if you haven't configured globally
+})
+// example
+proxy.dataLayer.push({ event: 'conversion', value: 1 })
+```
+
+----------------------------------------
+
+TITLE: Initializing Fathom Analytics with Environment Variables in Nuxt Config
+DESCRIPTION: This code snippet demonstrates how to initialize Fathom Analytics using environment variables in a Nuxt application. It configures the `nuxt.config.ts` to read the Fathom Analytics site token from the environment. Ensure the environment variable `NUXT_PUBLIC_SCRIPTS_FATHOM_ANALYTICS_SITE` is set.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/fathom-analytics.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      fathomAnalytics: true,
+    }
+  },
+  // you need to provide a runtime config to access the environment variables
+  runtimeConfig: {
+    public: {
+      scripts: {
+        fathomAnalytics: {
+          // .env
+          // NUXT_PUBLIC_SCRIPTS_FATHOM_ANALYTICS_SITE=<your-token>
+          token: '',
+        },
+      },
+    },
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Using useScriptMetaPixel Composable
+DESCRIPTION: This code snippet demonstrates how to use the `useScriptMetaPixel` composable to load Meta Pixel and track a 'ViewContent' event.  It requires the Meta Pixel ID to be configured.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/meta-pixel.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+const { proxy } = useScriptMetaPixel({
+  id: 'YOUR_ID'
+})
+// example
+proxy.fbq('track', 'ViewContent', {
+  content_name: 'Nuxt Pixel',
+  content_category: 'Nuxt',
+})
+```
+
+----------------------------------------
+
+TITLE: useScriptNpm Function Definition
+DESCRIPTION: This snippet shows the function signature for the `useScriptNpm` composable. It takes an `NpmInput` object as an argument and is generic, allowing you to specify the type of the script being loaded.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/utility/npm.md#_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+function useScriptNpm<T extends Record<string | symbol, any>>(_options: NpmInput) {}
+```
+
+----------------------------------------
+
+TITLE: Using useScriptGoogleAnalytics Composable (Environment Variables) - TypeScript
+DESCRIPTION: This code snippet demonstrates how to use the `useScriptGoogleAnalytics` composable to load Google Analytics, fetching the ID from environment variables. Ensure that the environment variable `NUXT_PUBLIC_SCRIPTS_GOOGLE_ANALYTICS_ID` is set and that `runtimeConfig.public.scripts.googleAnalytics.id` is configured to an empty string or fallback value.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/google-analytics.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+// 1. set .env NUXT_PUBLIC_SCRIPTS_GOOGLE_ANALYTICS_ID=<your-id>
+// 2. set runtimeConfig.public.scripts.googleAnalytics.id to an empty string or fallback
+const googleAnalytics = useScriptGoogleAnalytics()
+```
+
+----------------------------------------
+
+TITLE: Handling Ad Blockers with Fallback Content in Vue
+DESCRIPTION: This example shows how to provide fallback content when a user has an ad blocker enabled. The fallback content is displayed within the `<template #error>` slot of the `ScriptGoogleAdsense` component. It requires a valid Google AdSense client ID and ad slot ID.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/ads/google-adsense.md#_snippet_7
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptGoogleAdsense data-ad-client="ca-pub-..." data-ad-slot="...">
+    <template #error>
+      <!-- Fallback content -->
+      <p>Please support us by disabling your ad blocker.</p>
+    </template>
+  </ScriptGoogleAdsense>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Using useScriptClarity Composable - TypeScript
+DESCRIPTION: This code snippet demonstrates how to use the `useScriptClarity` composable to load Clarity and access its API. It initializes Clarity with a project ID and shows an example of calling the `clarity` function through the proxy to identify a user.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/marketing/clarity.md#_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+const { proxy } = useScriptClarity({
+  id: 'YOUR_ID'
+})
+// example
+proxy.clarity("identify", "custom-id", "custom-session-id", "custom-page-id", "friendly-name")	
+```
+
+----------------------------------------
+
+TITLE: Styling Google Maps with Map Options in Vue
+DESCRIPTION: This code snippet shows how to style a Google Map using the `mapOptions.styles` prop within a Vue component. It defines a `mapOptions` object containing an array of styles that modify the appearance of various map elements such as labels, landscape, roads, and water. These styles are then passed to the `ScriptGoogleMaps` component to customize the map's visual presentation.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/google-maps.md#_snippet_7
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const mapOptions = {
+  styles: [{ elementType: 'labels', stylers: [{ visibility: 'off' }, { color: '#f49f53' }] }, { featureType: 'landscape', stylers: [{ color: '#f9ddc5' }, { lightness: -7 }] }, { featureType: 'road', stylers: [{ color: '#813033' }, { lightness: 43 }] }, { featureType: 'poi.business', stylers: [{ color: '#645c20' }, { lightness: 38 }] }, { featureType: 'water', stylers: [{ color: '#1994bf' }, { saturation: -69 }, { gamma: 0.99 }, { lightness: 43 }] }, { featureType: 'road.local', elementType: 'geometry.fill', stylers: [{ color: '#f19f53' }, { weight: 1.3 }, { visibility: 'on' }, { lightness: 16 }] }, { featureType: 'poi.business' }, { featureType: 'poi.park', stylers: [{ color: '#645c20' }, { lightness: 39 }] }, { featureType: 'poi.school', stylers: [{ color: '#a95521' }, { lightness: 35 }] }, {}, { featureType: 'poi.medical', elementType: 'geometry.fill', stylers: [{ color: '#813033' }, { lightness: 38 }, { visibility: 'off' }] },
+}
+</script>
+<template>
+<ScriptGoogleMaps :mapOptions="mapOptions" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Using useScriptSegment Composable (Segment)
+DESCRIPTION: Demonstrates how to use the useScriptSegment composable to load Segment and track events. It shows how to obtain the proxy object and use it to call Segment methods like track.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/segment.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+const { proxy } = useScriptSegment({
+  id: 'YOUR_ID'
+})
+// example
+proxy.track('event', {
+  foo: 'bar'
+})
+```
+
+----------------------------------------
+
+TITLE: Enabling Auto Ads in Nuxt Config
+DESCRIPTION: Enables Auto Ads for Google AdSense in the `nuxt.config.ts` file.  Setting `autoAds` to `true` allows Google to automatically place ads on the site for optimized revenue generation.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/ads/google-adsense.md#_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+      registry: {
+        googleAdsense: {
+          client: "ca-pub-<your-id>", // AdSense Publisher ID
+          autoAds: true, // Enable Auto Ads
+        },
+      },
+    },
+});
+```
+
+----------------------------------------
+
+TITLE: Initializing Google Analytics Globally (Environment Variables) - TypeScript
+DESCRIPTION: This code snippet demonstrates how to initialize Google Analytics globally in a Nuxt application using environment variables. It configures `nuxt.config.ts` to read the Google Analytics ID from an environment variable.  You need to define a runtime config to access the environment variables.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/google-analytics.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      googleAnalytics: true,
+    }
+  },
+  // you need to provide a runtime config to access the environment variables
+  runtimeConfig: {
+    public: {
+      scripts: {
+        googleAnalytics: {
+          // .env
+          // NUXT_PUBLIC_SCRIPTS_GOOGLE_ANALYTICS_ID=<your-id>
+          id: '',
+        },
+      },
+    },
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Google Tag Manager with Environment Variables - TypeScript
+DESCRIPTION: This code snippet illustrates how to configure Google Tag Manager using environment variables in a Nuxt application. It defines the configuration within `nuxt.config.ts` and accesses the GTM ID from the environment variables via `runtimeConfig`.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/google-tag-manager.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      googleTagManager: true,
+    }
+  },
+  // you need to provide a runtime config to access the environment variables
+  runtimeConfig: {
+    public: {
+      scripts: {
+        googleTagManager: {
+          // .env
+          // NUXT_PUBLIC_SCRIPTS_GOOGLE_TAG_MANAGER_ID=<your-id>
+          id: '', 
+        },
+      },
+    },
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Google Tag Manager Globally (Always Enabled) - TypeScript
+DESCRIPTION: This code snippet demonstrates how to configure Google Tag Manager to load globally in a Nuxt application, regardless of the environment. It involves setting the `googleTagManager` property within the `scripts.registry` section of the `nuxt.config.ts` file, providing the GTM container ID.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/google-tag-manager.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      googleTagManager: {
+        id: '<YOUR_ID>'
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Sending Conversion Event in a Vue Component - Vue
+DESCRIPTION: This code snippet demonstrates how to send a conversion event to Google Analytics from a Vue component using the `useScriptGoogleAnalytics` composable. It includes a button that, when clicked, triggers the `sendConversion` function, which then sends the `conversion` event to Google Analytics.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/google-analytics.md#_snippet_6
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { proxy } = useScriptGoogleAnalytics()
+
+// noop in development, ssr
+// just works in production, client
+proxy.gtag('event', 'conversion-test')
+function sendConversion() {
+  proxy.gtag('event', 'conversion')
+}
+</script>
+
+<template>
+  <div>
+    <button @click="sendConversion">
+      Send Conversion
+    </button>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Trigger Script Loading with Global Script
+DESCRIPTION: This example demonstrates how to configure a global script in `nuxt.config.ts` to load with a specific trigger. In this case, the script will load when the `onNuxtReady` hook is called.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/1.script-triggers.md#_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    globals: {
+      myScript: ['https://example.com/script.js', {
+        // load however you like!
+        trigger: 'onNuxtReady'
+      }]
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Using useScriptIntercom Composable
+DESCRIPTION: This code snippet demonstrates how to use the useScriptIntercom composable to control Intercom loading and interact with the Intercom API. It initializes the composable with an app_id and then calls Intercom methods through the proxy object.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/support/intercom.md#_snippet_6
+
+LANGUAGE: typescript
+CODE:
+```
+const { proxy } = useScriptIntercom({
+  app_id: 'YOUR_APP_ID'
+})
+
+// examples
+proxy.Intercom('show')
+proxy.Intercom('update', { name: 'John Doe' })
+```
+
+----------------------------------------
+
+TITLE: Configuring Meta Pixel in Nuxt Config (Production Only)
+DESCRIPTION: This code snippet demonstrates how to configure Meta Pixel to load only in production environments using the `$production` property in nuxt.config.ts. The `id` property should be replaced with your actual Meta Pixel ID.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/meta-pixel.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  $production: {
+    scripts: {
+      registry: {
+        metaPixel: {
+          id: 'YOUR_ID',
+        }
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Loading script with resolvable boolean consent
+DESCRIPTION: Demonstrates loading a script based on a reactive boolean reference representing the consent state. The script will automatically load when the agreedToCookies ref becomes true.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/3.consent.md#_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+const agreedToCookies = ref(false)
+useScript('https://www.google-analytics.com/analytics.js', {
+  trigger: useScriptTriggerConsent({
+    consent: agreedToCookies
+  })
+})
+```
+
+----------------------------------------
+
+TITLE: Enable Stripe Globally in Nuxt Config
+DESCRIPTION: This code snippet shows how to enable the Stripe script globally in your Nuxt configuration. This ensures the Stripe script is loaded on every page, which Stripe recommends for improved fraud detection.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/payments/stripe.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      stripe: true,
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Conditionally Showing Intercom in Production
+DESCRIPTION: This code snippet demonstrates how to conditionally show Intercom only in a production environment. It defines a Vue component with a button that, when clicked, calls the Intercom('show') method through the proxy object obtained from useScriptIntercom. This ensures that Intercom is only initialized and used in production, while being a no-op in development and during server-side rendering (SSR).
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/support/intercom.md#_snippet_9
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { proxy } = useScriptIntercom()
+
+// noop in development, ssr
+// just works in production, client
+function showIntercom() {
+  proxy.Intercom('show')
+}
+</script>
+
+<template>
+  <div>
+    <button @click="showIntercom">
+      Chat with us
+    </button>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Enable Plausible Analytics Globally (Production Only)
+DESCRIPTION: This configuration enables Plausible Analytics only in the production environment.  It sets the domain in the nuxt.config.ts file within the $production scope, ensuring the script is only included when the application is deployed to production.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/plausible-analytics.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  $production: {
+    scripts: {
+      registry: {
+        plausibleAnalytics: {
+          domain: 'YOUR_DOMAIN',
+        }
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Using useScriptGoogleAnalytics Composable (Default) - TypeScript
+DESCRIPTION: This code snippet shows how to use the `useScriptGoogleAnalytics` composable to load Google Analytics with a specified ID. Replace `YOUR_ID` with your actual Google Analytics ID. This composable provides fine-grained control over when and how Google Analytics is loaded.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/google-analytics.md#_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+const googleAnalytics = useScriptGoogleAnalytics({
+  id: 'YOUR_ID'
+})
+```
+
+----------------------------------------
+
+TITLE: Accessing Script API Directly with onLoaded in TypeScript
+DESCRIPTION: This example demonstrates how to access the script's API directly using the onLoaded function. This allows you to use the script instance directly, not proxied, and ensures that the script is loaded before the function is called.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/0.key-concepts.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+const { onLoaded } = useScript('/script.js')
+// use the script instance directly, not proxied
+onLoaded(({ gtag }) => {
+  gtag('event', 'page_view')
+})
+```
+
+----------------------------------------
+
+TITLE: useScriptGoogleAdsense Composable Definition in TypeScript
+DESCRIPTION: This code defines the `useScriptGoogleAdsense` composable function in TypeScript. It accepts an optional `GoogleAdsenseInput` object as a parameter and is intended to provide fine-grained control over the AdSense script. See the Registry Scripts Guide for advanced usage.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/ads/google-adsense.md#_snippet_8
+
+LANGUAGE: typescript
+CODE:
+```
+export function useScriptGoogleAdsense<T extends GoogleAdsenseApi>(
+  _options?: GoogleAdsenseInput
+) {}
+```
+
+----------------------------------------
+
+TITLE: Configure Snapchat Pixel with Environment Variables
+DESCRIPTION: This code snippet shows how to configure the Snapchat Pixel ID using environment variables in a Nuxt application. It defines the `snapchatPixel` option within the `scripts.registry` and configures runtime config to expose the environment variable.  The `.env` file stores the actual pixel ID.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/snapchat-pixel.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      snapchatPixel: true,
+    }
+  },
+  // you need to provide a runtime config to access the environment variables
+  runtimeConfig: {
+    public: {
+      scripts: {
+        snapchatPixel: {
+          id: '', // NUXT_PUBLIC_SCRIPTS_SNAPCHAT_PIXEL_ID
+        },
+      },
+    },
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Loading a script with script options in Nuxt Config (TS)
+DESCRIPTION: This example demonstrates how to load a script with additional script options, such as specifying the `trigger` to control when the script is loaded.  The script is loaded globally and can be accessed via the `$scripts` property of the Nuxt app.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/4.global.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    globals: {
+      myScript: [
+        { src: 'https://example.com/script.js' },
+        // load the script as part of the hydration process instead of on idle
+        { trigger: 'client' }
+      ]
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Loading a script using src in Nuxt Config (TS)
+DESCRIPTION: This example demonstrates how to load a script by specifying its source URL in the `nuxt.config.ts` file. The script is loaded globally and can be accessed via the `$scripts` property of the Nuxt app. No extra attributes are provided.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/4.global.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    globals: {
+      myScript: 'https://analytics.com/tracker.js',
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Initializing Fathom Analytics with Site ID in Nuxt Config (Always Enabled)
+DESCRIPTION: This code snippet demonstrates how to initialize Fathom Analytics globally in a Nuxt application by providing the site ID directly in the `nuxt.config.ts` file. This configuration ensures that Fathom Analytics is always enabled. Replace 'YOUR_TOKEN_ID' with your actual Fathom Analytics site ID.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/fathom-analytics.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      fathomAnalytics: {
+        site: 'YOUR_TOKEN_ID'
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Using useScriptMatomoAnalytics with Matomo Whitelabel - TypeScript
+DESCRIPTION: This code snippet demonstrates how to use the `useScriptMatomoAnalytics` composable with a Matomo Whitelabel setup. It sets the `trackerUrl` and `scriptInput.src` options to customize tracking.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/matomo-analytics.md#_snippet_7
+
+LANGUAGE: typescript
+CODE:
+```
+const matomoAnalytics = useScriptMatomoAnalytics({
+  trackerUrl: 'https://c.staging.cookie3.co/lake',
+  scriptInput: {
+    src: 'https://cdn.cookie3.co/scripts/analytics/latest/cookie3.analytics.min.js',
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Enable Snapchat Pixel Globally (Production Only)
+DESCRIPTION: This code snippet demonstrates how to enable Snapchat Pixel only in the production environment of a Nuxt application.  The `$production` key ensures that the script is only included when the application is running in production. The `id` property should be replaced with your actual Snapchat Pixel ID.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/snapchat-pixel.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  $production: {
+    scripts: {
+      registry: {
+        snapchatPixel: {
+          id: 'YOUR_ID',
+        }
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Initializing Google Analytics Globally (Always Enabled) - TypeScript
+DESCRIPTION: This code snippet demonstrates how to globally initialize Google Analytics in a Nuxt application by configuring the `nuxt.config.ts` file. The `id` property should be replaced with your actual Google Analytics ID. This configuration ensures that Google Analytics is always enabled, regardless of the environment.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/google-analytics.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      googleAnalytics: {
+        id: 'YOUR_ID',
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Using useScriptUmamiAnalytics Composable - TypeScript
+DESCRIPTION: This code snippet demonstrates how to use the `useScriptUmamiAnalytics` composable to load Umami Analytics with a specified `websiteId`. This composable provides fine-grained control over when and how Umami Analytics is loaded.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/umami-analytics.md#_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+const umami = useScriptUmamiAnalytics({
+  websiteId: 'YOUR_WEBSITE_ID'
+})
+```
+
+----------------------------------------
+
+TITLE: Loading and Interacting with Google Maps SDK in Vue
+DESCRIPTION: This example demonstrates how to load the Google Maps SDK using the useScriptGoogleMaps composable and interact with it programmatically. It initializes a map instance after the SDK is loaded.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/google-maps.md#_snippet_16
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+/// <reference types="google.maps" />
+const { onLoaded } = useScriptGoogleMaps({
+  apiKey: 'key'
+})
+const map = ref()
+onMounted(() => {
+  onLoaded(async (instance) => {
+    const maps = await instance.maps as any as typeof google.maps // upstream google type issue
+    new maps.Map(map.value, {
+      center: { lat: -34.397, lng: 150.644 },
+      zoom: 8
+    })
+    // Do something with the map
+  })
+})
+</script>
+<template>
+    <div ref="map" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: X Pixel Nuxt Config with Environment Variables
+DESCRIPTION: Configures X Pixel using environment variables.  Defines the configuration in `nuxt.config.ts` and sets the pixel ID via the `.env` file.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/x-pixel.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      xPixel: true,
+    }
+  },
+  // you need to provide a runtime config to access the environment variables
+  runtimeConfig: {
+    public: {
+      scripts: {
+        xPixel: {
+          id: '', // NUXT_PUBLIC_SCRIPTS_X_PIXEL_ID
+        },
+      },
+    },
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Trigger Script Loading with useScript and Computed Property
+DESCRIPTION: This example demonstrates how to use a computed property to trigger the loading of a script using the `useScript` composable. It uses `useRoute` to access the current route and checks if the route has a specific query parameter (`affiliateId`). The computed property is passed as the `trigger` option to `useScript`, so the script will only load if the `affiliateId` query parameter is present.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/1.script-triggers.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+const route = useRoute()
+useScript({
+  src: 'https://example.com/script.js',
+}, {
+  // only if route has a specific query
+  trigger: computed(() => !!route.query.affiliateId),
+})
+```
+
+----------------------------------------
+
+TITLE: Initializing Hotjar Globally (Always Enabled) - TypeScript
+DESCRIPTION: This code snippet demonstrates how to initialize Hotjar globally in a Nuxt application by configuring the `nuxt.config.ts` file. The `id` option specifies your Hotjar site ID. This configuration will always enable Hotjar, regardless of the environment.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/marketing/hotjar.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      hotjar: {
+        id: 123456, // your id
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Loading Slot Implementation
+DESCRIPTION: This code snippet demonstrates how to use the loading slot to display content while Intercom is loading. It defines a Vue template that uses the ScriptIntercom component and provides a custom template for the loading slot, displaying a loading message with a blue background and white text.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/support/intercom.md#_snippet_5
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptIntercom>
+    <template #loading>
+      <div class="bg-blue-500 text-white p-5">
+        Loading...
+      </div>
+    </template>
+  </ScriptIntercom>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Configuring Clarity Globally (Production Only) - TypeScript
+DESCRIPTION: This code snippet demonstrates how to configure Clarity to load only in production environments using the `$production` key in `nuxt.config.ts`. This is useful for preventing data collection during development. The `id` option specifies the Clarity project ID.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/marketing/clarity.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  $production: {
+    scripts: {
+      registry: {
+        clarity: {
+          id: 'YOUR_ID',
+        }
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Using useScriptPlausibleAnalytics Composable
+DESCRIPTION: This code snippet demonstrates how to use the `useScriptPlausibleAnalytics` composable to load Plausible Analytics with fine-grained control. It initializes the composable with a specified domain.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/plausible-analytics.md#_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+const plausible = useScriptPlausibleAnalytics({
+  domain: 'YOUR_DOMAIN'
+})
+```
+
+----------------------------------------
+
+TITLE: Tracking Page Views with useScriptEventPage in Nuxt
+DESCRIPTION: This code snippet demonstrates how to use the useScriptEventPage composable in Nuxt to track page views with accurate titles and paths. It uses the useScriptGoogleAnalytics composable to access the gtag function and send a page_view event to Google Analytics. The callback function is triggered on route change, providing the updated title and path.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/3.page-events.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+const { proxy } = useScriptGoogleAnalytics()
+
+useScriptEventPage(({ title, path }) => {
+  // triggered on route change
+  proxy.gtag('event', 'page_view', {
+    page_title: title,
+    page_location: 'https://example.com',
+    page_path: path
+  })
+})
+```
+
+----------------------------------------
+
+TITLE: GoogleAdsenseOptions Definition in TypeScript
+DESCRIPTION: This code defines the `GoogleAdsenseOptions` object using the `object` function, likely from a validation library. It specifies the structure for input options to the `useScriptGoogleAdsense` composable, including optional `client` (Google AdSense Publisher ID) and `autoAds` (enable/disable Auto Ads) properties.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/ads/google-adsense.md#_snippet_10
+
+LANGUAGE: typescript
+CODE:
+```
+export const GoogleAdsenseOptions = object({
+  /**
+   * The Google Adsense Publisher ID.
+   */
+  client: optional(string()),
+  /**
+   * Enable or disable Auto Ads.
+   */
+  autoAds: optional(boolean()),
+});
+```
+
+----------------------------------------
+
+TITLE: Loading Stripe SDK and Creating Payment Element
+DESCRIPTION: This code demonstrates how to load the Stripe SDK using `useScriptStripe` and create a payment element. It shows how to mount the payment element to a DOM element.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/payments/stripe.md#_snippet_6
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const paymentEl = ref(null)
+const { onLoaded } = useScriptStripe()
+onMounted(() => {
+  onLoaded(({ Stripe }) => {
+    const stripe = Stripe('YOUR_STRIPE_KEY')
+    const elements = stripe.elements()
+    const paymentElement = elements.create('payment', { /* pass keys */})
+    paymentElement.mount(paymentEl.value)
+  })
+})
+</script>
+
+<template>
+  <div ref="paymentEl" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Configuring Matomo Analytics Globally (Environment Variables) - TypeScript
+DESCRIPTION: This code snippet demonstrates how to configure Matomo Analytics globally in a Nuxt application using environment variables. It uses `runtimeConfig` to expose the environment variable `NUXT_PUBLIC_SCRIPTS_MATOMO_ANALYTICS_CLOUD_ID` to the application.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/matomo-analytics.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      matomoAnalytics: true,
+    }
+  },
+  // you need to provide a runtime config to access the environment variables
+  runtimeConfig: {
+    public: {
+      scripts: {
+        matomoAnalytics: {
+          // .env
+          // NUXT_PUBLIC_SCRIPTS_MATOMO_ANALYTICS_CLOUD_ID=<your-id>
+          cloudId: '', // NUXT_PUBLIC_SCRIPTS_MATOMO_ANALYTICS_CLOUD_ID
+        },
+      },
+    },
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: GoogleTagManagerApi Interface - TypeScript
+DESCRIPTION: This code defines the `GoogleTagManagerApi` interface, which describes the structure of the API exposed by the `useScriptGoogleTagManager` composable. It includes the `dataLayer` and `google_tag_manager` properties.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/google-tag-manager.md#_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+interface GoogleTagManagerApi {
+  dataLayer: Record<string, any>[]
+  google_tag_manager: GoogleTagManager
+}
+```
+
+----------------------------------------
+
+TITLE: Loading Cloudflare Web Analytics in app.vue - Vue
+DESCRIPTION: This code snippet demonstrates how to load Cloudflare Web Analytics within the `app.vue` file using the `useScriptCloudflareWebAnalytics` composable. It sets the token and configures the script to trigger on Nuxt ready.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/cloudflare-web-analytics.md#_snippet_4
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+useScriptCloudflareWebAnalytics({
+  token: '12ee46bf598b45c2868bbc07a3073f58',
+  scriptOptions: {
+    trigger: 'onNuxtReady'
+  }
+})
+</script>
+```
+
+----------------------------------------
+
+TITLE: Configuring Matomo Analytics Globally (Always Enabled) - TypeScript
+DESCRIPTION: This code snippet demonstrates how to configure Matomo Analytics globally in a Nuxt application using the `defineNuxtConfig` function. It sets the `cloudId` option within the `scripts.registry.matomoAnalytics` configuration to enable Matomo Analytics for all environments.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/matomo-analytics.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      matomoAnalytics: {
+        cloudId: 'YOUR_CLOUD_ID', // e.g. nuxt.matomo.cloud
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Delaying script load after consent
+DESCRIPTION: Shows how to delay the script load after consent is granted using the postConsentTrigger option. In this example, the script will load 3 seconds after the user has given consent.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/3.consent.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+const agreedToCookies = ref(false)
+useScript('https://www.google-analytics.com/analytics.js', {
+  trigger: useScriptTriggerConsent({
+    consent: agreedToCookies,
+    // load 3 seconds after consent is granted
+    postConsentTrigger: () => new Promise<void>(resolve =>
+      setTimeout(resolve, 3000),
+    ),
+  })
+})
+```
+
+----------------------------------------
+
+TITLE: Loading and Interacting with YouTube Player SDK (Vue + TypeScript)
+DESCRIPTION: Demonstrates how to use the `useScriptYouTubePlayer` composable to load the YouTube Player SDK and interact with it programmatically. It shows how to wait for the SDK to be ready and then create a new YouTube player instance.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/youtube-player.md#_snippet_14
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const video = ref()
+const { onLoaded } = useScriptYouTubePlayer()
+
+const player = ref(null)
+onLoaded(async ({ YT }) => {
+  // we need to wait for the internal YouTube APIs to be ready
+  const YouTube = await YT
+  await new Promise<void>((resolve) => {
+    if (typeof YT.Player === 'undefined')
+      YouTube.ready(resolve)
+    else
+      resolve()
+  })
+  // load the API
+  player.value = new YT.Player(video.value, {
+    videoId: 'd_IFKP1Ofq0'
+  })
+})
+function play() {
+  player.value?.playVideo()
+}
+</script>
+
+<template>
+  <div>
+    <div ref="video" />
+    <button @click="play">
+      Play
+    </button>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Accessing Fathom Analytics API via onLoaded Callback
+DESCRIPTION: This code snippet demonstrates how to access the Fathom Analytics API using the `onLoaded` callback provided by the `useScriptFathomAnalytics` composable. It shows how to call the `trackGoal` function to track a specific goal after the script has loaded.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/fathom-analytics.md#_snippet_6
+
+LANGUAGE: typescript
+CODE:
+```
+const { onLoaded } = useScriptFathomAnalytics()
+onLoaded(({ trackGoal }) => {
+  trackGoal('MY_GOAL_ID', 100)
+})
+```
+
+----------------------------------------
+
+TITLE: Displaying Loading Indicator with loading Slot in Vue
+DESCRIPTION: This example demonstrates how to use the loading slot to display a custom loading indicator while the Google Maps SDK is actively loading.  It overrides the default ScriptLoadingIndicator component.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/google-maps.md#_snippet_12
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptGoogleMaps>
+    <template #loading>
+      <div class="bg-blue-500 text-white p-5">
+        Loading...
+      </div>
+    </template>
+  </ScriptGoogleMaps>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Configuring Umami Analytics Globally (Always Enabled) - TypeScript
+DESCRIPTION: This code snippet demonstrates how to configure Umami Analytics globally in a Nuxt application by directly specifying the `websiteId` within the `nuxt.config.ts` file. This configuration ensures that the Umami Analytics script is always enabled, regardless of the environment.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/umami-analytics.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      umamiAnalytics: {
+        websiteId: 'YOUR_WEBSITE_ID'
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Sending Snapchat Conversion Event in Vue
+DESCRIPTION: This Vue component demonstrates how to send a conversion event using the Snapchat Pixel. It uses the `useScriptSnapchatPixel` composable to access the `proxy` object, which is then used to call the `snaptr` function to track the 'PURCHASE' event with associated currency, price, and transaction ID. The `sendConversion` function is triggered by a button click.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/snapchat-pixel.md#_snippet_7
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { proxy } = useScriptSnapchatPixel()
+
+// noop in development, ssr
+// just works in production, client
+function sendConversion() {
+  proxy.snaptr('track', 'PURCHASE', {
+    currency: 'USD',
+    price: 120.10,
+    transaction_id: '11111'
+  })
+}
+</script>
+
+<template>
+  <div>
+    <button @click="sendConversion">
+      Send Conversion
+    </button>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Crisp Component Usage
+DESCRIPTION: This example demonstrates how to use the ScriptCrisp component to load Crisp in a Nuxt app. It includes slots for awaiting load and loading states, and uses reactive variables to track the loading status.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/support/crisp.md#_snippet_0
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const isLoaded = ref(false)
+</script>
+
+<template>
+<div class="not-prose">
+  <div class="flex items-center justify-center p-5">
+    <ScriptCrisp id="b1021910-7ace-425a-9ef5-07f49e5ce417" class="crisp">
+      <template #awaitingLoad>
+        <div class="crisp-icon" />
+      </template>
+      <template #loading>
+        <ScriptLoadingIndicator color="black" />
+      </template>
+    </ScriptCrisp>
+  </div>
+  <div class="text-center">
+    <UAlert v-if="!isLoaded" class="mb-5" size="sm" color="blue" variant="soft" title="Click to load" description="Clicking the button to the right will load crisp script" />
+    <UAlert v-else color="green" variant="soft" title="Crisp is loaded" description="The Crisp Facade component is no longer being displayed." />
+  </div>
+</div>
+</template>
+
+<style>
+.crisp {
+  width: 54px;
+  height: 54px;
+  border-radius: 54px;
+  cursor: pointer;
+  background-color: #1972F5;
+  position: relative; /* change to fixed */
+  bottom: 20px;
+  right: 24px;
+  z-index: 100000;
+  box-shadow: 0 4px 10px 0 rgba(0,0,0!important,.05) !important;
+}
+.crisp-icon {
+  position: absolute;
+  top: 16px;
+  left: 11px;
+  width: 32px;
+  height: 26px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjMwIiB3aWR0aD0iMzUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxmaWx0ZXIgaWQ9ImEiIGhlaWdodD0iMTM4LjclIiB3aWR0aD0iMTMxLjQiIiB4PSItMTUuNyUiIHk9Ii0xNS4xJSI+PGZlTW9ycGhvbG9neSBpbj0iU291cmNlQWxwaGEiIG9wZXJhdG9yPSJkaWxhdGUiIHJhZGl1cz0iMSIgcmVzdWx0PSJzaGFkb3dTcHJlYWRPdXRlcjEiLz48ZmVPZmZzZXQgZHk9IjEiIGluPSJzaGFkb3dTcHJlYWRPdXRlcjEiIHJlc3VsdD0ic2hhZG93T2Zmc2V0T3V0ZXIxIi8+PGZlR2F1c3NpYW5CbHVyIGluPSJzaGFkb3dPZmZzZXRPdXRlcjEiIHJlc3VsdD0ic2hhZG93Qmx1ck91dGVyMSIgc3RkRGV2aWF0aW9uPSIxIi8+PGZlQ29tcG9zaXRlIGluPSJzaGFkb3dCbHVyT3V0ZXIxIiBpbjI9IlNvdXJjZUFscGhhIiBvcGVyYXRvcj0ib3V0IiByZXN1bHQ9InNoYWRvd0JsdXJPdXRlcjEiLz48ZmVDb2xvck1hdHJpeCBpbj0ic2hhZG93Qmx1ck91dGVyMSIgdmFsdWVzPSIwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwLjA3IDAiLz48L2ZpbHRlcj48cGF0aCBpZD0iYiIgZD0iTTE0LjIzIDIwLjQ2bC05LjY1IDEuMUwzIDUuMTIgMzAuMDcgMmwxLjU4IDE2LjQ2LTkuMzcgMS4wNy0zLjUgNS43Mi00LjU1LTQuOHoiLz48L2RlZnM+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48dXNlIGZpbGw9IiMwMDAiIGZpbHRlcj0idXJsKCNhKSIgeGxpbms6aHJlZj0iI2IiLz48dXNlIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIiB4bGluazpocmVmPSIjYiIvPjwvZz48L3N2Zz4=!important
+}
+@media (max-height: 600px) {
+  .crisp {
+    bottom: 14px;
+    right: 14px;
+  }
+}
+</style>
+```
+
+----------------------------------------
+
+TITLE: Using useScriptXPixel Composable
+DESCRIPTION: Demonstrates how to use the `useScriptXPixel` composable to load X Pixel and send a custom event.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/x-pixel.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+const { proxy } = useScriptXPixel({
+  id: 'YOUR_ID'
+})
+// example
+proxy.twq('event', '<EventId>', {
+  value: 1,
+})
+```
+
+----------------------------------------
+
+TITLE: Using useScriptMatomoAnalytics with Custom Events - TypeScript
+DESCRIPTION: This code snippet demonstrates how to use the `useScriptMatomoAnalytics` composable to send custom events to Matomo Analytics. It accesses the `proxy` object to push events to the `_paq` array, allowing for custom dimension setting and page view tracking.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/matomo-analytics.md#_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+const { proxy } = useScriptMatomoAnalytics({
+  cloudId: 'YOUR_CLOUD_ID', // e.g. nuxt.matomo.cloud
+})
+
+// set custom dimension
+proxy._paq.push(['setCustomDimension', 1, 'value'])
+// send page event
+proxy._paq.push(['trackPageView'])
+
+```
+
+----------------------------------------
+
+TITLE: Enable Stripe in Production Only
+DESCRIPTION: This code snippet shows how to enable the Stripe script only in production environments. This can be useful for development environments where you may not want to load the Stripe script.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/payments/stripe.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  $production: {
+    scripts: {
+      registry: {
+        stripe: true,
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Global script configuration in nuxt.config.ts (TS)
+DESCRIPTION: This example shows how to configure a global script in `nuxt.config.ts` to load a tracker script from an analytics provider.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/4.global.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    globals: {
+      tracker: 'https://analytics.com/tracker.js',
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Umami Analytics Globally (Production Only) - TypeScript
+DESCRIPTION: This code snippet shows how to configure Umami Analytics to load only in a production environment using the `$production` key in `nuxt.config.ts`. This is useful to prevent tracking in development or staging environments.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/umami-analytics.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  $production: {
+    scripts: {
+      registry: {
+        umamiAnalytics: {
+          websiteId: 'YOUR_WEBSITE_ID',
+        }
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Enable Plausible Analytics with Environment Variables
+DESCRIPTION: This configuration enables Plausible Analytics using environment variables. It defines a runtime config to access environment variables and sets the domain for Plausible Analytics.  The script is enabled by setting `plausibleAnalytics` to `true`.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/plausible-analytics.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      plausibleAnalytics: true,
+    }
+  },
+  // you need to provide a runtime config to access the environment variables
+  runtimeConfig: {
+    public: {
+      scripts: {
+        plausibleAnalytics: {
+          // .env
+          // NUXT_PUBLIC_SCRIPTS_PLAUSIBLE_ANALYTICS_DOMAIN=<your-domin>
+          domain: ''
+        },
+      },
+    },
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: IntercomOptions Configuration Schema
+DESCRIPTION: This code snippet defines the IntercomOptions configuration schema using the object, string, optional, and union functions. It specifies the available options for configuring Intercom, including app_id, api_base, name, email, user_id, alignment, horizontal_padding, and vertical_padding.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/support/intercom.md#_snippet_8
+
+LANGUAGE: typescript
+CODE:
+```
+export const IntercomOptions = object({
+  app_id: string(),
+  api_base: optional(union([literal('https://api-iam.intercom.io'), literal('https://api-iam.eu.intercom.io'), literal('https://api-iam.au.intercom.io')])), 
+  name: optional(string()),
+  email: optional(string()),
+  user_id: optional(string()),
+  // customizing the messenger
+  alignment: optional(union([literal('left'), literal('right')])), 
+  horizontal_padding: optional(number()),
+  vertical_padding: optional(number()),
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Meta Pixel with Environment Variables
+DESCRIPTION: This code snippet shows how to configure Meta Pixel using environment variables in nuxt.config.ts. It also demonstrates how to expose the configuration to the client-side using `runtimeConfig`.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/meta-pixel.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      metaPixel: true,
+    }
+  },
+  // you need to provide a runtime config to access the environment variables
+  runtimeConfig: {
+    public: {
+      scripts: {
+        metaPixel: {
+          id: '', // NUXT_PUBLIC_SCRIPTS_META_PIXEL_ID
+        },
+      },
+    },
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Loading Multiple Instances of Google Analytics
+DESCRIPTION: Shows how to load multiple instances of the same registry script (Google Analytics) with different configurations using the `key` option. This allows you to track different properties or accounts with separate instances.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/1.registry-scripts.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+const { proxy: gaOne } = useScriptGoogleAnalytics({
+  id: 'G-TR58L0EF8P',
+})
+
+const { proxy: gaTwo } = useScriptGoogleAnalytics({
+  // without a key the first script instance will be returned
+  key: 'gtag2',
+  id: 'G-1234567890',
+})
+```
+
+----------------------------------------
+
+TITLE: Using Placeholder Attributes in ScriptYouTubePlayer (Vue)
+DESCRIPTION: Demonstrates how to use the `above-the-fold` prop to eagerly load the video player. This is useful when the video is visible in the initial viewport.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/youtube-player.md#_snippet_5
+
+LANGUAGE: vue
+CODE:
+```
+<ScriptYouTubePlayer above-the-fold />
+```
+
+----------------------------------------
+
+TITLE: Using useScriptMatomoAnalytics with Tracking Enabled - TypeScript
+DESCRIPTION: This code snippet demonstrates how to use the `useScriptMatomoAnalytics` composable with page view tracking enabled and a custom site ID. It sets the `trackPageView` option to `true` and specifies a `siteId`.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/matomo-analytics.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+const matomoAnalytics = useScriptMatomoAnalytics({
+  cloudId: 'YOUR_CLOUD_ID', // e.g. nuxt.matomo.cloud
+  trackPageView: true,
+  siteId: 2,
+})
+```
+
+----------------------------------------
+
+TITLE: Eager Loading Google Maps Placeholder with Attrs
+DESCRIPTION: This code snippet demonstrates how to eagerly load the Google Maps placeholder image by using the `above-the-fold` prop on the `ScriptGoogleMaps` component. This is useful for maps that are visible in the initial viewport.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/google-maps.md#_snippet_2
+
+LANGUAGE: vue
+CODE:
+```
+<ScriptGoogleMaps above-the-fold />
+```
+
+----------------------------------------
+
+TITLE: Configuring Clarity with Environment Variables - TypeScript
+DESCRIPTION: This code snippet shows how to configure Clarity using environment variables in `nuxt.config.ts`. It defines the script configuration and a runtime config to access environment variables, allowing the Clarity ID to be set via `NUXT_PUBLIC_SCRIPTS_CLARITY_ID`.  A runtime config is required to access environment variables.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/marketing/clarity.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      clarity: true,
+    }
+  },
+  // you need to provide a runtime config to access the environment variables
+  runtimeConfig: {
+    public: {
+      scripts: {
+        clarity: {
+          // .env
+          // NUXT_PUBLIC_SCRIPTS_CLARITY_ID=<your-id>
+          id: '',
+        },
+      },
+    },
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Initializing Fathom Analytics in nuxt.config.ts
+DESCRIPTION: Initializes the Fathom Analytics script with the required site ID in the `nuxt.config.ts` file. This ensures the script is loaded and configured when the application starts. Subsequent calls to the script will use the same instance.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/1.registry-scripts.md#_snippet_7
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      // loads the script
+      fathomAnalytics: {
+        site: 'SITE_ID',
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Cloudflare Web Analytics Options Schema
+DESCRIPTION: Defines the schema for Cloudflare Web Analytics options using Valibot. It includes a required `token` (string with minimum length of 32) and an optional `spa` boolean to enable measuring SPAs automatically.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/1.registry-scripts.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export const CloudflareWebAnalyticsOptions = object({
+  /**
+   * The Cloudflare Web Analytics token.
+   */
+  token: string([minLength(32)]),
+  /**
+   * Cloudflare Web Analytics enables measuring SPAs automatically by overriding the History API’s pushState function
+   * and listening to the onpopstate. Hash-based router is not supported.
+   *
+   * @default true
+   */
+  spa: optional(boolean()),
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Umami Analytics with Environment Variables - TypeScript
+DESCRIPTION: This code snippet demonstrates configuring Umami Analytics using environment variables in a Nuxt application. It defines the configuration in `nuxt.config.ts` and accesses the `websiteId` from the environment variables via runtime config.  This allows for dynamic configuration based on the environment.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/umami-analytics.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      umamiAnalytics: true,
+    }
+  },
+  // you need to provide a runtime config to access the environment variables
+  runtimeConfig: {
+    public: {
+      scripts: {
+        umamiAnalytics: {
+          // .env
+          // NUXT_PUBLIC_SCRIPTS_UMAMI_ANALYTICS_WEBSITE_ID=<your websiteId>
+          websiteId: ''
+        },
+      },
+    },
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Handling Intercom Ready Event
+DESCRIPTION: This example demonstrates how to listen for the ready event emitted by the ScriptIntercom component. When the event is triggered, the onReady function is called, logging the Intercom instance to the console.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/support/intercom.md#_snippet_2
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+function onReady(intercom) {
+  console.log('Intercom is ready', intercom)
+}
+</script>
+
+<template>
+  <ScriptIntercom @ready="onReady" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Using static values for script bundling
+DESCRIPTION: Demonstrates the correct and incorrect usage of `useScript` for bundling. Static values are required for the script URL and bundling settings to enable bundling during the build process.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/2.bundling.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+// GOOD - Static values allow for bundling
+useScript('https://example.com/script.js', {
+  bundle: true
+})
+// BAD - Dynamic values prevent bundling
+useScript(scriptSrc, {
+  bundle: canBundle
+})
+```
+
+----------------------------------------
+
+TITLE: Configuring Meta Pixel in Nuxt Config (Always Enabled)
+DESCRIPTION: This code snippet demonstrates how to configure Meta Pixel globally in your Nuxt app using the nuxt.config.ts file. The `id` property should be replaced with your actual Meta Pixel ID.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/meta-pixel.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      metaPixel: {
+        id: 'YOUR_ID'
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Loading a script with extra attributes in Nuxt Config (TS)
+DESCRIPTION: This example shows how to load a script and provide additional attributes such as `integrity`. These attributes are added to the `<script>` tag when it's rendered. The script is loaded globally and can be accessed via the `$scripts` property of the Nuxt app.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/4.global.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    globals: {
+      myScript: {
+        src: 'https://example.com/script.js',
+        integrity: 'sha256-abc123',
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Tracking Conversion Events with Plausible Analytics in Vue
+DESCRIPTION: This Vue component demonstrates how to use `useScriptPlausibleAnalytics` to send conversion events to Plausible Analytics. It uses the `proxy.plausible` function to track 'conversion-step' and 'conversion' events on button clicks.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/plausible-analytics.md#_snippet_7
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { proxy } = useScriptPlausibleAnalytics()
+
+// noop in development, ssr
+// just works in production, client
+proxy.plausible('event', { name: 'conversion-step' })
+function sendConversion() {
+  proxy.plausible('event', { name: 'conversion' })
+}
+</script>
+
+<template>
+  <div>
+    <button @click="sendConversion">
+      Send Conversion
+    </button>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Initializing Hotjar Globally (Production Only) - TypeScript
+DESCRIPTION: This code snippet demonstrates how to initialize Hotjar globally in a Nuxt application, but only in a production environment. It uses the `$production` key in `nuxt.config.ts` to conditionally enable the Hotjar script.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/marketing/hotjar.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  $production: {
+    scripts: {
+      registry: {
+        hotjar: {
+          id: 123456, // your id
+        }
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Globally enabling script bundling
+DESCRIPTION: Demonstrates how to configure Nuxt to bundle all scripts by default using the `defaultScriptOptions` in `nuxt.config.ts`.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/2.bundling.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    defaultScriptOptions: {
+      bundle: true,
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Trigger Script Loading with Element Event
+DESCRIPTION: This example demonstrates how to trigger script loading based on an element event using `useScriptTriggerElement`. The script will load when the specified element is hovered over.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/1.script-triggers.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+const somethingEl = ref<HTMLElement>()
+const script = useScript({
+  src: 'https://example.com/script.js',
+}, {
+  trigger: useScriptTriggerElement({
+    trigger: 'hover',
+    el: somethingEl,
+  })
+})
+```
+
+----------------------------------------
+
+TITLE: Sending Page Events to Google Tag Manager - TypeScript
+DESCRIPTION: This code snippet shows how to send page view events to Google Tag Manager using the `useScriptEventPage` composable. It triggers a function on route change after the page title is updated, pushing a 'pageview' event to the dataLayer with the title and path.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/google-tag-manager.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+const { proxy } = useScriptGoogleTagManager({
+  id: 'YOUR_ID' // id is only needed if you haven't configured globally
+}) 
+
+useScriptEventPage((title, path) => {
+  // triggered on route change after title is updated
+  proxy.dataLayer.push({ 
+    event: 'pageview',
+    title, 
+    path 
+  })
+})
+```
+
+----------------------------------------
+
+TITLE: Interacting with Google Analytics API using Proxy - TypeScript
+DESCRIPTION: This code snippet shows how to interact with the Google Analytics API using the `proxy` object returned by `useScriptGoogleAnalytics`. It demonstrates sending a `page_view` event to Google Analytics using the `gtag` function.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/google-analytics.md#_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+const { proxy } = useScriptGoogleAnalytics()
+
+proxy.gtag('event', 'page_view')
+```
+
+----------------------------------------
+
+TITLE: Configuring Cloudflare Web Analytics (Production Only) - TypeScript
+DESCRIPTION: This code snippet shows how to configure Cloudflare Web Analytics to be enabled only in production environments using the $production override in nuxt.config.ts. It sets the token within the scripts registry for production builds.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/cloudflare-web-analytics.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  $production: {
+    scripts: {
+      registry: {
+        cloudflareWebAnalytics: {
+          token: 'YOUR_TOKEN_ID',
+        }
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Auto Ads Script Output
+DESCRIPTION: The HTML output of the Auto Ads configuration. This script is automatically inserted into the page's HTML to enable Google to automatically place ads on the site.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/ads/google-adsense.md#_snippet_4
+
+LANGUAGE: html
+CODE:
+```
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-<your-id>",
+    enable_page_level_ads: true,
+  });
+</script>
+```
+
+----------------------------------------
+
+TITLE: Initializing Google Maps Component with Markers
+DESCRIPTION: This Vue component initializes a Google Maps instance using the ScriptGoogleMaps component. It demonstrates how to dynamically add and remove markers on the map using Vue's reactivity system. The component also handles the map's ready event to get the center and listen for changes.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/google-maps.md#_snippet_1
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const isLoaded = ref(false)
+const center = ref()
+const maps = ref()
+
+const query = ref({
+  lat:  -37.7995487,
+  lng: 144.9867841,
+})
+
+const markers = ref([])
+
+let increment = 1
+function addMarker() {
+  // push to markers, we want to add a marker from the center but randomize the position by a bit
+  const _center = center.value || query.value
+  // lat and lng may be a function
+  const _lat = typeof _center.lat === 'function' ? _center.lat() : _center.lat
+  const _lng = typeof _center.lng === 'function' ? _center.lng() : _center.lng
+  const lat = (1000 * _lat + increment) / 1000
+  const lng = (1000 * _lng + increment) / 1000
+  increment += 1
+
+  markers.value.push(`${lat},${lng}`)
+}
+
+function removeMarkers() {
+  markers.value = []
+  increment = 1
+}
+function handleReady({ map }) {
+  center.value = map.value.getCenter()
+  map.value.addListener('center_changed', () => {
+    center.value = map.value.getCenter()
+  })
+  isLoaded.value = true
+}
+</script>
+
+<template>
+<div class="not-prose">
+  <div class="flex items-center justify-center p-5">
+    <ScriptGoogleMaps
+      ref="maps"
+      :center="query"
+      :markers="markers"
+      api-key="AIzaSyAOEIQ_xOdLx2dNwnFMzyJoswwvPCTcGzU"
+      class="group"
+      above-the-fold
+      @ready="handleReady"
+    />
+  </div>
+  <div class="text-center">
+    <UAlert v-if="!isLoaded" class="mb-5" size="sm" color="blue" variant="soft" title="Static Image: Hover to load interactive" description="Hovering the map will trigger the Google Maps script to load and init the map." />
+    <UAlert v-if="isLoaded" class="mb-5" size="sm" color="blue" variant="soft" title="Interactive Map">
+      <template #description>
+      Center: {{ center }}
+      </template>
+    </UAlert>
+    <UButton @click="addMarker" type="button" class="">
+      Add Marker
+    </UButton>
+    <UButton v-if="markers.length" @click="removeMarkers" type="button" color="gray" variant="ghost" class="">
+      Remove Markers
+    </UButton>
+  </div>
+</div>
+</template>
+
+```
+
+----------------------------------------
+
+TITLE: Trigger Script Loading Manually
+DESCRIPTION: This example demonstrates how to manually trigger the loading of a script using the `manual` trigger option. The `load` function returned by `useScript` can be called to load the script at any time.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/1.script-triggers.md#_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+const { load } = useScript('https://example.com/script.js', {
+  trigger: 'manual'
+})
+// ...
+load()
+```
+
+----------------------------------------
+
+TITLE: Trigger Script Loading with useScript and Ref
+DESCRIPTION: This example demonstrates how to use a ref to trigger the loading of a script using the `useScript` composable. It uses `@vueuse/core` to create a timeout ref that triggers the script loading after 3 seconds. The `ready` ref is passed as the `trigger` option to `useScript`.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/1.script-triggers.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+import { useTimeout } from '@vueuse/core'
+
+const { ready } = useTimeout(3000)
+useScript({
+  src: 'https://example.com/script.js',
+}, {
+  // load however you like!
+  trigger: ready, // refs supported
+})
+```
+
+----------------------------------------
+
+TITLE: Using useScriptCrisp in Vue Component
+DESCRIPTION: This example demonstrates how to use the `useScriptCrisp` composable within a Vue component to initialize the Crisp SDK, set user information, and open the chat window. It requires a Crisp ID to be provided.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/support/crisp.md#_snippet_8
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const crisp = useScriptCrisp({
+  id: 'YOUR_ID'
+})
+crisp.set('user:nickname', 'Harlan')
+crisp.do('chat:open')
+</script>
+```
+
+----------------------------------------
+
+TITLE: PlausibleAnalyticsApi Interface
+DESCRIPTION: This interface defines the structure of the Plausible Analytics API, including the plausible function with overloads for different event types and options. It also includes a queue property for handling events.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/plausible-analytics.md#_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+export interface PlausibleAnalyticsApi {
+  plausible: ((event: '404', options: Record<string, any>) => void) &
+  ((event: 'event', options: Record<string, any>) => void) &
+  ((...params: any[]) => void) & {
+    q: any[]
+  }
+}
+```
+
+----------------------------------------
+
+TITLE: MetaPixelOptions Config Schema
+DESCRIPTION: This code defines the configuration schema for the Meta Pixel options, specifying that the `id` is a required number and `sv` is an optional number. This schema is used to validate the options passed to the `useScriptMetaPixel` composable.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/meta-pixel.md#_snippet_6
+
+LANGUAGE: typescript
+CODE:
+```
+export const MetaPixelOptions = object({
+  id: number(),
+  sv: optional(number()),
+})
+```
+
+----------------------------------------
+
+TITLE: Registering Scripts with scripts:registry Hook in Nuxt Module
+DESCRIPTION: This code snippet demonstrates how to use the `scripts:registry` hook within a Nuxt module to register custom scripts. It defines the script's label, logo (as an SVG), bundling URL, and import details, including the name and path of the script to be auto-imported. The `resolve` function is used to create an absolute path to the script.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/3.api/6.nuxt-hooks.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtModule({
+  setup() {
+    nuxt.hooks.hook('scripts:registry', async (registry) => {
+      registry.push({
+        // used in DevTools
+        label: 'My Custom Script',
+        logo: `<svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" width="28.85" height="32" viewBox="0 0 256 284"><path fill="#F9AB00" d="M256.003 247.933a35.224 35.224 0 0 1-39.376 35.161c-18.044-2.67-31.266-18.371-30.826-36.606V36.845C185.365 18.591 198.62 2.881 216.687.24a35.221 35.221 0 0 1 39.316 35.16z"/><path fill="#E37400" d="M35.101 213.193c19.386 0 35.101 15.716 35.101 35.101c0 19.386-15.715 35.101-35.101 35.101S0 267.68 0 248.295c0-19.386 15.715-35.102 35.101-35.102m92.358-106.387c-19.477 1.068-34.59 17.406-34.137 36.908v94.285c0 25.588 11.259 41.122 27.755 44.433a35.161 35.161 0 0 0 42.146-34.56V142.089a35.222 35.222 0 0 0-35.764-35.282"/></svg>`,
+        // if the script can be bundled we need to define a resolver
+        scriptBundling: 'https://cdn.jsdelivr.net/npm/my-custom-script@1.0.0',
+        // how to load the script, will be added as an auto import
+        import: {
+          name: 'useScriptMyCustomScript',
+          from: resolve('./runtime/scripts/my-custom-script'),
+        },
+      })
+    })
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: X Pixel Nuxt Config (Production Only)
+DESCRIPTION: Configures X Pixel to be enabled only in production environments by using the `$production` key in the `nuxt.config.ts` file.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/x-pixel.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  $production: {
+    scripts: {
+      registry: {
+        xPixel: {
+          id: 'YOUR_ID',
+        }
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Environment Variable Configuration (Segment)
+DESCRIPTION: Defines the environment variable required to configure the Segment write key. This variable is used in conjunction with the runtime config in nuxt.config.ts.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/segment.md#_snippet_3
+
+LANGUAGE: text
+CODE:
+```
+NUXT_PUBLIC_SCRIPTS_SEGMENT_WRITE_KEY=<YOUR_WRITE_KEY>
+```
+
+----------------------------------------
+
+TITLE: Using Lemon Squeezy SDK in Vue Component
+DESCRIPTION: This Vue component demonstrates how to integrate the Lemon Squeezy SDK. It uses `useScriptLemonSqueezy` to access the SDK's proxy object and calls the `Setup` method within the `onMounted` lifecycle hook.  A payment link with the class `lemonsqueezy-button` is included in the template.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/payments/lemon-squeezy.md#_snippet_5
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { proxy } = useScriptLemonSqueezy()
+onMounted(() => {
+  proxy.Setup()
+})
+</script>
+
+<template>
+  <a href="https://harlantest.lemonsqueezy.com/buy/52a40427-36d2-4450-a514-ae80d9e1a333?embed=1" class="lemonsqueezy-button" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Loading a Script When an Element is Hovered Over
+DESCRIPTION: Illustrates how to load a script when an element is hovered over using useScript and useScriptTriggerElement. The script is loaded when the mouse enters the specified element's boundaries.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/3.api/3.use-script-trigger-element.md#_snippet_4
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const el = ref<HTMLElement>()
+useScript('/script.js', {
+  trigger: useScriptTriggerElement({
+    trigger: 'hover',
+    el,
+  })
+})
+</script>
+
+<template>
+  <div ref="el">
+    <h1>hover me to load the script</h1>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Defining Lemon Squeezy API Interface
+DESCRIPTION: This code defines the `LemonSqueezyApi` interface, which outlines the methods available for interacting with the Lemon Squeezy platform. It includes functions for setup, refreshing listeners, URL management, affiliate tracking, and loader control. The `Setup` method takes an `eventHandler` function to handle various events emitted by Lemon.js.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/payments/lemon-squeezy.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+export interface LemonSqueezyApi {
+  /**
+   * Initialises Lemon.js on your page.
+   * @param options - An object with a single property, eventHandler, which is a function that will be called when Lemon.js emits an event.
+   */
+  Setup: (options: {
+    eventHandler: (event: { event: 'Checkout.Success', data: Record<string, any> }
+      & { event: 'Checkout.ViewCart', data: Record<string, any> }
+      & { event: 'GA.ViewCart', data: Record<string, any> }
+      & { event: 'PaymentMethodUpdate.Mounted' }
+      & { event: 'PaymentMethodUpdate.Closed' }
+      & { event: 'PaymentMethodUpdate.Updated' }
+      & { event: string }
+    ) => void
+  }) => void
+  /**
+   * Refreshes `lemonsqueezy-button` listeners on the page.
+   */
+  Refresh: () => void
+
+  Url: {
+    /**
+     * Opens a given Lemon Squeezy URL, typically these are Checkout or Payment Details Update overlays.
+     * @param url - The URL to open.
+     */
+    Open: (url: string) => void
+
+    /**
+     * Closes the current opened Lemon Squeezy overlay checkout window.
+     */
+    Close: () => void
+  }
+  Affiliate: {
+    /**
+     * Retrieve the affiliate tracking ID
+     */
+    GetID: () => string
+
+    /**
+     * Append the affiliate tracking parameter to the given URL
+     * @param url - The URL to append the affiliate tracking parameter to.
+     */
+    Build: (url: string) => string
+  }
+  Loader: {
+    /**
+     * Show the Lemon.js loader.
+     */
+    Show: () => void
+
+    /**
+     * Hide the Lemon.js loader.
+     */
+    Hide: () => void
+  }
+}
+```
+
+----------------------------------------
+
+TITLE: Conversion Button Component
+DESCRIPTION: A Vue component that uses the `useScriptXPixel` composable to send a conversion event when a button is clicked.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/x-pixel.md#_snippet_5
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { proxy } = useScriptXPixel()
+
+// noop in development, ssr
+// just works in production, client
+function sendConversion() {
+  proxy.twq('event', 'Purchase', {
+    value: 1,
+    currency: 'USD'
+  })
+}
+</script>
+
+<template>
+  <div>
+    <button @click="sendConversion">
+      Send Conversion
+    </button>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Using useScriptTriggerConsent in Vue Component
+DESCRIPTION: Demonstrates how to use useScriptTriggerConsent in a Vue component to load a script after the user accepts consent via a button click.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/3.api/3.use-script-trigger-consent.md#_snippet_3
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const trigger = useScriptTriggerConsent()
+useScript('https://example.com/script.js', { trigger })
+</script>
+
+<template>
+  <button @click="trigger.accept">
+    Accept Consent
+  </button>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Using useScriptMatomoAnalytics with Self-Hosted Matomo - TypeScript
+DESCRIPTION: This code snippet demonstrates how to use the `useScriptMatomoAnalytics` composable with a self-hosted Matomo instance. It sets the `matomoUrl` option to the URL of the Matomo installation.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/matomo-analytics.md#_snippet_6
+
+LANGUAGE: typescript
+CODE:
+```
+const matomoAnalytics = useScriptMatomoAnalytics({
+  // e.g. https://your-url.com/tracker.js & https://your-url.com//matomo.php both exists
+  matomoUrl: 'https://your-url.com',
+})
+```
+
+----------------------------------------
+
+TITLE: MatomoAnalyticsOptions Config Schema - TypeScript
+DESCRIPTION: This code snippet defines the `MatomoAnalyticsOptions` configuration schema using the `object` function. It specifies the available options for configuring Matomo Analytics, including `matomoUrl`, `siteId`, `trackerUrl`, `trackPageView`, `enableLinkTracking`, and `disableCookies`.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/matomo-analytics.md#_snippet_9
+
+LANGUAGE: typescript
+CODE:
+```
+// matomoUrl and site are required
+export const MatomoAnalyticsOptions = object({
+  matomoUrl: optional(string()),
+  siteId: optional(string()),
+  trackerUrl: optional(string()),
+  trackPageView: optional(boolean()),
+  enableLinkTracking: optional(boolean()),
+  disableCookies: optional(boolean()),
+})
+```
+
+----------------------------------------
+
+TITLE: Using ScriptStripePricingTable Component
+DESCRIPTION: This code demonstrates how to use the ScriptStripePricingTable component to embed a Stripe Pricing Table on your site.  It requires a pricing table ID and a publishable key from your Stripe account.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/payments/stripe.md#_snippet_2
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptStripePricingTable
+    pricing-table-id="prctbl_1PD0MMEclFNgdHcR8t0Jop2H"
+    publishable-key="pk_live_51OhXSKEclFNgdHcRNi5xBjBClxsA0alYgt6NzBwUZ880pLG88rYSCYPQqpzM3TedzNYu5g2AynKiPI5QVLYSorLJ002iD4VZIB"
+  />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Using awaitingLoad Slot in ScriptYouTubePlayer (Vue)
+DESCRIPTION: Demonstrates how to use the `awaitingLoad` slot to display content while the video is waiting to load. This can be used to provide a call to action or initial instructions.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/youtube-player.md#_snippet_9
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptYouTubePlayer video-id="d_IFKP1Ofq0">
+    <template #awaitingLoad>
+      <div class="bg-blue-500 text-white p-5">
+        Click to play!
+      </div>
+    </template>
+  </ScriptYouTubePlayer>
+</template>
+```
+
+----------------------------------------
+
+TITLE: NuxtUseScriptOptions Type Definition
+DESCRIPTION: Defines the structure of the NuxtUseScriptOptions type, which extends Unhead's UseScriptOptions with Nuxt-specific options like trigger, bundle, and skipValidation. These options control script loading behavior and bundling.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/3.api/1.use-script.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export type NuxtUseScriptOptions<T = any> = Omit<UseScriptOptions<T>, 'trigger'> & {
+  /**
+   * The trigger to load the script:
+   * - `onNuxtReady` - Load the script when Nuxt is ready.
+   * - `manual` - Load the script manually by calling `load()`
+   * - `Promise` - Load the script when the promise resolves.
+   */
+  trigger?: UseScriptOptions<T>['trigger'] | 'onNuxtReady'
+  /**
+   * Should the script be bundled as an asset and loaded from your server. This is useful for improving the
+   * performance by avoiding the extra DNS lookup and reducing the number of requests. It also
+   * improves privacy by not sharing the user's IP address with third-party servers.
+   * - `true` - Bundle the script as an asset.
+   * - `false` - Do not bundle the script. (default)
+   */
+  bundle?: boolean
+  /**
+   * Skip any schema validation for the script input. This is useful for loading the script stubs for development without
+   * loading the actual script and not getting warnings.
+   */
+  skipValidation?: boolean
+}
+```
+
+----------------------------------------
+
+TITLE: Sending a Conversion Event with Meta Pixel in Vue Component
+DESCRIPTION: This code snippet demonstrates how to use the `useScriptMetaPixel` composable within a Vue component to send a custom conversion event. The `sendConversion` function is called when a button is clicked, triggering the `fbq` method to track the event.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/meta-pixel.md#_snippet_7
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { proxy } = useScriptMetaPixel()
+
+// noop in development, ssr
+// just works in production, client
+function sendConversion() {
+  proxy.fbq('trackCustom', 'conversion', {
+    value: 1,
+    currency: 'USD'
+  })
+}
+</script>
+
+<template>
+  <div>
+    <button @click="sendConversion">
+      Send Conversion
+    </button>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Using the `scripts:updated` Hook in Nuxt
+DESCRIPTION: This code snippet demonstrates how to use the `scripts:updated` hook within a Nuxt plugin. The hook is triggered after the script status is updated, allowing you to perform actions such as logging the updated scripts. It requires the `defineNuxtPlugin` and `useNuxtApp` functions from Nuxt.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/3.api/6.nuxt-app-hooks.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtPlugin({
+  setup() {
+    useNuxtApp().hooks.hook('scripts:updated', (ctx) => {
+      console.log('Scripts updated', ctx.scripts)
+    })
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Loading a Script When an Element is Visible
+DESCRIPTION: Shows how to load a script when an element becomes visible using useScript and useScriptTriggerElement. It sets up a trigger that fires when the specified element is in the viewport.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/3.api/3.use-script-trigger-element.md#_snippet_3
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const el = ref<HTMLElement>()
+useScript('/script.js', {
+  trigger: useScriptTriggerElement({
+    trigger: 'visible',
+    el,
+  })
+})
+</script>
+
+<template>
+  <div style="height: 100vh;">
+    <h1>Scroll down to load the script</h1>
+  </div>
+  <div ref="el">
+    <h1>Script loaded!</h1>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Interactive Demo of ScriptLemonSqueezy Component
+DESCRIPTION: This interactive demo showcases the ScriptLemonSqueezy component with event handling and dynamic updates. It demonstrates how to track Lemon Squeezy events and display alerts based on the component's loading state.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/payments/lemon-squeezy.md#_snippet_1
+
+LANGUAGE: vue
+CODE:
+```
+<script lang="ts" setup>
+const ready = ref(false)
+const events = ref([])
+</script>
+
+<template>
+<div class="not-prose w-full">
+  <div class="flex items-center justify-center p-5">
+    <ScriptLemonSqueezy @lemon-squeezy-event="e => events.push(e)" @ready="ready = true">
+      <UButton to="https://harlantest.lemonsqueezy.com/buy/52a40427-36d2-4450-a514-ae80d9e1a333?embed=1" class="block mb-3">
+        Buy me - $9.99
+      </UButton>
+      <UButton to="https://harlantest.lemonsqueezy.com/buy/76bbfa74-a81a-4111-8449-4f5ad564ed76?embed=1" class="block">
+        Buy me - pay what you want
+      </UButton>
+    </ScriptLemonSqueezy>
+  </div>
+  <div>
+    <UAlert v-if="!ready" class="mb-5" size="sm" color="blue" variant="soft" title="Lemon Squeezy is not loaded" description="It loads in when the DOM element is within the viewport." />
+    <UAlert v-else color="green" variant="soft" title="Lemon Squeezy is loaded">
+      <template #description>
+      <div class="mb-2">
+        Buttons are live and will open the modal, tracking events:
+      </div>
+      <div v-for="event in events" class="text-xs">
+        {{ event.event }}
+      </div>
+      </template>
+    </UAlert>
+  </div>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: UseScriptInput Type Definition
+DESCRIPTION: Defines the structure of the UseScriptInput type, which is used as an argument to the useScript function. It allows passing a URL string or an object with script tag attributes.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/3.api/1.use-script.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export type UseScriptInput = string | {
+  src?: string
+  async?: boolean
+  defer?: boolean
+  type?: string
+  integrity?: string
+  crossorigin?: string
+  text?: string
+  innerHTML?: string
+  innerText?: string
+  content?: string
+  referrerPolicy?: string
+  attributes?: Record<string, string>
+}
+```
+
+----------------------------------------
+
+TITLE: Configuring Cloudflare Web Analytics with Environment Variables - TypeScript
+DESCRIPTION: This code snippet demonstrates how to configure Cloudflare Web Analytics using environment variables in a Nuxt application. It defines the configuration in nuxt.config.ts and accesses the token via runtime config, allowing it to be set through environment variables.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/cloudflare-web-analytics.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      cloudflareWebAnalytics: true,
+    }
+  },
+  // you need to provide a runtime config to access the environment variables
+  runtimeConfig: {
+    public: {
+      scripts: {
+        cloudflareWebAnalytics: {
+          // .env
+          // NUXT_PUBLIC_SCRIPTS_CLOUDFLARE_WEB_ANALYTICS_TOKEN=<your-token>
+          token: '', 
+        },
+      },
+    },
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Enable Snapchat Pixel Globally (Always)
+DESCRIPTION: This code snippet demonstrates how to enable Snapchat Pixel globally in a Nuxt application by configuring the `nuxt.config.ts` file. The `id` property should be replaced with your actual Snapchat Pixel ID. This configuration ensures that the pixel is always enabled, regardless of the environment.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/snapchat-pixel.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      snapchatPixel: {
+        id: 'YOUR_ID'
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: useScriptCrisp Composable Definition in TypeScript
+DESCRIPTION: This code snippet shows the definition of the `useScriptCrisp` composable function in TypeScript. This composable provides fine-grained control over the Crisp SDK, allowing developers to load and interact with it programmatically.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/support/crisp.md#_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+export function useScriptCrisp<T extends CrispApi>(_options?: CrispInput) {}
+```
+
+----------------------------------------
+
+TITLE: Defining useScriptVimeoPlayer Composable in TypeScript
+DESCRIPTION: This code defines the signature for the useScriptVimeoPlayer composable function in TypeScript. It accepts an optional VimeoPlayerInput and returns a VimeoPlayerApi, providing programmatic control over the Vimeo Player SDK.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/vimeo-player.md#_snippet_10
+
+LANGUAGE: typescript
+CODE:
+```
+export function useScriptVimeoPlayer<T extends VimeoPlayerApi>(_options?: VimeoPlayerInput) {}
+```
+
+----------------------------------------
+
+TITLE: Using loading Slot in ScriptYouTubePlayer (Vue)
+DESCRIPTION: Shows how to use the `loading` slot to display content while the video is actively loading. This can be used to provide a loading indicator or animation.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/youtube-player.md#_snippet_10
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptYouTubePlayer video-id="d_IFKP1Ofq0">
+    <template #loading>
+      <div class="bg-blue-500 text-white p-5">
+        Loading...
+      </div>
+    </template>
+  </ScriptYouTubePlayer>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Sending Conversion Event with Matomo Analytics in Vue Component
+DESCRIPTION: This code snippet demonstrates how to send a conversion event to Matomo Analytics from a Vue component using the `useScriptMatomoAnalytics` composable. It defines a `sendConversion` function that pushes the `trackGoal` event to the `_paq` array.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/matomo-analytics.md#_snippet_10
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { proxy } = useScriptMatomoAnalytics()
+
+// noop in development, ssr
+// just works in production, client
+function sendConversion() {
+  proxy._paq.push(['trackGoal', 1])
+}
+</script>
+
+<template>
+  <div>
+    <button @click="sendConversion">
+      Send Conversion
+    </button>
+  </div>
+</template>
+
+```
+
+----------------------------------------
+
+TITLE: Using ScriptYouTubePlayer Component
+DESCRIPTION: This example demonstrates how to use the ScriptYouTubePlayer component in a Vue template to embed a YouTube video. It includes setting up reactive variables for loading and playing states, and defining methods to control the video playback.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/youtube-player.md#_snippet_1
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const isLoaded = ref(false)
+const isPlaying = ref(false)
+const video = ref()
+async function play() {
+  await video.value.player.playVideo()
+}
+function stateChange(event) {
+  isPlaying.value = event.data === 1
+}
+</script>
+
+<template>
+  <div>
+    <div class="flex items-center justify-center p-5">
+      <ScriptYouTubePlayer ref="video" video-id="d_IFKP1Ofq0" @ready="isLoaded = true" @state-change="stateChange">
+        <template #awaitingLoad>
+          <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[48px] w-[68px]">
+            <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%"><path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00" /><path d="M 45,24 27,14 27,34" fill="#fff" /></svg>
+          </div>
+        </template>
+      </ScriptYouTubePlayer>
+    </div>
+    <div class="text-center">
+      <UAlert v-if="!isLoaded" class="mb-5" size="sm" color="blue" variant="soft" title="Click to load" description="Clicking the video will load the Youtube iframe and start the video." />
+      <UButton v-if="isLoaded && !isPlaying" @click="play">
+        Play Video
+      </UButton>
+    </div>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Snapchat Pixel API Interface
+DESCRIPTION: This code snippet defines the TypeScript interface for the Snapchat Pixel API (`SnapPixelApi`). It outlines the structure of the `snaptr` function, including its properties like `push`, `loaded`, `version`, and `queue`. It also defines the `StandardEvents`, `SnapTrFns`, `EventObjectProperties`, and `InitObjectProperties` types used within the API.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/snapchat-pixel.md#_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+export interface SnapPixelApi {
+  snaptr: SnapTrFns & {
+    push: SnapTrFns
+    loaded: boolean
+    version: string
+    queue: any[]
+  }
+  _snaptr: SnapPixelApi['snaptr']
+  handleRequest?: SnapTrFns
+}
+type StandardEvents = 'PAGE_VIEW' | 'VIEW_CONTENT' | 'ADD_CART' | 'SIGN_UP' | 'SAVE' | 'START_CHECKOUT' | 'APP_OPEN' | 'ADD_BILLING' | 'SEARCH' | 'SUBSCRIBE' | 'AD_CLICK' | 'AD_VIEW' | 'COMPLETE_TUTORIAL' | 'LEVEL_COMPLETE' | 'INVITE' | 'LOGIN' | 'SHARE' | 'RESERVE' | 'ACHIEVEMENT_UNLOCKED' | 'ADD_TO_WISHLIST' | 'SPENT_CREDITS' | 'RATE' | 'START_TRIAL' | 'LIST_VIEW'
+type SnapTrFns =
+  ((event: 'track', eventName: StandardEvents | '', data?: EventObjectProperties) => void) &
+  ((event: 'init', id: string, data?: Record<string, any>) => void) &
+  ((event: 'init', id: string, data?: InitObjectProperties) => void) &
+  ((event: string, ...params: any[]) => void)
+interface EventObjectProperties {
+  price?: number
+  client_dedup_id?: string
+  currency?: string
+  transaction_id?: string
+  item_ids?: string[]
+  item_category?: string
+  description?: string
+  search_string?: string
+  number_items?: number
+  payment_info_available?: 0 | 1
+  sign_up_method?: string
+  success?: 0 | 1
+  brands?: string[]
+  delivery_method?: 'in_store' | 'curbside' | 'delivery'
+  customer_status?: 'new' | 'returning' | 'reactivated'
+  event_tag?: string
+  [key: string]: any
+}
+interface InitObjectProperties {
+  user_email?: string
+  ip_address?: string
+  user_phone_number?: string
+  user_hashed_email?: string
+  user_hashed_phone_number?: string
+  firstname?: string
+  lastname?: string
+  geo_city?: string
+  geo_region?: string
+  geo_postal_code?: string
+  geo_country?: string
+  age?: string
+}
+```
+
+----------------------------------------
+
+TITLE: Sending Conversion Event with Hotjar - Vue
+DESCRIPTION: This Vue component demonstrates how to use the `useScriptHotjar` composable to send a conversion event to Hotjar. The `sendConversion` function calls `proxy.hj('event', 'conversion')` when the button is clicked.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/marketing/hotjar.md#_snippet_6
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { proxy } = useScriptHotjar()
+
+// noop in development, ssr
+// just works in production, client
+function sendConversion() {
+  proxy.hj('event', 'conversion')
+}
+</script>
+
+<template>
+  <div>
+    <button @click="sendConversion">
+      Send Conversion
+    </button>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Sending a Conversion Event with Clarity - Vue
+DESCRIPTION: This code snippet demonstrates how to send a conversion event to Clarity using the `useScriptClarity` composable within a Vue component. The `sendConversion` function calls `proxy.clarity('event', 'conversion')` to trigger the event, but only in production and on the client-side.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/marketing/clarity.md#_snippet_6
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { proxy } = useScriptClarity()
+
+// noop in development, ssr
+// just works in production, client
+function sendConversion() {
+  proxy.clarity('event', 'conversion')
+}
+</script>
+
+<template>
+  <div>
+    <button @click="sendConversion">
+      Send Conversion
+    </button>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Creating a Custom useScript Composable in TypeScript
+DESCRIPTION: This example demonstrates how to create a custom composable that encapsulates the useScript function. This allows for easier instantiation and management of specific scripts within Nuxt applications.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/0.key-concepts.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export function useMyScript() {
+  return useScript({
+    src: 'https://example.com/script.js',
+  })
+}
+```
+
+----------------------------------------
+
+TITLE: Loading Fathom Analytics in app.vue with onNuxtReady Trigger
+DESCRIPTION: This code snippet demonstrates how to load Fathom Analytics in the `app.vue` file using the `useScriptFathomAnalytics` composable and setting the `trigger` option to `onNuxtReady`. This ensures that Fathom Analytics is loaded when Nuxt is ready.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/fathom-analytics.md#_snippet_7
+
+LANGUAGE: vue
+CODE:
+```
+<script setup>
+useScriptFathomAnalytics({
+  site: 'YOUR_SITE_ID',
+  scriptOptions: {
+    trigger: 'onNuxtReady'
+  }
+})
+</script>
+```
+
+----------------------------------------
+
+TITLE: NpmOptions Definition
+DESCRIPTION: This snippet defines the `NpmOptions` object, which is used to configure the `useScriptNpm` composable. It includes properties for the package name, file path, version, and type of the script.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/utility/npm.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+export const NpmOptions = object({
+  packageName: string(),
+  file: optional(string()),
+  version: optional(string()),
+  type: optional(string()),
+})
+```
+
+----------------------------------------
+
+TITLE: X Pixel Environment Variable Configuration
+DESCRIPTION: Sets the X Pixel ID using an environment variable in the `.env` file.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/x-pixel.md#_snippet_3
+
+LANGUAGE: text
+CODE:
+```
+NUXT_PUBLIC_SCRIPTS_X_PIXEL_ID=<YOUR_ID>
+```
+
+----------------------------------------
+
+TITLE: Subscribing to Google Map Events in Vue
+DESCRIPTION: This code snippet demonstrates how to subscribe to Google Map events using the `ready` event of the `ScriptGoogleMaps` component within a Vue component. It defines a `handleReady` function that adds a listener for the 'center_changed' event on the map instance, logging the new center to the console whenever it changes.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/google-maps.md#_snippet_9
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+function handleReady({ map }) {
+  map.addListener('center_changed', () => {
+    console.log('Center changed', map.getCenter())
+  })
+}
+</script>
+
+<template>
+  <ScriptGoogleMaps @ready="handleReady" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Trigger Script Loading with Registry Script
+DESCRIPTION: This example demonstrates how to trigger script loading using a registry script. It uses `useScriptMetaPixel` to load the Meta Pixel script and sets the `trigger` option to a ref that becomes ready after 3 seconds using `useTimeout` from `@vueuse/core`.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/1.script-triggers.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+import { useTimeout } from '@vueuse/core'
+
+const { ready } = useTimeout(3000)
+useScriptMetaPixel({
+  id: '1234567890',
+  scriptOptions: {
+    trigger: ready
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: X Pixel Nuxt Config (Always Enabled)
+DESCRIPTION: Configures X Pixel to be always enabled in the Nuxt application by specifying the pixel ID in the `nuxt.config.ts` file.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/x-pixel.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      xPixel: {
+        id: 'YOUR_ID'
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Crisp awaitingLoad Slot Usage in Vue
+DESCRIPTION: This example demonstrates how to use the `awaitingLoad` slot to display custom content while the Crisp chat widget is loading. It shows a simple div with custom styling as the loading indicator.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/support/crisp.md#_snippet_3
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptCrisp>
+    <template #awaitingLoad>
+    <div style="width: 54px; height: 54px; border-radius: 54px; cursor: pointer; background-color: #1972F5;">
+      chat!
+    </div>
+    </template>
+  </ScriptCrisp>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Loading and Interacting with Vimeo Player SDK
+DESCRIPTION: This code demonstrates how to load the Vimeo Player SDK using the useScriptVimeoPlayer composable and interact with it programmatically. It initializes the player when the SDK is loaded and provides a button to trigger the play function.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/vimeo-player.md#_snippet_12
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const video = ref()
+const { onLoaded } = useScriptVimeoPlayer()
+
+let player
+onLoaded(({ Vimeo }) => {
+  player = new Vimeo.Player(video.value, {
+    id: 331567154
+  })
+})
+</script>
+
+<template>
+  <div>
+    <div ref="video" />
+    <button @click="player.play()">
+      Play
+    </button>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Accessing Fathom Analytics API via Proxy
+DESCRIPTION: This code snippet demonstrates how to access the Fathom Analytics API using the proxy provided by the `useScriptFathomAnalytics` composable. It shows how to call the `trackGoal` function to track a specific goal.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/fathom-analytics.md#_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+const { proxy } = useScriptFathomAnalytics()
+function trackMyGoal() {
+  proxy.trackGoal('MY_GOAL_ID', 100)
+}
+```
+
+----------------------------------------
+
+TITLE: Handling Pre-Hydration Events with ssrAttrs
+DESCRIPTION: Demonstrates how to handle pre-hydration events by binding the ssrAttrs value to the element. This ensures that event listeners are correctly attached even if the user interacts with the element before hydration is complete.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/3.api/3.use-script-trigger-element.md#_snippet_2
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+import { ref, useScriptTriggerElement } from '#imports'
+
+const el = ref<HTMLElement>()
+const trigger = useScriptTriggerElement({
+  trigger: 'mousedown',
+  el,
+})
+
+const elAttrs = computed(() => {
+  return {
+    ...(trigger instanceof Promise ? trigger.ssrAttrs : {}),
+  }
+})
+</script>
+<template>
+  <div ref="el" v-bind="elAttrs">
+    Click me to load the script
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Initializing Fathom Analytics with Site ID in Nuxt Config (Production Only)
+DESCRIPTION: This code snippet demonstrates how to initialize Fathom Analytics globally in a Nuxt application, but only in the production environment. The site ID is provided within the `$production` block in `nuxt.config.ts`. Replace 'YOUR_SITE_ID' with your actual Fathom Analytics site ID.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/fathom-analytics.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  $production: {
+    scripts: {
+      registry: {
+        fathomAnalytics: {
+          site: 'YOUR_SITE_ID'
+        }
+      }
+    }
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Using Fathom Analytics in a Vue Component
+DESCRIPTION: Demonstrates how to use the Fathom Analytics script in a Vue component after it has been initialized in `nuxt.config.ts`. The `useScriptFathomAnalytics` composable is used without any options, as the script is already initialized.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/1.registry-scripts.md#_snippet_8
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { proxy } = useScriptFathomAnalytics() // no options required
+</script>
+
+<template>
+  <button @click="proxy.trackGoal('GOAL_ID')">
+    Track Goal
+  </button>
+</template>
+```
+
+----------------------------------------
+
+TITLE: GoogleMapsApi Interface Definition in TypeScript
+DESCRIPTION: This code snippet defines the GoogleMapsApi interface in TypeScript. It specifies that the interface has a maps property that corresponds to the google.maps namespace.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/google-maps.md#_snippet_15
+
+LANGUAGE: typescript
+CODE:
+```
+export interface GoogleMapsApi {
+  // @types/google.maps
+  maps: typeof google.maps
+}
+```
+
+----------------------------------------
+
+TITLE: Enable Plausible Analytics Globally (Always)
+DESCRIPTION: This configuration enables Plausible Analytics globally in a Nuxt application by setting the domain in the nuxt.config.ts file. The script will be included in all environments.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/plausible-analytics.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      plausibleAnalytics: {
+        domain: 'YOUR_DOMAIN'
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Loading Script with useScript
+DESCRIPTION: This snippet shows how to load a script using the `useScript` composable, directly from a CDN. It provides a simple way to include external scripts in your Nuxt application.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/utility/npm.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+useScript('https://cdn.jsdelivr.net/npm/js-confetti@0.12.0/dist/js-confetti.browser.js')
+```
+
+----------------------------------------
+
+TITLE: Using js-confetti with explicit script load
+DESCRIPTION: This code snippet shows how to use the js-confetti library with explicit script loading using the onLoaded callback. It instantiates a new JSConfetti object and adds confetti with specified emojis.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.getting-started/3.confetti-tutorial.md#_snippet_5
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { onLoaded } = useScriptNpm({
+  packageName: 'js-confetti',
+  file: 'dist/js-confetti.browser.js',
+  version: '0.12.0',
+  scriptOptions: {
+    use() {
+      return { JSConfetti: window.JSConfetti }
+    },
+  },
+})
+onLoaded(({ JSConfetti }) => {
+  // using the real API instance
+  const confetti = new JSConfetti()
+  confetti.addConfetti({ emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸'] })
+})
+</script>
+```
+
+----------------------------------------
+
+TITLE: Using useScriptEventPage in Vue
+DESCRIPTION: Demonstrates how to use the useScriptEventPage composable within a Vue component's setup function to log the page title and path whenever they change.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/3.api/4.use-script-event-page.md#_snippet_1
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+useScriptEventPage((ctx) => {
+  console.log(ctx.title, ctx.path)
+})
+</script>
+```
+
+----------------------------------------
+
+TITLE: Adding Types to useScriptNpm Script - Vue
+DESCRIPTION: This example demonstrates how to add TypeScript types to a script loaded with the `useScriptNpm` composable. It defines a global interface for the script's API and uses the generic type parameter of `useScriptNpm` to ensure type safety when using the loaded script.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.getting-started/3.confetti-tutorial.md#_snippet_7
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+export interface JSConfettiApi {
+  JSConfetti: { 
+    new (): { 
+      addConfetti: (options?: { emojis: string[] }) => void
+    } 
+  }
+}
+
+declare global {
+  interface Window extends JSConfettiApi {}
+}
+
+const { onLoaded } = useScriptNpm<JSConfettiApi>({ 
+  packageName: 'js-confetti',
+  file: 'dist/js-confetti.browser.js',
+  version: '0.12.0',
+  scriptOptions: {
+    use() {
+      return { JSConfetti: window.JSConfetti }
+    },
+  },
+})
+onMounted(() => {
+  onLoaded(({ JSConfetti }) => {
+    const confetti = new JSConfetti()
+    // fully typed!
+    confetti.addConfetti({ emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸'] })
+  })
+})
+</script>
+```
+
+----------------------------------------
+
+TITLE: Handling Ad-blockers with Fallback
+DESCRIPTION: This example shows how to use the #error slot to provide a fallback message when Carbon Ads is blocked by an ad-blocker. This allows you to communicate with users who are blocking ads.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/ads/carbon-ads.md#_snippet_1
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptCarbonAds
+    serve="..."
+    placement="..."
+    format="..."
+  >
+    <template #error>
+      <!-- Fallback ad -->
+      Please support us by disabling your ad blocker.
+    </template>
+  </ScriptCarbonAds>
+</template>
+```
+
+----------------------------------------
+
+TITLE: useScriptYouTubePlayer Composable Definition (TypeScript)
+DESCRIPTION: Defines the `useScriptYouTubePlayer` composable, which provides fine-grained control over the YouTube Player SDK. It allows loading the SDK and interacting with it programmatically.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/youtube-player.md#_snippet_12
+
+LANGUAGE: typescript
+CODE:
+```
+export function useScriptYouTubePlayer<T extends YouTubePlayerApi>(_options?: YouTubePlayerInput) {}
+```
+
+----------------------------------------
+
+TITLE: Lemon Squeezy Event Payload Type Definition
+DESCRIPTION: This TypeScript code defines the structure of the payload for events emitted by the Lemon.js script. It includes various event types such as Checkout.Success, Checkout.ViewCart, and GA.ViewCart, along with their corresponding data structures.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/payments/lemon-squeezy.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export type LemonSqueezyEventPayload = { event: 'Checkout.Success', data: Record<string, any> }
+  & { event: 'Checkout.ViewCart', data: Record<string, any> }
+  & { event: 'GA.ViewCart', data: Record<string, any> }
+  & { event: 'PaymentMethodUpdate.Mounted' }
+  & { event: 'PaymentMethodUpdate.Closed' }
+  & { event: 'PaymentMethodUpdate.Updated' }
+  & { event: string }
+```
+
+----------------------------------------
+
+TITLE: Using a global script in a Vue component (TS)
+DESCRIPTION: This example demonstrates how to use a globally loaded script within a Vue component. It accesses the script through the `$scripts` property of the Nuxt app and calls a method on the script's proxy object.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/4.global.md#_snippet_5
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+// This will not trigger the script to be loaded again because of the nuxt.config global script
+const { proxy, onLoaded } = useNuxtApp().$scripts.tracker
+
+onLoaded(() => {
+  console.log('Script loaded')
+})
+
+function trackCustom() {
+  proxy.track('custom_event')
+}
+</script>
+
+<template>
+  <button @click="trackCustom">
+    Track Custom Event
+  </button>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Setting Ad Layout with data-ad-layout in Vue
+DESCRIPTION: This example demonstrates how to specify an ad layout, such as 'in-article', using the `data-ad-layout` attribute within the `ScriptGoogleAdsense` component. It requires a valid Google AdSense client ID and ad slot ID.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/ads/google-adsense.md#_snippet_6
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptGoogleAdsense
+    data-ad-client="ca-pub-<your-id>"
+    data-ad-slot="1234567890"
+    data-ad-format="fluid"
+    data-ad-layout="in-article"
+  />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Defining Vimeo Player Events with defineEmits in TypeScript
+DESCRIPTION: This code defines the events emitted by the ScriptVimeoPlayer component using the defineEmits function. It specifies the event names and their corresponding payload types, which include the event object and the Vimeo Player instance. This allows Vue to properly type-check event emissions.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/vimeo-player.md#_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+const emits = defineEmits<{ 
+  play: [e: EventMap['play'], player: Player]
+  playing: [e: EventMap['playing'], player: Player]
+  pause: [e: EventMap['pause'], player: Player]
+  ended: [e: EventMap['ended'], player: Player]
+  timeupdate: [e: EventMap['timeupdate'], player: Player]
+  progress: [e: EventMap['progress'], player: Player]
+  seeking: [e: EventMap['seeking'], player: Player]
+  seeked: [e: EventMap['seeked'], player: Player]
+  texttrackchange: [e: EventMap['texttrackchange'], player: Player]
+  chapterchange: [e: EventMap['chapterchange'], player: Player]
+  cuechange: [e: EventMap['cuechange'], player: Player]
+  cuepoint: [e: EventMap['cuepoint'], player: Player]
+  volumechange: [e: EventMap['volumechange'], player: Player]
+  playbackratechange: [e: EventMap['playbackratechange'], player: Player]
+  bufferstart: [e: EventMap['bufferstart'], player: Player]
+  bufferend: [e: EventMap['bufferend'], player: Player]
+  error: [e: EventMap['error'], player: Player]
+  loaded: [e: EventMap['loaded'], player: Player]
+  durationchange: [e: EventMap['durationchange'], player: Player]
+  fullscreenchange: [e: EventMap['fullscreenchange'], player: Player]
+  qualitychange: [e: EventMap['qualitychange'], player: Player]
+  camerachange: [e: EventMap['camerachange'], player: Player]
+  resize: [e: EventMap['resize'], player: Player]
+  enterpictureinpicture: [e: EventMap['enterpictureinpicture'], player: Player]
+  leavepictureinpicture: [e: EventMap['leavepictureinpicture'], player: Player]
+}>()
+```
+
+----------------------------------------
+
+TITLE: YouTubePlayerApi Interface Definition (TypeScript)
+DESCRIPTION: Defines the `YouTubePlayerApi` interface, which includes the `YT` object from the YouTube Iframe Player API. This interface is used to provide type safety when interacting with the YouTube Player SDK.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/youtube-player.md#_snippet_13
+
+LANGUAGE: typescript
+CODE:
+```
+/// <reference types="youtube" />
+export interface YouTubePlayerApi {
+  YT: typeof YT
+}
+```
+
+----------------------------------------
+
+TITLE: Augmenting useScriptNpm Types
+DESCRIPTION: This snippet demonstrates how to augment the types of the `useScriptNpm` function to get types for the script you're loading. It defines an interface for the script's API and then uses it as a generic type argument to `useScriptNpm`.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/utility/npm.md#_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+interface SomeApi {
+  doSomething: () => void
+}
+useScriptNpm<SomeApi>({
+  packageName: 'some-api'
+})
+```
+
+----------------------------------------
+
+TITLE: Install Google Maps Types
+DESCRIPTION: Install the `@types/google.maps` dependency to enable full TypeScript support for Google Maps in your Nuxt project. This provides type definitions for the Google Maps API.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/google-maps.md#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+pnpm add -D @types/google.maps
+```
+
+----------------------------------------
+
+TITLE: Using ScriptLemonSqueezy Component in Vue Template
+DESCRIPTION: This example demonstrates how to use the ScriptLemonSqueezy component in a Vue template to create a Lemon Squeezy buy button. The component injects the .lemonsqueezy-button class and loads the Lemon Squeezy script when the element is visible.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/payments/lemon-squeezy.md#_snippet_0
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+<ScriptLemonSqueezy>
+  <NuxtLink href="https://harlantest.lemonsqueezy.com/buy/52a40427-36d2-4450-a514-ae80d9e1a333?embed=1">
+    Buy me - $9.99
+  </NuxtLink>
+</ScriptLemonSqueezy>
+</template>
+```
+
+----------------------------------------
+
+TITLE: YouTube Player Events Definition (TypeScript)
+DESCRIPTION: Defines the event types emitted by the `ScriptYouTubePlayer` component, mirroring the YouTube Player SDK events. Includes types for 'ready', 'state-change', 'playback-quality-change', 'playback-rate-change', and 'error' events.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/youtube-player.md#_snippet_7
+
+LANGUAGE: typescript
+CODE:
+```
+const emits = defineEmits<{ 
+  'ready': [e: YT.PlayerEvent]
+  'state-change': [e: YT.OnStateChangeEvent, target: YT.Player]
+  'playback-quality-change': [e: YT.OnPlaybackQualityChangeEvent, target: YT.Player]
+  'playback-rate-change': [e: YT.OnPlaybackRateChangeEvent, target: YT.Player]
+  'error': [e: YT.OnErrorEvent, target: YT.Player]
+}>()
+```
+
+----------------------------------------
+
+TITLE: useScriptStripe Function Definition
+DESCRIPTION: This code snippet shows the definition of the `useScriptStripe` composable function. This composable provides fine-grained control over the Stripe SDK.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/payments/stripe.md#_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+export function useScriptStripe<T extends StripeApi>(_options?: StripeInput) {}
+```
+
+----------------------------------------
+
+TITLE: Loading State with ScriptLoadingIndicator
+DESCRIPTION: Shows how to implement a loading state within the ScriptYouTubePlayer component using the loading slot. The ScriptLoadingIndicator component is used to provide visual and accessible feedback while the script is loading.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/5.facade-components.md#_snippet_1
+
+LANGUAGE: vue
+CODE:
+```
+<ScriptYouTubePlayer>
+  <template #loading>
+  <ScriptLoadingIndicator />
+  </template>
+</ScriptYouTubePlayer>
+```
+
+----------------------------------------
+
+TITLE: Displaying Placeholder Image with placeholder Slot in Vue
+DESCRIPTION: This example shows how to use the placeholder slot to display a custom placeholder image before the Google Maps SDK is loaded.  This disables the default Google Maps Static API image.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/google-maps.md#_snippet_13
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptGoogleMaps>
+    <template #placeholder="{ placeholder }">
+      <img :src="placeholder">
+    </template>
+  </ScriptGoogleMaps>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Initializing Advanced Marker Control in Vue
+DESCRIPTION: This code snippet demonstrates how to initialize and control advanced markers on a Google Map using the `createAdvancedMapMarker` function within a Vue component. It uses the `googleMapsRef` to access the map instance and create a marker with a specified position. The component is mounted using `onMounted` to ensure the Google Maps API is available.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/google-maps.md#_snippet_4
+
+LANGUAGE: vue
+CODE:
+```
+<script lang="ts" setup>
+const googleMapsRef = ref()
+onMounted(() => {
+  const marker = googleMapsRef.value.createAdvancedMapMarker({
+    position: { }
+  })
+})
+</script>
+<template>
+    <ScriptGoogleMaps ref="googleMapsRef" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Runtime Config for Multiple Google Analytics Instances
+DESCRIPTION: Demonstrates how to configure runtime config for multiple instances of Google Analytics when using the `key` option. The runtime config keys must match the custom keys defined for each instance.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/1.registry-scripts.md#_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      scripts: {
+        gtag2: {
+          id: '', // NUXT_PUBLIC_SCRIPTS_GTAG2_ID
+        },
+      },
+    },
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Awaiting Load Slot Usage in ScriptYouTubePlayer
+DESCRIPTION: Shows how to use the awaitingLoad slot in the ScriptYouTubePlayer component to display content while the script is waiting to load. A div with a background color and text prompting the user to click is used as an example.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/5.facade-components.md#_snippet_4
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptYouTubePlayer>
+    <template #awaitingLoad>
+    <div class="bg-blue-500 text-white p-5">
+      Click to play!
+    </div>
+    </template>
+  </ScriptYouTubePlayer>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Loading NPM Script with useScriptNpm
+DESCRIPTION: This snippet demonstrates how to load an NPM script using the `useScriptNpm` composable. It specifies the package name, file path within the package, and the version of the package to use. This approach allows for fine-grained control over when and how NPM scripts are loaded.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/utility/npm.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+useScriptNpm({
+  packageName: 'js-confetti',
+  file: 'dist/js-confetti.browser.js',
+  version: '0.12.0',
+})
+```
+
+----------------------------------------
+
+TITLE: Segment API Interface (Segment)
+DESCRIPTION: Defines the TypeScript interface for the Segment API, outlining the available methods such as track, page, identify, group, alias, and reset, along with their respective parameters.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/segment.md#_snippet_5
+
+LANGUAGE: typescript
+CODE:
+```
+interface SegmentApi {
+  track: (event: string, properties?: Record<string, any>) => void
+  page: (name?: string, properties?: Record<string, any>) => void
+  identify: (userId: string, traits?: Record<string, any>, options?: Record<string, any>) => void
+  group: (groupId: string, traits?: Record<string, any>, options?: Record<string, any>) => void
+  alias: (userId: string, previousId: string, options?: Record<string, any>) => void
+  reset: () => void
+}
+```
+
+----------------------------------------
+
+TITLE: Initializing useScriptTriggerConsent in utils/cookie.ts
+DESCRIPTION: Initializes the useScriptTriggerConsent composable to manage consent for cookies. This composable is then imported and used in other components to control script loading based on user consent.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/3.consent.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+export const agreedToCookiesScriptConsent = useScriptTriggerConsent()
+```
+
+----------------------------------------
+
+TITLE: Self-Hosted Plausible Analytics Configuration
+DESCRIPTION: This code snippet shows how to configure `useScriptPlausibleAnalytics` for a self-hosted Plausible Analytics instance. It provides an explicit `src` for the script to ensure API events are sent to the correct endpoint.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/plausible-analytics.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+useScriptPlausibleAnalytics({
+  scriptInput: {
+    src: 'https://my-self-hosted-plausible.io/js/script.js'
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Error Slot Usage in ScriptYouTubePlayer
+DESCRIPTION: Illustrates how to use the error slot in the ScriptYouTubePlayer component to display content if the script fails to load. A UAlert component is used to display an error message.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/5.facade-components.md#_snippet_5
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptYouTubePlayer>
+    <template #error>
+      <UAlert color="red" title="YouTube player failed to load" description="Please refresh the page to try again." />
+    </template>
+  </ScriptYouTubePlayer>
+</template>
+```
+
+----------------------------------------
+
+TITLE: IntercomApi Interface Definition
+DESCRIPTION: This code snippet defines the IntercomApi interface, which outlines the available methods for interacting with the Intercom API. It includes methods for booting, shutting down, updating, hiding, showing, and tracking events within Intercom.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/support/intercom.md#_snippet_7
+
+LANGUAGE: typescript
+CODE:
+```
+export interface IntercomApi {
+  Intercom: ((event: 'boot', data?: Input<typeof IntercomOptions>) => void)
+  & ((event: 'shutdown') => void)
+  & ((event: 'update', options?: Input<typeof IntercomOptions>) => void)
+  & ((event: 'hide') => void)
+  & ((event: 'show') => void)
+  & ((event: 'showSpace', spaceName: 'home' | 'messages' | 'help' | 'news' | 'tasks' | 'tickets' | string) => void)
+  & ((event: 'showMessages') => void)
+  & ((event: 'showNewMessage', content?: string) => void)
+  & ((event: 'onHide', fn: () => void) => void)
+  & ((event: 'onShow', fn: () => void) => void)
+  & ((event: 'onUnreadCountChange', fn: () => void) => void)
+  & ((event: 'trackEvent', eventName: string, metadata?: Record<string, any>) => void)
+  & ((event: 'getVisitorId') => Promise<string>)
+  & ((event: 'startTour', tourId: string | number) => void)
+  & ((event: 'showArticle', articleId: string | number) => void)
+  & ((event: 'showNews', newsItemId: string | number) => void)
+  & ((event: 'startSurvey', surveyId: string | number) => void)
+  & ((event: 'startChecklist', checklistId: string | number) => void)
+  & ((event: 'showTicket', ticketId: string | number) => void)
+  & ((event: 'showConversation', conversationId: string | number) => void)
+  & ((event: 'onUserEmailSupplied', fn: () => void) => void)
+  & ((event: string, ...params: any[]) => void)
+}
+```
+
+----------------------------------------
+
+TITLE: Basic ScriptCarbonAds Component Usage
+DESCRIPTION: This example demonstrates the basic usage of the ScriptCarbonAds component with required props for serving and placement. The component inserts a script tag into the div on mount to load Carbon Ads.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/ads/carbon-ads.md#_snippet_0
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptCarbonAds
+    serve="..."
+    placement="..."
+    format="..."
+  />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Using the placeholder slot in ScriptVimeoPlayer Component
+DESCRIPTION: This code demonstrates how to use the placeholder slot in the ScriptVimeoPlayer component to display a placeholder image before the video is loaded. It utilizes the placeholder prop to bind the image source to the Vimeo thumbnail.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/vimeo-player.md#_snippet_9
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptVimeoPlayer :id="331567154">
+    <template #placeholder="{ placeholder }">
+      <img :src="placeholder" alt="Video Placeholder">
+    </template>
+  </ScriptVimeoPlayer>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Warmup script manually with preload
+DESCRIPTION: This example shows how to manually warmup a script using the `warmup` function. The script is initially set to load manually. The `warmup` function is called with 'preload' when the video container is visible, and the script is loaded when the video container is clicked.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/1.warmup.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+const script = useScript('/video.js', {
+  trigger: 'manual'
+})
+// warmup the script when we think the user may need the script
+onVisible(videoContainer, () => {
+  script.warmup('preload')
+})
+// load it in
+onClick(videoContainer, () => {
+  script.load()
+})
+```
+
+----------------------------------------
+
+TITLE: Accessing Intercom API
+DESCRIPTION: This code snippet shows how to access the underlying Intercom API through the intercom instance exposed by the ScriptIntercom component. It uses a ref to access the component instance and then calls the do('chat:open') method on the Intercom API when the component is mounted.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/support/intercom.md#_snippet_3
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const intercomEl = ref()
+onMounted(() => {
+  intercomEl.value.intercom.do('chat:open')
+})
+</script>
+
+<template>
+  <ScriptIntercom ref="intercomEl" />
+</template>
+```
+
+----------------------------------------
+
+TITLE: Error Fallback in ScriptYouTubePlayer
+DESCRIPTION: Demonstrates how to provide an error fallback within the ScriptYouTubePlayer component using the error slot. This displays a UAlert component if the YouTube player fails to load, informing the user to refresh the page.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/5.facade-components.md#_snippet_0
+
+LANGUAGE: vue
+CODE:
+```
+<ScriptYouTubePlayer>
+  <template #error>
+    <UAlert color="red" title="YouTube player failed to load" description="Please refresh the page to try again." />
+  </template>
+</ScriptYouTubePlayer>
+```
+
+----------------------------------------
+
+TITLE: Nuxt Config with Environment Variables (Segment)
+DESCRIPTION: Configures Segment using environment variables in nuxt.config.ts. This setup requires defining a runtime config to access the environment variables and setting the segment option to true.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/segment.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+    registry: {
+      segment: true,
+    }
+  },
+  // you need to provide a runtime config to access the environment variables
+  runtimeConfig: {
+    public: {
+      scripts: {
+        segment: {
+          writeKey: '' // NUXT_PUBLIC_SCRIPTS_SEGMENT_WRITE_KEY
+        }
+      },
+    },
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Using useScript to load a script
+DESCRIPTION: This example demonstrates how to use the `useScript` composable to load a script. The script will be loaded on the `onNuxtReady` event, and Nuxt Scripts will automatically insert a preload tag in the head of the document to warmup the script.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/1.warmup.md#_snippet_0
+
+LANGUAGE: typescript
+CODE:
+```
+useScript('/script.js')
+```
+
+----------------------------------------
+
+TITLE: ScriptVimeoPlayer Placeholder Slot
+DESCRIPTION: Shows how to customize the placeholder image using the #placeholder slot. This allows for complete control over the placeholder's appearance and behavior.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/vimeo-player.md#_snippet_4
+
+LANGUAGE: vue
+CODE:
+```
+<ScriptVimeoPlayer>
+  <template #placeholder="{ placeholder }">
+    <img :src="placeholder" alt="Video Placeholder">
+  </template>
+</ScriptVimeoPlayer>
+```
+
+----------------------------------------
+
+TITLE: Using the `script:instance-fn` Hook in Nuxt
+DESCRIPTION: This code snippet demonstrates how to use the `script:instance-fn` hook within a Nuxt plugin. This hook is fired when accessing properties via the proxy instance, allowing you to intercept and handle function calls. It requires the `defineNuxtPlugin`, `injectHead`, and `useScript` functions from Nuxt and Unhead.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/3.api/6.nuxt-app-hooks.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtPlugin({
+  setup() {
+    const head = injectHead()
+    head.hooks.hook('script:instance-fn', ({ fn, args }) => {
+      console.log('Function called:', ctx)
+    })
+    const { proxy } = useScript()
+    proxy.doSomething() // Function called: doSomething
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Loading Script with useHead
+DESCRIPTION: This snippet demonstrates how to load a script using the `useHead` composable. It adds a script tag to the head of the document, which will load the specified script from a CDN.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/utility/npm.md#_snippet_2
+
+LANGUAGE: typescript
+CODE:
+```
+useHead({
+  script: [
+    { src: 'https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js' }
+  ]
+})
+```
+
+----------------------------------------
+
+TITLE: Bundling a Script with useScriptNpm - Vue
+DESCRIPTION: This example demonstrates how to bundle a script loaded with `useScriptNpm` directly into the application. By setting the `bundle` option to `true`, the script is included in the application's build, reducing the number of DNS requests and improving performance.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.getting-started/3.confetti-tutorial.md#_snippet_9
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const script = useScriptNpm({
+  // ...
+  scriptOptions: {
+    bundle: true
+  }
+})
+// ..
+</script>
+```
+
+----------------------------------------
+
+TITLE: Crisp loading Slot Usage in Vue
+DESCRIPTION: This example demonstrates how to use the `loading` slot to display content while the Crisp chat widget is loading. It shows a simple div with a loading message.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/support/crisp.md#_snippet_4
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptCrisp>
+    <template #loading>
+      <div class="bg-blue-500 text-white p-5">
+        Loading...
+      </div>
+    </template>
+  </ScriptCrisp>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Set Snapchat Pixel ID in .env file
+DESCRIPTION: This code snippet shows how to set the Snapchat Pixel ID in the .env file. Replace <YOUR_ID> with your actual Snapchat Pixel ID.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/snapchat-pixel.md#_snippet_3
+
+LANGUAGE: text
+CODE:
+```
+NUXT_PUBLIC_SCRIPTS_SNAPCHAT_PIXEL_ID=<YOUR_ID>
+```
+
+----------------------------------------
+
+TITLE: Google AdSense Meta Tag Configuration in Nuxt
+DESCRIPTION: Configures Google AdSense meta tag within the `nuxt.config.ts` file for site ownership verification.  Providing the `client` property will automatically insert a meta tag on the page.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/ads/google-adsense.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  scripts: {
+        registry: {
+          googleAdsense: {
+            client: "ca-pub-<your-id>", // AdSense Publisher ID
+          },
+        },
+    },
+});
+```
+
+----------------------------------------
+
+TITLE: Using useScriptHotjar Composable - TypeScript
+DESCRIPTION: This code snippet demonstrates how to use the `useScriptHotjar` composable to load and interact with Hotjar. It shows how to get the `proxy` object and use it to call Hotjar functions like `hj` to send custom events.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/marketing/hotjar.md#_snippet_3
+
+LANGUAGE: typescript
+CODE:
+```
+const { proxy } = useScriptHotjar({
+  id: 123546,
+})
+// example
+proxy.hj('identify', 123456, {
+  name: 'John Doe',
+  email: 'john@doe.com'
+})
+```
+
+----------------------------------------
+
+TITLE: Adding Custom UI to Carbon Ads
+DESCRIPTION: This example demonstrates how to add custom styling to the Carbon Ads component using CSS classes. It includes styling for both dark and light themes, adapting the appearance of the ad to the overall theme of the site.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/ads/carbon-ads.md#_snippet_2
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptCarbonAds
+    class="Carbon border border-gray-200 dark:border-gray-800 rounded-lg bg-white dark:bg-white/5"
+    serve="..."
+    placement="..."
+    format="..."
+  />
+</template>
+```
+
+LANGUAGE: postcss
+CODE:
+```
+/* Credits to nuxt.com */
+.dark .Carbon {
+  min-height: 220px;
+  .carbon-text {
+    @apply text-gray-400;
+
+    &:hover {
+      @apply text-gray-200;
+    }
+  }
+}
+
+.light .Carbon {
+  .carbon-text {
+    @apply text-gray-600;
+
+    &:hover {
+      @apply text-gray-800;
+    }
+  }
+}
+
+.Carbon {
+  @apply p-3 flex flex-col max-w-full;
+
+  @screen sm {
+    @apply max-w-xs;
+  }
+
+  @screen lg {
+    @apply mt-0;
+  }
+
+  #carbonads span {
+    @apply flex flex-col justify-between;
+
+    .carbon-wrap {
+      @apply flex flex-col;
+
+      flex: 1;
+
+      @media (min-width: 320px) {
+        @apply flex-row;
+      }
+
+      @screen lg {
+        @apply flex-col;
+      }
+
+      .carbon-img {
+        @apply flex items-start justify-center mb-4;
+
+        @media (min-width: 320px) {
+          @apply mb-0;
+        }
+
+        @screen lg {
+          @apply mb-4;
+        }
+      }
+
+      .carbon-text {
+        @apply flex-1 text-sm w-full m-0 text-left block;
+
+        &:hover {
+          @apply no-underline;
+        }
+
+        @media (min-width: 320px) {
+          @apply ml-4;
+        }
+
+        @screen lg {
+          @apply ml-0;
+        }
+      }
+    }
+  }
+
+  img {
+    @apply w-full;
+  }
+
+  & .carbon-poweredby {
+    @apply ml-2 text-xs text-right text-gray-400 block pt-2;
+
+    &:hover {
+      @apply no-underline text-gray-500;
+    }
+  }
+}
+```
+
+----------------------------------------
+
+TITLE: useScriptGoogleMaps Composable Definition in TypeScript
+DESCRIPTION: This code snippet shows the definition of the useScriptGoogleMaps composable function in TypeScript. It takes an optional GoogleMapsInput object as a parameter and returns a function.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/google-maps.md#_snippet_14
+
+LANGUAGE: typescript
+CODE:
+```
+export function useScriptGoogleMaps<T extends GoogleMapsApi>(_options?: GoogleMapsInput) {}
+```
+
+----------------------------------------
+
+TITLE: Using placeholder Slot in ScriptYouTubePlayer (Vue)
+DESCRIPTION: Illustrates how to use the `placeholder` slot to display a custom placeholder image before the video is loaded. The slot provides a `placeholder` prop containing the default YouTube thumbnail URL.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/youtube-player.md#_snippet_11
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptYouTubePlayer video-id="d_IFKP1Ofq0">
+    <template #placeholder="{ placeholder }">
+      <img :src="placeholder" alt="Video Placeholder">
+    </template>
+  </ScriptYouTubePlayer>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Nuxt Config Setup - Production Only (Segment)
+DESCRIPTION: Configures Segment to be enabled only in the production environment using the $production key in nuxt.config.ts. This approach prevents Segment from running in development or staging environments.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/segment.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+export default defineNuxtConfig({
+  $production: {
+    scripts: {
+      registry: {
+        segment: {
+          writeKey: 'YOUR_WRITE_KEY'
+        }
+      }
+    }
+  }
+})
+```
+
+----------------------------------------
+
+TITLE: Setting YouTube Host
+DESCRIPTION: This example demonstrates how to set the host prop to use the standard YouTube domain instead of the privacy-friendly youtube-nocookie.com domain.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/youtube-player.md#_snippet_3
+
+LANGUAGE: vue
+CODE:
+```
+<ScriptYouTubePlayer video-id="d_IFKP1Ofq0" :player-options="{ host: 'https://www.youtube.com' }" />
+```
+
+----------------------------------------
+
+TITLE: Customizing Map Content with Default Slot in Vue
+DESCRIPTION: This example demonstrates how to use the default slot in the ScriptGoogleMaps component to display custom content that is always visible on the map. It includes a div with a heading to be displayed on top of the map.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/content/google-maps.md#_snippet_10
+
+LANGUAGE: vue
+CODE:
+```
+<template>
+  <ScriptGoogleMaps>
+    <div class="absolute top-0 left-0 right-0 p-5 bg-white text-black">
+      <h1 class="text-xl font-bold">
+        My Custom Map
+      </h1>
+    </div>
+  </ScriptGoogleMaps>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Defining Intercom Ready Event Emits
+DESCRIPTION: This code snippet shows how to define the emits for the ScriptIntercom component, specifically the ready event. The ready event is emitted when Intercom is loaded and provides access to the Intercom instance.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/support/intercom.md#_snippet_1
+
+LANGUAGE: typescript
+CODE:
+```
+const emits = defineEmits<{ 
+  ready: [intercom: Intercom]
+}>()
+```
+
+----------------------------------------
+
+TITLE: ClarityApi Type Definition - TypeScript
+DESCRIPTION: This code snippet defines the TypeScript types for the Clarity API, including the `ClarityFunctions` type which describes the available Clarity functions, and the `ClarityApi` interface which defines the structure of the Clarity API object.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/marketing/clarity.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+type ClarityFunctions = ((fn: 'start', options: { content: boolean, cookies: string[], dob: number, expire: number, projectId: string, upload: string }) => void)
+  & ((fn: 'identify', id: string, session?: string, page?: string, userHint?: string) => Promise<{ id: string; session: string; page: string; userHint: string; }>) & ((fn: 'consent') => void)
+  & ((fn: 'set', key: any, value: any) => void)
+  & ((fn: 'event', value: any) => void)
+  & ((fn: 'upgrade', upgradeReason: any) => void)
+  & ((fn: string, ...args: any[]) => void)
+
+export interface ClarityApi {
+  clarity: ClarityFunctions & {
+    q: any[]
+    v: string
+  }
+}
+```
+
+----------------------------------------
+
+TITLE: Snapchat Pixel Configuration Schema
+DESCRIPTION: This code snippet defines the configuration schema (`SnapTrPixelOptions`) for the Snapchat Pixel using the `object` and `string` functions. It specifies the available options, such as `id`, `trackPageView`, `user_email`, and various user-related properties, along with their data types and whether they are optional.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/snapchat-pixel.md#_snippet_6
+
+LANGUAGE: typescript
+CODE:
+```
+export const SnapTrPixelOptions = object({
+  id: string(),
+  trackPageView: optional(boolean()),
+  user_email: optional(string()),
+  ip_address: optional(string()),
+  user_phone_number: optional(string()),
+  user_hashed_email: optional(string()),
+  user_hashed_phone_number: optional(string()),
+  firstname: optional(string()),
+  lastname: optional(string()),
+  geo_city: optional(string()),
+  geo_region: optional(string()),
+  geo_postal_code: optional(string()),
+  geo_country: optional(string()),
+  age: optional(string()),
+})
+```
+
+----------------------------------------
+
+TITLE: Using js-confetti with proxy functions
+DESCRIPTION: This code snippet demonstrates how to use js-confetti with proxy functions for an easier API. It instantiates JSConfetti in the use function and calls addConfetti in onMounted.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.getting-started/3.confetti-tutorial.md#_snippet_6
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { proxy } = useScriptNpm({
+  packageName: 'js-confetti',
+  file: 'dist/js-confetti.browser.js',
+  version: '0.12.0',
+  scriptOptions: {
+    use: () => typeof window.JSConfetti !== 'undefined' && new window.JSConfetti()
+  }
+})
+onMounted(() => {
+  // just works
+  proxy.addConfetti({ emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸'] })
+})
+</script>
+```
+
+----------------------------------------
+
+TITLE: Using Script Options and Script Input with Cloudflare Web Analytics
+DESCRIPTION: Illustrates how to use `scriptOptions` and `scriptInput` with `useScriptCloudflareWebAnalytics`. `scriptOptions` allows passing additional options to `useScript`, while `scriptInput` allows setting HTML attributes on the script element.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/1.registry-scripts.md#_snippet_6
+
+LANGUAGE: typescript
+CODE:
+```
+import { useTimeout } from '@vueuse/core'
+import { useScriptCloudflareWebAnalytics } from '#imports'
+
+const { ready } = useTimeout(5000)
+useScriptCloudflareWebAnalytics({
+  token: '123',
+  // HTML attributes to pass to the script element
+  scriptInput: {
+    'data-cf-test': 'true'
+  },
+  // useScript options used for advanced features
+  scriptOptions: {
+    trigger: ready,
+    bundle: true,
+  },
+})
+```
+
+----------------------------------------
+
+TITLE: Trigger Script Loading with a Promise
+DESCRIPTION: This example demonstrates how to use a promise to trigger the loading of a script. The script will load after the promise resolves, which in this case is after 3 seconds.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/docs/1.guides/1.script-triggers.md#_snippet_6
+
+LANGUAGE: typescript
+CODE:
+```
+const myScript = useScript('/script.js', {
+  // load after 3 seconds
+  trigger: new Promise(resolve => setTimeout(resolve, 3000))
+})
+```
+
+----------------------------------------
+
+TITLE: CrispOptions Config Schema in TypeScript
+DESCRIPTION: This code defines the `CrispOptions` configuration schema using TypeScript. It includes options for Crisp ID, runtime configuration (locale), token ID, cookie domain, and cookie expiry.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/support/crisp.md#_snippet_6
+
+LANGUAGE: typescript
+CODE:
+```
+export const CrispOptions = object({
+  /**
+   * Crisp ID.
+   */
+  id: string(),
+  /**
+   * Extra configuration options. Used to configure the locale.
+   * Same as CRISP_RUNTIME_CONFIG.
+   * @see https://docs.crisp.chat/guides/chatbox-sdks/web-sdk/language-customization/
+   */
+  runtimeConfig: optional(object({
+    locale: optional(string()),
+  })),
+  /**
+   * Associated a session, equivalent to using CRISP_TOKEN_ID variable.
+   * Same as CRISP_TOKEN_ID.
+   * @see https://docs.crisp.chat/guides/chatbox-sdks/web-sdk/session-continuity/
+   */
+  tokenId: optional(string()),
+  /**
+   * Restrict the domain that crisp cookie is set on.
+   * Same as CRISP_COOKIE_DOMAIN.
+   * @see https://docs.crisp.chat/guides/chatbox-sdks/web-sdk/cookie-policies/
+   */
+  cookieDomain: optional(string()),
+  /**
+   * The cookie expiry in seconds.
+   * Same as CRISP_COOKIE_EXPIRATION.
+   * @see https://docs.crisp.chat/guides/chatbox-sdks/web-sdk/cookie-policies/#change-cookie-expiration-date
+   */
+  cookieExpiry: optional(number()),
+})
+```
+
+----------------------------------------
+
+TITLE: Conversion Button Component with Umami Tracking - Vue
+DESCRIPTION: This Vue component demonstrates how to use the `useScriptUmamiAnalytics` composable to track custom events. It includes a button that, when clicked, sends a 'conversion' event to Umami Analytics.  It also sends a 'conversion-step' event on component setup.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/analytics/umami-analytics.md#_snippet_5
+
+LANGUAGE: vue
+CODE:
+```
+<script setup lang="ts">
+const { proxy } = useScriptUmamiAnalytics()
+
+// noop in development, ssr
+// just works in production, client
+proxy.track('event', { name: 'conversion-step' })
+
+function sendConversion() {
+  proxy.track('event', { name: 'conversion' })
+}
+</script>
+
+<template>
+  <div>
+    <button @click="sendConversion">
+      Send Conversion
+    </button>
+  </div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Google AdSense Meta Tag Output
+DESCRIPTION: The HTML output of the Google AdSense meta tag configuration. This meta tag is automatically inserted into the page's HTML to verify site ownership with Google AdSense.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/ads/google-adsense.md#_snippet_2
+
+LANGUAGE: html
+CODE:
+```
+<meta name="google-adsense-account" content="ca-pub-<your-id>" />
+```
+
+----------------------------------------
+
+TITLE: Using useScriptSnapchatPixel Composable
+DESCRIPTION: This code snippet demonstrates how to use the `useScriptSnapchatPixel` composable to load and interact with the Snapchat Pixel. It initializes the pixel with an ID and user email, then uses the `proxy.snaptr` function to track a purchase event with associated details like currency, price, and transaction ID.
+SOURCE: https://github.com/nuxt/scripts/blob/main/docs/content/scripts/tracking/snapchat-pixel.md#_snippet_4
+
+LANGUAGE: typescript
+CODE:
+```
+const { proxy } = useScriptSnapchatPixel({
+  id: 'YOUR_ID',
+  user_email: 'USER_EMAIL'
+})
+// example
+proxy.snaptr('track', 'PURCHASE', {
+  currency: 'USD',
+  price: 120.10,
+  transaction_id: '11111'
+})
+```
