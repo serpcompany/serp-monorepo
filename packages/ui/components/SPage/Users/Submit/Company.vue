@@ -2,7 +2,11 @@
   import * as z from 'zod';
   import type { FormSubmitEvent } from '@nuxt/ui';
   import { v4 as uuidv4 } from 'uuid';
-  import type { Category, CompanySubmissionForm, CompanyFormField } from '@serp/types/types';
+  import type {
+    Category,
+    CompanySubmissionForm,
+    CompanyFormField
+  } from '@serp/types/types';
 
   const { loggedIn, user } = useUserSession();
   if (!loggedIn.value) {
