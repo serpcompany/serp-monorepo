@@ -79,3 +79,19 @@ export type Reviews = {
   reviews: CompanyReview[];
   pagination: Pagination;
 };
+
+export type CompanySubmissionForm = {
+  name: string;
+  domain: string;
+  pricing: string;
+  tags: string;
+  oneLiner: string;
+  description: string;
+  categories: string[];
+  logo: string;
+};
+
+export type CompanyFormField = {
+  key: keyof CompanySubmissionForm;
+  label: string;
+};

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import type { CompanySubmissionForm, CompanyFormField } from '@serp/types/types';
+
   const { loggedIn, user } = useUserSession();
   if (!loggedIn.value) {
     navigateTo('/login');
@@ -10,7 +12,7 @@
     { label: 'Example', value: 'example' }
   ]);
 
-  const company = ref({
+  const company = ref<CompanySubmissionForm>({
     name: '',
     domain: '',
     pricing: '',
@@ -28,7 +30,7 @@
   const categoryOptions = ref(categories?.map((category) => category.name));
   const pricingOptions = ref(['Free', 'Paid', 'Subscription']);
 
-  const allFields = [
+  const allFields: CompanyFormField[] = [
     { key: 'name', label: 'Name' },
     { key: 'domain', label: 'Domain' },
     { key: 'categories', label: 'Category(s)' },
@@ -39,7 +41,7 @@
     { key: 'logo', label: 'Logo' }
   ];
 
-  const requiredFields = [
+  const requiredFields: CompanyFormField[] = [
     { key: 'name', label: 'Name' },
     { key: 'domain', label: 'Domain' },
     { key: 'pricing', label: 'Pricing' },

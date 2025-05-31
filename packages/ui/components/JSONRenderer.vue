@@ -69,8 +69,8 @@
   // Convert camelCase/PascalCase to human-readable format
   const formatKey = (key: string): string => {
     // Check if there's a manual mapping first
-    if (renameKeysMapping[key]) {
-      return renameKeysMapping[key];
+    if (renameKeysMapping[key as keyof typeof renameKeysMapping]) {
+      return renameKeysMapping[key as keyof typeof renameKeysMapping];
     }
 
     // Handle camelCase and PascalCase

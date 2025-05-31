@@ -251,7 +251,7 @@ export default defineEventHandler(async (event) => {
     baseQuery = baseQuery.where(and(...whereConditions));
     totalQuery = totalQuery.where(and(...whereConditions));
 
-    const sorts = {
+    const sorts: Record<string, unknown> = {
       'name:asc': asc(entity.name),
       'name:desc': desc(entity.name),
       'createdAt:desc': desc(entity.createdAt)

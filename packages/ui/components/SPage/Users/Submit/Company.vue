@@ -2,7 +2,7 @@
   import * as z from 'zod';
   import type { FormSubmitEvent } from '@nuxt/ui';
   import { v4 as uuidv4 } from 'uuid';
-  import type { Category } from '@serp/types/types';
+  import type { Category, CompanySubmissionForm, CompanyFormField } from '@serp/types/types';
 
   const { loggedIn, user } = useUserSession();
   if (!loggedIn.value) {
@@ -26,7 +26,7 @@
   });
   type Schema = z.output<typeof schema>;
 
-  const company = reactive({
+  const company = reactive<CompanySubmissionForm & { id: null }>({
     id: null,
     name: '',
     domain: '',
@@ -85,7 +85,7 @@
   const toast = useToast();
   const loading = ref(false);
 
-  const requiredFields = [
+  const requiredFields: CompanyFormField[] = [
     { key: 'name', label: 'Name' },
     { key: 'domain', label: 'Domain' },
     { key: 'pricing', label: 'Pricing' },
