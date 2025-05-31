@@ -1,4 +1,4 @@
-import type { ReleaseGroup } from '@serp/types/types';
+import type { Entities, ReleaseGroup } from '@serp/types/types';
 
 export const useAlbums = async (page = 1, limit = 50) => {
   const data = await useFetchWithCache<Entities>(

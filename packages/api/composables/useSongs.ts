@@ -1,4 +1,4 @@
-import type { Recording } from '@serp/types/types';
+import type { Entities, Recording } from '@serp/types/types';
 
 export const useSongs = async (page = 1, limit = 50) => {
   const data = await useFetchWithCache<Entities>(

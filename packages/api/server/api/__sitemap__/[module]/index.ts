@@ -1,12 +1,20 @@
 import { useDataCache } from '#nuxt-multi-cache/composables';
 import { getDb } from '@serp/db/server/database';
 import { entity } from '@serp/db/server/database/schema';
-import { sql } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
   const { page, count = false } = getQuery(event);
   const limit = 50000;
   const module = getRouterParam(event, 'module');
+  
+  if (!module) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Module parameter is required'
+    });
+  }
+  
   const cacheKey = `${module}-sitemap-${page}-${count}`;
   const { value, addToCache } = await useDataCache(cacheKey, event);
   if (value) {

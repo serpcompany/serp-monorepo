@@ -1,4 +1,4 @@
-import type { Artist } from '@serp/types/types';
+import type { Artist, Entities } from '@serp/types/types';
 
 export const useArtists = async (page = 1, limit = 50) => {
   const data = await useFetchWithCache<Entities>(
