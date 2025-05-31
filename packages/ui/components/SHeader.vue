@@ -67,11 +67,9 @@
         <!-- Desktop nav -->
         <div class="ml-6 hidden lg:flex">
           <UNavigationMenu
-            aria-label="Main navigation"
             orientation="horizontal"
             content-orientation="vertical"
             highlight
-            text-size="base"
             variant="pill"
             :items="headerNavItems"
             :ui="{

@@ -1,12 +1,16 @@
 <script setup lang="ts">
   interface Props {
     id: number | string;
-    upvotes: number;
-    downvotes: number;
+    upvotes?: number;
+    downvotes?: number;
     usersCurrentVote?: number | null;
   }
 
-  const props = defineProps<Props>();
+  const props = withDefaults(defineProps<Props>(), {
+    downvotes: 0,
+    upvotes: 0,
+    usersCurrentVote: null
+  });
   const { upvotes, downvotes } = toRefs(props);
   const currentVote = toRef(props, 'usersCurrentVote');
 
