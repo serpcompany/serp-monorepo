@@ -1,7 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { mockGetQuery, mockDb } from '../../../../setup';
-import { getDb } from '@serp/db/server/database';
-import { eq, or } from 'drizzle-orm';
+import { or } from 'drizzle-orm';
 
 describe('Entity Claims Get API', () => {
   let handler;

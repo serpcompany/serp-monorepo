@@ -56,5 +56,8 @@ jobs:
       - name: Test
         run: pnpm test
 
-      - name: TypeScript Check - Phase 1 (TS7006, TS7053, TS7034, TS7005)
+      - name: TypeScript Check - Phase 1 (TS7006, TS7053, TS7034, TS7005, TS7008)
         run: pnpm typecheck:phase1
+        
+      - name: TypeScript Check - Phase 2A (TS2304)
+        run: pnpm typecheck:phase2a

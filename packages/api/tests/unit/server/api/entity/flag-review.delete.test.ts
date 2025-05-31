@@ -1,6 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { mockDb, mockGetQuery } from '../../../../setup';
-import { getDb } from '@serp/db/server/database';
 import { and, eq, sql } from 'drizzle-orm';
 
 describe('Entity Flag Review Delete API', () => {

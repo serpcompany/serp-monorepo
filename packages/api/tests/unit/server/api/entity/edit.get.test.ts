@@ -1,6 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { mockDb, mockGetQuery } from '../../../../setup';
-import { getDb } from '@serp/db/server/database';
 import { eq } from 'drizzle-orm';
 
 describe('Entity Edit Get API', () => {

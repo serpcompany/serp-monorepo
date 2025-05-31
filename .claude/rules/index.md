@@ -1,6 +1,9 @@
-@.claude/rules/research-methodology.md
+@.claude/patterns/
+@.claude/patterns/nuxt-testing-best-practices.md
+@.claude/context7/
 @.claude/rules/browser-tools-setup.md
 @.claude/rules/bugs-and-errors.md
+@.claude/rules/CICD.md
 @.claude/rules/cloudflare-rules.md
 @.claude/rules/design-system.md
 @.claude/rules/external-resources.md
@@ -8,7 +11,9 @@
 @.claude/rules/grok-the-project.md
 @.claude/rules/jsdoc-comments.md
 @.claude/rules/mcp-servers.md
+@.claude/rules/pr-review-template.md
 @.claude/rules/refactoring.md
+@.claude/rules/research-methodology.md
 @.claude/rules/security-rules.md
 @.claude/rules/self-improve.md
 @.claude/rules/shared.md

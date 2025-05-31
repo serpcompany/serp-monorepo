@@ -9,6 +9,7 @@
   } from '@serp/types/types';
 
   // Type declaration for useS3Object for apps without @bg-dev/nuxt-s3 module
+  // @ts-expect-error - suppress TS error for global declaration that may conflict with auto-imports
   declare global {
     function useS3Object(): {
       upload: (

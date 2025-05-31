@@ -1,7 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { mockReadBody, mockDb } from '../../../../setup';
 import { getDb } from '@serp/db/server/database';
-import { sql } from 'drizzle-orm';
 
 describe('Comments Post API', () => {
   let handler;

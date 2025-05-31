@@ -5,7 +5,6 @@ import {
   mockDb,
   mockCreateError
 } from '../../../../setup';
-import { getDb } from '@serp/db/server/database';
 
 const mockAddToCache = vi.fn();
 let cacheValue = null;

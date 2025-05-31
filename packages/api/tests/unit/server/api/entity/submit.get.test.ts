@@ -1,7 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { mockGetQuery, mockDb } from '../../../../setup';
-import { getDb } from '@serp/db/server/database';
 import { and, eq } from 'drizzle-orm';
+import { mockGetQuery, mockDb } from '../../../../setup';
 
 describe('Entity Submit Get API', () => {
   let handler;
