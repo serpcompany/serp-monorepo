@@ -1,4 +1,4 @@
-import type { Entities, ServiceProviders } from '@serp/types/types';
+import type { Entities, ServiceProviderIndex, ServiceProviders } from '@serp/types/types';
 
 export const useServiceProviders = async (
   page = 1,
@@ -12,6 +12,6 @@ export const useServiceProviders = async (
   const { entities, ...rest } = data;
   return {
     ...rest,
-    serviceProviders: entities
+    serviceProviders: entities as ServiceProviderIndex[]
   } as ServiceProviders;
 };

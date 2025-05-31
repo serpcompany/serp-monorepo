@@ -1,4 +1,4 @@
-import type { Entities, Posts } from '@serp/types/types';
+import type { Entities, PostIndex, Posts } from '@serp/types/types';
 
 export const usePosts = async (
   page = 1,
@@ -13,6 +13,6 @@ export const usePosts = async (
   const { entities, ...rest } = data;
   return {
     ...rest,
-    posts: entities
+    posts: entities as PostIndex[]
   } as Posts;
 };

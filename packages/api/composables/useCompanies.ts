@@ -1,4 +1,4 @@
-import type { Companies, Entities } from '@serp/types/types';
+import type { Companies, Company, Entities } from '@serp/types/types';
 
 export const useCompanies = async (
   page = 1,
@@ -16,6 +16,6 @@ export const useCompanies = async (
   const { entities, ...rest } = data;
   return {
     ...rest,
-    companies: entities
+    companies: entities as Company[]
   } as Companies;
 };

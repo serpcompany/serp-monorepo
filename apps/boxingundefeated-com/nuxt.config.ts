@@ -75,11 +75,11 @@ export default defineNuxtConfig({
   },
   schemaOrg: {
     identity: 'Organization',
-    host: 'https://boxingundefeated.com'
+    url: 'https://boxingundefeated.com'
   },
   experimental: {
     defaults: {
-      nuxthref: {
+      nuxtLink: {
         trailingSlash: 'append'
       }
     }
