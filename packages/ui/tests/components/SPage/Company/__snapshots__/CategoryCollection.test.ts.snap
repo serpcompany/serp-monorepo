@@ -1297,7 +1297,7 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with empty companies 
               aria-hidden="true"
               class="
                 animate-spin
-                i-lucide:refresh-cw
+                i-lucide:loader-circle
                 iconify
                 shrink-0
                 size-5
@@ -1958,7 +1958,7 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with no categories co
               aria-hidden="true"
               class="
                 animate-spin
-                i-lucide:refresh-cw
+                i-lucide:loader-circle
                 iconify
                 shrink-0
                 size-5
@@ -2535,7 +2535,7 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders without category arti
               aria-hidden="true"
               class="
                 animate-spin
-                i-lucide:refresh-cw
+                i-lucide:loader-circle
                 iconify
                 shrink-0
                 size-5

@@ -6,5 +6,6 @@ export type Comment = {
   content: string;
   createdAt: string;
   updatedAt: string;
+  parent_id?: string | null;
   replies: Comment[];
 };

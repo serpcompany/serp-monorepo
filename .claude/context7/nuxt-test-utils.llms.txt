@@ -1,0 +1,59 @@
+TITLE: Create New Development Branch (Bash)
+DESCRIPTION: Create and switch to a new Git branch where you can work on your contributions. This isolates your changes from the main branch and is a standard practice for submitting pull requests.
+SOURCE: https://github.com/nuxt/test-utils/blob/main/CONTRIBUTING.md#_snippet_3
+
+LANGUAGE: bash
+CODE:
+```
+git checkout -b my-new-branch
+```
+
+----------------------------------------
+
+TITLE: Install Project Dependencies (Bash)
+DESCRIPTION: Install the project's dependencies using pnpm and also install the Chromium browser required for Playwright tests. This command fetches all necessary packages and sets up the testing environment.
+SOURCE: https://github.com/nuxt/test-utils/blob/main/CONTRIBUTING.md#_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+pnpm install && pnpm playwright install chromium
+```
+
+----------------------------------------
+
+TITLE: Enable Corepack (Bash)
+DESCRIPTION: Enable Corepack, a tool to manage package managers like pnpm, which is required to install the project's dependencies. This command makes the 'pnpm' binary available in your terminal.
+SOURCE: https://github.com/nuxt/test-utils/blob/main/CONTRIBUTING.md#_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+corepack enable
+```
+
+----------------------------------------
+
+TITLE: Test Local Changes (Bash)
+DESCRIPTION: Run a sequence of commands to test your changes against project examples before submitting a pull request. This includes prepacking the package, running the example tests, and re-preparing the development environment.
+SOURCE: https://github.com/nuxt/test-utils/blob/main/CONTRIBUTING.md#_snippet_4
+
+LANGUAGE: bash
+CODE:
+```
+pnpm prepack
+pnpm test:examples
+pnpm dev:prepare
+```
+
+----------------------------------------
+
+TITLE: Prepare Development System (Bash)
+DESCRIPTION: Activate the passive development system for Nuxt Test Utils. This step might involve generating necessary files or configurations needed for local development or testing workflows.
+SOURCE: https://github.com/nuxt/test-utils/blob/main/CONTRIBUTING.md#_snippet_2
+
+LANGUAGE: bash
+CODE:
+```
+pnpm dev:prepare
+```

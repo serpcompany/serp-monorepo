@@ -1454,7 +1454,7 @@ exports[`SPageCompanyCollection Snapshot > renders correctly with categories (wi
               aria-hidden="true"
               class="
                 animate-spin
-                i-lucide:refresh-cw
+                i-lucide:loader-circle
                 iconify
                 shrink-0
                 size-5
@@ -2314,7 +2314,7 @@ exports[`SPageCompanyCollection Snapshot > renders correctly without categories 
               aria-hidden="true"
               class="
                 animate-spin
-                i-lucide:refresh-cw
+                i-lucide:loader-circle
                 iconify
                 shrink-0
                 size-5
@@ -3059,7 +3059,7 @@ exports[`SPageCompanyCollection Snapshot > renders correctly without categories 
               aria-hidden="true"
               class="
                 animate-spin
-                i-lucide:refresh-cw
+                i-lucide:loader-circle
                 iconify
                 shrink-0
                 size-5
