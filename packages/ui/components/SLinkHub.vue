@@ -24,17 +24,17 @@
           <ULink
             v-if="category.slug"
             :to="`/${baseSlug}/${category.slug}/`"
-            class="group flex items-center gap-3 text-base font-medium transition-all"
+            class="group flex items-center gap-3 transition-all"
             active-class="text-secondary"
           >
             <UIcon
               name="lucide:arrow-right"
               class="text-dimmed size-4 transition-all group-hover:translate-x-1"
             />
-            <span>
+            <span class="truncate text-base font-medium">
               {{ category.name }}
             </span>
-            <hr class="min-w-2 flex-1 border-(--ui-border)" />
+            <hr class="min-w-0 flex-1 border-(--ui-border)" />
           </ULink>
         </template>
       </div>

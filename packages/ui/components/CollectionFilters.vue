@@ -7,9 +7,9 @@
   defineProps<Props>();
   const route = useRoute();
   const state = reactive({
-    q: (route.query.q as string) || '',
-    category: (route.query.category as string) || '',
-    sort: (route.query.sort as string) || ''
+    q: '',
+    category: '',
+    sort: ''
   });
 
   const sorts = [
@@ -36,6 +36,14 @@
       query,
       replace: true
     });
+  });
+
+  onMounted(async () => {
+    await nextTick();
+
+    if (route.query.q) state.q = route.query.q.toString();
+    if (route.query.category) state.category = route.query.category.toString();
+    if (route.query.sort) state.sort = route.query.sort.toString();
   });
 </script>
 
