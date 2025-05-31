@@ -63,16 +63,14 @@ export default defineNuxtConfig({
       ]
     }
   },
-  $production: {
-    scripts: {
-      registry: {
-        googleTagManager: {
-          id: 'GTM-NC8CG9R'
-        },
-        googleAdsense: {
-          client: 'ca-pub-2343633734899216', // infisical-scan:ignore
-          autoAds: true
-        }
+  scripts: {
+    registry: {
+      googleTagManager: {
+        id: 'GTM-NC8CG9R'
+      },
+      googleAdsense: {
+        client: 'ca-pub-2343633734899216', // infisical-scan:ignore
+        autoAds: true
       }
     }
   },
@@ -109,7 +107,9 @@ export default defineNuxtConfig({
   image: {
     format: ['webp']
   },
-
+  security: {
+    rateLimiter: false
+  },
   htmlValidator: {
     usePrettier: false,
     failOnError: true,
