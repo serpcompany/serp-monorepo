@@ -169,6 +169,12 @@
     }
   }
 
+  function setAlert(message: string, type: string) {
+    alertMessage.value = message;
+    alertClass.value = type;
+    alert.value = true;
+  }
+
   function deleteComment(index: number) {
     comments.value.splice(index, 1);
   }

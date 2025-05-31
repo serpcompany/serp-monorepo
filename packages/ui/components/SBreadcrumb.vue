@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import type { BreadcrumbItem } from '@nuxt/ui';
   const props = defineProps<{
     excludedRoutes?: (string | RegExp)[];
   }>();

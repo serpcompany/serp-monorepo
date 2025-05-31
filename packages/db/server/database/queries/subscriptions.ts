@@ -82,11 +82,11 @@ export const getSubscriptionByUserId = async (
 
     return { ...row.subscription, price: row.price };
   } catch (error) {
-    console.log('getSubscriptionByTeamId', teamId);
+    console.log('getSubscriptionByUserId', userId);
     console.error(error);
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to get subscription by team ID'
+      statusMessage: 'Failed to get subscription by user ID'
     });
   }
 };
