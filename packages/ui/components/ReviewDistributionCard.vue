@@ -121,14 +121,18 @@
                   :style="{
                     width: `${
                       totalReviews > 0
-                        ? (ratingCounts[star as keyof typeof ratingCounts] / totalReviews) * 100
+                        ? (ratingCounts[star as keyof typeof ratingCounts] /
+                            totalReviews) *
+                          100
                         : 0
                     }%`
                   }"
                 ></div>
               </div>
 
-              <span class="ml-4 text-sm">{{ ratingCounts[star as keyof typeof ratingCounts] || 0 }}</span>
+              <span class="ml-4 text-sm">{{
+                ratingCounts[star as keyof typeof ratingCounts] || 0
+              }}</span>
             </div>
           </div>
 

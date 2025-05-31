@@ -1,5 +1,8 @@
 <script setup lang="ts">
-  import type { CompanySubmissionForm, CompanyFormField } from '@serp/types/types';
+  import type {
+    CompanySubmissionForm,
+    CompanyFormField
+  } from '@serp/types/types';
 
   const { loggedIn, user } = useUserSession();
   if (!loggedIn.value) {
