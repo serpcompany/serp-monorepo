@@ -15,19 +15,7 @@ This project contains comprehensive coding rules and guidelines that must be fol
 
 ## Import All Rule Files
 
-@.claude/rules/cloudflare-rules.mdc
-@.claude/rules/research-methodology.mdc
-@.claude/rules/browser-tools-setup.mdc
-@.claude/rules/bugs-and-errors.mdc
-@.claude/rules/design-system.mdc
-@.claude/rules/security-rules.mdc
-@.claude/rules/self-improve.mdc
-@.claude/rules/vue-nuxt.mdc
-@.claude/rules/external-resources.mdc
-@.claude/rules/general.mdc
-@.claude/rules/jsdoc-comments.mdc
-@.claude/rules/shared.mdc
-@.claude/rules/tech-stack.mdc
+@.claude/rules/index.md
 
 ## Key Project Guidelines
 

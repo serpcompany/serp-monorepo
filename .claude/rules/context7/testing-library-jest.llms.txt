@@ -1,0 +1,1350 @@
+TITLE: Importing jest-dom in Jest setup file
+DESCRIPTION: Example of importing jest-dom in a Jest setup file and configuring Jest to use it.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_2
+
+LANGUAGE: javascript
+CODE:
+```
+// In your own jest-setup.js (or any other name)
+import '@testing-library/jest-dom'
+
+// In jest.config.js add (if you haven't already)
+setupFilesAfterEnv: ['<rootDir>/jest-setup.js']
+```
+
+----------------------------------------
+
+TITLE: Configuring TypeScript for jest-dom
+DESCRIPTION: Example of configuring tsconfig.json for TypeScript support with jest-dom and Vitest.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_5
+
+LANGUAGE: json
+CODE:
+```
+{
+  "compilerOptions": {
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
+  },
+  "include": [
+    "./vitest.setup.ts"
+  ]
+}
+```
+
+----------------------------------------
+
+TITLE: Testing Element Classes with Jest
+DESCRIPTION: JavaScript code demonstrating the usage of toHaveClass matcher in Jest tests for various class scenarios.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_28
+
+LANGUAGE: javascript
+CODE:
+```
+const deleteButton = getByTestId('delete-button')
+const noClasses = getByTestId('no-classes')
+
+expect(deleteButton).toHaveClass('extra')
+expect(deleteButton).toHaveClass('btn-danger btn')
+expect(deleteButton).toHaveClass(/danger/, 'btn')
+expect(deleteButton).toHaveClass('btn-danger', 'btn')
+expect(deleteButton).not.toHaveClass('btn-link')
+expect(deleteButton).not.toHaveClass(/link/)
+expect(deleteButton).not.toHaveClass(/btn extra/) // It does not match
+
+expect(deleteButton).toHaveClass('btn-danger extra btn', {exact: true}) // to check if the element has EXACTLY a set of classes
+expect(deleteButton).not.toHaveClass('btn-danger extra', {exact: true}) // if it has more than expected it is going to fail
+
+expect(noClasses).not.toHaveClass()
+```
+
+----------------------------------------
+
+TITLE: Using toBeInTheDocument matcher
+DESCRIPTION: Example of using the toBeInTheDocument matcher to check if elements are present in the document.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_9
+
+LANGUAGE: html
+CODE:
+```
+<span data-testid="html-element"><span>Html Element</span></span>
+<svg data-testid="svg-element"></svg>
+```
+
+LANGUAGE: javascript
+CODE:
+```
+expect(
+  getByTestId(document.documentElement, 'html-element'),
+).toBeInTheDocument()
+expect(getByTestId(document.documentElement, 'svg-element')).toBeInTheDocument()
+expect(
+  queryByTestId(document.documentElement, 'does-not-exist'),
+).not.toBeInTheDocument()
+```
+
+----------------------------------------
+
+TITLE: Using toBeDisabled matcher
+DESCRIPTION: Example of using the toBeDisabled matcher to check if elements are disabled.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_7
+
+LANGUAGE: html
+CODE:
+```
+<button data-testid="button" type="submit" disabled>submit</button>
+<fieldset disabled><input type="text" data-testid="input" /></fieldset>
+<a href="..." disabled>link</a>
+```
+
+LANGUAGE: javascript
+CODE:
+```
+expect(getByTestId('button')).toBeDisabled()
+expect(getByTestId('input')).toBeDisabled()
+expect(getByText('link')).not.toBeDisabled()
+```
+
+----------------------------------------
+
+TITLE: Using toBeVisible Matcher in Jest DOM
+DESCRIPTION: Checks if an element is visible to the user based on display, visibility, opacity and parent visibility.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_13
+
+LANGUAGE: typescript
+CODE:
+```
+toBeVisible()
+```
+
+LANGUAGE: html
+CODE:
+```
+<div data-testid="zero-opacity" style="opacity: 0">Zero Opacity Example</div>
+<div data-testid="visibility-hidden" style="visibility: hidden">
+  Visibility Hidden Example
+</div>
+<div data-testid="display-none" style="display: none">Display None Example</div>
+<div style="opacity: 0">
+  <span data-testid="hidden-parent">Hidden Parent Example</span>
+</div>
+<div data-testid="visible">Visible Example</div>
+<div data-testid="hidden-attribute" hidden>Hidden Attribute Example</div>
+<details>
+  <summary>Title of hidden text</summary>
+  Hidden Details Example
+</details>
+<details open>
+  <summary>Title of visible text</summary>
+  <div>Visible Details Example</div>
+</details>
+```
+
+LANGUAGE: javascript
+CODE:
+```
+expect(getByText('Zero Opacity Example')).not.toBeVisible()
+expect(getByText('Visibility Hidden Example')).not.toBeVisible()
+expect(getByText('Display None Example')).not.toBeVisible()
+expect(getByText('Hidden Parent Example')).not.toBeVisible()
+expect(getByText('Visible Example')).toBeVisible()
+expect(getByText('Hidden Attribute Example')).not.toBeVisible()
+expect(getByText('Hidden Details Example')).not.toBeVisible()
+expect(getByText('Visible Details Example')).toBeVisible()
+```
+
+----------------------------------------
+
+TITLE: Testing Element Attributes with Jest
+DESCRIPTION: JavaScript code demonstrating the usage of toHaveAttribute matcher in Jest tests for various attribute scenarios.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_25
+
+LANGUAGE: javascript
+CODE:
+```
+const button = getByTestId('ok-button')
+
+expect(button).toHaveAttribute('disabled')
+expect(button).toHaveAttribute('type', 'submit')
+expect(button).not.toHaveAttribute('type', 'button')
+
+expect(button).toHaveAttribute('type', expect.stringContaining('sub'))
+expect(button).toHaveAttribute('type', expect.not.stringContaining('but'))
+```
+
+----------------------------------------
+
+TITLE: Testing Element Styling with toHaveStyle Matcher
+DESCRIPTION: Examples of using the toHaveStyle matcher to check CSS properties on DOM elements. Shows different syntax options including string and object notation for style assertions.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_37
+
+LANGUAGE: javascript
+CODE:
+```
+const button = getByTestId('delete-button')
+
+expect(button).toHaveStyle('display: none')
+expect(button).toHaveStyle({display: 'none'})
+expect(button).toHaveStyle(`
+  background-color: red;
+  display: none;
+`)
+expect(button).toHaveStyle({
+  backgroundColor: 'red',
+  display: 'none',
+})
+expect(button).not.toHaveStyle(`
+  background-color: blue;
+  display: none;
+`)
+expect(button).not.toHaveStyle({
+  backgroundColor: 'blue',
+  display: 'none',
+})
+```
+
+----------------------------------------
+
+TITLE: Testing Accessible Error Messages with Jest
+DESCRIPTION: JavaScript code demonstrating the usage of toHaveAccessibleErrorMessage matcher in Jest tests for various input scenarios.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_19
+
+LANGUAGE: javascript
+CODE:
+```
+// Inputs with Valid Error Messages
+expect(getByRole('textbox', {name: 'Has Error'})).toHaveAccessibleErrorMessage()
+expect(getByRole('textbox', {name: 'Has Error'})).toHaveAccessibleErrorMessage(
+  'This field is invalid',
+)
+expect(getByRole('textbox', {name: 'Has Error'})).toHaveAccessibleErrorMessage(
+  /invalid/i,
+)
+expect(
+  getByRole('textbox', {name: 'Has Error'}),
+).not.toHaveAccessibleErrorMessage('This field is absolutely correct!')
+
+// Inputs without Valid Error Messages
+expect(
+  getByRole('textbox', {name: 'No Error Attributes'}),
+).not.toHaveAccessibleErrorMessage()
+
+expect(
+  getByRole('textbox', {name: 'Not Invalid'}),
+).not.toHaveAccessibleErrorMessage()
+```
+
+----------------------------------------
+
+TITLE: Testing Text Content with toHaveTextContent Matcher
+DESCRIPTION: Examples of using the toHaveTextContent matcher to verify element content using string matching, regular expressions for case-insensitive matching, and exact content matching.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_40
+
+LANGUAGE: javascript
+CODE:
+```
+const element = getByTestId('text-content')
+
+expect(element).toHaveTextContent('Content')
+expect(element).toHaveTextContent(/^Text Content$/) // to match the whole content
+expect(element).toHaveTextContent(/content$/i) // to use case-insensitive match
+expect(element).not.toHaveTextContent('content')
+```
+
+----------------------------------------
+
+TITLE: Using toBeEmpty Matcher in JavaScript
+DESCRIPTION: Demonstrates how to use the toBeEmpty matcher in Jest tests to assert whether elements are empty or not.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_61
+
+LANGUAGE: javascript
+CODE:
+```
+expect(getByTestId('empty')).toBeEmpty()
+expect(getByTestId('not-empty')).not.toBeEmpty()
+```
+
+----------------------------------------
+
+TITLE: Testing Partially Checked States with toBePartiallyChecked Matcher
+DESCRIPTION: Examples of using the toBePartiallyChecked matcher to verify indeterminate or mixed states of checkboxes, including both ARIA-based and JavaScript indeterminate property examples.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_52
+
+LANGUAGE: javascript
+CODE:
+```
+const ariaCheckboxMixed = getByTestId('aria-checkbox-mixed')
+const inputCheckboxChecked = getByTestId('input-checkbox-checked')
+const inputCheckboxUnchecked = getByTestId('input-checkbox-unchecked')
+const ariaCheckboxChecked = getByTestId('aria-checkbox-checked')
+const ariaCheckboxUnchecked = getByTestId('aria-checkbox-unchecked')
+const inputCheckboxIndeterminate = getByTestId('input-checkbox-indeterminate')
+
+expect(ariaCheckboxMixed).toBePartiallyChecked()
+expect(inputCheckboxChecked).not.toBePartiallyChecked()
+expect(inputCheckboxUnchecked).not.toBePartiallyChecked()
+expect(ariaCheckboxChecked).not.toBePartiallyChecked()
+expect(ariaCheckboxUnchecked).not.toBePartiallyChecked()
+
+inputCheckboxIndeterminate.indeterminate = true
+expect(inputCheckboxIndeterminate).toBePartiallyChecked()
+```
+
+----------------------------------------
+
+TITLE: Testing Form Element Values with toHaveValue Matcher
+DESCRIPTION: Examples of using the toHaveValue matcher to verify values of different form elements including text inputs, number inputs, and multi-select dropdowns.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_43
+
+LANGUAGE: javascript
+CODE:
+```
+const textInput = getByTestId('input-text')
+const numberInput = getByTestId('input-number')
+const emptyInput = getByTestId('input-empty')
+const selectInput = getByTestId('select-number')
+
+expect(textInput).toHaveValue('text')
+expect(numberInput).toHaveValue(5)
+expect(emptyInput).not.toHaveValue()
+expect(selectInput).toHaveValue(['second', 'third'])
+```
+
+----------------------------------------
+
+TITLE: Defining toHaveAttribute Matcher in TypeScript
+DESCRIPTION: TypeScript definition for the toHaveAttribute custom matcher, used to assert that an element has a specific attribute with an optional value.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_23
+
+LANGUAGE: typescript
+CODE:
+```
+toHaveAttribute(attr: string, value?: any)
+```
+
+----------------------------------------
+
+TITLE: Testing Accessible Names with Jest
+DESCRIPTION: JavaScript code demonstrating the usage of toHaveAccessibleName matcher in Jest tests for various element scenarios.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_22
+
+LANGUAGE: javascript
+CODE:
+```
+expect(getByTestId('img-alt')).toHaveAccessibleName('Test alt')
+expect(getByTestId('img-empty-alt')).not.toHaveAccessibleName()
+expect(getByTestId('svg-title')).toHaveAccessibleName('Test title')
+expect(getByTestId('button-img-alt')).toHaveAccessibleName()
+expect(getByTestId('img-paragraph')).not.toHaveAccessibleName()
+expect(getByTestId('svg-button')).toHaveAccessibleName()
+expect(getByTestId('svg-without-title')).not.toHaveAccessibleName()
+expect(getByTestId('input-title')).toHaveAccessibleName()
+```
+
+----------------------------------------
+
+TITLE: Defining toHaveFocus Matcher in TypeScript
+DESCRIPTION: TypeScript definition for the toHaveFocus custom matcher, used to assert that an element has focus.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_29
+
+LANGUAGE: typescript
+CODE:
+```
+toHaveFocus()
+```
+
+----------------------------------------
+
+TITLE: Testing Checked States with toBeChecked Matcher
+DESCRIPTION: Examples of using the toBeChecked matcher to verify checked states of checkboxes, radio buttons, and elements with ARIA roles that support checked states.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_49
+
+LANGUAGE: javascript
+CODE:
+```
+const inputCheckboxChecked = getByTestId('input-checkbox-checked')
+const inputCheckboxUnchecked = getByTestId('input-checkbox-unchecked')
+const ariaCheckboxChecked = getByTestId('aria-checkbox-checked')
+const ariaCheckboxUnchecked = getByTestId('aria-checkbox-unchecked')
+expect(inputCheckboxChecked).toBeChecked()
+expect(inputCheckboxUnchecked).not.toBeChecked()
+expect(ariaCheckboxChecked).toBeChecked()
+expect(ariaCheckboxUnchecked).not.toBeChecked()
+
+const inputRadioChecked = getByTestId('input-radio-checked')
+const inputRadioUnchecked = getByTestId('input-radio-unchecked')
+const ariaRadioChecked = getByTestId('aria-radio-checked')
+const ariaRadioUnchecked = getByTestId('aria-radio-unchecked')
+expect(inputRadioChecked).toBeChecked()
+expect(inputRadioUnchecked).not.toBeChecked()
+expect(ariaRadioChecked).toBeChecked()
+expect(ariaRadioUnchecked).not.toBeChecked()
+
+const ariaSwitchChecked = getByTestId('aria-switch-checked')
+const ariaSwitchUnchecked = getByTestId('aria-switch-unchecked')
+expect(ariaSwitchChecked).toBeChecked()
+expect(ariaSwitchUnchecked).not.toBeChecked()
+```
+
+----------------------------------------
+
+TITLE: Defining toHaveStyle Matcher in TypeScript
+DESCRIPTION: TypeScript definition for the toHaveStyle custom matcher, used to assert that an element has specific CSS properties with specific values.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_35
+
+LANGUAGE: typescript
+CODE:
+```
+toHaveStyle(css: string | object)
+```
+
+----------------------------------------
+
+TITLE: Testing Form Values with Jest
+DESCRIPTION: JavaScript code demonstrating the usage of toHaveFormValues matcher in Jest tests for checking form control values.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_34
+
+LANGUAGE: javascript
+CODE:
+```
+expect(getByTestId('login-form')).toHaveFormValues({
+  username: 'jane.doe',
+  rememberMe: true,
+})
+```
+
+----------------------------------------
+
+TITLE: toHaveTextContent Matcher TypeScript Definition
+DESCRIPTION: TypeScript definition for the toHaveTextContent matcher, showing the function signature with its parameters and options for normalizing whitespace.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_38
+
+LANGUAGE: typescript
+CODE:
+```
+toHaveTextContent(text: string | RegExp, options?: {normalizeWhitespace: boolean})
+```
+
+----------------------------------------
+
+TITLE: Testing Form Display Values with toHaveDisplayValue Matcher
+DESCRIPTION: Examples of using the toHaveDisplayValue matcher to verify displayed values of different form elements including text inputs, textareas, and select dropdowns with both string and regex matching.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_46
+
+LANGUAGE: javascript
+CODE:
+```
+const input = screen.getByLabelText('First name')
+const textarea = screen.getByLabelText('Description')
+const selectSingle = screen.getByLabelText('Fruit')
+const selectMultiple = screen.getByLabelText('Fruits')
+
+expect(input).toHaveDisplayValue('Luca')
+expect(input).toHaveDisplayValue(/Luc/)
+expect(textarea).toHaveDisplayValue('An example description here.')
+expect(textarea).toHaveDisplayValue(/example/)
+expect(selectSingle).toHaveDisplayValue('Select a fruit...')
+expect(selectSingle).toHaveDisplayValue(/Select/)
+expect(selectMultiple).toHaveDisplayValue([/Avocado/, 'Banana'])
+```
+
+----------------------------------------
+
+TITLE: toHaveValue Matcher TypeScript Definition
+DESCRIPTION: TypeScript definition for the toHaveValue matcher, showing the function signature that accepts string, string array, or number values for validating form element values.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_41
+
+LANGUAGE: typescript
+CODE:
+```
+toHaveValue(value: string | string[] | number)
+```
+
+----------------------------------------
+
+TITLE: Testing Element Focus with Jest
+DESCRIPTION: JavaScript code demonstrating the usage of toHaveFocus matcher in Jest tests for focus and blur scenarios.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_31
+
+LANGUAGE: javascript
+CODE:
+```
+const input = getByTestId('element-to-focus')
+
+input.focus()
+expect(input).toHaveFocus()
+
+input.blur()
+expect(input).not.toHaveFocus()
+```
+
+----------------------------------------
+
+TITLE: Defining toHaveAccessibleErrorMessage Matcher in TypeScript
+DESCRIPTION: TypeScript definition for the toHaveAccessibleErrorMessage custom matcher, used to assert that an element has the expected accessible error message.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_17
+
+LANGUAGE: typescript
+CODE:
+```
+toHaveAccessibleErrorMessage(expectedAccessibleErrorMessage?: string | RegExp)
+```
+
+----------------------------------------
+
+TITLE: Using toHaveRole Matcher in JavaScript
+DESCRIPTION: Demonstrates how to use the toHaveRole matcher in Jest tests to assert the roles of various elements.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_55
+
+LANGUAGE: javascript
+CODE:
+```
+expect(getByTestId('button')).toHaveRole('button')
+expect(getByTestId('button-explicit')).toHaveRole('button')
+expect(getByTestId('button-explicit-multiple')).toHaveRole('button')
+expect(getByTestId('button-explicit-multiple')).toHaveRole('switch')
+expect(getByTestId('link')).toHaveRole('link')
+expect(getByTestId('link-invalid')).not.toHaveRole('link')
+expect(getByTestId('link-invalid')).toHaveRole('generic')
+```
+
+----------------------------------------
+
+TITLE: Using toHaveErrorMessage Matcher in JavaScript
+DESCRIPTION: Demonstrates how to use the toHaveErrorMessage matcher in Jest tests to assert the presence and content of error messages.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_58
+
+LANGUAGE: javascript
+CODE:
+```
+const timeInput = getByLabel('startTime')
+
+expect(timeInput).toHaveErrorMessage(
+  'Invalid time: the time must be between 9:00 AM and 5:00 PM',
+)
+expect(timeInput).toHaveErrorMessage(/invalid time/i) // to partially match
+expect(timeInput).toHaveErrorMessage(expect.stringContaining('Invalid time')) // to partially match
+expect(timeInput).not.toHaveErrorMessage('Pikachu!')
+```
+
+----------------------------------------
+
+TITLE: Using toContainElement Matcher in Jest DOM
+DESCRIPTION: Asserts whether an element contains another element as a descendant.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_14
+
+LANGUAGE: typescript
+CODE:
+```
+toContainElement(element: HTMLElement | SVGElement | null)
+```
+
+LANGUAGE: html
+CODE:
+```
+<span data-testid="ancestor"><span data-testid="descendant"></span></span>
+```
+
+LANGUAGE: javascript
+CODE:
+```
+const ancestor = getByTestId('ancestor')
+const descendant = getByTestId('descendant')
+const nonExistantElement = getByTestId('does-not-exist')
+
+expect(ancestor).toContainElement(descendant)
+expect(descendant).not.toContainElement(ancestor)
+expect(ancestor).not.toContainElement(nonExistantElement)
+```
+
+----------------------------------------
+
+TITLE: HTML Structure for Empty Element Testing
+DESCRIPTION: Provides an HTML example of empty and non-empty elements for testing the toBeEmpty matcher.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_60
+
+LANGUAGE: html
+CODE:
+```
+<span data-testid="not-empty"><span data-testid="empty"></span></span>
+```
+
+----------------------------------------
+
+TITLE: Using toContainHTML Matcher in Jest DOM
+DESCRIPTION: Tests if an HTML string is contained within an element. Requires complete and valid HTML strings.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_15
+
+LANGUAGE: typescript
+CODE:
+```
+toContainHTML(htmlText: string)
+```
+
+LANGUAGE: html
+CODE:
+```
+<span data-testid="parent"><span data-testid="child"></span></span>
+```
+
+LANGUAGE: javascript
+CODE:
+```
+// These are valid uses
+expect(getByTestId('parent')).toContainHTML('<span data-testid="child"></span>')
+expect(getByTestId('parent')).toContainHTML('<span data-testid="child" />')
+expect(getByTestId('parent')).not.toContainHTML('<br />')
+
+// These won't work
+expect(getByTestId('parent')).toContainHTML('data-testid="child"')
+expect(getByTestId('parent')).toContainHTML('data-testid')
+expect(getByTestId('parent')).toContainHTML('</span>')
+```
+
+----------------------------------------
+
+TITLE: HTML Structure for Accessible Error Message Testing
+DESCRIPTION: HTML markup demonstrating the structure for testing accessible error messages, including inputs with various aria attributes.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_18
+
+LANGUAGE: html
+CODE:
+```
+<input
+  aria-label="Has Error"
+  aria-invalid="true"
+  aria-errormessage="error-message"
+/>
+<div id="error-message" role="alert">This field is invalid</div>
+
+<input aria-label="No Error Attributes" />
+<input
+  aria-label="Not Invalid"
+  aria-invalid="false"
+  aria-errormessage="error-message"
+/>
+```
+
+----------------------------------------
+
+TITLE: Using toBeInvalid Matcher in Jest DOM
+DESCRIPTION: Tests if an element is invalid based on aria-invalid attribute or checkValidity() result. Useful for form validation testing.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_10
+
+LANGUAGE: typescript
+CODE:
+```
+toBeInvalid()
+```
+
+LANGUAGE: html
+CODE:
+```
+<input data-testid="no-aria-invalid" />
+<input data-testid="aria-invalid" aria-invalid />
+<input data-testid="aria-invalid-value" aria-invalid="true" />
+<input data-testid="aria-invalid-false" aria-invalid="false" />
+
+<form data-testid="valid-form">
+  <input />
+</form>
+
+<form data-testid="invalid-form">
+  <input required />
+</form>
+```
+
+LANGUAGE: javascript
+CODE:
+```
+expect(getByTestId('no-aria-invalid')).not.toBeInvalid()
+expect(getByTestId('aria-invalid')).toBeInvalid()
+expect(getByTestId('aria-invalid-value')).toBeInvalid()
+expect(getByTestId('aria-invalid-false')).not.toBeInvalid()
+
+expect(getByTestId('valid-form')).not.toBeInvalid()
+expect(getByTestId('invalid-form')).toBeInvalid()
+```
+
+----------------------------------------
+
+TITLE: HTML Structure for Role Testing
+DESCRIPTION: Provides HTML examples of elements with various roles for testing the toHaveRole matcher.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_54
+
+LANGUAGE: html
+CODE:
+```
+<button data-testid="button">Continue</button>
+<div role="button" data-testid="button-explicit">Continue</button>
+<button role="switch button" data-testid="button-explicit-multiple">Continue</button>
+<a href="/about" data-testid="link">About</a>
+<a data-testid="link-invalid">Invalid link<a/>
+```
+
+----------------------------------------
+
+TITLE: Using toBeValid Matcher in Jest DOM
+DESCRIPTION: Tests if an element is valid based on absence of aria-invalid attribute or checkValidity() result being true.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_12
+
+LANGUAGE: typescript
+CODE:
+```
+toBeValid()
+```
+
+LANGUAGE: html
+CODE:
+```
+<input data-testid="no-aria-invalid" />
+<input data-testid="aria-invalid" aria-invalid />
+<input data-testid="aria-invalid-value" aria-invalid="true" />
+<input data-testid="aria-invalid-false" aria-invalid="false" />
+
+<form data-testid="valid-form">
+  <input />
+</form>
+
+<form data-testid="invalid-form">
+  <input required />
+</form>
+```
+
+LANGUAGE: javascript
+CODE:
+```
+expect(getByTestId('no-aria-invalid')).toBeValid()
+expect(getByTestId('aria-invalid')).not.toBeValid()
+expect(getByTestId('aria-invalid-value')).not.toBeValid()
+expect(getByTestId('aria-invalid-false')).toBeValid()
+
+expect(getByTestId('valid-form')).toBeValid()
+expect(getByTestId('invalid-form')).not.toBeValid()
+```
+
+----------------------------------------
+
+TITLE: HTML Element for Text Content Testing
+DESCRIPTION: HTML markup defining a span element with a test ID that will be used in the toHaveTextContent matcher examples.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_39
+
+LANGUAGE: html
+CODE:
+```
+<span data-testid="text-content">Text Content</span>
+```
+
+----------------------------------------
+
+TITLE: Using toBeRequired Matcher in Jest DOM
+DESCRIPTION: Checks if a form element has the required attribute or aria-required="true". Validates form field requirements.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_11
+
+LANGUAGE: typescript
+CODE:
+```
+toBeRequired()
+```
+
+LANGUAGE: html
+CODE:
+```
+<input data-testid="required-input" required />
+<input data-testid="aria-required-input" aria-required="true" />
+<input data-testid="conflicted-input" required aria-required="false" />
+<input data-testid="aria-not-required-input" aria-required="false" />
+<input data-testid="optional-input" />
+<input data-testid="unsupported-type" type="image" required />
+<select data-testid="select" required></select>
+<textarea data-testid="textarea" required></textarea>
+<div data-testid="supported-role" role="tree" required></div>
+<div data-testid="supported-role-aria" role="tree" aria-required="true"></div>
+```
+
+LANGUAGE: javascript
+CODE:
+```
+expect(getByTestId('required-input')).toBeRequired()
+expect(getByTestId('aria-required-input')).toBeRequired()
+expect(getByTestId('conflicted-input')).toBeRequired()
+expect(getByTestId('aria-not-required-input')).not.toBeRequired()
+expect(getByTestId('optional-input')).not.toBeRequired()
+expect(getByTestId('unsupported-type')).not.toBeRequired()
+expect(getByTestId('select')).toBeRequired()
+expect(getByTestId('textarea')).toBeRequired()
+expect(getByTestId('supported-role')).not.toBeRequired()
+expect(getByTestId('supported-role-aria')).toBeRequired()
+```
+
+----------------------------------------
+
+TITLE: HTML Structure for Error Message Testing
+DESCRIPTION: Provides an HTML example of an input field with an associated error message for testing the toHaveErrorMessage matcher.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_57
+
+LANGUAGE: html
+CODE:
+```
+<label for="startTime"> Please enter a start time for the meeting: </label>
+<input
+  id="startTime"
+  type="text"
+  aria-errormessage="msgID"
+  aria-invalid="true"
+  value="11:30 PM"
+/>
+<span id="msgID" aria-live="assertive" style="visibility:visible">
+  Invalid time: the time must be between 9:00 AM and 5:00 PM
+</span>
+```
+
+----------------------------------------
+
+TITLE: Using toHaveDescription Matcher in JavaScript
+DESCRIPTION: Demonstrates how to use the toHaveDescription matcher in Jest tests to assert the presence and content of accessible descriptions.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_66
+
+LANGUAGE: javascript
+CODE:
+```
+const closeButton = getByRole('button', {name: 'Close'})
+
+expect(closeButton).toHaveDescription('Closing will discard any changes')
+expect(closeButton).toHaveDescription(/will discard/) // to partially match
+expect(closeButton).toHaveDescription(expect.stringContaining('will discard')) // to partially match
+expect(closeButton).toHaveDescription(/^closing/i) // to use case-insensitive match
+expect(closeButton).not.toHaveDescription('Other description')
+
+const deleteButton = getByRole('button', {name: 'Delete'})
+expect(deleteButton).not.toHaveDescription()
+expect(deleteButton).toHaveDescription('') // Missing or empty description always becomes a blank string
+```
+
+----------------------------------------
+
+TITLE: HTML Structure for Selection Testing
+DESCRIPTION: Provides HTML examples of elements with text content for testing the toHaveSelection matcher.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_68
+
+LANGUAGE: html
+CODE:
+```
+<div>
+  <input type="text" value="text selected text" data-testid="text" />
+  <textarea data-testid="textarea">text selected text</textarea>
+  <p data-testid="prev">prev</p>
+  <p data-testid="parent">
+    text <span data-testid="child">selected</span> text
+  </p>
+  <p data-testid="next">next</p>
+</div>
+```
+
+----------------------------------------
+
+TITLE: Using toHaveSelection Matcher in JavaScript
+DESCRIPTION: Demonstrates how to use the toHaveSelection matcher in Jest tests to assert text selections within various elements.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_69
+
+LANGUAGE: javascript
+CODE:
+```
+getByTestId('text').setSelectionRange(5, 13)
+expect(getByTestId('text')).toHaveSelection('selected')
+
+getByTestId('textarea').setSelectionRange(0, 5)
+expect('textarea').toHaveSelection('text ')
+
+const selection = document.getSelection()
+const range = document.createRange()
+selection.removeAllRanges()
+selection.empty()
+selection.addRange(range)
+
+// selection of child applies to the parent as well
+range.selectNodeContents(getByTestId('child'))
+expect(getByTestId('child')).toHaveSelection('selected')
+expect(getByTestId('parent')).toHaveSelection('selected')
+
+// selection that applies from prev all, parent text before child, and part child.
+range.setStart(getByTestId('prev'), 0)
+range.setEnd(getByTestId('child').childNodes[0], 3)
+expect(queryByTestId('prev')).toHaveSelection('prev')
+expect(queryByTestId('child')).toHaveSelection('sel')
+expect(queryByTestId('parent')).toHaveSelection('text sel')
+expect(queryByTestId('next')).not.toHaveSelection()
+
+// selection that applies from part child, parent text after child and part next.
+range.setStart(getByTestId('child').childNodes[0], 3)
+range.setEnd(getByTestId('next').childNodes[0], 2)
+expect(queryByTestId('child')).toHaveSelection('ected')
+expect(queryByTestId('parent')).toHaveSelection('ected text')
+expect(queryByTestId('prev')).not.toHaveSelection()
+expect(queryByTestId('next')).toHaveSelection('ne')
+```
+
+----------------------------------------
+
+TITLE: Defining toHaveErrorMessage Matcher in TypeScript
+DESCRIPTION: Defines the TypeScript signature for the deprecated toHaveErrorMessage custom matcher, which checks for ARIA error messages.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_56
+
+LANGUAGE: typescript
+CODE:
+```
+toHaveErrorMessage(text: string | RegExp)
+```
+
+----------------------------------------
+
+TITLE: Using toHaveAccessibleDescription Matcher in Jest DOM
+DESCRIPTION: Checks if an element has the expected accessible description through aria-describedby or aria-description attributes.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_16
+
+LANGUAGE: typescript
+CODE:
+```
+toHaveAccessibleDescription(expectedAccessibleDescription?: string | RegExp)
+```
+
+LANGUAGE: html
+CODE:
+```
+<a
+  data-testid="link"
+  href="/"
+  aria-label="Home page"
+  title="A link to start over"
+  >Start</a
+>
+<a data-testid="extra-link" href="/about" aria-label="About page">About</a>
+<img src="avatar.jpg" data-testid="avatar" alt="User profile pic" />
+<img
+  src="logo.jpg"
+  data-testid="logo"
+  alt="Company logo"
+  aria-describedby="t1"
+/>
+<span id="t1" role="presentation">The logo of Our Company</span>
+<img
+  src="logo.jpg"
+  data-testid="logo2"
+  alt="Company logo"
+  aria-description="The logo of Our Company"
+/>
+```
+
+LANGUAGE: javascript
+CODE:
+```
+expect(getByTestId('link')).toHaveAccessibleDescription()
+expect(getByTestId('link')).toHaveAccessibleDescription('A link to start over')
+expect(getByTestId('link')).not.toHaveAccessibleDescription('Home page')
+expect(getByTestId('extra-link')).not.toHaveAccessibleDescription()
+expect(getByTestId('avatar')).not.toHaveAccessibleDescription()
+expect(getByTestId('logo')).not.toHaveAccessibleDescription('Company logo')
+expect(getByTestId('logo')).toHaveAccessibleDescription(
+  'The logo of Our Company',
+)
+expect(getByTestId('logo2')).toHaveAccessibleDescription(
+  'The logo of Our Company',
+)
+```
+
+----------------------------------------
+
+TITLE: Defining toHaveDescription Matcher in TypeScript
+DESCRIPTION: Defines the TypeScript signature for the deprecated toHaveDescription custom matcher, which checks for accessible descriptions.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_64
+
+LANGUAGE: typescript
+CODE:
+```
+toHaveDescription(text: string | RegExp)
+```
+
+----------------------------------------
+
+TITLE: Using toBeEmptyDOMElement matcher
+DESCRIPTION: Example of using the toBeEmptyDOMElement matcher to check if elements are empty.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_8
+
+LANGUAGE: html
+CODE:
+```
+<span data-testid="not-empty"><span data-testid="empty"></span></span>
+<span data-testid="with-whitespace"> </span>
+<span data-testid="with-comment"><!-- comment --></span>
+```
+
+LANGUAGE: javascript
+CODE:
+```
+expect(getByTestId('empty')).toBeEmptyDOMElement()
+expect(getByTestId('not-empty')).not.toBeEmptyDOMElement()
+expect(getByTestId('with-whitespace')).not.toBeEmptyDOMElement()
+```
+
+----------------------------------------
+
+TITLE: Using Built-in Jest Matchers for DOM Element Checking
+DESCRIPTION: Demonstrates alternative ways to check if a value is an HTMLElement using Jest's built-in matchers.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_63
+
+LANGUAGE: javascript
+CODE:
+```
+expect(document.querySelector('.ok-button')).toBeInstanceOf(HTMLElement)
+expect(document.querySelector('.cancel-button')).toBeTruthy()
+```
+
+----------------------------------------
+
+TITLE: Importing jest-dom with Vitest
+DESCRIPTION: Example of importing jest-dom when using Vitest and configuring Vitest to use it.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_4
+
+LANGUAGE: javascript
+CODE:
+```
+// In your own vitest-setup.js (or any other name)
+import '@testing-library/jest-dom/vitest'
+
+// In vitest.config.js add (if you haven't already)
+setupFiles: ['./vitest-setup.js']
+```
+
+----------------------------------------
+
+TITLE: Importing jest-dom with @jest/globals
+DESCRIPTION: Example of importing jest-dom when using @jest/globals with injectGlobals: false.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_3
+
+LANGUAGE: javascript
+CODE:
+```
+// In your own jest-setup.js (or any other name)
+import '@testing-library/jest-dom/jest-globals'
+```
+
+----------------------------------------
+
+TITLE: Using jest-dom with another Jest-compatible expect
+DESCRIPTION: Example of using jest-dom matchers with a different test runner compatible with Jest's expect interface.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_6
+
+LANGUAGE: javascript
+CODE:
+```
+import * as matchers from '@testing-library/jest-dom/matchers'
+import {expect} from 'my-test-runner/expect'
+
+expect.extend(matchers)
+```
+
+----------------------------------------
+
+TITLE: Installing jest-dom with yarn
+DESCRIPTION: Command to install jest-dom as a dev dependency using yarn.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_1
+
+LANGUAGE: bash
+CODE:
+```
+yarn add --dev @testing-library/jest-dom
+```
+
+----------------------------------------
+
+TITLE: Installing jest-dom with npm
+DESCRIPTION: Command to install jest-dom as a dev dependency using npm.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_0
+
+LANGUAGE: bash
+CODE:
+```
+npm install --save-dev @testing-library/jest-dom
+```
+
+----------------------------------------
+
+TITLE: toBeChecked Matcher TypeScript Definition
+DESCRIPTION: TypeScript definition for the toBeChecked matcher, showing the function signature used for verifying checkbox and radio button selection states.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_47
+
+LANGUAGE: typescript
+CODE:
+```
+toBeChecked()
+```
+
+----------------------------------------
+
+TITLE: toHaveDisplayValue Matcher TypeScript Definition
+DESCRIPTION: TypeScript definition for the toHaveDisplayValue matcher, showing the function signature that accepts strings, regular expressions, or arrays for validating displayed form values.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_44
+
+LANGUAGE: typescript
+CODE:
+```
+toHaveDisplayValue(value: string | RegExp | (string|RegExp)[])
+```
+
+----------------------------------------
+
+TITLE: Defining toHaveFormValues Matcher in TypeScript
+DESCRIPTION: TypeScript definition for the toHaveFormValues custom matcher, used to assert that a form or fieldset contains specific form control values.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_32
+
+LANGUAGE: typescript
+CODE:
+```
+toHaveFormValues(expectedValues: {
+  [name: string]: any
+})
+```
+
+----------------------------------------
+
+TITLE: Defining toHaveAccessibleName Matcher in TypeScript
+DESCRIPTION: TypeScript definition for the toHaveAccessibleName custom matcher, used to assert that an element has the expected accessible name.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_20
+
+LANGUAGE: typescript
+CODE:
+```
+toHaveAccessibleName(expectedAccessibleName?: string | RegExp)
+```
+
+----------------------------------------
+
+TITLE: Defining toHaveClass Matcher in TypeScript
+DESCRIPTION: TypeScript definition for the toHaveClass custom matcher, used to assert that an element has specific CSS classes.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_26
+
+LANGUAGE: typescript
+CODE:
+```
+toHaveClass(...classNames: string[], options?: {exact: boolean})
+```
+
+----------------------------------------
+
+TITLE: Defining toHaveRole Matcher in TypeScript
+DESCRIPTION: Defines the TypeScript signature for the toHaveRole custom matcher, which asserts that an element has the expected ARIA role.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_53
+
+LANGUAGE: typescript
+CODE:
+```
+toHaveRole(expectedRole: string)
+```
+
+----------------------------------------
+
+TITLE: toBePartiallyChecked Matcher TypeScript Definition
+DESCRIPTION: TypeScript definition for the toBePartiallyChecked matcher, showing the function signature used for verifying indeterminate checkbox states.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_50
+
+LANGUAGE: typescript
+CODE:
+```
+toBePartiallyChecked()
+```
+
+----------------------------------------
+
+TITLE: Defining toHaveSelection Matcher in TypeScript
+DESCRIPTION: Defines the TypeScript signature for the toHaveSelection custom matcher, which checks for text selection within an element.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_67
+
+LANGUAGE: typescript
+CODE:
+```
+toHaveSelection(expectedSelection?: string)
+```
+
+----------------------------------------
+
+TITLE: Formatting Instructions for User List in Markdown
+DESCRIPTION: Provides an example of how to format user entries in the list using Markdown syntax. It demonstrates the use of bullet points and links for company names and their applications.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/other/USERS.md#2025-04-21_snippet_0
+
+LANGUAGE: markdown
+CODE:
+```
+- [Company/Project/Person](https://example.com) uses it in [some app](https://example.com)
+```
+
+----------------------------------------
+
+TITLE: HTML Form Elements for Display Value Testing
+DESCRIPTION: HTML markup defining various form elements with labels including text inputs, textareas, and select dropdowns that will be used in the toHaveDisplayValue matcher examples.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_45
+
+LANGUAGE: html
+CODE:
+```
+<label for="input-example">First name</label>
+<input type="text" id="input-example" value="Luca" />
+
+<label for="textarea-example">Description</label>
+<textarea id="textarea-example">An example description here.</textarea>
+
+<label for="single-select-example">Fruit</label>
+<select id="single-select-example">
+  <option value="">Select a fruit...</option>
+  <option value="banana">Banana</option>
+  <option value="ananas">Ananas</option>
+  <option value="avocado">Avocado</option>
+</select>
+
+<label for="multiple-select-example">Fruits</label>
+<select id="multiple-select-example" multiple>
+  <option value="">Select a fruit...</option>
+  <option value="banana" selected>Banana</option>
+  <option value="ananas">Ananas</option>
+  <option value="avocado" selected>Avocado</option>
+</select>
+```
+
+----------------------------------------
+
+TITLE: HTML Form Elements for Value Testing
+DESCRIPTION: HTML markup defining various form elements including text inputs, number inputs, and multiple-select dropdowns that will be used in the toHaveValue matcher examples.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_42
+
+LANGUAGE: html
+CODE:
+```
+<input type="text" value="text" data-testid="input-text" />
+<input type="number" value="5" data-testid="input-number" />
+<input type="text" data-testid="input-empty" />
+<select multiple data-testid="select-number">
+  <option value="first">First Value</option>
+  <option value="second" selected>Second Value</option>
+  <option value="third" selected>Third Value</option>
+</select>
+```
+
+----------------------------------------
+
+TITLE: HTML Form for Form Values Testing
+DESCRIPTION: HTML markup for a login form used in testing form values.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_33
+
+LANGUAGE: html
+CODE:
+```
+<form data-testid="login-form">
+  <input type="text" name="username" value="jane.doe" />
+  <input type="password" name="password" value="12345678" />
+  <input type="checkbox" name="rememberMe" checked />
+  <button type="submit">Sign in</button>
+</form>
+```
+
+----------------------------------------
+
+TITLE: HTML Elements for Checked State Testing
+DESCRIPTION: HTML markup defining various checkbox, radio, and ARIA role elements in different checked states that will be used in the toBeChecked matcher examples.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_48
+
+LANGUAGE: html
+CODE:
+```
+<input type="checkbox" checked data-testid="input-checkbox-checked" />
+<input type="checkbox" data-testid="input-checkbox-unchecked" />
+<div role="checkbox" aria-checked="true" data-testid="aria-checkbox-checked" />
+<div
+  role="checkbox"
+  aria-checked="false"
+  data-testid="aria-checkbox-unchecked"
+/>
+
+<input type="radio" checked value="foo" data-testid="input-radio-checked" />
+<input type="radio" value="foo" data-testid="input-radio-unchecked" />
+<div role="radio" aria-checked="true" data-testid="aria-radio-checked" />
+<div role="radio" aria-checked="false" data-testid="aria-radio-unchecked" />
+<div role="switch" aria-checked="true" data-testid="aria-switch-checked" />
+<div role="switch" aria-checked="false" data-testid="aria-switch-unchecked" />
+```
+
+----------------------------------------
+
+TITLE: HTML Elements for Partially Checked State Testing
+DESCRIPTION: HTML markup defining various checkbox elements including those with mixed/indeterminate states that will be used in the toBePartiallyChecked matcher examples.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_51
+
+LANGUAGE: html
+CODE:
+```
+<input type="checkbox" aria-checked="mixed" data-testid="aria-checkbox-mixed" />
+<input type="checkbox" checked data-testid="input-checkbox-checked" />
+<input type="checkbox" data-testid="input-checkbox-unchecked" />
+<div role="checkbox" aria-checked="true" data-testid="aria-checkbox-checked" />
+<div
+  role="checkbox"
+  aria-checked="false"
+  data-testid="aria-checkbox-unchecked"
+/>
+<input type="checkbox" data-testid="input-checkbox-indeterminate" />
+```
+
+----------------------------------------
+
+TITLE: HTML Structure for Accessible Name Testing
+DESCRIPTION: HTML markup demonstrating various elements with accessible names for testing purposes.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_21
+
+LANGUAGE: html
+CODE:
+```
+<img data-testid="img-alt" src="" alt="Test alt" />
+<img data-testid="img-empty-alt" src="" alt="" />
+<svg data-testid="svg-title"><title>Test title</title></svg>
+<button data-testid="button-img-alt"><img src="" alt="Test" /></button>
+<p><img data-testid="img-paragraph" src="" alt="" /> Test content</p>
+<button data-testid="svg-button"><svg><title>Test</title></svg></p>
+<div><svg data-testid="svg-without-title"></svg></div>
+<input data-testid="input-title" title="test" />
+```
+
+----------------------------------------
+
+TITLE: HTML Button for Attribute Testing
+DESCRIPTION: HTML markup for a button element with various attributes for testing purposes.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_24
+
+LANGUAGE: html
+CODE:
+```
+<button data-testid="ok-button" type="submit" disabled>ok</button>
+```
+
+----------------------------------------
+
+TITLE: HTML Structure for Description Testing
+DESCRIPTION: Provides HTML examples of elements with descriptions for testing the toHaveDescription matcher.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_65
+
+LANGUAGE: html
+CODE:
+```
+<button aria-label="Close" aria-describedby="description-close">X</button>
+<div id="description-close">Closing will discard any changes</div>
+
+<button>Delete</button>
+```
+
+----------------------------------------
+
+TITLE: HTML Input for Focus Testing
+DESCRIPTION: HTML markup for an input element used in focus testing.
+SOURCE: https://github.com/testing-library/jest-dom/blob/main/README.md#2025-04-21_snippet_30
+
+LANGUAGE: html
+CODE:
+```
+<div><input type="text" data-testid="element-to-focus" /></div>
+```
