@@ -23,7 +23,9 @@ describe('CompanyCard Snapshot', () => {
             featured: false,
             oneLiner: 'Just a regular company.',
             serplyLink: 'https://nonfeatured.example.com',
-            upvotes: []
+            upvotes: [],
+            numUpvotes: 0,
+            numDownvotes: 0
           }
         },
         config: {
@@ -53,7 +55,9 @@ describe('CompanyCard Snapshot', () => {
               { id: 2, item: 'Quality', description: 'High quality products.' }
             ],
             serplyLink: 'https://featured.example.com',
-            upvotes: ['user@example.com']
+            upvotes: ['user@example.com'],
+            numUpvotes: 1,
+            numDownvotes: 0
           }
         },
         config: {
@@ -86,7 +90,9 @@ describe('CompanyCard Snapshot', () => {
               }
             ],
             serplyLink: 'https://expanded.example.com',
-            upvotes: []
+            upvotes: [],
+            numUpvotes: 0,
+            numDownvotes: 0
           },
           showReadMore: true,
           showFeatures: true,
@@ -112,7 +118,9 @@ describe('CompanyCard Snapshot', () => {
             featured: false,
             oneLiner: 'Just a regular company.',
             serplyLink: 'https://nonfeatured.example.com',
-            upvotes: []
+            upvotes: [],
+            numUpvotes: 0,
+            numDownvotes: 0
           }
         },
         config: {
@@ -142,7 +150,9 @@ describe('CompanyCard Snapshot', () => {
               { id: 2, item: 'Quality', description: 'High quality products.' }
             ],
             serplyLink: 'https://featured.example.com',
-            upvotes: ['user@example.com']
+            upvotes: ['user@example.com'],
+            numUpvotes: 1,
+            numDownvotes: 0
           }
         },
         config: {
@@ -175,7 +185,9 @@ describe('CompanyCard Snapshot', () => {
               }
             ],
             serplyLink: 'https://expanded.example.com',
-            upvotes: []
+            upvotes: [],
+            numUpvotes: 0,
+            numDownvotes: 0
           },
           showReadMore: true,
           showFeatures: true,
