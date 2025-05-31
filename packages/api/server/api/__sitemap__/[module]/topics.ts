@@ -1,7 +1,7 @@
 import { useDataCache } from '#nuxt-multi-cache/composables';
 import { getDb } from '@serp/db/server/database';
 import { topic } from '@serp/db/server/database/schema';
-import { sql } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
   const { page, count = false } = getQuery(event);

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import type { Entity } from '@serp/types/types';
+  import type { Entity, Company } from '@serp/types/types';
 
   const props = defineProps({
     entity: {

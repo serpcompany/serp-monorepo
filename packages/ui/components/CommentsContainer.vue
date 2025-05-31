@@ -165,7 +165,12 @@
         requestLoading.value = false;
       }
     } else {
-      setAlert("You can't send an empty comment!", 'fail');
+      toast.add({
+        id: 'comment-empty',
+        title: 'Empty comment',
+        description: "You can't send an empty comment!",
+        icon: 'exclamation-circle'
+      });
     }
   }
 

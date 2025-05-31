@@ -1,4 +1,5 @@
 import { useDataCache } from '#nuxt-multi-cache/composables';
+import { getUserSession } from '#auth-utils';
 import { getDb } from '@serp/db/server/database';
 import {
   entity,
