@@ -29,12 +29,10 @@
     };
   });
 
-  // @ts-expect-error: Auto-imported from another layer
   const { comments } = (await useServiceProviderComments(data.value?.id)) as {
     comments: Comment[];
   };
 
-  // @ts-expect-error: Auto-imported from another layer
   const reviews = await useServiceProviderReviews(data.value?.id);
   reviews.serviceProviderId = data.value?.id;
 
@@ -43,7 +41,6 @@
 
   // Handle review submission - refresh reviews data
   async function handleReviewSubmitted() {
-    // @ts-expect-error: Auto-imported from another layer
     const updatedReviews = await useServiceProviderReviews(data.value?.id);
     Object.assign(reviews, updatedReviews);
     reviews.serviceProviderId = data.value?.id;

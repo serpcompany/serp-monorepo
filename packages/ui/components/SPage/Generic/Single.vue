@@ -42,12 +42,10 @@
     };
   });
 
-  // @ts-expect-error: Auto-imported from another layer
   const { comments } = (await useEntityComments(data.id)) as {
     comments: Comment[];
   };
 
-  // @ts-expect-error: Auto-imported from another layer
   const reviews = await useEntityReviews(data.id);
   reviews.entityId = data.id;
 
@@ -56,7 +54,6 @@
 
   // Handle review submission - refresh reviews data
   async function handleReviewSubmitted() {
-    // @ts-expect-error: Auto-imported from another layer
     const updatedReviews = await useEntityReviews(data.id);
     Object.assign(reviews, updatedReviews);
     reviews.entityId = data.id;

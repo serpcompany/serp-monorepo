@@ -5,7 +5,6 @@
   const router = useRouter();
   const { slug } = route.params as { slug: string };
 
-  // @ts-expect-error: auto‑imported
   const data = (await useMCPServer(slug)) as MCPServer;
   if (!data) {
     router.push('/404');
@@ -13,7 +12,6 @@
 
   const useAuth = computed(() => useRuntimeConfig().public.useAuth);
 
-  // @ts-expect-error: auto‑imported
   const { comments } = (await useMCPServerComments(data.id)) as {
     comments: Comment[];
   };

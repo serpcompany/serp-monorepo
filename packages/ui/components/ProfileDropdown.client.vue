@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  // @ts-expect-error: Auto-imported from another layer
   const { loggedIn, user, clear } = useUserSession();
   const config = useRuntimeConfig();
   const profileDropdownLinks = Array.isArray(config.public.profileDropdownLinks)

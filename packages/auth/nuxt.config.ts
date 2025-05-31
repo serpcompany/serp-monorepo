@@ -26,7 +26,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     rollupConfig: {
-      // @ts-expect-error - Rollup plugin type definitions are incomplete for vue plugin
+      // @ts-expect-error - Vite Vue plugin not compatible with Rollup plugin type expectations
       plugins: [vue()],
     },
   },

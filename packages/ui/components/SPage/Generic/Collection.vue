@@ -19,7 +19,6 @@
     router.push('/404');
   }
 
-  // @ts-expect-error: auto‑imported from another layer
   let data = await useEntities(
     page.value,
     limit.value,
@@ -43,7 +42,6 @@
     if (newLimit !== 50) query.limit = String(newLimit);
     else delete query.limit;
 
-    // @ts-expect-error: auto‑imported from another layer
     data = await useEntities(
       page.value,
       limit.value,

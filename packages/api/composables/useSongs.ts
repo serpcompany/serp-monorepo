@@ -1,12 +1,13 @@
-import type { Entities, Recording } from '@serp/types/types';
+import type { Entities, Recording } from '@serp/types/types'
+import useFetchWithCache from './useFetchWithCache'
 
-export const useSongs = async (page = 1, limit = 50) => {
+export async function useSongs(page = 1, limit = 50) {
   const data = await useFetchWithCache<Entities>(
-    `/entities?page=${page}&limit=${limit}&module=music_songs`
-  );
-  const { entities, ...rest } = data;
+    `/entities?page=${page}&limit=${limit}&module=music_songs`,
+  )
+  const { entities, ...rest } = data
   return {
     ...rest,
-    songs: entities as Recording[]
-  };
-};
+    songs: entities as Recording[],
+  }
+}

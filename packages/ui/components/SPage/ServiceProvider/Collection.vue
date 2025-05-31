@@ -7,10 +7,8 @@
 
   const slug = route.params.slug as string;
 
-  // @ts-expect-error: Auto-imported from another layer
   const categories = await useServiceProviderCategories();
 
-  // @ts-expect-error: Auto-imported from another layer
   let data = await useServiceProviders(page.value, limit.value, slug);
   if (!data) {
     router.push('/404');
@@ -29,7 +27,6 @@
       delete query.limit;
     }
 
-    // @ts-expect-error: Auto-imported from another layer
     data = await useServiceProviders(page.value, limit.value);
     router.push({ query });
   });

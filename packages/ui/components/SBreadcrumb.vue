@@ -33,7 +33,6 @@
   };
 
   const breadcrumbItems = computed(() => {
-    // @ts-expect-error: Auto-imported from another layer
     const items = useBreadcrumbItems({
       schemaOrg: true
     }).value as BreadcrumbItem[];
