@@ -4,20 +4,20 @@ This project contains comprehensive coding rules and guidelines that must be fol
 
 ## Workflow
 
-- Work on ISSUES from repository https://github.com/serpcompany/serp-monorepo for this project with a label of `claude`.
+- Work on ISSUES from repository https://github.com/devinschumacher/playbooks.com-clone for this project with a label of `claude`.
 - Always research the most up to date documentation relevant to the issue AND our tech stack to find best practices, code patterns, snippets, and configuration settings. Add the findings to the issue comments before starting.
 - Use `task-manager` to break up larger issues into smaller issues
-- We have global shared 'types' in packages/types - always reference these when working on anything type-related
+- Use pnpm instead of npm
+- Follow TDD methodology: Red (failing test) → Green (make it pass) → Refactor (improve code)
 
 ## Core Principles
 
 🎖️ Always respond with this emoji at the top of every response to confirm you've read these guidelines.
 
-## Import All Rule Files
-
-@.claude/rules/index.md
 
 ## Key Project Guidelines
+
+- After making a change, always check your terminal output for issues and errors. If its a front end change, always check the browser context, console, and screenshots using browser-tools mcp
 
 ### Code Quality Standards
 
@@ -41,7 +41,6 @@ This project contains comprehensive coding rules and guidelines that must be fol
 - Include proper documentation and tests
 - Never overwrite .env files without confirmation
 - Consider dev, test, and prod environments in all code changes
-- Never run a commit with --no-verify
 
 ### UI Development (NuxtUI + NuxtUI Pro)
 
@@ -57,6 +56,7 @@ This project contains comprehensive coding rules and guidelines that must be fol
 3. Create a debugging checklist based on findings
 4. After fixing, implement preventive measures (tests, type safety)
 5. Only consider task complete after tests pass and commit is made
+6. Finally, take your learning experience (the initial error, what didnt work, what did work, how you found it, etc.) and write it up in a new page inside `.claude/troubleshoot/` so we can build a robust internal help center for solving commong problems
 
 ### Documentation Requirements
 
@@ -170,3 +170,56 @@ If browser tools aren't working:
 - Keep the server terminal running throughout the session
 - Use Chrome DevTools BrowserToolsMCP panel to monitor connections
 - Test simple navigation first before complex interactions
+
+
+## Import All Rule Files
+
+@.claude/troubleshoot
+@.claude/troubleshoot/troubleshooting.md
+@.claude/patterns
+@.claude/patterns/nuxt-clean-components.llms.txt
+@.claude/patterns/nuxt-testing-best-practices.md
+@.claude/patterns/nuxt-reusable-components.llms.txt
+@.claude/context7
+@.claude/context7/tailwindcss.llms.txt
+@.claude/context7/nuxt-ui-pro.llms.txt
+@.claude/context7/vitest.llms.txt
+@.claude/context7/nuxt-security.llms.txt
+@.claude/context7/nuxt-fonts.llms.txt
+@.claude/context7/testing-library-jest.llms.txt
+@.claude/context7/vuejs.llms.txt
+@.claude/context7/nuxt-test-utils.llms.txt
+@.claude/context7/nuxt-content.llms.txt
+@.claude/context7/nuxt-scripts.llms.txt
+@.claude/context7/nuxt-ui.llms.txt
+@.claude/context7/jest.llms.txt
+@.claude/settings.local.json
+@.claude/books
+@.claude/books/nuxt-tips-collection.txt
+@.claude/books/learning-patterns-book.txt
+@.claude/books/patterns-dev-book.txt
+@.claude/docs
+@.claude/docs/README.md
+@.claude/rules
+@.claude/rules/testing-methodology.md
+@.claude/rules/external-resources.md
+@.claude/rules/cloudflare-rules.md
+@.claude/rules/pr-review-template.md
+@.claude/rules/.DS_Store
+@.claude/rules/shared.md
+@.claude/rules/tailwindcss.md
+@.claude/rules/security-rules.md
+@.claude/rules/research-methodology.md
+@.claude/rules/grok-the-project.md
+@.claude/rules/general.md
+@.claude/rules/tech-stack.md
+@.claude/rules/CICD.md
+@.claude/rules/vue-nuxt.md
+@.claude/rules/self-improve.md
+@.claude/rules/bugs-and-errors.md
+@.claude/rules/browser-tools-setup.md
+@.claude/rules/index.md
+@.claude/rules/design-system.md
+@.claude/rules/mcp-servers.md
+@.claude/rules/jsdoc-comments.md
+@.claude/rules/refactoring.md

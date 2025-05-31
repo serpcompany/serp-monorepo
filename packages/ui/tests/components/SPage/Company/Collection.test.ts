@@ -37,8 +37,22 @@ describe('SPageCompanyCollection Snapshot', () => {
         ],
         companies: {
           companies: [
-            { slug: 'company-a', name: 'Company A' },
-            { slug: 'company-b', name: 'Company B' }
+            {
+              slug: 'company-a',
+              name: 'Company A',
+              id: 1,
+              upvotes: [],
+              numUpvotes: 0,
+              numDownvotes: 0
+            },
+            {
+              slug: 'company-b',
+              name: 'Company B',
+              id: 2,
+              upvotes: [],
+              numUpvotes: 0,
+              numDownvotes: 0
+            }
           ],
           pagination: { totalItems: 2 }
         }
@@ -51,8 +65,22 @@ describe('SPageCompanyCollection Snapshot', () => {
         categories: [],
         companies: {
           companies: [
-            { slug: 'company-a', name: 'Company A' },
-            { slug: 'company-b', name: 'Company B' }
+            {
+              slug: 'company-a',
+              name: 'Company A',
+              id: 1,
+              upvotes: [],
+              numUpvotes: 0,
+              numDownvotes: 0
+            },
+            {
+              slug: 'company-b',
+              name: 'Company B',
+              id: 2,
+              upvotes: [],
+              numUpvotes: 0,
+              numDownvotes: 0
+            }
           ],
           pagination: { totalItems: 2 }
         }
@@ -68,8 +96,22 @@ describe('SPageCompanyCollection Snapshot', () => {
         ],
         companies: {
           companies: [
-            { slug: 'company-a', name: 'Company A' },
-            { slug: 'company-b', name: 'Company B' }
+            {
+              slug: 'company-a',
+              name: 'Company A',
+              id: 1,
+              upvotes: [],
+              numUpvotes: 0,
+              numDownvotes: 0
+            },
+            {
+              slug: 'company-b',
+              name: 'Company B',
+              id: 2,
+              upvotes: [],
+              numUpvotes: 0,
+              numDownvotes: 0
+            }
           ],
           pagination: { totalItems: 2 }
         }
@@ -82,8 +124,22 @@ describe('SPageCompanyCollection Snapshot', () => {
         categories: [],
         companies: {
           companies: [
-            { slug: 'company-a', name: 'Company A' },
-            { slug: 'company-b', name: 'Company B' }
+            {
+              slug: 'company-a',
+              name: 'Company A',
+              id: 1,
+              upvotes: [],
+              numUpvotes: 0,
+              numDownvotes: 0
+            },
+            {
+              slug: 'company-b',
+              name: 'Company B',
+              id: 2,
+              upvotes: [],
+              numUpvotes: 0,
+              numDownvotes: 0
+            }
           ],
           pagination: { totalItems: 2 }
         }

@@ -1,0 +1,147 @@
+TITLE: Implementing a Modal Component with Named Extension Slots in Vue.js
+DESCRIPTION: This snippet illustrates a `Modal` component that utilizes named slots (`header`, default, `footer`) to provide multiple extension points. This allows parent components to inject specific content into different sections of the modal, enabling extensive customization of its behavior and appearance.
+SOURCE: https://github.com/serp-y/reusable-components-docs/blob/main/intro/the-6-levels-of-reusability.md#_snippet_2
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<div class="modal">
+<slot name="header">
+<h2>{{ title }}</h2>
+</slot>
+<!-- Default slot for main content -->
+<slot />
+<slot name="footer">
+<Button @click="closeModal">
+Close
+</Button>
+</slot>
+</div>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Creating a Reusable Button Component with Default Slot in Vue.js
+DESCRIPTION: This snippet defines a basic Vue.js button component (`Button.vue`) that uses a default slot. Instead of accepting text via a prop, the slot allows the parent component to pass any arbitrary HTML content, making the button highly adaptable. It includes a click event emitter.
+SOURCE: https://github.com/serp-y/reusable-components-docs/blob/main/intro/the-6-levels-of-reusability.md#_snippet_0
+
+LANGUAGE: Vue.js
+CODE:
+```
+<!-- Button.vue -->
+<template>
+<button
+class="btn btn--default"
+@click="$emit('click')"
+>
+<slot />
+</button>
+</template>
+```
+
+----------------------------------------
+
+TITLE: Using a Reusable Button with Dynamic Content (Spinner) in Vue.js
+DESCRIPTION: This snippet demonstrates how to use the `Button` component defined previously. It passes an `<img>` tag with a `v-if` directive for a loading spinner, along with static text, into the button's default slot. This showcases the flexibility gained by using slots over props for content.
+SOURCE: https://github.com/serp-y/reusable-components-docs/blob/main/intro/the-6-levels-of-reusability.md#_snippet_1
+
+LANGUAGE: Vue.js
+CODE:
+```
+<template>
+<Button>
+<img
+v-if="loading"
+src="spinner.svg"
+/>
+Click Me
+</Button>
+</template>
+```
+
+----------------------------------------
+
+TITLE: SearchModal.vue Component Template
+DESCRIPTION: This Vue.js template defines the structure for the `SearchModal` component, including a modal container, header, search input, and a dynamic list of products. It iterates over a `products` array to display each item's name, image, description, and price.
+SOURCE: https://github.com/serp-y/reusable-components-docs/blob/main/templating/refactoring-steps.md#_snippet_0
+
+LANGUAGE: HTML
+CODE:
+```
+<div class="modal-container">
+<div class="modal">
+<!-- Header -->
+<div class="w-full flex justify-between align-center">
+<h2 class="text-2xl text-gray-900 font-medium">
+Product Search
+</h2>
+<button class="btn close-btn">✕</button>
+</div>
+<!-- Search -->
+<input
+class="input"
+type="text"
+placeholder="Search for a product..."
+/>
+<!-- Items -->
+<div class="my-4 -mx-8">
+<div
+v-for="{
+name,
+image,
+description,
+price,
+} in products"
+:key="name"
+class="item space-x-6"
+>
+<img
+class="rounded-full w-24 h-24 object-cover
+border border-gray-500 shadow-md"
+:src="image"
+/>
+<div class="flex flex-col justify-center flex-1">
+<span class="text-lg text-gray-900">
+{{ name }}
+</span>
+<span
+class="mt-1 leading-tight font-light text-gray-700"
+>
+{{ description }}
+</span>
+</div>
+<div class="text-lg text-gray-600 font-bold">
+${{ price }}
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div
+class="flex justify-end bg-gray-200 -mx-8 px-8 -mb-6 py-4 rounded-b"
+>
+<button class="btn primary-btn">Cancel</button>
+</div>
+</div>
+</div>
+```
+
+----------------------------------------
+
+TITLE: SearchModal.vue Component Script
+DESCRIPTION: This JavaScript script block for the `SearchModal.vue` component imports product data from a JSON file and makes it available to the component's template via the `data` property. It serves as the data source for the product listing.
+SOURCE: https://github.com/serp-y/reusable-components-docs/blob/main/templating/refactoring-steps.md#_snippet_1
+
+LANGUAGE: JavaScript
+CODE:
+```
+import products from '../../_data/products.json';
+export default {
+data() {
+return {
+products,
+};
+},
+};
+```

@@ -2,9 +2,10 @@
 
 ## TDD Workflow:
 
-- Generate tests first using the Frontend Testing MCP
-- Implement features to make tests pass
+- Generate tests "TDD" first using the Frontend Testing MCP
+- Implement features to make tests pass using Red, Green, Refactor
 - Use visual verification with screenshot tools
+- Develop with test:watch on so the Vitest watcher is constantly tracking on changes
 
 ## Component Testing:
 
