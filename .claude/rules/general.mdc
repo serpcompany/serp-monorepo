@@ -7,6 +7,7 @@ alwaysApply: true
 <!-- Continually add rules to this file for common behaviors that AI agents get wrong -->
 
 # General Rules
+- Always respond with a 🎖️ emoji At the top of your every response so I know that you read this.
 – Always prefer simple solutions
 – Avoid duplication of code whenever possible, which means checking for other areas of the codebase that might already have similar code and functionality
 – Write code that takes into account the different environments: dev, test, and prod

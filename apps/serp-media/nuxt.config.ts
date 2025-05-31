@@ -59,12 +59,10 @@ export default defineNuxtConfig({
       ]
     }
   },
-  $production: {
-    scripts: {
-      registry: {
-        googleTagManager: {
-          id: 'GTM-TXRPD22Q'
-        }
+  scripts: {
+    registry: {
+      googleTagManager: {
+        id: 'GTM-TXRPD22Q'
       }
     }
   },
@@ -96,11 +94,6 @@ export default defineNuxtConfig({
     format: ['webp']
   },
   security: {
-    headers: {
-      contentSecurityPolicy: {
-        'img-src': ["'self'", 'data:', 'https://*']
-      }
-    },
     rateLimiter: false
   },
   htmlValidator: {
