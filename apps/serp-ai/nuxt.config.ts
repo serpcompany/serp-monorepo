@@ -1,3 +1,5 @@
+import process from 'node:process'
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
@@ -7,32 +9,32 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     'nuxt-multi-cache',
     'nuxt-security',
-    'nuxt-link-checker'
+    'nuxt-link-checker',
   ],
   ui: {
-    colorMode: true
+    colorMode: true,
   },
   multiCache: {
     data: {
-      enabled: true
+      enabled: true,
     },
     api: {
       enabled: true,
       prefix: '/__nuxt_multi_cache',
-      authorization: process.env.CACHE_PURGE_API_KEY || 'xv12378asdfSDA123'
-    }
+      authorization: process.env.CACHE_PURGE_API_KEY || 'xv12378asdfSDA123',
+    },
   },
   uiPro: {
-    license: process.env.NUXT_UI_PRO_LICENSE
+    license: process.env.NUXT_UI_PRO_LICENSE,
   },
   tsConfig: {
     compilerOptions: {
       baseUrl: '.',
       paths: {
-        '@/*': ['src/*']
+        '@/*': ['src/*'],
       },
-      types: ['vitest/globals', '']
-    }
+      types: ['vitest/globals', ''],
+    },
   },
   runtimeConfig: {
     public: {
@@ -43,112 +45,112 @@ export default defineNuxtConfig({
       useAuth: true,
       environment: process.env.NODE_ENV,
       forCloudflare: false,
-      copyrightText: '© SERP'
-    }
+      copyrightText: '© SERP',
+    },
   },
   app: {
     head: {
       title: process.env.NUXT_PUBLIC_SITE_NAME,
       htmlAttrs: {
-        lang: 'en'
+        lang: 'en',
       },
       meta: [
         ...(process.env.ROBOTS_ENV === 'staging'
           ? [{ name: 'robots', content: 'noindex' }]
-          : [])
-      ]
-    }
+          : []),
+      ],
+    },
   },
   security: {
-    rateLimiter: false
+    rateLimiter: false,
   },
   scripts: {
     registry: {
       googleTagManager: {
-        id: 'GTM-M4ZSK3X'
+        id: 'GTM-M4ZSK3X',
       },
       googleAdsense: {
         client: 'ca-pub-2343633734899216', // infisical-scan:ignore
-        autoAds: true
-      }
-    }
+        autoAds: true,
+      },
+    },
   },
   schemaOrg: {
     identity: 'Organization',
-    host: 'https://serp.ai'
+    host: 'https://serp.ai',
   },
   experimental: {
     defaults: {
       nuxthref: {
-        trailingSlash: 'append'
-      }
-    }
+        trailingSlash: 'append',
+      },
+    },
   },
   site: {
     url: process.env.NUXT_PUBLIC_URL,
     name: process.env.NUXT_PUBLIC_SITE_NAME,
-    trailingSlash: true
+    trailingSlash: true,
   },
   icon: {
     customCollections: [
       {
         prefix: 'custom',
-        dir: './assets/icons'
-      }
-    ]
+        dir: './assets/icons',
+      },
+    ],
   },
   image: {
-    format: ['webp']
+    format: ['webp'],
   },
 
   htmlValidator: {
     usePrettier: false,
     failOnError: true,
-    logLevel: 'verbose'
+    logLevel: 'verbose',
   },
   linkChecker: {
     failOnError: true,
     report: {
-      html: true
-    }
+      html: true,
+    },
   },
   ogImage: {
-    enabled: false
+    enabled: false,
   },
   sitemap: {
     defaults: {
       lastmod: new Date().toISOString(),
       priority: 0.5,
-      changefreq: 'weekly'
+      changefreq: 'weekly',
     },
     sitemaps: {
-      modules: {
-        includeAppSources: true
+      'modules': {
+        includeAppSources: true,
       },
-      company: {
-        sources: ['/api/__sitemap__/company']
+      'company': {
+        sources: ['/api/__sitemap__/company'],
       },
-      ['company-categories']: {
-        sources: ['/api/__sitemap__/company-categories']
+      'company-categories': {
+        sources: ['/api/__sitemap__/company-categories'],
       },
-      posts: {
-        sources: ['/api/__sitemap__/posts']
+      'posts': {
+        sources: ['/api/__sitemap__/posts'],
       },
-      ['post-categories']: {
-        sources: ['/api/__sitemap__/post-categories']
+      'post-categories': {
+        sources: ['/api/__sitemap__/post-categories'],
       },
-      glossary: {
-        sources: ['/api/__sitemap__/glossary']
+      'glossary': {
+        sources: ['/api/__sitemap__/glossary'],
       },
-      blog: {
-        sources: ['/api/__sitemap__/blog']
+      'blog': {
+        sources: ['/api/__sitemap__/blog'],
       },
-      ['mcp-servers']: {
-        sources: ['/api/__sitemap__/mcp-servers']
+      'mcp-servers': {
+        sources: ['/api/__sitemap__/mcp-servers'],
       },
-      ['mcp-servers-categories']: {
-        sources: ['/api/__sitemap__/mcp-servers-categories']
-      }
-    }
-  }
-});
+      'mcp-servers-categories': {
+        sources: ['/api/__sitemap__/mcp-servers-categories'],
+      },
+    },
+  },
+})
