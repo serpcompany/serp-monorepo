@@ -1,13 +1,14 @@
+@.claude/rules/research-methodology.md
 @.claude/rules/browser-tools-setup.md
 @.claude/rules/bugs-and-errors.md
 @.claude/rules/cloudflare-rules.md
 @.claude/rules/design-system.md
 @.claude/rules/external-resources.md
 @.claude/rules/general.md
+@.claude/rules/grok-the-project.md
 @.claude/rules/jsdoc-comments.md
 @.claude/rules/mcp-servers.md
 @.claude/rules/refactoring.md
-@.claude/rules/research-methodology.md
 @.claude/rules/security-rules.md
 @.claude/rules/self-improve.md
 @.claude/rules/shared.md
@@ -15,4 +16,3 @@
 @.claude/rules/tech-stack.md
 @.claude/rules/testing-methodology.md
 @.claude/rules/vue-nuxt.md
-@.claude/rules/grok-the-project.md.md
