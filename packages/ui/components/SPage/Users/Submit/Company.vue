@@ -8,6 +8,24 @@
     CompanyFormField
   } from '@serp/types/types';
 
+  // Type declaration for useS3Object for apps without @bg-dev/nuxt-s3 module
+  declare global {
+    function useS3Object(): {
+      upload: (
+        file: File,
+        opts?: {
+          url?: string;
+          key?: string;
+          prefix?: string;
+          meta?: Record<string, unknown>;
+        }
+      ) => Promise<string>;
+      remove: (url: string) => Promise<void>;
+      getURL: (key: string) => string;
+      getKey: (url: string) => string | undefined;
+    };
+  }
+
   const { loggedIn, user } = useUserSession();
   if (!loggedIn.value) {
     navigateTo('/login');

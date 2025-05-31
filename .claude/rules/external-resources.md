@@ -10,7 +10,7 @@ Use relevant links and resources provided by this file  depending on the task or
 
 ## Nuxt.js
 
-- [llms.txt](https://nuxt.com/llms-full.txt)
+- [Nuxt.com.llms.txt](https://nuxt.com/llms-full.txt)
 
 ## Nuxt SEO
 

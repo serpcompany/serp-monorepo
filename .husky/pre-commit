@@ -15,9 +15,13 @@ pnpm lint
 echo "[husky]: Running script: pnpm test"
 pnpm test
 
-# Run TypeScript check for Phase 1 errors (TS7006, TS7053, TS7034, TS7005)
+# Run TypeScript check for Phase 1 errors (TS7006, TS7053, TS7034, TS7005, TS7008)
 echo "[husky]: Running script: pnpm typecheck:phase1"
 pnpm typecheck:phase1
+
+# Run TypeScript check for Phase 2A errors (TS2304)
+echo "[husky]: Running script: pnpm typecheck:phase2a"
+pnpm typecheck:phase2a
 
 # Run Infisical scan on staged changes with baseline
 echo "[husky]: Running command: pnpm infisical scan git-changes --staged --verbose --baseline-path .reports/secrets-report.json"
