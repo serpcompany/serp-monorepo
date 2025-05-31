@@ -8,9 +8,8 @@
     "eslint": "eslint . --fix",
     "generate": "nuxt generate .playground",
     "postinstall": "nuxt prepare",
-    "lint": "prettier . --write --log-level warn && eslint . --fix",
+    "lint": "eslint . --fix",
     "prepare": "nuxt prepare",
-    "prettier": "prettier . --write --log-level warn",
     "preview": "nuxt preview .playground"
   },
   "dependencies": {

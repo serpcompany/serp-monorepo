@@ -5,11 +5,9 @@
   "scripts": {
     "build": "turbo run build",
     "eslint": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run eslint",
-    "format": "prettier --write \"**/*.{ts,tsx,md,vue,json}\"",
     "lint": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run lint",
     "lint:windows": "turbo run lint",
     "prepare": "husky install",
-    "prettier": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run prettier",
     "test": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run test",
     "test:update": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run test:update",
     "test:update:windows": "turbo run test:update",
@@ -26,6 +24,7 @@
     "vue-tsc": "2.2.0"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^4.13.2",
     "@eslint/eslintrc": "^3.0.0",
     "@eslint/js": "^8.56.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
@@ -33,10 +32,17 @@
     "@vue/eslint-config-typescript": "^12.0.0",
     "eslint": "^8.56.0",
     "eslint-config-turbo": "^2.0.0",
+    "eslint-plugin-jsdoc": "^50.6.17",
+    "eslint-typegen": "^2.2.0",
     "husky": "^9.1.7",
-    "prettier": "^3.5.3",
+    "lint-staged": "^16.1.0",
     "turbo": "^2.4.4",
     "typescript": "^5.7.3"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,vue,js,jsx}": [
+      "eslint --fix"
+    ]
   },
   "packageManager": "pnpm@8.15.6",
   "engines": {
