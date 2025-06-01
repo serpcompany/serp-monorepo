@@ -4,6 +4,7 @@ import { vi } from 'vitest'
 const mockReadBody = vi.fn()
 const mockGetQuery = vi.fn()
 const mockGetRouterParam = vi.fn()
+const mockGetRouterParams = vi.fn()
 const mockCreateError = vi.fn().mockImplementation((options) => {
   const error = new Error(options.message)
   error.statusCode = options.statusCode
@@ -12,15 +13,19 @@ const mockCreateError = vi.fn().mockImplementation((options) => {
 const mockGetUserSession = vi.fn().mockResolvedValue({
   user: { siteId: 'user-123', id: 'user-123' },
 })
+const mockRequireUserSession = vi.fn().mockResolvedValue({
+  user: { siteId: 'user-123', id: 'user-123' },
+})
 
 // Make auto-imported functions globally available
 globalThis.defineEventHandler = vi.fn(handler => handler)
 globalThis.readBody = mockReadBody
 globalThis.getQuery = mockGetQuery
 globalThis.getRouterParam = mockGetRouterParam
+globalThis.getRouterParams = mockGetRouterParams
 globalThis.createError = mockCreateError
 globalThis.getUserSession = mockGetUserSession
-globalThis.getRouterParams = vi.fn()
+globalThis.requireUserSession = mockRequireUserSession
 
 // Mock h3 module for explicit imports
 vi.mock('h3', () => ({
@@ -28,6 +33,7 @@ vi.mock('h3', () => ({
   readBody: mockReadBody,
   getQuery: mockGetQuery,
   getRouterParam: mockGetRouterParam,
+  getRouterParams: mockGetRouterParams,
   createError: mockCreateError,
 }))
 
@@ -231,7 +237,9 @@ export {
   mockExecute,
   mockGetQuery,
   mockGetRouterParam,
+  mockGetRouterParams,
   mockGetUserSession,
+  mockRequireUserSession,
   mockJoin,
   mockRaw,
   mockReadBody,

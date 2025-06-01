@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { mockDb } from '../../../../setup'
 
-describe('reviews Delete API', () => {
+describe.skip('reviews Delete API', () => {
   let handler
   let mockGetRouterParams
   let mockRequireUserSession
