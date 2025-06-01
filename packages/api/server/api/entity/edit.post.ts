@@ -2,10 +2,16 @@ import { getDb } from '@serp/db/server/database';
 import { category, edit, entity, topic } from '@serp/db/server/database/schema';
 import { eq, inArray } from 'drizzle-orm';
 
+/**
+ * Submit a new entity edit proposal
+ * @param event - H3 event object containing request data with edit ID and proposed changes
+ * @returns Success message or error response
+ */
 export default defineEventHandler(async (event) => {
   try {
     const session = await requireUserSession(event);
-    const userId = session?.user?.id;
+    const user = session?.user as { id: string } | undefined;
+    const userId = user?.id;
     if (!userId) return { status: 401, message: 'Unauthorized' };
 
     const { id } = getQuery(event);
@@ -26,7 +32,7 @@ export default defineEventHandler(async (event) => {
     // Ensure categories is an array of ids and that all exist in category table
     if (data.categories) {
       if (typeof data.categories === 'string') {
-        data.categories = data.categories
+        data.categories = (typeof data.categories === 'string' ? data.categories : String(data.categories))
           .split(',')
           .map((cat: string) => cat.trim());
       }
@@ -55,7 +61,7 @@ export default defineEventHandler(async (event) => {
     // Ensure topics is an array of ids and that all exist in topic table
     if (data.topics) {
       if (typeof data.topics === 'string') {
-        data.topics = data.topics.split(',').map((cat: string) => cat.trim());
+        data.topics = (typeof data.topics === 'string' ? data.topics : String(data.topics)).split(',').map((cat: string) => cat.trim());
       }
       if (!Array.isArray(data.topics)) {
         return {

@@ -8,10 +8,16 @@ import {
 } from '@serp/db/server/database/schema';
 import { and, eq, inArray, sql } from 'drizzle-orm';
 
+/**
+ * Review and approve/reject entity edit proposals
+ * @param event - H3 event object containing edit ID and review decision
+ * @returns Success message or error response
+ */
 export default defineEventHandler(async (event) => {
   try {
     const session = await requireUserSession(event);
-    const userId = session?.user?.id;
+    const user = session?.user as { id: string } | undefined;
+    const userId = user?.id;
     if (!userId) return { status: 401, message: 'Unauthorized' };
 
     const { id } = getQuery(event);
@@ -100,7 +106,7 @@ export default defineEventHandler(async (event) => {
       // Ensure categories is an array of ids and that all exist in category
       if (body.categories) {
         if (typeof body.categories === 'string') {
-          body.categories = body.categories
+          body.categories = (typeof body.categories === 'string' ? body.categories : String(body.categories))
             .split(',')
             .map((cat: string) => cat.trim());
         }
@@ -130,7 +136,7 @@ export default defineEventHandler(async (event) => {
 
       if (body.topics) {
         if (typeof body.topics === 'string') {
-          body.topics = body.topics.split(',').map((cat: string) => cat.trim());
+          body.topics = (typeof body.topics === 'string' ? body.topics : String(body.topics)).split(',').map((cat: string) => cat.trim());
         }
         if (!Array.isArray(body.topics)) {
           return {

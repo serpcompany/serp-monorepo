@@ -2,10 +2,16 @@ import { getDb } from '@serp/db/server/database';
 import { submitForm } from '@serp/db/server/database/schema';
 import { and, eq } from 'drizzle-orm';
 
+/**
+ * Get entity submissions for the authenticated user
+ * @param event - H3 event object containing optional id and module query parameters
+ * @returns Array of submissions or single submission if ID provided
+ */
 export default defineEventHandler(async (event) => {
   try {
     const session = await requireUserSession(event);
-    const userId = session?.user?.id;
+    const user = session?.user as { id: string } | undefined;
+    const userId = user?.id;
     if (!userId) return { status: 401, message: 'Unauthorized' };
 
     const { id, module = '' } = getQuery(event);

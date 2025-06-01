@@ -5,9 +5,15 @@ import { load } from 'cheerio';
 import { and, eq, sql } from 'drizzle-orm';
 import { defineEventHandler, getQuery } from 'h3';
 
+/**
+ * Verify backlink for entity submission
+ * @param event - H3 event object containing submission ID and module
+ * @returns Verification result with status
+ */
 export default defineEventHandler(async (event) => {
   const session = await requireUserSession(event);
-  const userId = session?.user?.id;
+  const user = session?.user as { id: string } | undefined;
+  const userId = user?.id;
   if (!userId) return { status: 401, message: 'Unauthorized' };
 
   const { id, module = '' } = getQuery(event);

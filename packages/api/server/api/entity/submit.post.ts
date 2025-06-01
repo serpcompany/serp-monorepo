@@ -8,10 +8,16 @@ import {
 import { sendSlackNotification } from '@serp/notifications/server';
 import { and, eq, inArray } from 'drizzle-orm';
 
+/**
+ * Submit or update an entity submission
+ * @param event - H3 event object containing submission data and module
+ * @returns Success message or error response
+ */
 export default defineEventHandler(async (event) => {
   try {
     const session = await requireUserSession(event);
-    const userId = session?.user?.id;
+    const user = session?.user as { id: string } | undefined;
+    const userId = user?.id;
     if (!userId) return { status: 401, message: 'Unauthorized' };
 
     const { module = '' } = getQuery(event);
@@ -127,7 +133,7 @@ export default defineEventHandler(async (event) => {
     if (data.tags) {
       let tags = data.tags;
       if (typeof tags === 'string') {
-        tags = tags.split(',').map((tag: string) => tag.trim());
+        tags = (typeof tags === 'string' ? tags : String(tags)).split(',').map((tag: string) => tag.trim());
       }
       tags = [...new Set(tags)];
       data.tags = tags;

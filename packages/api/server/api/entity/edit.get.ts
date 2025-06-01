@@ -2,10 +2,16 @@ import { getDb } from '@serp/db/server/database';
 import { edit } from '@serp/db/server/database/schema';
 import { eq } from 'drizzle-orm';
 
+/**
+ * Get entity edits for the authenticated user
+ * @param event - H3 event object containing request data with optional id query parameter
+ * @returns Object containing edits array or error response
+ */
 export default defineEventHandler(async (event) => {
   try {
     const session = await requireUserSession(event);
-    const userId = session?.user?.id;
+    const user = session?.user as { id: string } | undefined;
+    const userId = user?.id;
     if (!userId) return { status: 401, message: 'Unauthorized' };
 
     const { id } = getQuery(event);

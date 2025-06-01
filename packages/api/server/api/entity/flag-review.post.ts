@@ -2,10 +2,16 @@ import { getDb } from '@serp/db/server/database';
 import { review, verification } from '@serp/db/server/database/schema';
 import { and, eq, sql } from 'drizzle-orm';
 
+/**
+ * Flag a review for inappropriate content
+ * @param event - H3 event object containing review ID and flag reason
+ * @returns Success message or error response
+ */
 export default defineEventHandler(async (event) => {
   try {
     const session = await requireUserSession(event);
-    const userId = session?.user?.id;
+    const user = session?.user as { id: string } | undefined;
+    const userId = user?.id;
     if (!userId) return { status: 401, message: 'Unauthorized' };
 
     const { id } = getQuery(event);
