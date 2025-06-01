@@ -13,7 +13,7 @@
   }));
 
   const { data, status } = await useAsyncData(
-    'companies',
+    computed(() => formatDataKey('companies', filters.value)),
     () =>
       useCompanies(
         filters.value.page,
