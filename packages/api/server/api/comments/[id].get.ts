@@ -81,7 +81,7 @@ FROM full_tree;
 
     // Convert the flat list into a nested structure.
     // @todo - improve the typesafety of this after implementing zod
-    const nestComments = (comments: Comment[]) => {
+    const nestComments = (comments: Comment[]): Comment[] => {
       const commentMap: Record<string, Comment> = {}
       // initialize map with each comment, and initialize replies array
       comments.forEach((comment: Comment) => {

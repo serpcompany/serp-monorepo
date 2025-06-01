@@ -29,7 +29,7 @@ export default defineEventHandler(async (event) => {
       commentId,
       comment: bodyComment,
       timestamp,
-      module,
+      module: _module,
     } = await readBody(event)
     if (!commentId || !bodyComment || !timestamp) {
       return {

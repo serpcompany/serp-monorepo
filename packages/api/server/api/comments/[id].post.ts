@@ -22,14 +22,14 @@ export default defineEventHandler(async (event) => {
       return { status: 401, message: 'Unauthorized' }
 
     const { id } = getRouterParams(event)
-    const { module } = getQuery(event)
+    const { module: _module } = getQuery(event)
     if (!id)
       return { status: 400, message: 'ID is required' }
 
     const {
       comment: bodyComment,
       parentIds,
-      module: bodyModule,
+      module: _bodyModule,
     } = await readBody(event)
 
     const newComment = {
