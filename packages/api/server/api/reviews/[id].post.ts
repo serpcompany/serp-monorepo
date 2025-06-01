@@ -31,7 +31,7 @@ export default defineEventHandler(async (event) => {
     }
 
     const ratingInt = Number.parseInt(rating, 10)
-    if (isNaN(ratingInt) || ratingInt < 1 || ratingInt > 5) {
+    if (Number.isNaN(ratingInt) || ratingInt < 1 || ratingInt > 5) {
       return {
         status: 400,
         message: 'Rating must be an integer between 1 and 5',

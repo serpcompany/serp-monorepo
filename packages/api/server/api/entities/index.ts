@@ -1,4 +1,3 @@
-/* eslint-disable max-lines, max-lines-per-function, complexity */
 import type { Entity, Pagination } from '@serp/types/types'
 import { useDataCache } from '#nuxt-multi-cache/composables'
 import { getDb } from '@serp/db/server/database'

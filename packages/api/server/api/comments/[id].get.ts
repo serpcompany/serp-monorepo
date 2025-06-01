@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import type { Comment } from '@serp/types/types'
 import { getDb } from '@serp/db/server/database'
 import { comment } from '@serp/db/server/database/schema'

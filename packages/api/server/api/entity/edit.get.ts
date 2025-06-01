@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
     if (id) {
       // if id, show all edits for that entity
       const entityId = Number.parseInt(id as string, 10)
-      if (isNaN(entityId)) {
+      if (Number.isNaN(entityId)) {
         return { status: 400, message: 'Invalid entity ID' }
       }
       edits = await getDb()

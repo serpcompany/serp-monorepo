@@ -1,5 +1,3 @@
-import { getDb } from '@serp/db/server/database'
-import { and, eq } from 'drizzle-orm'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { mockDb, mockReadBody } from '../../../../setup'
 

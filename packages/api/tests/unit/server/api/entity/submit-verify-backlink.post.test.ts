@@ -8,17 +8,17 @@ vi.mock('@serp/notifications/server', () => ({
 
 const mockLinks = []
 vi.mock('cheerio', () => ({
-  load: vi.fn().mockImplementation((html) => {
-    function $(selector) {
+  load: vi.fn().mockImplementation((_html) => {
+    function $(_selector) {
       return {
-        filter: (filterFn) => {
+        filter: (_filterFn) => {
           return {
-            map: (_, mapFn) => ({
+            map: (_, _mapFn) => ({
               get: () => mockLinks,
             }),
           }
         },
-        attr: attrName => '',
+        attr: _attrName => '',
       }
     }
     $.attr = () => ''

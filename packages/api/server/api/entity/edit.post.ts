@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
       return { status: 400, message: 'Missing edit ID in query' }
     }
     const editId = Number.parseInt(id as string, 10)
-    if (isNaN(editId)) {
+    if (Number.isNaN(editId)) {
       return { status: 400, message: 'Invalid edit ID' }
     }
 

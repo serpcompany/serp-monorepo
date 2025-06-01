@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { vi } from 'vitest'
 
 const mockReadBody = vi.fn()
@@ -183,7 +184,7 @@ vi.mock('@serp/db/server/database/schema', () => ({
 
 // Mock SQL functions
 const mockRaw = vi.fn(x => x)
-const mockJoin = vi.fn((arr, separator) => arr.join(','))
+const mockJoin = vi.fn((arr, _separator) => arr.join(','))
 const mockSql = vi.fn(query => ({ query }))
 mockSql.raw = mockRaw
 mockSql.join = mockJoin
