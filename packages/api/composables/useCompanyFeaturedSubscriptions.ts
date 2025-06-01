@@ -5,7 +5,7 @@ import useFetchWithCache from './useFetchWithCache'
  * @param activeOnly - Whether to fetch only active subscriptions (default: true)
  * @returns Promise<any> Featured subscriptions data
  */
-export async function useCompanyFeaturedSubscriptions(activeOnly = true) {
+export async function useCompanyFeaturedSubscriptions(activeOnly = true): Promise<any> {
   return useFetchWithCache(
     `/entity/featured-subscriptions?activeOnly=${activeOnly}&module=company`,
   )

@@ -1,6 +1,7 @@
 import type { Recording } from '@serp/types/types'
+import useFetchWithCache from './useFetchWithCache'
 
-function postProcessLyrics(lyrics: string) {
+function postProcessLyrics(lyrics: string): string | null {
   if (!lyrics)
     return null
 
@@ -10,7 +11,7 @@ function postProcessLyrics(lyrics: string) {
     .join('')
 }
 
-export async function useSong(slug: string) {
+export async function useSong(slug: string): Promise<Recording> {
   const song = await useFetchWithCache<Recording>(
     `/entity/${slug}?module=music_songs`,
   )

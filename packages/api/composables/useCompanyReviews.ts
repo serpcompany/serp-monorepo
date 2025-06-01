@@ -8,7 +8,7 @@ import useFetchWithCache from './useFetchWithCache'
  * @param limit - Number of reviews per page (default: 25)
  * @returns Promise<{reviews: Reviews}> Paginated reviews data
  */
-export async function useCompanyReviews(id: number, page = 1, limit = 25) {
+export async function useCompanyReviews(id: number, page = 1, limit = 25): Promise<{ reviews: Reviews }> {
   return useFetchWithCache<{ reviews: Reviews }>(
     `/reviews/${id}?page=${page}&limit=${limit}`,
   )

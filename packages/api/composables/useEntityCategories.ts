@@ -6,6 +6,6 @@ import useFetchWithCache from './useFetchWithCache'
  * @param module - The module type to filter categories (default: empty string)
  * @returns Promise<Category[]> Array of categories
  */
-export async function useEntityCategories(module = '') {
+export async function useEntityCategories(module = ''): Promise<Category[]> {
   return await useFetchWithCache<Category[]>(`/categories?module=${module}`)
 }

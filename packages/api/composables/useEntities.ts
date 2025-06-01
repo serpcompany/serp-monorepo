@@ -9,7 +9,7 @@ import useFetchWithCache from './useFetchWithCache'
  * @param module - Filter by module type (default: empty string)
  * @returns Promise<Entities> Paginated entities data
  */
-export async function useEntities(page = 1, limit = 50, categorySlug = '', module = '') {
+export async function useEntities(page = 1, limit = 50, categorySlug = '', module = ''): Promise<Entities> {
   return await useFetchWithCache<Entities>(
     `/entities?page=${page}&limit=${limit}&categorySlug=${categorySlug}&module=${module}`,
   )

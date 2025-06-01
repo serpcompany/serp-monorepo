@@ -7,6 +7,6 @@ import useFetchWithCache from './useFetchWithCache'
  * @param module - The module type (default: empty string)
  * @returns Promise<Comment[]> Array of comments for the entity
  */
-export async function useEntityComments(id: number, module = '') {
+export async function useEntityComments(id: number, module = ''): Promise<Comment[]> {
   return useFetchWithCache<Comment[]>(`/comments/${id}?module=${module}`)
 }

@@ -7,6 +7,6 @@ import useFetchWithCache from './useFetchWithCache'
  * @param module - Optional module filter (default: empty string)
  * @returns Promise<Entity> The entity data
  */
-export async function useEntity(slug: string, module = '') {
+export async function useEntity(slug: string, module = ''): Promise<Entity> {
   return useFetchWithCache<Entity>(`/entity/${slug}?module=${module}`)
 }

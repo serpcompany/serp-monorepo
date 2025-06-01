@@ -5,6 +5,6 @@ import useFetchWithCache from './useFetchWithCache'
  * Fetches all topics for companies
  * @returns Promise<Topic[]> Array of company topics
  */
-export async function useCompanyTopics() {
+export async function useCompanyTopics(): Promise<Topic[]> {
   return await useFetchWithCache<Topic[]>(`/topics?module=company`)
 }

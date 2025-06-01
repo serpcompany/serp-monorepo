@@ -1,4 +1,4 @@
-export default async <T>(url: string) => {
+export default async <T>(url: string): Promise<T> => {
   const runtimeConfig = useRuntimeConfig()
   const fetchUrl = `${runtimeConfig.public.apiUrl}${url}`
   const { data, error } = await useFetch<T>(fetchUrl, {

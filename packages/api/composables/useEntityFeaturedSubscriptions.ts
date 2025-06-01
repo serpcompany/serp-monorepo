@@ -6,7 +6,7 @@ import useFetchWithCache from './useFetchWithCache'
  * @param module - The module type (default: empty string)
  * @returns Promise<any> Featured subscriptions data
  */
-export async function useEntityFeaturedSubscriptions(activeOnly = true, module = '') {
+export async function useEntityFeaturedSubscriptions(activeOnly = true, module = ''): Promise<any> {
   return useFetchWithCache(
     `/entity/featured-subscriptions?activeOnly=${activeOnly}&module=${module}`,
   )

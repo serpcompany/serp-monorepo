@@ -6,6 +6,6 @@ import useFetchWithCache from './useFetchWithCache'
  * @param id - The company ID
  * @returns Promise<Comment[]> Array of comments for the company
  */
-export async function useCompanyComments(id: number) {
+export async function useCompanyComments(id: number): Promise<Comment[]> {
   return useFetchWithCache<Comment[]>(`/comments/${id}?module=company`)
 }
