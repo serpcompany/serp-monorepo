@@ -44,10 +44,9 @@ export default defineEventHandler(async (event) => {
     const offset = (pageNumber - 1) * limitNumber;
 
     // @todo - improve the typesafety of this after implementing zod
-    const modules = module
-      .split(',')
-      .map((mod: string) => mod.trim())
-      .filter(Boolean);
+    const modules = typeof module === 'string' 
+      ? module.split(',').map((mod: string) => mod.trim()).filter(Boolean)
+      : [];
 
     const parseFilters = (raw: string) =>
       raw

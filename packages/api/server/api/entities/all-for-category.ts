@@ -17,10 +17,9 @@ export default defineEventHandler(async (event) => {
     .from(entity);
 
   // @todo - improve the typesafety of this after implementing zod
-  const modules = module
-    .split(',')
-    .map((mod: string) => mod.trim())
-    .filter(Boolean);
+  const modules = typeof module === 'string' 
+    ? module.split(',').map((mod: string) => mod.trim()).filter(Boolean)
+    : [];
 
   const whereConditions = [
     modules.length
