@@ -9,9 +9,17 @@ import {
 import { eq } from 'drizzle-orm';
 import { defineEventHandler, readBody } from 'h3';
 
+/**
+ * Verifies an entity email with the provided verification code.
+ * Creates a verification record and sets up team ownership for the verified entity.
+ * 
+ * @param event - The H3 event object containing the request data
+ * @returns Object with verification status and team information
+ */
 export default defineEventHandler(async (event) => {
   const session = await requireUserSession(event);
-  const userId = session?.user?.id;
+  const user = session?.user as { id: string } | undefined;
+  const userId = user?.id;
   if (!userId) return { status: 401, message: 'Unauthorized' };
 
   const { requestId, code } = (await readBody(event)) as {

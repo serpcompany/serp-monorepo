@@ -1,11 +1,20 @@
 import { getDb } from '@serp/db/server/database';
 import { vote } from '@serp/db/server/database/schema';
 import { eq, sql } from 'drizzle-orm';
+import { defineEventHandler, readBody } from 'h3';
 
+/**
+ * Handles voting on entities with upvote (1) or downvote (-1) functionality.
+ * If the same vote exists, it will be removed. If different, it will be updated.
+ * 
+ * @param event - The H3 event object containing the vote data
+ * @returns Object with operation status and message
+ */
 export default defineEventHandler(async (event) => {
   try {
     const session = await requireUserSession(event);
-    const userId = session?.user?.id;
+    const user = session?.user as { id: string } | undefined;
+    const userId = user?.id;
     if (!userId) return { status: 401, message: 'Unauthorized' };
 
     const data = await readBody(event);

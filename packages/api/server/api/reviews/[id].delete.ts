@@ -1,11 +1,20 @@
 import { getDb } from '@serp/db/server/database';
 import { review } from '@serp/db/server/database/schema';
 import { and, eq } from 'drizzle-orm';
+import { defineEventHandler, getRouterParams } from 'h3';
 
+/**
+ * Deletes a review for a specific entity by the authenticated user.
+ * Only the user who created the review can delete it.
+ * 
+ * @param event - The H3 event object containing the entity ID in route params
+ * @returns Object with deletion status and message
+ */
 export default defineEventHandler(async (event) => {
   try {
     const session = await requireUserSession(event);
-    const userId = session?.user?.id;
+    const user = session?.user as { id: string } | undefined;
+    const userId = user?.id;
     if (!userId) return { status: 401, message: 'Unauthorized' };
 
     const { id } = getRouterParams(event);
@@ -33,6 +42,6 @@ export default defineEventHandler(async (event) => {
 
     return { message: 'success' };
   } catch (error: unknown) {
-    return { status: 500, message: error.message };
+    return { status: 500, message: (error as Error).message };
   }
 });

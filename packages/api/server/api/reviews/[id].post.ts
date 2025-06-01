@@ -1,11 +1,20 @@
 import { getDb } from '@serp/db/server/database';
 import { review } from '@serp/db/server/database/schema';
 import { and, eq } from 'drizzle-orm';
+import { defineEventHandler, getRouterParams, readBody } from 'h3';
 
+/**
+ * Creates a new review for a specific entity by the authenticated user.
+ * Validates required fields and prevents duplicate reviews from the same user.
+ * 
+ * @param event - The H3 event object containing the entity ID and review data
+ * @returns Object with creation status and message
+ */
 export default defineEventHandler(async (event) => {
   try {
     const session = await requireUserSession(event);
-    const userId = session?.user?.id;
+    const user = session?.user as { id: string } | undefined;
+    const userId = user?.id;
     if (!userId) return { status: 401, message: 'Unauthorized' };
 
     const { id } = getRouterParams(event);
@@ -59,6 +68,6 @@ export default defineEventHandler(async (event) => {
 
     return { message: 'success' };
   } catch (error: unknown) {
-    return { status: 500, message: error.message };
+    return { status: 500, message: (error as Error).message };
   }
 });

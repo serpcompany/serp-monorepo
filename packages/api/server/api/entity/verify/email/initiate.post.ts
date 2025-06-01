@@ -9,10 +9,18 @@ import crypto from 'crypto';
 import { and, eq } from 'drizzle-orm';
 import { defineEventHandler, readBody } from 'h3';
 
+/**
+ * Initiates email verification for an entity by sending a verification code to the provided email.
+ * The email domain must match the entity's slug.
+ * 
+ * @param event - The H3 event object containing the request data
+ * @returns Object with initiation status and request ID
+ */
 export default defineEventHandler(async (event) => {
   try {
     const session = await requireUserSession(event);
-    const userId = session?.user?.id;
+    const user = session?.user as { id: string } | undefined;
+    const userId = user?.id;
     if (!userId) return { status: 401, message: 'Unauthorized' };
 
     const { id, email } = (await readBody(event)) as {
@@ -21,7 +29,7 @@ export default defineEventHandler(async (event) => {
     };
 
     if (!id) {
-      return { error: 'company id is required' };
+      return { error: 'entity id is required' };
     }
     if (!email) {
       return { error: 'email is required' };
