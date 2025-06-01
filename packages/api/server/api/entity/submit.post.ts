@@ -1,12 +1,12 @@
-import { getDb } from '@serp/db/server/database';
+import { getDb } from '@serp/db/server/database'
 import {
   category,
   entity,
   submitForm,
-  topic
-} from '@serp/db/server/database/schema';
-import { sendSlackNotification } from '@serp/notifications/server';
-import { and, eq, inArray } from 'drizzle-orm';
+  topic,
+} from '@serp/db/server/database/schema'
+import { sendSlackNotification } from '@serp/notifications/server'
+import { and, eq, inArray } from 'drizzle-orm'
 
 /**
  * Submit or update an entity submission
@@ -15,21 +15,22 @@ import { and, eq, inArray } from 'drizzle-orm';
  */
 export default defineEventHandler(async (event) => {
   try {
-    const session = await requireUserSession(event);
-    const user = session?.user as { id: string } | undefined;
-    const userId = user?.id;
-    if (!userId) return { status: 401, message: 'Unauthorized' };
+    const session = await requireUserSession(event)
+    const user = session?.user as { id: string } | undefined
+    const userId = user?.id
+    if (!userId)
+      return { status: 401, message: 'Unauthorized' }
 
-    const { module = '' } = getQuery(event);
+    const { module = '' } = getQuery(event)
 
-    const data = await readBody(event);
+    const data = await readBody(event)
 
-    const blacklistKeys = ['id', 'uuid'];
+    const blacklistKeys = ['id', 'uuid']
 
     // Remove blacklisted keys from data
     for (const key of blacklistKeys) {
       if (key in data) {
-        Reflect.deleteProperty(data, key as keyof typeof data);
+        Reflect.deleteProperty(data, key as keyof typeof data)
       }
     }
 
@@ -38,8 +39,8 @@ export default defineEventHandler(async (event) => {
       if (!Array.isArray(data.categories)) {
         return {
           status: 400,
-          message: 'Categories must be an array'
-        };
+          message: 'Categories must be an array',
+        }
       }
 
       const categories = await getDb()
@@ -48,17 +49,17 @@ export default defineEventHandler(async (event) => {
         .where(
           and(
             inArray(category.id, data.categories),
-            eq(category.module, module)
-          )
+            eq(category.module, module),
+          ),
         )
         .limit(data.categories.length)
-        .execute();
+        .execute()
 
       if (categories.length !== data.categories.length) {
         return {
           status: 400,
-          message: 'Invalid categories'
-        };
+          message: 'Invalid categories',
+        }
       }
     }
 
@@ -67,20 +68,20 @@ export default defineEventHandler(async (event) => {
       if (!Array.isArray(data.topics)) {
         return {
           status: 400,
-          message: 'Topics must be an array'
-        };
+          message: 'Topics must be an array',
+        }
       }
       const topics = await getDb()
         .select()
         .from(topic)
         .where(and(inArray(topic.id, data.topics), eq(topic.module, module)))
         .limit(data.topics.length)
-        .execute();
+        .execute()
       if (topics.length !== data.topics.length) {
         return {
           status: 400,
-          message: 'Invalid topics'
-        };
+          message: 'Invalid topics',
+        }
       }
     }
 
@@ -91,20 +92,20 @@ export default defineEventHandler(async (event) => {
       .where(
         and(
           eq(entity.slug, data.slug || data.domain),
-          eq(entity.module, module)
-        )
+          eq(entity.module, module),
+        ),
       )
       .limit(1)
-      .execute();
+      .execute()
 
     if (existingEntity.length) {
       return {
         status: 400,
-        message: 'Entity already exists'
-      };
+        message: 'Entity already exists',
+      }
     }
 
-    console.log('Entity data:', data);
+    console.log('Entity data:', data)
 
     if (!data.id) {
       // Not an update
@@ -116,27 +117,27 @@ export default defineEventHandler(async (event) => {
         .where(
           and(
             eq(entity.slug, data.slug || data.domain),
-            eq(entity.module, module)
-          )
+            eq(entity.module, module),
+          ),
         )
         .limit(1)
-        .execute();
+        .execute()
 
       if (existingEntityForm.length) {
         return {
           status: 400,
-          message: 'Entity already submitted'
-        };
+          message: 'Entity already submitted',
+        }
       }
     }
 
     if (data.tags) {
-      let tags = data.tags;
+      let tags = data.tags
       if (typeof tags === 'string') {
-        tags = (typeof tags === 'string' ? tags : String(tags)).split(',').map((tag: string) => tag.trim());
+        tags = (typeof tags === 'string' ? tags : String(tags)).split(',').map((tag: string) => tag.trim())
       }
-      tags = [...new Set(tags)];
-      data.tags = tags;
+      tags = [...new Set(tags)]
+      data.tags = tags
     }
 
     if (data.id) {
@@ -146,41 +147,43 @@ export default defineEventHandler(async (event) => {
         .set({
           formData: JSON.stringify(data),
           identifier: data.slug || data.domain,
-          user: userId
+          user: userId,
         })
         .where(eq(submitForm.id, data.id))
-        .execute();
-    } else {
+        .execute()
+    }
+    else {
       await getDb()
         .insert(submitForm)
         .values({
           formData: JSON.stringify(data),
           user: userId,
           entity: data.entity,
-          module: module,
+          module,
           identifier: data.slug || data.domain,
           status: 'pending',
-          uuid: data.uuid
+          uuid: data.uuid,
         })
-        .execute();
+        .execute()
 
       // Send Slack notification
       sendSlackNotification({
         message: `New entity submission:
 Data: ${JSON.stringify(data, null, 2)}
 Submitted by: ${userId}
-UUID: ${data.uuid}`
-      });
+UUID: ${data.uuid}`,
+      })
     }
 
     return {
-      message: 'success'
-    };
-  } catch (error) {
-    console.error('Error submitting entity:', error);
+      message: 'success',
+    }
+  }
+  catch (error) {
+    console.error('Error submitting entity:', error)
     return {
       status: error.statusCode || 500,
-      message: error.message
-    };
+      message: error.message,
+    }
   }
-});
+})

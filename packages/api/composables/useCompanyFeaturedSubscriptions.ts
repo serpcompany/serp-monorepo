@@ -1,12 +1,12 @@
-import useFetchWithCache from './useFetchWithCache';
+import useFetchWithCache from './useFetchWithCache'
 
 /**
  * Fetches featured subscriptions for companies
  * @param activeOnly - Whether to fetch only active subscriptions (default: true)
  * @returns Promise<any> Featured subscriptions data
  */
-export const useCompanyFeaturedSubscriptions = async (activeOnly = true) => {
+export async function useCompanyFeaturedSubscriptions(activeOnly = true) {
   return useFetchWithCache(
-    `/entity/featured-subscriptions?activeOnly=${activeOnly}&module=company`
-  );
-};
+    `/entity/featured-subscriptions?activeOnly=${activeOnly}&module=company`,
+  )
+}

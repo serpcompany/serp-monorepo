@@ -56,7 +56,7 @@ export default defineNuxtConfig({
     },
   },
   typescript: {
-    typeCheck: false // Disable type checking errors to allow PRs to merge
+    typeCheck: false, // Disable type checking errors to allow PRs to merge
   },
   runtimeConfig: {
     public: {

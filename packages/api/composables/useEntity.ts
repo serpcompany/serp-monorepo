@@ -1,5 +1,5 @@
-import type { Entity } from '@serp/types/types';
-import useFetchWithCache from './useFetchWithCache';
+import type { Entity } from '@serp/types/types'
+import useFetchWithCache from './useFetchWithCache'
 
 /**
  * Fetches a single entity by slug
@@ -7,6 +7,6 @@ import useFetchWithCache from './useFetchWithCache';
  * @param module - Optional module filter (default: empty string)
  * @returns Promise<Entity> The entity data
  */
-export const useEntity = async (slug: string, module = '') => {
-  return useFetchWithCache<Entity>(`/entity/${slug}?module=${module}`);
-};
+export async function useEntity(slug: string, module = '') {
+  return useFetchWithCache<Entity>(`/entity/${slug}?module=${module}`)
+}

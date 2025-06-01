@@ -6,17 +6,17 @@ export default defineNuxtConfig({
     '@serp/db',
     '@serp/auth',
     '@serp/utils',
-    '@serp/notifications'
+    '@serp/notifications',
   ],
   modules: ['@nuxt/eslint', '@unlok-co/nuxt-stripe', '@nuxt/test-utils/module'],
   multiCache: {
     data: {
-      enabled: true
-    }
+      enabled: true,
+    },
   },
   runtimeConfig: {
     public: {
-      apiUrl: process.env.NUXT_PUBLIC_API_URL || '/api'
-    }
-  }
-});
+      apiUrl: process.env.NUXT_PUBLIC_API_URL || '/api',
+    },
+  },
+})

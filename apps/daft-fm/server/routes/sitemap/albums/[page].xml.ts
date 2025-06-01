@@ -6,9 +6,9 @@ const NUXT_PUBLIC_SITE_URL = process.env.NUXT_PUBLIC_URL
 
 /**
  * Generates XML sitemap for album pages.
- * @param {H3Event} event - The event object containing request data
- * @returns {Promise<string>} XML sitemap string
- * @throws {Error} If page parameter is invalid or API fetch fails
+ * @param {H3Event} event - The event object containing request data.
+ * @returns {Promise<string>} XML sitemap string.
+ * @throws {Error} If page parameter is invalid or API fetch fails.
  * @example
  * // GET /sitemap/albums/1.xml
  * // Returns XML sitemap for page 1 of albums

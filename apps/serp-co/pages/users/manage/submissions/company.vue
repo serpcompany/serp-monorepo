@@ -164,6 +164,7 @@ async function saveCompany() {
 }
 
 function previewCompany() {
+  // eslint-disable-next-line no-alert
   alert('Preview company (placeholder)')
 }
 </script>
@@ -327,6 +328,7 @@ function previewCompany() {
                       help="Upload your company logo (image file)"
                       class="w-full"
                     >
+                      <!-- eslint-disable-next-line vue-a11y/form-control-has-label -->
                       <input
                         type="file"
                         accept="image/*"

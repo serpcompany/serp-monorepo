@@ -30,7 +30,13 @@
 
   const isExpanded = ref(false);
 
-  // Compute the main image, either the serviceProvider logo or the first screenshot
+  /**
+   * Computes the main image for the service provider card.
+   * Uses the service provider logo if available, otherwise falls back to the first screenshot.
+   * @returns {string | null} The URL of the main image or null if no image is available
+   * @example
+   * const imageUrl = serviceProviderMainImage.value; // Returns logo or first screenshot URL
+   */
   const serviceProviderMainImage = computed(() => {
     if (props.serviceProvider.logo) {
       return props.serviceProvider.logo;
@@ -144,14 +150,14 @@
 
             <!-- rating display -->
             <div
-              v-if="serviceProvider.rating"
+              v-if="serviceProvider.averageRating"
               :class="{
                 'mt-3': !serviceProvider.featured,
                 'mt-6': serviceProvider.featured
               }"
             >
               <span class="text-lg font-medium"
-                >{{ serviceProvider.rating }}/5</span
+                >{{ serviceProvider.averageRating }}/5</span
               >
             </div>
           </div>

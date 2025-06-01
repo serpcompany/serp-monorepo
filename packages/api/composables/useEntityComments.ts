@@ -1,5 +1,5 @@
-import type { Comment } from '@serp/types/types';
-import useFetchWithCache from './useFetchWithCache';
+import type { Comment } from '@serp/types/types'
+import useFetchWithCache from './useFetchWithCache'
 
 /**
  * Fetches comments for a specific entity
@@ -7,6 +7,6 @@ import useFetchWithCache from './useFetchWithCache';
  * @param module - The module type (default: empty string)
  * @returns Promise<Comment[]> Array of comments for the entity
  */
-export const useEntityComments = async (id: number, module = '') => {
-  return useFetchWithCache<Comment[]>(`/comments/${id}?module=${module}`);
-};
+export async function useEntityComments(id: number, module = '') {
+  return useFetchWithCache<Comment[]>(`/comments/${id}?module=${module}`)
+}

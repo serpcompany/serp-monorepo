@@ -1,6 +1,6 @@
-import { getDb } from '@serp/db/server/database';
-import { submitForm } from '@serp/db/server/database/schema';
-import { and, eq } from 'drizzle-orm';
+import { getDb } from '@serp/db/server/database'
+import { submitForm } from '@serp/db/server/database/schema'
+import { and, eq } from 'drizzle-orm'
 
 /**
  * Get entity submissions for the authenticated user
@@ -9,12 +9,13 @@ import { and, eq } from 'drizzle-orm';
  */
 export default defineEventHandler(async (event) => {
   try {
-    const session = await requireUserSession(event);
-    const user = session?.user as { id: string } | undefined;
-    const userId = user?.id;
-    if (!userId) return { status: 401, message: 'Unauthorized' };
+    const session = await requireUserSession(event)
+    const user = session?.user as { id: string } | undefined
+    const userId = user?.id
+    if (!userId)
+      return { status: 401, message: 'Unauthorized' }
 
-    const { id, module = '' } = getQuery(event);
+    const { id, module = '' } = getQuery(event)
 
     if (!id) {
       const results = await getDb()
@@ -28,14 +29,15 @@ export default defineEventHandler(async (event) => {
           reviewedBy: submitForm.reviewedBy,
           reviewNotes: submitForm.reviewNotes,
           backlinkVerified: submitForm.backlinkVerified,
-          backlinkVerifiedAt: submitForm.backlinkVerifiedAt
+          backlinkVerifiedAt: submitForm.backlinkVerifiedAt,
         })
         .from(submitForm)
         .where(and(eq(submitForm.user, userId), eq(submitForm.module, module)))
-        .execute();
+        .execute()
 
-      return results;
-    } else {
+      return results
+    }
+    else {
       const results = await getDb()
         .select({
           id: submitForm.id,
@@ -48,24 +50,25 @@ export default defineEventHandler(async (event) => {
           reviewedBy: submitForm.reviewedBy,
           reviewNotes: submitForm.reviewNotes,
           backlinkVerified: submitForm.backlinkVerified,
-          backlinkVerifiedAt: submitForm.backlinkVerifiedAt
+          backlinkVerifiedAt: submitForm.backlinkVerifiedAt,
         })
         .from(submitForm)
         .where(
           and(
             eq(submitForm.user, userId),
             eq(submitForm.id, id),
-            eq(submitForm.module, module)
-          )
+            eq(submitForm.module, module),
+          ),
         )
-        .execute();
+        .execute()
 
-      return results.length ? results[0] : null;
+      return results.length ? results[0] : null
     }
-  } catch (error) {
+  }
+  catch (error) {
     return {
       status: error.statusCode || 500,
-      message: error.message
-    };
+      message: error.message,
+    }
   }
-});
+})

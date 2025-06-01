@@ -1,16 +1,16 @@
-import { describe, expect, it } from 'vitest';
-import CompanyCard from '../../components/CompanyCard.vue';
-import ComponentRender from '../componentRender';
-import '../mockUseUserSession';
+import { describe, expect, it } from 'vitest'
+import CompanyCard from '../../components/CompanyCard.vue'
+import ComponentRender from '../componentRender'
+import '../mockUseUserSession'
 
 let config_: Record<string, unknown> = {
   app: { baseURL: '/' },
   public: {
-    useAuth: true
-  }
-};
+    useAuth: true,
+  },
+}
 
-describe('CompanyCard Snapshot', () => {
+describe('companyCard Snapshot', () => {
   it.each([
     [
       'renders non-featured company correctly (without auth)',
@@ -23,16 +23,16 @@ describe('CompanyCard Snapshot', () => {
             featured: false,
             oneLiner: 'Just a regular company.',
             serplyLink: 'https://nonfeatured.example.com',
-            upvotes: []
-          }
+            upvotes: [],
+          },
         },
         config: {
           app: { baseURL: '/' },
           public: {
-            useAuth: false
-          }
-        }
-      }
+            useAuth: false,
+          },
+        },
+      },
     ],
     [
       'renders featured company with complete details correctly (without auth)',
@@ -50,19 +50,19 @@ describe('CompanyCard Snapshot', () => {
             screenshots: ['https://featured.example.com/screenshot.png'],
             features: [
               { id: 1, item: 'Innovation', description: 'Cutting edge tech.' },
-              { id: 2, item: 'Quality', description: 'High quality products.' }
+              { id: 2, item: 'Quality', description: 'High quality products.' },
             ],
             serplyLink: 'https://featured.example.com',
-            upvotes: ['user@example.com']
-          }
+            upvotes: ['user@example.com'],
+          },
         },
         config: {
           app: { baseURL: '/' },
           public: {
-            useAuth: false
-          }
-        }
-      }
+            useAuth: false,
+          },
+        },
+      },
     ],
     [
       'renders company with expanded content correctly (without auth)',
@@ -82,24 +82,24 @@ describe('CompanyCard Snapshot', () => {
               {
                 id: 3,
                 item: 'Flexibility',
-                description: 'Adaptable solutions.'
-              }
+                description: 'Adaptable solutions.',
+              },
             ],
             serplyLink: 'https://expanded.example.com',
-            upvotes: []
+            upvotes: [],
           },
           showReadMore: true,
           showFeatures: true,
           showExpandedContent: true,
-          baseSlug: 'products/'
+          baseSlug: 'products/',
         },
         config: {
           app: { baseURL: '/' },
           public: {
-            useAuth: false
-          }
-        }
-      }
+            useAuth: false,
+          },
+        },
+      },
     ],
     [
       'renders non-featured company correctly (with auth)',
@@ -112,16 +112,16 @@ describe('CompanyCard Snapshot', () => {
             featured: false,
             oneLiner: 'Just a regular company.',
             serplyLink: 'https://nonfeatured.example.com',
-            upvotes: []
-          }
+            upvotes: [],
+          },
         },
         config: {
           app: { baseURL: '/' },
           public: {
-            useAuth: true
-          }
-        }
-      }
+            useAuth: true,
+          },
+        },
+      },
     ],
     [
       'renders featured company with complete details correctly (with auth)',
@@ -139,19 +139,19 @@ describe('CompanyCard Snapshot', () => {
             screenshots: ['https://featured.example.com/screenshot.png'],
             features: [
               { id: 1, item: 'Innovation', description: 'Cutting edge tech.' },
-              { id: 2, item: 'Quality', description: 'High quality products.' }
+              { id: 2, item: 'Quality', description: 'High quality products.' },
             ],
             serplyLink: 'https://featured.example.com',
-            upvotes: ['user@example.com']
-          }
+            upvotes: ['user@example.com'],
+          },
         },
         config: {
           app: { baseURL: '/' },
           public: {
-            useAuth: true
-          }
-        }
-      }
+            useAuth: true,
+          },
+        },
+      },
     ],
     [
       'renders company with expanded content correctly (with auth)',
@@ -171,36 +171,36 @@ describe('CompanyCard Snapshot', () => {
               {
                 id: 3,
                 item: 'Flexibility',
-                description: 'Adaptable solutions.'
-              }
+                description: 'Adaptable solutions.',
+              },
             ],
             serplyLink: 'https://expanded.example.com',
-            upvotes: []
+            upvotes: [],
           },
           showReadMore: true,
           showFeatures: true,
           showExpandedContent: true,
-          baseSlug: 'products/'
+          baseSlug: 'products/',
         },
         config: {
           app: { baseURL: '/' },
           public: {
-            useAuth: true
-          }
-        }
-      }
-    ]
+            useAuth: true,
+          },
+        },
+      },
+    ],
   ])(
     '%s',
-    async (desc: string, options: { props: unknown; config?: unknown }) => {
-      config_ = options.config;
-      mockNuxtImport('useRuntimeConfig', () => () => config_);
+    async (desc: string, options: { props: unknown, config?: unknown }) => {
+      config_ = options.config
+      mockNuxtImport('useRuntimeConfig', () => () => config_)
       const html = await ComponentRender(
         `CompanyCard ${desc}`,
         options,
-        CompanyCard
-      );
-      expect(html).toMatchSnapshot();
-    }
-  );
-});
+        CompanyCard,
+      )
+      expect(html).toMatchSnapshot()
+    },
+  )
+})

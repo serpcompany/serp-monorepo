@@ -1,4 +1,4 @@
-import { field, group } from '@nuxt/content/preview';
+import { field, group } from '@nuxt/content/preview'
 
 export default defineNuxtSchema({
   appConfig: {
@@ -17,44 +17,44 @@ export default defineNuxtSchema({
               title: 'Search Bar',
               description: 'Icon to display in the search bar.',
               icon: 'i-mdi-magnify',
-              default: 'i-lucide-search'
+              default: 'i-lucide-search',
             }),
             dark: field({
               type: 'icon',
               title: 'Dark mode',
               description: 'Icon of color mode button for dark mode.',
               icon: 'i-mdi-moon-waning-crescent',
-              default: 'i-lucide-moon'
+              default: 'i-lucide-moon',
             }),
             light: field({
               type: 'icon',
               title: 'Light mode',
               description: 'Icon of color mode button for light mode.',
               icon: 'i-mdi-white-balance-sunny',
-              default: 'i-lucide-sun'
+              default: 'i-lucide-sun',
             }),
             external: field({
               type: 'icon',
               title: 'External Link',
               description: 'Icon for external link.',
               icon: 'i-mdi-arrow-top-right',
-              default: 'i-lucide-external-link'
+              default: 'i-lucide-external-link',
             }),
             chevron: field({
               type: 'icon',
               title: 'Chevron',
               description: 'Icon for chevron.',
               icon: 'i-mdi-chevron-down',
-              default: 'i-lucide-chevron-down'
+              default: 'i-lucide-chevron-down',
             }),
             hash: field({
               type: 'icon',
               title: 'Hash',
               description: 'Icon for hash anchors.',
               icon: 'i-ph-hash',
-              default: 'i-lucide-hash'
-            })
-          }
+              default: 'i-lucide-hash',
+            }),
+          },
         }),
         colors: group({
           primary: field({
@@ -80,8 +80,8 @@ export default defineNuxtSchema({
               'purple',
               'fuchsia',
               'pink',
-              'rose'
-            ]
+              'rose',
+            ],
           }),
           neutral: field({
             type: 'string',
@@ -89,18 +89,18 @@ export default defineNuxtSchema({
             description: 'Neutral color of your UI.',
             icon: 'i-mdi-palette-outline',
             default: 'slate',
-            required: ['slate', 'gray', 'zinc', 'neutral', 'stone']
-          })
-        })
-      }
-    })
-  }
-});
+            required: ['slate', 'gray', 'zinc', 'neutral', 'stone'],
+          }),
+        }),
+      },
+    }),
+  },
+})
 
 declare module '@nuxt/schema' {
   interface CustomAppConfig {
     ui: {
-      icons: object;
-    };
+      icons: object
+    }
   }
 }

@@ -1,31 +1,31 @@
-import { useDataCache } from '#nuxt-multi-cache/composables';
-import { getDb } from '@serp/db/server/database';
-import { entity } from '@serp/db/server/database/schema';
-import { and, eq, sql } from 'drizzle-orm';
-import type { Category } from '@serp/types/types';
+import type { Category } from '@serp/types/types'
+import { useDataCache } from '#nuxt-multi-cache/composables'
+import { getDb } from '@serp/db/server/database'
+import { entity } from '@serp/db/server/database/schema'
+import { and, eq, sql } from 'drizzle-orm'
 
 export default defineEventHandler(async (event) => {
-  const { domain, category } = getQuery(event);
+  const { domain, category } = getQuery(event)
   if (!domain || !category) {
     throw createError({
       statusCode: 400,
-      message: 'Domain and category are required.'
-    });
+      message: 'Domain and category are required.',
+    })
   }
-  const cacheKey = `company-svg-badge-${domain}-${category}`;
-  const { value, addToCache } = await useDataCache(cacheKey, event);
+  const cacheKey = `company-svg-badge-${domain}-${category}`
+  const { value, addToCache } = await useDataCache(cacheKey, event)
   if (value) {
-    event.node.res.setHeader('Content-Type', 'image/svg+xml');
-    return value;
+    event.node.res.setHeader('Content-Type', 'image/svg+xml')
+    return value
   }
 
-  const domain_ = String(domain);
-  const categorySlug = String(category);
+  const domain_ = String(domain)
+  const categorySlug = String(category)
 
   const company = await getDb()
     .select({
       name: entity.name,
-      categories: entity.categories
+      categories: entity.categories,
     })
     .from(entity)
     .where(
@@ -38,23 +38,23 @@ export default defineEventHandler(async (event) => {
               )
             `,
         eq(entity.slug, domain_),
-        eq(entity.module, 'company')
-      )
+        eq(entity.module, 'company'),
+      ),
     )
     .limit(1)
-    .execute();
+    .execute()
 
   // get category name from entity category item with matching slug
   // @todo - improve the typesafety of this after implementing zod
   const categoryName = company[0]?.categories.find(
-    (cat: Category) => cat.slug === categorySlug
-  )?.name;
+    (cat: Category) => cat.slug === categorySlug,
+  )?.name
 
   if (!company || company.length === 0) {
     throw createError({
       statusCode: 404,
-      message: 'Company not found.'
-    });
+      message: 'Company not found.',
+    })
   }
 
   const svg = `<svg
@@ -192,9 +192,9 @@ export default defineEventHandler(async (event) => {
           fill="white"
         />
       </g>
-    </svg>`;
+    </svg>`
 
-  event.node.res.setHeader('Content-Type', 'image/svg+xml');
-  addToCache(svg, [], 60 * 60 * 10); // 10 hours
-  return svg;
-});
+  event.node.res.setHeader('Content-Type', 'image/svg+xml')
+  addToCache(svg, [], 60 * 60 * 10) // 10 hours
+  return svg
+})

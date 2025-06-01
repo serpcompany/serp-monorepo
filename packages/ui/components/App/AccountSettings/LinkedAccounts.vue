@@ -48,7 +48,15 @@
     return provider?.name || 'Unknown';
   };
 
-  const unlinkAccount = async (account: OAuthAccounts) => {
+  /**
+   * Unlinks an OAuth account from the user's profile.
+   * @param {OauthAccount} account - The OAuth account to unlink
+   * @returns {Promise<void>} Promise that resolves when account is unlinked
+   * @throws {Error} If unlinking fails or user lacks permission
+   * @example
+   * await unlinkAccount(googleAccount);
+   */
+  const unlinkAccount = async (account: OauthAccount) => {
     try {
       loading.value = true;
       await $fetch(`/api/me/linked-accounts/${account.id}`, {

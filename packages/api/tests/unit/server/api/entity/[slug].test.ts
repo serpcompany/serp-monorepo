@@ -1,72 +1,72 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { getDb } from '@serp/db/server/database'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import {
+  mockCreateError,
+  mockDb,
   mockGetQuery,
   mockGetRouterParam,
-  mockDb,
-  mockCreateError
-} from '../../../../setup';
-import { getDb } from '@serp/db/server/database';
+} from '../../../../setup'
 
-const mockAddToCache = vi.fn();
-let cacheValue = null;
+const mockAddToCache = vi.fn()
+let cacheValue = null
 vi.mock('#nuxt-multi-cache/composables', () => ({
   useDataCache: vi.fn().mockImplementation(() => ({
     value: cacheValue,
-    addToCache: mockAddToCache
-  }))
-}));
+    addToCache: mockAddToCache,
+  })),
+}))
 
-describe('Entity API', () => {
-  let handler;
+describe('entity API', () => {
+  let handler
 
   beforeEach(async () => {
-    vi.resetModules();
-    vi.clearAllMocks();
-    cacheValue = null;
+    vi.resetModules()
+    vi.clearAllMocks()
+    cacheValue = null
 
     mockCreateError.mockImplementation((options) => {
-      const error = new Error(options.message);
-      error.statusCode = options.statusCode;
-      throw error;
-    });
+      const error = new Error(options.message)
+      error.statusCode = options.statusCode
+      throw error
+    })
 
-    handler = (await import('../../../../../server/api/entity/[slug]')).default;
-  });
+    handler = (await import('../../../../../server/api/entity/[slug]')).default
+  })
 
   it('should return entity from cache when available', async () => {
-    mockGetQuery.mockReturnValue({ module: 'test-module' });
-    mockGetRouterParam.mockReturnValue('cached-entity');
+    mockGetQuery.mockReturnValue({ module: 'test-module' })
+    mockGetRouterParam.mockReturnValue('cached-entity')
 
     cacheValue = {
       id: 1,
       name: 'Cached Entity',
       slug: 'cached-entity',
-      module: 'test-module'
-    };
+      module: 'test-module',
+    }
 
     const mockAggregateData = {
       entityId: 1,
       numUpvotes: 10,
       numDownvotes: 2,
-      averageRating: 4.5
-    };
-    mockDb.execute.mockResolvedValueOnce([mockAggregateData]);
-    mockDb.execute.mockResolvedValueOnce([{ direction: 'up' }]);
-    mockDb.execute.mockResolvedValueOnce([{ user: 'verifier-123' }]);
+      averageRating: 4.5,
+    }
+    mockDb.execute.mockResolvedValueOnce([mockAggregateData])
+    mockDb.execute.mockResolvedValueOnce([{ direction: 'up' }])
+    mockDb.execute.mockResolvedValueOnce([{ user: 'verifier-123' }])
 
-    const result = await handler({});
+    const result = await handler({})
 
-    expect(result).toHaveProperty('id', 1);
-    expect(result).toHaveProperty('name', 'Cached Entity');
-    expect(result).toHaveProperty('numUpvotes', 10);
-    expect(result).toHaveProperty('numDownvotes', 2);
-    expect(result).toHaveProperty('usersCurrentVote', 'up');
-    expect(result).toHaveProperty('verification', 'verifier-123');
-  });
+    expect(result).toHaveProperty('id', 1)
+    expect(result).toHaveProperty('name', 'Cached Entity')
+    expect(result).toHaveProperty('numUpvotes', 10)
+    expect(result).toHaveProperty('numDownvotes', 2)
+    expect(result).toHaveProperty('usersCurrentVote', 'up')
+    expect(result).toHaveProperty('verification', 'verifier-123')
+  })
 
   it('should fetch entity from database when not in cache', async () => {
-    mockGetQuery.mockReturnValue({ module: 'test-module' });
-    mockGetRouterParam.mockReturnValue('test-entity');
+    mockGetQuery.mockReturnValue({ module: 'test-module' })
+    mockGetRouterParam.mockReturnValue('test-entity')
 
     const mockEntity = {
       id: 1,
@@ -84,39 +84,39 @@ describe('Entity API', () => {
       numDownvotes: 2,
       averageRating: 4.5,
       usersCurrentVote: 'up',
-      verification: 'verifier-123'
-    };
+      verification: 'verifier-123',
+    }
 
-    mockDb.execute.mockResolvedValueOnce([mockEntity]);
+    mockDb.execute.mockResolvedValueOnce([mockEntity])
 
-    const result = await handler({});
+    const result = await handler({})
 
-    expect(result).toHaveProperty('id', 1);
-    expect(result).toHaveProperty('name', 'Test Entity');
-    expect(result).toHaveProperty('numUpvotes', 10);
-    expect(mockAddToCache).toHaveBeenCalled();
-  });
+    expect(result).toHaveProperty('id', 1)
+    expect(result).toHaveProperty('name', 'Test Entity')
+    expect(result).toHaveProperty('numUpvotes', 10)
+    expect(mockAddToCache).toHaveBeenCalled()
+  })
 
   it('should handle entity not found', async () => {
-    mockGetQuery.mockReturnValue({ module: 'test-module' });
-    mockGetRouterParam.mockReturnValue('non-existent');
+    mockGetQuery.mockReturnValue({ module: 'test-module' })
+    mockGetRouterParam.mockReturnValue('non-existent')
 
-    mockDb.execute.mockResolvedValueOnce([]);
+    mockDb.execute.mockResolvedValueOnce([])
 
-    await expect(handler({})).rejects.toThrow('Internal Server Error');
+    await expect(handler({})).rejects.toThrow('Internal Server Error')
 
     expect(mockCreateError).toHaveBeenCalledWith({
       statusCode: 404,
-      message: 'Entity not found'
-    });
-  });
+      message: 'Entity not found',
+    })
+  })
 
   it('should handle query with filters', async () => {
     mockGetQuery.mockReturnValue({
       module: 'test-module',
-      filters: 'category:games,year:2023'
-    });
-    mockGetRouterParam.mockReturnValue('filtered-entity');
+      filters: 'category:games,year:2023',
+    })
+    mockGetRouterParam.mockReturnValue('filtered-entity')
 
     const mockFilteredEntity = {
       id: 2,
@@ -124,14 +124,14 @@ describe('Entity API', () => {
       slug: 'filtered-entity',
       data: { category: 'games', year: 2023 },
       singleData: {},
-      module: 'test-module'
-    };
-    mockDb.execute.mockResolvedValueOnce([mockFilteredEntity]);
+      module: 'test-module',
+    }
+    mockDb.execute.mockResolvedValueOnce([mockFilteredEntity])
 
-    const result = await handler({});
+    const result = await handler({})
 
-    expect(mockDb.where).toHaveBeenCalled();
-    expect(result).toHaveProperty('id', 2);
-    expect(result).toHaveProperty('name', 'Filtered Entity');
-  });
-});
+    expect(mockDb.where).toHaveBeenCalled()
+    expect(result).toHaveProperty('id', 2)
+    expect(result).toHaveProperty('name', 'Filtered Entity')
+  })
+})

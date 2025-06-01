@@ -1,5 +1,5 @@
-import type { Entities } from '@serp/types/types';
-import useFetchWithCache from './useFetchWithCache';
+import type { Entities } from '@serp/types/types'
+import useFetchWithCache from './useFetchWithCache'
 
 /**
  * Fetches entities with pagination and filtering
@@ -9,13 +9,8 @@ import useFetchWithCache from './useFetchWithCache';
  * @param module - Filter by module type (default: empty string)
  * @returns Promise<Entities> Paginated entities data
  */
-export const useEntities = async (
-  page = 1,
-  limit = 50,
-  categorySlug = '',
-  module = ''
-) => {
+export async function useEntities(page = 1, limit = 50, categorySlug = '', module = '') {
   return await useFetchWithCache<Entities>(
-    `/entities?page=${page}&limit=${limit}&categorySlug=${categorySlug}&module=${module}`
-  );
-};
+    `/entities?page=${page}&limit=${limit}&categorySlug=${categorySlug}&module=${module}`,
+  )
+}

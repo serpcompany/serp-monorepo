@@ -13,6 +13,7 @@ const {
   error: companyError,
 } = await useFetch<Record<string, unknown>>(`/api/entity/${companyId}`)
 
+// eslint-disable-next-line no-console
 console.log('Company Data:', companyData)
 
 const {
@@ -22,6 +23,7 @@ const {
   refresh: refreshEdits,
 } = await useFetch<{ edits: unknown[] }>(`/api/entity/edit?id=${companyId}`)
 
+// eslint-disable-next-line no-console
 console.log('Edits Data:', editsData)
 
 const dynamicFields = computed(() => {
@@ -501,6 +503,7 @@ function formatValue(val: unknown) {
                 />
               </template>
               <template v-else-if="key === 'logo'">
+                <!-- eslint-disable-next-line vue-a11y/form-control-has-label -->
                 <input
                   type="file"
                   accept="image/*"

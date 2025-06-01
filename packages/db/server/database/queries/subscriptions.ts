@@ -29,6 +29,18 @@ export async function upsertSubscription(subscriptionData: InsertSubscription): 
   }
 }
 
+/**
+ * Retrieves a subscription by team ID with associated price data.
+ * Excludes featured subscriptions and only returns regular subscriptions.
+ * @param {number} teamId - The team ID to get subscription for
+ * @returns {Promise<(Subscription & { priceData: Price }) | null>} Subscription with price data or null if not found
+ * @throws {Error} If database query fails
+ * @example
+ * const subscription = await getSubscriptionByTeamId(123);
+ * if (subscription) {
+ *   console.log(subscription.priceData.unitAmount);
+ * }
+ */
 export async function getSubscriptionByTeamId(teamId: number): Promise<Subscription | null> {
   try {
     const [row] = await getDb()
@@ -47,7 +59,7 @@ export async function getSubscriptionByTeamId(teamId: number): Promise<Subscript
     if (!row)
       return null
 
-    return { ...row.subscription, price: row.price }
+    return { ...row.subscription, priceData: row.price }
   }
   catch (error) {
     console.warn('getSubscriptionByTeamId', teamId)
@@ -78,7 +90,7 @@ export async function getSubscriptionByUserId(userId: number): Promise<Subscript
     if (!row)
       return null
 
-    return { ...row.subscription, price: row.price }
+    return { ...row.subscription, priceData: row.price }
   }
   catch (error) {
     console.warn('getSubscriptionByTeamId', teamId)

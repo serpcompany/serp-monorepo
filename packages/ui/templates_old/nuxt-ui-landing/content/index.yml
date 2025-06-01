@@ -22,8 +22,8 @@ sections:
   - title: '[Revolutionize]{.text-(--ui-primary)} your coding experience'
     description: Transform your development workflow with AI-powered insights and personalized productivity optimization.
     images:
-      mobile: '/images/macbook-mobile.svg'
-      desktop: '/images/macbook.svg'
+      mobile: /images/macbook-mobile.svg
+      desktop: /images/macbook.svg
     features:
       - title: Optimize your focus time
         description: Let AI identify your peak coding hours and adapt to your natural rhythm. Focus on what matters most - writing great code, while our system optimizes your productivity patterns.
@@ -75,18 +75,18 @@ steps:
     - title: Connect Your IDE
       description: Seamlessly integrate with VS Code, JetBrains, or your preferred editor. Get started in under 2 minutes with zero configuration needed.
       image:
-        light: '/images/light/connect.svg'
-        dark: '/images/dark/connect.svg'
+        light: /images/light/connect.svg
+        dark: /images/dark/connect.svg
     - title: Track & Analyze
       description: Our AI silently monitors your coding patterns to identify your peak productivity hours and potential workflow bottlenecks.
       image:
-        light: '/images/light/optimize.svg'
-        dark: '/images/dark/optimize.svg'
+        light: /images/light/optimize.svg
+        dark: /images/dark/optimize.svg
     - title: Optimize & Code Smarter
       description: Receive personalized recommendations to enhance your coding efficiency. Watch your productivity soar with data-driven insights.
       image:
-        light: '/images/light/track.svg'
-        dark: '/images/dark/track.svg'
+        light: /images/light/track.svg
+        dark: /images/dark/track.svg
 pricing:
   title: Choose your [productivity]{.text-(--ui-primary)} path
   description: Unlock AI-powered coding efficiency with our flexible plans. Whether you're a solo developer or part of a team, we have the perfect toolset to maximize your development workflow.
@@ -126,22 +126,22 @@ testimonials:
   items:
     - quote: Since using this tool, my productivity has doubled. The AI insights helped me find my perfect coding rhythm and now I ship features twice as fast.
       user:
-        name: 'Sarah Doe'
-        description: 'Full Stack Developer'
+        name: Sarah Doe
+        description: Full Stack Developer
         target: _blank
         avatar:
           src: 'https://ipx.nuxt.com/f_auto,s_192x192/gh_avatar/SarahM19'
     - quote: Game-changer for our team. The focus tracking and smart alerts helped us reduce meeting interruptions by 40% and increased our sprint velocity.
       user:
-        name: 'Sébastien Doe'
-        description: 'Lead Software Engineer'
+        name: Sébastien Doe
+        description: Lead Software Engineer
         target: _blank
         avatar:
           src: 'https://ipx.nuxt.com/f_auto,s_192x192/gh_avatar/atinux'
     - quote: Finally, a productivity tool that understands developers. The AI features helped me identify my peak coding hours and now I accomplish more in less time.
       user:
-        name: 'Benjamin Doe'
-        description: 'Senior Frontend Developer'
+        name: Benjamin Doe
+        description: Senior Frontend Developer
         target: _blank
         avatar:
           src: 'https://ipx.nuxt.com/f_auto,s_192x192/gh_avatar/benjamincanac'

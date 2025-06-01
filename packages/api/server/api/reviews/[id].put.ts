@@ -1,45 +1,46 @@
-import { getDb } from '@serp/db/server/database';
-import { review } from '@serp/db/server/database/schema';
-import { and, eq } from 'drizzle-orm';
+import { getDb } from '@serp/db/server/database'
+import { review } from '@serp/db/server/database/schema'
+import { and, eq } from 'drizzle-orm'
 
 export default defineEventHandler(async (event) => {
   try {
-    const session = await requireUserSession(event);
-    const userId = session?.user?.id;
-    if (!userId) return { status: 401, message: 'Unauthorized' };
+    const session = await requireUserSession(event)
+    const userId = session?.user?.id
+    if (!userId)
+      return { status: 401, message: 'Unauthorized' }
 
-    const { id } = getRouterParams(event);
+    const { id } = getRouterParams(event)
     if (!id) {
-      return { status: 400, message: 'ID is required' };
+      return { status: 400, message: 'ID is required' }
     }
 
-    const body = await readBody(event);
-    const { title, content, rating, dateOfExperience } = body;
+    const body = await readBody(event)
+    const { title, content, rating, dateOfExperience } = body
 
     if (!title || !content || !rating || !dateOfExperience) {
-      return { status: 400, message: 'Missing required fields' };
+      return { status: 400, message: 'Missing required fields' }
     }
 
-    const ratingInt = parseInt(rating, 10);
+    const ratingInt = Number.parseInt(rating, 10)
     if (isNaN(ratingInt) || ratingInt < 1 || ratingInt > 5) {
       return {
         status: 400,
-        message: 'Rating must be an integer between 1 and 5'
-      };
+        message: 'Rating must be an integer between 1 and 5',
+      }
     }
 
     // Only 1 review per user per entity
     const existingReview = await getDb()
       .select({
-        id: review.id
+        id: review.id,
       })
       .from(review)
       .where(and(eq(review.entity, id), eq(review.user, userId)))
       .limit(1)
-      .execute();
+      .execute()
 
     if (existingReview.length === 0) {
-      return { status: 404, message: 'Review not found for update' };
+      return { status: 404, message: 'Review not found for update' }
     }
 
     // Update the review with the new values
@@ -50,13 +51,14 @@ export default defineEventHandler(async (event) => {
         content,
         rating: ratingInt,
         dateOfExperience: new Date(dateOfExperience),
-        updatedAt: new Date()
+        updatedAt: new Date(),
       })
       .where(eq(review.id, existingReview[0].id))
-      .execute();
+      .execute()
 
-    return { message: 'success' };
-  } catch (error: unknown) {
-    return { status: 500, message: error.message };
+    return { message: 'success' }
   }
-});
+  catch (error: unknown) {
+    return { status: 500, message: error.message }
+  }
+})

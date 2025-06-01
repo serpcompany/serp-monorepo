@@ -6,11 +6,27 @@
   const teams = useState<Team[]>('teams');
   const { setLastUsedTeam } = useTeamPreferences();
 
+  /**
+   * Gets avatar properties for a team, using the team's logo if available.
+   * @param {Team} [team] - The team object to get avatar properties for
+   * @returns {{ src: string | undefined; size: 'xs' }} Avatar properties with src and size
+   * @example
+   * const props = getAvatarProps(currentTeam.value);
+   * // Returns { src: '/path/to/logo.png', size: 'xs' }
+   */
   const getAvatarProps = (team?: Team) => ({
-    src: team?.logo || team?.entity?.data?.logo || undefined,
+    src: team?.logo || undefined,
     size: 'xs' as const
   });
 
+  /**
+   * Handles successful team creation by closing the modal and navigating to the new team.
+   * @param {Team} team - The newly created team object
+   * @returns {Promise<void>} Promise that resolves when navigation completes
+   * @example
+   * // Called when a new team is successfully created
+   * await onTeamCreated(newTeam);
+   */
   const onTeamCreated = async (team: Team) => {
     newTeamModal.value = false;
     await navigateTo(`/dashboard/${team.slug}`);

@@ -1,5 +1,5 @@
-import type { Reviews } from '@serp/types/types';
-import useFetchWithCache from './useFetchWithCache';
+import type { Reviews } from '@serp/types/types'
+import useFetchWithCache from './useFetchWithCache'
 
 /**
  * Fetches reviews for a specific company
@@ -8,8 +8,8 @@ import useFetchWithCache from './useFetchWithCache';
  * @param limit - Number of reviews per page (default: 25)
  * @returns Promise<{reviews: Reviews}> Paginated reviews data
  */
-export const useCompanyReviews = async (id: number, page = 1, limit = 25) => {
+export async function useCompanyReviews(id: number, page = 1, limit = 25) {
   return useFetchWithCache<{ reviews: Reviews }>(
-    `/reviews/${id}?page=${page}&limit=${limit}`
-  );
-};
+    `/reviews/${id}?page=${page}&limit=${limit}`,
+  )
+}

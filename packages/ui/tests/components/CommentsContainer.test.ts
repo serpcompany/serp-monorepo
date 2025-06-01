@@ -1,24 +1,24 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { afterAll, describe, expect, it, vi } from 'vitest';
-import { ref } from 'vue';
-// Import mocks first so they're available when components are imported
-import { cleanupDateMocks } from '../mockDateImports';
-import '../mockUseUserSession';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { afterAll, describe, expect, it, vi } from 'vitest'
+import { ref } from 'vue'
 // Then import components
-import CommentsContainer from '../../components/CommentsContainer.vue';
-import ComponentRender from '../componentRender';
+import CommentsContainer from '../../components/CommentsContainer.vue'
+import ComponentRender from '../componentRender'
+// Import mocks first so they're available when components are imported
+import { cleanupDateMocks } from '../mockDateImports'
+import '../mockUseUserSession'
 
 // Mock composables used in CommentsContainer.vue
 mockNuxtImport('useToast', () => () => ({
-  add: vi.fn()
-}));
+  add: vi.fn(),
+}))
 
 mockNuxtImport('useFetch', () => async () => ({
   data: { value: { message: 'success', id: 1234 } },
-  error: { value: null }
-}));
+  error: { value: null },
+}))
 
-mockNuxtImport('useRequestHeaders', () => () => ({}));
+mockNuxtImport('useRequestHeaders', () => () => ({}))
 
 // Define various scenarios to snapshot test different prop combinations.
 const scenarios: [string, { props: Record<string, unknown> }][] = [
@@ -29,9 +29,9 @@ const scenarios: [string, { props: Record<string, unknown> }][] = [
         module: 'blog',
         id: 1,
         // Using default values for other props.
-        comments: []
-      }
-    }
+        comments: [],
+      },
+    },
   ],
   [
     'with a single comment',
@@ -48,11 +48,11 @@ const scenarios: [string, { props: Record<string, unknown> }][] = [
             content: 'Great post!',
             createdAt: '1973-04-29T21:33:09+00:00',
             updatedAt: '1973-04-29T21:33:09+00:00',
-            replies: []
-          }
-        ]
-      }
-    }
+            replies: [],
+          },
+        ],
+      },
+    },
   ],
   [
     'with nested comment',
@@ -87,7 +87,7 @@ const scenarios: [string, { props: Record<string, unknown> }][] = [
                     content: 'Nice work!',
                     createdAt: '1973-04-29T21:33:09+00:00',
                     updatedAt: '1973-04-29T21:33:09+00:00',
-                    replies: []
+                    replies: [],
                   },
                   {
                     id: 207,
@@ -97,15 +97,15 @@ const scenarios: [string, { props: Record<string, unknown> }][] = [
                     content: 'Nice work!',
                     createdAt: '1973-04-29T21:33:09+00:00',
                     updatedAt: '1973-04-29T21:33:09+00:00',
-                    replies: []
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    }
+                    replies: [],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    },
   ],
   [
     'with multiple comments and custom styling',
@@ -126,7 +126,7 @@ const scenarios: [string, { props: Record<string, unknown> }][] = [
             content: 'Nice work!',
             createdAt: '1973-04-29T21:33:09+00:00',
             updatedAt: '1973-04-29T21:33:09+00:00',
-            replies: []
+            replies: [],
           },
           {
             id: 202,
@@ -136,26 +136,26 @@ const scenarios: [string, { props: Record<string, unknown> }][] = [
             content: 'I disagree',
             createdAt: '1973-04-29T21:33:09+00:00',
             updatedAt: '1973-04-29T21:33:09+00:00',
-            replies: []
-          }
-        ]
-      }
-    }
-  ]
-];
+            replies: [],
+          },
+        ],
+      },
+    },
+  ],
+]
 
-describe('CommentsContainer Snapshot', () => {
+describe('commentsContainer Snapshot', () => {
   it.each(scenarios)('renders %s correctly', async (desc: string, options) => {
     // Render the component with the provided props using the Nuxt testing utility.
     const html = await ComponentRender(
       `CommentsContainer ${desc}`,
       options,
-      CommentsContainer
-    );
-    expect(html).toMatchSnapshot();
-  });
+      CommentsContainer,
+    )
+    expect(html).toMatchSnapshot()
+  })
 
   afterAll(() => {
-    cleanupDateMocks();
-  });
-});
+    cleanupDateMocks()
+  })
+})

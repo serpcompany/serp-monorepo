@@ -69,6 +69,11 @@
     marginBottom: '24px'
   };
 
+  const link = {
+    color: '#067df7',
+    textDecoration: 'underline'
+  };
+
   const runtimeConfig = useRuntimeConfig();
 </script>
 

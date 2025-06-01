@@ -110,7 +110,7 @@ testimonials:
         description: CEO at AutoScale
         avatar:
           src: https://i.pravatar.cc/120?img=9
-    - quote: 'The accessibility features and responsive components helped us achieve WCAG 2.1 compliance with minimal custom development. Our site now scores 100 on Lighthouse accessibility metrics.'
+    - quote: The accessibility features and responsive components helped us achieve WCAG 2.1 compliance with minimal custom development. Our site now scores 100 on Lighthouse accessibility metrics.
       user:
         name: Michael Torres
         description: Frontend Lead at AccessFirst
@@ -128,7 +128,7 @@ testimonials:
         description: UI Architecture Lead at DesignScale
         avatar:
           src: https://i.pravatar.cc/120?img=12
-    - quote: 'Integration with our existing tools was seamless. The webhooks and API documentation made it easy to automate our workflows and enhance our development pipeline.'
+    - quote: Integration with our existing tools was seamless. The webhooks and API documentation made it easy to automate our workflows and enhance our development pipeline.
       user:
         name: Sophia Martinez
         description: Integration Specialist at TechFlow
