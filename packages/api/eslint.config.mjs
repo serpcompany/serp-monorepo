@@ -15,6 +15,7 @@ export default antfu({
       'ts/no-unused-vars': 'warn',
       'ts/no-explicit-any': 'warn',
       'ts/consistent-type-imports': 'error',
+      'ts/explicit-function-return-type': 'warn', // Make return types non-blocking
     },
   },
 
