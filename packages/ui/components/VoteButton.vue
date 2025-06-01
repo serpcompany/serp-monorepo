@@ -11,16 +11,41 @@
     upvotes: 0,
     usersCurrentVote: null
   });
-  const { upvotes, downvotes } = toRefs(props);
-  const currentVote = toRef(props, 'usersCurrentVote');
 
   const toast = useToast();
   const { loggedIn, user } = useUserSession();
+
   const loading = ref(false);
+  const { upvotes, downvotes, usersCurrentVote: currentVote } = toRefs(props);
+
+  watch(
+    () => props.upvotes,
+    (newValue) => {
+      upvotes.value = newValue;
+    },
+    { immediate: true }
+  );
+
+  watch(
+    () => props.downvotes,
+    (newValue) => {
+      downvotes.value = newValue;
+    },
+    { immediate: true }
+  );
+
+  watch(
+    () => props.usersCurrentVote,
+    (newValue) => {
+      currentVote.value = newValue;
+    },
+    { immediate: true }
+  );
 
   async function vote(direction: 1 | -1) {
     try {
       loading.value = true;
+
       if (!loggedIn.value) {
         toast.add({
           id: 'vote-login',
@@ -28,7 +53,6 @@
           description: 'You need to login to vote',
           icon: 'lucide:info'
         });
-        loading.value = false;
         return;
       }
 
@@ -66,11 +90,16 @@
         icon: 'lucide:circle-check'
       });
     } catch (err) {
+      // Revert optimistic updates on error
+      upvotes.value = props.upvotes;
+      downvotes.value = props.downvotes;
+      currentVote.value = props.usersCurrentVote;
+
       toast.add({
         id: 'vote-error',
         title: 'Error voting',
         description: (err as Error).message,
-        icon: 'lucide:info'
+        icon: 'lucide:alert-circle'
       });
     } finally {
       loading.value = false;
