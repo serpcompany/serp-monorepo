@@ -1,24 +1,24 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import SPagePostBlogCollection from '../../../../../components/SPage/Post/Blog/Collection.vue';
-import ComponentRender from '../../../../componentRender';
-import '../../../../mockUseUserSession';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import SPagePostBlogCollection from '../../../../../components/SPage/Post/Blog/Collection.vue'
+import ComponentRender from '../../../../componentRender'
+import '../../../../mockUseUserSession'
 
-mockNuxtImport('useHead', () => () => {});
-mockNuxtImport('useSeoMeta', () => () => {});
+mockNuxtImport('useHead', () => () => {})
+mockNuxtImport('useSeoMeta', () => () => {})
 
 let config_: Record<string, unknown> = {
   app: { baseURL: '/' },
   public: {
     useAuth: false,
   },
-};
-let postsData_: unknown = {};
-let categories_: unknown = [];
+}
+let postsData_: unknown = {}
+let categories_: unknown = []
 
-mockNuxtImport('useRuntimeConfig', () => () => config_);
-mockNuxtImport('usePosts', () => async () => postsData_);
-mockNuxtImport('usePostCategories', () => async () => categories_);
+mockNuxtImport('useRuntimeConfig', () => () => config_)
+mockNuxtImport('usePosts', () => async () => postsData_)
+mockNuxtImport('usePostCategories', () => async () => categories_)
 
 describe('sPagePostBlogCollection Snapshot', () => {
   const defaultPostsData = {
@@ -35,18 +35,18 @@ describe('sPagePostBlogCollection Snapshot', () => {
     pagination: {
       totalItems: 100,
     },
-  };
+  }
   const defaultCategories = [
     { id: 1, slug: 'tech', name: 'Tech' },
     { id: 2, slug: 'lifestyle', name: 'Lifestyle' },
-  ];
+  ]
 
   const scenarios: [
     string,
     {
-      config: Record<string, unknown>;
-      postsData: unknown;
-      categories: unknown;
+      config: Record<string, unknown>
+      postsData: unknown
+      categories: unknown
     },
   ][] = [
     [
@@ -81,20 +81,20 @@ describe('sPagePostBlogCollection Snapshot', () => {
         categories: [],
       },
     ],
-  ];
+  ]
   it.each(scenarios)(
     'renders %s correctly',
     async (desc, { config, postsData, categories }) => {
-      config_ = config;
-      postsData_ = postsData;
-      categories_ = categories;
+      config_ = config
+      postsData_ = postsData
+      categories_ = categories
 
       const html = await ComponentRender(
         `SPagePostBlogCollection ${desc}`,
         {},
         SPagePostBlogCollection,
-      );
-      expect(html).toMatchSnapshot();
+      )
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

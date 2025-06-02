@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import { ref } from 'vue';
-import SScriptYouTubePlayer from '../../components/SScriptYouTubePlayer.vue';
-import ComponentRender from '../componentRender';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import { ref } from 'vue'
+import SScriptYouTubePlayer from '../../components/SScriptYouTubePlayer.vue'
+import ComponentRender from '../componentRender'
 
 // Mock YT object (this is a global browser object)
 globalThis.YT = {
@@ -13,20 +13,20 @@ globalThis.YT = {
     loadVideoById(id: string) {}
   },
   ready: (callback: () => void) => callback(),
-};
+}
 
 // Also define YouTube for the component's code
 globalThis.YouTube = {
   ready: (callback: () => void) => callback(),
-};
+}
 
-mockNuxtImport('useHead', () => () => {});
-mockNuxtImport('useScriptTriggerElement', () => () => ({ ssrAttrs: {} }));
+mockNuxtImport('useHead', () => () => {})
+mockNuxtImport('useScriptTriggerElement', () => () => ({ ssrAttrs: {} }))
 
-let youtubePlayerStatus = 'awaitingLoad';
+let youtubePlayerStatus = 'awaitingLoad'
 
 describe('sScriptYouTubePlayer', () => {
-  const baseProps = { videoId: 'dQw4w9WgXcQ', width: 640, height: 360 };
+  const baseProps = { videoId: 'dQw4w9WgXcQ', width: 640, height: 360 }
 
   it.each([
     // Default state: no slot overrides, status will be 'awaitingLoad'
@@ -65,32 +65,34 @@ describe('sScriptYouTubePlayer', () => {
     ],
   ])(
     'renders %s correctly',
-    async (desc: string, options: { props: unknown; slots?: unknown }) => {
+    async (desc: string, options: { props: unknown, slots?: unknown }) => {
       // Determine status based on the provided slots
-      let status = 'awaitingLoad';
-      if (options.slots?.loading) status = 'loading';
-      if (options.slots?.error) status = 'error';
+      let status = 'awaitingLoad'
+      if (options.slots?.loading)
+        status = 'loading'
+      if (options.slots?.error)
+        status = 'error'
 
-      youtubePlayerStatus = status;
+      youtubePlayerStatus = status
 
       mockNuxtImport('useScriptYouTubePlayer', () => () => ({
         // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
         onLoaded: (cb: Function) => {
           if (youtubePlayerStatus !== 'awaitingLoad') {
             // eslint-disable-next-line @typescript-eslint/no-extraneous-class
-            cb({ YT: { Player: class {} } });
+            cb({ YT: { Player: class {} } })
           }
         },
         status: ref(youtubePlayerStatus),
         load: () => {}, // Add the missing load function
-      }));
+      }))
 
       const html = await ComponentRender(
         `SScriptYouTubePlayer ${desc}`,
         options,
         SScriptYouTubePlayer,
-      );
-      expect(html).toMatchSnapshot();
+      )
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

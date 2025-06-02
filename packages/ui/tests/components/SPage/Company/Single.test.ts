@@ -1,20 +1,20 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import SPageCompanySingle from '../../../../components/SPage/Company/Single.vue';
-import ComponentRender from '../../../componentRender';
-import '../../../mockUseUserSession';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import SPageCompanySingle from '../../../../components/SPage/Company/Single.vue'
+import ComponentRender from '../../../componentRender'
+import '../../../mockUseUserSession'
 
-mockNuxtImport('useSeoMeta', () => () => {});
+mockNuxtImport('useSeoMeta', () => () => {})
 
 let config_: Record<string, unknown> = {
   app: { baseURL: '/' },
   public: {
     useAuth: false,
   },
-};
+}
 
-let companyData_: unknown = {};
-let commentsData_: unknown = { comments: [] };
+let companyData_: unknown = {}
+let commentsData_: unknown = { comments: [] }
 const reviewsData_: unknown = {
   reviews: [
     { id: 1, rating: 4, title: 'Good service', content: 'I liked it' },
@@ -26,23 +26,23 @@ const reviewsData_: unknown = {
     },
   ],
   userReview: null,
-};
+}
 
-mockNuxtImport('useRuntimeConfig', () => () => config_);
-mockNuxtImport('useCompany', () => () => Promise.resolve(companyData_));
+mockNuxtImport('useRuntimeConfig', () => () => config_)
+mockNuxtImport('useCompany', () => () => Promise.resolve(companyData_))
 mockNuxtImport(
   'useCompanyComments',
   () => () => Promise.resolve(commentsData_),
-);
-mockNuxtImport('useCompanyReviews', () => () => Promise.resolve(reviewsData_));
+)
+mockNuxtImport('useCompanyReviews', () => () => Promise.resolve(reviewsData_))
 
 describe('sPageCompanySingle Snapshot', () => {
   const scenarios: [
     string,
     {
-      config: Record<string, unknown>;
-      companyData: Record<string, unknown>;
-      comments: { comments: unknown[] };
+      config: Record<string, unknown>
+      companyData: Record<string, unknown>
+      comments: { comments: unknown[] }
     },
   ][] = [
     [
@@ -148,21 +148,21 @@ describe('sPageCompanySingle Snapshot', () => {
         },
       },
     ],
-  ];
+  ]
 
   it.each(scenarios)(
     'renders %s correctly',
     async (desc, { config, companyData, comments }) => {
-      config_ = config;
-      companyData_ = companyData;
-      commentsData_ = comments;
+      config_ = config
+      companyData_ = companyData
+      commentsData_ = comments
 
       const html = await ComponentRender(
         `SPageCompanySingle ${desc}`,
         {},
         SPageCompanySingle,
-      );
-      expect(html).toMatchSnapshot();
+      )
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

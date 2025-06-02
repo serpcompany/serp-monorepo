@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest';
-import PostCard from '../../components/PostCard.vue';
-import ComponentRender from '../componentRender';
+import { describe, expect, it } from 'vitest'
+import PostCard from '../../components/PostCard.vue'
+import ComponentRender from '../componentRender'
 
 describe('postCard Snapshot', () => {
   // Define test scenarios covering various valid prop combinations
@@ -58,13 +58,13 @@ describe('postCard Snapshot', () => {
         },
       },
     ],
-  ];
+  ]
 
   it.each(scenarios)(
     'renders %s correctly',
     async (desc: string, options: { props: unknown }) => {
-      const html = await ComponentRender(`PostCard ${desc}`, options, PostCard);
-      expect(html).toMatchSnapshot();
+      const html = await ComponentRender(`PostCard ${desc}`, options, PostCard)
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

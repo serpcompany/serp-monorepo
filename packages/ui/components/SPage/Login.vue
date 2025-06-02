@@ -1,18 +1,18 @@
 <script setup lang="ts">
-  const route = useRoute();
-  const redirectTo = route.query.redirectTo || '/';
-  const { loggedIn } = useUserSession();
-  if (loggedIn.value) {
-    navigateTo(redirectTo);
-  }
-  const providers = [
-    { id: 'github', name: 'GitHub' },
-    { id: 'google', name: 'Google' },
-  ];
+const route = useRoute()
+const redirectTo = route.query.redirectTo || '/'
+const { loggedIn } = useUserSession()
+if (loggedIn.value) {
+  navigateTo(redirectTo)
+}
+const providers = [
+  { id: 'github', name: 'GitHub' },
+  { id: 'google', name: 'Google' },
+]
 
-  async function signIn(provider: string) {
-    window.location.href = `/api/auth/oauth/${provider}`;
-  }
+async function signIn(provider: string) {
+  window.location.href = `/api/auth/oauth/${provider}`
+}
 </script>
 
 <template>
@@ -21,7 +21,9 @@
       class="w-full max-w-md rounded-md border border-neutral-200 p-8 shadow-sm dark:border-neutral-800"
     >
       <div class="mb-6 text-center">
-        <h2 class="mb-2 text-2xl font-semibold">Sign In</h2>
+        <h2 class="mb-2 text-2xl font-semibold">
+          Sign In
+        </h2>
         <p class="text-neutral-500 dark:text-neutral-400">
           Continue with your preferred provider
         </p>

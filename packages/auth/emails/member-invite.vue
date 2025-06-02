@@ -9,24 +9,24 @@
     Link,
     Preview,
     Text,
-  } from '@vue-email/components';
+  } from '@vue-email/components'
 
-  interface MemberInviteProps {
-    inviterName?: string;
-    organizationName?: string;
-    inviteLink?: string;
+interface MemberInviteProps {
+    inviterName?: string
+    organizationName?: string
+    inviteLink?: string
   }
 
   withDefaults(defineProps<MemberInviteProps>(), {
     inviterName: '',
     organizationName: '',
     inviteLink: '',
-  });
+  })
 
-  const main = {
+const main = {
     backgroundColor: '#ffffff',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
   };
 
   const container = {
@@ -66,7 +66,7 @@
     marginTop: '32px',
   };
 
-  const runtimeConfig = useRuntimeConfig();
+  const runtimeConfig = useRuntimeConfig()
 </script>
 
 <template>

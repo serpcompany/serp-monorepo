@@ -1,24 +1,24 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import Single from '../../../../components/SPage/Album/Single.vue';
-import ComponentRender from '../../../componentRender';
-import '../../../mockUseUserSession';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import Single from '../../../../components/SPage/Album/Single.vue'
+import ComponentRender from '../../../componentRender'
+import '../../../mockUseUserSession'
 
 let config_: Record<string, unknown> = {
   app: { baseURL: '/' },
   public: { useAuth: true },
-};
-let albumData_: unknown = {};
-let upvotesData_: unknown = { upvotes: [] };
+}
+let albumData_: unknown = {}
+let upvotesData_: unknown = { upvotes: [] }
 
-mockNuxtImport('useRuntimeConfig', () => () => config_);
-mockNuxtImport('useSeoMeta', () => () => {});
-mockNuxtImport('useAlbum', () => () => Promise.resolve(albumData_));
-mockNuxtImport('useFetchWithCache', () => () => Promise.resolve(upvotesData_));
+mockNuxtImport('useRuntimeConfig', () => () => config_)
+mockNuxtImport('useSeoMeta', () => () => {})
+mockNuxtImport('useAlbum', () => () => Promise.resolve(albumData_))
+mockNuxtImport('useFetchWithCache', () => () => Promise.resolve(upvotesData_))
 
 const scenarios: [
   string,
-  { album: Record<string, unknown>; upvotes: string[]; useAuth: boolean },
+  { album: Record<string, unknown>, upvotes: string[], useAuth: boolean },
 ][] = [
   [
     'with auth enabled and full album data',
@@ -88,25 +88,25 @@ const scenarios: [
       useAuth: true,
     },
   ],
-];
+]
 
 describe('sPageAlbumSingle Snapshot', () => {
   it.each(scenarios)(
     'renders %s correctly',
     async (desc, { album, upvotes, useAuth }) => {
-      albumData_ = album;
-      upvotesData_ = { upvotes };
+      albumData_ = album
+      upvotesData_ = { upvotes }
       config_ = {
         app: { baseURL: '/' },
         public: { useAuth },
-      };
+      }
 
       const html = await ComponentRender(
         `SPageAlbumSingle ${desc}`,
         {},
         Single,
-      );
-      expect(html).toMatchSnapshot();
+      )
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

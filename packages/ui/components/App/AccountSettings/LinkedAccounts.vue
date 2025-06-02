@@ -1,85 +1,91 @@
 <script lang="ts" setup>
-  import type { OauthAccount } from '@serp/db/types/database';
-  import { useDateFormat } from '@vueuse/core';
+import type { OauthAccount } from '@serp/db/types/database'
+import { useDateFormat } from '@vueuse/core'
 
-  const linkAccountModal = ref(false);
-  const toast = useToast();
-  const loading = ref(false);
+const linkAccountModal = ref(false)
+const toast = useToast()
+const loading = ref(false)
 
-  const { data: linkedAccounts } = await useFetch<OauthAccount[]>(
-    '/api/me/linked-accounts',
-    {
-      key: 'linked-accounts',
-    },
-  );
+const { data: linkedAccounts } = await useFetch<OauthAccount[]>(
+  '/api/me/linked-accounts',
+  {
+    key: 'linked-accounts',
+  },
+)
 
-  const availableProviders = [
-    {
-      id: 'google',
-      name: 'Google',
-      icon: 'i-logos-google-icon',
-    },
-    {
-      id: 'github',
-      name: 'Github',
-      icon: 'i-mdi-github',
-    },
-    {
-      id: 'discord',
-      name: 'Discord',
-      icon: 'i-logos-discord-icon',
-    },
-    {
-      id: 'spotify',
-      name: 'Spotify',
-      icon: 'i-logos-spotify-icon',
-    },
-  ];
+const availableProviders = [
+  {
+    id: 'google',
+    name: 'Google',
+    icon: 'i-logos-google-icon',
+  },
+  {
+    id: 'github',
+    name: 'Github',
+    icon: 'i-mdi-github',
+  },
+  {
+    id: 'discord',
+    name: 'Discord',
+    icon: 'i-logos-discord-icon',
+  },
+  {
+    id: 'spotify',
+    name: 'Spotify',
+    icon: 'i-logos-spotify-icon',
+  },
+]
 
-  function getProviderIcon(providerId: string) {
-    if (!providerId) return 'i-lucide-question-mark-circle';
-    const provider = availableProviders.find((p) => p.id === providerId);
-    return provider?.icon || 'i-lucide-question-mark-circle';
+function getProviderIcon(providerId: string) {
+  if (!providerId)
+    return 'i-lucide-question-mark-circle'
+  const provider = availableProviders.find(p => p.id === providerId)
+  return provider?.icon || 'i-lucide-question-mark-circle'
+}
+
+function getProviderName(providerId: string) {
+  if (!providerId)
+    return 'Unknown'
+  const provider = availableProviders.find(p => p.id === providerId)
+  return provider?.name || 'Unknown'
+}
+
+async function unlinkAccount(account: OAuthAccounts) {
+  try {
+    loading.value = true
+    await $fetch(`/api/me/linked-accounts/${account.id}`, {
+      method: 'DELETE',
+    })
+    // Refresh the linked accounts list
+    await refreshNuxtData('linked-accounts')
+    toast.add({
+      title: 'Account unlinked',
+      description: `Your ${account.provider} account has been successfully unlinked`,
+      color: 'success',
+    })
   }
-
-  function getProviderName(providerId: string) {
-    if (!providerId) return 'Unknown';
-    const provider = availableProviders.find((p) => p.id === providerId);
-    return provider?.name || 'Unknown';
+  catch (error) {
+    const errorMessage
+        = error.data?.statusMessage || 'Failed to unlink account'
+    toast.add({
+      title: 'Error',
+      description: errorMessage,
+      color: 'error',
+    })
   }
-
-  async function unlinkAccount(account: OAuthAccounts) {
-    try {
-      loading.value = true;
-      await $fetch(`/api/me/linked-accounts/${account.id}`, {
-        method: 'DELETE',
-      });
-      // Refresh the linked accounts list
-      await refreshNuxtData('linked-accounts');
-      toast.add({
-        title: 'Account unlinked',
-        description: `Your ${account.provider} account has been successfully unlinked`,
-        color: 'success',
-      });
-    } catch (error) {
-      const errorMessage =
-        error.data?.statusMessage || 'Failed to unlink account';
-      toast.add({
-        title: 'Error',
-        description: errorMessage,
-        color: 'error',
-      });
-    } finally {
-      loading.value = false;
-    }
+  finally {
+    loading.value = false
   }
+}
 </script>
 
 <template>
   <UCard>
     <template #header>
       <div class="flex items-center justify-between">
-        <h3 class="font-medium">Linked Accounts</h3>
+        <h3 class="font-medium">
+          Linked Accounts
+        </h3>
         <UButton
           label="Link Account"
           variant="subtle"

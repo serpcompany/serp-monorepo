@@ -1,23 +1,23 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import Post from '../../../components/SinglePosts/Post.vue';
-import ComponentRender from '../../componentRender';
-import '../../mockUseUserSession';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import Post from '../../../components/SinglePosts/Post.vue'
+import ComponentRender from '../../componentRender'
+import '../../mockUseUserSession'
 
-let runtimeConfig: Record<string, unknown> = { public: { useAuth: true } };
-let commentsData_: unknown = { comments: [] };
+let runtimeConfig: Record<string, unknown> = { public: { useAuth: true } }
+let commentsData_: unknown = { comments: [] }
 
-mockNuxtImport('useHead', () => () => {});
-mockNuxtImport('useRuntimeConfig', () => () => runtimeConfig);
-mockNuxtImport('usePostComments', () => async () => commentsData_);
+mockNuxtImport('useHead', () => () => {})
+mockNuxtImport('useRuntimeConfig', () => () => runtimeConfig)
+mockNuxtImport('usePostComments', () => async () => commentsData_)
 
 describe('singlePostsPost Snapshot', () => {
   const scenarios: [
     string,
     {
-      config: Record<string, unknown>;
-      props: { data: unknown };
-      comments: unknown;
+      config: Record<string, unknown>
+      props: { data: unknown }
+      comments: unknown
     },
   ][] = [
     [
@@ -120,16 +120,16 @@ describe('singlePostsPost Snapshot', () => {
         comments: { comments: [] },
       },
     ],
-  ];
+  ]
 
   it.each(scenarios)(
     'renders %s correctly',
     async (desc: string, { config, props, comments }) => {
-      runtimeConfig = config;
-      commentsData_ = comments;
+      runtimeConfig = config
+      commentsData_ = comments
 
-      const html = await ComponentRender(`Post ${desc}`, { props }, Post);
-      expect(html).toMatchSnapshot();
+      const html = await ComponentRender(`Post ${desc}`, { props }, Post)
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

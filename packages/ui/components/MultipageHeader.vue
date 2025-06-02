@@ -1,39 +1,39 @@
 <script setup lang="ts">
-  interface Props {
-    name: string;
-    oneLiner?: string;
-    image?: string;
-    sections: string[];
-    serplyLink: string;
-    verified?: boolean;
-  }
+interface Props {
+  name: string
+  oneLiner?: string
+  image?: string
+  sections: string[]
+  serplyLink: string
+  verified?: boolean
+}
 
-  withDefaults(defineProps<Props>(), {
-    image: '',
-    oneLiner: '',
-    verified: false,
-  });
+withDefaults(defineProps<Props>(), {
+  image: '',
+  oneLiner: '',
+  verified: false,
+})
 
-  const header = useTemplateRef('header');
-  const isScrolled = ref(false);
+const header = useTemplateRef('header')
+const isScrolled = ref(false)
 
-  // // helps the multipage header to stick properly
-  // onMounted(() => {
-  //   const handleScroll = () => {
-  //     isScrolled.value = window.scrollY > 0;
+// // helps the multipage header to stick properly
+// onMounted(() => {
+//   const handleScroll = () => {
+//     isScrolled.value = window.scrollY > 0;
 
-  //     if (header.value) {
-  //       header.value.style.zIndex = isScrolled.value ? '10' : '0';
-  //     }
-  //   };
+//     if (header.value) {
+//       header.value.style.zIndex = isScrolled.value ? '10' : '0';
+//     }
+//   };
 
-  //   window.addEventListener('scroll', handleScroll);
-  //   handleScroll(); // Initial check
+//   window.addEventListener('scroll', handleScroll);
+//   handleScroll(); // Initial check
 
-  //   onBeforeUnmount(() => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   });
-  // });
+//   onBeforeUnmount(() => {
+//     window.removeEventListener('scroll', handleScroll);
+//   });
+// });
 </script>
 
 <template>

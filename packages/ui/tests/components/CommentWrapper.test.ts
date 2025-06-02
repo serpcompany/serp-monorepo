@@ -1,24 +1,24 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { afterAll, describe, expect, it, vi } from 'vitest';
-import { ref } from 'vue';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { afterAll, describe, expect, it, vi } from 'vitest'
+import { ref } from 'vue'
 // Then import components
-import CommentWrapper from '../../components/CommentWrapper.vue';
-import ComponentRender from '../componentRender';
+import CommentWrapper from '../../components/CommentWrapper.vue'
+import ComponentRender from '../componentRender'
 // Import mocks first so they're available when components are imported
-import { cleanupDateMocks } from '../mockDateImports';
-import '../mockUseUserSession';
+import { cleanupDateMocks } from '../mockDateImports'
+import '../mockUseUserSession'
 
 // Mock composables used in CommentWrapper.vue
 mockNuxtImport('useToast', () => () => ({
   add: vi.fn(),
-}));
+}))
 
 mockNuxtImport('useFetch', () => async () => ({
   data: { value: { message: 'success' } },
   error: { value: null },
-}));
+}))
 
-mockNuxtImport('useRequestHeaders', () => () => ({}));
+mockNuxtImport('useRequestHeaders', () => () => ({}))
 
 describe('commentWrapper Snapshot', () => {
   const baseProps = {
@@ -49,7 +49,7 @@ describe('commentWrapper Snapshot', () => {
       email: 'test@example.com',
       lineCount: 2,
     },
-  };
+  }
   it.each([
     ['default comment', { props: baseProps }],
     [
@@ -152,12 +152,12 @@ describe('commentWrapper Snapshot', () => {
         `CommentWrapper ${desc}`,
         options,
         CommentWrapper,
-      );
-      expect(html).toMatchSnapshot();
+      )
+      expect(html).toMatchSnapshot()
     },
-  );
+  )
 
   afterAll(() => {
-    cleanupDateMocks();
-  });
-});
+    cleanupDateMocks()
+  })
+})

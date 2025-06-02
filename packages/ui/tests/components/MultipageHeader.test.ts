@@ -1,13 +1,13 @@
-import { describe, expect, it } from 'vitest';
-import MultipageHeader from '../../components/MultipageHeader.vue';
-import ComponentRender from '../componentRender';
+import { describe, expect, it } from 'vitest'
+import MultipageHeader from '../../components/MultipageHeader.vue'
+import ComponentRender from '../componentRender'
 
 describe('multipageHeader Snapshot', () => {
   const baseProps = {
     name: 'Music Header',
     sections: ['Home', 'About', 'Contact'],
     serply_link: 'https://example.com',
-  };
+  }
 
   it.each([
     // Default rendering with minimal required props.
@@ -35,13 +35,13 @@ describe('multipageHeader Snapshot', () => {
     ],
   ])(
     'renders %s correctly',
-    async (desc: string, options: { props: unknown; slots?: unknown }) => {
+    async (desc: string, options: { props: unknown, slots?: unknown }) => {
       const html = await ComponentRender(
         `MultipageHeader ${desc}`,
         options,
         MultipageHeader,
-      );
-      expect(html).toMatchSnapshot();
+      )
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

@@ -1,117 +1,123 @@
 <script setup lang="ts">
-  interface Props {
-    id: number | string;
-    domain: string;
+interface Props {
+  id: number | string
+  domain: string
+}
+
+const props = defineProps<Props>()
+const emit = defineEmits(['close'])
+
+const { loggedIn, user } = useUserSession()
+const toast = useToast()
+
+const accountLoading = ref(false)
+const emailLoading = ref(false)
+const customEmail = ref('')
+
+async function claimWithAccount() {
+  if (!loggedIn.value) {
+    toast.add({
+      id: 'company-verification-login',
+      title: 'Login required',
+      description: 'You need to login to claim this company.',
+      icon: 'lucide:info',
+    })
+    return
+  }
+  if (!user.value?.email) {
+    toast.add({
+      id: 'claim-company-error',
+      title: 'Error',
+      description: 'No email found on your account.',
+      icon: 'lucide:info',
+    })
+    return
   }
 
-  const props = defineProps<Props>();
-  const emit = defineEmits(['close']);
+  accountLoading.value = true
 
-  const { loggedIn, user } = useUserSession();
-  const toast = useToast();
-
-  const accountLoading = ref(false);
-  const emailLoading = ref(false);
-  const customEmail = ref('');
-
-  async function claimWithAccount() {
-    if (!loggedIn.value) {
+  try {
+    const res = await $fetch(`/api/entity/claim/${props.id}`, {
+      method: 'POST',
+    })
+    if (res.message === 'success') {
       toast.add({
-        id: 'company-verification-login',
-        title: 'Login required',
-        description: 'You need to login to claim this company.',
-        icon: 'lucide:info',
-      });
-      return;
+        id: 'claim-company-success',
+        title: 'Success',
+        description: 'Company claimed successfully.',
+        icon: 'lucide:circle-check',
+      })
+      emit('close')
     }
-    if (!user.value?.email) {
+    else {
       toast.add({
         id: 'claim-company-error',
         title: 'Error',
-        description: 'No email found on your account.',
+        description: `Failed to claim the company. - ${res.message}`,
         icon: 'lucide:info',
-      });
-      return;
-    }
-
-    accountLoading.value = true;
-
-    try {
-      const res = await $fetch(`/api/entity/claim/${props.id}`, {
-        method: 'POST',
-      });
-      if (res.message === 'success') {
-        toast.add({
-          id: 'claim-company-success',
-          title: 'Success',
-          description: 'Company claimed successfully.',
-          icon: 'lucide:circle-check',
-        });
-        emit('close');
-      } else {
-        toast.add({
-          id: 'claim-company-error',
-          title: 'Error',
-          description: `Failed to claim the company. - ${res.message}`,
-          icon: 'lucide:info',
-        });
-      }
-    } catch (error) {
-      toast.add({
-        id: 'claim-company-error',
-        title: 'Error',
-        description: 'An error occurred while claiming the company.',
-        icon: 'lucide:info',
-      });
-    } finally {
-      accountLoading.value = false;
+      })
     }
   }
+  catch (error) {
+    toast.add({
+      id: 'claim-company-error',
+      title: 'Error',
+      description: 'An error occurred while claiming the company.',
+      icon: 'lucide:info',
+    })
+  }
+  finally {
+    accountLoading.value = false
+  }
+}
 
-  async function sendVerificationEmail() {
-    if (!customEmail.value) {
+async function sendVerificationEmail() {
+  if (!customEmail.value) {
+    toast.add({
+      id: 'company-verification-email-error',
+      title: 'Error',
+      description: 'Please enter an email address.',
+      icon: 'lucide:info',
+    })
+    return
+  }
+
+  emailLoading.value = true
+  try {
+    const res = await $fetch('/api/entity/verify/email/initiate', {
+      method: 'POST',
+      body: { id: Number(props.id), email: customEmail.value },
+    })
+    if (res.ok) {
+      toast.add({
+        id: 'company-verification-email-sent',
+        title: 'Success',
+        description: 'Verification email sent!',
+        icon: 'lucide:circle-check',
+      })
+      emit('close')
+    }
+    else {
       toast.add({
         id: 'company-verification-email-error',
         title: 'Error',
-        description: 'Please enter an email address.',
+        description: `Failed to send email. - ${res.error}`,
         icon: 'lucide:info',
-      });
-      return;
-    }
-
-    emailLoading.value = true;
-    try {
-      const res = await $fetch('/api/entity/verify/email/initiate', {
-        method: 'POST',
-        body: { id: Number(props.id), email: customEmail.value },
-      });
-      if (res.ok) {
-        toast.add({
-          id: 'company-verification-email-sent',
-          title: 'Success',
-          description: 'Verification email sent!',
-          icon: 'lucide:circle-check',
-        });
-        emit('close');
-      } else {
-        toast.add({
-          id: 'company-verification-email-error',
-          title: 'Error',
-          description: `Failed to send email. - ${res.error}`,
-          icon: 'lucide:info',
-        });
-      }
-    } catch (error) {
-      toast.add({
-        id: 'company-verification-email-error',
-        title: 'Error',
-        description: 'An error occurred while sending verification email.',
-        icon: 'lucide:info',
-      });
-    } finally {
-      emailLoading.value = false;
+      })
     }
   }
+  catch (error) {
+    toast.add({
+      id: 'company-verification-email-error',
+      title: 'Error',
+      description: 'An error occurred while sending verification email.',
+      icon: 'lucide:info',
+    })
+  }
+  finally {
+    emailLoading.value = false
+  }
+}
 </script>
 
 <template>

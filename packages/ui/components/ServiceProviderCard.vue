@@ -1,47 +1,49 @@
 <script setup lang="ts">
-  import type { ServiceProvider } from '@serp/types/types';
-  import { computed, ref } from 'vue';
+import type { ServiceProvider } from '@serp/types/types'
+import { computed, ref } from 'vue'
 
-  const props = defineProps({
-    serviceProvider: {
-      type: Object as PropType<ServiceProvider>,
-      required: true,
-    },
-    showReadMore: {
-      type: Boolean,
-      default: false,
-    },
-    showFeatures: {
-      type: Boolean,
-      default: false,
-    },
-    showExpandedContent: {
-      type: Boolean,
-      default: false,
-    },
-    baseSlug: {
-      type: String,
-      default: 'service-providers/',
-    },
-  });
-  const config = useRuntimeConfig();
-  const useAuth = config.public.useAuth;
+const props = defineProps({
+  serviceProvider: {
+    type: Object as PropType<ServiceProvider>,
+    required: true,
+  },
+  showReadMore: {
+    type: Boolean,
+    default: false,
+  },
+  showFeatures: {
+    type: Boolean,
+    default: false,
+  },
+  showExpandedContent: {
+    type: Boolean,
+    default: false,
+  },
+  baseSlug: {
+    type: String,
+    default: 'service-providers/',
+  },
+})
+const config = useRuntimeConfig()
+const useAuth = config.public.useAuth
 
-  const isExpanded = ref(false);
+const isExpanded = ref(false)
 
-  // Compute the main image, either the serviceProvider logo or the first screenshot
-  const serviceProviderMainImage = computed(() => {
-    if (props.serviceProvider.logo) {
-      return props.serviceProvider.logo;
-    } else if (
-      props.serviceProvider.screenshots &&
-      props.serviceProvider.screenshots.length
-    ) {
-      return props.serviceProvider.screenshots[0];
-    } else {
-      return null;
-    }
-  });
+// Compute the main image, either the serviceProvider logo or the first screenshot
+const serviceProviderMainImage = computed(() => {
+  if (props.serviceProvider.logo) {
+    return props.serviceProvider.logo
+  }
+  else if (
+    props.serviceProvider.screenshots
+    && props.serviceProvider.screenshots.length
+  ) {
+    return props.serviceProvider.screenshots[0]
+  }
+  else {
+    return null
+  }
+})
 </script>
 
 <template>
@@ -213,9 +215,9 @@
     <!-- feature tags only for featured providers -->
     <div
       v-if="
-        serviceProvider.featured &&
-        serviceProvider.features &&
-        serviceProvider.features.length
+        serviceProvider.featured
+          && serviceProvider.features
+          && serviceProvider.features.length
       "
       class="mt-8"
     >
@@ -236,7 +238,9 @@
 
       <!-- features -->
       <section v-if="showFeatures" class="mt-4">
-        <h3 class="pb-2 text-lg font-medium">Features</h3>
+        <h3 class="pb-2 text-lg font-medium">
+          Features
+        </h3>
         <ul class="list-disc pl-5">
           <li v-for="feature in serviceProvider.features" :key="feature.id">
             {{ feature.item }}: {{ feature.description }}

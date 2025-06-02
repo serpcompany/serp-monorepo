@@ -1,31 +1,35 @@
 <script setup lang="ts">
-  const { loggedIn } = useUserSession();
-  const route = useRoute();
+const { loggedIn } = useUserSession()
+const route = useRoute()
 
-  if (!loggedIn.value) {
-    navigateTo(`/login?redirectTo=${route.fullPath}`);
-  }
+if (!loggedIn.value) {
+  navigateTo(`/login?redirectTo=${route.fullPath}`)
+}
 
-  const requestId = route.query.requestId as string;
-  const code = route.query.code as string;
+const requestId = route.query.requestId as string
+const code = route.query.code as string
 
-  const {
-    data: res,
-    pending,
-    error,
-  } = await useFetch('/api/entity/verify/email', {
-    method: 'POST',
-    body: { requestId: Number(requestId), code },
-  });
+const {
+  data: res,
+  pending,
+  error,
+} = await useFetch('/api/entity/verify/email', {
+  method: 'POST',
+  body: { requestId: Number(requestId), code },
+})
 
-  const success = res.value?.ok;
+const success = res.value?.ok
 </script>
 
 <template>
   <div class="mx-auto max-w-md p-6">
-    <h1 class="mb-4 text-2xl font-bold">Company Verification</h1>
+    <h1 class="mb-4 text-2xl font-bold">
+      Company Verification
+    </h1>
 
-    <div v-if="pending" class="py-8 text-center">🔄 Checking your code…</div>
+    <div v-if="pending" class="py-8 text-center">
+      🔄 Checking your code…
+    </div>
 
     <div v-else-if="error" class="py-8 text-center text-red-500">
       {{ error.message || error }}

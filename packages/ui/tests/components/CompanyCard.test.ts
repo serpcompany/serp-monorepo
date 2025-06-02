@@ -1,14 +1,14 @@
-import { describe, expect, it } from 'vitest';
-import CompanyCard from '../../components/CompanyCard.vue';
-import ComponentRender from '../componentRender';
-import '../mockUseUserSession';
+import { describe, expect, it } from 'vitest'
+import CompanyCard from '../../components/CompanyCard.vue'
+import ComponentRender from '../componentRender'
+import '../mockUseUserSession'
 
 let config_: Record<string, unknown> = {
   app: { baseURL: '/' },
   public: {
     useAuth: true,
   },
-};
+}
 
 describe('companyCard Snapshot', () => {
   it.each([
@@ -192,15 +192,15 @@ describe('companyCard Snapshot', () => {
     ],
   ])(
     '%s',
-    async (desc: string, options: { props: unknown; config?: unknown }) => {
-      config_ = options.config;
-      mockNuxtImport('useRuntimeConfig', () => () => config_);
+    async (desc: string, options: { props: unknown, config?: unknown }) => {
+      config_ = options.config
+      mockNuxtImport('useRuntimeConfig', () => () => config_)
       const html = await ComponentRender(
         `CompanyCard ${desc}`,
         options,
         CompanyCard,
-      );
-      expect(html).toMatchSnapshot();
+      )
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

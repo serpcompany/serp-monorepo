@@ -1,14 +1,14 @@
 <script setup lang="ts">
-  const str = ref('');
-  const characterCount = ref();
+const str = ref('')
+const characterCount = ref()
 
-  function runFunction() {
-    characterCount.value = countCharacters(str.value);
-  }
+function runFunction() {
+  characterCount.value = countCharacters(str.value)
+}
 
-  useSeoMeta({
-    title: 'A Free Online Character Counter',
-  });
+useSeoMeta({
+  title: 'A Free Online Character Counter',
+})
 </script>
 
 <template>
@@ -32,7 +32,9 @@
       </div>
 
       <!-- button -->
-      <UButton type="button" @click="runFunction">Submit</UButton>
+      <UButton type="button" @click="runFunction">
+        Submit
+      </UButton>
       <span v-if="characterCount" class="ml-10 text-lg">
         {{ characterCount }} characters
       </span>

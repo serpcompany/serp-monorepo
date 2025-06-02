@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest';
-import SHero from '../../components/SHero.vue';
-import ComponentRender from '../componentRender';
+import { describe, expect, it } from 'vitest'
+import SHero from '../../components/SHero.vue'
+import ComponentRender from '../componentRender'
 
 describe('sHero Snapshot Tests', () => {
   it.each([
@@ -43,8 +43,8 @@ describe('sHero Snapshot Tests', () => {
   ])(
     'renders %s correctly',
     async (desc: string, options: { props: unknown }) => {
-      const html = await ComponentRender(`SHero ${desc}`, options, SHero);
-      expect(html).toMatchSnapshot();
+      const html = await ComponentRender(`SHero ${desc}`, options, SHero)
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

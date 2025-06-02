@@ -1,22 +1,22 @@
 <script setup lang="ts">
-  import type { SelectMenuProps } from '#ui/types';
+import type { SelectMenuProps } from '#ui/types'
 
-  interface Props {
-    items: Array<{ label: string; value: string }>;
-    placeholder: string;
-    size: SelectMenuProps['size'];
-    searchInput?: boolean;
-  }
+interface Props {
+  items: Array<{ label: string, value: string }>
+  placeholder: string
+  size: SelectMenuProps['size']
+  searchInput?: boolean
+}
 
-  defineProps<Props>();
-  const value = defineModel<string>({
-    required: true,
-  });
+defineProps<Props>()
+const value = defineModel<string>({
+  required: true,
+})
 
-  function handleRmValue(e: Event) {
-    e.stopPropagation();
-    value.value = '';
-  }
+function handleRmValue(e: Event) {
+  e.stopPropagation()
+  value.value = ''
+}
 </script>
 
 <template>

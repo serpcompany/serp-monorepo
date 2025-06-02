@@ -1,21 +1,21 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it, vi } from 'vitest';
-import { ref } from 'vue';
-import Companies from '../../../../../components/SPage/Users/Submit/Companies.vue';
-import ComponentRender from '../../../../componentRender';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it, vi } from 'vitest'
+import { ref } from 'vue'
+import Companies from '../../../../../components/SPage/Users/Submit/Companies.vue'
+import ComponentRender from '../../../../componentRender'
 
 // Set up global mocks for session and data fetching.
-let session_: { loggedIn: unknown; user: unknown; clear: unknown };
-let companySubmissions_: unknown = null;
+let session_: { loggedIn: unknown, user: unknown, clear: unknown }
+let companySubmissions_: unknown = null
 
 // Mock all Nuxt imports
-mockNuxtImport('useUserSession', () => () => session_);
-mockNuxtImport('useCompanySubmissions', () => async () => companySubmissions_);
-mockNuxtImport('navigateTo', () => () => {});
-mockNuxtImport('useSeoMeta', () => () => {});
+mockNuxtImport('useUserSession', () => () => session_)
+mockNuxtImport('useCompanySubmissions', () => async () => companySubmissions_)
+mockNuxtImport('navigateTo', () => () => {})
+mockNuxtImport('useSeoMeta', () => () => {})
 
 describe('sPage/Users/Submit/Companies Snapshot', () => {
-  const scenarios: [string, { session: unknown; companyData: unknown }][] = [
+  const scenarios: [string, { session: unknown, companyData: unknown }][] = [
     [
       'with submissions',
       {
@@ -65,21 +65,21 @@ describe('sPage/Users/Submit/Companies Snapshot', () => {
         companyData: [],
       },
     ],
-  ];
+  ]
 
   it.each(scenarios)(
     'renders %s correctly',
     async (desc: string, { session, companyData }) => {
       // Set the current session and mock submission data.
-      session_ = session;
-      companySubmissions_ = companyData;
+      session_ = session
+      companySubmissions_ = companyData
 
       const html = await ComponentRender(
         `SPage/Users/Submit/Companies ${desc}`,
         {},
         Companies,
-      );
-      expect(html).toMatchSnapshot();
+      )
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

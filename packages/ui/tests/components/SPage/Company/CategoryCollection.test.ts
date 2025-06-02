@@ -1,24 +1,24 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import CategoryCollection from '../../../../components/SPage/Company/CategoryCollection.vue';
-import ComponentRender from '../../../componentRender';
-import '../../../mockUseUserSession';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import CategoryCollection from '../../../../components/SPage/Company/CategoryCollection.vue'
+import ComponentRender from '../../../componentRender'
+import '../../../mockUseUserSession'
 
-mockNuxtImport('useSeoMeta', () => () => {});
+mockNuxtImport('useSeoMeta', () => () => {})
 
-let companiesData_: unknown = {};
-let categoriesData_: unknown = [];
+let companiesData_: unknown = {}
+let categoriesData_: unknown = []
 
-mockNuxtImport('useCompanies', () => () => Promise.resolve(companiesData_));
+mockNuxtImport('useCompanies', () => () => Promise.resolve(companiesData_))
 mockNuxtImport(
   'useCompanyCategories',
   () => () => Promise.resolve(categoriesData_),
-);
+)
 
 describe('sPageCompanyCategoryCollection Snapshot', () => {
   const scenarios: [
     string,
-    { companiesData: unknown; categoriesData: unknown },
+    { companiesData: unknown, categoriesData: unknown },
   ][] = [
     [
       'with complete data',
@@ -83,20 +83,20 @@ describe('sPageCompanyCategoryCollection Snapshot', () => {
         categoriesData: [],
       },
     ],
-  ];
+  ]
 
   it.each(scenarios)(
     'renders %s correctly',
     async (desc, { companiesData, categoriesData }) => {
-      companiesData_ = companiesData;
-      categoriesData_ = categoriesData;
+      companiesData_ = companiesData
+      categoriesData_ = categoriesData
 
       const html = await ComponentRender(
         `SPageCompanyCategoryCollection ${desc}`,
         {},
         CategoryCollection,
-      );
-      expect(html).toMatchSnapshot();
+      )
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

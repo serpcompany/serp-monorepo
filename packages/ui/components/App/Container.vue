@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-  withDefaults(
-    defineProps<{
-      title: string;
-      description?: string;
-      padding?: boolean;
-    }>(),
-    {
-      padding: true,
-    },
-  );
-  const mobileMenu = useState('mobileMenu');
+withDefaults(
+  defineProps<{
+    title: string
+    description?: string
+    padding?: boolean
+  }>(),
+  {
+    padding: true,
+  },
+)
+const mobileMenu = useState('mobileMenu')
 </script>
 
 <template>

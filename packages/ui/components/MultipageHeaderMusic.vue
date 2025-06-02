@@ -1,48 +1,49 @@
 <script setup lang="ts">
-  defineProps({
-    name: {
-      type: String,
-      required: true,
-    },
-    subtitle: {
-      type: String,
-      required: false,
-      default: '',
-    },
-    image: {
-      type: String,
-      required: false,
-      default: '',
-    },
-    sections: {
-      type: Array as () => string[],
-      required: true,
-    },
-    serplyLink: {
-      type: String,
-      required: true,
-    },
-  });
+defineProps({
+  name: {
+    type: String,
+    required: true,
+  },
+  subtitle: {
+    type: String,
+    required: false,
+    default: '',
+  },
+  image: {
+    type: String,
+    required: false,
+    default: '',
+  },
+  sections: {
+    type: Array as () => string[],
+    required: true,
+  },
+  serplyLink: {
+    type: String,
+    required: true,
+  },
+})
 
-  const header = ref<HTMLElement | null>(null);
-  const isScrolled = ref(false);
+const header = ref<HTMLElement | null>(null)
+const isScrolled = ref(false)
 
-  function handleScroll() {
-    if (window.scrollY > 50) {
-      isScrolled.value = true;
-    } else {
-      isScrolled.value = false;
-    }
+function handleScroll() {
+  if (window.scrollY > 50) {
+    isScrolled.value = true
   }
+  else {
+    isScrolled.value = false
+  }
+}
 
-  onMounted(() => {
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-  });
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+  handleScroll()
+})
 
-  onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll);
-  });
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <template>

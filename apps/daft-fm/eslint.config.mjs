@@ -1,6 +1,6 @@
-import antfu from '@antfu/eslint-config';
+import antfu from '@antfu/eslint-config'
 
-import withNuxt from './.nuxt/eslint.config.mjs';
+import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt(
   antfu({
@@ -73,7 +73,7 @@ export default withNuxt(
 
       // Component size limits
       'max-lines': ['warn', 300],
-      complexity: ['warn', 10],
+      'complexity': ['warn', 10],
 
       // Other helpful limits
       'max-lines-per-function': ['warn', 50],
@@ -84,7 +84,7 @@ export default withNuxt(
       'import/order': [
         'error',
         {
-          groups: [
+          'groups': [
             'builtin',
             'external',
             'internal',
@@ -138,4 +138,4 @@ export default withNuxt(
       ],
     },
   },
-);
+)

@@ -1,33 +1,36 @@
 <script setup lang="ts">
-  import type { Entity } from '@serp/types/types';
+import type { Entity } from '@serp/types/types'
 
-  const props = defineProps({
-    entity: {
-      type: Object as PropType<Company>,
-      required: true,
-    },
-    baseSlug: {
-      type: String,
-      required: true,
-    },
-    baseCategorySlug: {
-      type: String,
-      required: true,
-    },
-  });
+const props = defineProps({
+  entity: {
+    type: Object as PropType<Company>,
+    required: true,
+  },
+  baseSlug: {
+    type: String,
+    required: true,
+  },
+  baseCategorySlug: {
+    type: String,
+    required: true,
+  },
+})
 
-  // Compute the main image, either the entity logo or the first screenshot
-  const entityMainImage = computed(() => {
-    if (props.entity.image) {
-      return props.entity.image;
-    } else if (props.entity.logo) {
-      return props.entity.logo;
-    } else if (props.entity.screenshots && props.entity.screenshots.length) {
-      return props.entity.screenshots[0];
-    } else {
-      return null;
-    }
-  });
+// Compute the main image, either the entity logo or the first screenshot
+const entityMainImage = computed(() => {
+  if (props.entity.image) {
+    return props.entity.image
+  }
+  else if (props.entity.logo) {
+    return props.entity.logo
+  }
+  else if (props.entity.screenshots && props.entity.screenshots.length) {
+    return props.entity.screenshots[0]
+  }
+  else {
+    return null
+  }
+})
 </script>
 
 <template>
@@ -203,19 +206,19 @@
 
 <style scoped>
   .upvote-btn :deep(button) {
-    font-size: 0.875rem;
-    padding: 0.5rem 1rem;
-    width: 100%;
-  }
-  .upvote-btn :deep(.flex) {
-    width: 100%;
-  }
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+.upvote-btn :deep(.flex) {
+  width: 100%;
+}
 
-  /* Override orange upvote color with blue */
-  .upvote-btn :deep(.text-orange-500) {
-    color: var(--ui-color-secondary-500, #0969da) !important;
-  }
-  .upvote-btn :deep(.dark\:text-orange-400) {
-    color: var(--ui-color-secondary-400, #2f81f7) !important;
-  }
+/* Override orange upvote color with blue */
+.upvote-btn :deep(.text-orange-500) {
+  color: var(--ui-color-secondary-500, #0969da) !important;
+}
+.upvote-btn :deep(.dark\:text-orange-400) {
+  color: var(--ui-color-secondary-400, #2f81f7) !important;
+}
 </style>

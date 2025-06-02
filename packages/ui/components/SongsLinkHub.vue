@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import type { RecordingIndex } from '@serp/types/types';
+import type { RecordingIndex } from '@serp/types/types'
 
-  defineProps({
-    songs: {
-      type: Array as () => RecordingIndex[],
-      required: true,
-    },
-  });
+defineProps({
+  songs: {
+    type: Array as () => RecordingIndex[],
+    required: true,
+  },
+})
 </script>
 
 <template>

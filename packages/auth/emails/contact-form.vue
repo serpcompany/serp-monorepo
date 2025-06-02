@@ -10,13 +10,13 @@
     Link,
     Preview,
     Text,
-  } from '@vue-email/components';
+  } from '@vue-email/components'
 
-  interface ContactFormProps {
-    name: string;
-    email: string;
-    subject: string;
-    message: string;
+interface ContactFormProps {
+    name: string
+    email: string
+    subject: string
+    message: string
   }
 
   const props = withDefaults(defineProps<ContactFormProps>(), {
@@ -24,9 +24,9 @@
     email: '',
     subject: '',
     message: '',
-  });
+  })
 
-  const main = {
+const main = {
     backgroundColor: '#ffffff',
   };
 
@@ -39,7 +39,7 @@
   const h1 = {
     color: '#333',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     fontSize: '24px',
     fontWeight: 'bold',
     margin: '40px 0',
@@ -49,7 +49,7 @@
   const text = {
     color: '#333',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     fontSize: '14px',
     margin: '24px 0',
   };
@@ -60,7 +60,7 @@
     borderRadius: '6px',
     padding: '16px',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     fontSize: '14px',
     lineHeight: '1.5',
     whiteSpace: 'pre-wrap',
@@ -80,21 +80,21 @@
     color: '#495057',
     fontSize: '14px',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
   };
 
   const value = {
     color: '#333',
     fontSize: '14px',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     margin: '4px 0 12px 0',
   };
 
   const footer = {
     color: '#898989',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     fontSize: '12px',
     lineHeight: '22px',
     marginTop: '12px',
@@ -106,7 +106,7 @@
     textDecoration: 'underline',
   };
 
-  const runtimeConfig = useRuntimeConfig();
+  const runtimeConfig = useRuntimeConfig()
 </script>
 
 <template>

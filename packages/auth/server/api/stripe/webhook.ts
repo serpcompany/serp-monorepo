@@ -1,51 +1,52 @@
-import type { InsertSubscription } from '@serp/db/types/database';
-import { getCustomerById } from '@serp/db/server/database/queries/customers';
+import type { InsertSubscription } from '@serp/db/types/database'
+import { getCustomerById } from '@serp/db/server/database/queries/customers'
 import {
   createOrUpdateStripePrice,
   createOrUpdateStripeProduct,
-} from '@serp/db/server/database/queries/stripe';
-import { upsertSubscription } from '@serp/db/server/database/queries/subscriptions';
-import { updateUser } from '@serp/db/server/database/queries/users';
-import Stripe from 'stripe';
-import { stripeService } from '../../services/stripe';
+} from '@serp/db/server/database/queries/stripe'
+import { upsertSubscription } from '@serp/db/server/database/queries/subscriptions'
+import { updateUser } from '@serp/db/server/database/queries/users'
+import Stripe from 'stripe'
+import { stripeService } from '../../services/stripe'
 
 export default defineEventHandler(async (event) => {
-  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-  const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
+  const stripeSecretKey = process.env.STRIPE_SECRET_KEY
 
-  const stripe = new Stripe(stripeSecretKey);
+  const stripe = new Stripe(stripeSecretKey)
 
-  const body = await readRawBody(event);
-  const stripeSignature = getHeader(event, 'stripe-signature');
+  const body = await readRawBody(event)
+  const stripeSignature = getHeader(event, 'stripe-signature')
 
   if (!stripeSignature) {
     throw createError({
       statusCode: 400,
       statusMessage: 'Stripe signature is missing',
-    });
+    })
   }
   if (!body) {
     throw createError({
       statusCode: 400,
       statusMessage: 'Request body is missing',
-    });
+    })
   }
-  let stripeEvent;
+  let stripeEvent
   try {
     stripeEvent = await stripe.webhooks.constructEventAsync(
       body,
       stripeSignature,
       webhookSecret,
-    );
-  } catch (err) {
-    console.log('err', err);
+    )
+  }
+  catch (err) {
+    console.log('err', err)
     throw createError({
       statusCode: 400,
       statusMessage: 'Webhook Error',
       message: err instanceof Error ? err.message : 'Unknown error',
-    });
+    })
   }
-  const type = stripeEvent.type;
+  const type = stripeEvent.type
 
   const relevantEvents = [
     'checkout.session.completed',
@@ -61,52 +62,53 @@ export default defineEventHandler(async (event) => {
     'product.created',
     'product.deleted',
     'product.updated',
-  ];
+  ]
   if (!relevantEvents.includes(type)) {
-    console.log('Not a relevant event');
-    return 'OK';
+    console.log('Not a relevant event')
+    return 'OK'
   }
-  const data = stripeEvent.data.object;
+  const data = stripeEvent.data.object
   if (!data) {
     throw createError({
       statusCode: 400,
       statusMessage: 'Invalid event data',
-    });
+    })
   }
-  console.log('Received event', type);
+  console.log('Received event', type)
   try {
     switch (type) {
       case 'product.created':
       case 'product.updated':
-        await handleProductEvent(data as Stripe.Product);
-        break;
+        await handleProductEvent(data as Stripe.Product)
+        break
       case 'price.created':
       case 'price.updated':
-        await handlePriceEvent(data as Stripe.Price);
-        break;
+        await handlePriceEvent(data as Stripe.Price)
+        break
       case 'customer.subscription.created':
       case 'customer.subscription.updated':
       case 'customer.subscription.deleted':
       case 'customer.subscription.resumed':
       case 'customer.subscription.paused':
-        await handleSubscriptionEvent(data as Stripe.Subscription);
-        break;
+        await handleSubscriptionEvent(data as Stripe.Subscription)
+        break
       case 'checkout.session.completed':
       case 'checkout.session.async_payment_succeeded':
-        await handleCheckoutSessionEvent(data as Stripe.Checkout.Session);
-        break;
+        await handleCheckoutSessionEvent(data as Stripe.Checkout.Session)
+        break
       default:
         throw createError({
           statusCode: 400,
           statusMessage: 'Unhandled event type.',
-        });
+        })
     }
-  } catch (err) {
-    console.log(err);
-    return 'Error';
   }
-  return 'OK';
-});
+  catch (err) {
+    console.log(err)
+    return 'Error'
+  }
+  return 'OK'
+})
 
 async function handleProductEvent(data: Stripe.Product): Promise<any> {
   const product = await createOrUpdateStripeProduct({
@@ -116,8 +118,8 @@ async function handleProductEvent(data: Stripe.Product): Promise<any> {
     active: data.active,
     metadata: data.metadata,
     features: data.marketing_features,
-  });
-  return product;
+  })
+  return product
 }
 
 async function handlePriceEvent(data: Stripe.Price): Promise<any> {
@@ -134,28 +136,28 @@ async function handlePriceEvent(data: Stripe.Price): Promise<any> {
     active: data.active,
     metadata: data.metadata,
     trialPeriodDays: data.recurring?.trial_period_days,
-  };
-  const price = await createOrUpdateStripePrice(record);
-  return price;
+  }
+  const price = await createOrUpdateStripePrice(record)
+  return price
 }
 
 async function handleSubscriptionEvent(
   data: Stripe.Subscription,
 ): Promise<any> {
-  const customer = await getCustomerById(data.customer as string);
+  const customer = await getCustomerById(data.customer as string)
   if (!customer) {
     throw createError({
       statusCode: 400,
       statusMessage: 'Customer not found',
-    });
+    })
   }
-  const teamId = customer.teamId;
-  const userId = customer.userId;
+  const teamId = customer.teamId
+  const userId = customer.userId
   if (!userId) {
     throw createError({
       statusCode: 400,
       statusMessage: 'User not found',
-    });
+    })
   }
 
   const subscription = await upsertSubscription({
@@ -176,49 +178,49 @@ async function handleSubscriptionEvent(
     cancelAt: data.cancel_at ? new Date(data.cancel_at * 1000) : null,
     trialStart: data.trial_start ? new Date(data.trial_start * 1000) : null,
     trialEnd: data.trial_end ? new Date(data.trial_end * 1000) : null,
-  });
+  })
 
   // Update user's pro account status based on subscription status
-  const isProAccount = ['active', 'trialing'].includes(data.status);
+  const isProAccount = ['active', 'trialing'].includes(data.status)
   await updateUser(userId, {
     proAccount: isProAccount,
-  });
+  })
 
-  return subscription;
+  return subscription
 }
 
 async function handleCheckoutSessionEvent(
   data: Stripe.Checkout.Session,
 ): Promise<void> {
-  console.log('handleCheckoutSessionEvent', data);
+  console.log('handleCheckoutSessionEvent', data)
   if (data.mode !== 'subscription') {
-    return; // Only handle subscription checkouts
+    return // Only handle subscription checkouts
   }
 
-  const existingCustomer = await getCustomerById(data.customer as string);
+  const existingCustomer = await getCustomerById(data.customer as string)
   if (!existingCustomer) {
     throw createError({
       statusCode: 400,
       statusMessage: 'Customer not found',
-    });
+    })
   }
-  const customerId = existingCustomer.id;
-  const teamId = existingCustomer.teamId;
-  const userId = existingCustomer.userId;
+  const customerId = existingCustomer.id
+  const teamId = existingCustomer.teamId
+  const userId = existingCustomer.userId
 
   if (!userId) {
     throw createError({
       statusCode: 400,
       statusMessage: 'User not found',
-    });
+    })
   }
 
-  const session = await stripeService.getCheckoutSession(data.id);
+  const session = await stripeService.getCheckoutSession(data.id)
 
   if (session.status === 'complete') {
     // Get the subscription from the session
-    const subscriptionId = session.subscription as string;
-    const subscription = await stripeService.getSubscription(subscriptionId);
+    const subscriptionId = session.subscription as string
+    const subscription = await stripeService.getSubscription(subscriptionId)
 
     const subscriptionData: InsertSubscription = {
       id: subscription.id,
@@ -248,14 +250,14 @@ async function handleCheckoutSessionEvent(
         ? new Date(subscription.trial_end * 1000)
         : null,
       metadata: subscription.metadata,
-    };
+    }
 
     // Upsert the subscription to ensure we have the latest data
-    await upsertSubscription(subscriptionData);
+    await upsertSubscription(subscriptionData)
 
     // Update user's pro account status
     await updateUser(userId, {
       proAccount: subscription.status === 'active',
-    });
+    })
   }
 }

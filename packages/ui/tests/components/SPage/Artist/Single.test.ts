@@ -1,28 +1,28 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import SPageArtistSingle from '../../../../components/SPage/Artist/Single.vue';
-import ComponentRender from '../../../componentRender';
-import '../../../mockUseUserSession';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import SPageArtistSingle from '../../../../components/SPage/Artist/Single.vue'
+import ComponentRender from '../../../componentRender'
+import '../../../mockUseUserSession'
 
-mockNuxtImport('useSeoMeta', () => () => {});
+mockNuxtImport('useSeoMeta', () => () => {})
 
 let config_: Record<string, unknown> = {
   app: { baseURL: '/' },
   public: {
     useAuth: false,
   },
-};
+}
 
-let artistData_: unknown = {};
-let upvotesData_: unknown = { upvotes: [] };
+let artistData_: unknown = {}
+let upvotesData_: unknown = { upvotes: [] }
 
-mockNuxtImport('useRuntimeConfig', () => () => config_);
-mockNuxtImport('useArtist', () => () => artistData_);
-mockNuxtImport('useFetchWithCache', () => () => upvotesData_);
+mockNuxtImport('useRuntimeConfig', () => () => config_)
+mockNuxtImport('useArtist', () => () => artistData_)
+mockNuxtImport('useFetchWithCache', () => () => upvotesData_)
 
 const scenarios: [
   string,
-  { config: Record<string, unknown>; artist: unknown; upvotes: string[] },
+  { config: Record<string, unknown>, artist: unknown, upvotes: string[] },
 ][] = [
   [
     'complete artist with upvotes and auth enabled',
@@ -80,22 +80,22 @@ const scenarios: [
       upvotes: [],
     },
   ],
-];
+]
 
 describe('sPageArtistSingle Snapshot', () => {
   it.each(scenarios)(
     'renders %s correctly',
     async (desc: string, { config, artist, upvotes }) => {
-      config_ = config;
-      artistData_ = artist;
-      upvotesData_ = { upvotes };
+      config_ = config
+      artistData_ = artist
+      upvotesData_ = { upvotes }
 
       const html = await ComponentRender(
         `SPageArtistSingle - ${desc}`,
         {},
         SPageArtistSingle,
-      );
-      expect(html).toMatchSnapshot();
+      )
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

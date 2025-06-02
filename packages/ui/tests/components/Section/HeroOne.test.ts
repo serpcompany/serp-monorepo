@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest';
-import HeroOne from '../../../components/Section/HeroOne.vue';
-import ComponentRender from '../../componentRender';
+import { describe, expect, it } from 'vitest'
+import HeroOne from '../../../components/Section/HeroOne.vue'
+import ComponentRender from '../../componentRender'
 
 describe('sectionHeroOne Snapshot', () => {
   it.each([
@@ -14,8 +14,8 @@ describe('sectionHeroOne Snapshot', () => {
   ])(
     'renders %s correctly',
     async (desc: string, options: { props: unknown }) => {
-      const html = await ComponentRender(`HeroOne ${desc}`, options, HeroOne);
-      expect(html).toMatchSnapshot();
+      const html = await ComponentRender(`HeroOne ${desc}`, options, HeroOne)
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

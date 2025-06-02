@@ -1,9 +1,9 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import SPageSongCollection from '../../../../components/SPage/Song/Collection.vue';
-import ComponentRender from '../../../componentRender';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import SPageSongCollection from '../../../../components/SPage/Song/Collection.vue'
+import ComponentRender from '../../../componentRender'
 
-mockNuxtImport('useSeoMeta', () => () => {});
+mockNuxtImport('useSeoMeta', () => () => {})
 
 mockNuxtImport('useSongs', () => () => ({
   songs: [
@@ -25,25 +25,25 @@ mockNuxtImport('useSongs', () => () => ({
     },
   ],
   pagination: { totalItems: 2 },
-}));
+}))
 
 mockNuxtImport('useRouter', () => () => ({
   push: () => {},
   replace: () => {},
   resolve: () => {
-    return { href: '' };
+    return { href: '' }
   },
-}));
+}))
 
 describe('sPageSongCollection Snapshot', () => {
-  const scenarios: [string][] = [['with defaults']];
+  const scenarios: [string][] = [['with defaults']]
 
   it.each(scenarios)('renders %s correctly', async (desc: string) => {
     const html = await ComponentRender(
       `SPageSongCollection ${desc}`,
       {},
       SPageSongCollection,
-    );
-    expect(html).toMatchSnapshot();
-  });
-});
+    )
+    expect(html).toMatchSnapshot()
+  })
+})

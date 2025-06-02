@@ -1,138 +1,147 @@
 <script lang="ts" setup>
-  import { phoneSchema } from '@serp/db/validations/auth';
+import { phoneSchema } from '@serp/db/validations/auth'
 
-  const { user, fetch: refreshSession } = useUserSession();
-  const toast = useToast();
-  const loading = ref(false);
-  const resendLoading = ref(false);
-  const resendCountdown = ref(0);
-  const phoneNumber = ref(user.value?.phoneNumber || '');
-  const otpCode = ref<string[]>([]);
-  const mode = ref(user.value?.phoneNumber ? 'display' : 'input');
+const { user, fetch: refreshSession } = useUserSession()
+const toast = useToast()
+const loading = ref(false)
+const resendLoading = ref(false)
+const resendCountdown = ref(0)
+const phoneNumber = ref(user.value?.phoneNumber || '')
+const otpCode = ref<string[]>([])
+const mode = ref(user.value?.phoneNumber ? 'display' : 'input')
 
-  const isValidPhoneNumber = computed(() => {
-    try {
-      phoneSchema.parse({ phoneNumber: phoneNumber.value });
-      return true;
-    } catch {
-      return false;
-    }
-  });
-
-  function startResendCountdown() {
-    resendCountdown.value = 60;
-    const timer = setInterval(() => {
-      resendCountdown.value--;
-      if (resendCountdown.value <= 0) {
-        clearInterval(timer);
-      }
-    }, 1000);
+const isValidPhoneNumber = computed(() => {
+  try {
+    phoneSchema.parse({ phoneNumber: phoneNumber.value })
+    return true
   }
+  catch {
+    return false
+  }
+})
 
-  async function sendVerificationCode() {
-    try {
-      if (!isValidPhoneNumber.value) {
-        toast.add({
-          title: 'Invalid phone number',
-          description:
+function startResendCountdown() {
+  resendCountdown.value = 60
+  const timer = setInterval(() => {
+    resendCountdown.value--
+    if (resendCountdown.value <= 0) {
+      clearInterval(timer)
+    }
+  }, 1000)
+}
+
+async function sendVerificationCode() {
+  try {
+    if (!isValidPhoneNumber.value) {
+      toast.add({
+        title: 'Invalid phone number',
+        description:
             'Please enter a valid phone number in E.164 format (e.g. +12125551234)',
-          color: 'error',
-        });
-        return;
-      }
-
-      loading.value = true;
-      await $fetch('/api/me/phone/send-verification', {
-        method: 'POST',
-        body: { phoneNumber: phoneNumber.value },
-      });
-
-      mode.value = 'verify';
-      startResendCountdown();
-
-      toast.add({
-        title: 'Verification code sent',
-        description: 'Please check your phone for the verification code',
-        color: 'success',
-      });
-    } catch (error) {
-      console.error(error);
-      toast.add({
-        title: 'Failed to send verification code',
-        description: (error as unknown)?.data?.message || 'An error occurred',
         color: 'error',
-      });
-    } finally {
-      loading.value = false;
+      })
+      return
     }
+
+    loading.value = true
+    await $fetch('/api/me/phone/send-verification', {
+      method: 'POST',
+      body: { phoneNumber: phoneNumber.value },
+    })
+
+    mode.value = 'verify'
+    startResendCountdown()
+
+    toast.add({
+      title: 'Verification code sent',
+      description: 'Please check your phone for the verification code',
+      color: 'success',
+    })
   }
-
-  async function verifyCode() {
-    try {
-      loading.value = true;
-
-      await $fetch('/api/me/phone/verify', {
-        method: 'POST',
-        body: {
-          phoneNumber: phoneNumber.value,
-          code: otpCode.value.join(''),
-        },
-      });
-
-      await refreshSession();
-      mode.value = 'display';
-
-      toast.add({
-        title: 'Phone number verified',
-        description: 'Your phone number has been successfully verified',
-        color: 'success',
-      });
-    } catch (error) {
-      console.error(error);
-      toast.add({
-        title: 'Failed to verify code',
-        description: (error as unknown)?.data?.message || 'An error occurred',
-        color: 'error',
-      });
-    } finally {
-      loading.value = false;
-    }
+  catch (error) {
+    console.error(error)
+    toast.add({
+      title: 'Failed to send verification code',
+      description: (error as unknown)?.data?.message || 'An error occurred',
+      color: 'error',
+    })
   }
-
-  async function removePhoneNumber() {
-    try {
-      loading.value = true;
-
-      await $fetch('/api/me/phone', {
-        method: 'DELETE',
-      });
-
-      await refreshSession();
-      phoneNumber.value = '';
-      mode.value = 'input';
-
-      toast.add({
-        title: 'Phone number removed',
-        description: 'Your phone number has been successfully removed',
-        color: 'success',
-      });
-    } catch (error) {
-      console.error(error);
-      toast.add({
-        title: 'Failed to remove phone number',
-        description: (error as unknown)?.data?.message || 'An error occurred',
-        color: 'error',
-      });
-    } finally {
-      loading.value = false;
-    }
+  finally {
+    loading.value = false
   }
+}
+
+async function verifyCode() {
+  try {
+    loading.value = true
+
+    await $fetch('/api/me/phone/verify', {
+      method: 'POST',
+      body: {
+        phoneNumber: phoneNumber.value,
+        code: otpCode.value.join(''),
+      },
+    })
+
+    await refreshSession()
+    mode.value = 'display'
+
+    toast.add({
+      title: 'Phone number verified',
+      description: 'Your phone number has been successfully verified',
+      color: 'success',
+    })
+  }
+  catch (error) {
+    console.error(error)
+    toast.add({
+      title: 'Failed to verify code',
+      description: (error as unknown)?.data?.message || 'An error occurred',
+      color: 'error',
+    })
+  }
+  finally {
+    loading.value = false
+  }
+}
+
+async function removePhoneNumber() {
+  try {
+    loading.value = true
+
+    await $fetch('/api/me/phone', {
+      method: 'DELETE',
+    })
+
+    await refreshSession()
+    phoneNumber.value = ''
+    mode.value = 'input'
+
+    toast.add({
+      title: 'Phone number removed',
+      description: 'Your phone number has been successfully removed',
+      color: 'success',
+    })
+  }
+  catch (error) {
+    console.error(error)
+    toast.add({
+      title: 'Failed to remove phone number',
+      description: (error as unknown)?.data?.message || 'An error occurred',
+      color: 'error',
+    })
+  }
+  finally {
+    loading.value = false
+  }
+}
 </script>
 
 <template>
   <UCard>
     <template #header>
-      <h3 class="font-medium">Phone Number</h3>
+      <h3 class="font-medium">
+        Phone Number
+      </h3>
       <p class="mt-1 text-sm text-neutral-500">
         Your phone number is not shared with anyone.
       </p>

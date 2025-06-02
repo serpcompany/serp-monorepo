@@ -1,44 +1,46 @@
 <script lang="ts" setup>
-  interface Feature {
-    name: string;
+interface Feature {
+  name: string
+}
+
+interface PricingCardProps {
+  title: string
+  description?: string
+  unitAmount?: number
+  interval?: string
+  loading?: boolean
+  disabled?: boolean
+  priceId: string
+  features?: Feature[]
+  active?: boolean
+  hasActiveSubscription?: boolean
+}
+
+const props = defineProps<PricingCardProps>()
+
+const emit = defineEmits<{
+  subscribe: [id: string]
+  manage: [id: string]
+}>()
+
+function formatPrice(price?: number): string {
+  if (!price)
+    return '$0'
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+  }).format(price / 100)
+}
+
+function handleClick() {
+  if (props.hasActiveSubscription) {
+    emit('manage', props.priceId)
   }
-
-  interface PricingCardProps {
-    title: string;
-    description?: string;
-    unitAmount?: number;
-    interval?: string;
-    loading?: boolean;
-    disabled?: boolean;
-    priceId: string;
-    features?: Feature[];
-    active?: boolean;
-    hasActiveSubscription?: boolean;
+  else {
+    emit('subscribe', props.priceId)
   }
-
-  const props = defineProps<PricingCardProps>();
-
-  const emit = defineEmits<{
-    subscribe: [id: string];
-    manage: [id: string];
-  }>();
-
-  function formatPrice(price?: number): string {
-    if (!price) return '$0';
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0,
-    }).format(price / 100);
-  }
-
-  function handleClick() {
-    if (props.hasActiveSubscription) {
-      emit('manage', props.priceId);
-    } else {
-      emit('subscribe', props.priceId);
-    }
-  }
+}
 </script>
 
 <template>

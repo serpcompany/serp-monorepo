@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest';
-import SPagination from '../../components/SPagination.vue';
-import ComponentRender from '../componentRender';
+import { describe, expect, it } from 'vitest'
+import SPagination from '../../components/SPagination.vue'
+import ComponentRender from '../componentRender'
 
 describe('sPagination', () => {
   it.each([
@@ -16,7 +16,7 @@ describe('sPagination', () => {
       `SPagination ${desc}`,
       options,
       SPagination,
-    );
-    expect(html).toMatchSnapshot();
-  });
-});
+    )
+    expect(html).toMatchSnapshot()
+  })
+})

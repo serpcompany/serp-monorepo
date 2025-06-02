@@ -1,39 +1,39 @@
-import { mockNuxtImport, renderSuspended } from '@nuxt/test-utils/runtime';
-import { screen } from '@testing-library/vue';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { mockNuxtImport, renderSuspended } from '@nuxt/test-utils/runtime'
+import { screen } from '@testing-library/vue'
+import { beforeEach, describe, expect, it } from 'vitest'
 
-import ColorModeButton from '~/components/ColorModeButton.vue';
+import ColorModeButton from '~/components/ColorModeButton.vue'
 
 const colorMode = {
   _preference: 'light' as 'light' | 'dark',
   get preference() {
-    return this._preference;
+    return this._preference
   },
   set preference(val: 'light' | 'dark') {
-    this._preference = val;
+    this._preference = val
   },
   get value() {
-    return this._preference;
+    return this._preference
   },
-};
+}
 
 mockNuxtImport('useColorMode', () => {
-  return () => colorMode;
-});
+  return () => colorMode
+})
 
 describe('colorModeButton', () => {
   beforeEach(() => {
-    colorMode.preference = 'light';
-  });
+    colorMode.preference = 'light'
+  })
 
   it('should render a toggle button with sun icon in light mode', async () => {
-    await renderSuspended(ColorModeButton);
+    await renderSuspended(ColorModeButton)
     const button = await screen.findByRole('button', {
       name: /toggle color mode/i,
-    });
-    const icon = await button.querySelector('span');
-    expect(icon).toHaveClass('i-lucide:sun');
-  });
+    })
+    const icon = await button.querySelector('span')
+    expect(icon).toHaveClass('i-lucide:sun')
+  })
 
   // TODO: fix this test...cant figure out why clicking on the button wont switch the icon
   // it('should display a moon icon when the sun is clicked', async () => {
@@ -61,4 +61,4 @@ describe('colorModeButton', () => {
   //   await userEvent.click(button);
   //   expect(button).toHaveAttribute('icon', 'i-lucide-sun');
   // });
-});
+})

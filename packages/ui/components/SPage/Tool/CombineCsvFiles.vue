@@ -1,50 +1,52 @@
 <script setup lang="ts">
-  const toast = useToast();
-  const inputFiles = ref<FileList | null>(null);
+const toast = useToast()
+const inputFiles = ref<FileList | null>(null)
 
-  function handleFileChange(e: Event) {
-    const input = e.target as HTMLInputElement;
-    inputFiles.value = input.files;
-  }
+function handleFileChange(e: Event) {
+  const input = e.target as HTMLInputElement
+  inputFiles.value = input.files
+}
 
-  async function handleCombine() {
-    if (!inputFiles.value?.length) return;
+async function handleCombine() {
+  if (!inputFiles.value?.length)
+    return
 
-    try {
-      const result = await combineCsvs(inputFiles.value);
-      downloadCsv(result);
-      toast.add({
-        title: 'Success',
-        description:
+  try {
+    const result = await combineCsvs(inputFiles.value)
+    downloadCsv(result)
+    toast.add({
+      title: 'Success',
+      description:
           'Combined successful. Check your desktop for the combined csv',
-        color: 'success',
-      });
-    } catch (err) {
-      toast.add({
-        title: 'Error',
-        description:
+      color: 'success',
+    })
+  }
+  catch (err) {
+    toast.add({
+      title: 'Error',
+      description:
           err instanceof Error
             ? err.message
             : 'Failed to combine files. Make sure the headers match.',
-        color: 'error',
-      });
-    }
+      color: 'error',
+    })
   }
+}
 
-  function downloadCsv(combinedOutput: string) {
-    const blob = new Blob([combinedOutput], { type: 'text/csv' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'combined.csv';
-    a.click();
-    URL.revokeObjectURL(url);
-  }
+function downloadCsv(combinedOutput: string) {
+  const blob = new Blob([combinedOutput], { type: 'text/csv' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = 'combined.csv'
+  a.click()
+  URL.revokeObjectURL(url)
+}
 
-  useSeoMeta({
-    title:
+useSeoMeta({
+  title:
       'Free CSV Combining Tool. Merge multiple spreadsheet or excel files like .csv, .xls and .xlxs.',
-  });
+})
 </script>
 
 <template>

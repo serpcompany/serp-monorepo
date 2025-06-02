@@ -1,13 +1,13 @@
-import { getAllUsers } from '@serp/db/server/database/queries/users';
+import { getAllUsers } from '@serp/db/server/database/queries/users'
 
 export default defineEventHandler(async (event) => {
-  const { user } = await requireUserSession(event);
+  const { user } = await requireUserSession(event)
   if (!user.superAdmin) {
     throw createError({
       statusCode: 403,
       statusMessage: 'You are not authorized to access this resource',
-    });
+    })
   }
-  const users = await getAllUsers();
-  return users;
-});
+  const users = await getAllUsers()
+  return users
+})

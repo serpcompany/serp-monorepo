@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import vue from '@vitejs/plugin-vue';
+import vue from '@vitejs/plugin-vue'
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -47,4 +47,4 @@ export default defineNuxtConfig({
       options: {},
     },
   },
-});
+})

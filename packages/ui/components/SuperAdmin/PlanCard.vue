@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  defineProps<{
-    title: string;
-    description?: string;
-  }>();
+defineProps<{
+  title: string
+  description?: string
+}>()
 </script>
 
 <template>
@@ -28,9 +28,9 @@
 
 <style scoped>
   .card-shadow {
-    box-shadow:
-      0 1px 2px #5f4a2e14,
-      0 4px 6px #5f4a2e0a,
-      0 24px 40px -16px #684b2514;
-  }
+  box-shadow:
+    0 1px 2px #5f4a2e14,
+    0 4px 6px #5f4a2e0a,
+    0 24px 40px -16px #684b2514;
+}
 </style>

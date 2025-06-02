@@ -1,7 +1,7 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import SFooter from '../../components/SFooter.vue';
-import ComponentRender from '../componentRender';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import SFooter from '../../components/SFooter.vue'
+import ComponentRender from '../componentRender'
 
 // Initialize a default runtime config object
 let config_: Record<string, unknown> = {
@@ -14,7 +14,7 @@ let config_: Record<string, unknown> = {
     footerColumns: [],
     legalLinks: [],
   },
-};
+}
 
 describe('sFooter Snapshot', () => {
   // Define test scenarios with varying runtime configurations
@@ -83,17 +83,17 @@ describe('sFooter Snapshot', () => {
         },
       },
     ],
-  ];
+  ]
 
   it.each(scenarios)(
     'renders %s correctly',
     async (desc: string, { config }) => {
       // Update mock runtime config for this scenario
-      config_ = config;
-      mockNuxtImport('useRuntimeConfig', () => () => config_);
+      config_ = config
+      mockNuxtImport('useRuntimeConfig', () => () => config_)
 
-      const html = await ComponentRender(`SFooter ${desc}`, {}, SFooter);
-      expect(html).toMatchSnapshot();
+      const html = await ComponentRender(`SFooter ${desc}`, {}, SFooter)
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

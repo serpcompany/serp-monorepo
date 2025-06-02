@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-  import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 
-  const model = defineModel<boolean>({ required: true });
-  const breakpoints = useBreakpoints(breakpointsTailwind);
-  const smallerThanLg = breakpoints.smaller('lg');
+const model = defineModel<boolean>({ required: true })
+const breakpoints = useBreakpoints(breakpointsTailwind)
+const smallerThanLg = breakpoints.smaller('lg')
 </script>
 
 <template>

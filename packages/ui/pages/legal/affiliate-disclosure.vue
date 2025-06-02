@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  const config = useRuntimeConfig();
-  const domain = config.public.domain;
+const config = useRuntimeConfig()
+const domain = config.public.domain
 
-  useSeoMeta({
-    title: 'Affiliate Disclosure',
-    description:
+useSeoMeta({
+  title: 'Affiliate Disclosure',
+  description:
       'Details about our affiliate partnerships and how they impact content on this site.',
-  });
+})
 </script>
 
 <template>

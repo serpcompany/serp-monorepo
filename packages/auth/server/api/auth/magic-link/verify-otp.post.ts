@@ -13,56 +13,56 @@
 import {
   deleteOneTimePassword,
   findOneTimePassword,
-} from '@serp/db/server/database/queries/auth';
+} from '@serp/db/server/database/queries/auth'
 import {
   findUserById,
   updateLastActiveTimestamp,
-} from '@serp/db/server/database/queries/users';
-import { otpLoginSchema } from '@serp/db/validations/auth';
-import { validateBody } from '@serp/utils/server/utils/bodyValidation';
+} from '@serp/db/server/database/queries/users'
+import { otpLoginSchema } from '@serp/db/validations/auth'
+import { validateBody } from '@serp/utils/server/utils/bodyValidation'
 import {
   isWithinExpiryDate,
   sanitizeUser,
   sendLoginNotification,
-} from '../../../utils/auth';
+} from '../../../utils/auth'
 
 export default defineEventHandler(async (event) => {
-  const data = await validateBody(event, otpLoginSchema);
+  const data = await validateBody(event, otpLoginSchema)
 
-  const oneTimePassword = await findOneTimePassword(data.code);
+  const oneTimePassword = await findOneTimePassword(data.code)
   if (!oneTimePassword) {
     throw createError({
       statusCode: 400,
       statusMessage: 'Invalid code',
-    });
+    })
   }
   if (!isWithinExpiryDate(oneTimePassword.expiresAt.getTime())) {
-    throw createError({ statusCode: 400, statusMessage: 'OTP has expired' });
+    throw createError({ statusCode: 400, statusMessage: 'OTP has expired' })
   }
 
-  const user = await findUserById(oneTimePassword.userId);
+  const user = await findUserById(oneTimePassword.userId)
 
   if (!user) {
-    throw createError({ statusCode: 404, statusMessage: 'User not found' });
+    throw createError({ statusCode: 404, statusMessage: 'User not found' })
   }
 
-  await deleteOneTimePassword(data.code);
+  await deleteOneTimePassword(data.code)
 
   if (user.banned && user.bannedUntil && user.bannedUntil > new Date()) {
     throw createError({
       statusCode: 403,
       statusMessage: 'You account has been banned',
-    });
+    })
   }
 
-  await updateLastActiveTimestamp(user.id);
-  await setUserSession(event, { user: sanitizeUser(user) });
+  await updateLastActiveTimestamp(user.id)
+  await setUserSession(event, { user: sanitizeUser(user) })
 
   // Send login notification
   await sendLoginNotification({
     name: user.name,
     email: user.email,
-  });
+  })
 
-  return sanitizeUser(user);
-});
+  return sanitizeUser(user)
+})

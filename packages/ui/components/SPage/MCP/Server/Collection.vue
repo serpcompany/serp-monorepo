@@ -1,64 +1,66 @@
 <script setup lang="ts">
-  const route = useRoute();
-  const { slug } = useRoute().params;
+const route = useRoute()
+const { slug } = useRoute().params
 
-  const page = ref(Number(route.query.page) || 1);
+const page = ref(Number(route.query.page) || 1)
 
-  const filters = computed(() => ({
-    page: page.value,
-    limit: Number(route.query.limit) || 50,
-    category: (route.query.category as string) || (slug as string),
-    q: route.query.q as string,
-    sort: route.query.sort as string,
-  }));
+const filters = computed(() => ({
+  page: page.value,
+  limit: Number(route.query.limit) || 50,
+  category: (route.query.category as string) || (slug as string),
+  q: route.query.q as string,
+  sort: route.query.sort as string,
+}))
 
-  const { data, status } = await useAsyncData(
-    `mcp-server-${slug}`,
-    () =>
-      useMCPServers(
-        filters.value.page,
-        filters.value.limit,
-        '',
-        '',
-        '',
-        filters.value.category,
-        filters.value.q,
-        filters.value.sort,
-      ),
-    {
-      lazy: true,
-      watch: [filters],
-    },
-  );
+const { data, status } = await useAsyncData(
+  `mcp-server-${slug}`,
+  () =>
+    useMCPServers(
+      filters.value.page,
+      filters.value.limit,
+      '',
+      '',
+      '',
+      filters.value.category,
+      filters.value.q,
+      filters.value.sort,
+    ),
+  {
+    lazy: true,
+    watch: [filters],
+  },
+)
 
-  const { data: categories } = await useAsyncData(
-    'mcp-server-categories',
-    () => useMCPServerCategories(),
-    {
-      default: () => [],
-    },
-  );
+const { data: categories } = await useAsyncData(
+  'mcp-server-categories',
+  () => useMCPServerCategories(),
+  {
+    default: () => [],
+  },
+)
 
-  const categoriesFilters = computed(() => {
-    return categories.value.map((category) => ({
-      label: category.name,
-      value: category.slug,
-    }));
-  });
+const categoriesFilters = computed(() => {
+  return categories.value.map(category => ({
+    label: category.name,
+    value: category.slug,
+  }))
+})
 
-  const subheadline = computed(() => {
-    if (slug) return `Discover ${data.value?.category?.name} MCP Servers.`;
-    return 'The largest collection of MCP Servers.';
-  });
+const subheadline = computed(() => {
+  if (slug)
+    return `Discover ${data.value?.category?.name} MCP Servers.`
+  return 'The largest collection of MCP Servers.'
+})
 
-  const metaTile = computed(() => {
-    if (slug) return `${data.value?.category?.name} - MCP Servers.`;
-    return 'MCP Servers';
-  });
+const metaTile = computed(() => {
+  if (slug)
+    return `${data.value?.category?.name} - MCP Servers.`
+  return 'MCP Servers'
+})
 
-  useSeoMeta({
-    title: () => metaTile.value,
-  });
+useSeoMeta({
+  title: () => metaTile.value,
+})
 </script>
 
 <template>

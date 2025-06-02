@@ -1,42 +1,42 @@
 <script setup lang="ts">
-  const props = defineProps({
-    userReview: {
-      type: Object as PropType<{
-        title: string;
-        content: string;
-        rating: number;
-        dateOfExperience: string;
-      } | null>,
-      default: null,
-    },
-    loggedIn: {
-      type: Boolean,
-      required: true,
-    },
-    reviewForm: {
-      type: Object,
-      required: true,
-    },
-    loadingReview: {
-      type: Boolean,
-      default: false,
-    },
-    isReviewComplete: {
-      type: Boolean,
-      default: false,
-    },
-  });
+const props = defineProps({
+  userReview: {
+    type: Object as PropType<{
+      title: string
+      content: string
+      rating: number
+      dateOfExperience: string
+    } | null>,
+    default: null,
+  },
+  loggedIn: {
+    type: Boolean,
+    required: true,
+  },
+  reviewForm: {
+    type: Object,
+    required: true,
+  },
+  loadingReview: {
+    type: Boolean,
+    default: false,
+  },
+  isReviewComplete: {
+    type: Boolean,
+    default: false,
+  },
+})
 
-  const emit = defineEmits(['save-review', 'update:reviewForm']);
+const emit = defineEmits(['save-review', 'update:reviewForm'])
 
-  function updateReviewForm(field: string, value: string | number | Date) {
-    const updatedForm = { ...props.reviewForm, [field]: value };
-    emit('update:reviewForm', updatedForm);
-  }
+function updateReviewForm(field: string, value: string | number | Date) {
+  const updatedForm = { ...props.reviewForm, [field]: value }
+  emit('update:reviewForm', updatedForm)
+}
 
-  function saveReview() {
-    emit('save-review');
-  }
+function saveReview() {
+  emit('save-review')
+}
 </script>
 
 <template>

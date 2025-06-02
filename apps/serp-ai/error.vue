@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  const error = useError();
-  function handleError() {
-    clearError({
-      redirect: '/',
-    });
-  }
+const error = useError()
+function handleError() {
+  clearError({
+    redirect: '/',
+  })
+}
 </script>
 
 <template>
@@ -12,7 +12,9 @@
     <div class="mt-40 flex h-full flex-col items-center justify-center">
       <template v-if="error.statusCode === 404">
         <h1>404</h1>
-        <p class="mb-12">Page Not Found</p>
+        <p class="mb-12">
+          Page Not Found
+        </p>
       </template>
       <template v-else>
         <h1>{{ error.statusCode }}</h1>

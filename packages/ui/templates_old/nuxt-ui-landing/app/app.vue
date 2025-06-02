@@ -1,38 +1,38 @@
 <script setup lang="ts">
-  const colorMode = useColorMode();
+const colorMode = useColorMode()
 
-  const color = computed(() =>
-    colorMode.value === 'dark' ? '#171717' : 'white',
-  );
+const color = computed(() =>
+  colorMode.value === 'dark' ? '#171717' : 'white',
+)
 
-  useHead({
-    meta: [
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { key: 'theme-color', name: 'theme-color', content: color },
-    ],
-    link: [{ rel: 'icon', href: '/favicon.ico' }],
-    htmlAttrs: {
-      lang: 'en',
-    },
-  });
-  const { isLoading } = useLoadingIndicator();
-  const appear = ref(false);
-  const appeared = ref(false);
+useHead({
+  meta: [
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { key: 'theme-color', name: 'theme-color', content: color },
+  ],
+  link: [{ rel: 'icon', href: '/favicon.ico' }],
+  htmlAttrs: {
+    lang: 'en',
+  },
+})
+const { isLoading } = useLoadingIndicator()
+const appear = ref(false)
+const appeared = ref(false)
 
-  useSeoMeta({
-    ogImage: 'https://landing-template.nuxt.dev/social-card.png',
-    twitterImage: 'https://landing-template.nuxt.dev/social-card.png',
-    twitterCard: 'summary_large_image',
-  });
+useSeoMeta({
+  ogImage: 'https://landing-template.nuxt.dev/social-card.png',
+  twitterImage: 'https://landing-template.nuxt.dev/social-card.png',
+  twitterCard: 'summary_large_image',
+})
 
-  onMounted(() => {
+onMounted(() => {
+  setTimeout(() => {
+    appear.value = true
     setTimeout(() => {
-      appear.value = true;
-      setTimeout(() => {
-        appeared.value = true;
-      }, 1000);
-    }, 0);
-  });
+      appeared.value = true
+    }, 1000)
+  }, 0)
+})
 </script>
 
 <template>

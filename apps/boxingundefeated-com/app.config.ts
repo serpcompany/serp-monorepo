@@ -68,4 +68,4 @@ export default defineAppConfig({
       { text: 'DMCA', slug: '/legal/dmca/' },
     ],
   },
-});
+})

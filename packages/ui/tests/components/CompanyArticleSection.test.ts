@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest';
-import CompanyArticleSection from '../../components/CompanyArticleSection.vue';
-import ComponentRender from '../componentRender';
+import { describe, expect, it } from 'vitest'
+import CompanyArticleSection from '../../components/CompanyArticleSection.vue'
+import ComponentRender from '../componentRender'
 
 describe('companyArticleSection Snapshot', () => {
   it.each([
@@ -21,8 +21,8 @@ describe('companyArticleSection Snapshot', () => {
         `CompanyArticleSection ${desc}`,
         options,
         CompanyArticleSection,
-      );
-      expect(html).toMatchSnapshot();
+      )
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

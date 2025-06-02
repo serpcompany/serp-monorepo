@@ -1,27 +1,27 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import SPageSongSingle from '../../../../components/SPage/Song/Single.vue';
-import ComponentRender from '../../../componentRender';
-import '../../../mockUseUserSession';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import SPageSongSingle from '../../../../components/SPage/Song/Single.vue'
+import ComponentRender from '../../../componentRender'
+import '../../../mockUseUserSession'
 
-mockNuxtImport('useSeoMeta', () => () => {});
+mockNuxtImport('useSeoMeta', () => () => {})
 
 let config_: Record<string, unknown> = {
   app: { baseURL: '/' },
   public: {
     useAuth: false,
   },
-};
-let songData_: unknown = {};
-let upvotesData_: unknown = { upvotes: [] };
+}
+let songData_: unknown = {}
+let upvotesData_: unknown = { upvotes: [] }
 
-mockNuxtImport('useRuntimeConfig', () => () => config_);
-mockNuxtImport('useSong', () => () => songData_);
-mockNuxtImport('useFetchWithCache', () => () => upvotesData_);
+mockNuxtImport('useRuntimeConfig', () => () => config_)
+mockNuxtImport('useSong', () => () => songData_)
+mockNuxtImport('useFetchWithCache', () => () => upvotesData_)
 
 const scenarios: [
   string,
-  { config: Record<string, unknown>; song: unknown; upvotes: string[] },
+  { config: Record<string, unknown>, song: unknown, upvotes: string[] },
 ][] = [
   [
     'complete song with upvotes and auth enabled',
@@ -78,22 +78,22 @@ const scenarios: [
       upvotes: [],
     },
   ],
-];
+]
 
 describe('sPageSongSingle Snapshot', () => {
   it.each(scenarios)(
     'renders %s correctly',
     async (desc: string, { config, song, upvotes }) => {
-      config_ = config;
-      songData_ = song;
-      upvotesData_ = { upvotes };
+      config_ = config
+      songData_ = song
+      upvotesData_ = { upvotes }
 
       const html = await ComponentRender(
         `SPageSongSingle - ${desc}`,
         {},
         SPageSongSingle,
-      );
-      expect(html).toMatchSnapshot();
+      )
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

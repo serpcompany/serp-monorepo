@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest';
-import SongsLinkHub from '../../components/SongsLinkHub.vue';
-import ComponentRender from '../componentRender';
+import { describe, expect, it } from 'vitest'
+import SongsLinkHub from '../../components/SongsLinkHub.vue'
+import ComponentRender from '../componentRender'
 
 describe('songsLinkHub', () => {
   it.each([
@@ -76,8 +76,8 @@ describe('songsLinkHub', () => {
         `SongsLinkHub ${desc}`,
         options,
         SongsLinkHub,
-      );
-      expect(html).toMatchSnapshot();
+      )
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

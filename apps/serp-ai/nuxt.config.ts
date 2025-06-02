@@ -122,25 +122,25 @@ export default defineNuxtConfig({
       changefreq: 'weekly',
     },
     sitemaps: {
-      modules: {
+      'modules': {
         includeAppSources: true,
       },
-      company: {
+      'company': {
         sources: ['/api/__sitemap__/company'],
       },
       'company-categories': {
         sources: ['/api/__sitemap__/company-categories'],
       },
-      posts: {
+      'posts': {
         sources: ['/api/__sitemap__/posts'],
       },
       'post-categories': {
         sources: ['/api/__sitemap__/post-categories'],
       },
-      glossary: {
+      'glossary': {
         sources: ['/api/__sitemap__/glossary'],
       },
-      blog: {
+      'blog': {
         sources: ['/api/__sitemap__/blog'],
       },
       'mcp-servers': {
@@ -151,4 +151,4 @@ export default defineNuxtConfig({
       },
     },
   },
-});
+})

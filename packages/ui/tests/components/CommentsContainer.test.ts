@@ -1,24 +1,24 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { afterAll, describe, expect, it, vi } from 'vitest';
-import { ref } from 'vue';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { afterAll, describe, expect, it, vi } from 'vitest'
+import { ref } from 'vue'
 // Then import components
-import CommentsContainer from '../../components/CommentsContainer.vue';
-import ComponentRender from '../componentRender';
+import CommentsContainer from '../../components/CommentsContainer.vue'
+import ComponentRender from '../componentRender'
 // Import mocks first so they're available when components are imported
-import { cleanupDateMocks } from '../mockDateImports';
-import '../mockUseUserSession';
+import { cleanupDateMocks } from '../mockDateImports'
+import '../mockUseUserSession'
 
 // Mock composables used in CommentsContainer.vue
 mockNuxtImport('useToast', () => () => ({
   add: vi.fn(),
-}));
+}))
 
 mockNuxtImport('useFetch', () => async () => ({
   data: { value: { message: 'success', id: 1234 } },
   error: { value: null },
-}));
+}))
 
-mockNuxtImport('useRequestHeaders', () => () => ({}));
+mockNuxtImport('useRequestHeaders', () => () => ({}))
 
 // Define various scenarios to snapshot test different prop combinations.
 const scenarios: [string, { props: Record<string, unknown> }][] = [
@@ -142,7 +142,7 @@ const scenarios: [string, { props: Record<string, unknown> }][] = [
       },
     },
   ],
-];
+]
 
 describe('commentsContainer Snapshot', () => {
   it.each(scenarios)('renders %s correctly', async (desc: string, options) => {
@@ -151,11 +151,11 @@ describe('commentsContainer Snapshot', () => {
       `CommentsContainer ${desc}`,
       options,
       CommentsContainer,
-    );
-    expect(html).toMatchSnapshot();
-  });
+    )
+    expect(html).toMatchSnapshot()
+  })
 
   afterAll(() => {
-    cleanupDateMocks();
-  });
-});
+    cleanupDateMocks()
+  })
+})

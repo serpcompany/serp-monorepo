@@ -1,22 +1,22 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it, vi } from 'vitest';
-import UpvoteButton from '../../components/UpvoteButton.vue';
-import ComponentRender from '../componentRender';
-import '../mockUseUserSession';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it, vi } from 'vitest'
+import UpvoteButton from '../../components/UpvoteButton.vue'
+import ComponentRender from '../componentRender'
+import '../mockUseUserSession'
 
 mockNuxtImport('useFetch', () => () => ({
   data: ref({ message: 'success' }),
   error: ref(null),
-}));
+}))
 
 mockNuxtImport('useToast', () => () => ({
   add: vi.fn(),
-}));
+}))
 
-mockNuxtImport('useRequestHeaders', () => () => ({}));
+mockNuxtImport('useRequestHeaders', () => () => ({}))
 
 describe('upvoteButton', () => {
-  const baseProps = { id: 1, module: 'posts' };
+  const baseProps = { id: 1, module: 'posts' }
 
   it.each([
     // Testing with an empty upvotes array
@@ -38,8 +38,8 @@ describe('upvoteButton', () => {
         `UpvoteButton ${desc}`,
         options,
         UpvoteButton,
-      );
-      expect(html).toMatchSnapshot();
+      )
+      expect(html).toMatchSnapshot()
     },
-  );
-});
+  )
+})

@@ -1,40 +1,40 @@
 <script setup lang="ts">
-  import type { FooterColumn } from '@serp/types/types';
+import type { FooterColumn } from '@serp/types/types'
 
-  const config = useRuntimeConfig();
-  const appConfig = useAppConfig();
+const config = useRuntimeConfig()
+const appConfig = useAppConfig()
 
-  const companyName = config.public.siteName;
+const companyName = config.public.siteName
 
-  const socialLinks =
-    appConfig.site?.socialLinks ||
-    (config.public.socialLinks as Array<{
-      name: string;
-      href: string;
-      icon: string;
-    }>);
+const socialLinks
+    = appConfig.site?.socialLinks
+      || (config.public.socialLinks as Array<{
+        name: string
+        href: string
+        icon: string
+      }>)
 
-  const legalLinks =
-    appConfig.site?.legalLinks ||
-    (config.public.legalLinks as Array<{
-      text: string;
-      slug: string;
-    }>);
+const legalLinks
+    = appConfig.site?.legalLinks
+      || (config.public.legalLinks as Array<{
+        text: string
+        slug: string
+      }>)
 
-  const footerColumns =
-    appConfig.site?.footerColumns ||
-    (config.public.footerColumns as FooterColumn[]);
+const footerColumns
+    = appConfig.site?.footerColumns
+      || (config.public.footerColumns as FooterColumn[])
 
-  const footerColumnsData = computed(() => {
-    const columns = footerColumns;
-    return columns.map((column) => ({
-      label: column.title,
-      children: column.items.map((item) => ({
-        label: item.text || item.name,
-        to: item.slug || item.href,
-      })),
-    }));
-  });
+const footerColumnsData = computed(() => {
+  const columns = footerColumns
+  return columns.map(column => ({
+    label: column.title,
+    children: column.items.map(item => ({
+      label: item.text || item.name,
+      to: item.slug || item.href,
+    })),
+  }))
+})
 </script>
 
 <template>

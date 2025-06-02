@@ -1,4 +1,4 @@
-import { field, group } from '@nuxt/content/preview';
+import { field, group } from '@nuxt/content/preview'
 
 export default defineNuxtSchema({
   appConfig: {
@@ -46,12 +46,12 @@ export default defineNuxtSchema({
       },
     }),
   },
-});
+})
 
 declare module '@nuxt/schema' {
   interface CustomAppConfig {
     ui: {
-      icons: object;
-    };
+      icons: object
+    }
   }
 }
