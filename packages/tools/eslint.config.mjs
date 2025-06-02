@@ -1,8 +1,12 @@
 import antfu from '@antfu/eslint-config'
 
-import withNuxt from './.nuxt/eslint.config.mjs'
+import { createConfigForNuxt } from '@nuxt/eslint-config/flat'
 
-export default withNuxt(
+export default createConfigForNuxt({
+  features: {
+    standalone: false,
+  },
+}).append(
   antfu({
     // JSDoc for documentation standards
     jsonc: false,
@@ -14,7 +18,6 @@ export default withNuxt(
 
     // TypeScript with type-aware rules
     typescript: {
-      tsconfigPath: 'tsconfig.json',
       overrides: {
         'ts/no-unused-vars': 'warn',
         'ts/no-explicit-any': 'warn',
