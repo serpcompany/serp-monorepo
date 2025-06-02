@@ -1,4 +1,4 @@
-name: ci_1
+name: ci_1_pr
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  ci_1:
+  pr_standardization_test:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -19,12 +19,12 @@ jobs:
         node: [22.16.0]
 
     steps:
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
       - name: checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -34,17 +34,17 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node }}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node }}
           cache: pnpm
 
       - name: cache node_modules
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: node_modules
-          key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/pnpm-lock.yaml')) }}
+          key: pr-test-${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'

@@ -14,7 +14,7 @@ on:
 
 jobs:
   rollback:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     env:
       TOKEN: ${{ secrets.DEVIN_GITHUB_TOKEN }}
       REPO: ${{ github.repository }}
