@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "ci:lint": "eslint .",
     "db:generate": "drizzle-kit generate",
     "db:pull": "drizzle-kit pull",
     "db:studio": "drizzle-kit studio",

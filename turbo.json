@@ -10,8 +10,10 @@
     "lint": {
       "outputLogs": "new-only"
     },
+    "ci:lint": {
+      "outputLogs": "new-only"
+    },
     "eslint": {},
-    "prettier": {},
     "test": {
       "outputLogs": "new-only"
     },

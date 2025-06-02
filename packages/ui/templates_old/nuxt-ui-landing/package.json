@@ -4,8 +4,10 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "ci:lint": "eslint .",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "lint": "eslint . --fix",
     "postinstall": "nuxt prepare",
     "preview": "nuxt preview",
     "typecheck": "nuxt typecheck"
