@@ -47,5 +47,9 @@
       "args": ["-c", "nvm use 22.16.0; exec zsh"]
     }
   },
-  "terminal.integrated.defaultProfile.osx": "zsh (nvm)"
+  "terminal.integrated.defaultProfile.osx": "zsh (nvm)",
+  "editor.tokenColorCustomizations": {
+    "comments": "",
+    "textMateRules": []
+  }
 }
