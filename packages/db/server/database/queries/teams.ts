@@ -200,7 +200,9 @@ export async function cancelInvite(inviteId: string): Promise<TeamInvite> {
 }
 
 /**
- * @param token
+ * Get team invite by token
+ * @param token - The invitation token
+ * @returns Team invite record
  * @throws {H3Error}
  */
 export async function getInvite(token: string): Promise<TeamInvite> {

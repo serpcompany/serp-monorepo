@@ -25,7 +25,7 @@ export async function getAllFeedback(): Promise<Array<Feedback & { user: Partial
 
   const feedbackRecords = rows.map(({ feedback: fb, user: usr }) => {
     if (usr) {
-      const { hashedPassword, ...safeUser } = usr as unknown
+      const { hashedPassword: _, ...safeUser } = usr as unknown
       return { ...fb, user: safeUser }
     }
     return { ...fb, user: null }
