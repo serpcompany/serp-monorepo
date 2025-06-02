@@ -6,7 +6,7 @@ import { customer } from '../schema'
 type Customer = typeof customer.$inferSelect
 type InsertCustomer = typeof customer.$inferInsert
 
-export async function getCustomerByTeamId(teamId: number) {
+export async function getCustomerByTeamId(teamId: number): Promise<Customer | null> {
   try {
     const [customerRecord] = await getDb()
       .select()
@@ -24,7 +24,7 @@ export async function getCustomerByTeamId(teamId: number) {
   }
 }
 
-export async function getCustomerByUserId(userId: number) {
+export async function getCustomerByUserId(userId: number): Promise<Customer | null> {
   try {
     const [customerRecord] = await getDb()
       .select()
@@ -60,7 +60,7 @@ export async function createCustomer(payload: InsertCustomer): Promise<Customer>
   }
 }
 
-export async function getCustomerById(id: string) {
+export async function getCustomerById(id: string): Promise<Customer | null> {
   try {
     const [customerRecord] = await getDb()
       .select()
