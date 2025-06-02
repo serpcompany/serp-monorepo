@@ -5,8 +5,12 @@
   "scripts": {
     "build": "turbo run build",
     "eslint": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run eslint",
+    "//": "--- Development Commands ---",
     "lint": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run lint",
+    "lint:fix": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run lint:fix",
     "lint:windows": "turbo run lint",
+    "//ci": "--- CI Commands (check-only, no auto-fix) ---", 
+    "ci:lint": "turbo run ci:lint",
     "prepare": "husky install",
     "test": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run test",
     "test:update": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run test:update",

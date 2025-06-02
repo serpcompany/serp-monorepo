@@ -1,84 +1,89 @@
-import { FetchError } from 'ofetch';
+import { FetchError } from 'ofetch'
 
-export const usePasskeys = () => {
-  const toast = useToast();
-  const creating = ref(false);
-  const deleting = ref<string | null>(null);
+export function usePasskeys() {
+  const toast = useToast()
+  const creating = ref(false)
+  const deleting = ref<string | null>(null)
 
   const { register, authenticate } = useWebAuthn({
     registerEndpoint: '/api/auth/webauthn/link-passkey',
-    authenticateEndpoint: '/api/auth/webauthn/authenticate'
-  });
+    authenticateEndpoint: '/api/auth/webauthn/authenticate',
+  })
 
   const {
     data: passkeys,
     status,
-    refresh
+    refresh,
   } = useFetch('/api/auth/webauthn/linked-passkeys', {
     server: false,
-    lazy: true
-  });
+    lazy: true,
+  })
 
   const createPasskey = async (userName: string, displayName: string) => {
     try {
-      creating.value = true;
-      await register({ userName, displayName });
-      await refresh();
+      creating.value = true
+      await register({ userName, displayName })
+      await refresh()
       toast.add({
         title: 'Passkey added successfully',
-        color: 'success'
-      });
-      return true;
-    } catch (error) {
+        color: 'success',
+      })
+      return true
+    }
+    catch (error) {
       toast.add({
         title: 'Failed to add passkey',
         description: error instanceof FetchError ? error.data?.message : null,
-        color: 'error'
-      });
-      return false;
-    } finally {
-      creating.value = false;
+        color: 'error',
+      })
+      return false
     }
-  };
+    finally {
+      creating.value = false
+    }
+  }
 
   const deletePasskey = async (id: string) => {
     try {
-      deleting.value = id;
+      deleting.value = id
       await $fetch('/api/auth/webauthn/delete-passkey', {
         method: 'DELETE',
-        body: { id }
-      });
-      await refresh();
+        body: { id },
+      })
+      await refresh()
       toast.add({
         title: 'Passkey deleted successfully',
-        color: 'success'
-      });
-      return true;
-    } catch (error) {
+        color: 'success',
+      })
+      return true
+    }
+    catch (error) {
       toast.add({
         title: 'Failed to delete passkey',
         description: error instanceof FetchError ? error.data?.message : null,
-        color: 'error'
-      });
-      return false;
-    } finally {
-      deleting.value = null;
+        color: 'error',
+      })
+      return false
     }
-  };
+    finally {
+      deleting.value = null
+    }
+  }
 
   const authenticateWithPasskey = async (email: string) => {
     try {
-      await authenticate(email);
-      return true;
-    } catch (error) {
+      await authenticate(email)
+      return true
+    }
+    catch (error) {
       toast.add({
         title: 'Failed to authenticate with passkey',
         description: error instanceof FetchError ? error.data?.message : null,
-        color: 'error'
-      });
-      return false;
+        color: 'error',
+      })
+      return false
     }
-  };
+  }
 
   return {
     passkeys,
@@ -87,6 +92,6 @@ export const usePasskeys = () => {
     deleting,
     createPasskey,
     deletePasskey,
-    authenticateWithPasskey
-  };
-};
+    authenticateWithPasskey,
+  }
+}

@@ -52,7 +52,7 @@ jobs:
         run: pnpm install
 
       - name: Lint
-        run: pnpm lint
+        run: pnpm ci:lint
 
       - name: Test
         run: pnpm test

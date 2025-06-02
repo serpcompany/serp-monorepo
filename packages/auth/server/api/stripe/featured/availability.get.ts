@@ -1,55 +1,55 @@
-import { getDb } from '@serp/db/server/database';
-import { subscription, price } from '@serp/db/server/database/schema';
-import { and, eq, sql, inArray } from 'drizzle-orm';
+import { getDb } from '@serp/db/server/database'
+import { price, subscription } from '@serp/db/server/database/schema'
+import { and, eq, inArray, sql } from 'drizzle-orm'
 
 interface FeaturedPositionAvailability {
-  position: number;
-  isAvailable: boolean;
-  priceId?: string;
+  position: number
+  isAvailable: boolean
+  priceId?: string
   currentHolder?: {
-    entityId: number;
-    teamId: number;
-    expiresAt: Date | null;
-  };
+    entityId: number
+    teamId: number
+    expiresAt: Date | null
+  }
 }
 
 export default defineEventHandler(async (event) => {
   try {
-    const { categoryId, module } = getQuery(event);
+    const { categoryId, module } = getQuery(event)
 
     if (!module) {
       throw createError({
         statusCode: 400,
-        statusMessage: 'Module parameter is required'
-      });
+        statusMessage: 'Module parameter is required',
+      })
     }
 
     // Get all featured position prices
     const featuredPrices = await getDb()
       .select({
         id: price.id,
-        description: price.description
+        description: price.description,
       })
       .from(price)
       .where(sql`${price.description} ILIKE '%Featured Placement%'`)
-      .execute();
+      .execute()
 
     // Parse positions from descriptions
     const pricePositions = featuredPrices
       .map((p) => {
-        const match = p.description?.match(/Featured\s+Placement\s+(\d+)/i);
+        const match = p.description?.match(/Featured\s+Placement\s+(\d+)/i)
         if (match) {
           return {
             priceId: p.id,
-            position: parseInt(match[1], 10)
-          };
+            position: Number.parseInt(match[1], 10),
+          }
         }
-        return null;
+        return null
       })
-      .filter(Boolean) as { priceId: string; position: number }[];
+      .filter(Boolean) as { priceId: string, position: number }[]
 
     if (pricePositions.length === 0) {
-      return []; // No featured positions configured
+      return [] // No featured positions configured
     }
 
     // Get active subscriptions for these prices
@@ -60,14 +60,14 @@ export default defineEventHandler(async (event) => {
         teamId: subscription.teamId,
         metadata: subscription.metadata,
         currentPeriodEnd: subscription.currentPeriodEnd,
-        status: subscription.status
+        status: subscription.status,
       })
       .from(subscription)
       .where(
         and(
           inArray(
             subscription.priceId,
-            pricePositions.map((p) => p.priceId)
+            pricePositions.map(p => p.priceId),
           ),
           inArray(subscription.status, ['active', 'trialing']),
           // Check if subscription metadata matches the category and module
@@ -75,28 +75,28 @@ export default defineEventHandler(async (event) => {
             ? sql`${subscription.metadata}->>'categoryId' = ${categoryId}`
             : sql`${subscription.metadata}->>'categoryId' IS NULL`,
           sql`${subscription.metadata}->>'module' = ${module}`,
-          sql`${subscription.metadata}->>'type' = 'featured'`
-        )
+          sql`${subscription.metadata}->>'type' = 'featured'`,
+        ),
       )
-      .execute();
+      .execute()
 
     // Build availability map
     const occupiedPositions = new Map<
       number,
       (typeof activeSubscriptions)[0]
-    >();
+    >()
 
     activeSubscriptions.forEach((sub) => {
-      const position = sub.metadata?.placement as number;
+      const position = sub.metadata?.placement as number
       if (position) {
-        occupiedPositions.set(position, sub);
+        occupiedPositions.set(position, sub)
       }
-    });
+    })
 
     // Create availability response
     const availability: FeaturedPositionAvailability[] = pricePositions.map(
       ({ position, priceId }) => {
-        const occupied = occupiedPositions.get(position);
+        const occupied = occupiedPositions.get(position)
 
         return {
           position,
@@ -106,16 +106,17 @@ export default defineEventHandler(async (event) => {
             ? {
                 entityId: occupied.metadata?.entityId as number,
                 teamId: occupied.teamId!,
-                expiresAt: occupied.currentPeriodEnd
+                expiresAt: occupied.currentPeriodEnd,
               }
-            : undefined
-        };
-      }
-    );
+            : undefined,
+        }
+      },
+    )
 
-    return availability.sort((a, b) => a.position - b.position);
-  } catch (error) {
-    console.error('Error checking featured position availability:', error);
-    throw error;
+    return availability.sort((a, b) => a.position - b.position)
   }
-});
+  catch (error) {
+    console.error('Error checking featured position availability:', error)
+    throw error
+  }
+})
