@@ -1,29 +1,29 @@
 // server/routes/sitemap_index.xml.ts
-import { defineEventHandler } from 'h3'
+import { defineEventHandler } from 'h3';
 
-const NUXT_PUBLIC_SITE_URL = process.env.NUXT_PUBLIC_URL
+const NUXT_PUBLIC_SITE_URL = process.env.NUXT_PUBLIC_URL;
 
 export default defineEventHandler(async (event) => {
-  const numSongPages = await $fetch('/api/__sitemap__/songs?count=true')
-  const numArtistPages = await $fetch('/api/__sitemap__/artists?count=true')
-  const numAlbumPages = await $fetch('/api/__sitemap__/albums?count=true')
+  const numSongPages = await $fetch('/api/__sitemap__/songs?count=true');
+  const numArtistPages = await $fetch('/api/__sitemap__/artists?count=true');
+  const numAlbumPages = await $fetch('/api/__sitemap__/albums?count=true');
 
   const songSitemaps = Array.from({ length: numSongPages }, (_, i) => ({
     loc: `${NUXT_PUBLIC_SITE_URL}/sitemap/songs/${i + 1}.xml`,
     lastmod: new Date().toISOString(),
-  }))
+  }));
 
   const artistSitemaps = Array.from({ length: numArtistPages }, (_, i) => ({
     loc: `${NUXT_PUBLIC_SITE_URL}/sitemap/artists/${i + 1}.xml`,
     lastmod: new Date().toISOString(),
-  }))
+  }));
 
   const albumSitemaps = Array.from({ length: numAlbumPages }, (_, i) => ({
     loc: `${NUXT_PUBLIC_SITE_URL}/sitemap/albums/${i + 1}.xml`,
     lastmod: new Date().toISOString(),
-  }))
+  }));
 
-  const sitemaps = songSitemaps.concat(artistSitemaps, albumSitemaps)
+  const sitemaps = songSitemaps.concat(artistSitemaps, albumSitemaps);
 
   const xml = `
     <?xml version="1.0" encoding="UTF-8"?>
@@ -34,7 +34,7 @@ export default defineEventHandler(async (event) => {
         </sitemap>
       ${sitemaps
         .map(
-          sitemap => `
+          (sitemap) => `
         <sitemap>
           <loc>${sitemap.loc}</loc>
           <lastmod>${sitemap.lastmod}</lastmod>
@@ -43,8 +43,8 @@ export default defineEventHandler(async (event) => {
         )
         .join('')}
     </sitemapindex>
-  `.trim()
+  `.trim();
 
-  event.node.res.setHeader('Content-Type', 'application/xml')
-  return xml
-})
+  event.node.res.setHeader('Content-Type', 'application/xml');
+  return xml;
+});

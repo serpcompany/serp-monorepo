@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { useDateFormat } from '@vueuse/core'
+  import { useDateFormat } from '@vueuse/core';
 
-const { data: teams } = useFetch('/api/super-admin/teams')
-const columns = ['Name', 'Owner', 'Members', 'Subscription', 'Created At']
+  const { data: teams } = useFetch('/api/super-admin/teams');
+  const columns = ['Name', 'Owner', 'Members', 'Subscription', 'Created At'];
 </script>
 
 <template>

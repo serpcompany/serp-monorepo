@@ -1,21 +1,21 @@
 <script setup lang="ts">
-const route = useRoute()
+  const route = useRoute();
 
-const items = computed(() => [
-  {
-    label: 'Docs',
-    to: '/docs',
-    active: route.path.startsWith('/docs'),
-  },
-  {
-    label: 'Pricing',
-    to: '/pricing',
-  },
-  {
-    label: 'Blog',
-    to: '/blog',
-  },
-])
+  const items = computed(() => [
+    {
+      label: 'Docs',
+      to: '/docs',
+      active: route.path.startsWith('/docs'),
+    },
+    {
+      label: 'Pricing',
+      to: '/pricing',
+    },
+    {
+      label: 'Blog',
+      to: '/blog',
+    },
+  ]);
 </script>
 
 <template>

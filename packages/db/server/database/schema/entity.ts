@@ -67,9 +67,12 @@ export const entityRelations = relations(entity, ({ one }) => ({
   }),
 }))
 
-export const entityAggregateRelations = relations(entityAggregate, ({ one }) => ({
-  entity: one(entity, {
-    fields: [entityAggregate.entity],
-    references: [entity.id],
+export const entityAggregateRelations = relations(
+  entityAggregate,
+  ({ one }) => ({
+    entity: one(entity, {
+      fields: [entityAggregate.entity],
+      references: [entity.id],
+    }),
   }),
-}))
+)

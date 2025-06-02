@@ -10,7 +10,9 @@ export async function clearStripeData(): Promise<void> {
   await getDb().delete(product).execute()
 }
 
-export async function createStripeProduct(payload: InsertProduct): Promise<typeof product.$inferSelect> {
+export async function createStripeProduct(
+  payload: InsertProduct,
+): Promise<typeof product.$inferSelect> {
   const [productRecord] = await getDb()
     .insert(product)
     .values(payload)
@@ -19,7 +21,9 @@ export async function createStripeProduct(payload: InsertProduct): Promise<typeo
   return productRecord
 }
 
-export async function createStripePrice(payload: InsertPrice): Promise<typeof price.$inferSelect> {
+export async function createStripePrice(
+  payload: InsertPrice,
+): Promise<typeof price.$inferSelect> {
   const [priceRecord] = await getDb()
     .insert(price)
     .values(payload)
@@ -29,7 +33,9 @@ export async function createStripePrice(payload: InsertPrice): Promise<typeof pr
 }
 
 // These functions are used by the webhook handler
-export async function createOrUpdateStripeProduct(payload: InsertProduct): Promise<typeof product.$inferSelect> {
+export async function createOrUpdateStripeProduct(
+  payload: InsertProduct,
+): Promise<typeof product.$inferSelect> {
   if (!payload.id) {
     throw new Error('Product ID is required')
   }
@@ -42,7 +48,9 @@ export async function createOrUpdateStripeProduct(payload: InsertProduct): Promi
   return createStripeProduct(payload)
 }
 
-export async function createOrUpdateStripePrice(payload: InsertPrice): Promise<typeof price.$inferSelect> {
+export async function createOrUpdateStripePrice(
+  payload: InsertPrice,
+): Promise<typeof price.$inferSelect> {
   if (!payload.id) {
     throw new Error('Price ID is required')
   }
@@ -54,7 +62,11 @@ export async function createOrUpdateStripePrice(payload: InsertPrice): Promise<t
   return createStripePrice(payload)
 }
 
-export async function getAllPlans(): Promise<Array<typeof price.$inferSelect & { product: typeof product.$inferSelect | null }>> {
+export async function getAllPlans(): Promise<
+  Array<
+    typeof price.$inferSelect & { product: typeof product.$inferSelect | null }
+  >
+> {
   const rows = await getDb()
     .select()
     .from(price)
@@ -77,6 +89,8 @@ export async function deleteStripePrice(id: string): Promise<void> {
   await getDb().delete(price).where(eq(price.id, id)).execute()
 }
 
-export async function deletePricesByProductId(productId: string): Promise<void> {
+export async function deletePricesByProductId(
+  productId: string,
+): Promise<void> {
   await getDb().delete(price).where(eq(price.productId, productId)).execute()
 }

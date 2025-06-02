@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest'
-import MediaGallery from '../../components/MediaGallery.vue'
-import ComponentRender from '../componentRender'
+import { describe, expect, it } from 'vitest';
+import MediaGallery from '../../components/MediaGallery.vue';
+import ComponentRender from '../componentRender';
 
 describe('mediaGallery Snapshot', () => {
   const scenarios: [string, { props: unknown }][] = [
@@ -34,7 +34,7 @@ describe('mediaGallery Snapshot', () => {
         },
       },
     ],
-  ]
+  ];
 
   it.each(scenarios)(
     'renders %s correctly',
@@ -43,8 +43,8 @@ describe('mediaGallery Snapshot', () => {
         `MediaGallery ${desc}`,
         options,
         MediaGallery,
-      )
-      expect(html).toMatchSnapshot()
+      );
+      expect(html).toMatchSnapshot();
     },
-  )
-})
+  );
+});

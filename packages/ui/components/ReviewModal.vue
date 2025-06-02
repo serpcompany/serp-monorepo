@@ -1,120 +1,117 @@
 <script setup lang="ts">
-import type { Reviews } from '@/serp/types/types'
+  import type { Reviews } from '@/serp/types/types';
 
-const props = defineProps<{
-  entityId: string
-  open: boolean
-  result: Reviews
-}>()
+  const props = defineProps<{
+    entityId: string;
+    open: boolean;
+    result: Reviews;
+  }>();
 
-const emit = defineEmits(['close', 'review-submitted', 'update:open'])
+  const emit = defineEmits(['close', 'review-submitted', 'update:open']);
 
-const { loggedIn, user } = useUserSession()
-const toast = useToast()
+  const { loggedIn, user } = useUserSession();
+  const toast = useToast();
 
-// Review form state
-const reviewForm = ref({
-  title: '',
-  content: '',
-  rating: null as number | null,
-  dateOfExperience: '',
-})
-const userReview = computed(() => props.result.userReview)
+  // Review form state
+  const reviewForm = ref({
+    title: '',
+    content: '',
+    rating: null as number | null,
+    dateOfExperience: '',
+  });
+  const userReview = computed(() => props.result.userReview);
 
-watchEffect(
-  () => {
-    if (userReview.value) {
-      const review = userReview.value.review || userReview.value
-      reviewForm.value = {
-        title: review?.title || '',
-        content: review?.content || '',
-        rating: review?.rating || null,
-        dateOfExperience: review?.dateOfExperience
-          ? new Date(review.dateOfExperience).toISOString().split('T')[0]
-          : '',
+  watchEffect(
+    () => {
+      if (userReview.value) {
+        const review = userReview.value.review || userReview.value;
+        reviewForm.value = {
+          title: review?.title || '',
+          content: review?.content || '',
+          rating: review?.rating || null,
+          dateOfExperience: review?.dateOfExperience
+            ? new Date(review.dateOfExperience).toISOString().split('T')[0]
+            : '',
+        };
       }
-    }
-  },
-  { immediate: true },
-)
+    },
+    { immediate: true },
+  );
 
-const isReviewComplete = computed(
-  () =>
-    reviewForm.value.title?.trim() !== ''
-    && reviewForm.value.content?.trim() !== ''
-    && reviewForm.value.rating !== null
-    && reviewForm.value.dateOfExperience?.trim() !== '',
-)
+  const isReviewComplete = computed(
+    () =>
+      reviewForm.value.title?.trim() !== '' &&
+      reviewForm.value.content?.trim() !== '' &&
+      reviewForm.value.rating !== null &&
+      reviewForm.value.dateOfExperience?.trim() !== '',
+  );
 
-const loadingReview = ref(false)
+  const loadingReview = ref(false);
 
-async function saveReview() {
-  if (!loggedIn.value) {
-    toast.add({
-      id: 'not-logged-in',
-      title: 'Not logged in',
-      description: 'Please log in to submit your review.',
-      icon: 'exclamation-circle',
-    })
-    return
-  }
-
-  try {
-    loadingReview.value = true
-    if (!isReviewComplete.value) {
-      throw new Error('Please fill in all required fields for your review.')
-    }
-    if (!user?.value?.email) {
-      throw new Error('Please log in to submit a review.')
-    }
-    const payload = {
-      ...reviewForm.value,
-    }
-
-    const { data: response, error } = await useFetch(
-      `/api/reviews/${props.entityId}`,
-      {
-        method: userReview?.value ? 'PUT' : 'POST',
-        headers: useRequestHeaders(['cookie']),
-        body: JSON.stringify(payload),
-      },
-    )
-
-    if (error.value) {
-      throw new Error(error.value.message || 'Failed to submit review.')
-    }
-    if (response.value.message && response.value.message === 'success') {
+  async function saveReview() {
+    if (!loggedIn.value) {
       toast.add({
-        id: 'review-saved',
-        title: userReview?.value ? 'Review Updated' : 'Review Submitted',
-        description: 'Your review has been successfully saved.',
-        icon: 'check-circle',
-      })
-      emit('review-submitted')
-      // Close modal after successful submission
-      closeModal()
+        id: 'not-logged-in',
+        title: 'Not logged in',
+        description: 'Please log in to submit your review.',
+        icon: 'exclamation-circle',
+      });
+      return;
     }
-    else {
-      throw new Error(`Failed to save review - ${response.value.message}`)
-    }
-  }
-  catch (err: unknown) {
-    toast.add({
-      id: 'review-error',
-      title: 'Error saving review',
-      description: err.message,
-      icon: 'exclamation-circle',
-    })
-  }
-  finally {
-    loadingReview.value = false
-  }
-}
 
-function closeModal() {
-  emit('update:open', false)
-  emit('close')
-}
+    try {
+      loadingReview.value = true;
+      if (!isReviewComplete.value) {
+        throw new Error('Please fill in all required fields for your review.');
+      }
+      if (!user?.value?.email) {
+        throw new Error('Please log in to submit a review.');
+      }
+      const payload = {
+        ...reviewForm.value,
+      };
+
+      const { data: response, error } = await useFetch(
+        `/api/reviews/${props.entityId}`,
+        {
+          method: userReview?.value ? 'PUT' : 'POST',
+          headers: useRequestHeaders(['cookie']),
+          body: JSON.stringify(payload),
+        },
+      );
+
+      if (error.value) {
+        throw new Error(error.value.message || 'Failed to submit review.');
+      }
+      if (response.value.message && response.value.message === 'success') {
+        toast.add({
+          id: 'review-saved',
+          title: userReview?.value ? 'Review Updated' : 'Review Submitted',
+          description: 'Your review has been successfully saved.',
+          icon: 'check-circle',
+        });
+        emit('review-submitted');
+        // Close modal after successful submission
+        closeModal();
+      } else {
+        throw new Error(`Failed to save review - ${response.value.message}`);
+      }
+    } catch (err: unknown) {
+      toast.add({
+        id: 'review-error',
+        title: 'Error saving review',
+        description: err.message,
+        icon: 'exclamation-circle',
+      });
+    } finally {
+      loadingReview.value = false;
+    }
+  }
+
+  function closeModal() {
+    emit('update:open', false);
+    emit('close');
+  }
 </script>
 
 <template>
@@ -146,7 +143,8 @@ function closeModal() {
           <label
             class="block text-base font-medium text-gray-700 dark:text-gray-200"
           >
-            Review Title <span class="text-red-500">*</span>
+            Review Title
+            <span class="text-red-500">*</span>
           </label>
           <UInput
             v-model="reviewForm.title"
@@ -166,7 +164,8 @@ function closeModal() {
           <label
             class="block text-base font-medium text-gray-700 dark:text-gray-200"
           >
-            Your Rating <span class="text-red-500">*</span>
+            Your Rating
+            <span class="text-red-500">*</span>
           </label>
           <div
             class="rounded-lg border border-gray-300 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
@@ -188,7 +187,8 @@ function closeModal() {
           <label
             class="block text-base font-medium text-gray-700 dark:text-gray-200"
           >
-            Your Review <span class="text-red-500">*</span>
+            Your Review
+            <span class="text-red-500">*</span>
           </label>
           <UTextarea
             v-model="reviewForm.content"
@@ -211,7 +211,8 @@ function closeModal() {
           <label
             class="block text-base font-medium text-gray-700 dark:text-gray-200"
           >
-            Date of Experience <span class="text-red-500">*</span>
+            Date of Experience
+            <span class="text-red-500">*</span>
           </label>
           <UInput
             v-model="reviewForm.dateOfExperience"

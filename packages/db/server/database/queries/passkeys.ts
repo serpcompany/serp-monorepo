@@ -6,7 +6,9 @@ type Passkey = typeof webAuthnCredential.$inferSelect
 type InsertPasskey = typeof webAuthnCredential.$inferInsert
 type InsertWebAuthnChallenge = typeof webAuthnChallenge.$inferInsert
 
-export async function findCredentialByUserId(userId: number): Promise<Passkey[]> {
+export async function findCredentialByUserId(
+  userId: number,
+): Promise<Passkey[]> {
   try {
     const record = await getDb()
       .select()
@@ -21,7 +23,9 @@ export async function findCredentialByUserId(userId: number): Promise<Passkey[]>
   }
 }
 
-export async function createCredential(credential: InsertPasskey): Promise<Passkey> {
+export async function createCredential(
+  credential: InsertPasskey,
+): Promise<Passkey> {
   try {
     const [record] = await getDb()
       .insert(webAuthnCredential)
@@ -36,7 +40,10 @@ export async function createCredential(credential: InsertPasskey): Promise<Passk
   }
 }
 
-export async function storeWebAuthnChallenge(attemptId: string, challenge: string): Promise<void> {
+export async function storeWebAuthnChallenge(
+  attemptId: string,
+  challenge: string,
+): Promise<void> {
   try {
     const challengeData: InsertWebAuthnChallenge = {
       id: attemptId,
@@ -51,7 +58,9 @@ export async function storeWebAuthnChallenge(attemptId: string, challenge: strin
   }
 }
 
-export async function getAndDeleteChallenge(attemptId: string): Promise<string | undefined> {
+export async function getAndDeleteChallenge(
+  attemptId: string,
+): Promise<string | undefined> {
   try {
     // First, clean up expired challenges
     await getDb()
@@ -82,7 +91,9 @@ export async function getAndDeleteChallenge(attemptId: string): Promise<string |
   }
 }
 
-export async function findCredentialById(credentialId: string): Promise<Passkey | null> {
+export async function findCredentialById(
+  credentialId: string,
+): Promise<Passkey | null> {
   try {
     const [record] = await getDb()
       .select()
@@ -97,7 +108,10 @@ export async function findCredentialById(credentialId: string): Promise<Passkey 
   }
 }
 
-export async function deleteCredential(userId: number, credentialId: string): Promise<void> {
+export async function deleteCredential(
+  userId: number,
+  credentialId: string,
+): Promise<void> {
   try {
     await getDb()
       .delete(webAuthnCredential)

@@ -5,4 +5,4 @@ export default defineAppConfig({
       neutral: 'slate',
     },
   },
-})
+});

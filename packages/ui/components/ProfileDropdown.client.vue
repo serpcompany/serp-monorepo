@@ -1,48 +1,48 @@
 <script setup lang="ts">
-// @ts-expect-error: Auto-imported from another layer
-const { loggedIn, user, clear } = useUserSession()
-const config = useRuntimeConfig()
-const profileDropdownLinks = Array.isArray(config.public.profileDropdownLinks)
-  ? config.public.profileDropdownLinks
-  : []
-const slideover = ref(false)
+  // @ts-expect-error: Auto-imported from another layer
+  const { loggedIn, user, clear } = useUserSession();
+  const config = useRuntimeConfig();
+  const profileDropdownLinks = Array.isArray(config.public.profileDropdownLinks)
+    ? config.public.profileDropdownLinks
+    : [];
+  const slideover = ref(false);
 
-interface MenuItem {
-  label: string
-  type?: string
-  to?: string
-  icon?: string
-  kbds?: string[]
-  onSelect?: (event: Event) => void
-}
-
-const items = ref([
-  ...profileDropdownLinks,
-  [
-    {
-      label: 'Dashboard',
-      to: '/users/dashboard/',
-      icon: 'i-lucide-settings',
-    },
-  ],
-  [
-    {
-      label: 'Logout',
-      icon: 'i-lucide-log-out',
-      to: '/logout/',
-    },
-  ],
-])
-
-function handleItemClick(item: MenuItem, event: Event): void {
-  if (item.onSelect) {
-    item.onSelect(event)
-    return
+  interface MenuItem {
+    label: string;
+    type?: string;
+    to?: string;
+    icon?: string;
+    kbds?: string[];
+    onSelect?: (event: Event) => void;
   }
-  if (item.to) {
-    slideover.value = false
+
+  const items = ref([
+    ...profileDropdownLinks,
+    [
+      {
+        label: 'Dashboard',
+        to: '/users/dashboard/',
+        icon: 'i-lucide-settings',
+      },
+    ],
+    [
+      {
+        label: 'Logout',
+        icon: 'i-lucide-log-out',
+        to: '/logout/',
+      },
+    ],
+  ]);
+
+  function handleItemClick(item: MenuItem, event: Event): void {
+    if (item.onSelect) {
+      item.onSelect(event);
+      return;
+    }
+    if (item.to) {
+      slideover.value = false;
+    }
   }
-}
 </script>
 
 <template>
@@ -107,9 +107,9 @@ function handleItemClick(item: MenuItem, event: Event): void {
                   :name="item.icon"
                   class="flex-shrink-0"
                 />
-                <span class="flex-grow leading-tight text-gray-700">{{
-                  item.label
-                }}</span>
+                <span class="flex-grow leading-tight text-gray-700">
+                  {{ item.label }}
+                </span>
                 <div v-if="item.kbds" class="flex gap-1">
                   <UKbd
                     v-for="(kbd, kbdIndex) in item.kbds"

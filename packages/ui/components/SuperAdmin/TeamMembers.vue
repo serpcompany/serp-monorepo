@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import type { TeamMember } from '@@/types/database'
+  import type { TeamMember } from '@@/types/database';
 
-defineProps<{
-  members: TeamMember[]
-}>()
+  defineProps<{
+    members: TeamMember[];
+  }>();
 </script>
 
 <template>

@@ -8,7 +8,7 @@
     Img,
     Link,
     Preview,
-    Text
+    Text,
   } from '@vue-email/components';
 
   interface LoginNotificationProps {
@@ -20,17 +20,17 @@
   withDefaults(defineProps<LoginNotificationProps>(), {
     userName: '',
     city: '',
-    country: ''
+    country: '',
   });
 
   const main = {
-    backgroundColor: '#ffffff'
+    backgroundColor: '#ffffff',
   };
 
   const container = {
     paddingLeft: '12px',
     paddingRight: '12px',
-    margin: '0 auto'
+    margin: '0 auto',
   };
 
   const h1 = {
@@ -40,7 +40,7 @@
     fontSize: '24px',
     fontWeight: 'bold',
     margin: '40px 0',
-    padding: '0'
+    padding: '0',
   };
 
   const link = {
@@ -48,7 +48,7 @@
     fontFamily:
       "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
     fontSize: '14px',
-    textDecoration: 'underline'
+    textDecoration: 'underline',
   };
 
   const text = {
@@ -56,7 +56,7 @@
     fontFamily:
       "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
     fontSize: '14px',
-    margin: '24px 0'
+    margin: '24px 0',
   };
 
   const footer = {
@@ -66,7 +66,7 @@
     fontSize: '12px',
     lineHeight: '22px',
     marginTop: '12px',
-    marginBottom: '24px'
+    marginBottom: '24px',
   };
 
   const runtimeConfig = useRuntimeConfig();
@@ -79,8 +79,12 @@
 
     <Body :style="main">
       <Container :style="container">
-        <Heading :style="h1">Login from a new location</Heading>
-        <Text :style="text"> Hello {{ userName }}, </Text>
+        <Heading :style="h1">
+          Login from a new location
+        </Heading>
+        <Text :style="text">
+          Hello {{ userName }},
+        </Text>
         <Text :style="text">
           We noticed a login to your {{ runtimeConfig.public.siteName }} account
           from a new location.
@@ -102,7 +106,8 @@
           </Link>
         </Text>
         <Text :style="text">
-          Thanks,<br />
+          Thanks,
+          <br />
           {{ runtimeConfig.public.siteName }} team
         </Text>
         <Img
@@ -117,8 +122,9 @@
             target="_blank"
             :style="{ ...link, color: '#898989' }"
           >
-            {{ runtimeConfig.public.siteName }} </Link
-          >{{
+            {{ runtimeConfig.public.siteName }}
+          </Link>
+          {{
             runtimeConfig.public.APP_DESCRIPTION
               ? `, ${runtimeConfig.public.APP_DESCRIPTION}`
               : ''

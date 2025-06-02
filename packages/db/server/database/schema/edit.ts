@@ -1,4 +1,12 @@
-import { boolean, integer, jsonb, serial, text, timestamp, varchar } from 'drizzle-orm/pg-core'
+import {
+  boolean,
+  integer,
+  jsonb,
+  serial,
+  text,
+  timestamp,
+  varchar,
+} from 'drizzle-orm/pg-core'
 import { userSchema } from './index'
 
 export const edit = userSchema.table('edit', {

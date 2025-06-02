@@ -1,19 +1,19 @@
 <script setup lang="ts">
-const props = defineProps<{ module?: string }>()
+  const props = defineProps<{ module?: string }>();
 
-const computedModule = computed(() => props.module)
+  const computedModule = computed(() => props.module);
 
-const route = useRoute()
-const slug = route.params.slug as string
-const router = useRouter()
-const data = await usePost(slug, computedModule.value)
-if (!data) {
-  router.push('/404')
-}
+  const route = useRoute();
+  const slug = route.params.slug as string;
+  const router = useRouter();
+  const data = await usePost(slug, computedModule.value);
+  if (!data) {
+    router.push('/404');
+  }
 
-useSeoMeta({
-  title: () => data.title || data.name,
-})
+  useSeoMeta({
+    title: () => data.title || data.name,
+  });
 </script>
 
 <template>

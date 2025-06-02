@@ -1,4 +1,10 @@
-import { boolean, integer, serial, timestamp, varchar } from 'drizzle-orm/pg-core'
+import {
+  boolean,
+  integer,
+  serial,
+  timestamp,
+  varchar,
+} from 'drizzle-orm/pg-core'
 import { stripeSchema } from './index'
 
 export const featuredSubscription = stripeSchema.table(

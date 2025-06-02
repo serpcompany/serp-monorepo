@@ -1,73 +1,66 @@
 <script lang="ts" setup>
-import type { FormSubmitEvent } from '#ui/types'
+  import type { FormSubmitEvent } from '#ui/types';
 
-const { user, fetch: refreshSession } = useUserSession()
-const selectedFile = ref<File | null>(null)
-const { updateUser, loading, schema } = useUserAccount()
+  const { user, fetch: refreshSession } = useUserSession();
+  const selectedFile = ref<File | null>(null);
+  const { updateUser, loading, schema } = useUserAccount();
 
-async function uploadAvatar() {
-  try {
-    if (!selectedFile.value)
-      return ''
-    const formData = new FormData()
-    formData.append('image', selectedFile.value)
-    const filePath = await $fetch('/api/upload-image', {
-      method: 'POST',
-      body: formData,
-    })
-    return `/images/${filePath}`
-  }
-  catch {
-    throw new Error('Failed to upload avatar')
-  }
-}
-
-function handleFileSelected(file: File | null) {
-  selectedFile.value = file
-  if (!file) {
-    state.avatarUrl = ''
-  }
-}
-
-const state = reactive({
-  name: user.value?.name || '',
-  avatarUrl: user.value?.avatarUrl || '',
-})
-
-async function onSubmit(event: FormSubmitEvent<unknown>) {
-  try {
-    let filePath = ''
-
-    if (selectedFile.value) {
-      filePath = await uploadAvatar()
+  async function uploadAvatar() {
+    try {
+      if (!selectedFile.value) return '';
+      const formData = new FormData();
+      formData.append('image', selectedFile.value);
+      const filePath = await $fetch('/api/upload-image', {
+        method: 'POST',
+        body: formData,
+      });
+      return `/images/${filePath}`;
+    } catch {
+      throw new Error('Failed to upload avatar');
     }
-    else if (state.avatarUrl) {
-      filePath = state.avatarUrl
-    }
-    else {
-      filePath = `https://api.dicebear.com/9.x/glass/svg?seed=${event.data.name}`
-    }
-
-    const userData = {
-      ...event.data,
-      avatarUrl: filePath,
-    }
-
-    await updateUser(userData)
-    await refreshSession()
   }
-  catch (error) {
-    console.error(error)
+
+  function handleFileSelected(file: File | null) {
+    selectedFile.value = file;
+    if (!file) {
+      state.avatarUrl = '';
+    }
   }
-}
+
+  const state = reactive({
+    name: user.value?.name || '',
+    avatarUrl: user.value?.avatarUrl || '',
+  });
+
+  async function onSubmit(event: FormSubmitEvent<unknown>) {
+    try {
+      let filePath = '';
+
+      if (selectedFile.value) {
+        filePath = await uploadAvatar();
+      } else if (state.avatarUrl) {
+        filePath = state.avatarUrl;
+      } else {
+        filePath = `https://api.dicebear.com/9.x/glass/svg?seed=${event.data.name}`;
+      }
+
+      const userData = {
+        ...event.data,
+        avatarUrl: filePath,
+      };
+
+      await updateUser(userData);
+      await refreshSession();
+    } catch (error) {
+      console.error(error);
+    }
+  }
 </script>
 
 <template>
   <UCard>
     <template #header>
-      <h3 class="font-medium">
-        Personal Information
-      </h3>
+      <h3 class="font-medium">Personal Information</h3>
       <p class="mt-1 text-sm text-neutral-500">
         Your personal information is not shared with anyone.
       </p>

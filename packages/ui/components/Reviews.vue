@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { Reviews } from '@/serp/types/types'
+  import type { Reviews } from '@/serp/types/types';
 
-defineProps<{
-  reviews: Reviews
-  isVerified: boolean
-}>()
+  defineProps<{
+    reviews: Reviews;
+    isVerified: boolean;
+  }>();
 </script>
 
 <template>
@@ -15,8 +15,8 @@ defineProps<{
         <!-- Reviews List -->
         <div
           v-if="
-            reviews?.userReview
-              || (reviews?.reviews && reviews?.reviews?.length > 0)
+            reviews?.userReview ||
+            (reviews?.reviews && reviews?.reviews?.length > 0)
           "
           class="mx-auto max-w-xl space-y-4"
         >

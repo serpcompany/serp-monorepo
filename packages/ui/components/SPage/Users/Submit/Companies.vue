@@ -1,14 +1,14 @@
 <script setup lang="ts">
-const { loggedIn, user } = useUserSession()
-if (!loggedIn.value) {
-  navigateTo('/login')
-}
+  const { loggedIn, user } = useUserSession();
+  if (!loggedIn.value) {
+    navigateTo('/login');
+  }
 
-const data = await useCompanySubmissions()
+  const data = await useCompanySubmissions();
 
-useSeoMeta({
-  title: 'Submissions',
-})
+  useSeoMeta({
+    title: 'Submissions',
+  });
 </script>
 
 <template>

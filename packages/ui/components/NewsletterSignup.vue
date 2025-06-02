@@ -1,82 +1,80 @@
 <script setup lang="ts">
-defineProps({
-  // Color options for the signup button
-  buttonBackground: {
-    type: String,
-    default: 'transparent',
-  },
-  buttonBackgroundDark: {
-    type: String,
-    default: 'transparent',
-  },
-  buttonBackgroundHover: {
-    type: String,
-    default: 'neutral-800',
-  },
-  buttonBackgroundHoverDark: {
-    type: String,
-    default: 'neutral-800',
-  },
-  buttonTextColor: {
-    type: String,
-    default: 'white',
-  },
-  buttonTextColorDark: {
-    type: String,
-    default: 'white',
-  },
-  buttonBorderColor: {
-    type: String,
-    default: 'neutral-700',
-  },
-  buttonBorderColorDark: {
-    type: String,
-    default: 'neutral-700',
-  },
-})
+  defineProps({
+    // Color options for the signup button
+    buttonBackground: {
+      type: String,
+      default: 'transparent',
+    },
+    buttonBackgroundDark: {
+      type: String,
+      default: 'transparent',
+    },
+    buttonBackgroundHover: {
+      type: String,
+      default: 'neutral-800',
+    },
+    buttonBackgroundHoverDark: {
+      type: String,
+      default: 'neutral-800',
+    },
+    buttonTextColor: {
+      type: String,
+      default: 'white',
+    },
+    buttonTextColorDark: {
+      type: String,
+      default: 'white',
+    },
+    buttonBorderColor: {
+      type: String,
+      default: 'neutral-700',
+    },
+    buttonBorderColorDark: {
+      type: String,
+      default: 'neutral-700',
+    },
+  });
 
-const newsletterLoading = ref(false)
-const newsletterEmail = ref('')
-const toast = useToast()
-const showNewsletterModal = ref(false)
+  const newsletterLoading = ref(false);
+  const newsletterEmail = ref('');
+  const toast = useToast();
+  const showNewsletterModal = ref(false);
 
-async function subscribeToNewsletter() {
-  try {
-    if (!newsletterEmail.value) {
+  async function subscribeToNewsletter() {
+    try {
+      if (!newsletterEmail.value) {
+        toast.add({
+          id: 'newsletter-error',
+          title: 'Invalid Email',
+          description: 'Please enter a valid email address.',
+          icon: 'exclamation-circle',
+        });
+        return;
+      }
+      newsletterLoading.value = true;
+      const { data: res } = await useFetch('/api/subscribe', {
+        method: 'POST',
+        body: {
+          email: newsletterEmail.value,
+        },
+      });
+      toast.add({
+        id: 'newsletter-success',
+        title: 'Subscribed to Newsletter',
+        description: 'You have successfully subscribed to the newsletter.',
+        icon: 'check-circle',
+      });
+    } catch (error) {
       toast.add({
         id: 'newsletter-error',
-        title: 'Invalid Email',
-        description: 'Please enter a valid email address.',
+        title: 'Error Subscribing to Newsletter',
+        description: (error as Error).message,
         icon: 'exclamation-circle',
-      })
-      return
+      });
+    } finally {
+      newsletterLoading.value = false;
     }
-    newsletterLoading.value = true
-    const { data: res } = await useFetch('/api/subscribe', {
-      method: 'POST',
-      body: {
-        email: newsletterEmail.value,
-      },
-    })
-    toast.add({
-      id: 'newsletter-success',
-      title: 'Subscribed to Newsletter',
-      description: 'You have successfully subscribed to the newsletter.',
-      icon: 'check-circle',
-    })
   }
-  catch (error) {
-    toast.add({
-      id: 'newsletter-error',
-      title: 'Error Subscribing to Newsletter',
-      description: (error as Error).message,
-      icon: 'exclamation-circle',
-    })
-  }
-  finally {
-    newsletterLoading.value = false
-  }
-}
 </script>
 
 <template>

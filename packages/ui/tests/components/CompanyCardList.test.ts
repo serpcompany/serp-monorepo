@@ -1,7 +1,7 @@
-import { describe, expect, it } from 'vitest'
-import { defineComponent } from 'vue'
-import CompanyCardList from '../../components/CompanyCardList.vue'
-import ComponentRender from '../componentRender'
+import { describe, expect, it } from 'vitest';
+import { defineComponent } from 'vue';
+import CompanyCardList from '../../components/CompanyCardList.vue';
+import ComponentRender from '../componentRender';
 
 // Minimal stub for the external CompanyCard dependency
 const CompanyCardStub = defineComponent({
@@ -13,7 +13,7 @@ const CompanyCardStub = defineComponent({
     'showExpandedContent',
   ],
   template: '<div class="company-card-stub">{{ company.name }}</div>',
-})
+});
 
 describe('companyCardList Snapshot', () => {
   const scenarios = [
@@ -47,17 +47,17 @@ describe('companyCardList Snapshot', () => {
         global: { stubs: { CompanyCard: CompanyCardStub } },
       },
     ],
-  ]
+  ];
 
   it.each(scenarios)(
     'renders %s correctly',
-    async (desc: string, options: { props: unknown, global?: unknown }) => {
+    async (desc: string, options: { props: unknown; global?: unknown }) => {
       const html = await ComponentRender(
         `CompanyCardList ${desc}`,
         options,
         CompanyCardList,
-      )
-      expect(html).toMatchSnapshot()
+      );
+      expect(html).toMatchSnapshot();
     },
-  )
-})
+  );
+});

@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       app:
-        description: "App to roll back"
+        description: 'App to roll back'
         type: choice
         options: [serp-co, daft-fm, serp-ai, serp-media]
         default: serp-co
       sha:
-        description: "Commit SHA (blank = HEAD~1)"
+        description: 'Commit SHA (blank = HEAD~1)'
         required: false
 
 jobs:

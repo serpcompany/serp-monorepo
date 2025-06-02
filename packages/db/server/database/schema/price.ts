@@ -1,5 +1,12 @@
 import { relations } from 'drizzle-orm'
-import { boolean, integer, jsonb, text, timestamp, varchar } from 'drizzle-orm/pg-core'
+import {
+  boolean,
+  integer,
+  jsonb,
+  text,
+  timestamp,
+  varchar,
+} from 'drizzle-orm/pg-core'
 import { stripeSchema } from './index'
 import { product } from './product'
 

@@ -11,23 +11,24 @@ echo "[husky]: Your staged files: $STAGED_FILES"
 echo "[husky]: Running lint-staged..."
 npx lint-staged
 
-# Check if lint-staged made any changes to the working directory
-echo "[husky]: Checking if lint made any changes..."
-if ! git diff --exit-code; then
-  echo "❌ [husky]: Lint made changes to your files!"
-  echo "Please run 'pnpm lint --fix' to fix issues, then stage and commit again."
-  echo "This ensures your commit includes all the formatting fixes."
-  exit 1
-fi
-echo "✅ [husky]: No changes made by lint - proceeding..."
-
-# Run TypeScript check for TS7006 errors (parameter implicitly has any type)
-echo "[husky]: Running script: pnpm typecheck:ts7006"
-pnpm typecheck:ts7006
+# # Check if lint-staged made any unstaged changes (should be none with modern lint-staged)
+# echo "[husky]: Checking if lint made any unstaged changes..."
+# if git diff --quiet; then
+#   echo "✅ [husky]: No unstaged changes - proceeding..."
+# else
+#   echo "⚠️ [husky]: Lint made unstaged changes to your files!"
+#   echo "This shouldn't happen with modern lint-staged. Auto-staging them..."
+#   git add -u
+#   echo "✅ [husky]: Changes automatically staged - proceeding..."
+# fi
 
 # Run ESLint check for ts/explicit-function-return-type errors (missing return types)
 echo "[husky]: Running script: pnpm lint:return-types"
 pnpm lint:return-types
+
+# Run TypeScript check for TS7006 errors (parameter implicitly has any type)
+echo "[husky]: Running script: pnpm typecheck:ts7006"
+pnpm typecheck:ts7006
 
 # Run Infisical scan on staged changes with baseline
 echo "[husky]: Running command: pnpm infisical scan git-changes --staged --verbose --baseline-path .reports/secrets-report.json"

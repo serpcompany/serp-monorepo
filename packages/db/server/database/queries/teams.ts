@@ -11,7 +11,16 @@ type InsertTeamInvite = typeof teamInvite.$inferInsert
 type InviteStatus = (typeof INVALID_STATUSES)[number]
 const INVALID_STATUSES = ['accepted', 'rejected', 'cancelled'] as const
 
-export async function findUserTeams(userId: string): Promise<Array<Team & { role: string | null, entity: { id: number, name: string, module: string, slug: string } | null }>> {
+export async function findUserTeams(
+  userId: string,
+): Promise<
+    Array<
+      Team & {
+        role: string | null
+        entity: { id: number, name: string, module: string, slug: string } | null
+      }
+    >
+  > {
   try {
     const teams = await getDb()
       .select({
@@ -107,7 +116,10 @@ export async function createTeam(payload: InsertTeam): Promise<Team> {
   }
 }
 
-export async function updateTeam(teamId: string, payload: Partial<Team>): Promise<Team> {
+export async function updateTeam(
+  teamId: string,
+  payload: Partial<Team>,
+): Promise<Team> {
   try {
     const [record] = await getDb()
       .update(team)
@@ -137,7 +149,9 @@ export async function deleteTeam(teamId: string): Promise<void> {
   }
 }
 
-export async function inviteTeamMember(payload: InsertTeamInvite): Promise<TeamInvite> {
+export async function inviteTeamMember(
+  payload: InsertTeamInvite,
+): Promise<TeamInvite> {
   try {
     const [invite] = await getDb()
       .insert(teamInvite)
@@ -154,7 +168,9 @@ export async function inviteTeamMember(payload: InsertTeamInvite): Promise<TeamI
   }
 }
 
-export async function getActiveTeamMembers(teamId: string): Promise<Array<{ user: typeof user.$inferSelect, role: string }>> {
+export async function getActiveTeamMembers(
+  teamId: string,
+): Promise<Array<{ user: typeof user.$inferSelect, role: string }>> {
   const members = await getDb()
     .select({
       id: teamMember.id,
@@ -235,7 +251,11 @@ export async function getInvite(token: string): Promise<TeamInvite> {
   return invite
 }
 
-export async function updateInviteStatus(inviteId: string, status: string, userId?: string): Promise<{ success: boolean, message: string, invite?: TeamInvite }> {
+export async function updateInviteStatus(
+  inviteId: string,
+  status: string,
+  userId?: string,
+): Promise<{ success: boolean, message: string, invite?: TeamInvite }> {
   const updateData: { status: string, acceptedAt?: Date, acceptedBy?: string }
     = { status }
 
@@ -252,7 +272,10 @@ export async function updateInviteStatus(inviteId: string, status: string, userI
     .execute()
 }
 
-export async function acceptTeamInvite(invite: TeamInvite, userId: string): Promise<void> {
+export async function acceptTeamInvite(
+  invite: TeamInvite,
+  userId: string,
+): Promise<void> {
   try {
     await getDb()
       .insert(teamMember)
@@ -268,7 +291,10 @@ export async function acceptTeamInvite(invite: TeamInvite, userId: string): Prom
   }
 }
 
-export async function isTeamMember(teamId: string, userId: string): Promise<boolean> {
+export async function isTeamMember(
+  teamId: string,
+  userId: string,
+): Promise<boolean> {
   try {
     const [member] = await getDb()
       .select({ id: teamMember.id })
@@ -287,7 +313,9 @@ export async function isTeamMember(teamId: string, userId: string): Promise<bool
   }
 }
 
-export async function findTeamInvite(inviteId: string): Promise<TeamInvite | null> {
+export async function findTeamInvite(
+  inviteId: string,
+): Promise<TeamInvite | null> {
   const [invite] = await getDb()
     .select()
     .from(teamInvite)
@@ -296,7 +324,10 @@ export async function findTeamInvite(inviteId: string): Promise<TeamInvite | nul
   return invite
 }
 
-export async function updateTeamInvite(inviteId: string, payload: Partial<TeamInvite>): Promise<TeamInvite> {
+export async function updateTeamInvite(
+  inviteId: string,
+  payload: Partial<TeamInvite>,
+): Promise<TeamInvite> {
   await getDb()
     .update(teamInvite)
     .set(payload)
@@ -304,7 +335,10 @@ export async function updateTeamInvite(inviteId: string, payload: Partial<TeamIn
     .execute()
 }
 
-export async function deleteTeamMember(teamId: string, memberId: string): Promise<void> {
+export async function deleteTeamMember(
+  teamId: string,
+  memberId: string,
+): Promise<void> {
   try {
     await getDb()
       .delete(teamMember)
@@ -319,7 +353,10 @@ export async function deleteTeamMember(teamId: string, memberId: string): Promis
   }
 }
 
-export async function checkSlugConflict(userId: string, slug: string): Promise<boolean> {
+export async function checkSlugConflict(
+  userId: string,
+  slug: string,
+): Promise<boolean> {
   try {
     const [existingTeam] = await getDb()
       .select({

@@ -1,34 +1,32 @@
 <script setup lang="ts">
-const { loggedIn } = useUserSession()
-if (!loggedIn.value) {
-  navigateTo('/login')
-}
+  const { loggedIn } = useUserSession();
+  if (!loggedIn.value) {
+    navigateTo('/login');
+  }
 
-const router = useRouter()
+  const router = useRouter();
 
-const isLoading = ref(false)
+  const isLoading = ref(false);
 
-async function createStripeBillingPortalSession() {
-  isLoading.value = true
-  try {
-    const response = await $fetch('/api/stripe/portal', {
-      method: 'GET',
-    })
-    if (response) {
-      window.open(response, '_blank')
+  async function createStripeBillingPortalSession() {
+    isLoading.value = true;
+    try {
+      const response = await $fetch('/api/stripe/portal', {
+        method: 'GET',
+      });
+      if (response) {
+        window.open(response, '_blank');
+      }
+    } catch (error) {
+      console.error('Error creating billing portal session:', error);
+    } finally {
+      isLoading.value = false;
     }
   }
-  catch (error) {
-    console.error('Error creating billing portal session:', error)
-  }
-  finally {
-    isLoading.value = false
-  }
-}
 
-useSeoMeta({
-  title: 'Manage Billing',
-})
+  useSeoMeta({
+    title: 'Manage Billing',
+  });
 </script>
 
 <template>
@@ -37,12 +35,8 @@ useSeoMeta({
       <UCard class="my-8">
         <template #header>
           <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold">
-              Billing
-            </h2>
-            <UBadge color="primary" variant="soft">
-              Active
-            </UBadge>
+            <h2 class="text-xl font-semibold">Billing</h2>
+            <UBadge color="primary" variant="soft">Active</UBadge>
           </div>
         </template>
 

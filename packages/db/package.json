@@ -8,7 +8,7 @@
     "generate": "nuxt generate .playground",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix", 
+    "lint:fix": "eslint . --fix",
     "ci:lint": "eslint .",
     "preview": "nuxt preview .playground",
     "test": "vitest run",

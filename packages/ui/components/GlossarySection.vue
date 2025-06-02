@@ -1,16 +1,16 @@
 <script setup lang="ts">
-interface Props {
-  id: string
-  title: string
-  items: Array<{
-    keyword?: string
-    title?: string
-    slug: string
-    name: string
-  }>
-}
+  interface Props {
+    id: string;
+    title: string;
+    items: Array<{
+      keyword?: string;
+      title?: string;
+      slug: string;
+      name: string;
+    }>;
+  }
 
-defineProps<Props>()
+  defineProps<Props>();
 </script>
 
 <template>
@@ -39,7 +39,7 @@ defineProps<Props>()
         <span class="truncate text-base font-medium">
           {{ item.keyword || item.title || item.name }}
         </span>
-        <hr class="min-w-0 flex-1 border-(--ui-border)">
+        <hr class="min-w-0 flex-1 border-(--ui-border)" />
       </ULink>
     </div>
   </UPageSection>

@@ -1,17 +1,17 @@
-import { saveEmailVerificationCode } from '@serp/db/server/database/queries/auth'
+import { saveEmailVerificationCode } from '@serp/db/server/database/queries/auth';
 import {
   createUserWithPassword,
   findUserByEmail,
-} from '@serp/db/server/database/queries/users'
+} from '@serp/db/server/database/queries/users';
 import {
   generateAlphaNumericCode,
   sendEmail,
   validateBody,
-} from '@serp/utils/server'
-import { render } from '@vue-email/render'
-import { z } from 'zod'
-import EmailVerification from '../../../../emails/email-verification.vue'
-import { sanitizeUser } from '../../../utils/auth'
+} from '@serp/utils/server';
+import { render } from '@vue-email/render';
+import { z } from 'zod';
+import EmailVerification from '../../../../emails/email-verification.vue';
+import { sanitizeUser } from '../../../utils/auth';
 
 const schema = z.object({
   name: z.string().min(1, 'Name is required'),
@@ -26,32 +26,32 @@ const schema = z.object({
       'Phone number must be in E.164 format (e.g. +12125551234)',
     )
     .optional(),
-})
+});
 
 export default defineEventHandler(async (event) => {
   // Verify that the requester is a super admin
-  const { user } = await requireUserSession(event)
+  const { user } = await requireUserSession(event);
   if (!user.superAdmin) {
     throw createError({
       statusCode: 403,
       statusMessage: 'You are not authorized to access this resource',
-    })
+    });
   }
 
   // Validate the request body
-  const data = await validateBody(event, schema)
+  const data = await validateBody(event, schema);
 
   // Check if user already exists
-  const existingUser = await findUserByEmail(data.email)
+  const existingUser = await findUserByEmail(data.email);
   if (existingUser) {
     throw createError({
       statusCode: 400,
       statusMessage: 'A user with this email already exists',
-    })
+    });
   }
 
   // Hash the password
-  const hashedPassword = await hashPassword(data.password)
+  const hashedPassword = await hashPassword(data.password);
 
   // Create the user
   const newUser = await createUserWithPassword({
@@ -61,38 +61,37 @@ export default defineEventHandler(async (event) => {
     emailVerified: data.emailVerified || false,
     avatarUrl: data.avatarUrl,
     phoneNumber: data.phoneNumber,
-  })
+  });
 
   // If email verification is not auto-enabled, send verification email
   if (!data.emailVerified) {
-    const emailVerificationCode = generateAlphaNumericCode(32)
+    const emailVerificationCode = generateAlphaNumericCode(32);
 
     await saveEmailVerificationCode({
       userId: newUser.id,
       code: emailVerificationCode,
       expiresAt: new Date(Date.now() + 1000 * 60 * 30), // 30 minutes
-    })
+    });
 
     const htmlTemplate = await render(EmailVerification, {
       verificationCode: emailVerificationCode,
-    })
+    });
 
     if (process.env.MOCK_EMAIL) {
       console.table({
         email: data.email,
         name: data.name,
         verificationLink: `${process.env.NUXT_PUBLIC_URL}/api/auth/verify-account?token=${emailVerificationCode}`,
-      })
-    }
-    else {
+      });
+    } else {
       await sendEmail({
         subject: `Welcome to ${process.env.NUXT_PUBLIC_SITE_NAME}`,
         to: data.email,
         html: htmlTemplate,
-      })
+      });
     }
   }
 
-  setResponseStatus(event, 201)
-  return sanitizeUser(newUser)
-})
+  setResponseStatus(event, 201);
+  return sanitizeUser(newUser);
+});

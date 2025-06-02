@@ -8,14 +8,15 @@ Explore the entire repository to understand the codebase from multiple angles: a
 
 # Project Rules and Guidelines
 
-
 ## Workflow
 
-- Work on ISSUES from repository, login as `serp-y` user by running: 
+- Work on ISSUES from repository, login as `serp-y` user by running:
+
 ```bash
 /Users/devin/gh-users/switch-profile.sh serp-y
 git config --local user.name && git config --local user.email
 ```
+
 - For any issues you work on or create, and a label of `claude`.
 - Always research the most up to date documentation relevant to the issue AND our tech stack to find best practices, code patterns, snippets, and configuration settings. Add the findings to the issue comments before starting.
 - Follow TDD methodology: Red (failing test) → Green (make it pass) → Refactor (improve code)
@@ -28,7 +29,7 @@ git config --local user.name && git config --local user.email
 
 ## Problem Solving
 
-- When planning or working on a task, Do not make assumptions "The problem is likely that ....." Always research and reference updated documentation and issues from online to be sure before doing or trying anything.          
+- When planning or working on a task, Do not make assumptions "The problem is likely that ....." Always research and reference updated documentation and issues from online to be sure before doing or trying anything.
 - We are coding. The bad news about that is there will be bugs. The good news is that everything that happens is happening because there is written code somewhere that is causing it - and for that reason we should be able to figure out how to debug anything we encounter as long as we look in the correct places.
 
 ## Core Principles
@@ -37,11 +38,12 @@ git config --local user.name && git config --local user.email
 
 ## Key Project Guidelines
 
-- After making a change, always check your terminal output for issues and errors. 
+- After making a change, always check your terminal output for issues and errors.
 - For front-end changes, always check the browser context, console, and screenshots using browser-tools mcp
 - Constantly research (web search), reference (in `.claude/*`) and revisit documentation, best practices, code snippets, etc. to ensure you're equipped with the best possible up-to-date knowledge of what we're working on.
 - Take no shortcuts, do everything the "correct / best-practice way"
-- 
+-
+
 ### Code Quality Standards
 
 - Prefer simple solutions over complex ones

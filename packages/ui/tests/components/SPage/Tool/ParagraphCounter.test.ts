@@ -1,9 +1,9 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime'
-import { describe, expect, it } from 'vitest'
-import SPageToolParagraphCounter from '../../../../components/SPage/Tool/ParagraphCounter.vue'
-import ComponentRender from '../../../componentRender'
+import { mockNuxtImport } from '@nuxt/test-utils/runtime';
+import { describe, expect, it } from 'vitest';
+import SPageToolParagraphCounter from '../../../../components/SPage/Tool/ParagraphCounter.vue';
+import ComponentRender from '../../../componentRender';
 
-mockNuxtImport('useSeoMeta', () => () => {})
+mockNuxtImport('useSeoMeta', () => () => {});
 
 describe('sPageToolParagraphCounter Snapshot', () => {
   it('renders the default snapshot correctly', async () => {
@@ -11,7 +11,7 @@ describe('sPageToolParagraphCounter Snapshot', () => {
       'SPageToolParagraphCounter',
       {},
       SPageToolParagraphCounter,
-    )
-    expect(html).toMatchSnapshot()
-  })
-})
+    );
+    expect(html).toMatchSnapshot();
+  });
+});

@@ -5,7 +5,12 @@ import { useEmail } from 'use-email'
 const EMAIL_PROVIDER = process.env.EMAIL_PROVIDER || 'mailgun'
 const emailService = useEmail(EMAIL_PROVIDER)
 
-export async function sendEmail({ to, subject, text, html }: SendEmailOptions): Promise<void> {
+export async function sendEmail({
+  to,
+  subject,
+  text,
+  html,
+}: SendEmailOptions): Promise<void> {
   try {
     const from = process.env.FROM_EMAIL
 

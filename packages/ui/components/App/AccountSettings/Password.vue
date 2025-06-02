@@ -1,19 +1,17 @@
 <script setup lang="ts">
-const { loading, updatePassword, passwordSchema } = useUserAccount()
-const state = ref({ password: '' })
+  const { loading, updatePassword, passwordSchema } = useUserAccount();
+  const state = ref({ password: '' });
 
-async function onSubmit() {
-  await updatePassword(state.value.password)
-  state.value.password = ''
-}
+  async function onSubmit() {
+    await updatePassword(state.value.password);
+    state.value.password = '';
+  }
 </script>
 
 <template>
   <UCard>
     <template #header>
-      <h3 class="font-medium">
-        Security
-      </h3>
+      <h3 class="font-medium">Security</h3>
       <p class="mt-1 text-sm text-neutral-500">
         Your credentials are encrypted and stored securely.
       </p>

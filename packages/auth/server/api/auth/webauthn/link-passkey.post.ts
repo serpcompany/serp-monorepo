@@ -1,36 +1,36 @@
-import type { InsertPasskey } from '@serp/db/types'
+import type { InsertPasskey } from '@serp/db/types';
 import {
   createCredential,
   getAndDeleteChallenge,
   storeWebAuthnChallenge,
-} from '@serp/db/server/database/queries/passkeys'
-import { linkPasskeySchema } from '@serp/db/validations/auth'
+} from '@serp/db/server/database/queries/passkeys';
+import { linkPasskeySchema } from '@serp/db/validations/auth';
 
 export default defineWebAuthnRegisterEventHandler({
   async validateUser(userBody, event) {
-    const session = await getUserSession(event)
+    const session = await getUserSession(event);
     if (session.user?.email && session.user.email !== userBody.userName) {
       throw createError({
         statusCode: 400,
         message: 'Email not matching curent session',
-      })
+      });
     }
-    return linkPasskeySchema.parse(userBody)
+    return linkPasskeySchema.parse(userBody);
   },
 
   async storeChallenge(event, challenge, attemptId) {
-    await storeWebAuthnChallenge(attemptId, challenge)
+    await storeWebAuthnChallenge(attemptId, challenge);
   },
 
   async getChallenge(event, attemptId) {
-    const challenge = await getAndDeleteChallenge(attemptId)
+    const challenge = await getAndDeleteChallenge(attemptId);
     if (!challenge)
-      throw createError({ statusCode: 404, message: 'Challenge not found' })
-    return challenge
+      throw createError({ statusCode: 404, message: 'Challenge not found' });
+    return challenge;
   },
 
   async onSuccess(event, { credential, user }) {
-    const { user: sessionUser } = await requireUserSession(event)
+    const { user: sessionUser } = await requireUserSession(event);
     const passkey: InsertPasskey = {
       id: credential.id,
       name: user.displayName || 'Default Passkey',
@@ -39,7 +39,7 @@ export default defineWebAuthnRegisterEventHandler({
       counter: credential.counter,
       backedUp: credential.backedUp,
       transports: credential.transports,
-    }
-    await createCredential(passkey)
+    };
+    await createCredential(passkey);
   },
-})
+});

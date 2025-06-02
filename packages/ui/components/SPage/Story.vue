@@ -1,14 +1,14 @@
 <script setup lang="ts">
-useHead({
-  title: 'Our Story | SERP',
-  meta: [
-    {
-      name: 'description',
-      content:
-          'Learn about SERP\'s mission to help underdogs win against digital giants and return digital power to its rightful owners.',
-    },
-  ],
-})
+  useHead({
+    title: 'Our Story | SERP',
+    meta: [
+      {
+        name: 'description',
+        content:
+          "Learn about SERP's mission to help underdogs win against digital giants and return digital power to its rightful owners.",
+      },
+    ],
+  });
 </script>
 
 <template>
@@ -113,7 +113,8 @@ useHead({
             width="300px"
             height="300px"
             style="position: absolute; z-index: 1"
-          /><a
+          />
+          <a
             href="https://badges.serp.ai/alliance.html"
             title=""
             target="_blank"
@@ -133,12 +134,12 @@ useHead({
 
 <style scoped>
   .compact-prose :deep(p) {
-  margin-top: 0.5em !important;
-  margin-bottom: 0.5em !important;
-}
+    margin-top: 0.5em !important;
+    margin-bottom: 0.5em !important;
+  }
 
-.compact-prose :deep(h2) {
-  margin-top: 1.5em !important;
-  margin-bottom: 0.5em !important;
-}
+  .compact-prose :deep(h2) {
+    margin-top: 1.5em !important;
+    margin-bottom: 0.5em !important;
+  }
 </style>

@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import vue from '@vitejs/plugin-vue'
+import vue from '@vitejs/plugin-vue';
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   extends: ['@serp/db'],
   runtimeConfig: {
     oauth: {
-      github: {
+      githubop: {
         clientId: process.env.AUTH_GITHUB_CLIENT_ID,
         clientSecret: process.env.AUTH_GITHUB_CLIENT_SECRET,
       },
@@ -31,7 +31,6 @@ export default defineNuxtConfig({
   },
   nitro: {
     rollupConfig: {
-      // @ts-expect-error - Rollup plugin type definitions are incomplete for vue plugin
       plugins: [vue()],
     },
   },
@@ -48,4 +47,4 @@ export default defineNuxtConfig({
       options: {},
     },
   },
-})
+});

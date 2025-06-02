@@ -1,65 +1,62 @@
 <script setup lang="ts">
-import type { FormSubmitEvent } from '#ui/types'
+  import type { FormSubmitEvent } from '#ui/types';
 
-import type { z } from 'zod'
-import { registerUserSchema } from '@serp/db/validations/auth'
-import middleware from '../../middleware/invite-email'
+  import type { z } from 'zod';
+  import { registerUserSchema } from '@serp/db/validations/auth';
+  import middleware from '../../middleware/invite-email';
 
-definePageMeta({
-  middleware: [middleware],
-})
-  type Schema = z.output<typeof registerUserSchema>
+  definePageMeta({
+    middleware: [middleware],
+  });
+  type Schema = z.output<typeof registerUserSchema>;
 
-const registered = ref(false)
-const loading = ref(false)
-const sentemail = ref(false)
-const { register } = useAuth()
-const inviteEmail = useState<string>('inviteEmail')
-const inviteToken = useState<string>('inviteToken')
+  const registered = ref(false);
+  const loading = ref(false);
+  const sentemail = ref(false);
+  const { register } = useAuth();
+  const inviteEmail = useState<string>('inviteEmail');
+  const inviteToken = useState<string>('inviteToken');
 
-const state = reactive<Partial<Schema>>({
-  email: inviteEmail.value || '',
-  password: undefined,
-  name: undefined,
-})
+  const state = reactive<Partial<Schema>>({
+    email: inviteEmail.value || '',
+    password: undefined,
+    name: undefined,
+  });
 
-async function onSubmit(event: FormSubmitEvent<Schema>) {
-  loading.value = true
-  try {
-    const { error, emailVerified } = await register({
-      ...event.data,
-      inviteToken: inviteToken.value,
-    })
-    if (emailVerified && !error) {
-      // If this registration was from an invite, set a cookie to track that
-      if (inviteToken.value) {
-        const fromInviteCookie = useCookie('from-invite', {
-          maxAge: 60 * 60, // 1 hour
-          secure: true,
-          sameSite: 'lax',
-        })
-        fromInviteCookie.value = 'true'
+  async function onSubmit(event: FormSubmitEvent<Schema>) {
+    loading.value = true;
+    try {
+      const { error, emailVerified } = await register({
+        ...event.data,
+        inviteToken: inviteToken.value,
+      });
+      if (emailVerified && !error) {
+        // If this registration was from an invite, set a cookie to track that
+        if (inviteToken.value) {
+          const fromInviteCookie = useCookie('from-invite', {
+            maxAge: 60 * 60, // 1 hour
+            secure: true,
+            sameSite: 'lax',
+          });
+          fromInviteCookie.value = 'true';
+        }
+
+        // Ensure client has session data and navigate to the dashboard
+        // See https://github.com/atinux/nuxt-auth-utils/issues/357
+        await nextTick();
+        await useUserSession().fetch();
+        await navigateTo('/dashboard');
+      } else {
+        if (!error) {
+          registered.value = true;
+        } else {
+          sentemail.value = true;
+        }
       }
-
-      // Ensure client has session data and navigate to the dashboard
-      // See https://github.com/atinux/nuxt-auth-utils/issues/357
-      await nextTick()
-      await useUserSession().fetch()
-      await navigateTo('/dashboard')
-    }
-    else {
-      if (!error) {
-        registered.value = true
-      }
-      else {
-        sentemail.value = true
-      }
+    } finally {
+      loading.value = false;
     }
   }
-  finally {
-    loading.value = false
-  }
-}
 </script>
 
 <template>
@@ -68,9 +65,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       <template v-if="!registered">
         <SLogo />
         <div class="text-center">
-          <p class="text-lg font-bold">
-            Get Started with Supersaas
-          </p>
+          <p class="text-lg font-bold">Get Started with Supersaas</p>
           <p class="text-sm text-neutral-500">
             Already have an account?
             <UButton
@@ -148,9 +143,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       </template>
       <UCard v-else>
         <UIcon name="i-lucide-mail-check" class="h-5 w-5" />
-        <p class="mt-4 text-lg font-bold">
-          Check your email
-        </p>
+        <p class="mt-4 text-lg font-bold">Check your email</p>
         <p class="mt-1 text-sm text-neutral-500">
           We've sent you an email to verify your account.
         </p>

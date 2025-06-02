@@ -1,7 +1,7 @@
 // tests/components/GlossaryTermCard.snapshot.test.ts
-import { describe, expect, it } from 'vitest'
-import GlossaryTermCard from '../../components/GlossaryTermCard.vue'
-import ComponentRender from '../componentRender'
+import { describe, expect, it } from 'vitest';
+import GlossaryTermCard from '../../components/GlossaryTermCard.vue';
+import ComponentRender from '../componentRender';
 
 describe('glossaryTermCard Snapshot', () => {
   it.each([
@@ -38,8 +38,8 @@ describe('glossaryTermCard Snapshot', () => {
         `GlossaryTermCard ${desc}`,
         options,
         GlossaryTermCard,
-      )
-      expect(html).toMatchSnapshot()
+      );
+      expect(html).toMatchSnapshot();
     },
-  )
-})
+  );
+});

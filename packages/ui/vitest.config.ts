@@ -1,5 +1,5 @@
 // vitest.config.ts
-import { defineVitestConfig } from '@nuxt/test-utils/config'
+import { defineVitestConfig } from '@nuxt/test-utils/config';
 
 export default defineVitestConfig({
   test: {
@@ -15,4 +15,4 @@ export default defineVitestConfig({
     snapshotSerializers: ['./node_modules/vue3-snapshot-serializer/index.js'],
     setupFiles: ['./tests/setupTests.ts'],
   },
-})
+});

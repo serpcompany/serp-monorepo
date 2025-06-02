@@ -1,26 +1,26 @@
-import { renderSuspended } from '@nuxt/test-utils/runtime'
-import { screen } from '@testing-library/vue'
-import { describe, expect, it } from 'vitest'
-import HeroOne from '~/components/Section/HeroOne.vue'
+import { renderSuspended } from '@nuxt/test-utils/runtime';
+import { screen } from '@testing-library/vue';
+import { describe, expect, it } from 'vitest';
+import HeroOne from '~/components/Section/HeroOne.vue';
 
 describe('heroOne', () => {
   it('should render an title', async () => {
-    await renderSuspended(HeroOne, { props: { title: 'Some Title' } })
-    const heading = screen.getByRole('heading', { name: 'Some Title' })
-    expect(heading).toBeInTheDocument()
-  })
+    await renderSuspended(HeroOne, { props: { title: 'Some Title' } });
+    const heading = screen.getByRole('heading', { name: 'Some Title' });
+    expect(heading).toBeInTheDocument();
+  });
 
   it('given a subtitle prop, should render a subtitle', async () => {
     await renderSuspended(HeroOne, {
       props: { title: 'Some Title', subtitle: 'Some Subtitle' },
-    })
-    const subtitle = screen.getByText('Some Subtitle')
-    expect(subtitle).toBeInTheDocument()
-  })
+    });
+    const subtitle = screen.getByText('Some Subtitle');
+    expect(subtitle).toBeInTheDocument();
+  });
 
   it('if we dont provide a subtitle, the subtitle area should not render', async () => {
-    await renderSuspended(HeroOne, { props: { title: 'Some Title' } })
-    const subtitle = screen.queryByTestId('subtitle')
-    expect(subtitle).not.toBeInTheDocument()
-  })
-})
+    await renderSuspended(HeroOne, { props: { title: 'Some Title' } });
+    const subtitle = screen.queryByTestId('subtitle');
+    expect(subtitle).not.toBeInTheDocument();
+  });
+});

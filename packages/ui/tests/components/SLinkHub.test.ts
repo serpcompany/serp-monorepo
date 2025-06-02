@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest'
-import SLinkHub from '../../components/SLinkHub.vue'
-import ComponentRender from '../componentRender'
+import { describe, expect, it } from 'vitest';
+import SLinkHub from '../../components/SLinkHub.vue';
+import ComponentRender from '../componentRender';
 
 describe('sLinkHub', () => {
   it.each([
@@ -38,8 +38,8 @@ describe('sLinkHub', () => {
   ])(
     'renders %s correctly',
     async (desc: string, options: { props: unknown }) => {
-      const html = await ComponentRender(`SLinkHub ${desc}`, options, SLinkHub)
-      expect(html).toMatchSnapshot()
+      const html = await ComponentRender(`SLinkHub ${desc}`, options, SLinkHub);
+      expect(html).toMatchSnapshot();
     },
-  )
-})
+  );
+});

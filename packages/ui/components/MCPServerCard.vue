@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { MCPServerIndex } from '@serp/types/types'
-import { NuxtLink } from '#components'
+  import type { MCPServerIndex } from '@serp/types/types';
+  import { NuxtLink } from '#components';
 
-interface Props {
-  server: MCPServerIndex
-}
+  interface Props {
+    server: MCPServerIndex;
+  }
 
-defineProps<Props>()
+  defineProps<Props>();
 </script>
 
 <template>

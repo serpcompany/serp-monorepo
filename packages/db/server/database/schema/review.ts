@@ -1,4 +1,11 @@
-import { boolean, integer, serial, text, timestamp, varchar } from 'drizzle-orm/pg-core'
+import {
+  boolean,
+  integer,
+  serial,
+  text,
+  timestamp,
+  varchar,
+} from 'drizzle-orm/pg-core'
 import { userSchema } from './index'
 
 export const review = userSchema.table('review', {

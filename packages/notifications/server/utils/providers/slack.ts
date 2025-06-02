@@ -23,7 +23,9 @@ export interface SlackNotificationOptions {
   channel?: string
 }
 
-export async function sendSlackNotification(options: SlackNotificationOptions): Promise<void> {
+export async function sendSlackNotification(
+  options: SlackNotificationOptions,
+): Promise<void> {
   const { message, channel = process.env.SLACK_CHANNEL_ID } = options
 
   try {

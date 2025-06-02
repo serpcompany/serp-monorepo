@@ -1,10 +1,4 @@
-import {
-  boolean,
-  serial,
-  text,
-  timestamp,
-  varchar,
-} from 'drizzle-orm/pg-core'
+import { boolean, serial, text, timestamp, varchar } from 'drizzle-orm/pg-core'
 import { userSchema } from './index'
 
 export const user = userSchema.table('user', {

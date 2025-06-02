@@ -1,13 +1,13 @@
 <script setup lang="ts">
-definePageMeta({
-  middleware: ['auth'],
-})
+  definePageMeta({
+    middleware: ['auth'],
+  });
 
-const { user } = useUserSession()
-const route = useRoute()
-const isOnboardRoute = computed(() =>
-  route.path.startsWith('/dashboard/onboard'),
-)
+  const { user } = useUserSession();
+  const route = useRoute();
+  const isOnboardRoute = computed(() =>
+    route.path.startsWith('/dashboard/onboard'),
+  );
 </script>
 
 <template>

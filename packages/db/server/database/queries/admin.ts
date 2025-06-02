@@ -6,7 +6,9 @@ type Feedback = typeof feedback.$inferSelect
 type InsertFeedback = typeof feedback.$inferInsert
 type InsertSubscriber = typeof subscriber.$inferInsert
 
-export async function createFeedback(payload: InsertFeedback): Promise<Feedback> {
+export async function createFeedback(
+  payload: InsertFeedback,
+): Promise<Feedback> {
   const [feedbackRecord] = await getDb()
     .insert(feedback)
     .values(payload)
@@ -15,7 +17,9 @@ export async function createFeedback(payload: InsertFeedback): Promise<Feedback>
   return feedbackRecord
 }
 
-export async function getAllFeedback(): Promise<Array<Feedback & { user: Partial<typeof user.$inferSelect> | null }>> {
+export async function getAllFeedback(): Promise<
+  Array<Feedback & { user: Partial<typeof user.$inferSelect> | null }>
+> {
   const rows = await getDb()
     .select()
     .from(feedback)
@@ -34,7 +38,10 @@ export async function getAllFeedback(): Promise<Array<Feedback & { user: Partial
   return feedbackRecords
 }
 
-export async function updateFeedback(id: number, payload: Partial<Feedback>): Promise<Feedback> {
+export async function updateFeedback(
+  id: number,
+  payload: Partial<Feedback>,
+): Promise<Feedback> {
   const [feedbackRecord] = await getDb()
     .update(feedback)
     .set(payload)
@@ -53,7 +60,11 @@ export async function deleteFeedback(id: number): Promise<Feedback[]> {
   return feedbackRecord
 }
 
-export async function getFeedbackById(id: number): Promise<(Feedback & { user: Partial<typeof user.$inferSelect> | null }) | null> {
+export async function getFeedbackById(
+  id: number,
+): Promise<
+  (Feedback & { user: Partial<typeof user.$inferSelect> | null }) | null
+  > {
   const [row] = await getDb()
     .select()
     .from(feedback)
@@ -77,7 +88,9 @@ export async function getFeedbackByUserId(userId: number): Promise<Feedback[]> {
   return feedbackRecords
 }
 
-export async function insertSubscriber(payload: InsertSubscriber): Promise<typeof subscriber.$inferSelect> {
+export async function insertSubscriber(
+  payload: InsertSubscriber,
+): Promise<typeof subscriber.$inferSelect> {
   const [subscriberRecord] = await getDb()
     .insert(subscriber)
     .values(payload)
@@ -86,7 +99,9 @@ export async function insertSubscriber(payload: InsertSubscriber): Promise<typeo
   return subscriberRecord
 }
 
-export async function getAllSubscribers(): Promise<Array<typeof subscriber.$inferSelect>> {
+export async function getAllSubscribers(): Promise<
+  Array<typeof subscriber.$inferSelect>
+> {
   const subscribers = await getDb().select().from(subscriber).execute()
   return subscribers
 }

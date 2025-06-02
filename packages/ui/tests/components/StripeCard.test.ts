@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars  */
 
-import { mockNuxtImport } from '@nuxt/test-utils/runtime'
-import { describe, expect, it } from 'vitest'
-import { ref } from 'vue'
-import StripeCard from '../../components/StripeCard.vue'
-import ComponentRender from '../componentRender'
+import { mockNuxtImport } from '@nuxt/test-utils/runtime';
+import { describe, expect, it } from 'vitest';
+import { ref } from 'vue';
+import StripeCard from '../../components/StripeCard.vue';
+import ComponentRender from '../componentRender';
 
 mockNuxtImport('useClientStripe', () => async () => ({
   stripe: {
@@ -15,14 +15,14 @@ mockNuxtImport('useClientStripe', () => async () => ({
     }),
     confirmPayment: async () => ({ error: null }),
   },
-}))
+}));
 
-mockNuxtImport('useColorMode', () => () => ref('light'))
+mockNuxtImport('useColorMode', () => () => ref('light'));
 
 describe('stripeCard Snapshot', () => {
   const scenarios: [
     string,
-    { props: Record<string, unknown>, slots?: Record<string, unknown> },
+    { props: Record<string, unknown>; slots?: Record<string, unknown> },
   ][] = [
     ['with default props', { props: {} }],
     [
@@ -43,17 +43,17 @@ describe('stripeCard Snapshot', () => {
         slots: { content: () => '<div>Custom Payment Intent Trigger</div>' },
       },
     ],
-  ]
+  ];
 
   it.each(scenarios)(
     'renders %s correctly',
-    async (desc: string, options: { props: unknown, slots?: unknown }) => {
+    async (desc: string, options: { props: unknown; slots?: unknown }) => {
       const html = await ComponentRender(
         `StripeCard ${desc}`,
         options,
         StripeCard,
-      )
-      expect(html).toMatchSnapshot()
+      );
+      expect(html).toMatchSnapshot();
     },
-  )
-})
+  );
+});

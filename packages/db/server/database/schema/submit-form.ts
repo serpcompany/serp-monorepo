@@ -1,4 +1,13 @@
-import { boolean, integer, jsonb, serial, text, timestamp, uuid, varchar } from 'drizzle-orm/pg-core'
+import {
+  boolean,
+  integer,
+  jsonb,
+  serial,
+  text,
+  timestamp,
+  uuid,
+  varchar,
+} from 'drizzle-orm/pg-core'
 import { userSchema } from './index'
 
 export const submitForm = userSchema.table('submit_form', {

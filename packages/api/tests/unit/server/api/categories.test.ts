@@ -32,7 +32,12 @@ describe('categories API', () => {
         slug: 'category-1',
         module: 'test-module',
       },
-      { id: '2', name: 'Category 2', slug: 'category-2', module: 'test-module' },
+      {
+        id: '2',
+        name: 'Category 2',
+        slug: 'category-2',
+        module: 'test-module',
+      },
     ]
     mockDb.execute.mockResolvedValueOnce(mockCategories)
 

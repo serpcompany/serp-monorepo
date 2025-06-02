@@ -1,14 +1,15 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('index', () =>
-  queryCollection('index').first())
+  const { data: page } = await useAsyncData('index', () =>
+    queryCollection('index').first(),
+  );
 
-useSeoMeta({
-  titleTemplate: '',
-  title: page.value?.title,
-  ogTitle: page.value?.title,
-  description: page.value?.description,
-  ogDescription: page.value?.description,
-})
+  useSeoMeta({
+    titleTemplate: '',
+    title: page.value?.title,
+    ogTitle: page.value?.title,
+    description: page.value?.description,
+    ogDescription: page.value?.description,
+  });
 </script>
 
 <template>

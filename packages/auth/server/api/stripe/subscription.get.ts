@@ -1,17 +1,17 @@
-import { getDb } from '@serp/db/server/database'
+import { getDb } from '@serp/db/server/database';
 import {
   getSubscriptionByTeamId,
   getSubscriptionByUserId,
-} from '@serp/db/server/database/queries/subscriptions'
+} from '@serp/db/server/database/queries/subscriptions';
 import {
   price,
   subscription as subscriptionTable,
-} from '@serp/db/server/database/schema'
-import { and, eq, inArray, sql } from 'drizzle-orm'
+} from '@serp/db/server/database/schema';
+import { and, eq, inArray, sql } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
-  const { user } = await requireUserSession(event)
-  const { teamId, type } = getQuery(event)
+  const { user } = await requireUserSession(event);
+  const { teamId, type } = getQuery(event);
 
   // teamId is optional - if not provided, this is user context
 
@@ -29,22 +29,21 @@ export default defineEventHandler(async (event) => {
           sql`${subscriptionTable.metadata}->>'type' = 'featured'`,
         ),
       )
-      .execute()
+      .execute();
 
-    return featuredSubs.map(row => ({
+    return featuredSubs.map((row) => ({
       ...row.subscription,
       expand: { price_id: row.price },
-    }))
+    }));
   }
 
   // Handle team or user context
   if (teamId) {
-    const subscription = await getSubscriptionByTeamId(Number(teamId))
-    return subscription
-  }
-  else {
+    const subscription = await getSubscriptionByTeamId(Number(teamId));
+    return subscription;
+  } else {
     // User context
-    const subscription = await getSubscriptionByUserId(user.id)
-    return subscription
+    const subscription = await getSubscriptionByUserId(user.id);
+    return subscription;
   }
-})
+});

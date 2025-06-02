@@ -1,13 +1,13 @@
-import { describe, expect, it } from 'vitest'
-import ArtistsLinkHub from '../../components/ArtistsLinkHub.vue'
-import ComponentRender from '../componentRender'
+import { describe, expect, it } from 'vitest';
+import ArtistsLinkHub from '../../components/ArtistsLinkHub.vue';
+import ComponentRender from '../componentRender';
 
 describe('artistsLinkHub Snapshot', () => {
   const baseArtists = [
     { slug: 'artist-1', name: 'Artist 1' },
     { slug: 'artist-2', name: 'Artist 2' },
     { slug: 'artist-3', name: 'Artist 3' },
-  ]
+  ];
 
   it.each([
     ['with no artists', { props: { artists: [] } }],
@@ -20,8 +20,8 @@ describe('artistsLinkHub Snapshot', () => {
         `ArtistsLinkHub ${desc}`,
         options,
         ArtistsLinkHub,
-      )
-      expect(html).toMatchSnapshot()
+      );
+      expect(html).toMatchSnapshot();
     },
-  )
-})
+  );
+});

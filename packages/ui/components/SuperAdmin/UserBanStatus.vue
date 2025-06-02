@@ -1,19 +1,18 @@
 <script lang="ts" setup>
-import type { User } from '@serp/db/types/database'
-import { useDateFormat } from '@vueuse/core'
+  import type { User } from '@serp/db/types/database';
+  import { useDateFormat } from '@vueuse/core';
 
-defineProps<{
-  user: User
-  loading: boolean
-}>()
+  defineProps<{
+    user: User;
+    loading: boolean;
+  }>();
 
-defineEmits<(e: 'liftBan', user: User) => void>()
+  defineEmits<(e: 'liftBan', user: User) => void>();
 
-function formatDate(date: string | Date | undefined) {
-  if (!date)
-    return 'NA'
-  return useDateFormat(date, 'MMM D, YYYY').value
-}
+  function formatDate(date: string | Date | undefined) {
+    if (!date) return 'NA';
+    return useDateFormat(date, 'MMM D, YYYY').value;
+  }
 </script>
 
 <template>
@@ -50,7 +49,5 @@ function formatDate(date: string | Date | undefined) {
       </template>
     </UPopover>
   </div>
-  <div v-else>
-    No
-  </div>
+  <div v-else>No</div>
 </template>

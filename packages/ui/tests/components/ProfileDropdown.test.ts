@@ -1,24 +1,24 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { ref } from 'vue'
-import ProfileDropdown from '../../components/ProfileDropdown.client.vue'
-import ComponentRender from '../componentRender'
+import { mockNuxtImport } from '@nuxt/test-utils/runtime';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { ref } from 'vue';
+import ProfileDropdown from '../../components/ProfileDropdown.client.vue';
+import ComponentRender from '../componentRender';
 
 // Declare a mutable session_ variable.
-let session_: { loggedIn: unknown, user: unknown, clear: unknown }
+let session_: { loggedIn: unknown; user: unknown; clear: unknown };
 
 // Mock the useUserSession composable
-mockNuxtImport('useUserSession', () => () => session_)
+mockNuxtImport('useUserSession', () => () => session_);
 
 describe('profileDropdown Snapshot', () => {
   // Reset session_ before each test.
   beforeEach(() => {
-    session_ = { loggedIn: ref(false), user: ref(null), clear: vi.fn() }
-  })
+    session_ = { loggedIn: ref(false), user: ref(null), clear: vi.fn() };
+  });
 
   const scenarios: [
     string,
-    { session: { loggedIn: unknown, user: unknown, clear: unknown } },
+    { session: { loggedIn: unknown; user: unknown; clear: unknown } },
   ][] = [
     [
       'when logged in',
@@ -44,18 +44,18 @@ describe('profileDropdown Snapshot', () => {
         },
       },
     ],
-  ]
+  ];
 
   it.each(scenarios)('renders %s correctly', async (desc, { session }) => {
     // Update the session for this scenario.
-    session_ = session
+    session_ = session;
 
     // Render the component and generate the snapshot.
     const html = await ComponentRender(
       `ProfileDropdown ${desc}`,
       {},
       ProfileDropdown,
-    )
-    expect(html).toMatchSnapshot()
-  })
-})
+    );
+    expect(html).toMatchSnapshot();
+  });
+});

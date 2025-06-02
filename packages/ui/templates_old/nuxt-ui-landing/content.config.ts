@@ -1,4 +1,4 @@
-import { defineCollection, z } from '@nuxt/content'
+import { defineCollection, z } from '@nuxt/content';
 
 const variantEnum = z.enum([
   'solid',
@@ -7,7 +7,7 @@ const variantEnum = z.enum([
   'soft',
   'ghost',
   'link',
-])
+]);
 const colorEnum = z.enum([
   'primary',
   'secondary',
@@ -16,13 +16,13 @@ const colorEnum = z.enum([
   'warning',
   'success',
   'info',
-])
-const sizeEnum = z.enum(['xs', 'sm', 'md', 'lg', 'xl'])
+]);
+const sizeEnum = z.enum(['xs', 'sm', 'md', 'lg', 'xl']);
 
 const baseSchema = {
   title: z.string().nonempty(),
   description: z.string().nonempty(),
-}
+};
 
 const linkSchema = z.object({
   label: z.string().nonempty(),
@@ -33,14 +33,14 @@ const linkSchema = z.object({
   target: z.string().optional(),
   color: colorEnum,
   variant: variantEnum,
-})
+});
 
 const imageSchema = z.object({
   src: z.string().nonempty(),
   alt: z.string().optional(),
   loading: z.string().optional(),
   srcset: z.string().optional(),
-})
+});
 
 const featureItemSchema = z.object({
   ...baseSchema,
@@ -58,28 +58,28 @@ const featureItemSchema = z.object({
     leadingIcon: z.string().optional(),
     leading: z.string().optional(),
   }),
-})
+});
 
 const sectionSchema = z.object({
   headline: z.string().optional(),
   ...baseSchema,
   features: z.array(featureItemSchema),
-})
+});
 
 const userSchema = z.object({
   name: z.string().nonempty(),
   description: z.string().nonempty(),
   to: z.string().nonempty(),
   avatar: imageSchema,
-})
+});
 
 const sectionWithLinksSchema = sectionSchema.extend({
   links: z.array(linkSchema),
-})
+});
 
 const testimonialUserSchema = userSchema.extend({
   target: z.string().nonempty(),
-})
+});
 
 export const collections = {
   content: defineCollection({
@@ -129,4 +129,4 @@ export const collections = {
       cta: sectionWithLinksSchema,
     }),
   }),
-}
+};

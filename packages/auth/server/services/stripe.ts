@@ -1,16 +1,16 @@
-import Stripe from 'stripe'
+import Stripe from 'stripe';
 
 export const stripe = new Stripe(
-  process.env.STRIPE_SECRET_KEY
-  || process.env.STRIPE_SECRET_KEY
-  || 'development',
-)
+  process.env.STRIPE_SECRET_KEY ||
+    process.env.STRIPE_SECRET_KEY ||
+    'development',
+);
 
 export interface CreateCheckoutSessionParams {
-  customerId: string
-  priceId: string
-  teamSlug: string
-  metadata?: Record<string, unknown>
+  customerId: string;
+  priceId: string;
+  teamSlug: string;
+  metadata?: Record<string, unknown>;
 }
 
 export const stripeService = {
@@ -19,14 +19,13 @@ export const stripeService = {
       const customer = await stripe.customers.create({
         email,
         metadata: { teamId },
-      })
-      return customer.id
-    }
-    catch {
+      });
+      return customer.id;
+    } catch {
       throw createError({
         statusCode: 500,
         statusMessage: 'Failed to create Stripe customer',
-      })
+      });
     }
   },
 
@@ -63,39 +62,36 @@ export const stripeService = {
               metadata,
             }
           : undefined,
-      })
-    }
-    catch {
+      });
+    } catch {
       throw createError({
         statusCode: 500,
         statusMessage: 'Failed to create checkout session',
-      })
+      });
     }
   },
 
   async getCheckoutSession(sessionId: string) {
     try {
-      const session = await stripe.checkout.sessions.retrieve(sessionId)
-      return session
-    }
-    catch {
+      const session = await stripe.checkout.sessions.retrieve(sessionId);
+      return session;
+    } catch {
       throw createError({
         statusCode: 500,
         statusMessage: 'Failed to get checkout session',
-      })
+      });
     }
   },
 
   async getSubscription(subscriptionId: string) {
     try {
-      const subscription = await stripe.subscriptions.retrieve(subscriptionId)
-      return subscription
-    }
-    catch {
+      const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+      return subscription;
+    } catch {
       throw createError({
         statusCode: 500,
         statusMessage: 'Failed to get subscription',
-      })
+      });
     }
   },
 
@@ -103,14 +99,13 @@ export const stripeService = {
     try {
       const session = await stripe.billingPortal.sessions.create({
         customer: customerId,
-      })
-      return session
-    }
-    catch {
+      });
+      return session;
+    } catch {
       throw createError({
         statusCode: 500,
         statusMessage: 'Failed to create billing portal session',
-      })
+      });
     }
   },
-}
+};

@@ -1,6 +1,6 @@
-import antfu from '@antfu/eslint-config'
+import antfu from '@antfu/eslint-config';
 
-import { createConfigForNuxt } from '@nuxt/eslint-config/flat'
+import { createConfigForNuxt } from '@nuxt/eslint-config/flat';
 
 export default createConfigForNuxt({
   features: {
@@ -69,7 +69,7 @@ export default createConfigForNuxt({
 
       // Component size limits
       'max-lines': ['warn', 300],
-      'complexity': ['warn', 10],
+      complexity: ['warn', 10],
 
       // Other helpful limits
       'max-lines-per-function': ['warn', 50],
@@ -84,4 +84,4 @@ export default createConfigForNuxt({
       'jsdoc/check-param-names': 'error',
     },
   }),
-)
+);

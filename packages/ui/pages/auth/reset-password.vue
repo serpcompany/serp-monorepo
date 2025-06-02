@@ -1,31 +1,31 @@
 <script setup lang="ts">
-import type { FormSubmitEvent } from '#ui/types'
-import { z } from 'zod'
+  import type { FormSubmitEvent } from '#ui/types';
+  import { z } from 'zod';
 
-const route = useRoute()
-const router = useRouter()
-const loading = ref(false)
-const { resetPassword } = useAuth()
+  const route = useRoute();
+  const router = useRouter();
+  const loading = ref(false);
+  const { resetPassword } = useAuth();
 
-const resetPasswordSchema = z.object({
-  password: z.string().min(8, 'Password must be at least 8 characters'),
-})
+  const resetPasswordSchema = z.object({
+    password: z.string().min(8, 'Password must be at least 8 characters'),
+  });
 
-  type Schema = z.output<typeof resetPasswordSchema>
+  type Schema = z.output<typeof resetPasswordSchema>;
 
-const state = reactive<Partial<Schema>>({
-  password: undefined,
-})
+  const state = reactive<Partial<Schema>>({
+    password: undefined,
+  });
 
-async function onSubmit(event: FormSubmitEvent<Schema>) {
-  loading.value = true
-  const token = route.query.token as string
-  const { error } = await resetPassword(event.data.password, token)
-  if (!error) {
-    await router.push('/auth/login')
+  async function onSubmit(event: FormSubmitEvent<Schema>) {
+    loading.value = true;
+    const token = route.query.token as string;
+    const { error } = await resetPassword(event.data.password, token);
+    if (!error) {
+      await router.push('/auth/login');
+    }
+    loading.value = false;
   }
-  loading.value = false
-}
 </script>
 
 <template>
@@ -33,9 +33,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     <div class="mx-auto w-full max-w-sm space-y-4">
       <SLogo />
       <div class="text-center">
-        <p class="text-lg font-bold">
-          Reset your password
-        </p>
+        <p class="text-lg font-bold">Reset your password</p>
         <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
           Enter your new password below.
         </p>

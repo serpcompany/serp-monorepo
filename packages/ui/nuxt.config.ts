@@ -36,4 +36,4 @@ export default defineNuxtConfig({
       ignore: ['/__nuxt_content/content/sql_dump'],
     },
   },
-})
+});

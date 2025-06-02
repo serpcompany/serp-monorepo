@@ -1,36 +1,37 @@
 <script setup lang="ts">
-const props = withDefaults(
-  defineProps<{
-    adSlot: string
-    format?: string
-    className?: string
-    containerId?: string
-    adClient?: string
-  }>(),
-  {
-    format: 'auto',
-    className: '',
-    containerId: '',
-    adClient: undefined,
-  },
-)
+  const props = withDefaults(
+    defineProps<{
+      adSlot: string;
+      format?: string;
+      className?: string;
+      containerId?: string;
+      adClient?: string;
+    }>(),
+    {
+      format: 'auto',
+      className: '',
+      containerId: '',
+      adClient: undefined,
+    },
+  );
 
-// Get app config
-const appConfig = useAppConfig()
+  // Get app config
+  const appConfig = useAppConfig();
 
-// Default AdSense publisher ID - can be overridden using app.config.ts
-const defaultAdClient = 'ca-pub-2343633734899216'
+  // Default AdSense publisher ID - can be overridden using app.config.ts
+  const defaultAdClient = 'ca-pub-2343633734899216';
 
-// Use provided adClient, or app config value, or default
-const adClient = computed(() => {
-  return props.adClient || appConfig.adsense?.publisherId || defaultAdClient
-})
+  // Use provided adClient, or app config value, or default
+  const adClient = computed(() => {
+    return props.adClient || appConfig.adsense?.publisherId || defaultAdClient;
+  });
 </script>
 
 <template>
   <div
     :id="containerId || `ad-container-${adSlot}`"
-    class="ad-container" :class="[className]"
+    class="ad-container"
+    :class="[className]"
     :data-ad-unit="adSlot"
   >
     <ClientOnly>
@@ -49,12 +50,12 @@ const adClient = computed(() => {
 
 <style scoped>
   .ad-container {
-  min-height: 250px;
-  width: 100%;
-  margin: 1.5rem 0;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    min-height: 250px;
+    width: 100%;
+    margin: 1.5rem 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>

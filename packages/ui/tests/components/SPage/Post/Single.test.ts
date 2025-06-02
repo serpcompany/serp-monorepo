@@ -1,11 +1,11 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime'
-import { describe, expect, it } from 'vitest'
-import SPagePostSingle from '../../../../components/SPage/Post/Single.vue'
-import ComponentRender from '../../../componentRender'
-import '../../../mockUseUserSession'
+import { mockNuxtImport } from '@nuxt/test-utils/runtime';
+import { describe, expect, it } from 'vitest';
+import SPagePostSingle from '../../../../components/SPage/Post/Single.vue';
+import ComponentRender from '../../../componentRender';
+import '../../../mockUseUserSession';
 
-mockNuxtImport('useHead', () => () => {})
-mockNuxtImport('useSeoMeta', () => () => {})
+mockNuxtImport('useHead', () => () => {});
+mockNuxtImport('useSeoMeta', () => () => {});
 mockNuxtImport('usePostComments', () => () => ({
   comments: [
     {
@@ -14,17 +14,17 @@ mockNuxtImport('usePostComments', () => () => ({
       replies: [],
     },
   ],
-}))
-mockNuxtImport('useRuntimeConfig', () => () => config_)
-mockNuxtImport('usePost', () => () => postData_)
+}));
+mockNuxtImport('useRuntimeConfig', () => () => config_);
+mockNuxtImport('usePost', () => () => postData_);
 
 let config_: Record<string, unknown> = {
   app: { baseURL: '/' },
   public: {
     useAuth: false,
   },
-}
-let postData_: unknown = {}
+};
+let postData_: unknown = {};
 
 describe('sPagePostSingle Snapshot', () => {
   const defaultPostData = {
@@ -37,10 +37,10 @@ describe('sPagePostSingle Snapshot', () => {
     excerpt: 'Test excerpt',
     categories: [{ id: 1, slug: 'tech', name: 'Tech' }],
     content: '<p>Test content</p>',
-  }
+  };
   const scenarios: [
     string,
-    { config: Record<string, unknown>, postData: unknown },
+    { config: Record<string, unknown>; postData: unknown },
   ][] = [
     [
       'with basic post data (with auth)',
@@ -98,19 +98,19 @@ describe('sPagePostSingle Snapshot', () => {
         postData: { ...defaultPostData, module: 'movies' },
       },
     ],
-  ]
+  ];
   it.each(scenarios)(
     'renders %s correctly',
     async (desc, { config, postData }) => {
-      config_ = config
-      postData_ = postData
+      config_ = config;
+      postData_ = postData;
 
       const html = await ComponentRender(
         `SPagePostSingle ${desc}`,
         {},
         SPagePostSingle,
-      )
-      expect(html).toMatchSnapshot()
+      );
+      expect(html).toMatchSnapshot();
     },
-  )
-})
+  );
+});

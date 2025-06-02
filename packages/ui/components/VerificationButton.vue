@@ -1,126 +1,120 @@
 <script setup lang="ts">
-const props = defineProps<{
-  id: number | string
-  domain: string
-  isVerifiedProp: number | boolean
-}>()
+  const props = defineProps<{
+    id: number | string;
+    domain: string;
+    isVerifiedProp: number | boolean;
+  }>();
 
-const { isVerifiedProp } = toRefs(props)
-const isVerified = ref(isVerifiedProp.value)
-watch(isVerifiedProp, v => (isVerified.value = v))
+  const { isVerifiedProp } = toRefs(props);
+  const isVerified = ref(isVerifiedProp.value);
+  watch(isVerifiedProp, (v) => (isVerified.value = v));
 
-const { loggedIn, user } = useUserSession()
-const toast = useToast()
+  const { loggedIn, user } = useUserSession();
+  const toast = useToast();
 
-const modalOpen = ref(false)
-const accountLoading = ref(false)
-const emailLoading = ref(false)
-const customEmail = ref('')
+  const modalOpen = ref(false);
+  const accountLoading = ref(false);
+  const emailLoading = ref(false);
+  const customEmail = ref('');
 
-async function claimWithAccount() {
-  if (!loggedIn.value) {
-    toast.add({
-      id: 'entity-verification-login',
-      title: 'Login required',
-      description: 'You need to login to claim this entity.',
-      icon: 'exclamation-circle',
-    })
-    return
-  }
-  if (!user.value?.email) {
-    toast.add({
-      id: 'claim-entity-error',
-      title: 'Error',
-      description: 'No email found on your account.',
-      icon: 'i-heroicons-exclamation-circle',
-    })
-    return
-  }
-
-  accountLoading.value = true
-  try {
-    const res = await $fetch(`/api/entity/claim/${props.id}`, {
-      method: 'POST',
-    })
-    if (res.message === 'success') {
+  async function claimWithAccount() {
+    if (!loggedIn.value) {
       toast.add({
-        id: 'claim-entity-success',
-        title: 'Success',
-        description: 'Entity claimed successfully.',
-        icon: 'check-circle',
-      })
-      isVerified.value = user?.id
-      modalOpen.value = false
+        id: 'entity-verification-login',
+        title: 'Login required',
+        description: 'You need to login to claim this entity.',
+        icon: 'exclamation-circle',
+      });
+      return;
     }
-    else {
+    if (!user.value?.email) {
       toast.add({
         id: 'claim-entity-error',
         title: 'Error',
-        description: `Failed to claim the entity. - ${res.message}`,
+        description: 'No email found on your account.',
         icon: 'i-heroicons-exclamation-circle',
-      })
+      });
+      return;
     }
-  }
-  catch (error) {
-    toast.add({
-      id: 'claim-entity-error',
-      title: 'Error',
-      description: 'An error occurred while claiming the entity.',
-      icon: 'i-heroicons-exclamation-circle',
-    })
-  }
-  finally {
-    accountLoading.value = false
-  }
-}
 
-async function sendVerificationEmail() {
-  if (!customEmail.value) {
-    toast.add({
-      id: 'entity-verification-email-error',
-      title: 'Error',
-      description: 'Please enter an email address.',
-      icon: 'i-heroicons-exclamation-circle',
-    })
-    return
-  }
-
-  emailLoading.value = true
-  try {
-    const res = await $fetch('/api/entity/verify/email/initiate', {
-      method: 'POST',
-      body: { id: Number(props.id), email: customEmail.value },
-    })
-    if (res.ok) {
+    accountLoading.value = true;
+    try {
+      const res = await $fetch(`/api/entity/claim/${props.id}`, {
+        method: 'POST',
+      });
+      if (res.message === 'success') {
+        toast.add({
+          id: 'claim-entity-success',
+          title: 'Success',
+          description: 'Entity claimed successfully.',
+          icon: 'check-circle',
+        });
+        isVerified.value = user?.id;
+        modalOpen.value = false;
+      } else {
+        toast.add({
+          id: 'claim-entity-error',
+          title: 'Error',
+          description: `Failed to claim the entity. - ${res.message}`,
+          icon: 'i-heroicons-exclamation-circle',
+        });
+      }
+    } catch (error) {
       toast.add({
-        id: 'entity-verification-email-sent',
-        title: 'Success',
-        description: 'Verification email sent!',
-        icon: 'check-circle',
-      })
-      modalOpen.value = false
+        id: 'claim-entity-error',
+        title: 'Error',
+        description: 'An error occurred while claiming the entity.',
+        icon: 'i-heroicons-exclamation-circle',
+      });
+    } finally {
+      accountLoading.value = false;
     }
-    else {
+  }
+
+  async function sendVerificationEmail() {
+    if (!customEmail.value) {
       toast.add({
         id: 'entity-verification-email-error',
         title: 'Error',
-        description: `Failed to send email. - ${res.error}`,
+        description: 'Please enter an email address.',
         icon: 'i-heroicons-exclamation-circle',
-      })
+      });
+      return;
+    }
+
+    emailLoading.value = true;
+    try {
+      const res = await $fetch('/api/entity/verify/email/initiate', {
+        method: 'POST',
+        body: { id: Number(props.id), email: customEmail.value },
+      });
+      if (res.ok) {
+        toast.add({
+          id: 'entity-verification-email-sent',
+          title: 'Success',
+          description: 'Verification email sent!',
+          icon: 'check-circle',
+        });
+        modalOpen.value = false;
+      } else {
+        toast.add({
+          id: 'entity-verification-email-error',
+          title: 'Error',
+          description: `Failed to send email. - ${res.error}`,
+          icon: 'i-heroicons-exclamation-circle',
+        });
+      }
+    } catch (error) {
+      toast.add({
+        id: 'entity-verification-email-error',
+        title: 'Error',
+        description: 'An error occurred while sending verification email.',
+        icon: 'i-heroicons-exclamation-circle',
+      });
+    } finally {
+      emailLoading.value = false;
     }
   }
-  catch (error) {
-    toast.add({
-      id: 'entity-verification-email-error',
-      title: 'Error',
-      description: 'An error occurred while sending verification email.',
-      icon: 'i-heroicons-exclamation-circle',
-    })
-  }
-  finally {
-    emailLoading.value = false
-  }
-}
 </script>
 
 <template>
@@ -154,7 +148,7 @@ async function sendVerificationEmail() {
               </UButton>
             </div>
 
-            <hr>
+            <hr />
 
             <div>
               <p class="mb-2 font-medium">

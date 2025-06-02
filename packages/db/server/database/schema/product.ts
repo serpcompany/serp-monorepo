@@ -1,4 +1,11 @@
-import { boolean, integer, jsonb, text, timestamp, varchar } from 'drizzle-orm/pg-core'
+import {
+  boolean,
+  integer,
+  jsonb,
+  text,
+  timestamp,
+  varchar,
+} from 'drizzle-orm/pg-core'
 import { stripeSchema } from './index'
 
 export const product = stripeSchema.table('product', {

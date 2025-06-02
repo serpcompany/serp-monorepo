@@ -1,50 +1,50 @@
 <script setup lang="ts">
-const route = useRoute()
+  const route = useRoute();
 
-const page = ref(Number(route.query.page) || 1)
+  const page = ref(Number(route.query.page) || 1);
 
-const filters = computed(() => ({
-  page: page.value,
-  limit: Number(route.query.limit) || 50,
-  category: route.query.category as string,
-  q: route.query.q as string,
-  sort: route.query.sort as string,
-}))
+  const filters = computed(() => ({
+    page: page.value,
+    limit: Number(route.query.limit) || 50,
+    category: route.query.category as string,
+    q: route.query.q as string,
+    sort: route.query.sort as string,
+  }));
 
-const { data, status } = await useAsyncData(
-  'companies',
-  () =>
-    useCompanies(
-      filters.value.page,
-      filters.value.limit,
-      filters.value.category,
-      filters.value.q,
-      filters.value.sort,
-    ),
-  {
-    lazy: true,
-    watch: [filters],
-  },
-)
+  const { data, status } = await useAsyncData(
+    'companies',
+    () =>
+      useCompanies(
+        filters.value.page,
+        filters.value.limit,
+        filters.value.category,
+        filters.value.q,
+        filters.value.sort,
+      ),
+    {
+      lazy: true,
+      watch: [filters],
+    },
+  );
 
-const { data: categories } = await useAsyncData(
-  'categories',
-  () => useCompanyCategories(),
-  {
-    default: () => [],
-  },
-)
+  const { data: categories } = await useAsyncData(
+    'categories',
+    () => useCompanyCategories(),
+    {
+      default: () => [],
+    },
+  );
 
-const categoriesFilters = computed(() => {
-  return categories.value.map(category => ({
-    label: category.name,
-    value: category.slug,
-  }))
-})
+  const categoriesFilters = computed(() => {
+    return categories.value.map((category) => ({
+      label: category.name,
+      value: category.slug,
+    }));
+  });
 
-useSeoMeta({
-  title: 'Discover the best products on the internet.',
-})
+  useSeoMeta({
+    title: 'Discover the best products on the internet.',
+  });
 </script>
 
 <template>

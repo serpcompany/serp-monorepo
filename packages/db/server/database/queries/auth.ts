@@ -10,7 +10,9 @@ import {
 type InsertEmailVerificationCode = typeof emailVerificationCode.$inferInsert
 type InsertOneTimePassword = typeof oneTimePassword.$inferInsert
 
-export async function countEmailVerificationCodes(userId: number): Promise<number | undefined> {
+export async function countEmailVerificationCodes(
+  userId: number,
+): Promise<number | undefined> {
   try {
     const result = await getDb()
       .select({ count: count() })
@@ -26,7 +28,9 @@ export async function countEmailVerificationCodes(userId: number): Promise<numbe
   }
 }
 
-export async function saveEmailVerificationCode(payload: InsertEmailVerificationCode): Promise<typeof emailVerificationCode.$inferSelect> {
+export async function saveEmailVerificationCode(
+  payload: InsertEmailVerificationCode,
+): Promise<typeof emailVerificationCode.$inferSelect> {
   try {
     const [record] = await getDb()
       .insert(emailVerificationCode)
@@ -42,7 +46,9 @@ export async function saveEmailVerificationCode(payload: InsertEmailVerification
   }
 }
 
-export async function saveOneTimePassword(payload: InsertOneTimePassword): Promise<typeof oneTimePassword.$inferSelect> {
+export async function saveOneTimePassword(
+  payload: InsertOneTimePassword,
+): Promise<typeof oneTimePassword.$inferSelect> {
   try {
     const [record] = await getDb()
       .insert(oneTimePassword)
@@ -58,7 +64,9 @@ export async function saveOneTimePassword(payload: InsertOneTimePassword): Promi
   }
 }
 
-export async function findEmailVerificationCode(token: string): Promise<typeof emailVerificationCode.$inferSelect | null> {
+export async function findEmailVerificationCode(
+  token: string,
+): Promise<typeof emailVerificationCode.$inferSelect | null> {
   try {
     const [record] = await getDb()
       .select()
@@ -74,7 +82,9 @@ export async function findEmailVerificationCode(token: string): Promise<typeof e
   }
 }
 
-export async function deleteExpiredEmailVerificationCodes(userId: number): Promise<void> {
+export async function deleteExpiredEmailVerificationCodes(
+  userId: number,
+): Promise<void> {
   try {
     const thirtyMinutesAgo = new Date(Date.now() - 1_000 * 60 * 30)
 
@@ -94,7 +104,9 @@ export async function deleteExpiredEmailVerificationCodes(userId: number): Promi
   }
 }
 
-export async function deleteEmailVerificationCode(userId: number): Promise<void> {
+export async function deleteEmailVerificationCode(
+  userId: number,
+): Promise<void> {
   try {
     await getDb()
       .delete(emailVerificationCode)
@@ -107,7 +119,9 @@ export async function deleteEmailVerificationCode(userId: number): Promise<void>
   }
 }
 
-export async function findOneTimePassword(code: string): Promise<typeof oneTimePassword.$inferSelect | null> {
+export async function findOneTimePassword(
+  code: string,
+): Promise<typeof oneTimePassword.$inferSelect | null> {
   try {
     const [record] = await getDb()
       .select()
@@ -136,7 +150,9 @@ export async function deleteOneTimePassword(code: string): Promise<void> {
   }
 }
 
-export async function createPasswordResetToken(userId: number): Promise<typeof passwordResetToken.$inferSelect> {
+export async function createPasswordResetToken(
+  userId: number,
+): Promise<typeof passwordResetToken.$inferSelect> {
   try {
     const token = generateAlphaNumericCode(32)
 
@@ -158,7 +174,9 @@ export async function createPasswordResetToken(userId: number): Promise<typeof p
   }
 }
 
-export async function findPasswordResetToken(token: string): Promise<typeof passwordResetToken.$inferSelect | null> {
+export async function findPasswordResetToken(
+  token: string,
+): Promise<typeof passwordResetToken.$inferSelect | null> {
   try {
     const [record] = await getDb()
       .select()

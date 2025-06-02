@@ -2,7 +2,9 @@ import { eq } from 'drizzle-orm'
 import { getDb } from '../index'
 import { entity } from '../schema'
 
-export async function getEntityById(id: number): Promise<typeof entity.$inferSelect | null> {
+export async function getEntityById(
+  id: number,
+): Promise<typeof entity.$inferSelect | null> {
   const results = await getDb()
     .select()
     .from(entity)

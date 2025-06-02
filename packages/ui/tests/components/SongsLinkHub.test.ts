@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest'
-import SongsLinkHub from '../../components/SongsLinkHub.vue'
-import ComponentRender from '../componentRender'
+import { describe, expect, it } from 'vitest';
+import SongsLinkHub from '../../components/SongsLinkHub.vue';
+import ComponentRender from '../componentRender';
 
 describe('songsLinkHub', () => {
   it.each([
@@ -16,7 +16,11 @@ describe('songsLinkHub', () => {
               slug: 'song-1',
               name: 'Song One',
               artists: [
-                { slug: 'artist-1', credit_name: 'Artist One', join_phrase: '' },
+                {
+                  slug: 'artist-1',
+                  credit_name: 'Artist One',
+                  join_phrase: '',
+                },
               ],
             },
           ],
@@ -38,7 +42,11 @@ describe('songsLinkHub', () => {
                   credit_name: 'Artist One',
                   join_phrase: ', ',
                 },
-                { slug: 'artist-2', credit_name: 'Artist Two', join_phrase: '' },
+                {
+                  slug: 'artist-2',
+                  credit_name: 'Artist Two',
+                  join_phrase: '',
+                },
               ],
             },
             {
@@ -68,8 +76,8 @@ describe('songsLinkHub', () => {
         `SongsLinkHub ${desc}`,
         options,
         SongsLinkHub,
-      )
-      expect(html).toMatchSnapshot()
+      );
+      expect(html).toMatchSnapshot();
     },
-  )
-})
+  );
+});

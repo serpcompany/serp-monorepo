@@ -132,10 +132,10 @@ export default defineNuxtConfig({
       changefreq: 'weekly',
     },
     sitemaps: {
-      'modules': {
+      modules: {
         includeAppSources: true,
       },
-      'boxers': {
+      boxers: {
         sources: ['/api/__sitemap__/boxers'],
       },
       'weight-classes': {
@@ -143,4 +143,4 @@ export default defineNuxtConfig({
       },
     },
   },
-})
+});

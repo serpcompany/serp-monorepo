@@ -1,20 +1,21 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('index', () =>
-  queryCollection('content').first())
-if (!page.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Page not found',
-    fatal: true,
-  })
-}
+  const { data: page } = await useAsyncData('index', () =>
+    queryCollection('content').first(),
+  );
+  if (!page.value) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Page not found',
+      fatal: true,
+    });
+  }
 
-useSeoMeta({
-  title: page.value.title,
-  ogTitle: page.value.title,
-  description: page.value.description,
-  ogDescription: page.value.description,
-})
+  useSeoMeta({
+    title: page.value.title,
+    ogTitle: page.value.title,
+    description: page.value.description,
+    ogDescription: page.value.description,
+  });
 </script>
 
 <template>
@@ -59,12 +60,12 @@ useSeoMeta({
         :src="section.images.desktop"
         :alt="section.title"
         class="left-0 hidden w-full max-w-2xl lg:block 2xl:hidden"
-      >
+      />
       <img
         :src="section.images.mobile"
         :alt="section.title"
         class="block lg:hidden 2xl:block 2xl:w-full 2xl:max-w-2xl"
-      >
+      />
     </UPageSection>
 
     <USeparator :ui="{ border: 'border-(--ui-primary)/30' }" />

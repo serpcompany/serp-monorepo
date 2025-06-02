@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import type { Company } from '@serp/types/types'
+  import type { Company } from '@serp/types/types';
 
-interface Props {
-  items: Company[]
-  paginationTotal?: number
-  paginationLimit?: number
-  loading?: boolean
-}
+  interface Props {
+    items: Company[];
+    paginationTotal?: number;
+    paginationLimit?: number;
+    loading?: boolean;
+  }
 
-defineProps<Props>()
+  defineProps<Props>();
 
-const page = defineModel<number>('page', {
-  default: 1,
-})
+  const page = defineModel<number>('page', {
+    default: 1,
+  });
 </script>
 
 <template>

@@ -1,4 +1,3 @@
-import { getDb } from '@serp/db/server/database'
 import { eq, inArray } from 'drizzle-orm'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { mockDb, mockGetQuery, mockReadBody } from '../../../../setup'

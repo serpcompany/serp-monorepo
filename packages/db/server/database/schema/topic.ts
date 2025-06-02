@@ -1,4 +1,10 @@
-import { integer, jsonb, serial, timestamp, varchar } from 'drizzle-orm/pg-core'
+import {
+  integer,
+  jsonb,
+  serial,
+  timestamp,
+  varchar,
+} from 'drizzle-orm/pg-core'
 import { cacheSchema } from './index'
 
 export const topic = cacheSchema.table('topic', {

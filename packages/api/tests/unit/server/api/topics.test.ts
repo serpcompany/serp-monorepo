@@ -46,7 +46,12 @@ describe('topics API', () => {
     mockGetQuery.mockReturnValue({ module: 'cached-module' })
 
     cacheValue = [
-      { id: '3', name: 'Cached Topic', slug: 'cached', module: 'cached-module' },
+      {
+        id: '3',
+        name: 'Cached Topic',
+        slug: 'cached',
+        module: 'cached-module',
+      },
     ]
 
     const result = await handler({})

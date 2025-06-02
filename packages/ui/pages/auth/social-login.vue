@@ -3,9 +3,7 @@
     <div class="mx-auto w-full max-w-sm space-y-4">
       <SLogo />
       <div class="text-center">
-        <p class="text-lg font-bold">
-          Sign in to your account
-        </p>
+        <p class="text-lg font-bold">Sign in to your account</p>
         <p class="text-sm text-neutral-500">
           Welcome back! Please sign in to continue.
         </p>

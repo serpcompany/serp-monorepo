@@ -21,7 +21,9 @@ export async function findUserByEmail(email: string): Promise<User | null> {
   }
 }
 
-export async function createUserWithPassword(payload: InsertUser): Promise<User> {
+export async function createUserWithPassword(
+  payload: InsertUser,
+): Promise<User> {
   try {
     const [record] = await getDb()
       .insert(user)
@@ -46,7 +48,9 @@ export async function createUserWithPassword(payload: InsertUser): Promise<User>
   }
 }
 
-export async function findLinkedAccountsByUserId(userId: number): Promise<Array<typeof oauthAccount.$inferSelect>> {
+export async function findLinkedAccountsByUserId(
+  userId: number,
+): Promise<Array<typeof oauthAccount.$inferSelect>> {
   try {
     const linkedAccounts = await getDb()
       .select()
@@ -146,7 +150,10 @@ export async function createUserWithOAuth(payload: InsertUser): Promise<User> {
   }
 }
 
-export async function updateUser(userId: number, payload: Partial<User>): Promise<User> {
+export async function updateUser(
+  userId: number,
+  payload: Partial<User>,
+): Promise<User> {
   try {
     if (payload.superAdmin) {
       delete payload.superAdmin
@@ -171,7 +178,10 @@ export async function updateUser(userId: number, payload: Partial<User>): Promis
   }
 }
 
-export async function updateUserPassword(userId: number, hashedPassword: string): Promise<User> {
+export async function updateUserPassword(
+  userId: number,
+  hashedPassword: string,
+): Promise<User> {
   try {
     const [record] = await getDb()
       .update(user)
@@ -187,7 +197,11 @@ export async function updateUserPassword(userId: number, hashedPassword: string)
   }
 }
 
-export async function linkOAuthAccount(userId: number, provider: string, providerUserId: string): Promise<typeof oauthAccount.$inferSelect> {
+export async function linkOAuthAccount(
+  userId: number,
+  provider: string,
+  providerUserId: string,
+): Promise<typeof oauthAccount.$inferSelect> {
   try {
     const [existingAccount] = await getDb()
       .select()
@@ -231,7 +245,9 @@ export async function linkOAuthAccount(userId: number, provider: string, provide
   }
 }
 
-export async function findUserByPhoneNumber(phoneNumber: string): Promise<User | null> {
+export async function findUserByPhoneNumber(
+  phoneNumber: string,
+): Promise<User | null> {
   try {
     const [userRecord] = await getDb()
       .select()
@@ -249,7 +265,10 @@ export async function findUserByPhoneNumber(phoneNumber: string): Promise<User |
   }
 }
 
-export async function unlinkAccount(userId: number, providerId: number): Promise<void> {
+export async function unlinkAccount(
+  userId: number,
+  providerId: number,
+): Promise<void> {
   try {
     const userRecord = await findUserById(userId)
     if (!userRecord) {

@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import type { Post } from '@serp/types/types'
+  import type { Post } from '@serp/types/types';
 
-const props = defineProps<{
-  data: Post
-}>()
-const config = useRuntimeConfig()
-const useAuth = config.public.useAuth
+  const props = defineProps<{
+    data: Post;
+  }>();
+  const config = useRuntimeConfig();
+  const useAuth = config.public.useAuth;
 
-const data = toRef(props, 'data')
+  const data = toRef(props, 'data');
 
-let comments = data.value.comments || []
-const commentsData = await usePostComments(data.value.id)
-comments = commentsData.comments
+  let comments = data.value.comments || [];
+  const commentsData = await usePostComments(data.value.id);
+  comments = commentsData.comments;
 
-// Video ref for the YouTube player
-const videoRef = ref<HTMLElement | null>(null)
+  // Video ref for the YouTube player
+  const videoRef = ref<HTMLElement | null>(null);
 
-// Function to set the video ref
-function setVideoRef(el: HTMLElement | null) {
-  if (el) {
-    videoRef.value = el
+  // Function to set the video ref
+  function setVideoRef(el: HTMLElement | null) {
+    if (el) {
+      videoRef.value = el;
+    }
   }
-}
 </script>
 
 <template>
@@ -77,9 +77,7 @@ function setVideoRef(el: HTMLElement | null) {
 
         <!-- Comments Section -->
         <div v-if="useAuth" class="mt-10">
-          <h2 class="mb-6 text-3xl font-bold">
-            Comments
-          </h2>
+          <h2 class="mb-6 text-3xl font-bold">Comments</h2>
           <CommentsContainer
             :id="data.id"
             module="posts"
@@ -97,81 +95,81 @@ function setVideoRef(el: HTMLElement | null) {
 
 <style>
   .comments-github-style {
-  border: 1px solid var(--color-border, #d0d7de);
-  border-radius: 6px;
-  margin-top: 16px;
-}
+    border: 1px solid var(--color-border, #d0d7de);
+    border-radius: 6px;
+    margin-top: 16px;
+  }
 
-.comments-github-style .innerWrapper {
-  padding: 16px;
-}
+  .comments-github-style .innerWrapper {
+    padding: 16px;
+  }
 
-.comments-github-style .comment-wrapper {
-  border-top: 1px solid var(--color-border, #d0d7de);
-  padding-top: 16px;
-  margin-top: 16px;
-}
+  .comments-github-style .comment-wrapper {
+    border-top: 1px solid var(--color-border, #d0d7de);
+    padding-top: 16px;
+    margin-top: 16px;
+  }
 
-.comments-github-style .comment-wrapper:first-child {
-  border-top: none;
-  padding-top: 0;
-  margin-top: 0;
-}
+  .comments-github-style .comment-wrapper:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
 
-.comments-github-style .wrapper {
-  display: flex;
-  gap: 16px;
-}
+  .comments-github-style .wrapper {
+    display: flex;
+    gap: 16px;
+  }
 
-.comments-github-style .addComment {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 16px;
-}
+  .comments-github-style .addComment {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
 
-.comments-github-style .commentBox {
-  flex: 1;
-  border: 1px solid var(--color-border, #d0d7de);
-  border-radius: 6px;
-  padding: 8px;
-}
+  .comments-github-style .commentBox {
+    flex: 1;
+    border: 1px solid var(--color-border, #d0d7de);
+    border-radius: 6px;
+    padding: 8px;
+  }
 
-.comments-github-style .commentBox textarea {
-  width: 100%;
-  min-height: 100px;
-  padding: 8px;
-  border-radius: 3px;
-}
+  .comments-github-style .commentBox textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 8px;
+    border-radius: 3px;
+  }
 
-.comments-github-style .commentBox button {
-  margin-top: 8px;
-  padding: 5px 16px;
-  border-radius: 6px;
-  color: white;
-}
+  .comments-github-style .commentBox button {
+    margin-top: 8px;
+    padding: 5px 16px;
+    border-radius: 6px;
+    color: white;
+  }
 
-.comments-github-style .name-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
-}
+  .comments-github-style .name-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
 
-.comments-github-style .time {
-  color: #768390;
-  font-size: 0.85em;
-}
+  .comments-github-style .time {
+    color: #768390;
+    font-size: 0.85em;
+  }
 
-.comments-github-style .comment {
-  background-color: #f6f8fa;
-  border: 1px solid #d0d7de;
-  border-radius: 6px;
-  padding: 16px;
-  margin-bottom: 8px;
-}
+  .comments-github-style .comment {
+    background-color: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 8px;
+  }
 
-.dark .comments-github-style .comment {
-  background-color: #0d1117;
-  border-color: #30363d;
-}
+  .dark .comments-github-style .comment {
+    background-color: #0d1117;
+    border-color: #30363d;
+  }
 </style>

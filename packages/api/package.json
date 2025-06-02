@@ -1,14 +1,14 @@
 {
   "name": "@serp/api",
-  "version": "0.0.1",
   "type": "module",
+  "version": "0.0.1",
   "main": "./nuxt.config.ts",
   "scripts": {
     "build": "nuxt build .playground",
-    "ci:lint": "eslint .",
     "generate": "nuxt generate .playground",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "ci:lint": "eslint .",
     "postinstall": "nuxt prepare",
     "preview": "nuxt preview .playground",
     "test": "vitest --run",

@@ -1,29 +1,28 @@
 <script setup lang="ts">
-import type { FormSubmitEvent } from '#ui/types'
-import { z } from 'zod'
+  import type { FormSubmitEvent } from '#ui/types';
+  import { z } from 'zod';
 
-const modal = ref(false)
-const { passkeys, status, creating, deleting, createPasskey, deletePasskey }
-    = usePasskeys()
+  const modal = ref(false);
+  const { passkeys, status, creating, deleting, createPasskey, deletePasskey } =
+    usePasskeys();
 
-const { user } = useUserSession()
-const schema = z.object({
-  name: z.string().min(1).max(255),
-})
-const state = reactive({
-  name: undefined,
-})
-  type Schema = z.output<typeof schema>
+  const { user } = useUserSession();
+  const schema = z.object({
+    name: z.string().min(1).max(255),
+  });
+  const state = reactive({
+    name: undefined,
+  });
+  type Schema = z.output<typeof schema>;
 
-async function handleCreatePasskey(event: FormSubmitEvent<Schema>) {
-  if (!user.value)
-    return
-  const success = await createPasskey(user.value.email, event.data.name)
-  if (success) {
-    modal.value = false
-    state.name = undefined
+  async function handleCreatePasskey(event: FormSubmitEvent<Schema>) {
+    if (!user.value) return;
+    const success = await createPasskey(user.value.email, event.data.name);
+    if (success) {
+      modal.value = false;
+      state.name = undefined;
+    }
   }
-}
 </script>
 
 <template>
@@ -31,9 +30,7 @@ async function handleCreatePasskey(event: FormSubmitEvent<Schema>) {
     <UCard>
       <template #header>
         <div class="flex items-center justify-between">
-          <h2 class="font-medium">
-            Passkey Manager
-          </h2>
+          <h2 class="font-medium">Passkey Manager</h2>
           <UButton
             size="lg"
             color="neutral"

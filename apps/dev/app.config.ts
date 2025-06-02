@@ -1,4 +1,4 @@
-import redirects from './redirects.json'
+import redirects from './redirects.json';
 
 export default defineAppConfig({
   myLayer: {
@@ -167,4 +167,4 @@ export default defineAppConfig({
       // { label: 'MCP Server', to: '/users/submit/mcp-server/' }
     ],
   },
-})
+});

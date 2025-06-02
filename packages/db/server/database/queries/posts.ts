@@ -6,7 +6,20 @@ import { post, user } from '../schema'
 type Post = typeof post.$inferSelect
 type InsertPost = typeof post.$inferInsert
 
-export async function getAllPosts(teamId: number): Promise<Array<Post & { user: { id: number, name: string | null, email: string, avatarUrl: string | null } | null }>> {
+export async function getAllPosts(
+  teamId: number,
+): Promise<
+    Array<
+      Post & {
+        user: {
+          id: number
+          name: string | null
+          email: string
+          avatarUrl: string | null
+        } | null
+      }
+    >
+  > {
   try {
     const rows = await getDb()
       .select()
@@ -56,7 +69,11 @@ export async function createPost(postData: InsertPost): Promise<Post> {
   }
 }
 
-export async function getPostById(id: number, teamId: number, userId: number): Promise<Post | null> {
+export async function getPostById(
+  id: number,
+  teamId: number,
+  userId: number,
+): Promise<Post | null> {
   try {
     const [postRecord] = await getDb()
       .select()
@@ -75,7 +92,12 @@ export async function getPostById(id: number, teamId: number, userId: number): P
   }
 }
 
-export async function updatePost(id: number, teamId: number, userId: number, postData: Partial<Post>): Promise<Post> {
+export async function updatePost(
+  id: number,
+  teamId: number,
+  userId: number,
+  postData: Partial<Post>,
+): Promise<Post> {
   try {
     const result = await getDb()
       .update(post)
@@ -107,7 +129,11 @@ export async function updatePost(id: number, teamId: number, userId: number, pos
   }
 }
 
-export async function deletePost(id: number, teamId: number, userId: number): Promise<Post> {
+export async function deletePost(
+  id: number,
+  teamId: number,
+  userId: number,
+): Promise<Post> {
   try {
     const result = await getDb()
       .delete(post)

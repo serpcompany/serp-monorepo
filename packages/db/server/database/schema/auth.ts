@@ -1,5 +1,13 @@
 import { relations } from 'drizzle-orm'
-import { boolean, integer, jsonb, serial, text, timestamp, varchar } from 'drizzle-orm/pg-core'
+import {
+  boolean,
+  integer,
+  jsonb,
+  serial,
+  text,
+  timestamp,
+  varchar,
+} from 'drizzle-orm/pg-core'
 import { userSchema } from './index'
 import { user } from './user'
 
@@ -57,30 +65,42 @@ export const webAuthnChallenge = userSchema.table('webauthn_challenge', {
   expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
 })
 
-export const emailVerificationCodeRelations = relations(emailVerificationCode, ({ one }) => ({
-  user: one(user, {
-    fields: [emailVerificationCode.userId],
-    references: [user.id],
+export const emailVerificationCodeRelations = relations(
+  emailVerificationCode,
+  ({ one }) => ({
+    user: one(user, {
+      fields: [emailVerificationCode.userId],
+      references: [user.id],
+    }),
   }),
-}))
+)
 
-export const passwordResetTokenRelations = relations(passwordResetToken, ({ one }) => ({
-  user: one(user, {
-    fields: [passwordResetToken.userId],
-    references: [user.id],
+export const passwordResetTokenRelations = relations(
+  passwordResetToken,
+  ({ one }) => ({
+    user: one(user, {
+      fields: [passwordResetToken.userId],
+      references: [user.id],
+    }),
   }),
-}))
+)
 
-export const oneTimePasswordRelations = relations(oneTimePassword, ({ one }) => ({
-  user: one(user, {
-    fields: [oneTimePassword.userId],
-    references: [user.id],
+export const oneTimePasswordRelations = relations(
+  oneTimePassword,
+  ({ one }) => ({
+    user: one(user, {
+      fields: [oneTimePassword.userId],
+      references: [user.id],
+    }),
   }),
-}))
+)
 
-export const webAuthnCredentialRelations = relations(webAuthnCredential, ({ one }) => ({
-  user: one(user, {
-    fields: [webAuthnCredential.userId],
-    references: [user.id],
+export const webAuthnCredentialRelations = relations(
+  webAuthnCredential,
+  ({ one }) => ({
+    user: one(user, {
+      fields: [webAuthnCredential.userId],
+      references: [user.id],
+    }),
   }),
-}))
+)

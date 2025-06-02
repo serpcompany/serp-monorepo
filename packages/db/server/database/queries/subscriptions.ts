@@ -6,7 +6,9 @@ import { price, subscription } from '../schema'
 type Subscription = typeof subscription.$inferSelect
 type InsertSubscription = typeof subscription.$inferInsert
 
-export async function upsertSubscription(subscriptionData: InsertSubscription): Promise<Subscription> {
+export async function upsertSubscription(
+  subscriptionData: InsertSubscription,
+): Promise<Subscription> {
   try {
     const [upsertedSubscription] = await getDb()
       .insert(subscription)
@@ -29,7 +31,9 @@ export async function upsertSubscription(subscriptionData: InsertSubscription): 
   }
 }
 
-export async function getSubscriptionByTeamId(teamId: number): Promise<Subscription | null> {
+export async function getSubscriptionByTeamId(
+  teamId: number,
+): Promise<Subscription | null> {
   try {
     const [row] = await getDb()
       .select()
@@ -59,7 +63,9 @@ export async function getSubscriptionByTeamId(teamId: number): Promise<Subscript
   }
 }
 
-export async function getSubscriptionByUserId(userId: number): Promise<Subscription | null> {
+export async function getSubscriptionByUserId(
+  userId: number,
+): Promise<Subscription | null> {
   try {
     const [row] = await getDb()
       .select()

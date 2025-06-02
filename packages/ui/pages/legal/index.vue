@@ -1,9 +1,9 @@
 <script setup lang="ts">
-useSeoMeta({
-  title: 'Legal Information',
-  description:
+  useSeoMeta({
+    title: 'Legal Information',
+    description:
       'Links to various resources on our website about legal related items.',
-})
+  });
 </script>
 
 <template>
@@ -14,15 +14,9 @@ useSeoMeta({
         <NuxtLink to="/legal/affiliate-disclosure/">
           Affiliate Disclosure
         </NuxtLink>
-        <NuxtLink to="/legal/dmca/">
-          DMCA & IP Complaints
-        </NuxtLink>
-        <NuxtLink to="/legal/privacy-policy/">
-          Privacy Policy
-        </NuxtLink>
-        <NuxtLink to="/legal/terms-conditions/">
-          Terms & Conditions
-        </NuxtLink>
+        <NuxtLink to="/legal/dmca/">DMCA & IP Complaints</NuxtLink>
+        <NuxtLink to="/legal/privacy-policy/">Privacy Policy</NuxtLink>
+        <NuxtLink to="/legal/terms-conditions/">Terms & Conditions</NuxtLink>
       </li>
     </ul>
   </div>

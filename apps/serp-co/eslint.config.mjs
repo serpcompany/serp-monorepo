@@ -1,10 +1,10 @@
-import antfu from '@antfu/eslint-config'
+import antfu from '@antfu/eslint-config';
 
-import withNuxt from './.nuxt/eslint.config.mjs'
+import withNuxt from './.nuxt/eslint.config.mjs';
 
 export default withNuxt(
   antfu({
-  // JSDoc for documentation standards
+    // JSDoc for documentation standards
     jsonc: false,
     jsdoc: {
       stylistic: true,
@@ -66,14 +66,14 @@ export default withNuxt(
 
     // Global rules
     rules: {
-    // General code quality
+      // General code quality
       'no-console': 'warn',
       'no-debugger': 'error',
       'prefer-const': 'error',
 
       // Component size limits
       'max-lines': ['warn', 300],
-      'complexity': ['warn', 10],
+      complexity: ['warn', 10],
 
       // Other helpful limits
       'max-lines-per-function': ['warn', 50],
@@ -81,17 +81,20 @@ export default withNuxt(
       'max-params': ['warn', 3],
 
       // Import organization
-      'import/order': ['error', {
-        'groups': [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-        ],
-        'newlines-between': 'always',
-      }],
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+          ],
+          'newlines-between': 'always',
+        },
+      ],
 
       // JSDoc/TSDoc documentation standards
       'jsdoc/require-description': 'warn',
@@ -102,17 +105,23 @@ export default withNuxt(
       'jsdoc/require-returns-description': 'warn',
       'jsdoc/check-alignment': 'error',
       'jsdoc/check-param-names': 'error',
-      'jsdoc/check-tag-names': ['error', {
-        definedTags: ['component', 'example'],
-      }],
+      'jsdoc/check-tag-names': [
+        'error',
+        {
+          definedTags: ['component', 'example'],
+        },
+      ],
 
       // Stylistic preferences
-      'style/max-len': ['warn', {
-        code: 100,
-        ignoreUrls: true,
-        ignoreStrings: true,
-        ignoreTemplateLiterals: true,
-      }],
+      'style/max-len': [
+        'warn',
+        {
+          code: 100,
+          ignoreUrls: true,
+          ignoreStrings: true,
+          ignoreTemplateLiterals: true,
+        },
+      ],
     },
   }),
   // Vue-specific overrides
@@ -120,10 +129,13 @@ export default withNuxt(
     files: ['**/*.vue'],
     rules: {
       'max-lines': ['warn', 250], // Stricter for Vue files
-      'vue/max-attributes-per-line': ['warn', {
-        singleline: 3,
-        multiline: 1,
-      }],
+      'vue/max-attributes-per-line': [
+        'warn',
+        {
+          singleline: 3,
+          multiline: 1,
+        },
+      ],
     },
   },
-)
+);

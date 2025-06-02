@@ -1,26 +1,24 @@
 <script setup lang="ts">
-import type { Team } from '@serp/db/types/database'
+  import type { Team } from '@serp/db/types/database';
 
-const { user } = useUserSession()
-const { logout } = useAuth()
+  const { user } = useUserSession();
+  const { logout } = useAuth();
 
-async function onTeamCreated(team: Team) {
-  await navigateTo(`/dashboard/${team.slug}`)
-}
+  async function onTeamCreated(team: Team) {
+    await navigateTo(`/dashboard/${team.slug}`);
+  }
 
-async function signOut() {
-  await logout()
-  await navigateTo('/')
-}
+  async function signOut() {
+    await logout();
+    await navigateTo('/');
+  }
 </script>
 
 <template>
   <main class="flex min-h-screen items-center justify-center">
     <UContainer class="w-full py-20">
       <div class="text-center">
-        <h1 class="text-2xl font-bold">
-          Welcome {{ user?.name }}
-        </h1>
+        <h1 class="text-2xl font-bold">Welcome {{ user?.name }}</h1>
         <p class="mt-2 text-neutral-500">
           Let's get you started by creating your first team.
         </p>

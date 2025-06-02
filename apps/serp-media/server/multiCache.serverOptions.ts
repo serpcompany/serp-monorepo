@@ -1,5 +1,5 @@
-import { defineMultiCacheOptions } from 'nuxt-multi-cache/dist/runtime/serverOptions'
-import redisDriver from 'unstorage/drivers/redis'
+import { defineMultiCacheOptions } from 'nuxt-multi-cache/dist/runtime/serverOptions';
+import redisDriver from 'unstorage/drivers/redis';
 
 export default defineMultiCacheOptions({
   data: {
@@ -11,4 +11,4 @@ export default defineMultiCacheOptions({
         }
       : undefined, // Use default (memory) storage in development
   },
-})
+});

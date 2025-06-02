@@ -1,15 +1,15 @@
 <script setup lang="ts">
-const route = useRoute()
-const errorMessage = ref(
-  route.query.message || 'An error occurred during email verification.',
-)
-const hasEmail = computed(() => !!route.query.email)
-const email = ref((route.query.email as string) || '')
-const { resendVerification } = useAuth()
+  const route = useRoute();
+  const errorMessage = ref(
+    route.query.message || 'An error occurred during email verification.',
+  );
+  const hasEmail = computed(() => !!route.query.email);
+  const email = ref((route.query.email as string) || '');
+  const { resendVerification } = useAuth();
 
-async function resend() {
-  await resendVerification(email.value)
-}
+  async function resend() {
+    await resendVerification(email.value);
+  }
 </script>
 
 <template>
@@ -17,9 +17,7 @@ async function resend() {
     <div class="mx-auto w-full max-w-sm space-y-4">
       <SLogo />
       <div class="text-center">
-        <p class="text-lg font-bold">
-          Email Verification Error
-        </p>
+        <p class="text-lg font-bold">Email Verification Error</p>
         <p class="mt-2 text-sm text-neutral-500">
           {{ errorMessage }}
         </p>

@@ -8,7 +8,7 @@
     Img,
     Link,
     Preview,
-    Text
+    Text,
   } from '@vue-email/components';
 
   interface EmailVerificationProps {
@@ -16,17 +16,17 @@
   }
 
   withDefaults(defineProps<EmailVerificationProps>(), {
-    verificationCode: ''
+    verificationCode: '',
   });
 
   const main = {
-    backgroundColor: '#ffffff'
+    backgroundColor: '#ffffff',
   };
 
   const container = {
     paddingLeft: '12px',
     paddingRight: '12px',
-    margin: '0 auto'
+    margin: '0 auto',
   };
 
   const h1 = {
@@ -36,7 +36,7 @@
     fontSize: '24px',
     fontWeight: 'bold',
     margin: '40px 0',
-    padding: '0'
+    padding: '0',
   };
 
   const link = {
@@ -44,7 +44,7 @@
     fontFamily:
       "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
     fontSize: '14px',
-    textDecoration: 'underline'
+    textDecoration: 'underline',
   };
 
   const text = {
@@ -52,7 +52,7 @@
     fontFamily:
       "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
     fontSize: '14px',
-    margin: '24px 0'
+    margin: '24px 0',
   };
 
   const footer = {
@@ -62,7 +62,7 @@
     fontSize: '12px',
     lineHeight: '22px',
     marginTop: '12px',
-    marginBottom: '24px'
+    marginBottom: '24px',
   };
 
   const code = {
@@ -72,7 +72,7 @@
     backgroundColor: '#f4f4f4',
     borderRadius: '5px',
     border: '1px solid #eee',
-    color: '#333'
+    color: '#333',
   };
 
   const runtimeConfig = useRuntimeConfig();
@@ -85,7 +85,9 @@
 
     <Body :style="main">
       <Container :style="container">
-        <Heading :style="h1"> Verify your email </Heading>
+        <Heading :style="h1">
+          Verify your email
+        </Heading>
         <Link
           :href="`${runtimeConfig.public.siteUrl}/api/auth/verify-account?token=${verificationCode}`"
           target="_blank"
@@ -96,15 +98,17 @@
         <Text :style="{ ...text, marginBottom: '14px' }">
           Or, copy and paste this link into your browser:
         </Text>
-        <code :style="code">{{
-          `${runtimeConfig.public.siteUrl}/api/auth/verify-account?token=${verificationCode}`
-        }}</code>
+        <code :style="code">
+          {{
+            `${runtimeConfig.public.siteUrl}/api/auth/verify-account?token=${verificationCode}`
+          }}
+        </code>
         <Text
           :style="{
             ...text,
             color: '#ababab',
             marginTop: '14px',
-            marginBottom: '16px'
+            marginBottom: '16px',
           }"
         >
           If you didn't try to verify your email, you can safely ignore this
@@ -115,7 +119,7 @@
             ...text,
             color: '#ababab',
             marginTop: '12px',
-            marginBottom: '38px'
+            marginBottom: '38px',
           }"
         />
         <Img
@@ -130,8 +134,9 @@
             target="_blank"
             :style="{ ...link, color: '#898989' }"
           >
-            {{ runtimeConfig.public.siteName }} </Link
-          >{{
+            {{ runtimeConfig.public.siteName }}
+          </Link>
+          {{
             runtimeConfig.public.APP_DESCRIPTION
               ? `, ${runtimeConfig.public.APP_DESCRIPTION}`
               : ''

@@ -1,6 +1,6 @@
-import { renderSuspended } from '@nuxt/test-utils/runtime'
-import { describe, it } from 'vitest'
-import SLinkHub from '~/components/SLinkHub.vue'
+import { renderSuspended } from '@nuxt/test-utils/runtime';
+import { describe, it } from 'vitest';
+import SLinkHub from '~/components/SLinkHub.vue';
 
 const mockCategories = [
   {
@@ -29,7 +29,7 @@ const mockCategories = [
     slug: 'category-5',
     name: '',
   },
-]
+];
 
 describe('sLinkHub', () => {
   it('displays the link hub headline', async () => {
@@ -38,10 +38,10 @@ describe('sLinkHub', () => {
         headline: 'Categories',
         categories: mockCategories,
       },
-    })
-  })
+    });
+  });
 
-  it('should render a link for each provided category', () => {})
+  it('should render a link for each provided category', () => {});
 
-  it('should not display blank items', () => {})
-})
+  it('should not display blank items', () => {});
+});

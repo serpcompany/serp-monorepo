@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const props = defineProps<{
-  id: number | string
-}>()
-const { loggedIn } = useUserSession()
-const toast = useToast()
+  const props = defineProps<{
+    id: number | string;
+  }>();
+  const { loggedIn } = useUserSession();
+  const toast = useToast();
 </script>
 
 <template>
@@ -14,8 +14,7 @@ const toast = useToast()
         () => {
           if (loggedIn) {
             navigateTo(`/users/manage/${props.id}`);
-          }
-          else {
+          } else {
             toast.add({
               id: 'need-logged-in',
               title: 'Need to be logged in',

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { Category } from '@serp/types/types'
+  import type { Category } from '@serp/types/types';
 
-defineProps<{
-  items: Category[]
-  baseSlug: string
-}>()
+  defineProps<{
+    items: Category[];
+    baseSlug: string;
+  }>();
 </script>
 
 <template>

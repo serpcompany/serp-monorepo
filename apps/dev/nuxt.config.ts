@@ -163,11 +163,11 @@ export default defineNuxtConfig({
       changefreq: 'weekly',
     },
     sitemaps: {
-      'modules': {
+      modules: {
         includeAppSources: true,
         exclude: ['/users/**'],
       },
-      'company': {
+      company: {
         sources: ['/api/__sitemap__/company'],
       },
       'company-categories': {
@@ -176,16 +176,16 @@ export default defineNuxtConfig({
       'service-providers': {
         sources: ['/api/__sitemap__/service-providers'],
       },
-      'posts': {
+      posts: {
         sources: ['/api/__sitemap__/posts'],
       },
       'post-categories': {
         sources: ['/api/__sitemap__/post-categories'],
       },
-      'glossary': {
+      glossary: {
         sources: ['/api/__sitemap__/glossary'],
       },
-      'blog': {
+      blog: {
         sources: ['/api/__sitemap__/blog'],
       },
       'mcp-servers': {
@@ -196,4 +196,4 @@ export default defineNuxtConfig({
       },
     },
   },
-})
+});

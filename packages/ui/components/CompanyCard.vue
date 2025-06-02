@@ -1,33 +1,32 @@
 <script setup lang="ts">
-import type { Company } from '@serp/types/types'
+  import type { Company } from '@serp/types/types';
 
-interface Props {
-  company: Company
-  showReadMore?: boolean
-  showFeatures?: boolean
-  showExpandedContent?: boolean
-  baseSlug?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  baseSlug: 'products/',
-})
-
-const featured = computed(() => props.company.featured)
-const companyHyperlink = computed(
-  () => `/${props.baseSlug}${props.company.slug}/reviews/`,
-)
-
-const mainImage = computed(() => {
-  if (props.company.logo) {
-    return props.company.logo
-  }
-  else if (props.company.screenshots && props.company.screenshots.length) {
-    return props.company.screenshots[0]
+  interface Props {
+    company: Company;
+    showReadMore?: boolean;
+    showFeatures?: boolean;
+    showExpandedContent?: boolean;
+    baseSlug?: string;
   }
 
-  return null
-})
+  const props = withDefaults(defineProps<Props>(), {
+    baseSlug: 'products/',
+  });
+
+  const featured = computed(() => props.company.featured);
+  const companyHyperlink = computed(
+    () => `/${props.baseSlug}${props.company.slug}/reviews/`,
+  );
+
+  const mainImage = computed(() => {
+    if (props.company.logo) {
+      return props.company.logo;
+    } else if (props.company.screenshots && props.company.screenshots.length) {
+      return props.company.screenshots[0];
+    }
+
+    return null;
+  });
 </script>
 
 <template>

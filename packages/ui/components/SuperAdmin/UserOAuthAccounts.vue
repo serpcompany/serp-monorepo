@@ -1,37 +1,34 @@
 <script lang="ts" setup>
-import type { OauthAccount } from '@serp/db/types/database'
-import { useDateFormat } from '@vueuse/core'
+  import type { OauthAccount } from '@serp/db/types/database';
+  import { useDateFormat } from '@vueuse/core';
 
-defineProps<{
-  oauthAccounts: OauthAccount[]
-}>()
+  defineProps<{
+    oauthAccounts: OauthAccount[];
+  }>();
 
-const availableProviders = [
-  { id: 'google', name: 'Google', icon: 'i-logos-google-icon' },
-  { id: 'github', name: 'Github', icon: 'i-octicon-mark-github-16' },
-  { id: 'discord', name: 'Discord', icon: 'i-logos-discord-icon' },
-  { id: 'spotify', name: 'Spotify', icon: 'i-logos-spotify-icon' },
-]
+  const availableProviders = [
+    { id: 'google', name: 'Google', icon: 'i-logos-google-icon' },
+    { id: 'github', name: 'Github', icon: 'i-octicon-mark-github-16' },
+    { id: 'discord', name: 'Discord', icon: 'i-logos-discord-icon' },
+    { id: 'spotify', name: 'Spotify', icon: 'i-logos-spotify-icon' },
+  ];
 
-function getProviderIcon(providerId: string) {
-  if (!providerId)
-    return 'i-lucide-question-mark-circle'
-  const provider = availableProviders.find(p => p.id === providerId)
-  return provider?.icon || 'i-lucide-question-mark-circle'
-}
+  function getProviderIcon(providerId: string) {
+    if (!providerId) return 'i-lucide-question-mark-circle';
+    const provider = availableProviders.find((p) => p.id === providerId);
+    return provider?.icon || 'i-lucide-question-mark-circle';
+  }
 
-function getProviderName(providerId: string) {
-  if (!providerId)
-    return 'Unknown'
-  const provider = availableProviders.find(p => p.id === providerId)
-  return provider?.name || 'Unknown'
-}
+  function getProviderName(providerId: string) {
+    if (!providerId) return 'Unknown';
+    const provider = availableProviders.find((p) => p.id === providerId);
+    return provider?.name || 'Unknown';
+  }
 
-function formatDate(date: string | Date | undefined) {
-  if (!date)
-    return 'Invalid'
-  return useDateFormat(date, 'MMM D, YYYY').value
-}
+  function formatDate(date: string | Date | undefined) {
+    if (!date) return 'Invalid';
+    return useDateFormat(date, 'MMM D, YYYY').value;
+  }
 </script>
 
 <template>

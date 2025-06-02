@@ -1,10 +1,5 @@
 import { relations } from 'drizzle-orm'
-import {
-  integer,
-  serial,
-  timestamp,
-  varchar,
-} from 'drizzle-orm/pg-core'
+import { integer, serial, timestamp, varchar } from 'drizzle-orm/pg-core'
 import { userSchema } from './index'
 import { user } from './user'
 

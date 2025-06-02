@@ -1,9 +1,4 @@
-import {
-  jsonb,
-  serial,
-  text,
-  timestamp,
-} from 'drizzle-orm/pg-core'
+import { jsonb, serial, text, timestamp } from 'drizzle-orm/pg-core'
 import { userSchema } from './index'
 
 export const subscriber = userSchema.table('subscriber', {

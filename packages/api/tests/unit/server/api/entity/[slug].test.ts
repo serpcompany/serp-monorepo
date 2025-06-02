@@ -1,4 +1,3 @@
-import { getDb } from '@serp/db/server/database'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import {
   mockCreateError,

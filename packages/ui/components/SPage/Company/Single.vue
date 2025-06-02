@@ -1,152 +1,146 @@
 <script setup lang="ts">
-import type { Comment, Company } from '@serp/types/types'
+  import type { Comment, Company } from '@serp/types/types';
 
-const props = defineProps<{
-  data: Company
-}>()
+  const props = defineProps<{
+    data: Company;
+  }>();
 
-const { user } = useUserSession()
+  const { user } = useUserSession();
 
-const { data } = toRefs(props)
+  const { data } = toRefs(props);
 
-const isVerified = computed(() => {
-  return data.value?.verification === user.value?.id
-})
+  const isVerified = computed(() => {
+    return data.value?.verification === user.value?.id;
+  });
 
-const config = useRuntimeConfig()
-const useAuth = config.public.useAuth
+  const config = useRuntimeConfig();
+  const useAuth = config.public.useAuth;
 
-const toast = useToast()
+  const toast = useToast();
 
-const { comments } = (await useCompanyComments(data.value?.id)) as {
-  comments: Comment[]
-}
+  const { comments } = (await useCompanyComments(data.value?.id)) as {
+    comments: Comment[];
+  };
 
-const reviews = await useCompanyReviews(data.value?.id)
-reviews.companyId = data.value?.id
-reviews.entityId = data.value?.id
+  const reviews = await useCompanyReviews(data.value?.id);
+  reviews.companyId = data.value?.id;
+  reviews.entityId = data.value?.id;
 
-// State for review modal
-const showReviewModal = ref(false)
+  // State for review modal
+  const showReviewModal = ref(false);
 
-// Handle review submission - refresh reviews data
-async function handleReviewSubmitted() {
-  const updatedReviews = await useCompanyReviews(data.value?.id)
-  Object.assign(reviews, updatedReviews)
-  reviews.companyId = data.value?.id
-  reviews.entityId = data.value?.id
-}
-
-const faqItems = computed(() => {
-  if (!data.value?.faqs)
-    return []
-
-  return data.value?.faqs.map(
-    (faq: { question: string, answer: string }) => ({
-      label: faq.question,
-      content: faq.answer,
-    }),
-  )
-})
-
-const sections = computed(() => {
-  const sectionTitles: string[] = []
-
-  sectionTitles.push('Overview')
-
-  if (data.value?.categories && data.value?.categories.length) {
-    sectionTitles.push('Categories')
+  // Handle review submission - refresh reviews data
+  async function handleReviewSubmitted() {
+    const updatedReviews = await useCompanyReviews(data.value?.id);
+    Object.assign(reviews, updatedReviews);
+    reviews.companyId = data.value?.id;
+    reviews.entityId = data.value?.id;
   }
 
-  if (data.value?.features) {
-    sectionTitles.push('Features')
-  }
+  const faqItems = computed(() => {
+    if (!data.value?.faqs) return [];
 
-  if (data.value?.content) {
-    sectionTitles.push('Article')
-  }
+    return data.value?.faqs.map(
+      (faq: { question: string; answer: string }) => ({
+        label: faq.question,
+        content: faq.answer,
+      }),
+    );
+  });
 
-  if (data.value?.screenshots && data.value?.screenshots.length) {
-    sectionTitles.push('Media')
-  }
+  const sections = computed(() => {
+    const sectionTitles: string[] = [];
 
-  if (faqItems.value && faqItems.value.length) {
-    sectionTitles.push('FAQ')
-  }
+    sectionTitles.push('Overview');
 
-  if (data.value?.alternatives) {
-    sectionTitles.push('Alternatives')
-  }
-
-  // Always include Reviews section when reviews are available
-  if (data.value?.numReviews > 0 || reviews?.reviews?.length > 0) {
-    sectionTitles.push('Reviews')
-  }
-
-  // Add Comments section to navigation
-  sectionTitles.push('Discussion')
-
-  return sectionTitles
-})
-
-// Copy to clipboard function
-async function copyToClipboard(sectionId: string) {
-  const jumpLink = `#${sectionId}`
-  const link = `${window.location.href.split('#')[0]}${jumpLink}`
-
-  try {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      await navigator.clipboard.writeText(link)
-    }
-    else {
-      // Fallback for unsupported environments
-      const el = document.createElement('textarea')
-      el.value = link
-      document.body.appendChild(el)
-      el.select()
-      document.execCommand('copy')
-      document.body.removeChild(el)
+    if (data.value?.categories && data.value?.categories.length) {
+      sectionTitles.push('Categories');
     }
 
-    toast.add({
-      id: 'copy-link',
-      title: 'Link copied to clipboard',
-      description: `Link to ${sectionId} section copied successfully`,
-      icon: 'check-circle',
-    })
-  }
-  catch (error) {
-    console.error('Failed to copy text to clipboard:', error)
-    toast.add({
-      id: 'copy-link-error',
-      title: 'Failed to copy link',
-      description: `Could not copy link to ${sectionId} section`,
-      icon: 'error-circle',
-    })
-  }
-}
+    if (data.value?.features) {
+      sectionTitles.push('Features');
+    }
 
-function companyMainImage(company: Company) {
-  if (!company)
-    return null
-  if (company.logo) {
-    return company.logo
-  }
-  else if (company.screenshots && company.screenshots.length) {
-    return company.screenshots[0]
-  }
-  else {
-    return null
-  }
-}
+    if (data.value?.content) {
+      sectionTitles.push('Article');
+    }
 
-useSeoMeta({
-  title: computed(() =>
-    data.value?.name
-      ? `${data.value.name} - Reviews, Pricing, Features, Alternatives & Deals`
-      : 'Company Information',
-  ),
-})
+    if (data.value?.screenshots && data.value?.screenshots.length) {
+      sectionTitles.push('Media');
+    }
+
+    if (faqItems.value && faqItems.value.length) {
+      sectionTitles.push('FAQ');
+    }
+
+    if (data.value?.alternatives) {
+      sectionTitles.push('Alternatives');
+    }
+
+    // Always include Reviews section when reviews are available
+    if (data.value?.numReviews > 0 || reviews?.reviews?.length > 0) {
+      sectionTitles.push('Reviews');
+    }
+
+    // Add Comments section to navigation
+    sectionTitles.push('Discussion');
+
+    return sectionTitles;
+  });
+
+  // Copy to clipboard function
+  async function copyToClipboard(sectionId: string) {
+    const jumpLink = `#${sectionId}`;
+    const link = `${window.location.href.split('#')[0]}${jumpLink}`;
+
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(link);
+      } else {
+        // Fallback for unsupported environments
+        const el = document.createElement('textarea');
+        el.value = link;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+      }
+
+      toast.add({
+        id: 'copy-link',
+        title: 'Link copied to clipboard',
+        description: `Link to ${sectionId} section copied successfully`,
+        icon: 'check-circle',
+      });
+    } catch (error) {
+      console.error('Failed to copy text to clipboard:', error);
+      toast.add({
+        id: 'copy-link-error',
+        title: 'Failed to copy link',
+        description: `Could not copy link to ${sectionId} section`,
+        icon: 'error-circle',
+      });
+    }
+  }
+
+  function companyMainImage(company: Company) {
+    if (!company) return null;
+    if (company.logo) {
+      return company.logo;
+    } else if (company.screenshots && company.screenshots.length) {
+      return company.screenshots[0];
+    } else {
+      return null;
+    }
+  }
+
+  useSeoMeta({
+    title: computed(() =>
+      data.value?.name
+        ? `${data.value.name} - Reviews, Pricing, Features, Alternatives & Deals`
+        : 'Company Information',
+    ),
+  });
 </script>
 
 <template>
@@ -276,10 +270,7 @@ useSeoMeta({
         </template>
         <UDivider class="my-0" />
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div
-          class="prose dark:prose-invert max-w-none"
-          v-html="data.content"
-        />
+        <div class="prose dark:prose-invert max-w-none" v-html="data.content" />
       </UCard>
 
       <!-- FAQs Section -->

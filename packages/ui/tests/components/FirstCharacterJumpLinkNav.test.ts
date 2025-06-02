@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest'
-import FirstCharacterJumpLinkNav from '../../components/FirstCharacterJumpLinkNav.vue'
-import ComponentRender from '../componentRender'
+import { describe, expect, it } from 'vitest';
+import FirstCharacterJumpLinkNav from '../../components/FirstCharacterJumpLinkNav.vue';
+import ComponentRender from '../componentRender';
 
 describe('firstCharacterJumpLinkNav Snapshot', () => {
   it.each([
@@ -42,8 +42,8 @@ describe('firstCharacterJumpLinkNav Snapshot', () => {
         `FirstCharacterJumpLinkNav ${desc}`,
         options,
         FirstCharacterJumpLinkNav,
-      )
-      expect(html).toMatchSnapshot()
+      );
+      expect(html).toMatchSnapshot();
     },
-  )
-})
+  );
+});

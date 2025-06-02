@@ -1,45 +1,45 @@
 <script setup lang="ts">
-const route = useRoute()
+  const route = useRoute();
 
-const { data: post } = await useAsyncData(route.path, () =>
-  queryCollection('posts').path(route.path).first())
-if (!post.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Post not found',
-    fatal: true,
-  })
-}
+  const { data: post } = await useAsyncData(route.path, () =>
+    queryCollection('posts').path(route.path).first(),
+  );
+  if (!post.value) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Post not found',
+      fatal: true,
+    });
+  }
 
-const { data: surround } = await useAsyncData(
-  `${route.path}-surround`,
-  () => {
-    return queryCollectionItemSurroundings('posts', route.path, {
-      fields: ['description'],
-    })
-  },
-)
+  const { data: surround } = await useAsyncData(
+    `${route.path}-surround`,
+    () => {
+      return queryCollectionItemSurroundings('posts', route.path, {
+        fields: ['description'],
+      });
+    },
+  );
 
-const title = post.value.title
-const description = post.value.description
+  const title = post.value.title;
+  const description = post.value.description;
 
-useSeoMeta({
-  title,
-  ogTitle: title,
-  description,
-  ogDescription: description,
-})
+  useSeoMeta({
+    title,
+    ogTitle: title,
+    description,
+    ogDescription: description,
+  });
 
-if (post.value.image?.src) {
-  defineOgImage({
-    url: post.value.image.src,
-  })
-}
-else {
-  defineOgImageComponent('Saas', {
-    headline: 'Blog',
-  })
-}
+  if (post.value.image?.src) {
+    defineOgImage({
+      url: post.value.image.src,
+    });
+  } else {
+    defineOgImageComponent('Saas', {
+      headline: 'Blog',
+    });
+  }
 </script>
 
 <template>
@@ -48,13 +48,15 @@ else {
       <template #headline>
         <UBadge v-bind="post.badge" variant="subtle" />
         <span class="text-(--ui-text-muted)">&middot;</span>
-        <time class="text-(--ui-text-muted)">{{
-          new Date(post.date).toLocaleDateString('en', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-          })
-        }}</time>
+        <time class="text-(--ui-text-muted)">
+          {{
+            new Date(post.date).toLocaleDateString('en', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            })
+          }}
+        </time>
       </template>
 
       <div class="mt-4 flex flex-wrap items-center gap-3">

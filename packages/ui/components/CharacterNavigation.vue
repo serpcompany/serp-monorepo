@@ -1,10 +1,10 @@
 <script setup lang="ts">
-interface Props {
-  characters: string[]
-  filteredCharacters: string[]
-}
+  interface Props {
+    characters: string[];
+    filteredCharacters: string[];
+  }
 
-defineProps<Props>()
+  defineProps<Props>();
 </script>
 
 <template>

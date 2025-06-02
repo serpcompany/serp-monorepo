@@ -1,6 +1,6 @@
-import { createFeedback } from '@serp/db/server/database/queries/admin'
-import { validateBody } from '@serp/utils/server'
-import { z } from 'zod'
+import { createFeedback } from '@serp/db/server/database/queries/admin';
+import { validateBody } from '@serp/utils/server';
+import { z } from 'zod';
 
 const schema = z.object({
   user: z.string(),
@@ -16,15 +16,15 @@ const schema = z.object({
       url: z.string().optional(),
     })
     .optional(),
-})
+});
 
 export default defineEventHandler(async (event) => {
-  await requireUserSession(event)
-  const data = await validateBody(event, schema)
+  await requireUserSession(event);
+  const data = await validateBody(event, schema);
   const feedback = await createFeedback({
     user: data.user,
     message: data.message,
     meta: data.meta,
-  })
-  return feedback
-})
+  });
+  return feedback;
+});

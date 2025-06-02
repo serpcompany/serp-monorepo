@@ -1,54 +1,53 @@
 <script setup lang="ts">
-import type { ServiceProvider } from '@serp/types/types'
-import { computed, ref } from 'vue'
+  import type { ServiceProvider } from '@serp/types/types';
+  import { computed, ref } from 'vue';
 
-const props = defineProps({
-  serviceProvider: {
-    type: Object as PropType<ServiceProvider>,
-    required: true,
-  },
-  showReadMore: {
-    type: Boolean,
-    default: false,
-  },
-  showFeatures: {
-    type: Boolean,
-    default: false,
-  },
-  showExpandedContent: {
-    type: Boolean,
-    default: false,
-  },
-  baseSlug: {
-    type: String,
-    default: 'service-providers/',
-  },
-})
-const config = useRuntimeConfig()
-const useAuth = config.public.useAuth
+  const props = defineProps({
+    serviceProvider: {
+      type: Object as PropType<ServiceProvider>,
+      required: true,
+    },
+    showReadMore: {
+      type: Boolean,
+      default: false,
+    },
+    showFeatures: {
+      type: Boolean,
+      default: false,
+    },
+    showExpandedContent: {
+      type: Boolean,
+      default: false,
+    },
+    baseSlug: {
+      type: String,
+      default: 'service-providers/',
+    },
+  });
+  const config = useRuntimeConfig();
+  const useAuth = config.public.useAuth;
 
-const isExpanded = ref(false)
+  const isExpanded = ref(false);
 
-// Compute the main image, either the serviceProvider logo or the first screenshot
-const serviceProviderMainImage = computed(() => {
-  if (props.serviceProvider.logo) {
-    return props.serviceProvider.logo
-  }
-  else if (
-    props.serviceProvider.screenshots
-    && props.serviceProvider.screenshots.length
-  ) {
-    return props.serviceProvider.screenshots[0]
-  }
-  else {
-    return null
-  }
-})
+  // Compute the main image, either the serviceProvider logo or the first screenshot
+  const serviceProviderMainImage = computed(() => {
+    if (props.serviceProvider.logo) {
+      return props.serviceProvider.logo;
+    } else if (
+      props.serviceProvider.screenshots &&
+      props.serviceProvider.screenshots.length
+    ) {
+      return props.serviceProvider.screenshots[0];
+    } else {
+      return null;
+    }
+  });
 </script>
 
 <template>
   <div
-    class="mx-auto max-w-5xl rounded-lg" :class="[
+    class="mx-auto max-w-5xl rounded-lg"
+    :class="[
       serviceProvider.featured
         ? 'relative overflow-hidden border border-neutral-200 bg-gradient-to-b from-blue-50/50 to-transparent px-6 py-10 dark:border-blue-500/40 dark:from-blue-900/30 dark:to-neutral-900/60 dark:shadow-[0_0_15px_rgba(30,64,175,0.15)]'
         : 'border border-[var(--ui-border)] px-5 py-4 dark:border-[var(--ui-border-accented)]',
@@ -71,7 +70,8 @@ const serviceProviderMainImage = computed(() => {
       >
         <NuxtLink :to="`/${baseSlug}${serviceProvider.slug}/`">
           <div
-            class="overflow-hidden rounded-lg bg-[var(--ui-bg-muted)] dark:bg-[var(--ui-bg-elevated)]" :class="[
+            class="overflow-hidden rounded-lg bg-[var(--ui-bg-muted)] dark:bg-[var(--ui-bg-elevated)]"
+            :class="[
               serviceProvider.featured
                 ? 'h-36 w-36 ring-1 ring-blue-100 dark:ring-blue-500/50'
                 : 'h-28 w-28',
@@ -97,7 +97,8 @@ const serviceProviderMainImage = computed(() => {
                 :to="`/products/${serviceProvider.slug}/reviews/`"
               >
                 <h2
-                  class="font-semibold" :class="[
+                  class="font-semibold"
+                  :class="[
                     serviceProvider.featured
                       ? 'mb-1 text-2xl text-blue-700 dark:text-blue-300'
                       : 'text-xl text-[var(--ui-text)] dark:text-[var(--ui-text)]',
@@ -122,7 +123,8 @@ const serviceProviderMainImage = computed(() => {
 
             <!-- serviceProvider oneliner -->
             <p
-              class="text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)]" :class="[
+              class="text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)]"
+              :class="[
                 serviceProvider.featured
                   ? 'mt-3 text-base leading-relaxed dark:text-[var(--ui-text)]'
                   : 'mt-2 line-clamp-2',
@@ -147,14 +149,19 @@ const serviceProviderMainImage = computed(() => {
                 'mt-6': serviceProvider.featured,
               }"
             >
-              <span class="text-lg font-medium">{{ serviceProvider.rating }}/5</span>
+              <span class="text-lg font-medium">
+                {{ serviceProvider.rating }}/5
+              </span>
             </div>
           </div>
 
           <!-- right side buttons -->
           <div
-            class="flex min-w-[130px] flex-col space-y-2" :class="[
-              serviceProvider.featured ? 'mt-5 sm:mt-0 sm:ml-4' : 'mt-4 sm:mt-0',
+            class="flex min-w-[130px] flex-col space-y-2"
+            :class="[
+              serviceProvider.featured
+                ? 'mt-5 sm:mt-0 sm:ml-4'
+                : 'mt-4 sm:mt-0',
             ]"
           >
             <!-- view website button -->
@@ -206,9 +213,9 @@ const serviceProviderMainImage = computed(() => {
     <!-- feature tags only for featured providers -->
     <div
       v-if="
-        serviceProvider.featured
-          && serviceProvider.features
-          && serviceProvider.features.length
+        serviceProvider.featured &&
+        serviceProvider.features &&
+        serviceProvider.features.length
       "
       class="mt-8"
     >
@@ -229,9 +236,7 @@ const serviceProviderMainImage = computed(() => {
 
       <!-- features -->
       <section v-if="showFeatures" class="mt-4">
-        <h3 class="pb-2 text-lg font-medium">
-          Features
-        </h3>
+        <h3 class="pb-2 text-lg font-medium">Features</h3>
         <ul class="list-disc pl-5">
           <li v-for="feature in serviceProvider.features" :key="feature.id">
             {{ feature.item }}: {{ feature.description }}

@@ -1,98 +1,91 @@
 <script lang="ts" setup>
-const loading = ref(false)
-const toast = useToast()
-const { data: plans, refresh: refreshPlans } = await useFetch(
-  '/api/super-admin/stripe/plans',
-)
+  const loading = ref(false);
+  const toast = useToast();
+  const { data: plans, refresh: refreshPlans } = await useFetch(
+    '/api/super-admin/stripe/plans',
+  );
 
-// Compute unique products from plans
-const uniqueProducts = computed(() => {
-  if (!plans.value)
-    return []
+  // Compute unique products from plans
+  const uniqueProducts = computed(() => {
+    if (!plans.value) return [];
 
-  const productMap = new Map()
-  plans.value.forEach((plan) => {
-    if (plan.product && !productMap.has(plan.product.id)) {
-      productMap.set(plan.product.id, plan.product)
+    const productMap = new Map();
+    plans.value.forEach((plan) => {
+      if (plan.product && !productMap.has(plan.product.id)) {
+        productMap.set(plan.product.id, plan.product);
+      }
+    });
+
+    return Array.from(productMap.values());
+  });
+
+  // Get all plans for a specific product
+  function getProductPlans(productId: string) {
+    if (!plans.value) return [];
+    return plans.value.filter((plan) => plan.productId === productId);
+  }
+
+  function formatPrice(price: number) {
+    if (!price) return '$0';
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+    }).format(price / 100);
+  }
+
+  async function syncStripeData() {
+    try {
+      loading.value = true;
+      await $fetch('/api/super-admin/stripe/sync-products');
+      await refreshPlans();
+      toast.add({
+        title: 'Stripe data synced successfully',
+        icon: 'i-lucide-check-circle',
+        color: 'success',
+      });
+    } catch (error) {
+      toast.add({
+        title: 'Failed to sync Stripe data',
+        description:
+          error instanceof Error
+            ? error.message
+            : 'An unexpected error occurred',
+        icon: 'i-lucide-alert-circle',
+        color: 'error',
+      });
+    } finally {
+      loading.value = false;
     }
-  })
-
-  return Array.from(productMap.values())
-})
-
-// Get all plans for a specific product
-function getProductPlans(productId: string) {
-  if (!plans.value)
-    return []
-  return plans.value.filter(plan => plan.productId === productId)
-}
-
-function formatPrice(price: number) {
-  if (!price)
-    return '$0'
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-  }).format(price / 100)
-}
-
-async function syncStripeData() {
-  try {
-    loading.value = true
-    await $fetch('/api/super-admin/stripe/sync-products')
-    await refreshPlans()
-    toast.add({
-      title: 'Stripe data synced successfully',
-      icon: 'i-lucide-check-circle',
-      color: 'success',
-    })
   }
-  catch (error) {
-    toast.add({
-      title: 'Failed to sync Stripe data',
-      description:
+  const deletingProduct = ref<string | null>(null);
+  async function deleteProduct(productId: string) {
+    try {
+      deletingProduct.value = productId;
+      await $fetch(`/api/super-admin/stripe/${productId}`, {
+        method: 'DELETE',
+      });
+      await refreshPlans();
+      toast.add({
+        title: 'Product deleted successfully',
+        icon: 'i-lucide-check-circle',
+        color: 'success',
+      });
+    } catch (error) {
+      console.error(error);
+      toast.add({
+        title: 'Failed to delete product',
+        description:
           error instanceof Error
             ? error.message
             : 'An unexpected error occurred',
-      icon: 'i-lucide-alert-circle',
-      color: 'error',
-    })
+        icon: 'i-lucide-alert-circle',
+        color: 'error',
+      });
+    } finally {
+      deletingProduct.value = null;
+    }
   }
-  finally {
-    loading.value = false
-  }
-}
-const deletingProduct = ref<string | null>(null)
-async function deleteProduct(productId: string) {
-  try {
-    deletingProduct.value = productId
-    await $fetch(`/api/super-admin/stripe/${productId}`, {
-      method: 'DELETE',
-    })
-    await refreshPlans()
-    toast.add({
-      title: 'Product deleted successfully',
-      icon: 'i-lucide-check-circle',
-      color: 'success',
-    })
-  }
-  catch (error) {
-    console.error(error)
-    toast.add({
-      title: 'Failed to delete product',
-      description:
-          error instanceof Error
-            ? error.message
-            : 'An unexpected error occurred',
-      icon: 'i-lucide-alert-circle',
-      color: 'error',
-    })
-  }
-  finally {
-    deletingProduct.value = null
-  }
-}
 </script>
 
 <template>
