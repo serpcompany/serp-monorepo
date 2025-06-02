@@ -1,4 +1,5 @@
 import type { SlackNotificationOptions } from './providers/slack'
+import process from 'node:process'
 import { sendSlackNotification } from './providers/slack'
 
 // Provider types
@@ -17,7 +18,7 @@ export interface NotificationOptions {
  * @param options The notification options
  * @returns Promise that resolves when the notification is sent
  */
-export async function sendNotification(options: NotificationOptions) {
+export async function sendNotification(options: NotificationOptions): Promise<void> {
   const { provider = process.env.DEFAULT_NOTIFICATION_PROVIDER || 'slack' }
     = options
 

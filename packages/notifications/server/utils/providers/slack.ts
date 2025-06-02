@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { WebClient } from '@slack/web-api'
 
 // Slack provider implementation
@@ -22,7 +23,7 @@ export interface SlackNotificationOptions {
   channel?: string
 }
 
-export async function sendSlackNotification(options: SlackNotificationOptions) {
+export async function sendSlackNotification(options: SlackNotificationOptions): Promise<void> {
   const { message, channel = process.env.SLACK_CHANNEL_ID } = options
 
   try {
