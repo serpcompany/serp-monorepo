@@ -1,31 +1,47 @@
-# Project Rules and Guidelines
+# GROK the project
 
 This project contains comprehensive coding rules and guidelines that must be followed when working on any codebase. All rules in this documentation are mandatory and should be applied consistently.
 
-Work on ISSUES from https://github.com/serpcompany/serp-monorepo for this project, you are to work on issues with a label of `claude`
+Explore the entire repository to understand the codebase from multiple angles: as a software architect, software developer, product manager, project manager, quality assurance tester. I want you to compile your findings into a very extensive markdown document in the root of the repository (with the date in the filename). Include schema diagrams, flow charts, or any other graphics relevant to describing the project. Familiarize yourself with the package.json file so you understand the technologies we are working with, and their unique mix/interaction with each other.
+
+---
+
+# Project Rules and Guidelines
+
+
+## Workflow
+
+- Work on ISSUES from repository, login as `serp-y` user by running: 
+```bash
+/Users/devin/gh-users/switch-profile.sh serp-y
+git config --local user.name && git config --local user.email
+```
+- For any issues you work on or create, and a label of `claude`.
+- Always research the most up to date documentation relevant to the issue AND our tech stack to find best practices, code patterns, snippets, and configuration settings. Add the findings to the issue comments before starting.
+- Follow TDD methodology: Red (failing test) → Green (make it pass) → Refactor (improve code)
+- Break down your taks into subtasks in a github issue
+- Start vitest in watch mode
+- Add typings and correct all linter warnings and errors as you code
+- Add/improve JSDoc blocks for all components and functions
+- Code "TDD" (test-first), but write tests "BDD" (prioritizing the user persepctive/path of it)
+- Enable browser-tools mcp so you can interact with the browser, take screenshots, get console errors, etc. (`npx @agentdeskai/browser-tools-server@1.2.0` to star the server)
+
+## Problem Solving
+
+- When planning or working on a task, Do not make assumptions "The problem is likely that ....." Always research and reference updated documentation and issues from online to be sure before doing or trying anything.          
+- We are coding. The bad news about that is there will be bugs. The good news is that everything that happens is happening because there is written code somewhere that is causing it - and for that reason we should be able to figure out how to debug anything we encounter as long as we look in the correct places.
 
 ## Core Principles
 
 🎖️ Always respond with this emoji at the top of every response to confirm you've read these guidelines.
 
-## Import All Rule Files
-
-@.claude/rules/cloudflare-rules.mdc
-@.claude/rules/research-methodology.mdc
-@.claude/rules/browser-tools-setup.mdc
-@.claude/rules/bugs-and-errors.mdc
-@.claude/rules/design-system.mdc
-@.claude/rules/security-rules.mdc
-@.claude/rules/self-improve.mdc
-@.claude/rules/vue-nuxt.mdc
-@.claude/rules/external-resources.mdc
-@.claude/rules/general.mdc
-@.claude/rules/jsdoc-comments.mdc
-@.claude/rules/shared.mdc
-@.claude/rules/tech-stack.mdc
-
 ## Key Project Guidelines
 
+- After making a change, always check your terminal output for issues and errors. 
+- For front-end changes, always check the browser context, console, and screenshots using browser-tools mcp
+- Constantly research (web search), reference (in `.claude/*`) and revisit documentation, best practices, code snippets, etc. to ensure you're equipped with the best possible up-to-date knowledge of what we're working on.
+- Take no shortcuts, do everything the "correct / best-practice way"
+- 
 ### Code Quality Standards
 
 - Prefer simple solutions over complex ones
@@ -34,35 +50,36 @@ Work on ISSUES from https://github.com/serpcompany/serp-monorepo for this projec
 - Use meaningful variable names and keep functions small and focused
 - Follow functional programming patterns and avoid classes when possible
 
-### TypeScript Conventions
-
-- Use interfaces over types when possible
-- Avoid enums, use const objects instead
-- Use strict type checking with proper error handling
-- Implement custom error types for better error management
-
 ### Git and Development Workflow
 
-- Use conventional commits with meaningful messages
+- Checkout issues (as branches from `staging`) from the project's github repository
+- Before doing any coding, always research & reference online documentation, web searches, context7 and other mcp servers for the mix of technologies involved in the issue
+- Use conventional commits with meaningful messages, and commit SMALL and OFTEN
 - Keep PRs focused and small
-- Include proper documentation and tests
+- Everything should be tested appropriately, keep a strong focus on SRE and software robustness
 - Never overwrite .env files without confirmation
 - Consider dev, test, and prod environments in all code changes
 
 ### UI Development (NuxtUI + NuxtUI Pro)
 
-- Always start with NuxtUI Pro components before building custom solutions
+- Always start with NuxtUI / Pro components before building custom solutions
+- Use Nuxt UI design tokens / props before custom Tailwind CSS
+- Use Tailwind CSS directives before inline or scoped CSS
 - Follow this styling order: NuxtUI native options → Tailwind utilities → scoped styles
 - Use Tailwind CSS 4 with mobile-first responsive design
-- Implement dark mode support and ensure WCAG 2.2 accessibility
+- If the project does not have dark mode, don't add it
 
 ### Error Handling Process
 
-1. Don't immediately try to fix errors - analyze and hypothesize first
-2. Research errors and documentation systematically
-3. Create a debugging checklist based on findings
+1. Don't immediately try to fix errors - analyze and logically consider the issues first
+2. Then, Research documentation systematically online and through mcp server access
+3. Next, Create a debugging checklist based on findings
 4. After fixing, implement preventive measures (tests, type safety)
-5. Only consider task complete after tests pass and commit is made
+5. Only consider a task complete after tests pass and commit is made
+6. Finally, take your learning experience (the initial error, what didnt work, what did work, how you found it, etc.) and write it up in a new page inside `.claude/learning/` so we can build a robust internal help center for solving commong problems
+
+> [!IMPORTANT]
+> Make sure to always document the issues and learning experience you encounter in `.claude/learning` so we can improve overtime
 
 ### Documentation Requirements
 
@@ -82,12 +99,7 @@ Work on ISSUES from https://github.com/serpcompany/serp-monorepo for this projec
 ### Resource References
 
 When working on specific technologies, always consult the latest documentation:
-
-You can find links to more documentation in .claude/rules/\*
-
-- Nuxt.js: https://nuxt.com/llms-full.txt
-- NuxtUI: https://ui.nuxt.com/getting-started
-- Nuxt SEO: https://nuxtseo.com/docs/nuxt-seo/getting-started/introduction
+You can find links to more documentation in `.claude/rules/` & `./claude/reference/
 
 ## Testing and Quality Assurance
 
@@ -176,3 +188,7 @@ If browser tools aren't working:
 - Keep the server terminal running throughout the session
 - Use Chrome DevTools BrowserToolsMCP panel to monitor connections
 - Test simple navigation first before complex interactions
+
+## Import All Rule Files
+
+@.claude/index.md
