@@ -1,11 +1,11 @@
-import type { OAuthUserData } from '../../../utils/oauth';
-import { handleOAuthSuccess } from '../../../utils/oauth';
+import type { OAuthUserData } from '../../../utils/oauth'
+import { handleOAuthSuccess } from '../../../utils/oauth'
 
 interface DiscordOAuthUser {
-  id: string;
-  avatar: string;
-  global_name: string;
-  email: string;
+  id: string
+  avatar: string
+  global_name: string
+  email: string
 }
 
 function mapDiscordUser(user: DiscordOAuthUser): Omit<OAuthUserData, 'provider'> & { provider: 'discord' } {
@@ -15,20 +15,20 @@ function mapDiscordUser(user: DiscordOAuthUser): Omit<OAuthUserData, 'provider'>
     avatarUrl: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`,
     provider: 'discord' as const,
     providerUserId: user.id,
-  };
+  }
 }
 
 export default defineOAuthDiscordEventHandler({
   config: { emailRequired: true },
   async onSuccess(event, { user }) {
     try {
-      await handleOAuthSuccess(event, mapDiscordUser(user));
+      await handleOAuthSuccess(event, mapDiscordUser(user))
     }
     catch {
       throw createError({
         statusCode: 500,
         statusMessage: 'Authentication failed',
-      });
+      })
     }
   },
-});
+})

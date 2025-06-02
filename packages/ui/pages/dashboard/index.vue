@@ -1,16 +1,17 @@
 <script setup lang="ts">
-  const { user } = useUserSession();
-  const teams = useState<unknown[]>('teams', () => []);
+const { user } = useUserSession()
+const teams = useState<unknown[]>('teams', () => [])
 
-  // Fetch teams if not already loaded
-  if (!teams.value.length) {
-    try {
-      teams.value = await useTeam().getMemberships();
-    } catch {
-      // User might not have teams or there might be an error
-      teams.value = [];
-    }
+// Fetch teams if not already loaded
+if (!teams.value.length) {
+  try {
+    teams.value = await useTeam().getMemberships()
   }
+  catch {
+    // User might not have teams or there might be an error
+    teams.value = []
+  }
+}
 </script>
 
 <template>
@@ -41,7 +42,9 @@
               class="text-primary-500 text-2xl"
             />
             <div>
-              <h3 class="font-medium">Billing</h3>
+              <h3 class="font-medium">
+                Billing
+              </h3>
               <p class="text-sm text-neutral-600 dark:text-neutral-400">
                 Manage subscription and payments
               </p>
@@ -56,7 +59,9 @@
           <div class="flex items-center gap-3">
             <UIcon name="i-lucide-user" class="text-primary-500 text-2xl" />
             <div>
-              <h3 class="font-medium">Account Settings</h3>
+              <h3 class="font-medium">
+                Account Settings
+              </h3>
               <p class="text-sm text-neutral-600 dark:text-neutral-400">
                 Update profile and preferences
               </p>
@@ -71,7 +76,9 @@
           <div class="flex items-center gap-3">
             <UIcon name="i-lucide-shield" class="text-primary-500 text-2xl" />
             <div>
-              <h3 class="font-medium">Security</h3>
+              <h3 class="font-medium">
+                Security
+              </h3>
               <p class="text-sm text-neutral-600 dark:text-neutral-400">
                 Password and security settings
               </p>
@@ -86,7 +93,9 @@
         class="rounded-lg border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
       >
         <div class="mb-4 flex items-center justify-between">
-          <h2 class="text-lg font-semibold">Your Teams</h2>
+          <h2 class="text-lg font-semibold">
+            Your Teams
+          </h2>
           <UButton
             variant="outline"
             @click="navigateTo('/dashboard?useTeams=true')"
@@ -108,7 +117,9 @@
                 {{ team.name?.charAt(0) || 'T' }}
               </div>
               <div>
-                <h3 class="font-medium">{{ team.name }}</h3>
+                <h3 class="font-medium">
+                  {{ team.name }}
+                </h3>
                 <p class="text-sm text-neutral-600 dark:text-neutral-400">
                   {{ team.slug }}
                 </p>
@@ -128,7 +139,9 @@
             name="i-lucide-users"
             class="mx-auto mb-4 text-4xl text-neutral-400"
           />
-          <h2 class="mb-2 text-lg font-semibold">Create a Team</h2>
+          <h2 class="mb-2 text-lg font-semibold">
+            Create a Team
+          </h2>
           <p class="mb-4 text-neutral-600 dark:text-neutral-400">
             Collaborate with others by creating a team workspace.
           </p>
@@ -152,7 +165,9 @@
               name="i-lucide-bookmark"
               class="mx-auto mb-2 text-3xl text-neutral-400"
             />
-            <p class="text-neutral-600 dark:text-neutral-400">Coming soon</p>
+            <p class="text-neutral-600 dark:text-neutral-400">
+              Coming soon
+            </p>
           </div>
         </div>
 
@@ -168,7 +183,9 @@
               name="i-lucide-activity"
               class="mx-auto mb-2 text-3xl text-neutral-400"
             />
-            <p class="text-neutral-600 dark:text-neutral-400">Coming soon</p>
+            <p class="text-neutral-600 dark:text-neutral-400">
+              Coming soon
+            </p>
           </div>
         </div>
       </div>

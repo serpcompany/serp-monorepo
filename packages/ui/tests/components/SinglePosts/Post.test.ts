@@ -1,24 +1,24 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import Post from '../../../components/SinglePosts/Post.vue';
-import ComponentRender from '../../componentRender';
-import '../../mockUseUserSession';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import Post from '../../../components/SinglePosts/Post.vue'
+import ComponentRender from '../../componentRender'
+import '../../mockUseUserSession'
 
-let runtimeConfig: Record<string, unknown> = { public: { useAuth: true } };
-let commentsData_: unknown = { comments: [] };
+let runtimeConfig: Record<string, unknown> = { public: { useAuth: true } }
+let commentsData_: unknown = { comments: [] }
 
-mockNuxtImport('useHead', () => () => {});
-mockNuxtImport('useRuntimeConfig', () => () => runtimeConfig);
-mockNuxtImport('usePostComments', () => async () => commentsData_);
+mockNuxtImport('useHead', () => () => {})
+mockNuxtImport('useRuntimeConfig', () => () => runtimeConfig)
+mockNuxtImport('usePostComments', () => async () => commentsData_)
 
-describe('SinglePostsPost Snapshot', () => {
+describe('singlePostsPost Snapshot', () => {
   const scenarios: [
     string,
     {
-      config: Record<string, unknown>;
-      props: { data: unknown };
-      comments: unknown;
-    }
+      config: Record<string, unknown>
+      props: { data: unknown }
+      comments: unknown
+    },
   ][] = [
     [
       'with full post and auth enabled',
@@ -36,21 +36,21 @@ describe('SinglePostsPost Snapshot', () => {
             relatedPosts: [],
             slug: 'nuxt-testing',
             comments: [
-              { author: 'John Doe', comment: 'Great post!', replies: [] }
+              { author: 'John Doe', comment: 'Great post!', replies: [] },
             ],
-            upvotes: ['test@test.com']
-          }
+            upvotes: ['test@test.com'],
+          },
         },
         comments: {
           comments: [
             {
               id: 1,
               content: 'Test comment',
-              replies: []
-            }
-          ]
-        }
-      }
+              replies: [],
+            },
+          ],
+        },
+      },
     ],
     [
       'with full post and auth disabled',
@@ -65,22 +65,22 @@ describe('SinglePostsPost Snapshot', () => {
             relatedPosts: [],
             slug: 'nuxt-testing',
             comments: [
-              { author: 'John Doe', comment: 'Great post!', replies: [] }
+              { author: 'John Doe', comment: 'Great post!', replies: [] },
             ],
             module: 'emojis',
-            upvotes: []
-          }
+            upvotes: [],
+          },
         },
         comments: {
           comments: [
             {
               id: 1,
               content: 'Test comment',
-              replies: []
-            }
-          ]
-        }
-      }
+              replies: [],
+            },
+          ],
+        },
+      },
     ],
     [
       'without video and minimal fields',
@@ -94,11 +94,11 @@ describe('SinglePostsPost Snapshot', () => {
             slug: 'no-video-post',
             // Comments and relatedPosts are omitted or empty.
             comments: [],
-            upvotes: []
-          }
+            upvotes: [],
+          },
         },
-        comments: { comments: [] }
-      }
+        comments: { comments: [] },
+      },
     ],
     [
       'with non-empty relatedPosts',
@@ -114,22 +114,22 @@ describe('SinglePostsPost Snapshot', () => {
             relatedPosts: [{ id: 1, title: 'Related Post' }],
             slug: 'related-posts-post',
             comments: [],
-            upvotes: ['test@test.com']
-          }
+            upvotes: ['test@test.com'],
+          },
         },
-        comments: { comments: [] }
-      }
-    ]
-  ];
+        comments: { comments: [] },
+      },
+    ],
+  ]
 
   it.each(scenarios)(
     'renders %s correctly',
     async (desc: string, { config, props, comments }) => {
-      runtimeConfig = config;
-      commentsData_ = comments;
+      runtimeConfig = config
+      commentsData_ = comments
 
-      const html = await ComponentRender(`Post ${desc}`, { props }, Post);
-      expect(html).toMatchSnapshot();
-    }
-  );
-});
+      const html = await ComponentRender(`Post ${desc}`, { props }, Post)
+      expect(html).toMatchSnapshot()
+    },
+  )
+})

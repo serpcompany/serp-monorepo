@@ -1,20 +1,20 @@
 <script lang="ts" setup>
-  import type { User } from '@serp/db/types/database';
+import type { User } from '@serp/db/types/database'
 
-  const props = defineProps<{
-    user: User;
-  }>();
-  const { fetch: refreshUserSession } = useUserSession();
-  const stopImpersonation = async () => {
-    await $fetch('/api/super-admin/users/stop-impersonation', {
-      method: 'POST',
-      body: {
-        userId: props.user.id
-      }
-    });
-    await refreshUserSession();
-    window.location.href = '/dashboard/super-admin';
-  };
+const props = defineProps<{
+  user: User
+}>()
+const { fetch: refreshUserSession } = useUserSession()
+async function stopImpersonation() {
+  await $fetch('/api/super-admin/users/stop-impersonation', {
+    method: 'POST',
+    body: {
+      userId: props.user.id,
+    },
+  })
+  await refreshUserSession()
+  window.location.href = '/dashboard/super-admin'
+}
 </script>
 
 <template>

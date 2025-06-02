@@ -1,15 +1,14 @@
 <script setup lang="ts">
-  const { data: page } = await useAsyncData('index', () =>
-    queryCollection('index').first()
-  );
+const { data: page } = await useAsyncData('index', () =>
+  queryCollection('index').first())
 
-  useSeoMeta({
-    titleTemplate: '',
-    title: page.value?.title,
-    ogTitle: page.value?.title,
-    description: page.value?.description,
-    ogDescription: page.value?.description
-  });
+useSeoMeta({
+  titleTemplate: '',
+  title: page.value?.title,
+  ogTitle: page.value?.title,
+  description: page.value?.description,
+  ogDescription: page.value?.description,
+})
 </script>
 
 <template>
@@ -22,7 +21,7 @@
       <template #top>
         <div
           class="absolute left-1/2 size-60 -translate-x-1/2 -translate-y-80 transform rounded-full blur-[300px] sm:size-80 dark:bg-(--ui-primary)"
-        ></div>
+        />
 
         <LazyStarsBg />
       </template>
@@ -70,7 +69,7 @@
           :description="testimonial.quote"
           :ui="{
             description:
-              'before:content-[open-quote] after:content-[close-quote]'
+              'before:content-[open-quote] after:content-[close-quote]',
           }"
         >
           <template #footer>
@@ -85,7 +84,7 @@
     <UPageCTA v-bind="page.cta" variant="naked" class="overflow-hidden">
       <div
         class="absolute left-1/2 size-40 -translate-x-1/2 -translate-y-80 transform rounded-full blur-[250px] sm:size-50 dark:bg-(--ui-primary)"
-      ></div>
+      />
 
       <LazyStarsBg />
     </UPageCTA>

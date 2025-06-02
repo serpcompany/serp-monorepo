@@ -1,50 +1,52 @@
 <script setup lang="ts">
-  import type { Faq } from '@serp/types/types';
-  const route = useRoute();
-  const router = useRouter();
-  const { slug } = route.params;
+import type { Faq } from '@serp/types/types'
 
-  const data = await useCompany(`${slug}`);
-  if (!data) {
-    router.push('/404');
+const route = useRoute()
+const router = useRouter()
+const { slug } = route.params
+
+const data = await useCompany(`${slug}`)
+if (!data) {
+  router.push('/404')
+}
+
+const faqItems = computed(() => {
+  if (!data?.faqs)
+    return []
+
+  // @todo - improve the typesafety of this after implementing zod
+  return data?.faqs.map((faq: Faq) => ({
+    label: faq.question,
+    content: faq.answer,
+  }))
+})
+
+const sections = computed(() => {
+  const sectionTitles: string[] = []
+
+  sectionTitles.push('Overview')
+
+  if (data?.features) {
+    sectionTitles.push('Features')
+  }
+  if (faqItems.value && faqItems.value.length) {
+    sectionTitles.push('FAQ')
   }
 
-  const faqItems = computed(() => {
-    if (!data?.faqs) return [];
+  if (data?.alternatives) {
+    sectionTitles.push('Alternatives')
+  }
 
-    // @todo - improve the typesafety of this after implementing zod
-    return data?.faqs.map((faq: Faq) => ({
-      label: faq.question,
-      content: faq.answer
-    }));
-  });
+  return sectionTitles
+})
 
-  const sections = computed(() => {
-    const sectionTitles: string[] = [];
-
-    sectionTitles.push('Overview');
-
-    if (data?.features) {
-      sectionTitles.push('Features');
-    }
-    if (faqItems.value && faqItems.value.length) {
-      sectionTitles.push('FAQ');
-    }
-
-    if (data?.alternatives) {
-      sectionTitles.push('Alternatives');
-    }
-
-    return sectionTitles;
-  });
-
-  useSeoMeta({
-    title: computed(() =>
-      data?.name
-        ? `${data.name} - Reviews, Pricing, Features`
-        : 'Product Information'
-    )
-  });
+useSeoMeta({
+  title: computed(() =>
+    data?.name
+      ? `${data.name} - Reviews, Pricing, Features`
+      : 'Product Information',
+  ),
+})
 </script>
 
 <template>
@@ -76,8 +78,8 @@
             v-if="data.content"
             class="prose dark:prose-invert mt-[-25px]"
           >
-            <!-- eslint-disable-next-line vue/no-v-html-->
-            <div id="article" class="mb-8" v-html="data.content"></div>
+            <!-- eslint-disable-next-line vue/no-v-html -->
+            <div id="article" class="mb-8" v-html="data.content" />
           </section>
 
           <!-- Features Section -->
@@ -86,14 +88,18 @@
               {{ data.name }} Features
             </h2>
             <article v-for="feature in data.features" :key="feature.item">
-              <h3 class="mb-2 text-lg font-bold">{{ feature.item }}</h3>
+              <h3 class="mb-2 text-lg font-bold">
+                {{ feature.item }}
+              </h3>
               <p>{{ feature.description }}</p>
             </article>
           </section>
 
           <!-- FAQs Section -->
           <section v-if="faqItems && faqItems.length" id="faqs" class="mb-12">
-            <h2 class="mb-4 scroll-mt-60 text-3xl font-bold">FAQ</h2>
+            <h2 class="mb-4 scroll-mt-60 text-3xl font-bold">
+              FAQ
+            </h2>
             <UAccordion type="multiple" :items="faqItems" />
           </section>
 
@@ -113,8 +119,8 @@
         <!-- Sidebar (30%) -->
         <aside
           v-if="
-            (data.screenshots && data.screenshots.length) ||
-            (data.categories && data.categories.length)
+            (data.screenshots && data.screenshots.length)
+              || (data.categories && data.categories.length)
           "
           class="space-y-6 lg:col-span-1"
         >

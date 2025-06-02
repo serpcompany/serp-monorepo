@@ -1,13 +1,13 @@
 <script setup lang="ts">
-  defineProps<{
-    videos: {
-      personName: string;
-      businessName: string;
-      businessWebsite: string;
-      positionAtCompany: string;
-      videoId: string;
-    }[];
-  }>();
+defineProps<{
+  videos: {
+    personName: string
+    businessName: string
+    businessWebsite: string
+    positionAtCompany: string
+    videoId: string
+  }[]
+}>()
 </script>
 
 <template>
@@ -29,7 +29,7 @@
             :player-vars="{
               autoplay: 0,
               playsinline: 1,
-              modestbranding: 1
+              modestbranding: 1,
             }"
             :width="640"
             thumbnail-size="maxresdefault"

@@ -1,42 +1,44 @@
 <script setup lang="ts">
-  import type { Entity } from '@serp/types/types';
+import type { Entity } from '@serp/types/types'
 
-  const props = defineProps({
-    entity: {
-      type: Object as PropType<Company>,
-      required: true
-    },
-    baseSlug: {
-      type: String,
-      required: true
-    },
-    baseCategorySlug: {
-      type: String,
-      required: true
-    }
-  });
+const props = defineProps({
+  entity: {
+    type: Object as PropType<Company>,
+    required: true,
+  },
+  baseSlug: {
+    type: String,
+    required: true,
+  },
+  baseCategorySlug: {
+    type: String,
+    required: true,
+  },
+})
 
-  // Compute the main image, either the entity logo or the first screenshot
-  const entityMainImage = computed(() => {
-    if (props.entity.image) {
-      return props.entity.image;
-    } else if (props.entity.logo) {
-      return props.entity.logo;
-    } else if (props.entity.screenshots && props.entity.screenshots.length) {
-      return props.entity.screenshots[0];
-    } else {
-      return null;
-    }
-  });
+// Compute the main image, either the entity logo or the first screenshot
+const entityMainImage = computed(() => {
+  if (props.entity.image) {
+    return props.entity.image
+  }
+  else if (props.entity.logo) {
+    return props.entity.logo
+  }
+  else if (props.entity.screenshots && props.entity.screenshots.length) {
+    return props.entity.screenshots[0]
+  }
+  else {
+    return null
+  }
+})
 </script>
 
 <template>
   <div
-    :class="[
-      'mx-auto max-w-5xl rounded-lg',
+    class="mx-auto max-w-5xl rounded-lg" :class="[
       entity.featured
         ? 'relative overflow-hidden border border-neutral-200 bg-gradient-to-b from-blue-50/50 to-transparent px-6 py-10 dark:border-blue-500/40 dark:from-blue-900/30 dark:to-neutral-900/60 dark:shadow-[0_0_15px_rgba(30,64,175,0.15)]'
-        : 'border border-[var(--ui-border)] px-5 py-4 dark:border-[var(--ui-border-accented)]'
+        : 'border border-[var(--ui-border)] px-5 py-4 dark:border-[var(--ui-border-accented)]',
     ]"
   >
     <!-- Featured accent border -->
@@ -44,7 +46,7 @@
       v-if="entity.featured"
       class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-400 to-purple-400"
       aria-hidden="true"
-    ></div>
+    />
 
     <!-- card content -->
     <div class="flex items-start">
@@ -56,11 +58,10 @@
       >
         <NuxtLink :to="`/${baseSlug}${entity.slug}/reviews/`">
           <div
-            :class="[
-              'overflow-hidden rounded-lg bg-[var(--ui-bg-muted)] dark:bg-[var(--ui-bg-elevated)]',
+            class="overflow-hidden rounded-lg bg-[var(--ui-bg-muted)] dark:bg-[var(--ui-bg-elevated)]" :class="[
               entity.featured
                 ? 'h-36 w-36 ring-1 ring-blue-100 dark:ring-blue-500/50'
-                : 'h-28 w-28'
+                : 'h-28 w-28',
             ]"
           >
             <LazyNuxtImg
@@ -80,11 +81,10 @@
             <div class="flex items-center">
               <NuxtLink class="flex" :to="`/${baseSlug}${entity.slug}/`">
                 <h2
-                  :class="[
-                    'font-semibold',
+                  class="font-semibold" :class="[
                     entity.featured
                       ? 'mb-1 text-2xl text-blue-700 dark:text-blue-300'
-                      : 'text-xl text-[var(--ui-text)] dark:text-[var(--ui-text)]'
+                      : 'text-xl text-[var(--ui-text)] dark:text-[var(--ui-text)]',
                   ]"
                 >
                   {{ entity.name }}
@@ -93,7 +93,7 @@
               <UBadge
                 v-if="entity.featured"
                 :avatar="{
-                  src: 'https://github.com/serpentity.png'
+                  src: 'https://github.com/serpentity.png',
                 }"
                 size="md"
                 color="info"
@@ -106,11 +106,10 @@
 
             <!-- entity oneliner -->
             <p
-              :class="[
-                'text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)]',
+              class="text-[var(--ui-text-muted)] dark:text-[var(--ui-text-toned)]" :class="[
                 entity.featured
                   ? 'mt-3 text-base leading-relaxed dark:text-[var(--ui-text)]'
-                  : 'mt-2 line-clamp-2'
+                  : 'mt-2 line-clamp-2',
               ]"
             >
               {{ entity.oneLiner || entity.excerpt }}
@@ -135,9 +134,8 @@
 
           <!-- right side buttons -->
           <div
-            :class="[
-              'flex min-w-[140px] flex-col space-y-2',
-              entity.featured ? 'mt-5 sm:mt-0 sm:ml-4' : 'mt-4 sm:mt-0'
+            class="flex min-w-[140px] flex-col space-y-2" :class="[
+              entity.featured ? 'mt-5 sm:mt-0 sm:ml-4' : 'mt-4 sm:mt-0',
             ]"
           >
             <!-- view website button -->
@@ -205,19 +203,19 @@
 
 <style scoped>
   .upvote-btn :deep(button) {
-    font-size: 0.875rem;
-    padding: 0.5rem 1rem;
-    width: 100%;
-  }
-  .upvote-btn :deep(.flex) {
-    width: 100%;
-  }
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+.upvote-btn :deep(.flex) {
+  width: 100%;
+}
 
-  /* Override orange upvote color with blue */
-  .upvote-btn :deep(.text-orange-500) {
-    color: var(--ui-color-secondary-500, #0969da) !important;
-  }
-  .upvote-btn :deep(.dark\:text-orange-400) {
-    color: var(--ui-color-secondary-400, #2f81f7) !important;
-  }
+/* Override orange upvote color with blue */
+.upvote-btn :deep(.text-orange-500) {
+  color: var(--ui-color-secondary-500, #0969da) !important;
+}
+.upvote-btn :deep(.dark\:text-orange-400) {
+  color: var(--ui-color-secondary-400, #2f81f7) !important;
+}
 </style>

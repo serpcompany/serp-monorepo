@@ -1,21 +1,20 @@
 <script setup lang="ts">
-  const { data: page } = await useAsyncData('index', () =>
-    queryCollection('content').first()
-  );
-  if (!page.value) {
-    throw createError({
-      statusCode: 404,
-      statusMessage: 'Page not found',
-      fatal: true
-    });
-  }
+const { data: page } = await useAsyncData('index', () =>
+  queryCollection('content').first())
+if (!page.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Page not found',
+    fatal: true,
+  })
+}
 
-  useSeoMeta({
-    title: page.value.title,
-    ogTitle: page.value.title,
-    description: page.value.description,
-    ogDescription: page.value.description
-  });
+useSeoMeta({
+  title: page.value.title,
+  ogTitle: page.value.title,
+  description: page.value.description,
+  ogDescription: page.value.description,
+})
 </script>
 
 <template>
@@ -49,7 +48,7 @@
       orientation="horizontal"
       :ui="{
         container: 'lg:px-0 2xl:px-20 mx-0 max-w-none md:mr-10',
-        features: 'gap-0'
+        features: 'gap-0',
       }"
       reverse
     >
@@ -60,12 +59,12 @@
         :src="section.images.desktop"
         :alt="section.title"
         class="left-0 hidden w-full max-w-2xl lg:block 2xl:hidden"
-      />
+      >
       <img
         :src="section.images.mobile"
         :alt="section.title"
         class="block lg:hidden 2xl:block 2xl:w-full 2xl:max-w-2xl"
-      />
+      >
     </UPageSection>
 
     <USeparator :ui="{ border: 'border-(--ui-primary)/30' }" />
@@ -74,16 +73,16 @@
       v-bind="page.features"
       :ui="{
         title: 'text-left @container relative flex',
-        description: 'text-left'
+        description: 'text-left',
       }"
       class="relative overflow-hidden"
     >
       <div
         class="absolute top-10 -left-10 z-10 size-[300px] rounded-full bg-(--ui-primary) opacity-30 blur-[200px]"
-      ></div>
+      />
       <div
         class="absolute -right-10 -bottom-10 z-10 size-[300px] rounded-full bg-(--ui-primary) opacity-30 blur-[200px]"
-      ></div>
+      />
       <template #title>
         <MDC :value="page.features.title" class="*:leading-9" />
         <div class="hidden @min-[1020px]:block">
@@ -197,7 +196,7 @@
             :description="testimonial.quote"
             :ui="{
               description:
-                'before:content-[open-quote] after:content-[close-quote]'
+                'before:content-[open-quote] after:content-[close-quote]',
             }"
           >
             <template #footer>
@@ -234,7 +233,7 @@
 
       <div
         class="absolute left-1/2 size-40 -translate-x-1/2 -translate-y-80 transform rounded-full blur-[250px] sm:size-50 dark:bg-(--ui-primary)"
-      ></div>
+      />
 
       <LazyStarsBg />
     </UPageCTA>

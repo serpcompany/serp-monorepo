@@ -1,73 +1,74 @@
 <script setup lang="ts">
-  import type {
-    UrlRelation // Import UrlRelation type
-  } from '@serp/types/types';
+import type {
+  UrlRelation, // Import UrlRelation type
+} from '@serp/types/types'
 
-  // Add metadata to help AdSense crawler identify content
-  definePageMeta({
-    pageType: 'artist'
-  });
+// Add metadata to help AdSense crawler identify content
+definePageMeta({
+  pageType: 'artist',
+})
 
-  const sections = ['Overview', 'Albums', 'Songs'];
-  const route = useRoute();
-  const { slug } = route.params;
-  const artist = await useArtist(encodeURIComponent(slug));
+const sections = ['Overview', 'Albums', 'Songs']
+const route = useRoute()
+const { slug } = route.params
+const artist = await useArtist(encodeURIComponent(slug))
 
-  const config = useRuntimeConfig();
-  const useAuth = config.public.useAuth;
+const config = useRuntimeConfig()
+const useAuth = config.public.useAuth
 
-  const genres = computed(() => {
-    return artist?.genres ? artist.genres.join(', ') : '';
-  });
+const genres = computed(() => {
+  return artist?.genres ? artist.genres.join(', ') : ''
+})
 
-  const tags = computed(() => {
-    return artist?.tags ? artist.tags.join(', ') : '';
-  });
+const tags = computed(() => {
+  return artist?.tags ? artist.tags.join(', ') : ''
+})
 
-  // Refine SEO description computation
-  const seoDescription = computed(
-    () =>
-      artist?.seoDescription ||
-      artist?.overview?.substring(0, 160) ||
-      `Learn more about ${artist.name}.`
-  );
+// Refine SEO description computation
+const seoDescription = computed(
+  () =>
+    artist?.seoDescription
+    || artist?.overview?.substring(0, 160)
+    || `Learn more about ${artist.name}.`,
+)
 
-  useSeoMeta({
-    title: artist.name + ' - Songs, Albums, and More',
-    description: seoDescription
-  });
+useSeoMeta({
+  title: `${artist.name} - Songs, Albums, and More`,
+  description: seoDescription,
+})
 
-  // Helper to format date (optional, can be done inline)
-  const formatDate = (dateString: string | null) => {
-    if (!dateString) return 'N/A';
+// Helper to format date (optional, can be done inline)
+function formatDate(dateString: string | null) {
+  if (!dateString)
+    return 'N/A'
     // Basic year extraction, adjust if full date formatting is needed
-    return dateString.split('-')[0] || dateString;
-  };
+  return dateString.split('-')[0] || dateString
+}
 
-  // Attempt to get image source info from Wikidata
-  const artistImageUrl = computed(() => {
-    // Check for filename in wikidata properties
-    const filename = artist.wikidata?.properties?.image?.[0];
-    if (filename) {
-      // Transform the filename into a usable Wikimedia Commons URL
-      // This uses the Wikimedia thumbnail service which doesn't require MD5 hashing
-      const encodedFilename = encodeURIComponent(filename);
-      return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodedFilename}?width=400`;
+// Attempt to get image source info from Wikidata
+const artistImageUrl = computed(() => {
+  // Check for filename in wikidata properties
+  const filename = artist.wikidata?.properties?.image?.[0]
+  if (filename) {
+    // Transform the filename into a usable Wikimedia Commons URL
+    // This uses the Wikimedia thumbnail service which doesn't require MD5 hashing
+    const encodedFilename = encodeURIComponent(filename)
+    return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodedFilename}?width=400`
+  }
+
+  // Alternative: check urlRels for image type
+  if (artist.urlRels && Array.isArray(artist.urlRels)) {
+    const imageRel = artist.urlRels.find(
+      (rel: UrlRelation) => rel.type === 'image',
+    )
+    if (imageRel?.url) {
+      return imageRel.url
     }
+  }
 
-    // Alternative: check urlRels for image type
-    if (artist.urlRels && Array.isArray(artist.urlRels)) {
-      const imageRel = artist.urlRels.find(
-        (rel: UrlRelation) => rel.type === 'image'
-      );
-      if (imageRel?.url) {
-        return imageRel.url;
-      }
-    }
-
-    // Fallback if no image found
-    return null;
-  });
+  // Fallback if no image found
+  return null
+})
 </script>
 
 <template>
@@ -94,11 +95,17 @@
     <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
       <!-- Breadcrumbs -->
       <UBreadcrumb class="mb-6" :ui="{ container: 'flex px-1 py-2' }">
-        <UBreadcrumbItem to="/home">Home</UBreadcrumbItem>
-        <UBreadcrumbItem to="/artists">Artists</UBreadcrumbItem>
-        <UBreadcrumbItem :to="`/artists/${artist.slug}`">{{
-          artist.name
-        }}</UBreadcrumbItem>
+        <UBreadcrumbItem to="/home">
+          Home
+        </UBreadcrumbItem>
+        <UBreadcrumbItem to="/artists">
+          Artists
+        </UBreadcrumbItem>
+        <UBreadcrumbItem :to="`/artists/${artist.slug}`">
+          {{
+            artist.name
+          }}
+        </UBreadcrumbItem>
       </UBreadcrumb>
 
       <!-- Grid Layout -->
@@ -124,9 +131,11 @@
                     >
                       {{ album.name }}
                     </NuxtLink>
-                    <UBadge v-if="album.date" color="gray" variant="subtle">{{
-                      formatDate(album.date)
-                    }}</UBadge>
+                    <UBadge v-if="album.date" color="gray" variant="subtle">
+                      {{
+                        formatDate(album.date)
+                      }}
+                    </UBadge>
                   </div>
                 </template>
 
@@ -149,7 +158,7 @@
                   <div class="flex-grow sm:w-3/4">
                     <h4
                       class="mb-2 text-sm font-medium text-gray-500 dark:text-gray-400"
-                    ></h4>
+                    />
                     <ol
                       v-if="album.recordings && album.recordings.length > 0"
                       class="list-inside list-decimal space-y-1 text-sm"
@@ -214,18 +223,22 @@
           <!-- Overview Card (Added to Sidebar) -->
           <UCard v-if="artist.overview" data-adsense-content="artist-overview">
             <template #header>
-              <div class="font-medium">Overview</div>
+              <div class="font-medium">
+                Overview
+              </div>
             </template>
             <div
               class="prose prose-sm dark:prose-invert max-w-none"
               v-html="artist.overview"
-            ></div>
+            />
           </UCard>
 
           <!-- General Info Card -->
           <UCard>
             <template #header>
-              <div class="font-medium">Artist Info</div>
+              <div class="font-medium">
+                Artist Info
+              </div>
             </template>
             <div class="space-y-2 text-sm">
               <div
@@ -234,48 +247,42 @@
                 {{ artist.name }}
               </div>
               <div v-if="artist.artistType">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >Type:
+                <span class="font-medium text-gray-700 dark:text-gray-300">Type:
                 </span>
                 <span class="text-gray-800 dark:text-gray-200">{{
                   artist.artistType
                 }}</span>
               </div>
               <div v-if="artist.beginDate">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >Active From:
+                <span class="font-medium text-gray-700 dark:text-gray-300">Active From:
                 </span>
                 <span class="text-gray-800 dark:text-gray-200">{{
                   formatDate(artist.beginDate)
                 }}</span>
               </div>
               <div v-if="artist.endDate">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >Active Until:
+                <span class="font-medium text-gray-700 dark:text-gray-300">Active Until:
                 </span>
                 <span class="text-gray-800 dark:text-gray-200">{{
                   formatDate(artist.endDate)
                 }}</span>
               </div>
               <div v-if="artist.area">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >Area:
+                <span class="font-medium text-gray-700 dark:text-gray-300">Area:
                 </span>
                 <span class="text-gray-800 dark:text-gray-200">{{
                   artist.area
                 }}</span>
               </div>
               <div v-if="artist.beginArea">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >Origin:
+                <span class="font-medium text-gray-700 dark:text-gray-300">Origin:
                 </span>
                 <span class="text-gray-800 dark:text-gray-200">{{
                   artist.beginArea
                 }}</span>
               </div>
               <div v-if="artist.gender">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >Gender:
+                <span class="font-medium text-gray-700 dark:text-gray-300">Gender:
                 </span>
                 <span class="text-gray-800 dark:text-gray-200">{{
                   artist.gender
@@ -287,20 +294,20 @@
           <!-- Stats Card -->
           <UCard v-if="genres || tags">
             <template #header>
-              <div class="font-medium">Stats</div>
+              <div class="font-medium">
+                Stats
+              </div>
             </template>
             <div class="space-y-2 text-sm">
               <div v-if="genres">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >Genres:
+                <span class="font-medium text-gray-700 dark:text-gray-300">Genres:
                 </span>
                 <span class="text-gray-800 dark:text-gray-200">{{
                   genres
                 }}</span>
               </div>
               <div v-if="tags">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >Tags:
+                <span class="font-medium text-gray-700 dark:text-gray-300">Tags:
                 </span>
                 <span class="text-gray-800 dark:text-gray-200">{{ tags }}</span>
               </div>
@@ -310,7 +317,9 @@
           <!-- Links Card -->
           <UCard>
             <template #header>
-              <div class="font-medium">Listen On</div>
+              <div class="font-medium">
+                Listen On
+              </div>
             </template>
             <div class="p-1">
               <UButton

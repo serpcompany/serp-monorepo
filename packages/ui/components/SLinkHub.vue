@@ -1,13 +1,13 @@
 <script setup lang="ts">
-  import type { Category } from '@serp/types/types';
+import type { Category } from '@serp/types/types'
 
-  interface Props {
-    categories: Category[];
-    headline?: string;
-    baseSlug?: string;
-  }
+interface Props {
+  categories: Category[]
+  headline?: string
+  baseSlug?: string
+}
 
-  defineProps<Props>();
+defineProps<Props>()
 </script>
 
 <template>
@@ -34,7 +34,7 @@
             <span>
               {{ category.name }}
             </span>
-            <hr class="min-w-2 flex-1 border-(--ui-border)" />
+            <hr class="min-w-2 flex-1 border-(--ui-border)">
           </ULink>
         </template>
       </div>

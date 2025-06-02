@@ -1,73 +1,75 @@
 <script setup lang="ts">
-  import { useDateFormat } from '@vueuse/core';
-  import { getAvatarUrl } from '@serp/auth/utils/avatar';
-  import type { DropdownMenuItem } from '@nuxt/ui';
+import type { DropdownMenuItem } from '@nuxt/ui'
+import { getAvatarUrl } from '@serp/auth/utils/avatar'
+import { useDateFormat } from '@vueuse/core'
 
-  const { currentTeam, removeTeamMember } = useTeam();
-  interface TeamMember {
-    id: string;
-    teamId: string;
-    userId: string;
-    role: string;
-    email: string;
-    name: string;
-    avatarUrl: string | null;
-    lastLoginAt: Date | null;
-    createdAt: Date;
-  }
-  const { data: members, refresh: refreshMembers } = await useFetch<
-    TeamMember[]
-  >(`/api/teams/${currentTeam.value.id}/members`);
-  const columns = ['Name', 'Email', 'Role', 'Last Login', 'Created At'];
-  const toast = useToast();
-  const getRowItems = (member: TeamMember): DropdownMenuItem[] => {
-    return [
-      {
-        label: 'Copy Email',
-        onSelect: () => {
-          void navigator.clipboard.writeText(member.email).then(() => {
-            toast.add({
-              title: 'Email copied to clipboard!',
-              color: 'success'
-            });
-          });
-        }
+const { currentTeam, removeTeamMember } = useTeam()
+interface TeamMember {
+  id: string
+  teamId: string
+  userId: string
+  role: string
+  email: string
+  name: string
+  avatarUrl: string | null
+  lastLoginAt: Date | null
+  createdAt: Date
+}
+const { data: members, refresh: refreshMembers } = await useFetch<
+  TeamMember[]
+>(`/api/teams/${currentTeam.value.id}/members`)
+const columns = ['Name', 'Email', 'Role', 'Last Login', 'Created At']
+const toast = useToast()
+function getRowItems(member: TeamMember): DropdownMenuItem[] {
+  return [
+    {
+      label: 'Copy Email',
+      onSelect: () => {
+        void navigator.clipboard.writeText(member.email).then(() => {
+          toast.add({
+            title: 'Email copied to clipboard!',
+            color: 'success',
+          })
+        })
       },
-      {
-        label: 'Copy User ID',
-        onSelect: () => {
-          void navigator.clipboard.writeText(member.userId).then(() => {
-            toast.add({
-              title: 'User ID copied to clipboard!',
-              color: 'success'
-            });
-          });
-        }
+    },
+    {
+      label: 'Copy User ID',
+      onSelect: () => {
+        void navigator.clipboard.writeText(member.userId).then(() => {
+          toast.add({
+            title: 'User ID copied to clipboard!',
+            color: 'success',
+          })
+        })
       },
-      { type: 'separator' },
-      {
-        label: 'Remove from team',
-        color: 'error' as const,
-        onSelect: () => {
-          void removeTeamMember(member.id)
-            .then(() => {
-              return refreshMembers();
+    },
+    { type: 'separator' },
+    {
+      label: 'Remove from team',
+      color: 'error' as const,
+      onSelect: () => {
+        void removeTeamMember(member.id)
+          .then(() => {
+            return refreshMembers()
+          })
+          .catch(() => {
+            toast.add({
+              title: 'Failed to remove member',
+              color: 'error',
             })
-            .catch(() => {
-              toast.add({
-                title: 'Failed to remove member',
-                color: 'error'
-              });
-            });
-        }
-      }
-    ];
-  };
+          })
+      },
+    },
+  ]
+}
 </script>
 
 <template>
   <div>
-    <p class="text-sm font-semibold">Active Members</p>
+    <p class="text-sm font-semibold">
+      Active Members
+    </p>
     <div
       class="mt-2 overflow-x-auto rounded-lg border border-neutral-200 dark:divide-white/10 dark:border-white/10"
     >
@@ -99,7 +101,7 @@
                     getAvatarUrl({
                       path: member.avatarUrl,
                       identifier: member.email,
-                      type: 'user'
+                      type: 'user',
                     })
                   "
                   size="xs"
@@ -110,7 +112,9 @@
                 }}</span>
               </div>
             </td>
-            <td class="px-4 py-3">{{ member.email }}</td>
+            <td class="px-4 py-3">
+              {{ member.email }}
+            </td>
             <td class="px-4 py-3">
               <UBadge
                 size="sm"
@@ -125,7 +129,7 @@
               {{
                 member.lastLoginAt
                   ? useDateFormat(member.lastLoginAt, 'MMM D, YYYY hh:mm a')
-                      .value
+                    .value
                   : 'Never'
               }}
             </td>
@@ -137,7 +141,7 @@
                 :items="getRowItems(member)"
                 :content="{
                   align: 'end',
-                  side: 'bottom'
+                  side: 'bottom',
                 }"
               >
                 <UButton

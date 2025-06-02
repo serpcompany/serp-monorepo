@@ -4,7 +4,7 @@
       root: 'flex flex-col divide-dashed transition-all',
       body: 'p-5 sm:p-5 flex-grow',
       footer:
-        'px-5 py-4 sm:px-5 sm:py-4 bg-gray-50 dark:bg-black/10 rounded-b-lg'
+        'px-5 py-4 sm:px-5 sm:py-4 bg-gray-50 dark:bg-black/10 rounded-b-lg',
     }"
   >
     <div class="flex flex-col gap-3">

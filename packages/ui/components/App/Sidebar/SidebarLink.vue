@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-  const mobileMenu = useState('mobileMenu');
-  defineProps<{
-    to: string;
-    icon: string;
-    label: string;
-  }>();
+defineProps<{
+  to: string
+  icon: string
+  label: string
+}>()
+const mobileMenu = useState('mobileMenu')
 </script>
 
 <template>
@@ -17,6 +17,8 @@
     @click="mobileMenu = false"
   >
     <UIcon :name="icon" class="h-4 w-4" />
-    <p class="text-sm">{{ label }}</p>
+    <p class="text-sm">
+      {{ label }}
+    </p>
   </ULink>
 </template>

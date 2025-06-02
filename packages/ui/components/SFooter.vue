@@ -1,40 +1,40 @@
 <script setup lang="ts">
-  import type { FooterColumn } from '@serp/types/types';
+import type { FooterColumn } from '@serp/types/types'
 
-  const config = useRuntimeConfig();
-  const appConfig = useAppConfig();
+const config = useRuntimeConfig()
+const appConfig = useAppConfig()
 
-  const companyName = config.public.siteName;
+const companyName = config.public.siteName
 
-  const socialLinks =
-    appConfig.site?.socialLinks ||
-    (config.public.socialLinks as Array<{
-      name: string;
-      href: string;
-      icon: string;
-    }>);
+const socialLinks
+    = appConfig.site?.socialLinks
+      || (config.public.socialLinks as Array<{
+        name: string
+        href: string
+        icon: string
+      }>)
 
-  const legalLinks =
-    appConfig.site?.legalLinks ||
-    (config.public.legalLinks as Array<{
-      text: string;
-      slug: string;
-    }>);
+const legalLinks
+    = appConfig.site?.legalLinks
+      || (config.public.legalLinks as Array<{
+        text: string
+        slug: string
+      }>)
 
-  const footerColumns =
-    appConfig.site?.footerColumns ||
-    (config.public.footerColumns as FooterColumn[]);
+const footerColumns
+    = appConfig.site?.footerColumns
+      || (config.public.footerColumns as FooterColumn[])
 
-  const footerColumnsData = computed(() => {
-    const columns = footerColumns;
-    return columns.map((column) => ({
-      label: column.title,
-      children: column.items.map((item) => ({
-        label: item.text || item.name,
-        to: item.slug || item.href
-      }))
-    }));
-  });
+const footerColumnsData = computed(() => {
+  const columns = footerColumns
+  return columns.map(column => ({
+    label: column.title,
+    children: column.items.map(item => ({
+      label: item.text || item.name,
+      to: item.slug || item.href,
+    })),
+  }))
+})
 </script>
 
 <template>
@@ -43,7 +43,7 @@
     :ui="{
       top: 'py-0 lg:py-0',
       center: 'py-0 lg:py-0',
-      bottom: 'py-0 lg:py-0'
+      bottom: 'py-0 lg:py-0',
     }"
   >
     <!-- Top section with columns - full width with background -->
@@ -54,7 +54,7 @@
             :columns="footerColumnsData"
             :ui="{
               link: 'text-primary-100  hover:text-primary-200 dark:text-primary-100 dark:hover:text-primary-200',
-              label: 'text-primary-100 text-xl dark:text-primary-100'
+              label: 'text-primary-100 text-xl dark:text-primary-100',
             }"
           >
             <!-- Left section with newsletter -->
@@ -62,8 +62,7 @@
               <div class="flex flex-col items-start space-x-2">
                 <span
                   class="text-primary-100 dark:text-primary-100 pb-4 text-4xl font-bold"
-                  >{{ companyName }}</span
-                >
+                >{{ companyName }}</span>
                 <p class="text-primary-100 dark:text-primary-100 font-bold">
                   Subscribe to the newsletter.
                 </p>

@@ -1,4 +1,4 @@
-import { field, group } from '@nuxt/content/preview';
+import { field, group } from '@nuxt/content/preview'
 
 export default defineNuxtSchema({
   appConfig: {
@@ -31,8 +31,8 @@ export default defineNuxtSchema({
               'purple',
               'fuchsia',
               'pink',
-              'rose'
-            ]
+              'rose',
+            ],
           }),
           neutral: field({
             type: 'string',
@@ -40,18 +40,18 @@ export default defineNuxtSchema({
             description: 'Neutral color of your UI.',
             icon: 'i-mdi-palette-outline',
             default: 'slate',
-            required: ['slate', 'gray', 'zinc', 'neutral', 'stone']
-          })
-        })
-      }
-    })
-  }
-});
+            required: ['slate', 'gray', 'zinc', 'neutral', 'stone'],
+          }),
+        }),
+      },
+    }),
+  },
+})
 
 declare module '@nuxt/schema' {
   interface CustomAppConfig {
     ui: {
-      icons: object;
-    };
+      icons: object
+    }
   }
 }

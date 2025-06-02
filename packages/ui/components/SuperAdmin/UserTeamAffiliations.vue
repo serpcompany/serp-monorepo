@@ -1,43 +1,43 @@
 <script lang="ts" setup>
-  import type { User } from '@serp/db/types/database';
+import type { User } from '@serp/db/types/database'
 
-  interface TeamMember {
-    id: string;
-    teamId: string;
-    userId: string;
-    role: string;
-    createdAt: string;
-    updatedAt: string;
-    team: {
-      id: string;
-      name: string;
-      ownerId: string;
-      logo: string;
-      slug: string;
-      createdAt: string;
-      updatedAt: string;
-    };
+interface TeamMember {
+  id: string
+  teamId: string
+  userId: string
+  role: string
+  createdAt: string
+  updatedAt: string
+  team: {
+    id: string
+    name: string
+    ownerId: string
+    logo: string
+    slug: string
+    createdAt: string
+    updatedAt: string
   }
+}
 
-  const props = defineProps<{
-    teamMembers?: TeamMember[];
-    users?: User[];
-  }>();
+const props = defineProps<{
+  teamMembers?: TeamMember[]
+  users?: User[]
+}>()
 
-  function getTeamOwner(ownerId: string): {
-    name: string;
-    email: string;
-    avatarUrl: string;
-  } {
-    if (!ownerId || !props.users?.length)
-      return { name: 'Unknown', email: 'Unknown', avatarUrl: 'Unknown' };
-    const owner = props.users.find((user) => user.id === ownerId);
-    return {
-      name: owner?.name || 'Unknown',
-      email: owner?.email || 'Unknown',
-      avatarUrl: owner?.avatarUrl || 'Unknown'
-    };
+function getTeamOwner(ownerId: string): {
+  name: string
+  email: string
+  avatarUrl: string
+} {
+  if (!ownerId || !props.users?.length)
+    return { name: 'Unknown', email: 'Unknown', avatarUrl: 'Unknown' }
+  const owner = props.users.find(user => user.id === ownerId)
+  return {
+    name: owner?.name || 'Unknown',
+    email: owner?.email || 'Unknown',
+    avatarUrl: owner?.avatarUrl || 'Unknown',
   }
+}
 </script>
 
 <template>
@@ -58,7 +58,7 @@
               <UAvatar
                 :src="teamMember.team.logo || undefined"
                 size="2xs"
-                :alt="teamMember.team.name + ' logo'"
+                :alt="`${teamMember.team.name} logo`"
               />
               <span class="flex-1 text-sm font-medium">
                 {{ teamMember.team.name }}
@@ -73,7 +73,9 @@
                   name="i-fluent-arrow-enter-24-filled"
                   class="flex-shrink-0 scale-x-[-1] text-sm"
                 />
-                <p class="text-xs text-neutral-500">Owned by</p>
+                <p class="text-xs text-neutral-500">
+                  Owned by
+                </p>
                 <UAvatar
                   :src="
                     getTeamOwner(teamMember.team.ownerId).avatarUrl || undefined

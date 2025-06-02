@@ -1,37 +1,37 @@
-import { vi } from 'vitest';
+import { vi } from 'vitest'
 
-const mockReadBody = vi.fn();
-const mockGetQuery = vi.fn();
-const mockGetRouterParam = vi.fn();
+const mockReadBody = vi.fn()
+const mockGetQuery = vi.fn()
+const mockGetRouterParam = vi.fn()
 const mockCreateError = vi.fn().mockImplementation((options) => {
-  const error = new Error(options.message);
-  error.statusCode = options.statusCode;
-  return error;
-});
+  const error = new Error(options.message)
+  error.statusCode = options.statusCode
+  return error
+})
 const mockGetUserSession = vi.fn().mockResolvedValue({
-  user: { siteId: 'user-123', id: 'user-123' }
-});
+  user: { siteId: 'user-123', id: 'user-123' },
+})
 
 // Make auto-imported functions globally available
-globalThis.defineEventHandler = vi.fn((handler) => handler);
-globalThis.readBody = mockReadBody;
-globalThis.getQuery = mockGetQuery;
-globalThis.getRouterParam = mockGetRouterParam;
-globalThis.createError = mockCreateError;
-globalThis.getUserSession = mockGetUserSession;
-globalThis.getRouterParams = vi.fn();
+globalThis.defineEventHandler = vi.fn(handler => handler)
+globalThis.readBody = mockReadBody
+globalThis.getQuery = mockGetQuery
+globalThis.getRouterParam = mockGetRouterParam
+globalThis.createError = mockCreateError
+globalThis.getUserSession = mockGetUserSession
+globalThis.getRouterParams = vi.fn()
 
 // Mock h3 module for explicit imports
 vi.mock('h3', () => ({
-  defineEventHandler: (handler) => handler,
+  defineEventHandler: handler => handler,
   readBody: mockReadBody,
   getQuery: mockGetQuery,
   getRouterParam: mockGetRouterParam,
-  createError: mockCreateError
-}));
+  createError: mockCreateError,
+}))
 
 // Create mock database objects
-const mockExecute = vi.fn().mockImplementation(() => Promise.resolve([]));
+const mockExecute = vi.fn().mockImplementation(() => Promise.resolve([]))
 
 // Simple and reliable approach to mock database operations
 const mockDbOperations = {
@@ -55,30 +55,30 @@ const mockDbOperations = {
   delete: vi.fn().mockReturnThis(),
   values: vi.fn().mockReturnThis(),
   onConflictDoNothing: vi.fn().mockReturnThis(),
-  returning: vi.fn().mockResolvedValue([{ id: 'mock-id' }])
-};
+  returning: vi.fn().mockResolvedValue([{ id: 'mock-id' }]),
+}
 
 const mockDb = {
   ...mockDbOperations,
   transaction: vi.fn(
-    async (callback) => await callback({ ...mockDbOperations })
-  )
-};
+    async callback => await callback({ ...mockDbOperations }),
+  ),
+}
 
 vi.mock('@serp/db/server/database', () => ({
-  getDb: vi.fn().mockReturnValue(mockDb)
-}));
+  getDb: vi.fn().mockReturnValue(mockDb),
+}))
 
 vi.mock('@serp/db/server/database/auth', () => ({
-  getAuthDb: vi.fn().mockReturnValue(mockDb)
-}));
+  getAuthDb: vi.fn().mockReturnValue(mockDb),
+}))
 
 // Mock schemas
 vi.mock('@serp/db/server/database/auth/schema', () => ({
   domain: { id: 'id', name: 'name' },
   lDomainNewsletter: { domainId: 'domainId', newsletterId: 'newsletterId' },
-  newsletterSubscription: { id: 'id', email: 'email' }
-}));
+  newsletterSubscription: { id: 'id', email: 'email' },
+}))
 
 vi.mock('@serp/db/server/database/schema', () => ({
   category: { id: 'id', module: 'module', slug: 'slug', name: 'name' },
@@ -92,7 +92,7 @@ vi.mock('@serp/db/server/database/schema', () => ({
     categories: 'categories',
     topics: 'topics',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
   },
   entityAggregate: {
     entity: 'entity',
@@ -110,19 +110,19 @@ vi.mock('@serp/db/server/database/schema', () => ({
     hotScoreDay: 'hotScoreDay',
     hotScoreWeek: 'hotScoreWeek',
     hotScoreMonth: 'hotScoreMonth',
-    hotScoreYear: 'hotScoreYear'
+    hotScoreYear: 'hotScoreYear',
   },
   featuredSubscription: {
     entity: 'entity',
     category: 'category',
     isActive: 'isActive',
     placement: 'placement',
-    reservationExpiresAt: 'reservationExpiresAt'
+    reservationExpiresAt: 'reservationExpiresAt',
   },
   verification: {
     entity: 'entity',
     user: 'user',
-    id: 'id'
+    id: 'id',
   },
   verificationRequest: {
     id: 'id',
@@ -130,12 +130,12 @@ vi.mock('@serp/db/server/database/schema', () => ({
     user: 'user',
     code: 'code',
     expiresAt: 'expiresAt',
-    verification: 'verification'
+    verification: 'verification',
   },
   vote: {
     entity: 'entity',
     user: 'user',
-    direction: 'direction'
+    direction: 'direction',
   },
   comment: {
     id: 'id',
@@ -145,7 +145,7 @@ vi.mock('@serp/db/server/database/schema', () => ({
     parentId: 'parent_id',
     path: 'path',
     user: 'user',
-    entity: 'entity'
+    entity: 'entity',
   },
   review: {
     id: 'id',
@@ -155,7 +155,7 @@ vi.mock('@serp/db/server/database/schema', () => ({
     dateOfExperience: 'dateOfExperience',
     createdAt: 'createdAt',
     user: 'user',
-    entity: 'entity'
+    entity: 'entity',
   },
   edit: {
     id: 'id',
@@ -163,7 +163,7 @@ vi.mock('@serp/db/server/database/schema', () => ({
     entity: 'entity',
     proposedChanges: 'proposedChanges',
     status: 'status',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
   },
   submitForm: {
     id: 'id',
@@ -171,22 +171,22 @@ vi.mock('@serp/db/server/database/schema', () => ({
     user: 'user',
     module: 'module',
     backlinkVerified: 'backlinkVerified',
-    backlinkVerifiedAt: 'backlinkVerifiedAt'
+    backlinkVerifiedAt: 'backlinkVerifiedAt',
   },
   topic: { id: 'id', module: 'module', slug: 'slug', name: 'name' },
   user: {
     id: 'id',
     name: 'name',
-    image: 'image'
-  }
-}));
+    image: 'image',
+  },
+}))
 
 // Mock SQL functions
-const mockRaw = vi.fn((x) => x);
-const mockJoin = vi.fn((arr, separator) => arr.join(','));
-const mockSql = vi.fn((query) => ({ query }));
-mockSql.raw = mockRaw;
-mockSql.join = mockJoin;
+const mockRaw = vi.fn(x => x)
+const mockJoin = vi.fn((arr, separator) => arr.join(','))
+const mockSql = vi.fn(query => ({ query }))
+mockSql.raw = mockRaw
+mockSql.join = mockJoin
 
 vi.mock('drizzle-orm', () => ({
   eq: vi
@@ -200,29 +200,29 @@ vi.mock('drizzle-orm', () => ({
     .mockImplementation((...conditions) => ({ conditions, operator: 'or' })),
   not: vi
     .fn()
-    .mockImplementation((condition) => ({ condition, operator: 'not' })),
-  desc: vi.fn().mockImplementation((field) => ({ field, direction: 'desc' })),
-  asc: vi.fn().mockImplementation((field) => ({ field, direction: 'asc' })),
+    .mockImplementation(condition => ({ condition, operator: 'not' })),
+  desc: vi.fn().mockImplementation(field => ({ field, direction: 'desc' })),
+  asc: vi.fn().mockImplementation(field => ({ field, direction: 'asc' })),
   inArray: vi.fn().mockImplementation((field, values) => ({
     field,
     values,
-    operator: 'inArray'
+    operator: 'inArray',
   })),
   isNull: vi
     .fn()
-    .mockImplementation((field) => ({ field, operator: 'isNull' })),
+    .mockImplementation(field => ({ field, operator: 'isNull' })),
   isNotNull: vi
     .fn()
-    .mockImplementation((field) => ({ field, operator: 'isNotNull' })),
-  sql: mockSql
-}));
+    .mockImplementation(field => ({ field, operator: 'isNotNull' })),
+  sql: mockSql,
+}))
 
 vi.mock('#nuxt-multi-cache/composables', () => ({
   useDataCache: vi.fn().mockImplementation(() => ({
     value: null,
-    addToCache: vi.fn()
-  }))
-}));
+    addToCache: vi.fn(),
+  })),
+}))
 
 export {
   mockCreateError,
@@ -234,7 +234,7 @@ export {
   mockJoin,
   mockRaw,
   mockReadBody,
-  mockSql
-};
+  mockSql,
+}
 
-process.env.NUXT_PUBLIC_DOMAIN = 'test.domain.com';
+process.env.NUXT_PUBLIC_DOMAIN = 'test.domain.com'

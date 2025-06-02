@@ -7,7 +7,8 @@
     "ci:lint": "eslint .",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "lint": "eslint . --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "postinstall": "nuxt prepare",
     "preview": "nuxt preview",
     "typecheck": "nuxt typecheck"

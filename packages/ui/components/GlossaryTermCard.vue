@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  import type { PostIndex } from '@serp/types/types';
+import type { PostIndex } from '@serp/types/types'
 
-  defineProps<{
-    term: PostIndex;
-  }>();
+defineProps<{
+  term: PostIndex
+}>()
 </script>
 
 <template>
@@ -15,7 +15,9 @@
       <h2 class="text-sm font-medium">
         {{ term.keyword || term.title || term.name }}
       </h2>
-      <p class="mt-4 text-sm">{{ term.oneLiner }}</p>
+      <p class="mt-4 text-sm">
+        {{ term.oneLiner }}
+      </p>
     </NuxtLink>
   </div>
 </template>

@@ -1,4 +1,4 @@
-import { defineCollection, z } from '@nuxt/content';
+import { defineCollection, z } from '@nuxt/content'
 
 const variantEnum = z.enum([
   'solid',
@@ -6,8 +6,8 @@ const variantEnum = z.enum([
   'subtle',
   'soft',
   'ghost',
-  'link'
-]);
+  'link',
+])
 const colorEnum = z.enum([
   'primary',
   'secondary',
@@ -15,15 +15,15 @@ const colorEnum = z.enum([
   'error',
   'warning',
   'success',
-  'info'
-]);
-const sizeEnum = z.enum(['xs', 'sm', 'md', 'lg', 'xl']);
-const orientationEnum = z.enum(['vertical', 'horizontal']);
+  'info',
+])
+const sizeEnum = z.enum(['xs', 'sm', 'md', 'lg', 'xl'])
+const orientationEnum = z.enum(['vertical', 'horizontal'])
 
 const baseSchema = {
   title: z.string().nonempty(),
-  description: z.string().nonempty()
-};
+  description: z.string().nonempty(),
+}
 
 const linkSchema = z.object({
   label: z.string().nonempty(),
@@ -33,26 +33,26 @@ const linkSchema = z.object({
   trailing: z.boolean().optional(),
   target: z.string().optional(),
   color: colorEnum.optional(),
-  variant: variantEnum.optional()
-});
+  variant: variantEnum.optional(),
+})
 
 const imageSchema = z.object({
   src: z.string().nonempty(),
   alt: z.string().optional(),
   loading: z.string().optional(),
-  srcset: z.string().optional()
-});
+  srcset: z.string().optional(),
+})
 
 const featureItemSchema = z.object({
   ...baseSchema,
-  icon: z.string().nonempty()
-});
+  icon: z.string().nonempty(),
+})
 
 const sectionSchema = z.object({
   headline: z.string().optional(),
   ...baseSchema,
-  features: z.array(featureItemSchema)
-});
+  features: z.array(featureItemSchema),
+})
 
 export const collections = {
   docs: defineCollection({
@@ -60,8 +60,8 @@ export const collections = {
     source: '1.docs/**/*',
     schema: z.object({
       title: z.string().nonempty(),
-      description: z.string().nonempty()
-    })
+      description: z.string().nonempty(),
+    }),
   }),
   posts: defineCollection({
     type: 'page',
@@ -74,12 +74,12 @@ export const collections = {
         z.object({
           name: z.string().nonempty(),
           to: z.string().nonempty(),
-          avatar: z.object({ src: z.string().nonempty() })
-        })
+          avatar: z.object({ src: z.string().nonempty() }),
+        }),
       ),
       date: z.string().nonempty(),
-      badge: z.object({ label: z.string().nonempty() })
-    })
+      badge: z.object({ label: z.string().nonempty() }),
+    }),
   }),
   index: defineCollection({
     source: '0.index.yml',
@@ -91,9 +91,9 @@ export const collections = {
         headline: z.object({
           label: z.string().nonempty(),
           to: z.string().nonempty(),
-          icon: z.string().nonempty()
+          icon: z.string().nonempty(),
         }),
-        links: z.array(linkSchema)
+        links: z.array(linkSchema),
       }),
       sections: z.array(
         sectionSchema.extend({
@@ -101,11 +101,11 @@ export const collections = {
           orientation: orientationEnum.optional(),
           features: z.array(featureItemSchema),
           links: z.array(linkSchema),
-          reverse: z.boolean().optional()
-        })
+          reverse: z.boolean().optional(),
+        }),
       ),
       features: sectionSchema.extend({
-        items: z.array(featureItemSchema)
+        items: z.array(featureItemSchema),
       }),
       testimonials: sectionSchema.extend({
         items: z.array(
@@ -116,15 +116,15 @@ export const collections = {
               description: z.string().nonempty(),
               to: z.string().nonempty(),
               target: z.string().nonempty(),
-              avatar: imageSchema
-            })
-          })
-        )
+              avatar: imageSchema,
+            }),
+          }),
+        ),
       }),
       cta: sectionSchema.extend({
-        links: z.array(linkSchema)
-      })
-    })
+        links: z.array(linkSchema),
+      }),
+    }),
   }),
   pricing: defineCollection({
     source: '2.pricing.yml',
@@ -132,7 +132,7 @@ export const collections = {
     schema: sectionSchema.extend({
       hero: z.object({
         title: z.string().nonempty(),
-        description: z.string().nonempty()
+        description: z.string().nonempty(),
       }),
       plans: z.array(
         z.object({
@@ -140,33 +140,33 @@ export const collections = {
           description: z.string().nonempty(),
           price: z.object({
             month: z.string().nonempty(),
-            year: z.string().nonempty()
+            year: z.string().nonempty(),
           }),
           billing_period: z.string().nonempty(),
           billing_cycle: z.string().nonempty(),
           button: linkSchema,
           features: z.array(z.string().nonempty()),
-          highlight: z.boolean().optional()
-        })
+          highlight: z.boolean().optional(),
+        }),
       ),
       logos: z.object({
         title: z.string().nonempty(),
-        icons: z.array(z.string())
+        icons: z.array(z.string()),
       }),
       faq: sectionSchema.extend({
         items: z.array(
           z.object({
             label: z.string().nonempty(),
             content: z.string().nonempty(),
-            defaultOpen: z.boolean().optional()
-          })
-        )
-      })
-    })
+            defaultOpen: z.boolean().optional(),
+          }),
+        ),
+      }),
+    }),
   }),
   blog: defineCollection({
     source: '3.blog.yml',
     type: 'data',
-    schema: sectionSchema
-  })
-};
+    schema: sectionSchema,
+  }),
+}

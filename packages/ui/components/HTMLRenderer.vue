@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  defineProps<{ value: string }>();
+defineProps<{ value: string }>()
 </script>
 
 <template>
-  <div v-html="value"></div>
+  <div v-html="value" />
 </template>

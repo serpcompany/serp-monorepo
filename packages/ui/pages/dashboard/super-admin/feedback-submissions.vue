@@ -1,172 +1,181 @@
 <script lang="ts" setup>
-  import { useDateFormat, useTimeAgo } from '@vueuse/core';
+import { useDateFormat, useTimeAgo } from '@vueuse/core'
 
-  interface Feedback {
-    id: string;
-    message: string;
-    status: string;
-    createdAt: string;
-    user: {
-      id: string;
-      name: string;
-      email: string;
-      avatarUrl?: string;
-    };
-    meta?: {
-      url?: string;
-      browser?: string;
-      platform?: string;
-      screenResolution?: string;
-      language?: string;
-      timezone?: string;
-      colorScheme?: string;
-    };
+interface Feedback {
+  id: string
+  message: string
+  status: string
+  createdAt: string
+  user: {
+    id: string
+    name: string
+    email: string
+    avatarUrl?: string
   }
+  meta?: {
+    url?: string
+    browser?: string
+    platform?: string
+    screenResolution?: string
+    language?: string
+    timezone?: string
+    colorScheme?: string
+  }
+}
 
-  const { data: feedback, refresh } = await useFetch<Feedback[]>(
-    '/api/super-admin/feedback'
-  );
-  const toast = useToast();
+const { data: feedback, refresh } = await useFetch<Feedback[]>(
+  '/api/super-admin/feedback',
+)
+const toast = useToast()
 
-  const columns = ['User', 'Email', 'Status', 'Message', 'Date', ''];
-  const loadingFeedbackId = ref<string | null>(null);
-  const selectedFeedback = ref<Feedback | null>(null);
-  const replyModal = ref(false);
-  const showDeleteConfirmation = ref(false);
-  const isSubmitting = ref(false);
-  const isDeleting = ref(false);
+const columns = ['User', 'Email', 'Status', 'Message', 'Date', '']
+const loadingFeedbackId = ref<string | null>(null)
+const selectedFeedback = ref<Feedback | null>(null)
+const replyModal = ref(false)
+const showDeleteConfirmation = ref(false)
+const isSubmitting = ref(false)
+const isDeleting = ref(false)
 
-  const replyFormState = ref({
-    message: ''
-  });
+const replyFormState = ref({
+  message: '',
+})
 
-  const actions = computed(() => [
-    {
-      label: 'Details & Reply',
-      onSelect: () => {
-        if (selectedFeedback.value) {
-          replyModal.value = true;
-        }
+const actions = computed(() => [
+  {
+    label: 'Details & Reply',
+    onSelect: () => {
+      if (selectedFeedback.value) {
+        replyModal.value = true
       }
     },
-    {
-      label: 'Mark as Closed',
-      onSelect: () => {
-        if (selectedFeedback.value) {
-          void handleMarkAsClosed(selectedFeedback.value);
-        }
+  },
+  {
+    label: 'Mark as Closed',
+    onSelect: () => {
+      if (selectedFeedback.value) {
+        void handleMarkAsClosed(selectedFeedback.value)
       }
     },
-    {
-      label: 'Delete',
-      color: 'error' as const,
-      onSelect: () => {
-        if (selectedFeedback.value) {
-          showDeleteConfirmation.value = true;
-        }
+  },
+  {
+    label: 'Delete',
+    color: 'error' as const,
+    onSelect: () => {
+      if (selectedFeedback.value) {
+        showDeleteConfirmation.value = true
       }
-    }
-  ]);
+    },
+  },
+])
 
-  const formatDate = (date: string | Date | undefined) => {
-    if (!date) return 'NA';
-    return useDateFormat(date, 'MMM D, YYYY HH:mm a').value;
-  };
+function formatDate(date: string | Date | undefined) {
+  if (!date)
+    return 'NA'
+  return useDateFormat(date, 'MMM D, YYYY HH:mm a').value
+}
 
-  const getFeedbackStatusColor = (status: string) => {
-    switch (status) {
-      case 'replied':
-        return 'info';
-      case 'closed':
-        return 'neutral';
-      default:
-        return 'warning';
-    }
-  };
+function getFeedbackStatusColor(status: string) {
+  switch (status) {
+    case 'replied':
+      return 'info'
+    case 'closed':
+      return 'neutral'
+    default:
+      return 'warning'
+  }
+}
 
-  const handleReply = async () => {
-    if (!selectedFeedback.value) return;
+async function handleReply() {
+  if (!selectedFeedback.value)
+    return
 
-    try {
-      isSubmitting.value = true;
-      await $fetch('/api/super-admin/feedback/reply', {
-        method: 'POST',
-        body: {
-          id: selectedFeedback.value.id,
-          message: replyFormState.value.message,
-          email: selectedFeedback.value.user.email
-        }
-      });
-      toast.add({
-        title: 'Reply sent',
-        description: 'Your response has been sent to the user',
-        color: 'success'
-      });
-      replyModal.value = false;
-      replyFormState.value.message = '';
-      await refresh();
-    } catch {
-      toast.add({
-        title: 'Error',
-        description: 'Failed to send reply',
-        color: 'error'
-      });
-    } finally {
-      isSubmitting.value = false;
-    }
-  };
+  try {
+    isSubmitting.value = true
+    await $fetch('/api/super-admin/feedback/reply', {
+      method: 'POST',
+      body: {
+        id: selectedFeedback.value.id,
+        message: replyFormState.value.message,
+        email: selectedFeedback.value.user.email,
+      },
+    })
+    toast.add({
+      title: 'Reply sent',
+      description: 'Your response has been sent to the user',
+      color: 'success',
+    })
+    replyModal.value = false
+    replyFormState.value.message = ''
+    await refresh()
+  }
+  catch {
+    toast.add({
+      title: 'Error',
+      description: 'Failed to send reply',
+      color: 'error',
+    })
+  }
+  finally {
+    isSubmitting.value = false
+  }
+}
 
-  const handleMarkAsClosed = async (feedbackItem: Feedback) => {
-    try {
-      loadingFeedbackId.value = feedbackItem.id;
-      await $fetch(`/api/super-admin/feedback/${feedbackItem.id}`, {
-        method: 'PATCH',
-        body: {
-          status: 'closed'
-        }
-      });
-      toast.add({
-        title: 'Feedback marked as closed',
-        description: 'The feedback has been marked as closed',
-        color: 'success'
-      });
-      await refresh();
-    } catch {
-      toast.add({
-        title: 'Error',
-        description: 'Failed to mark feedback as closed',
-        color: 'error'
-      });
-    } finally {
-      loadingFeedbackId.value = null;
-    }
-  };
+async function handleMarkAsClosed(feedbackItem: Feedback) {
+  try {
+    loadingFeedbackId.value = feedbackItem.id
+    await $fetch(`/api/super-admin/feedback/${feedbackItem.id}`, {
+      method: 'PATCH',
+      body: {
+        status: 'closed',
+      },
+    })
+    toast.add({
+      title: 'Feedback marked as closed',
+      description: 'The feedback has been marked as closed',
+      color: 'success',
+    })
+    await refresh()
+  }
+  catch {
+    toast.add({
+      title: 'Error',
+      description: 'Failed to mark feedback as closed',
+      color: 'error',
+    })
+  }
+  finally {
+    loadingFeedbackId.value = null
+  }
+}
 
-  const handleDelete = async () => {
-    if (!selectedFeedback.value) return;
+async function handleDelete() {
+  if (!selectedFeedback.value)
+    return
 
-    try {
-      isDeleting.value = true;
-      await $fetch(`/api/super-admin/feedback/${selectedFeedback.value.id}`, {
-        method: 'DELETE'
-      });
-      toast.add({
-        title: 'Feedback deleted',
-        description: 'The feedback has been deleted',
-        color: 'success'
-      });
-      showDeleteConfirmation.value = false;
-      await refresh();
-    } catch {
-      toast.add({
-        title: 'Error',
-        description: 'Failed to delete feedback',
-        color: 'error'
-      });
-    } finally {
-      isDeleting.value = false;
-    }
-  };
+  try {
+    isDeleting.value = true
+    await $fetch(`/api/super-admin/feedback/${selectedFeedback.value.id}`, {
+      method: 'DELETE',
+    })
+    toast.add({
+      title: 'Feedback deleted',
+      description: 'The feedback has been deleted',
+      color: 'success',
+    })
+    showDeleteConfirmation.value = false
+    await refresh()
+  }
+  catch {
+    toast.add({
+      title: 'Error',
+      description: 'Failed to delete feedback',
+      color: 'error',
+    })
+  }
+  finally {
+    isDeleting.value = false
+  }
+}
 </script>
 
 <template>
@@ -200,7 +209,9 @@
                 {{ feedbackItem.user.name }}
               </div>
             </td>
-            <td class="p-2">{{ feedbackItem.user.email }}</td>
+            <td class="p-2">
+              {{ feedbackItem.user.email }}
+            </td>
             <td class="p-2">
               <UBadge
                 variant="soft"
@@ -211,7 +222,9 @@
               </UBadge>
             </td>
             <td class="max-w-xs p-2">
-              <div class="truncate">{{ feedbackItem.message }}</div>
+              <div class="truncate">
+                {{ feedbackItem.message }}
+              </div>
             </td>
             <td class="p-2">
               <UTooltip
@@ -270,61 +283,46 @@
         <div class="mb-4 rounded-lg bg-neutral-50 p-4 dark:bg-neutral-800">
           <div class="grid grid-cols-2 gap-3 text-xs">
             <div v-if="selectedFeedback?.meta?.url" class="col-span-2">
-              <span class="font-medium text-neutral-600 dark:text-neutral-300"
-                >Page URL:</span
-              >
+              <span class="font-medium text-neutral-600 dark:text-neutral-300">Page URL:</span>
               <span class="ml-2 text-neutral-500 dark:text-neutral-400">{{
                 selectedFeedback.meta.url
               }}</span>
             </div>
             <div v-if="selectedFeedback?.meta?.browser">
-              <span class="font-medium text-neutral-600 dark:text-neutral-300"
-                >Browser:</span
-              >
+              <span class="font-medium text-neutral-600 dark:text-neutral-300">Browser:</span>
               <span class="ml-2 text-neutral-500 dark:text-neutral-400">{{
                 selectedFeedback.meta.browser.split(' ')[0]
               }}</span>
             </div>
             <div v-if="selectedFeedback?.meta?.platform">
-              <span class="font-medium text-neutral-600 dark:text-neutral-300"
-                >Platform:</span
-              >
+              <span class="font-medium text-neutral-600 dark:text-neutral-300">Platform:</span>
               <span class="ml-2 text-neutral-500 dark:text-neutral-400">{{
                 selectedFeedback.meta.platform
               }}</span>
             </div>
             <div v-if="selectedFeedback?.meta?.screenResolution">
-              <span class="font-medium text-neutral-600 dark:text-neutral-300"
-                >Screen:</span
-              >
+              <span class="font-medium text-neutral-600 dark:text-neutral-300">Screen:</span>
               <span class="ml-2 text-neutral-500 dark:text-neutral-400">{{
                 selectedFeedback.meta.screenResolution
               }}</span>
             </div>
             <div v-if="selectedFeedback?.meta?.language">
-              <span class="font-medium text-neutral-600 dark:text-neutral-300"
-                >Language:</span
-              >
+              <span class="font-medium text-neutral-600 dark:text-neutral-300">Language:</span>
               <span class="ml-2 text-neutral-500 dark:text-neutral-400">{{
                 selectedFeedback.meta.language
               }}</span>
             </div>
             <div v-if="selectedFeedback?.meta?.timezone">
-              <span class="font-medium text-neutral-600 dark:text-neutral-300"
-                >Timezone:</span
-              >
+              <span class="font-medium text-neutral-600 dark:text-neutral-300">Timezone:</span>
               <span class="ml-2 text-neutral-500 dark:text-neutral-400">{{
                 selectedFeedback.meta.timezone
               }}</span>
             </div>
             <div v-if="selectedFeedback?.meta?.colorScheme">
-              <span class="font-medium text-neutral-600 dark:text-neutral-300"
-                >Color Scheme:</span
-              >
+              <span class="font-medium text-neutral-600 dark:text-neutral-300">Color Scheme:</span>
               <span
                 class="ml-2 text-neutral-500 capitalize dark:text-neutral-400"
-                >{{ selectedFeedback.meta.colorScheme }}</span
-              >
+              >{{ selectedFeedback.meta.colorScheme }}</span>
             </div>
           </div>
         </div>

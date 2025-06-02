@@ -10,10 +10,12 @@
     "lint": {
       "outputLogs": "new-only"
     },
+    "lint:fix": {
+      "outputLogs": "new-only"
+    },
     "ci:lint": {
       "outputLogs": "new-only"
     },
-    "eslint": {},
     "test": {
       "outputLogs": "new-only"
     },

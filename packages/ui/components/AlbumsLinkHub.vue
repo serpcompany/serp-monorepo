@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import type { ReleaseGroupIndex } from '@serp/types/types';
+import type { ReleaseGroupIndex } from '@serp/types/types'
 
-  defineProps({
-    albums: {
-      type: Array as () => ReleaseGroupIndex[],
-      required: true
-    }
-  });
+defineProps({
+  albums: {
+    type: Array as () => ReleaseGroupIndex[],
+    required: true,
+  },
+})
 </script>
 
 <template>

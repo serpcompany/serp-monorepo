@@ -1,8 +1,5 @@
-export const useEntityFeaturedSubscriptions = async (
-  activeOnly = true,
-  module = ''
-) => {
+export async function useEntityFeaturedSubscriptions(activeOnly = true, module = '') {
   return useFetchWithCache(
-    `/entity/featured-subscriptions?activeOnly=${activeOnly}&module=${module}`
-  );
-};
+    `/entity/featured-subscriptions?activeOnly=${activeOnly}&module=${module}`,
+  )
+}

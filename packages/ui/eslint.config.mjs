@@ -4,8 +4,8 @@ import { createConfigForNuxt } from '@nuxt/eslint-config/flat'
 
 export default createConfigForNuxt({
   features: {
-    standalone: false
-  }
+    standalone: false,
+  },
 }).append(
   antfu({
     // JSDoc for documentation standards
@@ -83,5 +83,5 @@ export default createConfigForNuxt({
       'jsdoc/check-alignment': 'error',
       'jsdoc/check-param-names': 'error',
     },
-  })
+  }),
 )

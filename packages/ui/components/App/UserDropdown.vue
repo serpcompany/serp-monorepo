@@ -1,136 +1,136 @@
 <script setup lang="ts">
-  import type { DropdownMenuItem } from '@nuxt/ui';
+import type { DropdownMenuItem } from '@nuxt/ui'
 
-  const { user } = useUserSession();
-  const { logout } = useAuth();
-  const mobileMenu = useState('mobileMenu');
-  const isSuperAdmin = computed(() => user.value?.superAdmin);
-  const feedbackModal = ref(false);
-  async function signOut() {
-    await logout();
-    await navigateTo('/');
-  }
-  const items = ref([
-    [
-      {
-        slot: 'profile',
-        label: user.value?.name,
-        avatar: {
-          src: user.value?.avatarUrl || '',
-          alt: user.value?.name
-        },
-        type: 'label',
-        onSelect: () => {
-          mobileMenu.value = false;
-        }
-      }
-    ],
-    [
-      {
-        label: 'Dashboard',
-        icon: 'i-lucide-user-cog',
-        to: '/dashboard',
-        onSelect: () => {
-          mobileMenu.value = false;
-        }
-      }
-    ],
-    [
-      {
-        label: 'Account Settings',
-        icon: 'i-lucide-user-cog',
-        to: '/dashboard/account-settings',
-        onSelect: () => {
-          mobileMenu.value = false;
-        }
-      }
-    ],
-    [
-      {
-        label: 'Theme',
-        icon: 'i-lucide-moon',
-        children: [
-          [
-            {
-              label: 'Light',
-              icon: 'i-lucide-sun',
-              onSelect: () => {
-                setColorMode('light');
-                mobileMenu.value = false;
-              }
-            },
-            {
-              label: 'Dark',
-              icon: 'i-lucide-moon',
-              onSelect: () => {
-                setColorMode('dark');
-                mobileMenu.value = false;
-              }
-            }
-          ],
-          [
-            {
-              label: 'System',
-              icon: 'i-lucide-monitor',
-              onSelect: () => {
-                setColorMode('system');
-                mobileMenu.value = false;
-              }
-            }
-          ]
-        ]
-      }
-    ],
-    [
-      {
-        label: 'Support',
-        icon: 'i-lucide-life-buoy',
-        onSelect: () => {
-          feedbackModal.value = true;
-          mobileMenu.value = false;
-        }
+const { user } = useUserSession()
+const { logout } = useAuth()
+const mobileMenu = useState('mobileMenu')
+const isSuperAdmin = computed(() => user.value?.superAdmin)
+const feedbackModal = ref(false)
+async function signOut() {
+  await logout()
+  await navigateTo('/')
+}
+const items = ref([
+  [
+    {
+      slot: 'profile',
+      label: user.value?.name,
+      avatar: {
+        src: user.value?.avatarUrl || '',
+        alt: user.value?.name,
       },
-      {
-        label: 'Docs',
-        icon: 'i-lucide-cloud'
-      }
-    ],
-    ...(isSuperAdmin.value
-      ? [
-          [
-            {
-              label: 'Super Admin',
-              icon: 'i-lucide-shield',
-              to: '/dashboard/super-admin'
-            }
-          ]
-        ]
-      : []),
-    [
-      {
-        label: 'Logout',
-        icon: 'i-lucide-log-out',
-        onSelect: signOut,
-        color: 'error' as const
-      }
-    ]
-  ]);
+      type: 'label',
+      onSelect: () => {
+        mobileMenu.value = false
+      },
+    },
+  ],
+  [
+    {
+      label: 'Dashboard',
+      icon: 'i-lucide-user-cog',
+      to: '/dashboard',
+      onSelect: () => {
+        mobileMenu.value = false
+      },
+    },
+  ],
+  [
+    {
+      label: 'Account Settings',
+      icon: 'i-lucide-user-cog',
+      to: '/dashboard/account-settings',
+      onSelect: () => {
+        mobileMenu.value = false
+      },
+    },
+  ],
+  [
+    {
+      label: 'Theme',
+      icon: 'i-lucide-moon',
+      children: [
+        [
+          {
+            label: 'Light',
+            icon: 'i-lucide-sun',
+            onSelect: () => {
+              setColorMode('light')
+              mobileMenu.value = false
+            },
+          },
+          {
+            label: 'Dark',
+            icon: 'i-lucide-moon',
+            onSelect: () => {
+              setColorMode('dark')
+              mobileMenu.value = false
+            },
+          },
+        ],
+        [
+          {
+            label: 'System',
+            icon: 'i-lucide-monitor',
+            onSelect: () => {
+              setColorMode('system')
+              mobileMenu.value = false
+            },
+          },
+        ],
+      ],
+    },
+  ],
+  [
+    {
+      label: 'Support',
+      icon: 'i-lucide-life-buoy',
+      onSelect: () => {
+        feedbackModal.value = true
+        mobileMenu.value = false
+      },
+    },
+    {
+      label: 'Docs',
+      icon: 'i-lucide-cloud',
+    },
+  ],
+  ...(isSuperAdmin.value
+    ? [
+        [
+          {
+            label: 'Super Admin',
+            icon: 'i-lucide-shield',
+            to: '/dashboard/super-admin',
+          },
+        ],
+      ]
+    : []),
+  [
+    {
+      label: 'Logout',
+      icon: 'i-lucide-log-out',
+      onSelect: signOut,
+      color: 'error' as const,
+    },
+  ],
+])
 
-  const colorMode = useColorMode();
+const colorMode = useColorMode()
 
-  function setColorMode(mode: string) {
-    colorMode.preference = mode;
-  }
+function setColorMode(mode: string) {
+  colorMode.preference = mode
+}
 </script>
 
 <template>
   <UDropdownMenu
     :items="items as DropdownMenuItem[]"
     :ui="{
-      content: 'w-[240px]'
+      content: 'w-[240px]',
     }"
     :content="{
-      align: 'start'
+      align: 'start',
     }"
   >
     <UButton
@@ -146,7 +146,9 @@
         class="ring-2 ring-neutral-200 dark:ring-white/10"
       />
       <div class="flex flex-1 items-center gap-2">
-        <p class="text-sm">{{ user?.name }}</p>
+        <p class="text-sm">
+          {{ user?.name }}
+        </p>
       </div>
       <UIcon name="i-lucide-chevron-up" />
     </UButton>
@@ -158,7 +160,9 @@
           class="ring-2 ring-neutral-200 dark:ring-white/10"
         />
         <div class="flex-1">
-          <p :style="{ fontWeight: 500 }" class="text-sm">{{ user?.name }}</p>
+          <p :style="{ fontWeight: 500 }" class="text-sm">
+            {{ user?.name }}
+          </p>
           <p
             class="text-xs text-zinc-500 dark:text-zinc-400"
             :style="{ fontWeight: 400 }"

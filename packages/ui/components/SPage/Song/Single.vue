@@ -1,118 +1,120 @@
 <script setup lang="ts">
-  import type {
-    Artist,
-    ArtistReleaseGroup,
-    ArtistRelation
-  } from '@serp/types/types';
+import type {
+  Artist,
+  ArtistRelation,
+  ArtistReleaseGroup,
+} from '@serp/types/types'
 
-  // Add metadata to help AdSense crawler identify content
-  definePageMeta({
-    pageType: 'song'
-  });
+// Add metadata to help AdSense crawler identify content
+definePageMeta({
+  pageType: 'song',
+})
 
-  const sections = ['Lyrics'];
-  const route = useRoute();
-  const { slug } = route.params;
-  const song = await useSong(encodeURIComponent(slug));
+const sections = ['Lyrics']
+const route = useRoute()
+const { slug } = route.params
+const song = await useSong(encodeURIComponent(slug))
 
-  const config = useRuntimeConfig();
-  const useAuth = config.public.useAuth;
+const config = useRuntimeConfig()
+const useAuth = config.public.useAuth
 
-  // Get the full album data to access its recordings
-  const fullAlbum = song.releaseGroup
-    ? await useAlbum(song.releaseGroup.slug)
-    : null;
+// Get the full album data to access its recordings
+const fullAlbum = song.releaseGroup
+  ? await useAlbum(song.releaseGroup.slug)
+  : null
 
-  // Determine the primary artist using multiple fallback options
-  const artistData = computed(() => {
-    // First try: song.artists (default and most direct)
-    if (song.artists && song.artists.length > 0) {
-      return {
-        name: song.artists[0].credit_name,
-        slug: song.artists[0].slug
-      };
-    }
-
-    // Second try: song.artistRels
-    if (song.artistRels && song.artistRels.length > 0) {
-      return {
-        name: song.artistRels[0].artistName,
-        slug: song.artistRels[0].artistSlug
-      };
-    }
-
-    // Third try: song.releaseGroup?.artists
-    if (song.releaseGroup?.artists && song.releaseGroup?.artists.length > 0) {
-      return {
-        name: song.releaseGroup.artists[0].creditName,
-        slug: song.releaseGroup.artists[0].slug
-      };
-    }
-
-    // Fourth try: search for composer or lyricist in artistRels
-    if (song.artistRels && song.artistRels.length > 0) {
-      const composer = song.artistRels.find(
-        (rel: ArtistRelation) =>
-          rel.type === 'composer' || rel.type === 'lyricist'
-      );
-      if (composer) {
-        return {
-          name: composer.artistName,
-          slug: composer.artistSlug
-        };
-      }
-    }
-
-    // Last resort fallback
+// Determine the primary artist using multiple fallback options
+const artistData = computed(() => {
+  // First try: song.artists (default and most direct)
+  if (song.artists && song.artists.length > 0) {
     return {
-      name: 'Unknown Artist',
-      slug: ''
-    };
-  });
+      name: song.artists[0].credit_name,
+      slug: song.artists[0].slug,
+    }
+  }
 
-  // Set SEO meta
-  useSeoMeta({
-    title: `${artistData.value.name !== 'Unknown Artist' ? artistData.value.name + ' - ' : ''}${song.name} - Lyrics`,
-    description: song.seoDescription || ''
-  });
+  // Second try: song.artistRels
+  if (song.artistRels && song.artistRels.length > 0) {
+    return {
+      name: song.artistRels[0].artistName,
+      slug: song.artistRels[0].artistSlug,
+    }
+  }
 
-  // Get other albums by the same artist
-  const artistAlbums = ref<ArtistReleaseGroup[]>([]);
+  // Third try: song.releaseGroup?.artists
+  if (song.releaseGroup?.artists && song.releaseGroup?.artists.length > 0) {
+    return {
+      name: song.releaseGroup.artists[0].creditName,
+      slug: song.releaseGroup.artists[0].slug,
+    }
+  }
 
-  // Fetch the full ARTIST data, which contains releaseGroups
-  watchEffect(async () => {
-    const currentSlug = artistData.value.slug;
-    if (currentSlug) {
-      try {
-        // Fetch the main Artist object instead of the dedicated /albums endpoint
-        const fetchedArtistData = await useFetchWithCache<Artist>(
-          `/artists/${encodeURIComponent(currentSlug)}`
-        );
-        // Extract the releaseGroups array from the artist data
-        artistAlbums.value = fetchedArtistData?.releaseGroups || [];
-      } catch (error) {
-        artistAlbums.value = [];
+  // Fourth try: search for composer or lyricist in artistRels
+  if (song.artistRels && song.artistRels.length > 0) {
+    const composer = song.artistRels.find(
+      (rel: ArtistRelation) =>
+        rel.type === 'composer' || rel.type === 'lyricist',
+    )
+    if (composer) {
+      return {
+        name: composer.artistName,
+        slug: composer.artistSlug,
       }
     }
-  });
+  }
 
-  // Include ALL album songs, including the current one
-  const albumSongs = computed(() => {
-    if (!fullAlbum?.recordings) return [];
+  // Last resort fallback
+  return {
+    name: 'Unknown Artist',
+    slug: '',
+  }
+})
+
+// Set SEO meta
+useSeoMeta({
+  title: `${artistData.value.name !== 'Unknown Artist' ? `${artistData.value.name} - ` : ''}${song.name} - Lyrics`,
+  description: song.seoDescription || '',
+})
+
+// Get other albums by the same artist
+const artistAlbums = ref<ArtistReleaseGroup[]>([])
+
+// Fetch the full ARTIST data, which contains releaseGroups
+watchEffect(async () => {
+  const currentSlug = artistData.value.slug
+  if (currentSlug) {
+    try {
+      // Fetch the main Artist object instead of the dedicated /albums endpoint
+      const fetchedArtistData = await useFetchWithCache<Artist>(
+        `/artists/${encodeURIComponent(currentSlug)}`,
+      )
+      // Extract the releaseGroups array from the artist data
+      artistAlbums.value = fetchedArtistData?.releaseGroups || []
+    }
+    catch (error) {
+      artistAlbums.value = []
+    }
+  }
+})
+
+// Include ALL album songs, including the current one
+const albumSongs = computed(() => {
+  if (!fullAlbum?.recordings)
+    return []
     // Remove the filter to include the current song
-    return fullAlbum.recordings;
-    // return fullAlbum.recordings.filter( // Old logic
-    //   (recording: ReleaseGroupRecording) => recording.slug !== song.slug
-    // );
-  });
+  return fullAlbum.recordings
+  // return fullAlbum.recordings.filter( // Old logic
+  //   (recording: ReleaseGroupRecording) => recording.slug !== song.slug
+  // );
+})
 
-  const genres = computed(() => {
-    return song?.genres ? song.genres.join(', ') : '';
-  });
+const genres = computed(() => {
+  return song?.genres ? song.genres.join(', ') : ''
+})
 
-  const tags = computed(() => {
-    return song?.tags ? song.tags.join(', ') : '';
-  });
+const tags = computed(() => {
+  return song?.tags ? song.tags.join(', ') : ''
+})
 </script>
 
 <template>
@@ -140,11 +142,17 @@
     <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
       <!-- Breadcrumbs -->
       <UBreadcrumb class="mb-6" :ui="{ container: 'flex px-1 py-2' }">
-        <UBreadcrumbItem to="/home">Home</UBreadcrumbItem>
-        <UBreadcrumbItem to="/songs">Songs</UBreadcrumbItem>
-        <UBreadcrumbItem :to="`/songs/${song.slug}`">{{
-          song.name
-        }}</UBreadcrumbItem>
+        <UBreadcrumbItem to="/home">
+          Home
+        </UBreadcrumbItem>
+        <UBreadcrumbItem to="/songs">
+          Songs
+        </UBreadcrumbItem>
+        <UBreadcrumbItem :to="`/songs/${song.slug}`">
+          {{
+            song.name
+          }}
+        </UBreadcrumbItem>
       </UBreadcrumb>
 
       <!-- Main Content (70) -->
@@ -152,12 +160,14 @@
         <div class="lg:col-span-2">
           <!-- Song content -->
           <div id="lyrics" data-adsense-content="song-lyrics">
-            <h2 class="mb-4 text-xl font-semibold">{{ song.name }} Lyrics</h2>
+            <h2 class="mb-4 text-xl font-semibold">
+              {{ song.name }} Lyrics
+            </h2>
             <!-- eslint-disable-next-line vue/no-v-html -->
             <div
               class="prose dark:prose-invert max-w-none whitespace-pre-line"
               v-html="song.lyrics"
-            ></div>
+            />
           </div>
         </div>
 
@@ -175,7 +185,9 @@
           <!-- Song Info Section -->
           <UCard>
             <template #header>
-              <div class="font-medium">Song Info</div>
+              <div class="font-medium">
+                Song Info
+              </div>
             </template>
             <div class="space-y-2">
               <div v-if="artistData.name !== 'Unknown Artist'" class="mb-2">
@@ -262,7 +274,9 @@
           <!-- Listen Section -->
           <UCard>
             <template #header>
-              <div class="font-medium">Listen on</div>
+              <div class="font-medium">
+                Listen on
+              </div>
             </template>
             <div class="p-1">
               <UButton

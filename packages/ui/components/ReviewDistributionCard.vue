@@ -1,63 +1,63 @@
 <script setup lang="ts">
-  const props = defineProps({
-    totalReviews: {
-      type: Number,
-      required: true
-    },
-    totalOneStarReviews: {
-      type: Number,
-      required: true
-    },
-    totalTwoStarReviews: {
-      type: Number,
-      required: true
-    },
-    totalThreeStarReviews: {
-      type: Number,
-      required: true
-    },
-    totalFourStarReviews: {
-      type: Number,
-      required: true
-    },
-    totalFiveStarReviews: {
-      type: Number,
-      required: true
-    },
-    averageRating: {
-      type: Number,
-      required: true
-    },
-    showBorder: {
-      type: Boolean,
-      default: true,
-      description: 'Whether to show the border around the card'
-    },
-    cardTitle: {
-      type: String,
-      default: 'Customer Reviews',
-      description: 'Title to display on the card'
-    },
-    showReviewButton: {
-      type: Boolean,
-      default: true,
-      description: 'Whether to show the Write a Review button'
-    }
-  });
+const props = defineProps({
+  totalReviews: {
+    type: Number,
+    required: true,
+  },
+  totalOneStarReviews: {
+    type: Number,
+    required: true,
+  },
+  totalTwoStarReviews: {
+    type: Number,
+    required: true,
+  },
+  totalThreeStarReviews: {
+    type: Number,
+    required: true,
+  },
+  totalFourStarReviews: {
+    type: Number,
+    required: true,
+  },
+  totalFiveStarReviews: {
+    type: Number,
+    required: true,
+  },
+  averageRating: {
+    type: Number,
+    required: true,
+  },
+  showBorder: {
+    type: Boolean,
+    default: true,
+    description: 'Whether to show the border around the card',
+  },
+  cardTitle: {
+    type: String,
+    default: 'Customer Reviews',
+    description: 'Title to display on the card',
+  },
+  showReviewButton: {
+    type: Boolean,
+    default: true,
+    description: 'Whether to show the Write a Review button',
+  },
+})
 
-  const ratingCounts = computed(() => ({
-    1: props.totalOneStarReviews,
-    2: props.totalTwoStarReviews,
-    3: props.totalThreeStarReviews,
-    4: props.totalFourStarReviews,
-    5: props.totalFiveStarReviews
-  }));
+const ratingCounts = computed(() => ({
+  1: props.totalOneStarReviews,
+  2: props.totalTwoStarReviews,
+  3: props.totalThreeStarReviews,
+  4: props.totalFourStarReviews,
+  5: props.totalFiveStarReviews,
+}))
 </script>
 
 <template>
   <UCard
     :ui="{
-      body: { padding: 'p-0' }
+      body: { padding: 'p-0' },
     }"
     :class="{ 'border border-gray-200 dark:border-gray-800': showBorder }"
   >
@@ -123,9 +123,9 @@
                       totalReviews > 0
                         ? (ratingCounts[star] / totalReviews) * 100
                         : 0
-                    }%`
+                    }%`,
                   }"
-                ></div>
+                />
               </div>
 
               <span class="ml-4 text-sm">{{ ratingCounts[star] || 0 }}</span>

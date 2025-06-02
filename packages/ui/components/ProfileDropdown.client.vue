@@ -1,48 +1,48 @@
 <script setup lang="ts">
-  // @ts-expect-error: Auto-imported from another layer
-  const { loggedIn, user, clear } = useUserSession();
-  const config = useRuntimeConfig();
-  const profileDropdownLinks = Array.isArray(config.public.profileDropdownLinks)
-    ? config.public.profileDropdownLinks
-    : [];
-  const slideover = ref(false);
+// @ts-expect-error: Auto-imported from another layer
+const { loggedIn, user, clear } = useUserSession()
+const config = useRuntimeConfig()
+const profileDropdownLinks = Array.isArray(config.public.profileDropdownLinks)
+  ? config.public.profileDropdownLinks
+  : []
+const slideover = ref(false)
 
-  interface MenuItem {
-    label: string;
-    type?: string;
-    to?: string;
-    icon?: string;
-    kbds?: string[];
-    onSelect?: (event: Event) => void;
+interface MenuItem {
+  label: string
+  type?: string
+  to?: string
+  icon?: string
+  kbds?: string[]
+  onSelect?: (event: Event) => void
+}
+
+const items = ref([
+  ...profileDropdownLinks,
+  [
+    {
+      label: 'Dashboard',
+      to: '/users/dashboard/',
+      icon: 'i-lucide-settings',
+    },
+  ],
+  [
+    {
+      label: 'Logout',
+      icon: 'i-lucide-log-out',
+      to: '/logout/',
+    },
+  ],
+])
+
+function handleItemClick(item: MenuItem, event: Event): void {
+  if (item.onSelect) {
+    item.onSelect(event)
+    return
   }
-
-  const items = ref([
-    ...profileDropdownLinks,
-    [
-      {
-        label: 'Dashboard',
-        to: '/users/dashboard/',
-        icon: 'i-lucide-settings'
-      }
-    ],
-    [
-      {
-        label: 'Logout',
-        icon: 'i-lucide-log-out',
-        to: '/logout/'
-      }
-    ]
-  ]);
-
-  function handleItemClick(item: MenuItem, event: Event): void {
-    if (item.onSelect) {
-      item.onSelect(event);
-      return;
-    }
-    if (item.to) {
-      slideover.value = false;
-    }
+  if (item.to) {
+    slideover.value = false
   }
+}
 </script>
 
 <template>
@@ -68,7 +68,7 @@
           'w-80 max-w-[85vw] divide-y divide-gray-200 bg-white shadow-lg',
         overlay: 'bg-black bg-opacity-30',
         wrapper: 'h-full',
-        body: 'p-0'
+        body: 'p-0',
       }"
     >
       <!-- User profile header -->

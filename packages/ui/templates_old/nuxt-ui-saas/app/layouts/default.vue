@@ -3,7 +3,7 @@
     <AppHeader />
 
     <UMain>
-      <slot></slot>
+      <slot />
     </UMain>
 
     <AppFooter />
