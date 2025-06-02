@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  pr_standardization_test:
+  ci_1_pr:
     runs-on: ${{ matrix.os }}
 
     strategy:
