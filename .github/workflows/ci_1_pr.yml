@@ -1,4 +1,5 @@
 name: ci_1_pr
+# Trigger CI after snapshot updates
 
 on:
   pull_request:
