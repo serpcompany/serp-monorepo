@@ -48,8 +48,8 @@
     "prettier-plugin-packagejson": "^2.5.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "typescript": "^5.7.3",
-    "vitest": "^2.1.5",
-    "vue": "latest",
+    "vitest": "^2.1.9",
+    "vue": "3.5.14",
     "vue3-snapshot-serializer": "^2.10.0",
     "zod": "^3.24.2"
   }

@@ -81,8 +81,8 @@
     "unhead": "^2.0.8",
     "use-email": "^0.0.9",
     "uuid": "^11.1.0",
-    "vitest": "^2.1.5",
-    "vue": "latest",
+    "vitest": "^2.1.9",
+    "vue": "3.5.14",
     "vue-router": "latest",
     "zod": "^3.24.2"
   },
