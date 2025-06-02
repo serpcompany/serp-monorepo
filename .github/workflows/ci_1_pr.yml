@@ -59,3 +59,6 @@ jobs:
 
       - name: TypeScript Check - No TS7006 errors
         run: pnpm typecheck:ts7006
+
+      - name: ESLint Check - No missing return types
+        run: pnpm lint:return-types
