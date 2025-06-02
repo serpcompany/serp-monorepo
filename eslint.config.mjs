@@ -62,7 +62,7 @@ export default antfu(
       
       // Vue/Nuxt rules
       'vue/block-order': ['error', { order: ['script', 'template', 'style'] }],
-      'vue/no-setup-props-destructure': 'error',
+      'vue/no-setup-props-reactivity-loss': 'error', // Prevent props destructuring that breaks reactivity
       'vue/html-self-closing': ['warn', {
         html: { void: 'always', normal: 'never', component: 'always' },
         svg: 'always',
