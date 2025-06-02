@@ -51,14 +51,13 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: pnpm install
 
-      - name: Lint
-        run: pnpm ci:lint
-
-      - name: Test
-        run: pnpm test
+      - name: Lint & Test
+        run: |
+          pnpm ci:lint
+          pnpm test
 
       - name: TypeScript Check - No TS7006 errors
         run: pnpm typecheck:ts7006
 
-      - name: ESLint Check - No missing return types
+      - name: ESLint Check - No missing return types in @serp/db
         run: pnpm lint:return-types
