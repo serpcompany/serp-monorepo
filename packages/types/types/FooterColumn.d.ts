@@ -1,10 +1,10 @@
-export type FooterColumnItem = {
-  text: string;
-  slug: string;
-};
+export interface FooterColumnItem {
+  text: string
+  slug: string
+}
 
-export type FooterColumn = {
-  title: string;
-  slug: string;
-  items: FooterColumnItem[];
-};
+export interface FooterColumn {
+  title: string
+  slug: string
+  items: FooterColumnItem[]
+}

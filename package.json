@@ -33,6 +33,7 @@
     "eslint": "^8.56.0",
     "eslint-config-turbo": "^2.0.0",
     "eslint-plugin-jsdoc": "^50.6.17",
+    "eslint-plugin-vuejs-accessibility": "^2.4.1",
     "eslint-typegen": "^2.2.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.0",

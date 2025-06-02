@@ -1,3 +1,4 @@
+import { relations } from 'drizzle-orm'
 import {
   boolean,
   customType,
@@ -5,26 +6,25 @@ import {
   integer,
   jsonb,
   pgSchema,
+  pgTable,
   serial,
   text,
   timestamp,
   uuid,
   varchar,
   vector,
-  pgTable
-} from 'drizzle-orm/pg-core';
-import { relations } from 'drizzle-orm';
+} from 'drizzle-orm/pg-core'
 
 export const ltree = customType<{ data: string }>({
   dataType() {
-    return 'ltree';
-  }
-});
+    return 'ltree'
+  },
+})
 
-export const cacheSchema = pgSchema('cache');
-export const formSchema = pgSchema('form');
-export const stripeSchema = pgSchema('stripe');
-export const userSchema = pgSchema('user');
+export const cacheSchema = pgSchema('cache')
+export const formSchema = pgSchema('form')
+export const stripeSchema = pgSchema('stripe')
+export const userSchema = pgSchema('user')
 
 // Public
 export const image = pgTable('image', {
@@ -41,8 +41,8 @@ export const image = pgTable('image', {
     .defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()
-    .defaultNow()
-});
+    .defaultNow(),
+})
 
 // Admin tables
 export const feedback = userSchema.table('feedback', {
@@ -54,8 +54,8 @@ export const feedback = userSchema.table('feedback', {
   meta: jsonb('meta'),
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
-    .defaultNow()
-});
+    .defaultNow(),
+})
 
 export const subscriber = userSchema.table('subscriber', {
   id: serial('id').primaryKey(),
@@ -67,8 +67,8 @@ export const subscriber = userSchema.table('subscriber', {
     .defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()
-    .defaultNow()
-});
+    .defaultNow(),
+})
 
 // Entity Verification
 export const verification = userSchema.table('verification', {
@@ -77,8 +77,8 @@ export const verification = userSchema.table('verification', {
     .notNull()
     .defaultNow(),
   entity: integer('entity').notNull(),
-  user: integer('user').notNull()
-});
+  user: integer('user').notNull(),
+})
 
 export const verificationRequest = userSchema.table('verification_request', {
   id: serial('id').primaryKey(),
@@ -90,8 +90,8 @@ export const verificationRequest = userSchema.table('verification_request', {
   code: varchar('code', { length: 32 }).notNull(),
   expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
   verification: integer('verification'),
-  user: integer('user').notNull()
-});
+  user: integer('user').notNull(),
+})
 
 // Teams
 export const team = userSchema.table('team', {
@@ -101,15 +101,15 @@ export const team = userSchema.table('team', {
     .notNull()
     .references(() => user.id, { onDelete: 'set null' }),
   entityId: integer('entity_id').references(() => entity.id, {
-    onDelete: 'set null'
+    onDelete: 'set null',
   }),
   logo: varchar('logo', { length: 255 }),
   slug: varchar('slug', { length: 255 }).notNull().unique(),
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
     .defaultNow(),
-  updatedAt: timestamp('updated_at', { withTimezone: true })
-});
+  updatedAt: timestamp('updated_at', { withTimezone: true }),
+})
 
 export const teamMember = userSchema.table('team_member', {
   id: serial('id').primaryKey(),
@@ -123,8 +123,8 @@ export const teamMember = userSchema.table('team_member', {
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
     .defaultNow(),
-  updatedAt: timestamp('updated_at', { withTimezone: true })
-});
+  updatedAt: timestamp('updated_at', { withTimezone: true }),
+})
 
 export const teamInvite = userSchema.table('team_invite', {
   id: serial('id').primaryKey(),
@@ -140,8 +140,8 @@ export const teamInvite = userSchema.table('team_invite', {
   acceptedBy: integer('accepted_by').references(() => user.id),
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
-    .defaultNow()
-});
+    .defaultNow(),
+})
 
 // User
 export const user = userSchema.table('user', {
@@ -166,8 +166,8 @@ export const user = userSchema.table('user', {
   proAccount: boolean('pro_account').default(false),
   lastActive: timestamp('last_active', { withTimezone: true })
     .notNull()
-    .defaultNow()
-});
+    .defaultNow(),
+})
 
 export const vote = userSchema.table('vote', {
   id: serial('id').primaryKey(),
@@ -177,8 +177,8 @@ export const vote = userSchema.table('vote', {
   updatedAt: timestamp('updated_at', { withTimezone: true }),
   entity: integer('entity').notNull(),
   user: integer('user').notNull(),
-  direction: integer('direction').notNull()
-});
+  direction: integer('direction').notNull(),
+})
 
 export const comment = userSchema.table('comment', {
   id: serial('id').primaryKey(),
@@ -190,8 +190,8 @@ export const comment = userSchema.table('comment', {
   content: text('content').notNull(),
   parentId: integer('parent_id'),
   path: ltree('path'),
-  user: integer('user').notNull()
-});
+  user: integer('user').notNull(),
+})
 
 export const review = userSchema.table('review', {
   id: serial('id').primaryKey(),
@@ -208,8 +208,8 @@ export const review = userSchema.table('review', {
   flaggedReason: text('flagged_reason'),
   flaggedAt: timestamp('flagged_at', { withTimezone: true }),
   flaggedBy: integer('flagged_by'),
-  user: integer('user').notNull()
-});
+  user: integer('user').notNull(),
+})
 
 export const oauthAccount = userSchema.table('oauth_account', {
   id: serial('id').primaryKey(),
@@ -221,8 +221,8 @@ export const oauthAccount = userSchema.table('oauth_account', {
     .notNull()
     .references(() => user.id, { onDelete: 'cascade' }),
   provider: varchar('provider', { length: 255 }).notNull(),
-  providerUserId: varchar('provider_user_id', { length: 255 }).notNull()
-});
+  providerUserId: varchar('provider_user_id', { length: 255 }).notNull(),
+})
 
 export const emailVerificationCode = userSchema.table(
   'email_verification_code',
@@ -232,9 +232,9 @@ export const emailVerificationCode = userSchema.table(
       .notNull()
       .references(() => user.id, { onDelete: 'cascade' }),
     code: varchar('code', { length: 32 }).notNull(),
-    expiresAt: timestamp('expires_at', { withTimezone: true }).notNull()
-  }
-);
+    expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
+  },
+)
 
 export const passwordResetToken = userSchema.table('password_reset_token', {
   id: serial('id').primaryKey(),
@@ -242,8 +242,8 @@ export const passwordResetToken = userSchema.table('password_reset_token', {
     .notNull()
     .references(() => user.id, { onDelete: 'cascade' }),
   code: varchar('code', { length: 32 }).notNull(),
-  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull()
-});
+  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
+})
 
 export const oneTimePassword = userSchema.table('one_time_password', {
   id: serial('id').primaryKey(),
@@ -253,8 +253,8 @@ export const oneTimePassword = userSchema.table('one_time_password', {
   identifier: varchar('identifier', { length: 255 }).notNull(),
   code: varchar('code', { length: 6 }).notNull(),
   type: varchar('type', { length: 50 }).notNull().default('signup'),
-  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull()
-});
+  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
+})
 
 export const webAuthnCredential = userSchema.table('webauthn_credential', {
   id: varchar('id', { length: 255 }).primaryKey(),
@@ -269,14 +269,14 @@ export const webAuthnCredential = userSchema.table('webauthn_credential', {
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull()
     .defaultNow(),
-  updatedAt: timestamp('updated_at', { withTimezone: true })
-});
+  updatedAt: timestamp('updated_at', { withTimezone: true }),
+})
 
 export const webAuthnChallenge = userSchema.table('webauthn_challenge', {
   id: varchar('id', { length: 255 }).primaryKey(),
   challenge: text('challenge').notNull(),
-  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull()
-});
+  expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
+})
 
 export const edit = userSchema.table('edit', {
   id: serial('id').primaryKey(),
@@ -290,8 +290,8 @@ export const edit = userSchema.table('edit', {
   reviewedAt: timestamp('reviewed_at', { withTimezone: true }),
   reviewedBy: integer('reviewed_by'),
   reviewNotes: text('review_notes'),
-  updatedMainDb: boolean('updated_main_db').notNull().default(false)
-});
+  updatedMainDb: boolean('updated_main_db').notNull().default(false),
+})
 
 export const submitForm = userSchema.table('submit_form', {
   id: serial('id').primaryKey(),
@@ -312,8 +312,8 @@ export const submitForm = userSchema.table('submit_form', {
   priorityPayment: integer('priority_payment'),
   backlinkVerified: boolean('backlink_verified').notNull().default(false),
   backlinkVerifiedAt: timestamp('backlink_verified_at', { withTimezone: true }),
-  uuid: uuid('uuid').notNull()
-});
+  uuid: uuid('uuid').notNull(),
+})
 
 export const post = userSchema.table('post', {
   id: serial('id').primaryKey(),
@@ -331,8 +331,8 @@ export const post = userSchema.table('post', {
     .defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()
-    .defaultNow()
-});
+    .defaultNow(),
+})
 
 // Generic
 export const entity = cacheSchema.table('entity', {
@@ -356,8 +356,8 @@ export const entity = cacheSchema.table('entity', {
     .notNull()
     .defaultNow(),
   searchText: text('search_text'),
-  embedding: vector('embedding', { dimensions: 1536 })
-});
+  embedding: vector('embedding', { dimensions: 1536 }),
+})
 
 export const entityAggregate = cacheSchema.table('entity_aggregate', {
   entity: integer('entity').primaryKey(),
@@ -381,8 +381,8 @@ export const entityAggregate = cacheSchema.table('entity_aggregate', {
     .defaultNow(),
   lastUpdatedReviews: timestamp('last_updated_reviews', { withTimezone: true })
     .notNull()
-    .defaultNow()
-});
+    .defaultNow(),
+})
 
 export const category = cacheSchema.table('category', {
   id: serial('id').primaryKey(),
@@ -396,8 +396,8 @@ export const category = cacheSchema.table('category', {
     .defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()
-    .defaultNow()
-});
+    .defaultNow(),
+})
 
 export const topic = cacheSchema.table('topic', {
   id: serial('id').primaryKey(),
@@ -411,8 +411,8 @@ export const topic = cacheSchema.table('topic', {
     .defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()
-    .defaultNow()
-});
+    .defaultNow(),
+})
 
 // Stripe
 export const customer = stripeSchema.table('customer', {
@@ -424,8 +424,8 @@ export const customer = stripeSchema.table('customer', {
     .defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()
-    .defaultNow()
-});
+    .defaultNow(),
+})
 
 export const product = stripeSchema.table('product', {
   id: varchar('id', { length: 255 }).primaryKey(),
@@ -441,8 +441,8 @@ export const product = stripeSchema.table('product', {
     .defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()
-    .defaultNow()
-});
+    .defaultNow(),
+})
 
 export const price = stripeSchema.table('price', {
   id: varchar('id', { length: 255 }).primaryKey(),
@@ -463,8 +463,8 @@ export const price = stripeSchema.table('price', {
     .defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()
-    .defaultNow()
-});
+    .defaultNow(),
+})
 
 export const payment = stripeSchema.table('payment', {
   id: serial('id').primaryKey(),
@@ -473,8 +473,8 @@ export const payment = stripeSchema.table('payment', {
     .defaultNow(),
   customer: varchar('customer', { length: 255 }).notNull(),
   data: jsonb('data').notNull(),
-  type: varchar('type', { length: 255 }).notNull()
-});
+  type: varchar('type', { length: 255 }).notNull(),
+})
 
 export const subscription = stripeSchema.table('subscription', {
   id: varchar('id', { length: 255 }).primaryKey(),
@@ -501,8 +501,8 @@ export const subscription = stripeSchema.table('subscription', {
     .defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()
-    .defaultNow()
-});
+    .defaultNow(),
+})
 
 export const newsletterSubscription = userSchema.table(
   'newsletter_subscription',
@@ -513,12 +513,12 @@ export const newsletterSubscription = userSchema.table(
       .defaultNow(),
     email: varchar('email', { length: 255 }).notNull(),
     userId: integer('user_id').references(() => user.id, {
-      onDelete: 'set null'
+      onDelete: 'set null',
     }),
     status: varchar('status', { length: 50 }).default('active'),
-    unsubscribedAt: timestamp('unsubscribed_at', { withTimezone: true })
-  }
-);
+    unsubscribedAt: timestamp('unsubscribed_at', { withTimezone: true }),
+  },
+)
 
 export const featuredSubscription = stripeSchema.table(
   'featured_subscription',
@@ -536,92 +536,92 @@ export const featuredSubscription = stripeSchema.table(
     cancelAtPeriodEnd: boolean('cancel_at_period_end').notNull().default(false),
     currentPeriodEnd: timestamp('current_period_end', { withTimezone: true }),
     currentPeriodStart: timestamp('current_period_start', {
-      withTimezone: true
+      withTimezone: true,
     }),
     endedAt: timestamp('ended_at', { withTimezone: true }),
     cancelAt: timestamp('cancel_at', { withTimezone: true }),
     reservationExpiresAt: timestamp('reservation_expires_at', {
-      withTimezone: true
+      withTimezone: true,
     }),
-    customerId: varchar('customer')
-  }
-);
+    customerId: varchar('customer'),
+  },
+)
 
 export const subscriptionRelations = relations(subscription, ({ one }) => ({
   customer: one(customer, {
     fields: [subscription.customerId],
-    references: [customer.id]
+    references: [customer.id],
   }),
   price: one(price, {
     fields: [subscription.priceId],
-    references: [price.id]
+    references: [price.id],
   }),
   team: one(team, {
     fields: [subscription.teamId],
-    references: [team.id]
+    references: [team.id],
   }),
   user: one(user, {
     fields: [subscription.userId],
-    references: [user.id]
-  })
-}));
+    references: [user.id],
+  }),
+}))
 
 export const feedbackRelations = relations(feedback, ({ one }) => ({
   user: one(user, {
     fields: [feedback.user],
-    references: [user.id]
-  })
-}));
+    references: [user.id],
+  }),
+}))
 
 export const oauthAccountRelations = relations(oauthAccount, ({ one }) => ({
   user: one(user, {
     fields: [oauthAccount.userId],
-    references: [user.id]
-  })
-}));
+    references: [user.id],
+  }),
+}))
 
 export const postRelations = relations(post, ({ one }) => ({
   userId: one(user, {
     fields: [post.userId],
-    references: [user.id]
+    references: [user.id],
   }),
   teamId: one(team, {
     fields: [post.teamId],
-    references: [team.id]
-  })
-}));
+    references: [team.id],
+  }),
+}))
 
 export const priceRelations = relations(price, ({ one }) => ({
   product: one(product, {
     fields: [price.productId],
-    references: [product.id]
-  })
-}));
+    references: [product.id],
+  }),
+}))
 
 export const teamRelations = relations(team, ({ many, one }) => ({
   members: many(teamMember),
   owner: one(user, {
     fields: [team.ownerId],
-    references: [user.id]
+    references: [user.id],
   }),
   subscription: one(subscription, {
     fields: [team.id],
-    references: [subscription.teamId]
-  })
-}));
+    references: [subscription.teamId],
+  }),
+}))
 
 export const teamMembersRelations = relations(teamMember, ({ one }) => ({
   team: one(team, {
     fields: [teamMember.teamId],
-    references: [team.id]
+    references: [team.id],
   }),
   user: one(user, {
     fields: [teamMember.userId],
-    references: [user.id]
-  })
-}));
+    references: [user.id],
+  }),
+}))
 
 export const userRelations = relations(user, ({ many }) => ({
   oauthAccounts: many(oauthAccount),
-  teamMembers: many(teamMember)
-}));
+  teamMembers: many(teamMember),
+}))

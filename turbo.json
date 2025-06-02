@@ -13,7 +13,6 @@
     "eslint": {},
     "prettier": {},
     "test": {
-      "dependsOn": ["lint"],
       "outputLogs": "new-only"
     },
     "test:watch": {},

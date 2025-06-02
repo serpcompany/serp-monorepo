@@ -1,5 +1,5 @@
-export type WeightClass = {
-  id?: number;
-  name: string;
-  slug: string;
-};
+export interface WeightClass {
+  id?: number
+  name: string
+  slug: string
+}

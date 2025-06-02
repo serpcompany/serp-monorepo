@@ -1,14 +1,13 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
-export default defineNuxtRouteMiddleware((to, from) => {
+export default defineNuxtRouteMiddleware((to, _from) => {
   if (
-    to.path !== '/' &&
-    !to.path.endsWith('/') &&
-    !to.path.endsWith('.xml') &&
-    !to.path.endsWith('.txt')
+    to.path !== '/'
+    && !to.path.endsWith('/')
+    && !to.path.endsWith('.xml')
+    && !to.path.endsWith('.txt')
   ) {
-    const { path, query, hash } = to;
-    const nextPath = path + '/';
-    const nextRoute = { path: nextPath, query, hash };
-    return navigateTo(nextRoute, { redirectCode: 301 });
+    const { path, query, hash } = to
+    const nextPath = `${path}/`
+    const nextRoute = { path: nextPath, query, hash }
+    return navigateTo(nextRoute, { redirectCode: 301 })
   }
-});
+})

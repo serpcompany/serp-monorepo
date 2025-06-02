@@ -1,14 +1,14 @@
-import { getDb } from '../index';
-import { entity } from '../schema';
-import { eq } from 'drizzle-orm';
+import { eq } from 'drizzle-orm'
+import { getDb } from '../index'
+import { entity } from '../schema'
 
-export const getEntityById = async (id: number) => {
+export async function getEntityById(id: number) {
   const results = await getDb()
     .select()
     .from(entity)
     .where(eq(entity.id, id))
     .limit(1)
-    .execute();
+    .execute()
 
-  return results.length > 0 ? results[0] : null;
-};
+  return results.length > 0 ? results[0] : null
+}
