@@ -1,7 +1,11 @@
 {
   "name": "@serp/root",
-  "private": true,
   "type": "module",
+  "private": true,
+  "packageManager": "pnpm@9.10.0",
+  "engines": {
+    "node": "^22.16.0"
+  },
   "scripts": {
     "build": "turbo run build",
     "eslint": "turbo run eslint",
@@ -22,12 +26,6 @@
     "typecheck:ts7006": "turbo run typecheck 2>&1 | grep 'TS7006' && echo 'TS7006 errors found - build failed!' && exit 1 || echo 'No TS7006 errors found - build passed!'",
     "lint:return-types": "turbo run ci:lint 2>&1 | grep 'ts/explicit-function-return-type' && echo 'ts/explicit-function-return-type errors found - build failed!' && exit 1 || echo 'No ts/explicit-function-return-type errors found - build passed!'"
   },
-  "resolutions": {
-    "@vue/server-renderer": "3.5.14",
-    "unimport": "4.1.1",
-    "vue": "3.5.14",
-    "vue-tsc": "2.2.0"
-  },
   "devDependencies": {
     "@antfu/eslint-config": "^4.13.2",
     "@eslint/eslintrc": "^3.0.0",
@@ -45,13 +43,15 @@
     "turbo": "^2.4.4",
     "typescript": "^5.7.3"
   },
+  "resolutions": {
+    "@vue/server-renderer": "3.5.14",
+    "unimport": "4.1.1",
+    "vue": "3.5.14",
+    "vue-tsc": "2.2.0"
+  },
   "lint-staged": {
     "*.{ts,tsx,vue,js,jsx}": [
       "eslint --fix"
     ]
-  },
-  "packageManager": "pnpm@9.10.0",
-  "engines": {
-    "node": "^22.16.0"
   }
 }

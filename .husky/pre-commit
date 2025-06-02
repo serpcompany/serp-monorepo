@@ -21,10 +21,6 @@ if ! git diff --exit-code; then
 fi
 echo "✅ [husky]: No changes made by lint - proceeding..."
 
-# Run tests
-echo "[husky]: Running script: pnpm test"
-pnpm test
-
 # Run TypeScript check for TS7006 errors (parameter implicitly has any type)
 echo "[husky]: Running script: pnpm typecheck:ts7006"
 pnpm typecheck:ts7006
@@ -37,3 +33,6 @@ pnpm lint:return-types
 echo "[husky]: Running command: pnpm infisical scan git-changes --staged --verbose --baseline-path .reports/secrets-report.json"
 pnpm infisical scan git-changes --staged --verbose --baseline-path .reports/secrets-report.json
 
+# Run tests
+echo "[husky]: Running script: pnpm test"
+pnpm test
