@@ -1,5 +1,6 @@
 import { mockNuxtImport } from '@nuxt/test-utils/runtime';
 import { describe, expect, it } from 'vitest';
+import { ref } from 'vue';
 import SPageCompanyCollection from '../../../../components/SPage/Company/Collection.vue';
 import ComponentRender from '../../../componentRender';
 import '../../../mockUseUserSession';
@@ -21,6 +22,26 @@ mockNuxtImport(
   () => () => Promise.resolve(categoriesData_)
 );
 mockNuxtImport('useCompanies', () => () => Promise.resolve(companiesData_));
+
+// Mock useAsyncData to ensure consistent loading state across environments
+mockNuxtImport('useAsyncData', () => (key: string, _fn: Function) => {
+  if (key === 'companies') {
+    return {
+      data: ref(companiesData_),
+      status: ref('success') // Ensure consistent non-loading state
+    };
+  }
+  if (key === 'categories') {
+    return {
+      data: ref(categoriesData_),
+      status: ref('success') // Ensure consistent non-loading state
+    };
+  }
+  return {
+    data: ref(null),
+    status: ref('success')
+  };
+});
 
 describe('SPageCompanyCollection Snapshot', () => {
   const scenarios: [
