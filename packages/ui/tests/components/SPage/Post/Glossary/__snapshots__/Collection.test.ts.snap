@@ -5293,3 +5293,5297 @@ exports[`SPagePostGlossaryCollection Snapshot > renders without posts (without a
   </section>
 </div>
 `;
+
+exports[`sPagePostGlossaryCollection Snapshot > renders with posts (with auth) correctly 1`] = `
+<div>
+  <div
+    class="
+      isolate
+      relative
+    "
+    data-orientation="vertical"
+  >
+    <div class="
+      flex
+      flex-col
+      gap-16
+      lg:grid
+      lg:px-8
+      lg:py-40
+      max-w-(--ui-container)
+      mx-auto
+      px-4
+      py-24
+      sm:gap-y-24
+      sm:px-6
+      sm:py-32
+      w-full
+    ">
+      <div class="text-center">
+        <!-- v-if -->
+        <h1 class="
+          font-bold
+          sm:text-7xl
+          text-5xl
+          text-highlighted
+          text-pretty
+          tracking-tight
+        ">
+          Glossary
+        </h1>
+        <!-- v-if -->
+        <!-- v-if -->
+      </div>
+      <!-- v-if -->
+    </div>
+  </div>
+  <nav class="
+    bg-white
+    border
+    border-(--ui-border)
+    flex
+    flex-wrap
+    gap-1
+    md:justify-between
+    p-2
+    rounded-md
+    sticky
+    top-8
+    w-full
+    z-20
+  ">
+    <a
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      href="#A"
+    >
+      
+    <!-- v-if --><span class="truncate">A</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      href="#B"
+    >
+      
+    <!-- v-if --><span class="truncate">B</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      href="#C"
+    >
+      
+    <!-- v-if --><span class="truncate">C</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">D</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">E</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">F</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">G</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">H</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">I</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">J</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">K</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">L</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">M</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">N</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">O</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">P</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">Q</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">R</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">S</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">T</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">U</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">V</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">W</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">X</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">Y</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">Z</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">&amp;</span>
+      
+    <!-- v-if -->
+    </a>
+  </nav>
+  <main>
+    <section
+      class="
+        isolate
+        relative
+      "
+      data-orientation="vertical"
+      id="A"
+    >
+      <div class="
+        flex
+        flex-col
+        gap-8
+        lg:grid
+        lg:px-0
+        lg:py-32
+        max-w-(--ui-container)
+        mx-auto
+        px-0
+        py-16
+        sm:gap-16
+        sm:px-6
+        sm:py-24
+        w-full
+      ">
+        <div class="">
+          <!-- v-if -->
+          <!-- v-if -->
+          <h2 class="
+            font-bold
+            lg:text-5xl
+            sm:text-4xl
+            text-3xl
+            text-highlighted
+            text-left
+            text-pretty
+            tracking-tight
+          ">
+            A
+          </h2>
+          <!-- v-if -->
+          <!-- v-if -->
+          <!-- v-if -->
+        </div>
+        <div class="
+          gap-6
+          grid
+          grid-cols-1
+          lg:grid-cols-3
+          sm:gap-x-12
+          sm:gap-y-8
+          sm:grid-cols-2
+        ">
+          <a
+            class="
+              flex
+              focus-visible:outline-primary
+              gap-3
+              group
+              hover:text-default
+              items-center
+              text-muted
+              transition-colors
+            "
+            href="/posts/arc/"
+          ><span
+            aria-hidden="true"
+            class="
+              group-hover:translate-x-1
+              i-lucide:arrow-right
+              iconify
+              size-4
+              text-dimmed
+              transition-transform
+            "
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Arc</span>
+            <hr class="
+            border-(--ui-border)
+            flex-1
+            min-w-0
+          " />
+          </a>
+        </div>
+      </div>
+    </section>
+    <section
+      class="
+        isolate
+        relative
+      "
+      data-orientation="vertical"
+      id="B"
+    >
+      <div class="
+        flex
+        flex-col
+        gap-8
+        lg:grid
+        lg:px-0
+        lg:py-32
+        max-w-(--ui-container)
+        mx-auto
+        px-0
+        py-16
+        sm:gap-16
+        sm:px-6
+        sm:py-24
+        w-full
+      ">
+        <div class="">
+          <!-- v-if -->
+          <!-- v-if -->
+          <h2 class="
+            font-bold
+            lg:text-5xl
+            sm:text-4xl
+            text-3xl
+            text-highlighted
+            text-left
+            text-pretty
+            tracking-tight
+          ">
+            B
+          </h2>
+          <!-- v-if -->
+          <!-- v-if -->
+          <!-- v-if -->
+        </div>
+        <div class="
+          gap-6
+          grid
+          grid-cols-1
+          lg:grid-cols-3
+          sm:gap-x-12
+          sm:gap-y-8
+          sm:grid-cols-2
+        ">
+          <a
+            class="
+              flex
+              focus-visible:outline-primary
+              gap-3
+              group
+              hover:text-default
+              items-center
+              text-muted
+              transition-colors
+            "
+            href="/posts/barc/"
+          ><span
+            aria-hidden="true"
+            class="
+              group-hover:translate-x-1
+              i-lucide:arrow-right
+              iconify
+              size-4
+              text-dimmed
+              transition-transform
+            "
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Barc</span>
+            <hr class="
+            border-(--ui-border)
+            flex-1
+            min-w-0
+          " />
+          </a>
+        </div>
+      </div>
+    </section>
+    <section
+      class="
+        isolate
+        relative
+      "
+      data-orientation="vertical"
+      id="C"
+    >
+      <div class="
+        flex
+        flex-col
+        gap-8
+        lg:grid
+        lg:px-0
+        lg:py-32
+        max-w-(--ui-container)
+        mx-auto
+        px-0
+        py-16
+        sm:gap-16
+        sm:px-6
+        sm:py-24
+        w-full
+      ">
+        <div class="">
+          <!-- v-if -->
+          <!-- v-if -->
+          <h2 class="
+            font-bold
+            lg:text-5xl
+            sm:text-4xl
+            text-3xl
+            text-highlighted
+            text-left
+            text-pretty
+            tracking-tight
+          ">
+            C
+          </h2>
+          <!-- v-if -->
+          <!-- v-if -->
+          <!-- v-if -->
+        </div>
+        <div class="
+          gap-6
+          grid
+          grid-cols-1
+          lg:grid-cols-3
+          sm:gap-x-12
+          sm:gap-y-8
+          sm:grid-cols-2
+        ">
+          <a
+            class="
+              flex
+              focus-visible:outline-primary
+              gap-3
+              group
+              hover:text-default
+              items-center
+              text-muted
+              transition-colors
+            "
+            href="/posts/carc/"
+          ><span
+            aria-hidden="true"
+            class="
+              group-hover:translate-x-1
+              i-lucide:arrow-right
+              iconify
+              size-4
+              text-dimmed
+              transition-transform
+            "
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Carc</span>
+            <hr class="
+            border-(--ui-border)
+            flex-1
+            min-w-0
+          " />
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <section
+    class="
+      isolate
+      relative
+      text-center
+    "
+    data-orientation="vertical"
+  >
+    <div class="
+      flex
+      flex-col
+      gap-8
+      lg:grid
+      lg:px-8
+      lg:py-32
+      max-w-(--ui-container)
+      mx-auto
+      px-4
+      py-16
+      sm:gap-16
+      sm:px-6
+      sm:py-24
+      w-full
+    ">
+      <div class="">
+        <!-- v-if -->
+        <!-- v-if -->
+        <h2 class="
+          font-bold
+          lg:text-5xl
+          sm:text-4xl
+          text-3xl
+          text-center
+          text-highlighted
+          text-pretty
+          tracking-tight
+        ">
+          Subscribe to the newsletter
+        </h2>
+        <div class="
+          mt-6
+          sm:text-lg
+          text-balance
+          text-base
+          text-center
+          text-muted
+        ">
+          Join a trillion other readers getting the best info on AI &amp; technology and stay ahead of the curve.
+        </div>
+        <!-- v-if -->
+        <!-- v-if -->
+      </div>
+      <div class="
+        flex
+        justify-center
+      ">
+        <!-- For white background -->
+        <button
+          class="
+            aria-disabled:bg-primary
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-(--ui-background)
+            border
+            border-neutral-800
+            dark:bg-(--ui-background)
+            dark:border-white
+            dark:hover:bg-neutral-700
+            dark:text-white
+            disabled:bg-primary
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:outline-2
+            focus-visible:outline-offset-2
+            focus-visible:outline-primary
+            focus-visible:ring-(--ui-primary)
+            focus-visible:ring-2
+            focus:outline-hidden
+            font-semibold
+            gap-2
+            hover:bg-neutral-100
+            inline-flex
+            items-center
+            my-4
+            px-8
+            py-3
+            rounded-md
+            text-lg
+            text-neutral-800
+            transition-colors
+          "
+          type="button"
+        >
+          <!-- v-if -->
+          <span class="truncate">
+            Subscribe
+          </span>
+          <!-- v-if -->
+        </button>
+        <!-- v-if -->
+        <!-- teleport start -->
+        <!-- teleport end -->
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`sPagePostGlossaryCollection Snapshot > renders with posts (without auth) correctly 1`] = `
+<div>
+  <div
+    class="
+      isolate
+      relative
+    "
+    data-orientation="vertical"
+  >
+    <div class="
+      flex
+      flex-col
+      gap-16
+      lg:grid
+      lg:px-8
+      lg:py-40
+      max-w-(--ui-container)
+      mx-auto
+      px-4
+      py-24
+      sm:gap-y-24
+      sm:px-6
+      sm:py-32
+      w-full
+    ">
+      <div class="text-center">
+        <!-- v-if -->
+        <h1 class="
+          font-bold
+          sm:text-7xl
+          text-5xl
+          text-highlighted
+          text-pretty
+          tracking-tight
+        ">
+          Glossary
+        </h1>
+        <!-- v-if -->
+        <!-- v-if -->
+      </div>
+      <!-- v-if -->
+    </div>
+  </div>
+  <nav class="
+    bg-white
+    border
+    border-(--ui-border)
+    flex
+    flex-wrap
+    gap-1
+    md:justify-between
+    p-2
+    rounded-md
+    sticky
+    top-8
+    w-full
+    z-20
+  ">
+    <a
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      href="#A"
+    >
+      
+    <!-- v-if --><span class="truncate">A</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      href="#B"
+    >
+      
+    <!-- v-if --><span class="truncate">B</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      href="#C"
+    >
+      
+    <!-- v-if --><span class="truncate">C</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">D</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">E</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">F</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">G</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">H</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">I</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">J</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">K</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">L</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">M</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">N</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">O</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">P</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">Q</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">R</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">S</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">T</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">U</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">V</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">W</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">X</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">Y</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">Z</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">&amp;</span>
+      
+    <!-- v-if -->
+    </a>
+  </nav>
+  <main>
+    <section
+      class="
+        isolate
+        relative
+      "
+      data-orientation="vertical"
+      id="A"
+    >
+      <div class="
+        flex
+        flex-col
+        gap-8
+        lg:grid
+        lg:px-0
+        lg:py-32
+        max-w-(--ui-container)
+        mx-auto
+        px-0
+        py-16
+        sm:gap-16
+        sm:px-6
+        sm:py-24
+        w-full
+      ">
+        <div class="">
+          <!-- v-if -->
+          <!-- v-if -->
+          <h2 class="
+            font-bold
+            lg:text-5xl
+            sm:text-4xl
+            text-3xl
+            text-highlighted
+            text-left
+            text-pretty
+            tracking-tight
+          ">
+            A
+          </h2>
+          <!-- v-if -->
+          <!-- v-if -->
+          <!-- v-if -->
+        </div>
+        <div class="
+          gap-6
+          grid
+          grid-cols-1
+          lg:grid-cols-3
+          sm:gap-x-12
+          sm:gap-y-8
+          sm:grid-cols-2
+        ">
+          <a
+            class="
+              flex
+              focus-visible:outline-primary
+              gap-3
+              group
+              hover:text-default
+              items-center
+              text-muted
+              transition-colors
+            "
+            href="/posts/arc/"
+          ><span
+            aria-hidden="true"
+            class="
+              group-hover:translate-x-1
+              i-lucide:arrow-right
+              iconify
+              size-4
+              text-dimmed
+              transition-transform
+            "
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Arc</span>
+            <hr class="
+            border-(--ui-border)
+            flex-1
+            min-w-0
+          " />
+          </a>
+        </div>
+      </div>
+    </section>
+    <section
+      class="
+        isolate
+        relative
+      "
+      data-orientation="vertical"
+      id="B"
+    >
+      <div class="
+        flex
+        flex-col
+        gap-8
+        lg:grid
+        lg:px-0
+        lg:py-32
+        max-w-(--ui-container)
+        mx-auto
+        px-0
+        py-16
+        sm:gap-16
+        sm:px-6
+        sm:py-24
+        w-full
+      ">
+        <div class="">
+          <!-- v-if -->
+          <!-- v-if -->
+          <h2 class="
+            font-bold
+            lg:text-5xl
+            sm:text-4xl
+            text-3xl
+            text-highlighted
+            text-left
+            text-pretty
+            tracking-tight
+          ">
+            B
+          </h2>
+          <!-- v-if -->
+          <!-- v-if -->
+          <!-- v-if -->
+        </div>
+        <div class="
+          gap-6
+          grid
+          grid-cols-1
+          lg:grid-cols-3
+          sm:gap-x-12
+          sm:gap-y-8
+          sm:grid-cols-2
+        ">
+          <a
+            class="
+              flex
+              focus-visible:outline-primary
+              gap-3
+              group
+              hover:text-default
+              items-center
+              text-muted
+              transition-colors
+            "
+            href="/posts/barc/"
+          ><span
+            aria-hidden="true"
+            class="
+              group-hover:translate-x-1
+              i-lucide:arrow-right
+              iconify
+              size-4
+              text-dimmed
+              transition-transform
+            "
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Barc</span>
+            <hr class="
+            border-(--ui-border)
+            flex-1
+            min-w-0
+          " />
+          </a>
+        </div>
+      </div>
+    </section>
+    <section
+      class="
+        isolate
+        relative
+      "
+      data-orientation="vertical"
+      id="C"
+    >
+      <div class="
+        flex
+        flex-col
+        gap-8
+        lg:grid
+        lg:px-0
+        lg:py-32
+        max-w-(--ui-container)
+        mx-auto
+        px-0
+        py-16
+        sm:gap-16
+        sm:px-6
+        sm:py-24
+        w-full
+      ">
+        <div class="">
+          <!-- v-if -->
+          <!-- v-if -->
+          <h2 class="
+            font-bold
+            lg:text-5xl
+            sm:text-4xl
+            text-3xl
+            text-highlighted
+            text-left
+            text-pretty
+            tracking-tight
+          ">
+            C
+          </h2>
+          <!-- v-if -->
+          <!-- v-if -->
+          <!-- v-if -->
+        </div>
+        <div class="
+          gap-6
+          grid
+          grid-cols-1
+          lg:grid-cols-3
+          sm:gap-x-12
+          sm:gap-y-8
+          sm:grid-cols-2
+        ">
+          <a
+            class="
+              flex
+              focus-visible:outline-primary
+              gap-3
+              group
+              hover:text-default
+              items-center
+              text-muted
+              transition-colors
+            "
+            href="/posts/carc/"
+          ><span
+            aria-hidden="true"
+            class="
+              group-hover:translate-x-1
+              i-lucide:arrow-right
+              iconify
+              size-4
+              text-dimmed
+              transition-transform
+            "
+          ></span><span class="
+            font-medium
+            text-base
+            truncate
+          ">Carc</span>
+            <hr class="
+            border-(--ui-border)
+            flex-1
+            min-w-0
+          " />
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <section
+    class="
+      isolate
+      relative
+      text-center
+    "
+    data-orientation="vertical"
+  >
+    <div class="
+      flex
+      flex-col
+      gap-8
+      lg:grid
+      lg:px-8
+      lg:py-32
+      max-w-(--ui-container)
+      mx-auto
+      px-4
+      py-16
+      sm:gap-16
+      sm:px-6
+      sm:py-24
+      w-full
+    ">
+      <div class="">
+        <!-- v-if -->
+        <!-- v-if -->
+        <h2 class="
+          font-bold
+          lg:text-5xl
+          sm:text-4xl
+          text-3xl
+          text-center
+          text-highlighted
+          text-pretty
+          tracking-tight
+        ">
+          Subscribe to the newsletter
+        </h2>
+        <div class="
+          mt-6
+          sm:text-lg
+          text-balance
+          text-base
+          text-center
+          text-muted
+        ">
+          Join a trillion other readers getting the best info on AI &amp; technology and stay ahead of the curve.
+        </div>
+        <!-- v-if -->
+        <!-- v-if -->
+      </div>
+      <div class="
+        flex
+        justify-center
+      ">
+        <!-- For white background -->
+        <button
+          class="
+            aria-disabled:bg-primary
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-(--ui-background)
+            border
+            border-neutral-800
+            dark:bg-(--ui-background)
+            dark:border-white
+            dark:hover:bg-neutral-700
+            dark:text-white
+            disabled:bg-primary
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:outline-2
+            focus-visible:outline-offset-2
+            focus-visible:outline-primary
+            focus-visible:ring-(--ui-primary)
+            focus-visible:ring-2
+            focus:outline-hidden
+            font-semibold
+            gap-2
+            hover:bg-neutral-100
+            inline-flex
+            items-center
+            my-4
+            px-8
+            py-3
+            rounded-md
+            text-lg
+            text-neutral-800
+            transition-colors
+          "
+          type="button"
+        >
+          <!-- v-if -->
+          <span class="truncate">
+            Subscribe
+          </span>
+          <!-- v-if -->
+        </button>
+        <!-- v-if -->
+        <!-- teleport start -->
+        <!-- teleport end -->
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`sPagePostGlossaryCollection Snapshot > renders without posts (with auth) correctly 1`] = `
+<div>
+  <div
+    class="
+      isolate
+      relative
+    "
+    data-orientation="vertical"
+  >
+    <div class="
+      flex
+      flex-col
+      gap-16
+      lg:grid
+      lg:px-8
+      lg:py-40
+      max-w-(--ui-container)
+      mx-auto
+      px-4
+      py-24
+      sm:gap-y-24
+      sm:px-6
+      sm:py-32
+      w-full
+    ">
+      <div class="text-center">
+        <!-- v-if -->
+        <h1 class="
+          font-bold
+          sm:text-7xl
+          text-5xl
+          text-highlighted
+          text-pretty
+          tracking-tight
+        ">
+          Glossary
+        </h1>
+        <!-- v-if -->
+        <!-- v-if -->
+      </div>
+      <!-- v-if -->
+    </div>
+  </div>
+  <nav class="
+    bg-white
+    border
+    border-(--ui-border)
+    flex
+    flex-wrap
+    gap-1
+    md:justify-between
+    p-2
+    rounded-md
+    sticky
+    top-8
+    w-full
+    z-20
+  ">
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">A</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">B</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">C</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">D</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">E</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">F</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">G</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">H</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">I</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">J</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">K</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">L</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">M</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">N</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">O</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">P</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">Q</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">R</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">S</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">T</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">U</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">V</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">W</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">X</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">Y</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">Z</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">&amp;</span>
+      
+    <!-- v-if -->
+    </a>
+  </nav>
+  <main></main>
+  <section
+    class="
+      isolate
+      relative
+      text-center
+    "
+    data-orientation="vertical"
+  >
+    <div class="
+      flex
+      flex-col
+      gap-8
+      lg:grid
+      lg:px-8
+      lg:py-32
+      max-w-(--ui-container)
+      mx-auto
+      px-4
+      py-16
+      sm:gap-16
+      sm:px-6
+      sm:py-24
+      w-full
+    ">
+      <div class="">
+        <!-- v-if -->
+        <!-- v-if -->
+        <h2 class="
+          font-bold
+          lg:text-5xl
+          sm:text-4xl
+          text-3xl
+          text-center
+          text-highlighted
+          text-pretty
+          tracking-tight
+        ">
+          Subscribe to the newsletter
+        </h2>
+        <div class="
+          mt-6
+          sm:text-lg
+          text-balance
+          text-base
+          text-center
+          text-muted
+        ">
+          Join a trillion other readers getting the best info on AI &amp; technology and stay ahead of the curve.
+        </div>
+        <!-- v-if -->
+        <!-- v-if -->
+      </div>
+      <div class="
+        flex
+        justify-center
+      ">
+        <!-- For white background -->
+        <button
+          class="
+            aria-disabled:bg-primary
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-(--ui-background)
+            border
+            border-neutral-800
+            dark:bg-(--ui-background)
+            dark:border-white
+            dark:hover:bg-neutral-700
+            dark:text-white
+            disabled:bg-primary
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:outline-2
+            focus-visible:outline-offset-2
+            focus-visible:outline-primary
+            focus-visible:ring-(--ui-primary)
+            focus-visible:ring-2
+            focus:outline-hidden
+            font-semibold
+            gap-2
+            hover:bg-neutral-100
+            inline-flex
+            items-center
+            my-4
+            px-8
+            py-3
+            rounded-md
+            text-lg
+            text-neutral-800
+            transition-colors
+          "
+          type="button"
+        >
+          <!-- v-if -->
+          <span class="truncate">
+            Subscribe
+          </span>
+          <!-- v-if -->
+        </button>
+        <!-- v-if -->
+        <!-- teleport start -->
+        <!-- teleport end -->
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`sPagePostGlossaryCollection Snapshot > renders without posts (without auth) correctly 1`] = `
+<div>
+  <div
+    class="
+      isolate
+      relative
+    "
+    data-orientation="vertical"
+  >
+    <div class="
+      flex
+      flex-col
+      gap-16
+      lg:grid
+      lg:px-8
+      lg:py-40
+      max-w-(--ui-container)
+      mx-auto
+      px-4
+      py-24
+      sm:gap-y-24
+      sm:px-6
+      sm:py-32
+      w-full
+    ">
+      <div class="text-center">
+        <!-- v-if -->
+        <h1 class="
+          font-bold
+          sm:text-7xl
+          text-5xl
+          text-highlighted
+          text-pretty
+          tracking-tight
+        ">
+          Glossary
+        </h1>
+        <!-- v-if -->
+        <!-- v-if -->
+      </div>
+      <!-- v-if -->
+    </div>
+  </div>
+  <nav class="
+    bg-white
+    border
+    border-(--ui-border)
+    flex
+    flex-wrap
+    gap-1
+    md:justify-between
+    p-2
+    rounded-md
+    sticky
+    top-8
+    w-full
+    z-20
+  ">
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">A</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">B</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">C</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">D</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">E</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">F</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">G</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">H</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">I</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">J</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">K</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">L</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">M</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">N</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">O</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">P</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">Q</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">R</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">S</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">T</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">U</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">V</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">W</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">X</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">Y</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">Z</span>
+      
+    <!-- v-if -->
+    </a>
+    <a
+      aria-disabled="true"
+      class="
+        aria-disabled:bg-default
+        aria-disabled:cursor-not-allowed
+        aria-disabled:opacity-50
+        bg-default
+        disabled:bg-default
+        disabled:cursor-not-allowed
+        disabled:opacity-75
+        focus-visible:ring-2
+        focus-visible:ring-inverted
+        focus:outline-none
+        font-medium
+        gap-1.5
+        hover:bg-elevated
+        inline-flex
+        items-center
+        justify-center
+        px-2.5
+        py-1.5
+        ring
+        ring-accented
+        ring-inset
+        rounded-md
+        size-8
+        text-default
+        text-sm
+        transition-colors
+      "
+      role="link"
+      tabindex="-1"
+    >
+      
+    <!-- v-if --><span class="truncate">&amp;</span>
+      
+    <!-- v-if -->
+    </a>
+  </nav>
+  <main></main>
+  <section
+    class="
+      isolate
+      relative
+      text-center
+    "
+    data-orientation="vertical"
+  >
+    <div class="
+      flex
+      flex-col
+      gap-8
+      lg:grid
+      lg:px-8
+      lg:py-32
+      max-w-(--ui-container)
+      mx-auto
+      px-4
+      py-16
+      sm:gap-16
+      sm:px-6
+      sm:py-24
+      w-full
+    ">
+      <div class="">
+        <!-- v-if -->
+        <!-- v-if -->
+        <h2 class="
+          font-bold
+          lg:text-5xl
+          sm:text-4xl
+          text-3xl
+          text-center
+          text-highlighted
+          text-pretty
+          tracking-tight
+        ">
+          Subscribe to the newsletter
+        </h2>
+        <div class="
+          mt-6
+          sm:text-lg
+          text-balance
+          text-base
+          text-center
+          text-muted
+        ">
+          Join a trillion other readers getting the best info on AI &amp; technology and stay ahead of the curve.
+        </div>
+        <!-- v-if -->
+        <!-- v-if -->
+      </div>
+      <div class="
+        flex
+        justify-center
+      ">
+        <!-- For white background -->
+        <button
+          class="
+            aria-disabled:bg-primary
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-(--ui-background)
+            border
+            border-neutral-800
+            dark:bg-(--ui-background)
+            dark:border-white
+            dark:hover:bg-neutral-700
+            dark:text-white
+            disabled:bg-primary
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:outline-2
+            focus-visible:outline-offset-2
+            focus-visible:outline-primary
+            focus-visible:ring-(--ui-primary)
+            focus-visible:ring-2
+            focus:outline-hidden
+            font-semibold
+            gap-2
+            hover:bg-neutral-100
+            inline-flex
+            items-center
+            my-4
+            px-8
+            py-3
+            rounded-md
+            text-lg
+            text-neutral-800
+            transition-colors
+          "
+          type="button"
+        >
+          <!-- v-if -->
+          <span class="truncate">
+            Subscribe
+          </span>
+          <!-- v-if -->
+        </button>
+        <!-- v-if -->
+        <!-- teleport start -->
+        <!-- teleport end -->
+      </div>
+    </div>
+  </section>
+</div>
+`;

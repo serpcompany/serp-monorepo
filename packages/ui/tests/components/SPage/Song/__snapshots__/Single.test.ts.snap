@@ -793,3 +793,797 @@ exports[`SPageSongSingle Snapshot > renders minimal song without upvotes and aut
   <!-- v-if -->
 </div>
 `;
+
+exports[`sPageSongSingle Snapshot > renders complete song with upvotes and auth enabled correctly 1`] = `
+<div class="
+  flex
+  flex-col
+  lg:gap-10
+  lg:grid
+  lg:grid-cols-10
+">
+  <!-- v-if -->
+  <div class="lg:col-span-10">
+    <!---->
+    <header class="
+      bg-background
+      bg-background
+      border-b
+      border-gray-200
+      dark:border-gray-800
+      duration-300
+      duration-300
+      sticky
+      sticky
+      top-0
+      top-0
+      transition-all
+      transition-all
+      z-10
+      z-40
+    ">
+      <div class="
+        lg:px-8
+        max-w-(--ui-container)
+        mx-auto
+        px-4
+        sm:px-6
+        w-full
+      ">
+        <div class="
+          flex
+          flex-col
+          gap-4
+          items-center
+          justify-between
+          py-3
+          sm:flex-row
+        ">
+          <div class="
+            flex
+            flex-grow
+            gap-3
+            items-center
+            min-w-0
+          ">
+            <!-- v-if -->
+            <div class="
+              flex-grow
+              min-w-0
+            ">
+              <h1 class="
+                dark:text-white
+                duration-300
+                font-bold
+                sm:text-2xl
+                text-gray-900
+                text-xl
+                transition-all
+                truncate
+              ">
+                Test Song by Artist One
+              </h1>
+              <div class="
+                dark:text-gray-400
+                text-gray-500
+                text-sm
+                truncate
+              "></div>
+            </div>
+          </div>
+          <div class="
+            flex
+            flex-shrink-0
+            gap-3
+            items-center
+            justify-end
+            sm:w-auto
+            w-full
+          ">
+            <div
+              class="
+                -space-x-px
+                inline-flex
+                relative
+              "
+              module="music_songs"
+            >
+              <button
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus-visible:z-[1]
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  not-last:not-first:rounded-none
+                  not-only:first:rounded-e-none
+                  not-only:last:rounded-s-none
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:arrow-big-up
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
+              </button>
+              <span class="
+                bg-default
+                focus-visible:z-[1]
+                font-medium
+                gap-1
+                inline-flex
+                items-center
+                justify-center
+                not-last:not-first:rounded-none
+                not-only:first:rounded-e-none
+                not-only:last:rounded-s-none
+                p-1
+                ring
+                ring-accented
+                ring-inset
+                rounded-md
+                text-default
+                text-sm
+                w-8
+              ">
+                <!-- v-if -->
+                <span class="truncate">
+                  NaN
+                </span>
+                <!-- v-if -->
+              </span>
+              <button
+                class="
+                  aria-disabled:bg-default
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-default
+                  disabled:bg-default
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:ring-2
+                  focus-visible:ring-inverted
+                  focus-visible:z-[1]
+                  focus:outline-none
+                  font-medium
+                  gap-1.5
+                  hover:bg-elevated
+                  inline-flex
+                  items-center
+                  not-last:not-first:rounded-none
+                  not-only:first:rounded-e-none
+                  not-only:last:rounded-s-none
+                  p-1.5
+                  ring
+                  ring-accented
+                  ring-inset
+                  rounded-md
+                  text-default
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="
+                    i-lucide:arrow-big-down
+                    iconify
+                    shrink-0
+                    size-5
+                  "
+                ></span>
+                <!-- v-if -->
+                <!-- v-if -->
+              </button>
+            </div>
+            <a
+              class="
+                aria-disabled:cursor-not-allowed
+                aria-disabled:opacity-75
+                disabled:cursor-not-allowed
+                disabled:opacity-75
+                font-medium
+                gap-1.5
+                inline-flex
+                items-center
+                px-2.5
+                py-1.5
+                rounded-md
+                sm:w-auto
+                text-xs
+                transition-colors
+                w-full
+              "
+              href="https://serp.ly/@daftfm/amazon/music/unlimited"
+              rel="noopener noreferrer"
+              target="_blank"
+            ><span
+              aria-hidden="true"
+              class="
+                i-heroicons:arrow-top-right-on-square
+                iconify
+                shrink-0
+                size-4
+              "
+            ></span><span class="truncate">Listen Free</span>
+              
+            <!-- v-if -->
+            </a>
+          </div>
+        </div>
+        <nav class="
+          -mx-4
+          border-gray-200
+          border-t
+          dark:border-gray-800
+          flex
+          overflow-x-auto
+          px-4
+          sm:-mx-6
+          sm:px-6
+        ">
+          <a
+            class="
+              aria-disabled:cursor-not-allowed
+              aria-disabled:opacity-75
+              disabled:cursor-not-allowed
+              disabled:opacity-75
+              flex-shrink-0
+              font-medium
+              gap-1.5
+              inline-flex
+              items-center
+              px-2.5
+              py-1.5
+              rounded-none
+              text-xs
+              transition-colors
+              whitespace-nowrap
+            "
+            href="#lyrics"
+          >
+            
+          <!-- v-if --><span class="truncate">Lyrics</span>
+            
+          <!-- v-if -->
+          </a>
+        </nav>
+      </div>
+    </header>
+    <!-- Main content with grid -->
+    <div class="
+      lg:p-8
+      max-w-7xl
+      md:p-6
+      mx-auto
+      p-4
+    ">
+      <!-- Breadcrumbs -->
+      <nav
+        aria-label="breadcrumb"
+        class="
+          mb-6
+          min-w-0
+          relative
+        "
+      >
+        <ol class="
+          flex
+          gap-1.5
+          items-center
+        "></ol>
+      </nav>
+      <!-- Main Content (70) -->
+      <div class="
+        gap-6
+        grid
+        lg:grid-cols-3
+      ">
+        <div class="lg:col-span-2">
+          <!-- Song content -->
+          <div
+            data-adsense-content="song-lyrics"
+            id="lyrics"
+          >
+            <h2 class="
+              font-semibold
+              mb-4
+              text-xl
+            ">
+              Test Song Lyrics
+            </h2>
+            <!-- eslint-disable-next-line vue/no-v-html -->
+            <div class="
+              dark:prose-invert
+              max-w-none
+              prose
+              whitespace-pre-line
+            ">
+              <p>
+                Test lyrics content.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Sidebar (30%) -->
+        <div class="
+          lg:col-span-1
+          space-y-6
+        ">
+          <!-- Add Album Cover Art -->
+          <!-- v-if -->
+          <!-- Song Info Section -->
+          <div class="
+            bg-default
+            divide-default
+            divide-y
+            ring
+            ring-default
+            rounded-lg
+          ">
+            <div class="
+              p-4
+              sm:px-6
+            ">
+              <div class="font-medium">
+                Song Info
+              </div>
+            </div>
+            <div class="
+              p-4
+              sm:p-6
+            ">
+              <div class="space-y-2">
+                <div class="mb-2">
+                  <span class="font-medium">
+                    Artist:
+                  </span>
+                  <a
+                    class="
+                      hover:underline
+                      text-primary
+                    "
+                    href="/artists/artist-1"
+                  >Artist One</a>
+                </div>
+                <!-- v-if -->
+                <div>
+                  <span class="font-medium">
+                    Genres:
+                  </span>
+                  Rock, Pop
+                </div>
+                <div>
+                  <span class="font-medium">
+                    Tags:
+                  </span>
+                  Live, Studio
+                </div>
+                <div class="pt-2">
+                  &lt;p&gt;Overview content for Test Song.&lt;/p&gt;
+                </div>
+              </div>
+            </div>
+            <!-- v-if -->
+          </div>
+          <!-- Album Songs Section -->
+          <!-- v-if -->
+          <!-- Artist's Other Albums Section -->
+          <!-- v-if -->
+          <!-- Listen Section -->
+          <div class="
+            bg-default
+            divide-default
+            divide-y
+            ring
+            ring-default
+            rounded-lg
+          ">
+            <div class="
+              p-4
+              sm:px-6
+            ">
+              <div class="font-medium">
+                Listen on
+              </div>
+            </div>
+            <div class="
+              p-4
+              sm:p-6
+            ">
+              <div class="p-1">
+                <a
+                  class="
+                    aria-disabled:bg-primary/10
+                    aria-disabled:cursor-not-allowed
+                    aria-disabled:opacity-75
+                    bg-blue-50
+                    dark:bg-blue-900/20
+                    dark:hover:bg-blue-900/30
+                    disabled:bg-primary/10
+                    disabled:cursor-not-allowed
+                    disabled:opacity-75
+                    focus-visible:bg-primary/15
+                    focus:outline-none
+                    font-medium
+                    gap-2
+                    hover:bg-blue-100
+                    inline-flex
+                    items-center
+                    justify-center
+                    px-3
+                    py-2
+                    rounded-md
+                    text-primary
+                    text-sm
+                    transition-colors
+                    w-full
+                  "
+                  href="https://serp.ly/@daftfm/amazon/music/unlimited"
+                  rel="noopener noreferrer"
+                >
+                  
+                <!-- v-if --> Amazon Music
+                  
+                <!-- v-if -->
+                </a>
+              </div>
+            </div>
+            <!-- v-if -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- v-if -->
+</div>
+`;
+
+exports[`sPageSongSingle Snapshot > renders minimal song without upvotes and auth disabled correctly 1`] = `
+<div class="
+  flex
+  flex-col
+  lg:gap-10
+  lg:grid
+  lg:grid-cols-10
+">
+  <!-- v-if -->
+  <div class="lg:col-span-10">
+    <!---->
+    <header class="
+      bg-background
+      bg-background
+      border-b
+      border-gray-200
+      dark:border-gray-800
+      duration-300
+      duration-300
+      sticky
+      sticky
+      top-0
+      top-0
+      transition-all
+      transition-all
+      z-10
+      z-40
+    ">
+      <div class="
+        lg:px-8
+        max-w-(--ui-container)
+        mx-auto
+        px-4
+        sm:px-6
+        w-full
+      ">
+        <div class="
+          flex
+          flex-col
+          gap-4
+          items-center
+          justify-between
+          py-3
+          sm:flex-row
+        ">
+          <div class="
+            flex
+            flex-grow
+            gap-3
+            items-center
+            min-w-0
+          ">
+            <!-- v-if -->
+            <div class="
+              flex-grow
+              min-w-0
+            ">
+              <h1 class="
+                dark:text-white
+                duration-300
+                font-bold
+                sm:text-2xl
+                text-gray-900
+                text-xl
+                transition-all
+                truncate
+              ">
+                Minimal Song by Unknown Artist
+              </h1>
+              <div class="
+                dark:text-gray-400
+                text-gray-500
+                text-sm
+                truncate
+              "></div>
+            </div>
+          </div>
+          <div class="
+            flex
+            flex-shrink-0
+            gap-3
+            items-center
+            justify-end
+            sm:w-auto
+            w-full
+          ">
+            <a
+              class="
+                aria-disabled:cursor-not-allowed
+                aria-disabled:opacity-75
+                disabled:cursor-not-allowed
+                disabled:opacity-75
+                font-medium
+                gap-1.5
+                inline-flex
+                items-center
+                px-2.5
+                py-1.5
+                rounded-md
+                sm:w-auto
+                text-xs
+                transition-colors
+                w-full
+              "
+              href="https://serp.ly/@daftfm/amazon/music/unlimited"
+              rel="noopener noreferrer"
+              target="_blank"
+            ><span
+              aria-hidden="true"
+              class="
+                i-heroicons:arrow-top-right-on-square
+                iconify
+                shrink-0
+                size-4
+              "
+            ></span><span class="truncate">Listen Free</span>
+              
+            <!-- v-if -->
+            </a>
+          </div>
+        </div>
+        <nav class="
+          -mx-4
+          border-gray-200
+          border-t
+          dark:border-gray-800
+          flex
+          overflow-x-auto
+          px-4
+          sm:-mx-6
+          sm:px-6
+        ">
+          <a
+            class="
+              aria-disabled:cursor-not-allowed
+              aria-disabled:opacity-75
+              disabled:cursor-not-allowed
+              disabled:opacity-75
+              flex-shrink-0
+              font-medium
+              gap-1.5
+              inline-flex
+              items-center
+              px-2.5
+              py-1.5
+              rounded-none
+              text-xs
+              transition-colors
+              whitespace-nowrap
+            "
+            href="#lyrics"
+          >
+            
+          <!-- v-if --><span class="truncate">Lyrics</span>
+            
+          <!-- v-if -->
+          </a>
+        </nav>
+      </div>
+    </header>
+    <!-- Main content with grid -->
+    <div class="
+      lg:p-8
+      max-w-7xl
+      md:p-6
+      mx-auto
+      p-4
+    ">
+      <!-- Breadcrumbs -->
+      <nav
+        aria-label="breadcrumb"
+        class="
+          mb-6
+          min-w-0
+          relative
+        "
+      >
+        <ol class="
+          flex
+          gap-1.5
+          items-center
+        "></ol>
+      </nav>
+      <!-- Main Content (70) -->
+      <div class="
+        gap-6
+        grid
+        lg:grid-cols-3
+      ">
+        <div class="lg:col-span-2">
+          <!-- Song content -->
+          <div
+            data-adsense-content="song-lyrics"
+            id="lyrics"
+          >
+            <h2 class="
+              font-semibold
+              mb-4
+              text-xl
+            ">
+              Minimal Song Lyrics
+            </h2>
+            <!-- eslint-disable-next-line vue/no-v-html -->
+            <div class="
+              dark:prose-invert
+              max-w-none
+              prose
+              whitespace-pre-line
+            "></div>
+          </div>
+        </div>
+        <!-- Sidebar (30%) -->
+        <div class="
+          lg:col-span-1
+          space-y-6
+        ">
+          <!-- Add Album Cover Art -->
+          <!-- v-if -->
+          <!-- Song Info Section -->
+          <div class="
+            bg-default
+            divide-default
+            divide-y
+            ring
+            ring-default
+            rounded-lg
+          ">
+            <div class="
+              p-4
+              sm:px-6
+            ">
+              <div class="font-medium">
+                Song Info
+              </div>
+            </div>
+            <div class="
+              p-4
+              sm:p-6
+            ">
+              <div class="space-y-2">
+                <!-- v-if -->
+                <!-- v-if -->
+                <!-- v-if -->
+                <!-- v-if -->
+                <!-- v-if -->
+              </div>
+            </div>
+            <!-- v-if -->
+          </div>
+          <!-- Album Songs Section -->
+          <!-- v-if -->
+          <!-- Artist's Other Albums Section -->
+          <!-- v-if -->
+          <!-- Listen Section -->
+          <div class="
+            bg-default
+            divide-default
+            divide-y
+            ring
+            ring-default
+            rounded-lg
+          ">
+            <div class="
+              p-4
+              sm:px-6
+            ">
+              <div class="font-medium">
+                Listen on
+              </div>
+            </div>
+            <div class="
+              p-4
+              sm:p-6
+            ">
+              <div class="p-1">
+                <a
+                  class="
+                    aria-disabled:bg-primary/10
+                    aria-disabled:cursor-not-allowed
+                    aria-disabled:opacity-75
+                    bg-blue-50
+                    dark:bg-blue-900/20
+                    dark:hover:bg-blue-900/30
+                    disabled:bg-primary/10
+                    disabled:cursor-not-allowed
+                    disabled:opacity-75
+                    focus-visible:bg-primary/15
+                    focus:outline-none
+                    font-medium
+                    gap-2
+                    hover:bg-blue-100
+                    inline-flex
+                    items-center
+                    justify-center
+                    px-3
+                    py-2
+                    rounded-md
+                    text-primary
+                    text-sm
+                    transition-colors
+                    w-full
+                  "
+                  href="https://serp.ly/@daftfm/amazon/music/unlimited"
+                  rel="noopener noreferrer"
+                >
+                  
+                <!-- v-if --> Amazon Music
+                  
+                <!-- v-if -->
+                </a>
+              </div>
+            </div>
+            <!-- v-if -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- v-if -->
+</div>
+`;

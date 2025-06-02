@@ -52,3 +52,56 @@ exports[`SongsLinkHub > renders with one song with one artist correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`songsLinkHub > renders with multiple songs and multiple artists correctly 1`] = `
+<div class="
+  gap-2
+  grid
+  grid-cols-1
+  md:grid-cols-2
+  mt-2
+  xl:grid-cols-2
+">
+  <div>
+    <a
+      aria-label="song name"
+      href="/songs/song-1/"
+    ><span>Song One - </span></a>
+  </div>
+  <div>
+    <a
+      aria-label="song name"
+      href="/songs/song-2/"
+    ><span>Song Two - </span></a>
+  </div>
+</div>
+`;
+
+exports[`songsLinkHub > renders with no songs correctly 1`] = `
+<div class="
+  gap-2
+  grid
+  grid-cols-1
+  md:grid-cols-2
+  mt-2
+  xl:grid-cols-2
+"></div>
+`;
+
+exports[`songsLinkHub > renders with one song with one artist correctly 1`] = `
+<div class="
+  gap-2
+  grid
+  grid-cols-1
+  md:grid-cols-2
+  mt-2
+  xl:grid-cols-2
+">
+  <div>
+    <a
+      aria-label="song name"
+      href="/songs/song-1/"
+    ><span>Song One - </span></a>
+  </div>
+</div>
+`;

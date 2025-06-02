@@ -568,3 +568,572 @@ exports[`SFooter Snapshot > renders minimal config with empty arrays correctly 1
   </div>
 </footer>
 `;
+
+exports[`sFooter Snapshot > renders full config correctly 1`] = `
+<footer class="
+  bg-primary-800
+  dark:bg-primary-950
+  footer-wrapper
+  mt-20
+  w-full
+">
+  <div class="
+    lg:py-0
+    py-0
+  ">
+    <div class="
+      py-30
+      w-full
+    ">
+      <div class="
+        max-w-[1248px]
+        mx-auto
+        px-4
+      ">
+        <nav class="
+          xl:gap-8
+          xl:grid
+          xl:grid-cols-3
+        ">
+          <div class="
+            mb-10
+            xl:mb-0
+          ">
+            <div class="
+              flex
+              flex-col
+              items-start
+              space-x-2
+            ">
+              <span class="
+                dark:text-primary-100
+                font-bold
+                pb-4
+                text-4xl
+                text-primary-100
+              ">
+                My Company
+              </span>
+              <p class="
+                dark:text-primary-100
+                font-bold
+                text-primary-100
+              ">
+                Subscribe to the newsletter.
+              </p>
+              <p class="
+                dark:text-primary-100
+                text-primary-100
+              ">
+                Join ~trillions of informed readers.
+              </p>
+              <button
+                class="
+                  aria-disabled:bg-primary
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-transparent
+                  border
+                  border-neutral-700
+                  dark:bg-transparent
+                  dark:border-neutral-700
+                  dark:hover:bg-neutral-800
+                  dark:text-white
+                  disabled:bg-primary
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:outline-2
+                  focus-visible:outline-offset-2
+                  focus-visible:outline-primary
+                  focus-visible:ring-(--ui-primary)
+                  focus-visible:ring-2
+                  focus:outline-hidden
+                  font-semibold
+                  gap-2
+                  hover:bg-neutral-800
+                  inline-flex
+                  items-center
+                  my-4
+                  px-8
+                  py-3
+                  rounded-md
+                  text-lg
+                  text-white
+                  transition-colors
+                "
+                type="button"
+              >
+                <!-- v-if -->
+                <span class="truncate">
+                  Subscribe
+                </span>
+                <!-- v-if -->
+              </button>
+              <!-- v-if -->
+              <!-- teleport start -->
+              <!-- teleport end -->
+            </div>
+          </div>
+          <div class="
+            auto-cols-fr
+            flex
+            flex-col
+            gap-8
+            grid-flow-col
+            lg:grid
+            xl:col-span-2
+          ">
+            <div>
+              <h3 class="
+                dark:text-primary-100
+                font-semibold
+                text-primary-100
+                text-xl
+              ">
+                Products
+              </h3>
+              <ul class="
+                mt-6
+                space-y-4
+              ">
+                <li class="relative">
+                  <a
+                    class="
+                      dark:hover:text-primary-200
+                      dark:text-primary-100
+                      flex
+                      focus-visible:outline-primary
+                      gap-1.5
+                      group
+                      hover:text-primary-200
+                      items-center
+                      text-primary-100
+                      text-sm
+                      transition-colors
+                    "
+                    href="/product-1"
+                  >
+                    
+                  <!-- v-if --><span class="truncate">Product 1
+                  <!-- v-if --></span>
+                  </a>
+                </li>
+                <li class="relative">
+                  <a
+                    class="
+                      dark:hover:text-primary-200
+                      dark:text-primary-100
+                      flex
+                      focus-visible:outline-primary
+                      gap-1.5
+                      group
+                      hover:text-primary-200
+                      items-center
+                      text-primary-100
+                      text-sm
+                      transition-colors
+                    "
+                    href="/product-2"
+                  >
+                    
+                  <!-- v-if --><span class="truncate">Product 2
+                  <!-- v-if --></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="
+                dark:text-primary-100
+                font-semibold
+                text-primary-100
+                text-xl
+              ">
+                Support
+              </h3>
+              <ul class="
+                mt-6
+                space-y-4
+              ">
+                <li class="relative">
+                  <a
+                    class="
+                      dark:hover:text-primary-200
+                      dark:text-primary-100
+                      flex
+                      focus-visible:outline-primary
+                      gap-1.5
+                      group
+                      hover:text-primary-200
+                      items-center
+                      text-primary-100
+                      text-sm
+                      transition-colors
+                    "
+                    href="/support"
+                  >
+                    
+                  <!-- v-if --><span class="truncate">Help Center
+                  <!-- v-if --></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- v-if -->
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="
+    lg:flex
+    lg:gap-x-3
+    lg:items-center
+    lg:justify-between
+    lg:px-8
+    lg:py-4
+    max-w-(--ui-container)
+    mx-auto
+    px-4
+    py-8
+    sm:px-6
+    w-full
+  ">
+    <div class="
+      flex
+      gap-x-1.5
+      items-center
+      justify-center
+      lg:flex-1
+      lg:justify-end
+      lg:order-3
+    "></div>
+    <div class="
+      flex
+      items-center
+      justify-center
+      lg:mt-0
+      lg:order-2
+      lg:py-0
+      mt-3
+      py-0
+    "></div>
+    <div class="
+      flex
+      gap-x-1.5
+      items-center
+      justify-center
+      lg:flex-1
+      lg:justify-start
+      lg:mt-0
+      lg:order-1
+      mt-3
+    "></div>
+  </div>
+  <div class="
+    lg:py-0
+    py-0
+  ">
+    <div class="
+      flex
+      flex-col
+      items-start
+      justify-between
+      max-w-[1248px]
+      md:flex-row
+      md:items-center
+      mx-auto
+      pb-8
+      px-4
+    ">
+      <!-- <div class="flex flex-row items-center md:mb-0"> -->
+      <!-- Social Links -->
+      <div
+        aria-label="Social Media Links"
+        class="
+          flex
+          mb-8
+          md:mb-0
+        "
+      >
+        <a
+          aria-label="Twitter"
+          class="mr-6"
+          href="https://twitter.com"
+          rel="noopener noreferrer"
+          target="_blank"
+        ><span
+          aria-hidden="true"
+          class="
+            dark:text-primary-100
+            i-twitter-icon
+            iconify
+            size-5
+            text-primary-100
+          "
+        ></span><span class="sr-only">Visit our Twitter page</span></a>
+        <a
+          aria-label="Facebook"
+          class="mr-6"
+          href="https://facebook.com"
+          rel="noopener noreferrer"
+          target="_blank"
+        ><span
+          aria-hidden="true"
+          class="
+            dark:text-primary-100
+            i-facebook-icon
+            iconify
+            size-5
+            text-primary-100
+          "
+        ></span><span class="sr-only">Visit our Facebook page</span></a>
+      </div>
+      <!-- </div> -->
+      <div
+        aria-label="Legal Navigation"
+        class="
+          flex
+          flex-col
+          md:flex-row
+          sm:items-center
+          text-sm
+        "
+      >
+        <div class="
+          flex
+          flex-col
+          flex-wrap
+          gap-4
+          justify-center
+          md:justify-end
+          sm:flex-row
+        ">
+          <a
+            class="
+              dark:text-primary-100
+              text-primary-100
+            "
+            href="/privacy"
+          >Privacy Policy</a>
+          <a
+            class="
+              dark:text-primary-100
+              text-primary-100
+            "
+            href="/terms"
+          >Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+`;
+
+exports[`sFooter Snapshot > renders minimal config with empty arrays correctly 1`] = `
+<footer class="
+  bg-primary-800
+  dark:bg-primary-950
+  footer-wrapper
+  mt-20
+  w-full
+">
+  <div class="
+    lg:py-0
+    py-0
+  ">
+    <div class="
+      py-30
+      w-full
+    ">
+      <div class="
+        max-w-[1248px]
+        mx-auto
+        px-4
+      ">
+        <nav class="
+          xl:gap-8
+          xl:grid
+          xl:grid-cols-3
+        ">
+          <div class="
+            mb-10
+            xl:mb-0
+          ">
+            <div class="
+              flex
+              flex-col
+              items-start
+              space-x-2
+            ">
+              <span class="
+                dark:text-primary-100
+                font-bold
+                pb-4
+                text-4xl
+                text-primary-100
+              ">
+                Minimal Inc.
+              </span>
+              <p class="
+                dark:text-primary-100
+                font-bold
+                text-primary-100
+              ">
+                Subscribe to the newsletter.
+              </p>
+              <p class="
+                dark:text-primary-100
+                text-primary-100
+              ">
+                Join ~trillions of informed readers.
+              </p>
+              <button
+                class="
+                  aria-disabled:bg-primary
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-transparent
+                  border
+                  border-neutral-700
+                  dark:bg-transparent
+                  dark:border-neutral-700
+                  dark:hover:bg-neutral-800
+                  dark:text-white
+                  disabled:bg-primary
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:outline-2
+                  focus-visible:outline-offset-2
+                  focus-visible:outline-primary
+                  focus-visible:ring-(--ui-primary)
+                  focus-visible:ring-2
+                  focus:outline-hidden
+                  font-semibold
+                  gap-2
+                  hover:bg-neutral-800
+                  inline-flex
+                  items-center
+                  my-4
+                  px-8
+                  py-3
+                  rounded-md
+                  text-lg
+                  text-white
+                  transition-colors
+                "
+                type="button"
+              >
+                <!-- v-if -->
+                <span class="truncate">
+                  Subscribe
+                </span>
+                <!-- v-if -->
+              </button>
+              <!-- v-if -->
+              <!-- teleport start -->
+              <!-- teleport end -->
+            </div>
+          </div>
+          <!-- v-if -->
+          <!-- v-if -->
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="
+    lg:flex
+    lg:gap-x-3
+    lg:items-center
+    lg:justify-between
+    lg:px-8
+    lg:py-4
+    max-w-(--ui-container)
+    mx-auto
+    px-4
+    py-8
+    sm:px-6
+    w-full
+  ">
+    <div class="
+      flex
+      gap-x-1.5
+      items-center
+      justify-center
+      lg:flex-1
+      lg:justify-end
+      lg:order-3
+    "></div>
+    <div class="
+      flex
+      items-center
+      justify-center
+      lg:mt-0
+      lg:order-2
+      lg:py-0
+      mt-3
+      py-0
+    "></div>
+    <div class="
+      flex
+      gap-x-1.5
+      items-center
+      justify-center
+      lg:flex-1
+      lg:justify-start
+      lg:mt-0
+      lg:order-1
+      mt-3
+    "></div>
+  </div>
+  <div class="
+    lg:py-0
+    py-0
+  ">
+    <div class="
+      flex
+      flex-col
+      items-start
+      justify-between
+      max-w-[1248px]
+      md:flex-row
+      md:items-center
+      mx-auto
+      pb-8
+      px-4
+    ">
+      <!-- <div class="flex flex-row items-center md:mb-0"> -->
+      <!-- Social Links -->
+      <div
+        aria-label="Social Media Links"
+        class="
+          flex
+          mb-8
+          md:mb-0
+        "
+      ></div>
+      <!-- </div> -->
+      <div
+        aria-label="Legal Navigation"
+        class="
+          flex
+          flex-col
+          md:flex-row
+          sm:items-center
+          text-sm
+        "
+      >
+        <div class="
+          flex
+          flex-col
+          flex-wrap
+          gap-4
+          justify-center
+          md:justify-end
+          sm:flex-row
+        "></div>
+      </div>
+    </div>
+  </div>
+</footer>
+`;

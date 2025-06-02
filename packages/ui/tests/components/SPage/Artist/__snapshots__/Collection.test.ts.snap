@@ -259,3 +259,263 @@ exports[`SPageArtistCollection Snapshot > renders with defaults correctly 1`] = 
   </div>
 </div>
 `;
+
+exports[`sPageArtistCollection Snapshot > renders with defaults correctly 1`] = `
+<div class="
+  container
+  py-20
+">
+  <h1 class="py-10">
+    Artists
+  </h1>
+  <div class="
+    gap-2
+    grid
+    grid-cols-1
+    lg:grid-cols-3
+    md:grid-cols-2
+    mt-2
+    xl:grid-cols-4
+  ">
+    <div>
+      <span>
+        <a
+          aria-label="artist name"
+          href=""
+        >Artist 1</a>
+      </span>
+    </div>
+    <div>
+      <span>
+        <a
+          aria-label="artist name"
+          href=""
+        >Artist 2</a>
+      </span>
+    </div>
+  </div>
+  <div class="
+    flex
+    justify-center
+    my-20
+    w-full
+  ">
+    <nav aria-label="pagination">
+      <div class="
+        flex
+        gap-1
+        items-center
+      ">
+        <button
+          aria-label="First Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevrons-left
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Previous Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevron-left
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-current="page"
+          aria-label="Page 1"
+          class="
+            aria-disabled:bg-primary
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-primary
+            disabled:bg-primary
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:outline-2
+            focus-visible:outline-offset-2
+            focus-visible:outline-primary
+            font-medium
+            gap-1.5
+            hover:bg-primary/75
+            inline-flex
+            items-center
+            p-1.5
+            rounded-md
+            text-inverted
+            text-sm
+            transition-colors
+          "
+          data-selected="true"
+          data-type="page"
+          type="button"
+          value="1"
+        >
+          <!-- v-if -->
+          <span class="
+            min-w-5
+            text-center
+            truncate
+          ">
+            1
+          </span>
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Next Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevron-right
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Last Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevrons-right
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+      </div>
+    </nav>
+  </div>
+</div>
+`;

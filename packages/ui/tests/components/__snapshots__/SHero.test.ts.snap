@@ -456,3 +456,460 @@ exports[`SHero Snapshot Tests > renders without search bar correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`sHero Snapshot Tests > renders with custom all props correctly 1`] = `
+<div class="py-20">
+  <div class="
+    lg:px-8
+    max-w-5xl
+    mx-auto
+    px-4
+    sm:px-6
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+      items-center
+      lg:items-start
+      lg:text-left
+      text-center
+    ">
+      <h1 class="
+        font-bold
+        lg:text-5xl
+        text-3xl
+        text-pretty
+      ">
+        Custom Hero
+      </h1>
+      <p class="
+        lg:text-xl
+        max-w-2xl
+        text-muted
+      ">
+        Amazing subheadline
+      </p>
+      <!-- v-if -->
+    </div>
+  </div>
+</div>
+`;
+
+exports[`sHero Snapshot Tests > renders with default props correctly 1`] = `
+<div class="py-20">
+  <div class="
+    lg:px-8
+    max-w-5xl
+    mx-auto
+    px-4
+    sm:px-6
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+      items-center
+      lg:items-start
+      lg:text-left
+      text-center
+    ">
+      <h1 class="
+        font-bold
+        lg:text-5xl
+        text-3xl
+        text-pretty
+      "></h1>
+      <!-- v-if -->
+      <div class="
+        flex
+        flex-col
+        gap-2
+        justify-center
+        lg:justify-start
+        mt-4
+        sm:flex-row
+        w-full
+      ">
+        <div>
+          <!-- <SearchBar /> -->
+        </div>
+        <button
+          class="
+            aria-disabled:bg-primary
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-primary
+            cursor-pointer
+            disabled:bg-primary
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:outline-2
+            focus-visible:outline-offset-2
+            focus-visible:outline-primary
+            font-medium
+            gap-1.5
+            hover:bg-primary/75
+            inline-flex
+            items-center
+            px-2.5
+            py-1.5
+            rounded-none
+            sm:w-auto
+            text-inverted
+            text-lg
+            transition-colors
+            w-full
+          "
+          type="button"
+        >
+          <!-- v-if -->
+          Primary Button
+          <!-- v-if -->
+        </button>
+        <button
+          class="
+            aria-disabled:bg-transparent
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            cursor-pointer
+            dark:aria-disabled:bg-transparent
+            dark:disabled:bg-transparent
+            disabled:bg-transparent
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-primary
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-primary/10
+            inline-flex
+            items-center
+            px-2.5
+            py-1.5
+            ring
+            ring-inset
+            ring-primary/50
+            rounded-none
+            sm:w-auto
+            text-lg
+            text-primary
+            transition-colors
+            w-full
+          "
+          type="button"
+        >
+          <!-- v-if -->
+          Buying Advice
+          <!-- v-if -->
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`sHero Snapshot Tests > renders with headline and subheadline correctly 1`] = `
+<div class="py-20">
+  <div class="
+    lg:px-8
+    max-w-5xl
+    mx-auto
+    px-4
+    sm:px-6
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+      items-center
+      lg:items-start
+      lg:text-left
+      text-center
+    ">
+      <h1 class="
+        font-bold
+        lg:text-5xl
+        text-3xl
+        text-pretty
+      ">
+        Hello World
+      </h1>
+      <p class="
+        lg:text-xl
+        max-w-2xl
+        text-muted
+      ">
+        This is a subheadline.
+      </p>
+      <div class="
+        flex
+        flex-col
+        gap-2
+        justify-center
+        lg:justify-start
+        mt-4
+        sm:flex-row
+        w-full
+      ">
+        <div>
+          <!-- <SearchBar /> -->
+        </div>
+        <button
+          class="
+            aria-disabled:bg-primary
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-primary
+            cursor-pointer
+            disabled:bg-primary
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:outline-2
+            focus-visible:outline-offset-2
+            focus-visible:outline-primary
+            font-medium
+            gap-1.5
+            hover:bg-primary/75
+            inline-flex
+            items-center
+            px-2.5
+            py-1.5
+            rounded-none
+            sm:w-auto
+            text-inverted
+            text-lg
+            transition-colors
+            w-full
+          "
+          type="button"
+        >
+          <!-- v-if -->
+          Primary Button
+          <!-- v-if -->
+        </button>
+        <button
+          class="
+            aria-disabled:bg-transparent
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            cursor-pointer
+            dark:aria-disabled:bg-transparent
+            dark:disabled:bg-transparent
+            disabled:bg-transparent
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-primary
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-primary/10
+            inline-flex
+            items-center
+            px-2.5
+            py-1.5
+            ring
+            ring-inset
+            ring-primary/50
+            rounded-none
+            sm:w-auto
+            text-lg
+            text-primary
+            transition-colors
+            w-full
+          "
+          type="button"
+        >
+          <!-- v-if -->
+          Buying Advice
+          <!-- v-if -->
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`sHero Snapshot Tests > renders with headline only correctly 1`] = `
+<div class="py-20">
+  <div class="
+    lg:px-8
+    max-w-5xl
+    mx-auto
+    px-4
+    sm:px-6
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+      items-center
+      lg:items-start
+      lg:text-left
+      text-center
+    ">
+      <h1 class="
+        font-bold
+        lg:text-5xl
+        text-3xl
+        text-pretty
+      ">
+        Welcome to Our Site
+      </h1>
+      <!-- v-if -->
+      <div class="
+        flex
+        flex-col
+        gap-2
+        justify-center
+        lg:justify-start
+        mt-4
+        sm:flex-row
+        w-full
+      ">
+        <div>
+          <!-- <SearchBar /> -->
+        </div>
+        <button
+          class="
+            aria-disabled:bg-primary
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-primary
+            cursor-pointer
+            disabled:bg-primary
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:outline-2
+            focus-visible:outline-offset-2
+            focus-visible:outline-primary
+            font-medium
+            gap-1.5
+            hover:bg-primary/75
+            inline-flex
+            items-center
+            px-2.5
+            py-1.5
+            rounded-none
+            sm:w-auto
+            text-inverted
+            text-lg
+            transition-colors
+            w-full
+          "
+          type="button"
+        >
+          <!-- v-if -->
+          Primary Button
+          <!-- v-if -->
+        </button>
+        <button
+          class="
+            aria-disabled:bg-transparent
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            cursor-pointer
+            dark:aria-disabled:bg-transparent
+            dark:disabled:bg-transparent
+            disabled:bg-transparent
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-primary
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-primary/10
+            inline-flex
+            items-center
+            px-2.5
+            py-1.5
+            ring
+            ring-inset
+            ring-primary/50
+            rounded-none
+            sm:w-auto
+            text-lg
+            text-primary
+            transition-colors
+            w-full
+          "
+          type="button"
+        >
+          <!-- v-if -->
+          Buying Advice
+          <!-- v-if -->
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`sHero Snapshot Tests > renders without buttons correctly 1`] = `
+<div class="py-20">
+  <div class="
+    lg:px-8
+    max-w-5xl
+    mx-auto
+    px-4
+    sm:px-6
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+      items-center
+      lg:items-start
+      lg:text-left
+      text-center
+    ">
+      <h1 class="
+        font-bold
+        lg:text-5xl
+        text-3xl
+        text-pretty
+      ">
+        No Buttons
+      </h1>
+      <!-- v-if -->
+      <!-- v-if -->
+    </div>
+  </div>
+</div>
+`;
+
+exports[`sHero Snapshot Tests > renders without search bar correctly 1`] = `
+<div class="py-20">
+  <div class="
+    lg:px-8
+    max-w-5xl
+    mx-auto
+    px-4
+    sm:px-6
+  ">
+    <div class="
+      flex
+      flex-col
+      gap-4
+      items-center
+      lg:items-start
+      lg:text-left
+      text-center
+    ">
+      <h1 class="
+        font-bold
+        lg:text-5xl
+        text-3xl
+        text-pretty
+      ">
+        No Search
+      </h1>
+      <!-- v-if -->
+      <!-- v-if -->
+    </div>
+  </div>
+</div>
+`;

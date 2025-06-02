@@ -160,3 +160,164 @@ exports[`SScriptYouTubePlayer > renders with loading slot correctly 1`] = `
   &lt;div&gt;Loading...&lt;/div&gt;
 </div>
 `;
+
+exports[`sScriptYouTubePlayer > renders default (awaitingLoad) correctly 1`] = `
+<div
+  aria-busy="false"
+  aria-label="YouTube Player - Placeholder"
+  role="application"
+  style="
+    position: relative;
+    background-color: black;
+    max-width: 100%;
+    width: 640px;
+    aspect-ratio: 640 / 360;
+  "
+>
+  <div style="
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  "></div>
+  <img
+    alt=""
+    loading="lazy"
+    src="https://i.ytimg.com/vi_webp/dQw4w9WgXcQ/sddefault.webp"
+    style="
+      width: 100%;
+      object-fit: cover;
+      height: 100%;
+    "
+  />
+  <!-- v-if -->
+</div>
+`;
+
+exports[`sScriptYouTubePlayer > renders with awaitingLoad slot correctly 1`] = `
+<div
+  aria-busy="false"
+  aria-label="YouTube Player - Placeholder"
+  role="application"
+  style="
+    position: relative;
+    background-color: black;
+    max-width: 100%;
+    width: 640px;
+    aspect-ratio: 640 / 360;
+  "
+>
+  <div style="
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  "></div>
+  <img
+    alt=""
+    loading="lazy"
+    src="https://i.ytimg.com/vi_webp/dQw4w9WgXcQ/sddefault.webp"
+    style="
+      width: 100%;
+      object-fit: cover;
+      height: 100%;
+    "
+  />
+  <!-- v-if -->
+</div>
+`;
+
+exports[`sScriptYouTubePlayer > renders with custom placeholder slot correctly 1`] = `
+<div
+  aria-busy="false"
+  aria-label="YouTube Player - Placeholder"
+  role="application"
+  style="
+    position: relative;
+    background-color: black;
+    max-width: 100%;
+    width: 640px;
+    aspect-ratio: 640 / 360;
+  "
+>
+  <div style="
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  "></div>
+  &lt;img alt="Custom Placeholder" /&gt;
+  <!-- v-if -->
+</div>
+`;
+
+exports[`sScriptYouTubePlayer > renders with error slot correctly 1`] = `
+<div
+  aria-busy="false"
+  aria-label="YouTube Player - Loaded"
+  role="application"
+  style="
+    position: relative;
+    background-color: black;
+    max-width: 100%;
+    width: 640px;
+    aspect-ratio: 640 / 360;
+  "
+>
+  <div style="
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  "></div>
+  <img
+    alt=""
+    loading="lazy"
+    src="https://i.ytimg.com/vi_webp/dQw4w9WgXcQ/sddefault.webp"
+    style="
+      width: 100%;
+      object-fit: cover;
+      height: 100%;
+    "
+  />
+  &lt;div&gt;Error occurred&lt;/div&gt;
+</div>
+`;
+
+exports[`sScriptYouTubePlayer > renders with loading slot correctly 1`] = `
+<div
+  aria-busy="true"
+  aria-label="YouTube Player - Loading"
+  role="application"
+  style="
+    position: relative;
+    background-color: black;
+    max-width: 100%;
+    width: 640px;
+    aspect-ratio: 640 / 360;
+  "
+>
+  <div style="
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  "></div>
+  <img
+    alt=""
+    loading="lazy"
+    src="https://i.ytimg.com/vi_webp/dQw4w9WgXcQ/sddefault.webp"
+    style="
+      width: 100%;
+      object-fit: cover;
+      height: 100%;
+    "
+  />
+  &lt;div&gt;Loading...&lt;/div&gt;
+</div>
+`;

@@ -81,3 +81,85 @@ exports[`ColorModeButton Snapshot > renders correctly in light mode 1`] = `
   <!-- v-if -->
 </button>
 `;
+
+exports[`colorModeButton Snapshot > renders correctly in dark mode 1`] = `
+<button
+  aria-label="Toggle color mode"
+  class="
+    aria-disabled:cursor-not-allowed
+    aria-disabled:opacity-75
+    dark:hover:aria-disabled:bg-transparent
+    dark:hover:disabled:bg-transparent
+    disabled:cursor-not-allowed
+    disabled:opacity-75
+    focus-visible:bg-elevated
+    focus:outline-none
+    font-medium
+    gap-1.5
+    hover:aria-disabled:bg-transparent
+    hover:bg-elevated
+    hover:disabled:bg-transparent
+    inline-flex
+    items-center
+    p-1.5
+    rounded-md
+    text-default
+    text-sm
+    transition-colors
+  "
+  type="button"
+>
+  <span
+    aria-hidden="true"
+    class="
+      i-lucide:sun
+      iconify
+      shrink-0
+      size-5
+    "
+  ></span>
+  <!-- v-if -->
+  <!-- v-if -->
+</button>
+`;
+
+exports[`colorModeButton Snapshot > renders correctly in light mode 1`] = `
+<button
+  aria-label="Toggle color mode"
+  class="
+    aria-disabled:cursor-not-allowed
+    aria-disabled:opacity-75
+    dark:hover:aria-disabled:bg-transparent
+    dark:hover:disabled:bg-transparent
+    disabled:cursor-not-allowed
+    disabled:opacity-75
+    focus-visible:bg-elevated
+    focus:outline-none
+    font-medium
+    gap-1.5
+    hover:aria-disabled:bg-transparent
+    hover:bg-elevated
+    hover:disabled:bg-transparent
+    inline-flex
+    items-center
+    p-1.5
+    rounded-md
+    text-default
+    text-sm
+    transition-colors
+  "
+  type="button"
+>
+  <span
+    aria-hidden="true"
+    class="
+      i-lucide:sun
+      iconify
+      shrink-0
+      size-5
+    "
+  ></span>
+  <!-- v-if -->
+  <!-- v-if -->
+</button>
+`;
