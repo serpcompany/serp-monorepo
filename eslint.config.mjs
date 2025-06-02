@@ -74,6 +74,9 @@ export default antfu(
       '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/no-require-imports': 'warn',
       
+      // Node.js rules - allow process usage in Nuxt projects
+      'node/prefer-global/process': 'off',
+      
       // General rules
       'no-console': 'warn',
       'prefer-const': 'warn',
@@ -88,6 +91,21 @@ export default antfu(
         singleline: 3,
         multiline: 1,
       }],
+    },
+  },
+  {
+    // Configuration files - allow process usage
+    files: [
+      '**/nuxt.config.ts',
+      '**/drizzle.config.ts', 
+      '**/drizzle.auth.config.ts',
+      '**/multiCache.serverOptions.ts',
+      '**/vitest.config.ts',
+      '**/tailwindcss.config.ts'
+    ],
+    rules: {
+      'node/prefer-global/process': 'off',
+      'ts/strict-boolean-expressions': 'off',
     },
   },
 )
