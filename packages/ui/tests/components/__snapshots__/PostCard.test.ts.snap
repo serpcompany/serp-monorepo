@@ -43,7 +43,7 @@ exports[`PostCard Snapshot > renders with complete post data correctly 1`] = `
         mr-1
         text-sm
       ">
-        SEP 30 2022
+        OCT 01 2022
       </span>
       <span>
         –
@@ -135,7 +135,7 @@ exports[`PostCard Snapshot > renders with custom title prop overriding display t
         mr-1
         text-sm
       ">
-        FEB 28 2023
+        MAR 01 2023
       </span>
       <span>
         –

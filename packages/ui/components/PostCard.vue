@@ -28,12 +28,13 @@
   const formattedDate = computed(() => {
     if (!props.post.createdAt) return '';
 
-    const date = new Date(props.post.createdAt);
+    // Parse date string as UTC to ensure consistent behavior across timezones
+    const date = new Date(props.post.createdAt + 'T00:00:00.000Z');
     const month = date
-      .toLocaleString('en-US', { month: 'short' })
+      .toLocaleString('en-US', { month: 'short', timeZone: 'UTC' })
       .toUpperCase();
-    const day = date.getDate().toString().padStart(2, '0');
-    const year = date.getFullYear();
+    const day = date.getUTCDate().toString().padStart(2, '0');
+    const year = date.getUTCFullYear();
 
     return `${month} ${day} ${year}`;
   });
