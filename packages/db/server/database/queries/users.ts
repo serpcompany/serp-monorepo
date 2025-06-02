@@ -21,7 +21,7 @@ export async function findUserByEmail(email: string): Promise<User | null> {
   }
 }
 
-export async function createUserWithPassword(payload: InsertUser) {
+export async function createUserWithPassword(payload: InsertUser): Promise<User> {
   try {
     const [record] = await getDb()
       .insert(user)
@@ -46,7 +46,7 @@ export async function createUserWithPassword(payload: InsertUser) {
   }
 }
 
-export async function findLinkedAccountsByUserId(userId: number) {
+export async function findLinkedAccountsByUserId(userId: number): Promise<Array<typeof oauthAccount.$inferSelect>> {
   try {
     const linkedAccounts = await getDb()
       .select()
@@ -83,7 +83,7 @@ export async function updateLastActiveTimestamp(userId: number): Promise<User> {
   }
 }
 
-export async function findUserById(id: number) {
+export async function findUserById(id: number): Promise<User | null> {
   try {
     const [userRecord] = await getDb()
       .select()
@@ -101,7 +101,7 @@ export async function findUserById(id: number) {
   }
 }
 
-export async function verifyUser(userId: number) {
+export async function verifyUser(userId: number): Promise<User> {
   try {
     const [record] = await getDb()
       .update(user)
@@ -120,7 +120,7 @@ export async function verifyUser(userId: number) {
   }
 }
 
-export async function createUserWithOAuth(payload: InsertUser) {
+export async function createUserWithOAuth(payload: InsertUser): Promise<User> {
   try {
     const [record] = await getDb()
       .insert(user)
@@ -146,7 +146,7 @@ export async function createUserWithOAuth(payload: InsertUser) {
   }
 }
 
-export async function updateUser(userId: number, payload: Partial<User>) {
+export async function updateUser(userId: number, payload: Partial<User>): Promise<User> {
   try {
     if (payload.superAdmin) {
       delete payload.superAdmin
@@ -171,7 +171,7 @@ export async function updateUser(userId: number, payload: Partial<User>) {
   }
 }
 
-export async function updateUserPassword(userId: number, hashedPassword: string) {
+export async function updateUserPassword(userId: number, hashedPassword: string): Promise<User> {
   try {
     const [record] = await getDb()
       .update(user)
@@ -187,7 +187,7 @@ export async function updateUserPassword(userId: number, hashedPassword: string)
   }
 }
 
-export async function linkOAuthAccount(userId: number, provider: string, providerUserId: string) {
+export async function linkOAuthAccount(userId: number, provider: string, providerUserId: string): Promise<typeof oauthAccount.$inferSelect> {
   try {
     const [existingAccount] = await getDb()
       .select()
@@ -231,7 +231,7 @@ export async function linkOAuthAccount(userId: number, provider: string, provide
   }
 }
 
-export async function findUserByPhoneNumber(phoneNumber: string) {
+export async function findUserByPhoneNumber(phoneNumber: string): Promise<User | null> {
   try {
     const [userRecord] = await getDb()
       .select()
@@ -249,7 +249,7 @@ export async function findUserByPhoneNumber(phoneNumber: string) {
   }
 }
 
-export async function unlinkAccount(userId: number, providerId: number) {
+export async function unlinkAccount(userId: number, providerId: number): Promise<void> {
   try {
     const userRecord = await findUserById(userId)
     if (!userRecord) {
@@ -287,11 +287,11 @@ export async function unlinkAccount(userId: number, providerId: number) {
   }
 }
 
-export async function deleteUser(userId: number) {
+export async function deleteUser(userId: number): Promise<void> {
   await getDb().delete(user).where(eq(user.id, userId)).execute()
 }
 
-export async function getAllUsers(offset = 0, limit = 50) {
+export async function getAllUsers(offset = 0, limit = 50): Promise<User[]> {
   const rows = await getDb()
     .select({
       id: user.id,
