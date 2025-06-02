@@ -43,14 +43,14 @@ export default antfu(
       '.git/',
       '.output/',
       '**/.output/',
-      
+
       // Package-specific patterns
       'packages/ui/templates/',
       'packages/ui/templates/**',
       'packages/ui/templates/nuxt-ui-landing/**',
       'packages/ui/templates/nuxt-ui-saas/**',
       'packages/ui/.nuxt/**',
-      
+
       // Auto-generated files
       '**/*.min.js',
       'esm/**/*.mjs',
@@ -62,12 +62,12 @@ export default antfu(
       // Component size limits
       'max-lines': ['warn', 300],
       'complexity': ['warn', 10],
-      
+
       // Other helpful limits
       'max-lines-per-function': ['warn', 50],
       'max-depth': ['warn', 4],
       'max-params': ['warn', 3],
-      
+
       // Vue/Nuxt rules
       'vue/block-order': ['error', { order: ['script', 'template', 'style'] }],
       'vue/no-setup-props-reactivity-loss': 'error', // Prevent props destructuring that breaks reactivity
@@ -77,14 +77,14 @@ export default antfu(
         math: 'always'
       }],
       'vue/multi-word-component-names': 'off',
-      
+
       // TypeScript rules
       '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/no-require-imports': 'warn',
-      
+
       // Node.js rules - allow process usage in Nuxt projects
       'node/prefer-global/process': 'off',
-      
+
       // General rules
       'no-console': 'warn',
       'prefer-const': 'warn',
@@ -108,7 +108,7 @@ export default antfu(
     // Configuration files - allow process usage
     files: [
       '**/nuxt.config.ts',
-      '**/drizzle.config.ts', 
+      '**/drizzle.config.ts',
       '**/drizzle.auth.config.ts',
       '**/multiCache.serverOptions.ts',
       '**/vitest.config.ts',
