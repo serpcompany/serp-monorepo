@@ -1164,7 +1164,7 @@ exports[`sPage/Users/Featured/Companies Snapshot > renders when user is not logg
                 href="/login"
               >
                 
-              <!-- v-if -->Login to Continue
+              <!-- v-if --> Login to Continue
                 
               <!-- v-if -->
               </a>

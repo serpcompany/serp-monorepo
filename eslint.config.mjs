@@ -87,7 +87,11 @@ export default antfu({
 
       // General rules
       'no-console': 'warn',
-      'prefer-const': 'warn'
+      'prefer-const': 'warn',
+
+      // style rules
+      'style/indent': 'warn',
+      'style/semi': 'warn'
     }
 }).append(
   {
