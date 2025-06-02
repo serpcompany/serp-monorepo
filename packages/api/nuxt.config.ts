@@ -9,6 +9,11 @@ export default defineNuxtConfig({
     '@serp/notifications'
   ],
   modules: ['@nuxt/eslint', '@unlok-co/nuxt-stripe', '@nuxt/test-utils/module'],
+  eslint: {
+    config: {
+      standalone: false
+    }
+  },
   multiCache: {
     data: {
       enabled: true

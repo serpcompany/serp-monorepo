@@ -10,6 +10,11 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     'nuxt-schema-org'
   ],
+  eslint: {
+    config: {
+      standalone: false
+    }
+  },
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
     public: {

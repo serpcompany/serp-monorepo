@@ -24,6 +24,11 @@ export default defineNuxtConfig({
       authorization: process.env.CACHE_PURGE_API_KEY || 'xv12378asdfSDA123'
     }
   },
+  eslint: {
+    config: {
+      standalone: false
+    }
+  },
   ui: {
     colorMode: true
   },

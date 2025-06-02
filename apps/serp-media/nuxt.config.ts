@@ -14,6 +14,11 @@ export default defineNuxtConfig({
     'nuxt-link-checker'
   ],
   css: ['~/assets/css/main.css'],
+  eslint: {
+    config: {
+      standalone: false
+    }
+  },
   ui: {
     colorMode: true
   },

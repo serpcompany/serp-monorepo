@@ -4,6 +4,11 @@ import vue from '@vitejs/plugin-vue';
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['nuxt-auth-utils', '@nuxt/eslint'],
+  eslint: {
+    config: {
+      standalone: false
+    }
+  },
   extends: ['@serp/db'],
   runtimeConfig: {
     oauth: {
