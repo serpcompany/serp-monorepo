@@ -17,6 +17,14 @@ export default antfu(
     typescript: true,
     formatters: false, // We're removing prettier
     jsdoc: true, // Enable JSDoc support
+    stylistic: {
+      indent: 2,
+      quotes: 'single',
+      semi: true,
+      comma: 'never',
+      braceStyle: '1tbs',
+      arrowParens: true,
+    },
     ignores: [
       // Common directories to ignore
       'node_modules/',
@@ -91,6 +99,9 @@ export default antfu(
         singleline: 3,
         multiline: 1,
       }],
+      // Vue stylistic rules to match prettier vueIndentScriptAndStyle: true
+      'vue/script-indent': ['error', 2, { baseIndent: 1 }],
+      'vue/html-indent': ['error', 2],
     },
   },
   {

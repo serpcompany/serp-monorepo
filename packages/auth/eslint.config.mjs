@@ -28,12 +28,7 @@ export default createConfigForNuxt({
     // Vue with accessibility support
     vue: false,
 
-    // Stylistic formatting rules
-    stylistic: {
-      indent: 2,
-      quotes: 'single',
-      semi: false,
-    },
+    // Stylistic rules now handled by root config
 
     // External formatters for non-JS files
     formatters: {
