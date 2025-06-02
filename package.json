@@ -20,7 +20,7 @@
     "typecheck": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run typecheck 2>&1 | tee reports/typecheck-errors.txt",
     "typecheck:phase1": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run typecheck 2>&1 | grep -E 'TS7006|TS7053|TS7034|TS7005' && exit 1 || exit 0",
     "typecheck:ts7006": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run typecheck 2>&1 | grep 'TS7006' && echo 'TS7006 errors found - build failed!' && exit 1 || echo 'No TS7006 errors found - build passed!'",
-    "lint:return-types": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run ci:lint --filter=@serp/db 2>&1 | grep 'ts/explicit-function-return-type' && echo 'ts/explicit-function-return-type errors found in @serp/db - build failed!' && exit 1 || echo 'No ts/explicit-function-return-type errors found in @serp/db - build passed!'"
+    "lint:return-types": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run ci:lint 2>&1 | grep 'ts/explicit-function-return-type' && echo 'ts/explicit-function-return-type errors found - build failed!' && exit 1 || echo 'No ts/explicit-function-return-type errors found - build passed!'"
   },
   "resolutions": {
     "@vue/server-renderer": "3.5.14",
