@@ -51,8 +51,8 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: pnpm install
 
-      # - name: Lint
-      #   run: pnpm lint
+      - name: Lint
+        run: pnpm lint
 
       - name: Test
         run: pnpm test
