@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { NotificationOptions } from '../../../../server/utils/notifications';
 
 vi.mock('../../../../server/utils/providers/slack', () => ({
@@ -7,29 +7,26 @@ vi.mock('../../../../server/utils/providers/slack', () => ({
     .mockResolvedValue({ sent: true, provider: 'slack' })
 }));
 
-describe('Notifications Module', () => {
-  const originalEnv = { ...process.env };
+let sendNotification: typeof import('../../../../server/utils/notifications').sendNotification;
+let sendSlackNotification: typeof import('../../../../server/utils/providers/slack').sendSlackNotification;
 
-  beforeEach(() => {
+describe('Notifications Module', () => {
+  beforeEach(async () => {
     vi.resetModules();
     vi.clearAllMocks();
 
-    process.env.DEFAULT_NOTIFICATION_PROVIDER = 'slack';
-  });
+    vi.stubEnv('DEFAULT_NOTIFICATION_PROVIDER', 'slack');
 
-  afterEach(() => {
-    process.env = { ...originalEnv };
+    ({ sendNotification } = await import(
+      '../../../../server/utils/notifications'
+    ));
+    ({ sendSlackNotification } = await import(
+      '../../../../server/utils/providers/slack'
+    ));
   });
 
   describe('sendNotification', () => {
     it('should use the specified provider', async () => {
-      const { sendNotification } = await import(
-        '../../../../server/utils/notifications'
-      );
-      const { sendSlackNotification } = await import(
-        '../../../../server/utils/providers/slack'
-      );
-
       const options: NotificationOptions = {
         provider: 'slack',
         message: 'Test notification message',
@@ -45,13 +42,6 @@ describe('Notifications Module', () => {
     });
 
     it('should use the default provider when none is specified', async () => {
-      const { sendNotification } = await import(
-        '../../../../server/utils/notifications'
-      );
-      const { sendSlackNotification } = await import(
-        '../../../../server/utils/providers/slack'
-      );
-
       const options: NotificationOptions = {
         message: 'Test notification message'
       };
@@ -64,14 +54,7 @@ describe('Notifications Module', () => {
     });
 
     it('should use the DEFAULT_NOTIFICATION_PROVIDER environment variable', async () => {
-      process.env.DEFAULT_NOTIFICATION_PROVIDER = 'slack';
-
-      const { sendNotification } = await import(
-        '../../../../server/utils/notifications'
-      );
-      const { sendSlackNotification } = await import(
-        '../../../../server/utils/providers/slack'
-      );
+      vi.stubEnv('DEFAULT_NOTIFICATION_PROVIDER', 'slack');
 
       const options: NotificationOptions = {
         message: 'Test notification message'
@@ -85,13 +68,6 @@ describe('Notifications Module', () => {
     });
 
     it('should be case-insensitive when checking providers', async () => {
-      const { sendNotification } = await import(
-        '../../../../server/utils/notifications'
-      );
-      const { sendSlackNotification } = await import(
-        '../../../../server/utils/providers/slack'
-      );
-
       const options: NotificationOptions = {
         provider: 'SLACK',
         message: 'Test notification message'
@@ -105,10 +81,6 @@ describe('Notifications Module', () => {
     });
 
     it('should throw an error for unsupported providers', async () => {
-      const { sendNotification } = await import(
-        '../../../../server/utils/notifications'
-      );
-
       const options: NotificationOptions = {
         provider: 'unsupported-provider',
         message: 'Test notification message'
@@ -120,10 +92,6 @@ describe('Notifications Module', () => {
     });
 
     it('should pass through the response from the provider', async () => {
-      const { sendNotification } = await import(
-        '../../../../server/utils/notifications'
-      );
-
       const options: NotificationOptions = {
         message: 'Test notification message'
       };
