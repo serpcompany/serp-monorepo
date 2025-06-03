@@ -102,7 +102,7 @@
       <template #subtitle>
         <NuxtLink
           v-if="primaryArtist"
-          :to="`/artists/${primaryArtist.slug}/`"
+          :to="`/artists/${encodeURIComponent(primaryArtist.slug)}/`"
           class="text-sm text-gray-500 hover:underline dark:text-gray-400"
         />
       </template>
@@ -124,7 +124,7 @@
       <UBreadcrumb class="mb-6" :ui="{ container: 'flex px-1 py-2' }">
         <UBreadcrumbItem to="/home">Home</UBreadcrumbItem>
         <UBreadcrumbItem to="/albums">Albums</UBreadcrumbItem>
-        <UBreadcrumbItem :to="`/albums/${album.slug}`">{{
+        <UBreadcrumbItem :to="`/albums/${encodeURIComponent(album.slug)}`">{{
           album.name
         }}</UBreadcrumbItem>
       </UBreadcrumb>
@@ -158,7 +158,7 @@
                     <div class="truncate">
                       <NuxtLink
                         v-if="song.has_lyrics"
-                        :to="`/songs/${song.slug}`"
+                        :to="`/songs/${encodeURIComponent(song.slug)}`"
                         class="text-primary-600 dark:text-primary-400 truncate text-sm font-medium hover:underline"
                         :title="song.name"
                       >
@@ -219,7 +219,7 @@
                 class="group relative"
               >
                 <NuxtLink
-                  :to="`/albums/${otherAlbum.slug}`"
+                  :to="`/albums/${encodeURIComponent(otherAlbum.slug)}`"
                   class="block space-y-1"
                 >
                   <div
@@ -285,7 +285,7 @@
                   >Artist:
                 </span>
                 <NuxtLink
-                  :to="`/artists/${primaryArtist.slug}`"
+                  :to="`/artists/${encodeURIComponent(primaryArtist.slug)}`"
                   class="text-primary hover:underline"
                 >
                   {{ primaryArtist.credit_name }}

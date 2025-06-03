@@ -142,7 +142,7 @@
       <UBreadcrumb class="mb-6" :ui="{ container: 'flex px-1 py-2' }">
         <UBreadcrumbItem to="/home">Home</UBreadcrumbItem>
         <UBreadcrumbItem to="/songs">Songs</UBreadcrumbItem>
-        <UBreadcrumbItem :to="`/songs/${song.slug}`">{{
+        <UBreadcrumbItem :to="`/songs/${encodeURIComponent(song.slug)}`">{{
           song.name
         }}</UBreadcrumbItem>
       </UBreadcrumb>
@@ -181,7 +181,7 @@
               <div v-if="artistData.name !== 'Unknown Artist'" class="mb-2">
                 <span class="font-medium">Artist: </span>
                 <NuxtLink
-                  :to="`/artists/${artistData.slug}`"
+                  :to="`/artists/${encodeURIComponent(artistData.slug)}`"
                   class="text-primary hover:underline"
                 >
                   {{ artistData.name }}
@@ -190,7 +190,7 @@
               <div v-if="song.releaseGroup">
                 <span class="font-medium">Album: </span>
                 <NuxtLink
-                  :to="`/albums/${song.releaseGroup.slug}`"
+                  :to="`/albums/${encodeURIComponent(song.releaseGroup.slug)}`"
                   class="text-primary hover:underline"
                 >
                   {{ song.releaseGroup.name }}
@@ -222,7 +222,7 @@
             <ol class="list-inside list-decimal space-y-2 pl-4">
               <li v-for="albumSong in albumSongs" :key="albumSong.slug">
                 <NuxtLink
-                  :to="`/songs/${albumSong.slug}`"
+                  :to="`/songs/${encodeURIComponent(albumSong.slug)}`"
                   class="text-primary hover:underline"
                 >
                   {{ albumSong.name }}
@@ -246,7 +246,11 @@
               <NuxtLink
                 v-for="(album, index) in artistAlbums"
                 :key="index"
-                :to="album?.slug ? `/albums/${album.slug}` : '#'"
+                :to="
+                  album?.slug
+                    ? `/albums/${encodeURIComponent(album.slug)}`
+                    : '#'
+                "
                 class="flex items-center justify-between rounded p-2 hover:bg-gray-50 dark:hover:bg-gray-800"
               >
                 <span class="text-primary">{{
