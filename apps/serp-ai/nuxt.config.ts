@@ -61,6 +61,12 @@ export default defineNuxtConfig({
   },
   security: {
     rateLimiter: false,
+    headers: {
+      contentSecurityPolicy: {
+        'img-src': ['\'self\'', 'data:', '*'],
+        'script-src-attr': ['\'unsafe-inline\''],
+      },
+    },
   },
   scripts: {
     registry: {
