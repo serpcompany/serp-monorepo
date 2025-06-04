@@ -83,11 +83,11 @@ useSeoMeta({
           :loading="status === 'pending'"
           :items="data?.servers || []"
           :pagination-limit="filters.limit"
-          :pagination-total="data?.pagination.totalItems"
+          :pagination-total="data?.pagination?.totalItems ?? 0"
         />
       </div>
 
-      <template v-if="data?.category.data">
+      <template v-if="data?.category?.data">
         <CompanyArticleSection
           v-if="data.category.data.buyers_guide"
           :article="data.category.data.buyers_guide"
