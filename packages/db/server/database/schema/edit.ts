@@ -7,7 +7,7 @@ import {
   timestamp,
   varchar,
 } from 'drizzle-orm/pg-core'
-import { userSchema } from './index'
+import { userSchema } from './schema'
 
 export const edit = userSchema.table('edit', {
   id: serial('id').primaryKey(),

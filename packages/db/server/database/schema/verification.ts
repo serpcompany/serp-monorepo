@@ -1,5 +1,5 @@
 import { integer, serial, timestamp, varchar } from 'drizzle-orm/pg-core'
-import { userSchema } from './index'
+import { userSchema } from './schema'
 
 export const verification = userSchema.table('verification', {
   id: serial('id').primaryKey(),

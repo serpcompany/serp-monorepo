@@ -1,19 +1,6 @@
-import { customType, pgSchema } from 'drizzle-orm/pg-core'
-
-// Custom types
-export const ltree = customType<{ data: string }>({
-  dataType() {
-    return 'ltree'
-  },
-})
-
-// Schemas
-export const cacheSchema = pgSchema('cache')
-export const formSchema = pgSchema('form')
-export const stripeSchema = pgSchema('stripe')
-export const userSchema = pgSchema('user')
-
 // Re-export all tables and relations
+export * from './schema'
+export * from './types'
 export * from './auth'
 export * from './category'
 export * from './comment'

@@ -1,5 +1,5 @@
 import { jsonb, serial, text, timestamp } from 'drizzle-orm/pg-core'
-import { userSchema } from './index'
+import { userSchema } from './schema'
 
 export const subscriber = userSchema.table('subscriber', {
   id: serial('id').primaryKey(),

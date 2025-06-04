@@ -7,7 +7,7 @@ import {
   timestamp,
   varchar,
 } from 'drizzle-orm/pg-core'
-import { stripeSchema } from './index'
+import { stripeSchema } from './schema'
 import { product } from './product'
 
 export const price = stripeSchema.table('price', {
