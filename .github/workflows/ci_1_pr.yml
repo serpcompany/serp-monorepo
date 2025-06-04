@@ -48,5 +48,8 @@ jobs:
       - name: Type Check - No Fixed Errors
         run: pnpm typecheck:fixed
 
+      - name: Validate TypeScript Errors Against Baseline
+        run: pnpm ts-baseline:validate
+
       - name: Test
         run: pnpm test
