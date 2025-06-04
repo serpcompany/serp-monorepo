@@ -7,8 +7,8 @@ import {
   varchar,
 } from 'drizzle-orm/pg-core'
 import { customer } from './customer'
-import { stripeSchema } from './schema'
 import { price } from './price'
+import { stripeSchema } from './schema'
 import { team } from './team'
 import { user } from './user'
 
