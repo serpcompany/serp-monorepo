@@ -72,3 +72,17 @@ export type Entities = {
   pagination: Pagination;
   category: Category;
 };
+
+export type EntitiesParams = {
+  page?: number;
+  limit?: number;
+  categorySlug?: string;
+  name?: string;
+  sort?: string;
+};
+
+export interface EntitiesResponse<T> {
+  entities: T[];
+  pagination: Pagination;
+  category: Category;
+}
