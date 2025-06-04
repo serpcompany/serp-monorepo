@@ -1,13 +1,13 @@
-import { describe, expect, it } from 'vitest';
-import MultipageHeaderMusic from '../../components/MultipageHeaderMusic.vue';
-import ComponentRender from '../componentRender';
+import { describe, expect, it } from 'vitest'
+import MultipageHeaderMusic from '../../components/MultipageHeaderMusic.vue'
+import ComponentRender from '../componentRender'
 
-describe('MultipageHeaderMusic Snapshot', () => {
+describe('multipageHeaderMusic Snapshot', () => {
   const baseProps = {
     name: 'Music Header',
     sections: ['Home', 'About', 'Contact'],
-    serply_link: 'https://example.com'
-  };
+    serply_link: 'https://example.com',
+  }
 
   it.each([
     // Default rendering with minimal required props.
@@ -19,9 +19,9 @@ describe('MultipageHeaderMusic Snapshot', () => {
         props: {
           ...baseProps,
           oneLiner: 'Rock on!',
-          image: 'https://example.com/logo.png'
-        }
-      }
+          image: 'https://example.com/logo.png',
+        },
+      },
     ],
     // Edge-case: empty sections.
     ['with empty sections', { props: { ...baseProps, sections: [] } }],
@@ -30,18 +30,18 @@ describe('MultipageHeaderMusic Snapshot', () => {
       'with upvote slot',
       {
         props: { ...baseProps },
-        slots: { upvote: () => '<button>Upvote</button>' }
-      }
-    ]
+        slots: { upvote: () => '<button>Upvote</button>' },
+      },
+    ],
   ])(
     'renders %s correctly',
-    async (desc: string, options: { props: unknown; slots?: unknown }) => {
+    async (desc: string, options: { props: unknown, slots?: unknown }) => {
       const html = await ComponentRender(
         `MultipageHeaderMusic ${desc}`,
         options,
-        MultipageHeaderMusic
-      );
-      expect(html).toMatchSnapshot();
-    }
-  );
-});
+        MultipageHeaderMusic,
+      )
+      expect(html).toMatchSnapshot()
+    },
+  )
+})

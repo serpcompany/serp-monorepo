@@ -1,291 +1,299 @@
 <script lang="ts" setup>
-  import { useDateFormat } from '@vueuse/core';
-  import type { Subscription, Price } from '@serp/db/types/database';
+import type { Price, Subscription } from '@serp/db/types/database'
+import { useDateFormat } from '@vueuse/core'
 
-  const { currentTeam } = useTeam();
+const { currentTeam } = useTeam()
 
-  const { data: plans } = await useFetch('/api/stripe/plans', {
-    query: {
-      teamId: currentTeam.value.id
-    }
-  });
+const { data: plans } = await useFetch('/api/stripe/plans', {
+  query: {
+    teamId: currentTeam.value.id,
+  },
+})
 
-  interface ExpandedSubscription extends Subscription {
-    expand: {
-      price_id: Price;
-    };
+interface ExpandedSubscription extends Subscription {
+  expand: {
+    price_id: Price
   }
+}
 
-  const { data: activeSubscription } = await useFetch<ExpandedSubscription>(
-    '/api/stripe/subscription',
-    {
-      query: {
-        teamId: currentTeam.value.id
-      }
-    }
-  );
+const { data: activeSubscription } = await useFetch<ExpandedSubscription>(
+  '/api/stripe/subscription',
+  {
+    query: {
+      teamId: currentTeam.value.id,
+    },
+  },
+)
 
-  const toast = useToast();
-  const loadingPriceId = ref<string | null>(null);
-  const disabled = ref(false);
-  const route = useRoute();
-  const { fetch: refreshSession } = useUserSession();
-  const loadingPortal = ref(false);
+const toast = useToast()
+const loadingPriceId = ref<string | null>(null)
+const disabled = ref(false)
+const route = useRoute()
+const { fetch: refreshSession } = useUserSession()
+const loadingPortal = ref(false)
 
-  // Featured position state
-  const selectedFeaturedCategory = ref<number | null>(null);
-  const { data: featuredAvailability, refresh: refreshAvailability } =
-    await useFetch('/api/stripe/featured/availability', {
+// Featured position state
+const selectedFeaturedCategory = ref<number | null>(null)
+const { data: featuredAvailability, refresh: refreshAvailability }
+    = await useFetch('/api/stripe/featured/availability', {
       query: {
         module: currentTeam.value.entity?.module || 'company',
-        categoryId: selectedFeaturedCategory
+        categoryId: selectedFeaturedCategory,
       },
       watch: [selectedFeaturedCategory],
-      immediate: false
-    });
+      immediate: false,
+    })
 
-  // Separate regular and featured plans
-  const regularPlans = computed(
-    () => plans.value?.filter((plan) => !plan.isFeaturedPosition) || []
-  );
+// Separate regular and featured plans
+const regularPlans = computed(
+  () => plans.value?.filter(plan => !plan.isFeaturedPosition) || [],
+)
 
-  const featuredPlans = computed(
-    () => plans.value?.filter((plan) => plan.isFeaturedPosition) || []
-  );
+const featuredPlans = computed(
+  () => plans.value?.filter(plan => plan.isFeaturedPosition) || [],
+)
 
-  // Fetch featured subscriptions if there are featured plans
-  const { data: featuredSubscriptions, refresh: refreshFeaturedSubscriptions } =
-    await useFetch<ExpandedSubscription[]>('/api/stripe/subscription', {
+// Fetch featured subscriptions if there are featured plans
+const { data: featuredSubscriptions, refresh: refreshFeaturedSubscriptions }
+    = await useFetch<ExpandedSubscription[]>('/api/stripe/subscription', {
       query: {
         teamId: currentTeam.value.id,
-        type: 'featured'
-      }
-    });
+        type: 'featured',
+      },
+    })
 
-  interface BillingPlan {
-    id: string;
-    name: string;
-    description: string;
-    status?: string;
-    currentPeriodEnd?: Date;
-    currentPeriodStart?: Date;
-    amount: number;
-    interval: string;
-    priceId: string;
-    cancelAt?: Date;
+interface BillingPlan {
+  id: string
+  name: string
+  description: string
+  status?: string
+  currentPeriodEnd?: Date
+  currentPeriodStart?: Date
+  amount: number
+  interval: string
+  priceId: string
+  cancelAt?: Date
+}
+
+const currentPlan = computed<BillingPlan>(() => {
+  if (!activeSubscription.value?.priceId || !plans.value) {
+    return {
+      id: '',
+      name: 'No active plan',
+      description: '',
+      amount: 0,
+      interval: '',
+      priceId: '',
+    } as BillingPlan
   }
 
-  const currentPlan = computed<BillingPlan>(() => {
-    if (!activeSubscription.value?.priceId || !plans.value) {
-      return {
-        id: '',
-        name: 'No active plan',
-        description: '',
-        amount: 0,
-        interval: '',
-        priceId: ''
-      } as BillingPlan;
+  const plan = plans.value.find(
+    p => p.id === activeSubscription.value?.priceId,
+  )
+
+  if (!plan) {
+    throw createError('Invalid plan configuration')
+  }
+
+  return {
+    id: plan.id,
+    name: plan.product.name || 'Unknown plan',
+    description: plan.product.description || 'No description',
+    status: activeSubscription.value.status,
+    currentPeriodEnd: activeSubscription.value.currentPeriodEnd,
+    currentPeriodStart: activeSubscription.value.currentPeriodStart,
+    amount: plan.unitAmount,
+    interval: plan.interval,
+    priceId: plan.id,
+    cancelAt: activeSubscription.value.cancelAt,
+  } as BillingPlan
+})
+
+async function handleSubscribe(priceId: string) {
+  try {
+    loadingPriceId.value = priceId
+    disabled.value = true
+
+    if (!currentTeam.value.id || !currentTeam.value.slug) {
+      throw new Error('Team information is missing')
     }
 
-    const plan = plans.value.find(
-      (p) => p.id === activeSubscription.value?.priceId
-    );
+    const checkoutUrl = await $fetch('/api/stripe/checkout', {
+      method: 'POST',
+      body: {
+        priceId,
+        teamId: currentTeam.value.id,
+        teamSlug: currentTeam.value.slug,
+      },
+    })
 
-    if (!plan) {
-      throw createError('Invalid plan configuration');
+    if (!checkoutUrl) {
+      throw new Error('No checkout URL returned from the server')
     }
 
-    return {
-      id: plan.id,
-      name: plan.product.name || 'Unknown plan',
-      description: plan.product.description || 'No description',
-      status: activeSubscription.value.status,
-      currentPeriodEnd: activeSubscription.value.currentPeriodEnd,
-      currentPeriodStart: activeSubscription.value.currentPeriodStart,
-      amount: plan.unitAmount,
-      interval: plan.interval,
-      priceId: plan.id,
-      cancelAt: activeSubscription.value.cancelAt
-    } as BillingPlan;
-  });
+    window.location.href = checkoutUrl
+  }
+  catch (error) {
+    toast.add({
+      title: 'Failed to create checkout session',
+      description:
+          error instanceof Error
+            ? error.message
+            : 'An unexpected error occurred',
+      color: 'error',
+    })
+    console.error('Stripe checkout error:', error)
+  }
+  finally {
+    loadingPriceId.value = null
+    disabled.value = false
+  }
+}
 
-  const handleSubscribe = async (priceId: string) => {
-    try {
-      loadingPriceId.value = priceId;
-      disabled.value = true;
+async function handleFeaturedSubscribe(
+  priceId: string,
+  categoryId: number | null,
+) {
+  try {
+    loadingPriceId.value = priceId
+    disabled.value = true
 
-      if (!currentTeam.value.id || !currentTeam.value.slug) {
-        throw new Error('Team information is missing');
-      }
+    if (!currentTeam.value.id || !currentTeam.value.slug) {
+      throw new Error('Team information is missing')
+    }
 
-      const checkoutUrl = await $fetch('/api/stripe/checkout', {
-        method: 'POST',
-        body: {
-          priceId,
-          teamId: currentTeam.value.id,
-          teamSlug: currentTeam.value.slug
-        }
-      });
+    const checkoutUrl = await $fetch('/api/stripe/checkout', {
+      method: 'POST',
+      body: {
+        priceId,
+        teamId: currentTeam.value.id,
+        teamSlug: currentTeam.value.slug,
+        categoryId, // This will be used for featured positions
+      },
+    })
 
-      if (!checkoutUrl) {
-        throw new Error('No checkout URL returned from the server');
-      }
+    if (!checkoutUrl) {
+      throw new Error('No checkout URL returned from the server')
+    }
 
-      window.location.href = checkoutUrl;
-    } catch (error) {
+    window.location.href = checkoutUrl
+  }
+  catch (error) {
+    // Handle the specific error when team already has a subscription
+    if (
+      error?.data?.statusCode === 400
+      && error?.data?.statusMessage?.includes('already have a featured position')
+    ) {
+      toast.add({
+        title: 'Existing Subscription',
+        description:
+            'You already have a featured position in this category. Click "Manage" to change your position.',
+        color: 'warning',
+      })
+    }
+    else {
       toast.add({
         title: 'Failed to create checkout session',
         description:
-          error instanceof Error
-            ? error.message
-            : 'An unexpected error occurred',
-        color: 'error'
-      });
-      console.error('Stripe checkout error:', error);
-    } finally {
-      loadingPriceId.value = null;
-      disabled.value = false;
-    }
-  };
-
-  const handleFeaturedSubscribe = async (
-    priceId: string,
-    categoryId: number | null
-  ) => {
-    try {
-      loadingPriceId.value = priceId;
-      disabled.value = true;
-
-      if (!currentTeam.value.id || !currentTeam.value.slug) {
-        throw new Error('Team information is missing');
-      }
-
-      const checkoutUrl = await $fetch('/api/stripe/checkout', {
-        method: 'POST',
-        body: {
-          priceId,
-          teamId: currentTeam.value.id,
-          teamSlug: currentTeam.value.slug,
-          categoryId // This will be used for featured positions
-        }
-      });
-
-      if (!checkoutUrl) {
-        throw new Error('No checkout URL returned from the server');
-      }
-
-      window.location.href = checkoutUrl;
-    } catch (error) {
-      // Handle the specific error when team already has a subscription
-      if (
-        error?.data?.statusCode === 400 &&
-        error?.data?.statusMessage?.includes('already have a featured position')
-      ) {
-        toast.add({
-          title: 'Existing Subscription',
-          description:
-            'You already have a featured position in this category. Click "Manage" to change your position.',
-          color: 'warning'
-        });
-      } else {
-        toast.add({
-          title: 'Failed to create checkout session',
-          description:
             error instanceof Error
               ? error.message
               : 'An unexpected error occurred',
-          color: 'error'
-        });
-      }
-      console.error('Stripe checkout error:', error);
-    } finally {
-      loadingPriceId.value = null;
-      disabled.value = false;
+        color: 'error',
+      })
     }
-  };
+    console.error('Stripe checkout error:', error)
+  }
+  finally {
+    loadingPriceId.value = null
+    disabled.value = false
+  }
+}
 
-  const handleManageSubscription = async () => {
-    try {
-      loadingPortal.value = true;
+async function handleManageSubscription() {
+  try {
+    loadingPortal.value = true
 
-      if (!currentTeam.value.id) {
-        throw new Error('Team information is missing');
-      }
+    if (!currentTeam.value.id) {
+      throw new Error('Team information is missing')
+    }
 
-      const portalUrl = await $fetch('/api/stripe/portal', {
-        method: 'POST',
-        body: {
-          teamId: currentTeam.value.id
-        }
-      });
+    const portalUrl = await $fetch('/api/stripe/portal', {
+      method: 'POST',
+      body: {
+        teamId: currentTeam.value.id,
+      },
+    })
 
-      if (!portalUrl) {
-        throw new Error('No portal URL returned from the server');
-      }
+    if (!portalUrl) {
+      throw new Error('No portal URL returned from the server')
+    }
 
-      // Open in new tab
-      window.open(portalUrl, '_blank');
-    } catch (error) {
-      toast.add({
-        title: 'Failed to access billing portal',
-        description:
+    // Open in new tab
+    window.open(portalUrl, '_blank')
+  }
+  catch (error) {
+    toast.add({
+      title: 'Failed to access billing portal',
+      description:
           error instanceof Error
             ? error.message
             : 'An unexpected error occurred',
-        color: 'error'
-      });
-      console.error('Billing portal error:', error);
-    } finally {
-      loadingPortal.value = false;
-    }
-  };
+      color: 'error',
+    })
+    console.error('Billing portal error:', error)
+  }
+  finally {
+    loadingPortal.value = false
+  }
+}
 
-  const handleAvailabilityUpdate = (categoryId: number | null) => {
-    selectedFeaturedCategory.value = categoryId;
-  };
+function handleAvailabilityUpdate(categoryId: number | null) {
+  selectedFeaturedCategory.value = categoryId
+}
 
-  const formatPrice = (price?: number): string => {
-    if (!price) return '$0';
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0
-    }).format(price / 100);
-  };
+function formatPrice(price?: number): string {
+  if (!price)
+    return '$0'
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+  }).format(price / 100)
+}
 
-  const getStatusColor = (status?: string) => {
-    switch (status) {
-      case 'active':
-        return 'success';
-      case 'trialing':
-        return 'primary';
-      case 'canceled':
-      case 'incomplete_expired':
-      case 'unpaid':
-        return 'error';
-      case 'past_due':
-      case 'incomplete':
-        return 'warning';
-      default:
-        return 'neutral';
-    }
-  };
+function getStatusColor(status?: string) {
+  switch (status) {
+    case 'active':
+      return 'success'
+    case 'trialing':
+      return 'primary'
+    case 'canceled':
+    case 'incomplete_expired':
+    case 'unpaid':
+      return 'error'
+    case 'past_due':
+    case 'incomplete':
+      return 'warning'
+    default:
+      return 'neutral'
+  }
+}
 
-  const getSubscriptionMessage = (plan: BillingPlan) => {
-    if (plan.cancelAt) {
-      return 'Cancels on';
-    }
-    if (plan.status === 'trialing') {
-      return 'Trial ends on';
-    }
-    return 'Renews on';
-  };
+function getSubscriptionMessage(plan: BillingPlan) {
+  if (plan.cancelAt) {
+    return 'Cancels on'
+  }
+  if (plan.status === 'trialing') {
+    return 'Trial ends on'
+  }
+  return 'Renews on'
+}
 
-  onMounted(async () => {
-    if (route.query.success === 'true') {
-      await refreshSession();
-    }
-  });
+onMounted(async () => {
+  if (route.query.success === 'true') {
+    await refreshSession()
+  }
+})
 </script>
 
 <template>
@@ -304,16 +312,17 @@
             <template v-if="activeSubscription">
               <h3 class="text-lg font-medium">
                 You are on
-                <span class="font-bold">{{ currentPlan.name }}</span> plan
+                <span class="font-bold">{{ currentPlan.name }}</span>
+                plan
               </h3>
               <div class="flex flex-wrap items-center gap-3">
                 <div class="flex items-center gap-2">
-                  <span class="text-xl font-semibold">{{
-                    formatPrice(currentPlan.amount)
-                  }}</span>
-                  <span class="text-neutral-500"
-                    >every {{ currentPlan.interval }}</span
-                  >
+                  <span class="text-xl font-semibold">
+                    {{ formatPrice(currentPlan.amount) }}
+                  </span>
+                  <span class="text-neutral-500">
+                    every {{ currentPlan.interval }}
+                  </span>
                 </div>
                 <UBadge
                   :label="currentPlan.status"
@@ -326,7 +335,7 @@
                   {{
                     useDateFormat(
                       currentPlan.cancelAt || currentPlan.currentPeriodEnd,
-                      'MMM DD, YYYY'
+                      'MMM DD, YYYY',
                     )
                   }}
                 </span>
@@ -334,7 +343,9 @@
             </template>
             <template v-else>
               <h3 class="text-lg font-medium">
-                You are on the <span class="font-bold">Free</span> plan
+                You are on the
+                <span class="font-bold">Free</span>
+                plan
               </h3>
               <p class="text-sm text-neutral-500">
                 Upgrade to a paid plan to unlock more features and higher usage

@@ -1,39 +1,39 @@
 <script setup lang="ts">
-  interface Props {
-    name: string;
-    oneLiner?: string;
-    image?: string;
-    sections: string[];
-    serplyLink: string;
-    verified?: boolean;
-  }
+interface Props {
+  name: string
+  oneLiner?: string
+  image?: string
+  sections: string[]
+  serplyLink: string
+  verified?: boolean
+}
 
-  withDefaults(defineProps<Props>(), {
-    image: '',
-    oneLiner: '',
-    verified: false
-  });
+withDefaults(defineProps<Props>(), {
+  image: '',
+  oneLiner: '',
+  verified: false,
+})
 
-  const header = useTemplateRef('header');
-  const isScrolled = ref(false);
+const header = useTemplateRef('header')
+const isScrolled = ref(false)
 
-  // // helps the multipage header to stick properly
-  // onMounted(() => {
-  //   const handleScroll = () => {
-  //     isScrolled.value = window.scrollY > 0;
+// // helps the multipage header to stick properly
+// onMounted(() => {
+//   const handleScroll = () => {
+//     isScrolled.value = window.scrollY > 0;
 
-  //     if (header.value) {
-  //       header.value.style.zIndex = isScrolled.value ? '10' : '0';
-  //     }
-  //   };
+//     if (header.value) {
+//       header.value.style.zIndex = isScrolled.value ? '10' : '0';
+//     }
+//   };
 
-  //   window.addEventListener('scroll', handleScroll);
-  //   handleScroll(); // Initial check
+//   window.addEventListener('scroll', handleScroll);
+//   handleScroll(); // Initial check
 
-  //   onBeforeUnmount(() => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   });
-  // });
+//   onBeforeUnmount(() => {
+//     window.removeEventListener('scroll', handleScroll);
+//   });
+// });
 </script>
 
 <template>
@@ -44,7 +44,7 @@
       :class="{
         'py-2': isScrolled,
         'py-2 sm:py-4': !isScrolled,
-        'sticky top-0 left-0': isScrolled
+        'sticky top-0 left-0': isScrolled,
       }"
       style="z-index: 10"
     >
@@ -72,7 +72,7 @@
                     <h1 class="text-text text-xl font-semibold sm:text-3xl">
                       {{ name }}
                     </h1>
-                    <slot name="name-trailing"></slot>
+                    <slot name="name-trailing" />
                   </div>
                   <p class="text-muted font-medium">
                     {{ oneLiner }}
@@ -86,7 +86,7 @@
             <div
               class="flex flex-none flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0"
             >
-              <slot name="upvote"></slot>
+              <slot name="upvote" />
               <UButton
                 v-if="serplyLink"
                 label="Website"
@@ -109,7 +109,7 @@
               <NuxtLink
                 v-for="section in sections"
                 :key="section"
-                :href="'#' + section.toLowerCase()"
+                :href="`#${section.toLowerCase()}`"
                 class="sectionLinks flex-shrink-0 rounded-sm px-1 py-2 text-sm font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-600 sm:px-2 sm:text-base dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300"
               >
                 {{ section }}
@@ -143,7 +143,7 @@
               <NuxtLink
                 v-for="section in sections"
                 :key="section"
-                :href="'#' + section.toLowerCase()"
+                :href="`#${section.toLowerCase()}`"
                 class="sectionLinks flex-shrink-0 rounded-sm px-1 py-2 text-sm font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-600 sm:px-2 sm:text-base dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300"
               >
                 {{ section }}

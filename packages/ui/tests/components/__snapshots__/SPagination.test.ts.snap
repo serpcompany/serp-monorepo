@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPagination > renders with custom pagination values correctly 1`] = `
+exports[`sPagination > renders with custom pagination values correctly 1`] = `
 <nav
   aria-label="pagination"
   class="
@@ -390,7 +390,7 @@ exports[`SPagination > renders with custom pagination values correctly 1`] = `
 </nav>
 `;
 
-exports[`SPagination > renders with default props correctly 1`] = `
+exports[`sPagination > renders with default props correctly 1`] = `
 <nav
   aria-label="pagination"
   class="

@@ -1,27 +1,27 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import SPageSongSingle from '../../../../components/SPage/Song/Single.vue';
-import ComponentRender from '../../../componentRender';
-import '../../../mockUseUserSession';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import SPageSongSingle from '../../../../components/SPage/Song/Single.vue'
+import ComponentRender from '../../../componentRender'
+import '../../../mockUseUserSession'
 
-mockNuxtImport('useSeoMeta', () => () => {});
+mockNuxtImport('useSeoMeta', () => () => {})
 
 let config_: Record<string, unknown> = {
   app: { baseURL: '/' },
   public: {
-    useAuth: false
-  }
-};
-let songData_: unknown = {};
-let upvotesData_: unknown = { upvotes: [] };
+    useAuth: false,
+  },
+}
+let songData_: unknown = {}
+let upvotesData_: unknown = { upvotes: [] }
 
-mockNuxtImport('useRuntimeConfig', () => () => config_);
-mockNuxtImport('useSong', () => () => songData_);
-mockNuxtImport('useFetchWithCache', () => () => upvotesData_);
+mockNuxtImport('useRuntimeConfig', () => () => config_)
+mockNuxtImport('useSong', () => () => songData_)
+mockNuxtImport('useFetchWithCache', () => () => upvotesData_)
 
 const scenarios: [
   string,
-  { config: Record<string, unknown>; song: unknown; upvotes: string[] }
+  { config: Record<string, unknown>, song: unknown, upvotes: string[] },
 ][] = [
   [
     'complete song with upvotes and auth enabled',
@@ -37,30 +37,30 @@ const scenarios: [
         releaseGroups: [
           {
             slug: 'album-1',
-            cover_art_urls: { '500': '/album-1.jpg' },
+            cover_art_urls: { 500: '/album-1.jpg' },
             name: 'Album One',
             recordings: [
               {
                 slug: 'song-1',
                 has_lyrics: true,
                 name: 'Song One',
-                position: 1
+                position: 1,
               },
               {
                 slug: 'song-2',
                 has_lyrics: false,
                 name: 'Song Two',
-                position: 2
-              }
-            ]
-          }
+                position: 2,
+              },
+            ],
+          },
         ],
         artists: [
-          { slug: 'artist-1', credit_name: 'Artist One', join_phrase: '' }
-        ]
+          { slug: 'artist-1', credit_name: 'Artist One', join_phrase: '' },
+        ],
       },
-      upvotes: ['user@example.com']
-    }
+      upvotes: ['user@example.com'],
+    },
   ],
   [
     'minimal song without upvotes and auth disabled',
@@ -73,27 +73,27 @@ const scenarios: [
         genres: [],
         tags: [],
         releaseGroups: [],
-        artists: []
+        artists: [],
       },
-      upvotes: []
-    }
-  ]
-];
+      upvotes: [],
+    },
+  ],
+]
 
-describe('SPageSongSingle Snapshot', () => {
+describe('sPageSongSingle Snapshot', () => {
   it.each(scenarios)(
     'renders %s correctly',
     async (desc: string, { config, song, upvotes }) => {
-      config_ = config;
-      songData_ = song;
-      upvotesData_ = { upvotes };
+      config_ = config
+      songData_ = song
+      upvotesData_ = { upvotes }
 
       const html = await ComponentRender(
         `SPageSongSingle - ${desc}`,
         {},
-        SPageSongSingle
-      );
-      expect(html).toMatchSnapshot();
-    }
-  );
-});
+        SPageSongSingle,
+      )
+      expect(html).toMatchSnapshot()
+    },
+  )
+})

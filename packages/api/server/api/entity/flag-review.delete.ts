@@ -1,19 +1,20 @@
-import { getDb } from '@serp/db/server/database';
-import { review, verification } from '@serp/db/server/database/schema';
-import { and, eq, sql } from 'drizzle-orm';
+import { getDb } from '@serp/db/server/database'
+import { review, verification } from '@serp/db/server/database/schema'
+import { and, eq, sql } from 'drizzle-orm'
 
 export default defineEventHandler(async (event) => {
   try {
-    const session = await requireUserSession(event);
-    const userId = session?.user?.id;
-    if (!userId) return { status: 401, message: 'Unauthorized' };
+    const session = await requireUserSession(event)
+    const userId = session?.user?.id
+    if (!userId)
+      return { status: 401, message: 'Unauthorized' }
 
-    const { id } = getQuery(event);
+    const { id } = getQuery(event)
     if (!id) {
       return {
         status: 400,
-        message: 'Review ID is required in the query params'
-      };
+        message: 'Review ID is required in the query params',
+      }
     }
 
     // Check if review exists to an entity the user is verified for
@@ -23,10 +24,10 @@ export default defineEventHandler(async (event) => {
       .leftJoin(verification, eq(review.entity, verification.entity))
       .where(and(eq(review.id, id), eq(verification.user, userId)))
       .limit(1)
-      .execute();
+      .execute()
 
     if (existingReview.length === 0) {
-      return { status: 404, message: 'Review not found' };
+      return { status: 404, message: 'Review not found' }
     }
 
     await getDb()
@@ -38,13 +39,14 @@ export default defineEventHandler(async (event) => {
         flaggedReason: null,
         flaggedBy: null,
         reviewedBy: userId,
-        reviewedAt: sql`now()`
+        reviewedAt: sql`now()`,
       })
       .where(eq(review.id, existingReview[0].id))
-      .execute();
+      .execute()
 
-    return { message: 'success' };
-  } catch (error: unknown) {
-    return { status: 500, message: error.message };
+    return { message: 'success' }
   }
-});
+  catch (error: unknown) {
+    return { status: 500, message: error.message }
+  }
+})

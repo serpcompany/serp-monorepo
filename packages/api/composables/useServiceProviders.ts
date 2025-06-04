@@ -1,17 +1,21 @@
-import type { Entities, ServiceProviders } from '@serp/types/types';
+import type {
+  Entities,
+  ServiceProviderIndex,
+  ServiceProviders,
+} from '@serp/types/types'
 
-export const useServiceProviders = async (
+export async function useServiceProviders(
   page = 1,
   limit = 50,
   categorySlug = '',
-  topicSlug = ''
-) => {
+  topicSlug = '',
+) {
   const data = await useFetchWithCache<Entities>(
-    `/entities?page=${page}&limit=${limit}&categorySlug=${categorySlug}&topicSlug=${topicSlug}&module=service_provider`
-  );
-  const { entities, ...rest } = data;
+    `/entities?page=${page}&limit=${limit}&categorySlug=${categorySlug}&topicSlug=${topicSlug}&module=service_provider`,
+  )
+  const { entities, ...rest } = data
   return {
     ...rest,
-    serviceProviders: entities
-  } as ServiceProviders;
-};
+    serviceProviders: entities as ServiceProviderIndex[],
+  } as ServiceProviders
+}

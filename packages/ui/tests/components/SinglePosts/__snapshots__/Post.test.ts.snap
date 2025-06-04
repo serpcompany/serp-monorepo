@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SinglePostsPost Snapshot > renders with full post and auth disabled correctly 1`] = `
+exports[`singlePostsPost Snapshot > renders with full post and auth disabled correctly 1`] = `
 <main class="min-h-[calc(100vh-var(--ui-header-height))]">
   <section class="mb-8">
     <section class="py-20">
@@ -194,7 +194,7 @@ exports[`SinglePostsPost Snapshot > renders with full post and auth disabled cor
 </main>
 `;
 
-exports[`SinglePostsPost Snapshot > renders with full post and auth enabled correctly 1`] = `
+exports[`singlePostsPost Snapshot > renders with full post and auth enabled correctly 1`] = `
 <main class="min-h-[calc(100vh-var(--ui-header-height))]">
   <section class="mb-8">
     <section class="py-20">
@@ -561,7 +561,7 @@ exports[`SinglePostsPost Snapshot > renders with full post and auth enabled corr
 </main>
 `;
 
-exports[`SinglePostsPost Snapshot > renders with non-empty relatedPosts correctly 1`] = `
+exports[`singlePostsPost Snapshot > renders with non-empty relatedPosts correctly 1`] = `
 <main class="min-h-[calc(100vh-var(--ui-header-height))]">
   <section class="mb-8">
     <section class="py-20">
@@ -814,7 +814,7 @@ exports[`SinglePostsPost Snapshot > renders with non-empty relatedPosts correctl
 </main>
 `;
 
-exports[`SinglePostsPost Snapshot > renders without video and minimal fields correctly 1`] = `
+exports[`singlePostsPost Snapshot > renders without video and minimal fields correctly 1`] = `
 <main class="min-h-[calc(100vh-var(--ui-header-height))]">
   <section class="mb-8">
     <section class="py-20">

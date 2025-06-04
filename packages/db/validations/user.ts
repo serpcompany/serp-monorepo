@@ -1,6 +1,6 @@
-import { insertUserSchema } from '../types/database';
+import { insertUserSchema } from '../types/database'
 
 export const updateUserSchema = insertUserSchema.pick({
   name: true,
-  avatarUrl: true
-});
+  avatarUrl: true,
+})

@@ -1,31 +1,29 @@
 {
   "name": "@serp/root",
-  "private": true,
   "type": "module",
+  "private": true,
+  "packageManager": "pnpm@9.10.0",
+  "engines": {
+    "node": "^22.16.0"
+  },
   "scripts": {
     "build": "turbo run build",
-    "eslint": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run eslint",
-    "format": "prettier --write \"**/*.{ts,tsx,md,vue,json}\"",
-    "lint": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run lint",
+    "lint:fix": "turbo run lint:fix",
     "lint:windows": "turbo run lint",
+    "lint": "turbo run lint",
     "prepare": "husky install",
-    "prettier": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run prettier",
-    "test": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run test",
-    "test:update": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run test:update",
     "test:update:windows": "turbo run test:update",
+    "test:update": "turbo run test:update",
     "test:watch": "turbo run test:watch",
     "test:windows": "turbo run test",
-    "typecheck": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run typecheck 2>&1 | tee reports/typecheck-errors.txt",
-    "typecheck:phase1": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run typecheck 2>&1 | grep -E 'TS7006|TS7053|TS7034|TS7005' && exit 1 || exit 0",
-    "typecheck:ts7006": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' turbo run typecheck 2>&1 | grep 'TS7006' && echo 'TS7006 errors found - build failed!' && exit 1 || echo 'No TS7006 errors found - build passed!'"
-  },
-  "resolutions": {
-    "@vue/server-renderer": "3.5.14",
-    "unimport": "4.1.1",
-    "vue": "3.5.14",
-    "vue-tsc": "2.2.0"
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck 2>&1 | tee reports/typecheck-errors.txt",
+    "typecheck:fixed": "turbo run typecheck 2>&1 | grep -E 'TS7006|TS7053|TS7034|TS7005' && echo 'Fixed TypeScript errors found!' && exit 1 || echo 'No fixed TypeScript errors found - build passed!'",
+    "//ci": "--- CI Commands (check-only, no auto-fix) ---",
+    "ci:lint": "turbo run ci:lint"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^4.13.2",
     "@eslint/eslintrc": "^3.0.0",
     "@eslint/js": "^8.56.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
@@ -33,13 +31,24 @@
     "@vue/eslint-config-typescript": "^12.0.0",
     "eslint": "^8.56.0",
     "eslint-config-turbo": "^2.0.0",
+    "eslint-plugin-format": "^1.0.1",
+    "eslint-plugin-jsdoc": "^50.6.17",
+    "eslint-plugin-vuejs-accessibility": "^2.4.1",
+    "eslint-typegen": "^2.2.0",
     "husky": "^9.1.7",
-    "prettier": "^3.5.3",
+    "lint-staged": "^16.1.0",
     "turbo": "^2.4.4",
     "typescript": "^5.7.3"
   },
-  "packageManager": "pnpm@8.15.6",
-  "engines": {
-    "node": "^22.16.0"
+  "resolutions": {
+    "@vue/server-renderer": "3.5.14",
+    "unimport": "4.1.1",
+    "vue": "3.5.14",
+    "vue-tsc": "2.2.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,vue,js,jsx}": [
+      "eslint --fix"
+    ]
   }
 }

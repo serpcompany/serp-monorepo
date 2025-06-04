@@ -1,44 +1,49 @@
-import { WebClient } from '@slack/web-api';
+import process from 'node:process'
+import { WebClient } from '@slack/web-api'
 
 // Slack provider implementation
-let slackClient: WebClient | null = null;
+let slackClient: WebClient | null = null
 
 function getSlackClient(): WebClient {
-  if (slackClient) return slackClient;
+  if (slackClient)
+    return slackClient
 
-  const slackToken = process.env.SLACK_BOT_TOKEN;
+  const slackToken = process.env.SLACK_BOT_TOKEN
 
   if (!slackToken) {
-    throw new Error('Missing SLACK_BOT_TOKEN environment variable');
+    throw new Error('Missing SLACK_BOT_TOKEN environment variable')
   }
 
-  slackClient = new WebClient(slackToken);
-  return slackClient;
+  slackClient = new WebClient(slackToken)
+  return slackClient
 }
 
 export interface SlackNotificationOptions {
-  message: string;
-  channel?: string;
+  message: string
+  channel?: string
 }
 
-export async function sendSlackNotification(options: SlackNotificationOptions) {
-  const { message, channel = process.env.SLACK_CHANNEL_ID } = options;
+export async function sendSlackNotification(
+  options: SlackNotificationOptions,
+): Promise<void> {
+  const { message, channel = process.env.SLACK_CHANNEL_ID } = options
 
   try {
     if (process.env.NODE_ENV === 'production') {
-      const client = getSlackClient();
+      const client = getSlackClient()
       await client.chat.postMessage({
         channel,
-        text: message
-      });
-    } else {
-      // eslint-disable-next-line no-console
-      console.log('Slack notification sent', { message, channel });
+        text: message,
+      })
     }
-  } catch (error) {
-    // eslint-disable-next-line no-console
+    else {
+      // eslint-disable-next-line no-console
+      console.log('Slack notification sent', { message, channel })
+    }
+  }
+  catch (error) {
     console.error('Failed to send Slack notification', {
-      error: error.message
-    });
+      error: error.message,
+    })
   }
 }

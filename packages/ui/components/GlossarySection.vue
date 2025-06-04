@@ -1,16 +1,16 @@
 <script setup lang="ts">
-  interface Props {
-    id: string;
-    title: string;
-    items: Array<{
-      keyword?: string;
-      title?: string;
-      slug: string;
-      name: string;
-    }>;
-  }
+interface Props {
+  id: string
+  title: string
+  items: Array<{
+    keyword?: string
+    title?: string
+    slug: string
+    name: string
+  }>
+}
 
-  defineProps<Props>();
+defineProps<Props>()
 </script>
 
 <template>
@@ -19,7 +19,7 @@
     :title="title"
     :ui="{
       title: 'text-left',
-      container: 'px-0 lg:px-0'
+      container: 'px-0 lg:px-0',
     }"
     orientation="vertical"
   >
@@ -39,7 +39,7 @@
         <span class="truncate text-base font-medium">
           {{ item.keyword || item.title || item.name }}
         </span>
-        <hr class="min-w-0 flex-1 border-(--ui-border)" />
+        <hr class="min-w-0 flex-1 border-(--ui-border)">
       </ULink>
     </div>
   </UPageSection>

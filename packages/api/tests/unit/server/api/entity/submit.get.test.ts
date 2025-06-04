@@ -1,42 +1,41 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { mockGetQuery, mockDb } from '../../../../setup';
-import { getDb } from '@serp/db/server/database';
-import { and, eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { mockDb, mockGetQuery } from '../../../../setup'
 
-describe('Entity Submit Get API', () => {
-  let handler;
-  let mockRequireUserSession;
+describe('entity Submit Get API', () => {
+  let handler
+  let mockRequireUserSession
 
   beforeEach(async () => {
-    vi.resetModules();
-    vi.clearAllMocks();
+    vi.resetModules()
+    vi.clearAllMocks()
 
     // Setup mock user session
     mockRequireUserSession = vi.fn().mockResolvedValue({
-      user: { siteId: 'user-123', id: 'user-123' }
-    });
-    globalThis.requireUserSession = mockRequireUserSession;
+      user: { siteId: 'user-123', id: 'user-123' },
+    })
+    globalThis.requireUserSession = mockRequireUserSession
 
     // Reset mockGetQuery to prevent test leakage
-    mockGetQuery.mockReset();
+    mockGetQuery.mockReset()
 
     // Import handler
     handler = (await import('../../../../../server/api/entity/submit.get'))
-      .default;
-  });
+      .default
+  })
 
   it('should return 401 if user is not authenticated', async () => {
-    mockRequireUserSession.mockResolvedValueOnce({ user: null });
-    mockGetQuery.mockReturnValue({ module: 'test-module' });
+    mockRequireUserSession.mockResolvedValueOnce({ user: null })
+    mockGetQuery.mockReturnValue({ module: 'test-module' })
 
-    const result = await handler({});
+    const result = await handler({})
 
-    expect(result).toEqual({ status: 401, message: 'Unauthorized' });
-  });
+    expect(result).toEqual({ status: 401, message: 'Unauthorized' })
+  })
 
   it('should fetch all submissions for a user when no ID is provided', async () => {
-    const module = 'test-module';
-    mockGetQuery.mockReturnValue({ module });
+    const module = 'test-module'
+    mockGetQuery.mockReturnValue({ module })
 
     const mockSubmissions = [
       {
@@ -49,7 +48,7 @@ describe('Entity Submit Get API', () => {
         reviewedBy: null,
         reviewNotes: null,
         backlinkVerified: false,
-        backlinkVerifiedAt: null
+        backlinkVerifiedAt: null,
       },
       {
         id: 2,
@@ -61,27 +60,27 @@ describe('Entity Submit Get API', () => {
         reviewedBy: 'admin-1',
         reviewNotes: 'Good submission',
         backlinkVerified: true,
-        backlinkVerifiedAt: new Date()
-      }
-    ];
+        backlinkVerifiedAt: new Date(),
+      },
+    ]
 
-    mockDb.execute.mockResolvedValueOnce(mockSubmissions);
+    mockDb.execute.mockResolvedValueOnce(mockSubmissions)
 
-    const result = await handler({});
+    const result = await handler({})
 
-    expect(result).toEqual(mockSubmissions);
-    expect(mockDb.select).toHaveBeenCalled();
-    expect(mockDb.from).toHaveBeenCalled();
-    expect(mockDb.where).toHaveBeenCalled();
-    expect(and).toHaveBeenCalled();
-    expect(eq).toHaveBeenCalledWith(expect.anything(), 'user-123');
-    expect(eq).toHaveBeenCalledWith(expect.anything(), module);
-  });
+    expect(result).toEqual(mockSubmissions)
+    expect(mockDb.select).toHaveBeenCalled()
+    expect(mockDb.from).toHaveBeenCalled()
+    expect(mockDb.where).toHaveBeenCalled()
+    expect(and).toHaveBeenCalled()
+    expect(eq).toHaveBeenCalledWith(expect.anything(), 'user-123')
+    expect(eq).toHaveBeenCalledWith(expect.anything(), module)
+  })
 
   it('should fetch a specific submission when ID is provided', async () => {
-    const module = 'test-module';
-    const id = '123';
-    mockGetQuery.mockReturnValue({ module, id });
+    const module = 'test-module'
+    const id = '123'
+    mockGetQuery.mockReturnValue({ module, id })
 
     const mockSubmission = {
       id: 123,
@@ -94,48 +93,48 @@ describe('Entity Submit Get API', () => {
       reviewedBy: null,
       reviewNotes: null,
       backlinkVerified: false,
-      backlinkVerifiedAt: null
-    };
+      backlinkVerifiedAt: null,
+    }
 
-    mockDb.execute.mockResolvedValueOnce([mockSubmission]);
+    mockDb.execute.mockResolvedValueOnce([mockSubmission])
 
-    const result = await handler({});
+    const result = await handler({})
 
-    expect(result).toEqual(mockSubmission);
-    expect(mockDb.select).toHaveBeenCalled();
-    expect(mockDb.from).toHaveBeenCalled();
-    expect(mockDb.where).toHaveBeenCalled();
-    expect(and).toHaveBeenCalled();
-    expect(eq).toHaveBeenCalledWith(expect.anything(), 'user-123');
-    expect(eq).toHaveBeenCalledWith(expect.anything(), id);
-    expect(eq).toHaveBeenCalledWith(expect.anything(), module);
-  });
+    expect(result).toEqual(mockSubmission)
+    expect(mockDb.select).toHaveBeenCalled()
+    expect(mockDb.from).toHaveBeenCalled()
+    expect(mockDb.where).toHaveBeenCalled()
+    expect(and).toHaveBeenCalled()
+    expect(eq).toHaveBeenCalledWith(expect.anything(), 'user-123')
+    expect(eq).toHaveBeenCalledWith(expect.anything(), id)
+    expect(eq).toHaveBeenCalledWith(expect.anything(), module)
+  })
 
   it('should return null when specific submission is not found', async () => {
     mockGetQuery.mockReturnValue({
       module: 'test-module',
-      id: '999'
-    });
+      id: '999',
+    })
 
-    mockDb.execute.mockResolvedValueOnce([]);
+    mockDb.execute.mockResolvedValueOnce([])
 
-    const result = await handler({});
+    const result = await handler({})
 
-    expect(result).toBeNull();
-  });
+    expect(result).toBeNull()
+  })
 
   it('should handle database errors gracefully', async () => {
-    mockGetQuery.mockReturnValue({ module: 'test-module' });
+    mockGetQuery.mockReturnValue({ module: 'test-module' })
 
     // Simulate a database error
-    const dbError = new Error('Database error');
-    mockDb.execute.mockRejectedValueOnce(dbError);
+    const dbError = new Error('Database error')
+    mockDb.execute.mockRejectedValueOnce(dbError)
 
-    const result = await handler({});
+    const result = await handler({})
 
     expect(result).toEqual({
       status: 500,
-      message: 'Database error'
-    });
-  });
-});
+      message: 'Database error',
+    })
+  })
+})

@@ -1,47 +1,48 @@
 import {
-  getInvite,
-  updateInviteStatus,
   acceptTeamInvite,
+  getInvite,
+  getTeam,
   isTeamMember,
-  getTeam
-} from '@serp/db/server/database/queries/teams';
+  updateInviteStatus,
+} from '@serp/db/server/database/queries/teams'
 import {
   findUserById,
-  verifyUser
-} from '@serp/db/server/database/queries/users';
-import { z } from 'zod';
+  verifyUser,
+} from '@serp/db/server/database/queries/users'
+import { z } from 'zod'
 
 const querySchema = z.object({
-  token: z.string().length(32, 'Invalid token')
-});
+  token: z.string().length(32, 'Invalid token'),
+})
 
 export default defineEventHandler(async (event) => {
   // 1. Validate token with type checking
   const { token } = await getValidatedQuery(
     event,
-    querySchema.parse.bind(querySchema)
-  );
+    querySchema.parse.bind(querySchema),
+  )
 
   // 2. Get and validate invite
-  let invite;
+  let invite
   try {
-    invite = await getInvite(token);
-  } catch (error) {
+    invite = await getInvite(token)
+  }
+  catch (error) {
     return sendRedirect(
       event,
-      `/auth/verification-error?message=${encodeURIComponent((error as Error).message)}`
-    );
+      `/auth/verification-error?message=${encodeURIComponent((error as Error).message)}`,
+    )
   }
 
   // 3. Validate user session and permissions
-  const session = await getUserSession(event);
+  const session = await getUserSession(event)
 
   if (session.user) {
     if (session.user.email !== invite.email) {
       throw createError({
         statusCode: 403,
-        statusMessage: 'Unauthorized invite'
-      });
+        statusMessage: 'Unauthorized invite',
+      })
     }
   }
 
@@ -51,42 +52,42 @@ export default defineEventHandler(async (event) => {
       path: '/',
       secure: true,
       httpOnly: true,
-      sameSite: 'lax'
-    });
+      sameSite: 'lax',
+    })
     setCookie(event, 'invite-email', invite.email, {
       maxAge: 60 * 60 * 24, // discard cookie after 1 day
       path: '/',
       secure: true,
       httpOnly: true,
-      sameSite: 'lax'
-    });
-    return sendRedirect(event, '/auth/register', 302);
+      sameSite: 'lax',
+    })
+    return sendRedirect(event, '/auth/register', 302)
   }
 
   // 4. Check if user is already a team member
-  const isAlreadyMember = await isTeamMember(invite.teamId, session.user.id);
+  const isAlreadyMember = await isTeamMember(invite.teamId, session.user.id)
   if (isAlreadyMember) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'You are already a member of this team'
-    });
+      statusMessage: 'You are already a member of this team',
+    })
   }
 
   // 5. Skip verifying user's email if they used an invite link
   if (invite.email === session.user.email) {
-    await verifyUser(session.user.id);
+    await verifyUser(session.user.id)
   }
 
   // 6. Process invite acceptance
-  await acceptTeamInvite(invite, session.user.id);
-  await updateInviteStatus(invite.id, 'accepted', session.user.id);
-  deleteCookie(event, 'invite-token');
-  deleteCookie(event, 'invite-email');
+  await acceptTeamInvite(invite, session.user.id)
+  await updateInviteStatus(invite.id, 'accepted', session.user.id)
+  deleteCookie(event, 'invite-token')
+  deleteCookie(event, 'invite-email')
 
   // 7. Get the team's slug for the redirect
-  const team = await getTeam(invite.teamId);
+  const team = await getTeam(invite.teamId)
   if (!team) {
-    return sendRedirect(event, '/dashboard', 302);
+    return sendRedirect(event, '/dashboard', 302)
   }
 
   // 8. Set this team as the last used team
@@ -95,9 +96,9 @@ export default defineEventHandler(async (event) => {
     path: '/',
     secure: true,
     httpOnly: true,
-    sameSite: 'lax'
-  });
+    sameSite: 'lax',
+  })
 
   // 9. Redirect to the team dashboard
-  return sendRedirect(event, `/dashboard/${team.slug}`, 302);
-});
+  return sendRedirect(event, `/dashboard/${team.slug}`, 302)
+})

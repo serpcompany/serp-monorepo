@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPageLogout Snapshot > handles when user is logged in correctly 1`] = `
+exports[`sPageLogout Snapshot > handles when user is logged in correctly 1`] = `
 <div>
   <button
     class="
@@ -35,7 +35,7 @@ exports[`SPageLogout Snapshot > handles when user is logged in correctly 1`] = `
 </div>
 `;
 
-exports[`SPageLogout Snapshot > handles when user is not logged in correctly 1`] = `
+exports[`sPageLogout Snapshot > handles when user is not logged in correctly 1`] = `
 <div>
   <button
     class="

@@ -1,7 +1,7 @@
-import type { ServiceProvider } from '@serp/types/types';
+import type { ServiceProvider } from '@serp/types/types'
 
-export const useServiceProvider = async (slug: string) => {
+export async function useServiceProvider(slug: string) {
   return useFetchWithCache<ServiceProvider>(
-    `/entity/${slug}&module=service_provider`
-  );
-};
+    `/entity/${slug}&module=service_provider`,
+  )
+}

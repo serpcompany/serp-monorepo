@@ -1,5 +1,5 @@
-import type { Topic } from '@serp/types/types';
+import type { Topic } from '@serp/types/types'
 
-export const useEntityTopics = async (module = '') => {
-  return await useFetchWithCache<Topic[]>(`/topics?module=${module}`);
-};
+export async function useEntityTopics(module = '') {
+  return await useFetchWithCache<Topic[]>(`/topics?module=${module}`)
+}

@@ -1,18 +1,19 @@
 <script lang="ts" setup>
-  import { useDateFormat } from '@vueuse/core';
-  import type { User } from '@serp/db/types/database';
+import type { User } from '@serp/db/types/database'
+import { useDateFormat } from '@vueuse/core'
 
-  defineProps<{
-    user: User;
-    loading: boolean;
-  }>();
+defineProps<{
+  user: User
+  loading: boolean
+}>()
 
-  defineEmits<(e: 'liftBan', user: User) => void>();
+defineEmits<(e: 'liftBan', user: User) => void>()
 
-  const formatDate = (date: string | Date | undefined) => {
-    if (!date) return 'NA';
-    return useDateFormat(date, 'MMM D, YYYY').value;
-  };
+function formatDate(date: string | Date | undefined) {
+  if (!date)
+    return 'NA'
+  return useDateFormat(date, 'MMM D, YYYY').value
+}
 </script>
 
 <template>
@@ -33,7 +34,9 @@
           >
             Reason
           </p>
-          <p class="mt-1 text-sm">{{ user.bannedReason }}</p>
+          <p class="mt-1 text-sm">
+            {{ user.bannedReason }}
+          </p>
           <UButton
             label="Lift Ban"
             block
@@ -47,5 +50,7 @@
       </template>
     </UPopover>
   </div>
-  <div v-else>No</div>
+  <div v-else>
+    No
+  </div>
 </template>

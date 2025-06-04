@@ -1,26 +1,29 @@
-import { eq, and, sql, desc } from 'drizzle-orm';
-import { getDb } from '../index';
-import { user, oauthAccount } from '../schema';
-import { H3Error } from 'h3';
+import { and, desc, eq, sql } from 'drizzle-orm'
+import { H3Error } from 'h3'
+import { getDb } from '../index'
+import { oauthAccount, user } from '../schema'
 
-type User = typeof user.$inferSelect;
-type InsertUser = typeof user.$inferInsert;
+type User = typeof user.$inferSelect
+type InsertUser = typeof user.$inferInsert
 
-export const findUserByEmail = async (email: string): Promise<User | null> => {
+export async function findUserByEmail(email: string): Promise<User | null> {
   try {
     const [existingUser] = await getDb()
       .select()
       .from(user)
       .where(eq(user.email, email))
-      .execute();
-    return existingUser || null;
-  } catch (error) {
-    console.error(error);
-    return null;
+      .execute()
+    return existingUser || null
   }
-};
+  catch (error) {
+    console.error(error)
+    return null
+  }
+}
 
-export const createUserWithPassword = async (payload: InsertUser) => {
+export async function createUserWithPassword(
+  payload: InsertUser,
+): Promise<User> {
   try {
     const [record] = await getDb()
       .insert(user)
@@ -29,94 +32,99 @@ export const createUserWithPassword = async (payload: InsertUser) => {
         target: user.email,
         set: {
           name: payload.name,
-          hashedPassword: payload.hashedPassword
-        }
+          hashedPassword: payload.hashedPassword,
+        },
       })
       .returning()
-      .execute();
-    return record;
-  } catch (error) {
-    console.error(error);
+      .execute()
+    return record
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to upsert user'
-    });
+      statusMessage: 'Failed to upsert user',
+    })
   }
-};
+}
 
-export const findLinkedAccountsByUserId = async (userId: number) => {
+export async function findLinkedAccountsByUserId(
+  userId: number,
+): Promise<Array<typeof oauthAccount.$inferSelect>> {
   try {
     const linkedAccounts = await getDb()
       .select()
       .from(oauthAccount)
       .where(eq(oauthAccount.userId, userId))
-      .execute();
-    return linkedAccounts;
-  } catch (error) {
-    console.error(error);
+      .execute()
+    return linkedAccounts
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to find linked accounts by user ID'
-    });
+      statusMessage: 'Failed to find linked accounts by user ID',
+    })
   }
-};
+}
 
-export const updateLastActiveTimestamp = async (
-  userId: number
-): Promise<User> => {
+export async function updateLastActiveTimestamp(userId: number): Promise<User> {
   try {
     const [record] = await getDb()
       .update(user)
       .set({ lastActive: new Date() })
       .where(eq(user.id, userId))
       .returning()
-      .execute();
-    return record;
-  } catch (error) {
-    console.error(error);
+      .execute()
+    return record
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to update last active'
-    });
+      statusMessage: 'Failed to update last active',
+    })
   }
-};
+}
 
-export const findUserById = async (id: number) => {
+export async function findUserById(id: number): Promise<User | null> {
   try {
     const [userRecord] = await getDb()
       .select()
       .from(user)
       .where(eq(user.id, id))
-      .execute();
-    return userRecord || null;
-  } catch (error) {
-    console.error(error);
+      .execute()
+    return userRecord || null
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to find user by ID'
-    });
+      statusMessage: 'Failed to find user by ID',
+    })
   }
-};
+}
 
-export const verifyUser = async (userId: number) => {
+export async function verifyUser(userId: number): Promise<User> {
   try {
     const [record] = await getDb()
       .update(user)
       .set({ emailVerified: true })
       .where(eq(user.id, userId))
       .returning()
-      .execute();
-    return record;
-  } catch (error) {
-    console.error(error);
+      .execute()
+    return record
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to verify user'
-    });
+      statusMessage: 'Failed to verify user',
+    })
   }
-};
+}
 
-export const createUserWithOAuth = async (payload: InsertUser) => {
+export async function createUserWithOAuth(payload: InsertUser): Promise<User> {
   try {
     const [record] = await getDb()
       .insert(user)
@@ -126,68 +134,74 @@ export const createUserWithOAuth = async (payload: InsertUser) => {
         set: {
           name: payload.name,
           avatarUrl: payload.avatarUrl,
-          emailVerified: true
-        }
+          emailVerified: true,
+        },
       })
       .returning()
-      .execute();
-    return record;
-  } catch (error) {
-    console.error(error);
+      .execute()
+    return record
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to create user with OAuth'
-    });
+      statusMessage: 'Failed to create user with OAuth',
+    })
   }
-};
+}
 
-export const updateUser = async (userId: number, payload: Partial<User>) => {
+export async function updateUser(
+  userId: number,
+  payload: Partial<User>,
+): Promise<User> {
   try {
     if (payload.superAdmin) {
-      delete payload.superAdmin;
+      delete payload.superAdmin
     }
     const [record] = await getDb()
       .update(user)
       .set({
         ...payload,
-        updatedAt: sql`now()`
+        updatedAt: sql`now()`,
       })
       .where(eq(user.id, userId))
       .returning()
-      .execute();
-    return record;
-  } catch (error) {
-    console.error(error);
+      .execute()
+    return record
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to update user'
-    });
+      statusMessage: 'Failed to update user',
+    })
   }
-};
+}
 
-export const updateUserPassword = async (
+export async function updateUserPassword(
   userId: number,
-  hashedPassword: string
-) => {
+  hashedPassword: string,
+): Promise<User> {
   try {
     const [record] = await getDb()
       .update(user)
       .set({ hashedPassword })
       .where(eq(user.id, userId))
       .returning()
-      .execute();
-    return record;
-  } catch (error) {
-    console.error(error);
-    throw new Error('Failed to update user password');
+      .execute()
+    return record
   }
-};
+  catch (error) {
+    console.error(error)
+    throw new Error('Failed to update user password')
+  }
+}
 
-export const linkOAuthAccount = async (
+export async function linkOAuthAccount(
   userId: number,
   provider: string,
-  providerUserId: string
-) => {
+  providerUserId: string,
+): Promise<typeof oauthAccount.$inferSelect> {
   try {
     const [existingAccount] = await getDb()
       .select()
@@ -195,10 +209,10 @@ export const linkOAuthAccount = async (
       .where(
         and(
           eq(oauthAccount.provider, provider),
-          eq(oauthAccount.providerUserId, providerUserId)
-        )
+          eq(oauthAccount.providerUserId, providerUserId),
+        ),
       )
-      .execute();
+      .execute()
 
     if (existingAccount) {
       const [record] = await getDb()
@@ -206,87 +220,97 @@ export const linkOAuthAccount = async (
         .set({ userId })
         .where(eq(oauthAccount.id, existingAccount.id))
         .returning()
-        .execute();
-      return record;
-    } else {
+        .execute()
+      return record
+    }
+    else {
       const [record] = await getDb()
         .insert(oauthAccount)
         .values({
           userId,
           provider,
-          providerUserId
+          providerUserId,
         })
         .returning()
-        .execute();
-      return record;
+        .execute()
+      return record
     }
-  } catch (error) {
-    console.error(error);
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to link OAuth account'
-    });
+      statusMessage: 'Failed to link OAuth account',
+    })
   }
-};
+}
 
-export const findUserByPhoneNumber = async (phoneNumber: string) => {
+export async function findUserByPhoneNumber(
+  phoneNumber: string,
+): Promise<User | null> {
   try {
     const [userRecord] = await getDb()
       .select()
       .from(user)
       .where(eq(user.phoneNumber, phoneNumber))
-      .execute();
-    return userRecord || null;
-  } catch (error) {
-    console.error(error);
+      .execute()
+    return userRecord || null
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to find user by phone number'
-    });
+      statusMessage: 'Failed to find user by phone number',
+    })
   }
-};
+}
 
-export const unlinkAccount = async (userId: number, providerId: number) => {
+export async function unlinkAccount(
+  userId: number,
+  providerId: number,
+): Promise<void> {
   try {
-    const userRecord = await findUserById(userId);
+    const userRecord = await findUserById(userId)
     if (!userRecord) {
       throw createError({
         statusCode: 404,
-        statusMessage: 'User not found'
-      });
+        statusMessage: 'User not found',
+      })
     }
 
-    const linkedAccounts = await findLinkedAccountsByUserId(userId);
+    const linkedAccounts = await findLinkedAccountsByUserId(userId)
 
     if (!userRecord.hashedPassword && linkedAccounts.length <= 1) {
       throw createError({
         statusCode: 400,
         statusMessage:
-          'Cannot unlink the only authentication method. Please set a password first.'
-      });
+          'Cannot unlink the only authentication method. Please set a password first.',
+      })
     }
 
     await getDb()
       .delete(oauthAccount)
       .where(
-        and(eq(oauthAccount.userId, userId), eq(oauthAccount.id, providerId))
+        and(eq(oauthAccount.userId, userId), eq(oauthAccount.id, providerId)),
       )
-      .execute();
-  } catch (error) {
-    console.error(error);
-    if (error instanceof H3Error && error.statusCode) throw error;
+      .execute()
+  }
+  catch (error) {
+    console.error(error)
+    if (error instanceof H3Error && error.statusCode)
+      throw error
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to unlink account'
-    });
+      statusMessage: 'Failed to unlink account',
+    })
   }
-};
+}
 
-export const deleteUser = async (userId: number) => {
-  await getDb().delete(user).where(eq(user.id, userId)).execute();
-};
+export async function deleteUser(userId: number): Promise<void> {
+  await getDb().delete(user).where(eq(user.id, userId)).execute()
+}
 
-export const getAllUsers = async (offset = 0, limit = 50) => {
+export async function getAllUsers(offset = 0, limit = 50): Promise<User[]> {
   const rows = await getDb()
     .select({
       id: user.id,
@@ -303,7 +327,7 @@ export const getAllUsers = async (offset = 0, limit = 50) => {
         'providerUserId', ${oauthAccount.providerUserId},
         'createdAt', ${oauthAccount.createdAt},
         'updatedAt', ${oauthAccount.updatedAt}
-      ))`
+      ))`,
     })
     .from(user)
     .leftJoin(oauthAccount, eq(oauthAccount.userId, user.id))
@@ -311,7 +335,7 @@ export const getAllUsers = async (offset = 0, limit = 50) => {
     .groupBy(user.id)
     .limit(limit)
     .offset(offset)
-    .execute();
+    .execute()
 
-  return rows;
-};
+  return rows
+}

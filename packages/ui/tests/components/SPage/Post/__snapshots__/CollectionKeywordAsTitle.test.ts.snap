@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with no categories (with auth) correctly 1`] = `
+exports[`sPagePostCollectionKeywordAsTitle Snapshot > renders with no categories (with auth) correctly 1`] = `
 <div>
   <section class="py-20">
     <h1 class="md:text-center">
@@ -405,7 +405,7 @@ exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with no categories
 </div>
 `;
 
-exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with no categories (without auth) correctly 1`] = `
+exports[`sPagePostCollectionKeywordAsTitle Snapshot > renders with no categories (without auth) correctly 1`] = `
 <div>
   <section class="py-20">
     <h1 class="md:text-center">
@@ -810,7 +810,7 @@ exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with no categories
 </div>
 `;
 
-exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with no posts (with auth) correctly 1`] = `
+exports[`sPagePostCollectionKeywordAsTitle Snapshot > renders with no posts (with auth) correctly 1`] = `
 <div>
   <section class="py-20">
     <h1 class="md:text-center">
@@ -1051,7 +1051,7 @@ exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with no posts (wit
 </div>
 `;
 
-exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with no posts (without auth) correctly 1`] = `
+exports[`sPagePostCollectionKeywordAsTitle Snapshot > renders with no posts (without auth) correctly 1`] = `
 <div>
   <section class="py-20">
     <h1 class="md:text-center">
@@ -1292,7 +1292,7 @@ exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with no posts (wit
 </div>
 `;
 
-exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with posts and categories (with auth) correctly 1`] = `
+exports[`sPagePostCollectionKeywordAsTitle Snapshot > renders with posts and categories (with auth) correctly 1`] = `
 <div>
   <section class="py-20">
     <h1 class="md:text-center">
@@ -1697,7 +1697,7 @@ exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with posts and cat
 </div>
 `;
 
-exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with posts and categories (without auth) correctly 1`] = `
+exports[`sPagePostCollectionKeywordAsTitle Snapshot > renders with posts and categories (without auth) correctly 1`] = `
 <div>
   <section class="py-20">
     <h1 class="md:text-center">

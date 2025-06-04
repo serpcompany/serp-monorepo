@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPagePostBlogCollection Snapshot > renders with posts and categories (with auth) correctly 1`] = `
+exports[`sPagePostBlogCollection Snapshot > renders with posts and categories (with auth) correctly 1`] = `
 <div>
   <section class="py-20">
     <h1 class="md:text-center">
@@ -576,7 +576,7 @@ exports[`SPagePostBlogCollection Snapshot > renders with posts and categories (w
 </div>
 `;
 
-exports[`SPagePostBlogCollection Snapshot > renders with posts and categories (without auth) correctly 1`] = `
+exports[`sPagePostBlogCollection Snapshot > renders with posts and categories (without auth) correctly 1`] = `
 <div>
   <section class="py-20">
     <h1 class="md:text-center">
@@ -1152,7 +1152,7 @@ exports[`SPagePostBlogCollection Snapshot > renders with posts and categories (w
 </div>
 `;
 
-exports[`SPagePostBlogCollection Snapshot > renders with posts but no categories (with auth) correctly 1`] = `
+exports[`sPagePostBlogCollection Snapshot > renders with posts but no categories (with auth) correctly 1`] = `
 <div>
   <section class="py-20">
     <h1 class="md:text-center">
@@ -1612,7 +1612,7 @@ exports[`SPagePostBlogCollection Snapshot > renders with posts but no categories
 </div>
 `;
 
-exports[`SPagePostBlogCollection Snapshot > renders with posts but no categories (without auth) correctly 1`] = `
+exports[`sPagePostBlogCollection Snapshot > renders with posts but no categories (without auth) correctly 1`] = `
 <div>
   <section class="py-20">
     <h1 class="md:text-center">

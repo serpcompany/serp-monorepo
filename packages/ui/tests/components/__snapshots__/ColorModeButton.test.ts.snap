@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ColorModeButton Snapshot > renders correctly in dark mode 1`] = `
+exports[`colorModeButton Snapshot > renders correctly in dark mode 1`] = `
 <button
   aria-label="Toggle color mode"
   class="
@@ -41,7 +41,7 @@ exports[`ColorModeButton Snapshot > renders correctly in dark mode 1`] = `
 </button>
 `;
 
-exports[`ColorModeButton Snapshot > renders correctly in light mode 1`] = `
+exports[`colorModeButton Snapshot > renders correctly in light mode 1`] = `
 <button
   aria-label="Toggle color mode"
   class="

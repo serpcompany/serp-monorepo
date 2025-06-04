@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-  import type { TeamMember } from '@@/types/database';
+import type { TeamMember } from '@@/types/database'
 
-  defineProps<{
-    members: TeamMember[];
-  }>();
+defineProps<{
+  members: TeamMember[]
+}>()
 </script>
 
 <template>
@@ -27,7 +27,9 @@
             />
             <div class="flex-1">
               <div class="flex items-center gap-1">
-                <p class="flex-1 font-medium">{{ member.user.name }}</p>
+                <p class="flex-1 font-medium">
+                  {{ member.user.name }}
+                </p>
                 <p class="text-xs text-neutral-500 capitalize">
                   {{ member.role }}
                 </p>

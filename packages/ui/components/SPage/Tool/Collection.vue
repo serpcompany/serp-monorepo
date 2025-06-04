@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  useSeoMeta({
-    title:
-      'Free online tools and apps for combining, converting, compressing & convenience.'
-  });
+useSeoMeta({
+  title:
+      'Free online tools and apps for combining, converting, compressing & convenience.',
+})
 </script>
 
 <template>
@@ -17,7 +17,9 @@
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
           <!-- Col 1 -->
           <div>
-            <h2 class="mb-4 text-xs uppercase">Combine</h2>
+            <h2 class="mb-4 text-xs uppercase">
+              Combine
+            </h2>
             <ul>
               <li>
                 <NuxtLink
@@ -31,7 +33,9 @@
           </div>
           <!-- Col 2 -->
           <div>
-            <h2 class="mb-4 text-xs uppercase">Convert</h2>
+            <h2 class="mb-4 text-xs uppercase">
+              Convert
+            </h2>
             <ul>
               <li>
                 <NuxtLink
@@ -45,7 +49,9 @@
           </div>
           <!-- Col 3 -->
           <div>
-            <h2 class="mb-4 text-xs uppercase">Counters</h2>
+            <h2 class="mb-4 text-xs uppercase">
+              Counters
+            </h2>
             <ul>
               <li class="mb-2">
                 <NuxtLink

@@ -1,8 +1,8 @@
-import redirects from './redirects.json';
+import redirects from './redirects.json'
 
 export default defineAppConfig({
   myLayer: {
-    name: '@serp/ui'
+    name: '@serp/ui',
   },
   redirects,
   site: {
@@ -12,8 +12,8 @@ export default defineAppConfig({
         slug: '/products/',
         items: [
           { text: 'Categories', slug: '/products/best/' },
-          { text: 'Cloud GPUs', slug: '/products/best/cloud-gpu-providers/' }
-        ]
+          { text: 'Cloud GPUs', slug: '/products/best/cloud-gpu-providers/' },
+        ],
       },
       {
         title: 'Providers',
@@ -21,9 +21,9 @@ export default defineAppConfig({
         items: [
           {
             text: 'Services',
-            slug: '/service-providers/'
-          }
-        ]
+            slug: '/service-providers/',
+          },
+        ],
       },
       {
         title: 'MCP',
@@ -31,71 +31,71 @@ export default defineAppConfig({
         items: [
           {
             text: 'MCP Servers',
-            slug: '/mcp/servers/'
+            slug: '/mcp/servers/',
           },
           {
             text: 'Categories',
-            slug: '/mcp/servers/categories/'
-          }
-        ]
+            slug: '/mcp/servers/categories/',
+          },
+        ],
       },
       {
         title: 'Categories',
         items: [
           {
             text: 'Products',
-            slug: '/products/best/'
+            slug: '/products/best/',
           },
           {
             text: 'Providers',
-            slug: '/service-providers/best/'
+            slug: '/service-providers/best/',
           },
           {
             text: 'MCP Servers',
-            slug: '/mcp/servers/categories/'
-          }
-        ]
+            slug: '/mcp/servers/categories/',
+          },
+        ],
       },
       {
         title: 'Resources',
         items: [
           { text: 'Blog', slug: '/blog/' },
           { text: 'Glossary', slug: '/glossary/' },
-          { text: 'Tools', slug: '/tools/' }
-        ]
-      }
+          { text: 'Tools', slug: '/tools/' },
+        ],
+      },
     ],
     socialLinks: [
       {
         name: 'Twitter',
         href: 'https://serp.ly/@serp/twitter',
-        icon: 'i-lucide-twitter'
+        icon: 'i-lucide-twitter',
       },
       {
         name: 'Facebook',
         href: 'https://serp.ly/@serp/facebook',
-        icon: 'i-lucide-facebook'
+        icon: 'i-lucide-facebook',
       },
       {
         name: 'LinkedIn',
         href: 'https://serp.ly/@serp/linkedin',
-        icon: 'i-lucide-linkedin'
+        icon: 'i-lucide-linkedin',
       },
       {
         name: 'YouTube',
         href: 'https://serp.ly/@serp/youtube',
-        icon: 'i-lucide-youtube'
+        icon: 'i-lucide-youtube',
       },
       {
         name: 'Github',
         href: 'https://serp.ly/@serp/github',
-        icon: 'i-lucide-github'
+        icon: 'i-lucide-github',
       },
       {
         name: 'Instagram',
         href: 'https://serp.ly/@serp/instagram',
-        icon: 'i-lucide-instagram'
-      }
+        icon: 'i-lucide-instagram',
+      },
     ],
     legalLinks: [
       { text: 'About', slug: '/about/' },
@@ -104,12 +104,12 @@ export default defineAppConfig({
       { text: 'Privacy', slug: '/legal/privacy-policy/' },
       { text: 'Terms', slug: '/legal/terms-conditions/' },
       { text: 'Affiliate Disclosure', slug: '/legal/affiliate-disclosure/' },
-      { text: 'DMCA', slug: '/legal/dmca/' }
+      { text: 'DMCA', slug: '/legal/dmca/' },
     ],
     headerNavItems: [
       {
         label: 'Solutions',
-        children: [{ label: 'Solutions', to: 'https://solutions.serp.co' }]
+        children: [{ label: 'Solutions', to: 'https://solutions.serp.co' }],
       },
       {
         label: 'Tools',
@@ -118,53 +118,53 @@ export default defineAppConfig({
           { label: 'Combine CSVs', to: '/tools/combine-csv-files/' },
           { label: 'JSON to CSV', to: '/tools/convert-json-to-csv/' },
           { label: 'Character Counter', to: '/tools/count-characters/' },
-          { label: 'Paragraph Counter', to: '/tools/paragraph-counter/' }
-        ]
+          { label: 'Paragraph Counter', to: '/tools/paragraph-counter/' },
+        ],
       },
       {
         label: 'Content',
         children: [
           { label: 'Glossary', to: '/glossary/' },
           { label: 'Blog', to: '/blog/' },
-          { label: 'Posts', to: '/posts/' }
-        ]
+          { label: 'Posts', to: '/posts/' },
+        ],
       },
       {
         label: 'Reviews',
         children: [
           { label: 'Products', to: '/products/' },
-          { label: 'Service Providers', to: '/service-providers/' }
-        ]
+          { label: 'Service Providers', to: '/service-providers/' },
+        ],
       },
       {
         label: 'MCP',
-        children: [{ label: 'MCP Servers', to: '/mcp/servers/' }]
+        children: [{ label: 'MCP Servers', to: '/mcp/servers/' }],
       },
       {
         label: 'Movies',
-        children: [{ label: 'Movies', to: '/movies/' }]
+        children: [{ label: 'Movies', to: '/movies/' }],
       },
       {
         label: 'Boxing',
-        children: [{ label: 'boxers', to: '/boxers/' }]
+        children: [{ label: 'boxers', to: '/boxers/' }],
       },
       {
         label: 'Artists',
-        children: [{ label: 'Artists', to: '/artists/' }]
+        children: [{ label: 'Artists', to: '/artists/' }],
       },
       {
         label: 'Albums',
-        children: [{ label: 'Albums', to: '/albums/' }]
+        children: [{ label: 'Albums', to: '/albums/' }],
       },
       {
         label: 'Songs',
-        children: [{ label: 'Songs', to: '/songs/' }]
-      }
+        children: [{ label: 'Songs', to: '/songs/' }],
+      },
     ],
     submitOptions: [
       { label: 'Product', to: '/users/submit/product/' },
-      { label: 'Service', to: '/users/submit/product/' }
+      { label: 'Service', to: '/users/submit/product/' },
       // { label: 'MCP Server', to: '/users/submit/mcp-server/' }
-    ]
-  }
-});
+    ],
+  },
+})

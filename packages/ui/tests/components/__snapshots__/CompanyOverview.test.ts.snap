@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CompanyOverview Snapshot > renders with a long company excerpt correctly 1`] = `
+exports[`companyOverview Snapshot > renders with a long company excerpt correctly 1`] = `
 <div>
   <div class="
     flex
@@ -29,7 +29,7 @@ exports[`CompanyOverview Snapshot > renders with a long company excerpt correctl
 </div>
 `;
 
-exports[`CompanyOverview Snapshot > renders with a normal company excerpt correctly 1`] = `
+exports[`companyOverview Snapshot > renders with a normal company excerpt correctly 1`] = `
 <div>
   <div class="
     flex
@@ -58,7 +58,7 @@ exports[`CompanyOverview Snapshot > renders with a normal company excerpt correc
 </div>
 `;
 
-exports[`CompanyOverview Snapshot > renders with an empty excerpt correctly 1`] = `
+exports[`companyOverview Snapshot > renders with an empty excerpt correctly 1`] = `
 <div>
   <div class="
     flex

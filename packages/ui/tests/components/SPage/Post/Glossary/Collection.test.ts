@@ -1,94 +1,94 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import SPagePostGlossaryCollection from '@/components/SPage/Post/Glossary/Collection.vue';
-import ComponentRender from '../../../../componentRender';
-import '../../../../mockUseUserSession';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import SPagePostGlossaryCollection from '@/components/SPage/Post/Glossary/Collection.vue'
+import ComponentRender from '../../../../componentRender'
+import '../../../../mockUseUserSession'
 
 interface MockedPost {
-  id: number;
-  name: string;
-  slug: string;
-  keyword?: string;
-  title?: string;
+  id: number
+  name: string
+  slug: string
+  keyword?: string
+  title?: string
 }
 
-mockNuxtImport('useHead', () => () => {});
-mockNuxtImport('useSeoMeta', () => () => {});
+mockNuxtImport('useHead', () => () => {})
+mockNuxtImport('useSeoMeta', () => () => {})
 
 let config_: Record<string, unknown> = {
   app: { baseURL: '/' },
   public: {
-    useAuth: false
-  }
-};
+    useAuth: false,
+  },
+}
 
-let data: MockedPost[] = [];
+let data: MockedPost[] = []
 
 mockNuxtImport('useAsyncData', () => {
   return async () => ({
     data: {
-      value: data
+      value: data,
     },
     status: {
-      value: 'success'
-    }
-  });
-});
+      value: 'success',
+    },
+  })
+})
 
-mockNuxtImport('useRuntimeConfig', () => () => config_);
+mockNuxtImport('useRuntimeConfig', () => () => config_)
 
-describe('SPagePostGlossaryCollection Snapshot', () => {
+describe('sPagePostGlossaryCollection Snapshot', () => {
   const defaultPosts = [
     { id: 1, name: 'Arc', keyword: 'Arc', slug: 'arc' }, // Post with keyword
     { id: 2, name: 'Barc', title: 'Barc', slug: 'barc' }, // Post with title
-    { id: 3, name: 'Carc', slug: 'carc' } // Post with name only
-  ];
+    { id: 3, name: 'Carc', slug: 'carc' }, // Post with name only
+  ]
 
   const scenarios: [
     string,
-    { config: Record<string, unknown>; posts: MockedPost[] }
+    { config: Record<string, unknown>, posts: MockedPost[] },
   ][] = [
     [
       'with posts (with auth)',
       {
         config: { app: { baseURL: '/' }, public: { useAuth: true } },
-        posts: defaultPosts
-      }
+        posts: defaultPosts,
+      },
     ],
     [
       'with posts (without auth)',
       {
         config: { app: { baseURL: '/' }, public: { useAuth: false } },
-        posts: defaultPosts
-      }
+        posts: defaultPosts,
+      },
     ],
     [
       'without posts (with auth)',
       {
         config: { app: { baseURL: '/' }, public: { useAuth: true } },
-        posts: []
-      }
+        posts: [],
+      },
     ],
     [
       'without posts (without auth)',
       {
         config: { app: { baseURL: '/' }, public: { useAuth: false } },
-        posts: []
-      }
-    ]
-  ];
+        posts: [],
+      },
+    ],
+  ]
   it.each(scenarios)(
     'renders %s correctly',
     async (desc, { config, posts }) => {
-      config_ = config;
-      data = posts;
+      config_ = config
+      data = posts
 
       const html = await ComponentRender(
         `SPagePostGlossaryCollection ${desc}`,
         {},
-        SPagePostGlossaryCollection
-      );
-      expect(html).toMatchSnapshot();
-    }
-  );
-});
+        SPagePostGlossaryCollection,
+      )
+      expect(html).toMatchSnapshot()
+    },
+  )
+})

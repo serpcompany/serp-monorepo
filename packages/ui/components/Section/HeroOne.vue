@@ -1,13 +1,15 @@
 <script setup lang="ts">
-  defineProps<{
-    title: string;
-    subtitle?: string;
-  }>();
+defineProps<{
+  title: string
+  subtitle?: string
+}>()
 </script>
 
 <template>
   <section class="py-20">
-    <h1 class="md:text-center">{{ title }}</h1>
+    <h1 class="md:text-center">
+      {{ title }}
+    </h1>
     <p
       v-if="subtitle"
       data-testid="subtitle"

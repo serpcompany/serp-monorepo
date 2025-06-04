@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SongsLinkHub > renders with multiple songs and multiple artists correctly 1`] = `
+exports[`songsLinkHub > renders with multiple songs and multiple artists correctly 1`] = `
 <div class="
   gap-2
   grid
@@ -24,7 +24,7 @@ exports[`SongsLinkHub > renders with multiple songs and multiple artists correct
 </div>
 `;
 
-exports[`SongsLinkHub > renders with no songs correctly 1`] = `
+exports[`songsLinkHub > renders with no songs correctly 1`] = `
 <div class="
   gap-2
   grid
@@ -35,7 +35,7 @@ exports[`SongsLinkHub > renders with no songs correctly 1`] = `
 "></div>
 `;
 
-exports[`SongsLinkHub > renders with one song with one artist correctly 1`] = `
+exports[`songsLinkHub > renders with one song with one artist correctly 1`] = `
 <div class="
   gap-2
   grid

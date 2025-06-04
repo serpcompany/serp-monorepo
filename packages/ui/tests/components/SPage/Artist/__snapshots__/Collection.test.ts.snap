@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPageArtistCollection Snapshot > renders with defaults correctly 1`] = `
+exports[`sPageArtistCollection Snapshot > renders with defaults correctly 1`] = `
 <div class="
   container
   py-20
