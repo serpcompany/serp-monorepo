@@ -56,7 +56,7 @@ jobs:
         with:
           host: ${{{{ secrets.SERVER_IP }}}}
           username: ${{{{ secrets.SERVER_USERNAME }}}}
-          key: ${{{{ secrets.FRANCIS_SERVER_SSH_PRIVATE_KEY }}}}
+          key: ${{{{ secrets.SERP_GH_SSH_KEY }}}}
           script: |
             cd serp-monorepo-staging/apps/{app}
             docker compose -f docker-compose-staging.yml down
@@ -188,7 +188,7 @@ jobs:
         with:
           host: ${{{{ secrets.SERVER_IP }}}}
           username: ${{{{ secrets.SERVER_USERNAME }}}}
-          key: ${{{{ secrets.FRANCIS_SERVER_SSH_PRIVATE_KEY }}}}
+          key: ${{{{ secrets.SERP_GH_SSH_KEY }}}}
           script: |
             cd serp-monorepo/apps/{app}
             docker compose -f docker-compose.yml down
