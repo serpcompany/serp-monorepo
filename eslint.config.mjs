@@ -95,7 +95,7 @@ export default antfu({
       'style/semi': 'warn'
     }
 }).append(
-  // Vue-specific overrides
+  // Overrides: Vue
   {
     files: ['**/*.vue'],
     rules: {
@@ -113,7 +113,7 @@ export default antfu({
       'vue/no-required-prop-with-default': 'warn'
     }
   },
-   // API Server routes specific
+   // Overrides: /server/ routes
   {
     files: [
       '**/server/**/*.ts',
@@ -123,7 +123,7 @@ export default antfu({
       'node/prefer-global/process': 'warn',
     }
   },
-  // Configuration files - allow process usage
+  // Overrides: .config.ts files
   {
     files: [
       '**/nuxt.config.ts',
@@ -143,6 +143,19 @@ export default antfu({
     rules: {
       'node/prefer-global/process': 'warn', // allow 'process.env' in some /server/ routes & config files bc Nuxt provides the Node.js context
       'ts/strict-boolean-expressions': 'off'
+    }
+  },
+  // Overrides: Test files (MUST be last to take precedence)
+  {
+    files: [
+      '**/*.test.ts',
+      '**/*.spec.ts',
+      '**/tests/**/*.ts',
+      '**/test/**/*.ts'
+    ],
+    rules: {
+      'node/prefer-global/process': 'off', // Tests can use global process
+      'no-restricted-globals': 'off' // Tests may use global for mocking
     }
   }
 )
