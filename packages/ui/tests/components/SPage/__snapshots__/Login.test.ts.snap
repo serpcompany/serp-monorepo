@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Login Snapshot > redirects when already logged in with redirect query 1`] = `
+exports[`login Snapshot > redirects when already logged in with redirect query 1`] = `
 <div class="
   flex
   items-center
@@ -189,7 +189,7 @@ exports[`Login Snapshot > redirects when already logged in with redirect query 1
           text-[var(--ui-primary-600)]
         "
         href="/legal/terms-conditions/"
-      >Terms of Service</a>
+      > Terms of Service </a>
       &amp;
       <a
         class="
@@ -198,13 +198,13 @@ exports[`Login Snapshot > redirects when already logged in with redirect query 1
           text-[var(--ui-primary-600)]
         "
         href="/legal/privacy-policy/"
-      >Privacy Policy</a>
+      > Privacy Policy </a>
     </div>
   </div>
 </div>
 `;
 
-exports[`Login Snapshot > redirects when already logged in without redirect query 1`] = `
+exports[`login Snapshot > redirects when already logged in without redirect query 1`] = `
 <div class="
   flex
   items-center
@@ -393,7 +393,7 @@ exports[`Login Snapshot > redirects when already logged in without redirect quer
           text-[var(--ui-primary-600)]
         "
         href="/legal/terms-conditions/"
-      >Terms of Service</a>
+      > Terms of Service </a>
       &amp;
       <a
         class="
@@ -402,13 +402,13 @@ exports[`Login Snapshot > redirects when already logged in without redirect quer
           text-[var(--ui-primary-600)]
         "
         href="/legal/privacy-policy/"
-      >Privacy Policy</a>
+      > Privacy Policy </a>
     </div>
   </div>
 </div>
 `;
 
-exports[`Login Snapshot > renders login page when not logged in with redirect query 1`] = `
+exports[`login Snapshot > renders login page when not logged in with redirect query 1`] = `
 <div class="
   flex
   items-center
@@ -597,7 +597,7 @@ exports[`Login Snapshot > renders login page when not logged in with redirect qu
           text-[var(--ui-primary-600)]
         "
         href="/legal/terms-conditions/"
-      >Terms of Service</a>
+      > Terms of Service </a>
       &amp;
       <a
         class="
@@ -606,13 +606,13 @@ exports[`Login Snapshot > renders login page when not logged in with redirect qu
           text-[var(--ui-primary-600)]
         "
         href="/legal/privacy-policy/"
-      >Privacy Policy</a>
+      > Privacy Policy </a>
     </div>
   </div>
 </div>
 `;
 
-exports[`Login Snapshot > renders login page when not logged in without redirect query 1`] = `
+exports[`login Snapshot > renders login page when not logged in without redirect query 1`] = `
 <div class="
   flex
   items-center
@@ -801,7 +801,7 @@ exports[`Login Snapshot > renders login page when not logged in without redirect
           text-[var(--ui-primary-600)]
         "
         href="/legal/terms-conditions/"
-      >Terms of Service</a>
+      > Terms of Service </a>
       &amp;
       <a
         class="
@@ -810,7 +810,7 @@ exports[`Login Snapshot > renders login page when not logged in without redirect
           text-[var(--ui-primary-600)]
         "
         href="/legal/privacy-policy/"
-      >Privacy Policy</a>
+      > Privacy Policy </a>
     </div>
   </div>
 </div>

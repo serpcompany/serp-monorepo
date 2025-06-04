@@ -1,21 +1,21 @@
 <script setup lang="ts">
-  import type { z } from 'zod';
-  import type { FormSubmitEvent } from '#ui/types';
-  import { emailSchema } from '@serp/db/validations/auth';
+import type { FormSubmitEvent } from '#ui/types'
+import type { z } from 'zod'
+import { emailSchema } from '@serp/db/validations/auth'
 
-  type PasswordResetSchema = z.output<typeof emailSchema>;
-  const loading = ref(false);
-  const { forgotPassword } = useAuth();
+  type PasswordResetSchema = z.output<typeof emailSchema>
+const loading = ref(false)
+const { forgotPassword } = useAuth()
 
-  const state = reactive<Partial<PasswordResetSchema>>({
-    email: undefined
-  });
+const state = reactive<Partial<PasswordResetSchema>>({
+  email: undefined,
+})
 
-  const onSubmit = async (event: FormSubmitEvent<PasswordResetSchema>) => {
-    loading.value = true;
-    await forgotPassword(event.data.email);
-    loading.value = false;
-  };
+async function onSubmit(event: FormSubmitEvent<PasswordResetSchema>) {
+  loading.value = true
+  await forgotPassword(event.data.email)
+  loading.value = false
+}
 </script>
 
 <template>
@@ -23,7 +23,9 @@
     <div class="mx-auto w-full max-w-sm space-y-4">
       <SLogo />
       <div class="text-center">
-        <p class="text-lg font-bold">Reset your password</p>
+        <p class="text-lg font-bold">
+          Reset your password
+        </p>
         <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
           Enter your email below to reset your password.
         </p>

@@ -1,0 +1,6 @@
+{
+  "permissions": {
+    "allow": ["Bash(find:*)", "Bash(grep:*)", "mcp__ide__getDiagnostics"]
+  },
+  "enableAllProjectMcpServers": false
+}

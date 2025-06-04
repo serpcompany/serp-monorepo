@@ -1,180 +1,185 @@
 <script lang="ts" setup>
-  import { useDateFormat } from '@vueuse/core';
-  import type { User, OauthAccount } from '@serp/db/types/database';
+import type { OauthAccount, User } from '@serp/db/types/database'
+import { useDateFormat } from '@vueuse/core'
 
-  interface TeamMember {
-    id: string;
-    teamId: string;
-    userId: string;
-    role: string;
-    createdAt: string;
-    updatedAt: string;
-    team: {
-      id: string;
-      name: string;
-      ownerId: string;
-      logo: string;
-      slug: string;
-      createdAt: string;
-      updatedAt: string;
-    };
+interface TeamMember {
+  id: string
+  teamId: string
+  userId: string
+  role: string
+  createdAt: string
+  updatedAt: string
+  team: {
+    id: string
+    name: string
+    ownerId: string
+    logo: string
+    slug: string
+    createdAt: string
+    updatedAt: string
   }
+}
 
-  interface UserWithOAuthAccounts extends User {
-    oauthAccounts: OauthAccount[];
-    teamMembers?: TeamMember[];
-  }
-  const { fetch: refreshUserSession } = useUserSession();
-  const newUserModal = ref(false);
-  const banUserModal = ref(false);
-  const loadingUserId = ref<string | null>(null);
-  const showDeleteUserConfirmation = ref(false);
-  const selectedUser = ref<UserWithOAuthAccounts | null>(null);
-  const toast = useToast();
-  const isEmailsMasked = ref(true);
+interface UserWithOAuthAccounts extends User {
+  oauthAccounts: OauthAccount[]
+  teamMembers?: TeamMember[]
+}
+const { fetch: refreshUserSession } = useUserSession()
+const newUserModal = ref(false)
+const banUserModal = ref(false)
+const loadingUserId = ref<string | null>(null)
+const showDeleteUserConfirmation = ref(false)
+const selectedUser = ref<UserWithOAuthAccounts | null>(null)
+const toast = useToast()
+const isEmailsMasked = ref(true)
 
-  const { data: users, refresh } = await useFetch<UserWithOAuthAccounts[]>(
-    '/api/super-admin/users'
-  );
+const { data: users, refresh } = await useFetch<UserWithOAuthAccounts[]>(
+  '/api/super-admin/users',
+)
 
-  const columns = [
-    'Name',
-    'Email',
-    'Verified',
-    'Banned',
-    'Linked Accounts',
-    'Team Affiliations',
-    'Last Active',
-    'Created',
-    ''
-  ];
+const columns = [
+  'Name',
+  'Email',
+  'Verified',
+  'Banned',
+  'Linked Accounts',
+  'Team Affiliations',
+  'Last Active',
+  'Created',
+  '',
+]
 
-  const actions = [
-    {
-      label: 'Send Password Reset Email',
-      onSelect: async () => {
-        if (selectedUser.value) {
-          await sendForgotPasswordEmail(selectedUser.value);
-        }
+const actions = [
+  {
+    label: 'Send Password Reset Email',
+    onSelect: async () => {
+      if (selectedUser.value) {
+        await sendForgotPasswordEmail(selectedUser.value)
       }
     },
-    {
-      label: 'Impersonate User',
-      onSelect: async () => {
-        if (selectedUser.value) {
-          await startImpersonationSession(selectedUser.value);
-        }
+  },
+  {
+    label: 'Impersonate User',
+    onSelect: async () => {
+      if (selectedUser.value) {
+        await startImpersonationSession(selectedUser.value)
       }
     },
-    {
-      label: 'Ban User',
-      onSelect: () => {
-        if (selectedUser.value) {
-          banUserModal.value = true;
-        }
+  },
+  {
+    label: 'Ban User',
+    onSelect: () => {
+      if (selectedUser.value) {
+        banUserModal.value = true
       }
     },
-    {
-      label: 'Delete User',
-      color: 'error' as const,
-      onSelect: () => {
-        if (selectedUser.value) {
-          showDeleteUserConfirmation.value = true;
-        }
+  },
+  {
+    label: 'Delete User',
+    color: 'error' as const,
+    onSelect: () => {
+      if (selectedUser.value) {
+        showDeleteUserConfirmation.value = true
       }
-    }
-  ];
+    },
+  },
+]
 
-  const formatDate = (date: string | Date | undefined) => {
-    if (!date) return 'NA';
-    return useDateFormat(date, 'MMM D, YYYY').value;
-  };
+function formatDate(date: string | Date | undefined) {
+  if (!date)
+    return 'NA'
+  return useDateFormat(date, 'MMM D, YYYY').value
+}
 
-  async function handleUserCreated() {
-    await refresh();
-    newUserModal.value = false;
-  }
+async function handleUserCreated() {
+  await refresh()
+  newUserModal.value = false
+}
 
-  async function handleUserBanned() {
-    await refresh();
-    banUserModal.value = false;
-  }
+async function handleUserBanned() {
+  await refresh()
+  banUserModal.value = false
+}
 
-  async function handleUserDeleted() {
-    showDeleteUserConfirmation.value = false;
-    await refresh();
-  }
+async function handleUserDeleted() {
+  showDeleteUserConfirmation.value = false
+  await refresh()
+}
 
-  const sendForgotPasswordEmail = async (user: User) => {
-    try {
-      loadingUserId.value = user.id;
-      await $fetch('/api/auth/password/forgot', {
-        method: 'POST',
-        body: { email: user.email }
-      });
-      toast.add({
-        title: 'Password reset email sent',
-        description: 'The password reset email has been sent to the user',
-        color: 'success'
-      });
-    } catch {
-      toast.add({
-        title: 'Error',
-        description: 'Failed to send password reset email',
-        color: 'error'
-      });
-    } finally {
-      loadingUserId.value = null;
-    }
-  };
-
-  const liftBan = async (user: User) => {
-    try {
-      loadingUserId.value = user.id;
-      await $fetch('/api/super-admin/users/ban', {
-        method: 'POST',
-        body: { userId: user.id, banned: false }
-      });
-      toast.add({
-        title: 'User unbanned successfully',
-        description: 'The user has been unbanned',
-        color: 'success'
-      });
-      await refresh();
-    } catch (error) {
-      console.error(error);
-      toast.add({
-        title: 'Error',
-        description: 'Failed to lift ban',
-        color: 'error'
-      });
-    } finally {
-      loadingUserId.value = null;
-    }
-  };
-
-  const startImpersonationSession = async (user: User) => {
-    const data = await $fetch('/api/super-admin/users/impersonate', {
+async function sendForgotPasswordEmail(user: User) {
+  try {
+    loadingUserId.value = user.id
+    await $fetch('/api/auth/password/forgot', {
       method: 'POST',
-      body: { userId: user.id }
-    });
-    if (data.success) {
-      await refreshUserSession();
-      window.location.href = '/dashboard';
-    }
-  };
+      body: { email: user.email },
+    })
+    toast.add({
+      title: 'Password reset email sent',
+      description: 'The password reset email has been sent to the user',
+      color: 'success',
+    })
+  }
+  catch {
+    toast.add({
+      title: 'Error',
+      description: 'Failed to send password reset email',
+      color: 'error',
+    })
+  }
+  finally {
+    loadingUserId.value = null
+  }
+}
 
-  const maskEmail = (email: string) => {
-    const [localPart, domain] = email.split('@');
-    return `${localPart
-      .split('')
-      .map(() => '•')
-      .join('')}@${domain}`;
-  };
+async function liftBan(user: User) {
+  try {
+    loadingUserId.value = user.id
+    await $fetch('/api/super-admin/users/ban', {
+      method: 'POST',
+      body: { userId: user.id, banned: false },
+    })
+    toast.add({
+      title: 'User unbanned successfully',
+      description: 'The user has been unbanned',
+      color: 'success',
+    })
+    await refresh()
+  }
+  catch (error) {
+    console.error(error)
+    toast.add({
+      title: 'Error',
+      description: 'Failed to lift ban',
+      color: 'error',
+    })
+  }
+  finally {
+    loadingUserId.value = null
+  }
+}
 
-  const maskEmails = () => {
-    isEmailsMasked.value = !isEmailsMasked.value;
-  };
+async function startImpersonationSession(user: User) {
+  const data = await $fetch('/api/super-admin/users/impersonate', {
+    method: 'POST',
+    body: { userId: user.id },
+  })
+  if (data.success) {
+    await refreshUserSession()
+    window.location.href = '/dashboard'
+  }
+}
+
+function maskEmail(email: string) {
+  const [localPart, domain] = email.split('@')
+  return `${localPart
+    .split('')
+    .map(() => '•')
+    .join('')}@${domain}`
+}
+
+function maskEmails() {
+  isEmailsMasked.value = !isEmailsMasked.value
+}
 </script>
 
 <template>
@@ -221,7 +226,9 @@
             <td class="p-2">
               {{ isEmailsMasked ? maskEmail(user.email) : user.email }}
             </td>
-            <td class="p-2">{{ user.emailVerified ? 'Yes' : 'No' }}</td>
+            <td class="p-2">
+              {{ user.emailVerified ? 'Yes' : 'No' }}
+            </td>
             <td class="p-2">
               <SuperAdminUserBanStatus
                 :user="user"

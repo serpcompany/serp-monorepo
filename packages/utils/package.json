@@ -1,15 +1,15 @@
 {
   "name": "@serp/utils",
-  "version": "0.0.1",
   "type": "module",
+  "version": "0.0.1",
   "main": "./nuxt.config.ts",
   "scripts": {
     "build": "nuxt build .playground",
-    "eslint": "eslint . --fix",
+    "ci:lint": "eslint .",
     "generate": "nuxt generate .playground",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "postinstall": "nuxt prepare",
-    "lint": "prettier . --write --log-level warn && eslint . --fix",
-    "prettier": "prettier . --write --log-level warn",
     "preview": "nuxt preview .playground",
     "test": "vitest run",
     "test:watch": "vitest"
@@ -27,7 +27,7 @@
     "nuxt": "^3.17.3",
     "typescript": "^5.7.3",
     "use-email": "^0.0.9",
-    "vitest": "^1.2.2",
-    "vue": "latest"
+    "vitest": "^2.1.9",
+    "vue": "3.5.14"
   }
 }

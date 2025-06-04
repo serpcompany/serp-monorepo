@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`UpvoteButton > renders with no upvotes correctly 1`] = `
+exports[`upvoteButton > renders with no upvotes correctly 1`] = `
 <div class="
   flex
   items-center
@@ -61,7 +61,7 @@ exports[`UpvoteButton > renders with no upvotes correctly 1`] = `
 </div>
 `;
 
-exports[`UpvoteButton > renders with upvotes containing user email correctly 1`] = `
+exports[`upvoteButton > renders with upvotes containing user email correctly 1`] = `
 <div class="
   flex
   items-center
@@ -122,7 +122,7 @@ exports[`UpvoteButton > renders with upvotes containing user email correctly 1`]
 </div>
 `;
 
-exports[`UpvoteButton > renders with upvotes not containing user email correctly 1`] = `
+exports[`upvoteButton > renders with upvotes not containing user email correctly 1`] = `
 <div class="
   flex
   items-center

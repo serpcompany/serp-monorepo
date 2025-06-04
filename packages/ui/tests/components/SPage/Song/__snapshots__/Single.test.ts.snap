@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPageSongSingle Snapshot > renders complete song with upvotes and auth enabled correctly 1`] = `
+exports[`sPageSongSingle Snapshot > renders complete song with upvotes and auth enabled correctly 1`] = `
 <div class="
   flex
   flex-col
@@ -472,7 +472,7 @@ exports[`SPageSongSingle Snapshot > renders complete song with upvotes and auth 
 </div>
 `;
 
-exports[`SPageSongSingle Snapshot > renders minimal song without upvotes and auth disabled correctly 1`] = `
+exports[`sPageSongSingle Snapshot > renders minimal song without upvotes and auth disabled correctly 1`] = `
 <div class="
   flex
   flex-col

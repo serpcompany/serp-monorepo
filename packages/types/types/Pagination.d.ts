@@ -1,5 +1,5 @@
-export type Pagination = {
-  currentPage: number;
-  pageSize: number;
-  totalItems: number;
-};
+export interface Pagination {
+  currentPage: number
+  pageSize: number
+  totalItems: number
+}

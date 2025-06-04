@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SLinkHub > renders with multiple categories correctly 1`] = `
+exports[`sLinkHub > renders with multiple categories correctly 1`] = `
 <section
   class="
     isolate
@@ -150,7 +150,7 @@ exports[`SLinkHub > renders with multiple categories correctly 1`] = `
 </section>
 `;
 
-exports[`SLinkHub > renders with no categories correctly 1`] = `
+exports[`sLinkHub > renders with no categories correctly 1`] = `
 <section
   class="
     isolate
@@ -215,7 +215,7 @@ exports[`SLinkHub > renders with no categories correctly 1`] = `
 </section>
 `;
 
-exports[`SLinkHub > renders with one category correctly 1`] = `
+exports[`sLinkHub > renders with one category correctly 1`] = `
 <section
   class="
     isolate

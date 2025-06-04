@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MediaGallery Snapshot > renders with a single screenshot correctly 1`] = `
+exports[`mediaGallery Snapshot > renders with a single screenshot correctly 1`] = `
 <section class="
   flex
   flex-col
@@ -62,7 +62,7 @@ exports[`MediaGallery Snapshot > renders with a single screenshot correctly 1`] 
 </section>
 `;
 
-exports[`MediaGallery Snapshot > renders with multiple screenshots correctly 1`] = `
+exports[`mediaGallery Snapshot > renders with multiple screenshots correctly 1`] = `
 <section class="
   flex
   flex-col
@@ -166,7 +166,7 @@ exports[`MediaGallery Snapshot > renders with multiple screenshots correctly 1`]
 </section>
 `;
 
-exports[`MediaGallery Snapshot > renders with no screenshots correctly 1`] = `
+exports[`mediaGallery Snapshot > renders with no screenshots correctly 1`] = `
 <section class="
   flex
   flex-col

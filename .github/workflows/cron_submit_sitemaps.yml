@@ -1,13 +1,13 @@
-name: "cron: submit sitemaps to GSC"
+name: 'cron: submit sitemaps to GSC'
 
 on:
   schedule:
-    - cron: '0 9 * * 1'  # Monday at 9:00 UTC, which is Monday at 1:00 AM PST (UTC-8)
+    - cron: '0 9 * * 1' # Monday at 9:00 UTC, which is Monday at 1:00 AM PST (UTC-8)
   workflow_dispatch:
 
 jobs:
   cron-submit-sitemaps:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3

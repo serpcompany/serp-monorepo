@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import type { MCPServerIndex } from '@serp/types/types';
-  import { NuxtLink } from '#components';
+import type { MCPServerIndex } from '@serp/types/types'
+import { NuxtLink } from '#components'
 
-  interface Props {
-    server: MCPServerIndex;
-  }
+interface Props {
+  server: MCPServerIndex
+}
 
-  defineProps<Props>();
+defineProps<Props>()
 </script>
 
 <template>
@@ -15,7 +15,7 @@
       root: 'flex flex-col divide-dashed hover:ring-(--ui-border-accented) transition-all',
       body: 'p-5 sm:p-5 flex-grow',
       footer:
-        'px-5 py-4 sm:px-5 sm:py-4 bg-gray-50 dark:bg-black/10 rounded-b-lg'
+        'px-5 py-4 sm:px-5 sm:py-4 bg-gray-50 dark:bg-black/10 rounded-b-lg',
     }"
   >
     <div class="flex h-full flex-col gap-3">

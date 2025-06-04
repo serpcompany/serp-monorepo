@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SScriptYouTubePlayer > renders default (awaitingLoad) correctly 1`] = `
+exports[`sScriptYouTubePlayer > renders default (awaitingLoad) correctly 1`] = `
 <div
   aria-busy="false"
   aria-label="YouTube Player - Placeholder"
@@ -34,7 +34,7 @@ exports[`SScriptYouTubePlayer > renders default (awaitingLoad) correctly 1`] = `
 </div>
 `;
 
-exports[`SScriptYouTubePlayer > renders with awaitingLoad slot correctly 1`] = `
+exports[`sScriptYouTubePlayer > renders with awaitingLoad slot correctly 1`] = `
 <div
   aria-busy="false"
   aria-label="YouTube Player - Placeholder"
@@ -68,7 +68,7 @@ exports[`SScriptYouTubePlayer > renders with awaitingLoad slot correctly 1`] = `
 </div>
 `;
 
-exports[`SScriptYouTubePlayer > renders with custom placeholder slot correctly 1`] = `
+exports[`sScriptYouTubePlayer > renders with custom placeholder slot correctly 1`] = `
 <div
   aria-busy="false"
   aria-label="YouTube Player - Placeholder"
@@ -93,7 +93,7 @@ exports[`SScriptYouTubePlayer > renders with custom placeholder slot correctly 1
 </div>
 `;
 
-exports[`SScriptYouTubePlayer > renders with error slot correctly 1`] = `
+exports[`sScriptYouTubePlayer > renders with error slot correctly 1`] = `
 <div
   aria-busy="false"
   aria-label="YouTube Player - Loaded"
@@ -127,7 +127,7 @@ exports[`SScriptYouTubePlayer > renders with error slot correctly 1`] = `
 </div>
 `;
 
-exports[`SScriptYouTubePlayer > renders with loading slot correctly 1`] = `
+exports[`sScriptYouTubePlayer > renders with loading slot correctly 1`] = `
 <div
   aria-busy="true"
   aria-label="YouTube Player - Loading"

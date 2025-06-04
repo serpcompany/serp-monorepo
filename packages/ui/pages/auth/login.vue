@@ -1,33 +1,33 @@
 <script setup lang="ts">
-  import type { z } from 'zod';
-  import type { FormSubmitEvent } from '#ui/types';
-  import { loginUserSchema } from '@serp/db/validations/auth';
+import type { FormSubmitEvent } from '#ui/types'
+import type { z } from 'zod'
+import { loginUserSchema } from '@serp/db/validations/auth'
 
-  definePageMeta({
-    middleware: ['invite-email']
-  });
-  type Schema = z.output<typeof loginUserSchema>;
+definePageMeta({
+  middleware: ['invite-email'],
+})
+  type Schema = z.output<typeof loginUserSchema>
 
-  const loading = ref(false);
-  const { login } = useAuth();
-  const inviteEmail = useState<string>('inviteEmail');
+const loading = ref(false)
+const { login } = useAuth()
+const inviteEmail = useState<string>('inviteEmail')
 
-  const state = reactive<Partial<Schema>>({
-    email: inviteEmail.value,
-    password: undefined
-  });
+const state = reactive<Partial<Schema>>({
+  email: inviteEmail.value,
+  password: undefined,
+})
 
-  const runtimeConfig = useRuntimeConfig();
-  const siteName = runtimeConfig.public.siteName || 'SERP';
+const runtimeConfig = useRuntimeConfig()
+const siteName = runtimeConfig.public.siteName || 'SERP'
 
-  async function onSubmit(event: FormSubmitEvent<Schema>) {
-    loading.value = true;
-    const { error } = await login(event.data);
-    if (!error) {
-      await navigateTo('/dashboard');
-    }
-    loading.value = false;
+async function onSubmit(event: FormSubmitEvent<Schema>) {
+  loading.value = true
+  const { error } = await login(event.data)
+  if (!error) {
+    await navigateTo('/dashboard')
   }
+  loading.value = false
+}
 </script>
 
 <template>
@@ -35,7 +35,9 @@
     <div class="mx-auto w-full max-w-sm space-y-4">
       <SLogo />
       <div class="text-center">
-        <p class="text-lg font-bold">Sign in to {{ siteName }}</p>
+        <p class="text-lg font-bold">
+          Sign in to {{ siteName }}
+        </p>
         <p class="text-sm text-neutral-500">
           Dont have an account?
           <UButton
@@ -47,7 +49,7 @@
             label="Get Started"
             class="font-normal"
             :ui="{
-              trailingIcon: 'size-4'
+              trailingIcon: 'size-4',
             }"
             square
           />

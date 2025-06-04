@@ -1,8 +1,8 @@
-import { describe, expect, it } from 'vitest';
-import SHero from '../../components/SHero.vue';
-import ComponentRender from '../componentRender';
+import { describe, expect, it } from 'vitest'
+import SHero from '../../components/SHero.vue'
+import ComponentRender from '../componentRender'
 
-describe('SHero Snapshot Tests', () => {
+describe('sHero Snapshot Tests', () => {
   it.each([
     // Default props (using component defaults)
     ['with default props', { props: {} }],
@@ -14,19 +14,19 @@ describe('SHero Snapshot Tests', () => {
       {
         props: {
           headline: 'Hello World',
-          subheadline: 'This is a subheadline.'
-        }
-      }
+          subheadline: 'This is a subheadline.',
+        },
+      },
     ],
     // Without search bar
     [
       'without search bar',
-      { props: { headline: 'No Search', showSearchBar: false } }
+      { props: { headline: 'No Search', showSearchBar: false } },
     ],
     // Without buttons
     [
       'without buttons',
-      { props: { headline: 'No Buttons', showButtons: false } }
+      { props: { headline: 'No Buttons', showButtons: false } },
     ],
     // All props customized
     [
@@ -36,15 +36,15 @@ describe('SHero Snapshot Tests', () => {
           headline: 'Custom Hero',
           subheadline: 'Amazing subheadline',
           showSearchBar: false,
-          showButtons: false
-        }
-      }
-    ]
+          showButtons: false,
+        },
+      },
+    ],
   ])(
     'renders %s correctly',
     async (desc: string, options: { props: unknown }) => {
-      const html = await ComponentRender(`SHero ${desc}`, options, SHero);
-      expect(html).toMatchSnapshot();
-    }
-  );
-});
+      const html = await ComponentRender(`SHero ${desc}`, options, SHero)
+      expect(html).toMatchSnapshot()
+    },
+  )
+})

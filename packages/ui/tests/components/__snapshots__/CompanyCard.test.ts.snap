@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CompanyCard Snapshot > renders company with expanded content correctly (with auth) 1`] = `
+exports[`companyCard Snapshot > renders company with expanded content correctly (with auth) 1`] = `
 <div class="
   bg-default
   dark:hover:ring-secondary-500
@@ -335,7 +335,7 @@ exports[`CompanyCard Snapshot > renders company with expanded content correctly 
 </div>
 `;
 
-exports[`CompanyCard Snapshot > renders company with expanded content correctly (without auth) 1`] = `
+exports[`companyCard Snapshot > renders company with expanded content correctly (without auth) 1`] = `
 <div class="
   bg-default
   dark:hover:ring-secondary-500
@@ -670,7 +670,7 @@ exports[`CompanyCard Snapshot > renders company with expanded content correctly 
 </div>
 `;
 
-exports[`CompanyCard Snapshot > renders featured company with complete details correctly (with auth) 1`] = `
+exports[`companyCard Snapshot > renders featured company with complete details correctly (with auth) 1`] = `
 <div class="
   bg-default
   dark:hover:ring-secondary-500
@@ -1005,7 +1005,7 @@ exports[`CompanyCard Snapshot > renders featured company with complete details c
 </div>
 `;
 
-exports[`CompanyCard Snapshot > renders featured company with complete details correctly (without auth) 1`] = `
+exports[`companyCard Snapshot > renders featured company with complete details correctly (without auth) 1`] = `
 <div class="
   bg-default
   dark:hover:ring-secondary-500
@@ -1340,7 +1340,7 @@ exports[`CompanyCard Snapshot > renders featured company with complete details c
 </div>
 `;
 
-exports[`CompanyCard Snapshot > renders non-featured company correctly (with auth) 1`] = `
+exports[`companyCard Snapshot > renders non-featured company correctly (with auth) 1`] = `
 <div class="
   bg-default
   divide-dashed
@@ -1665,7 +1665,7 @@ exports[`CompanyCard Snapshot > renders non-featured company correctly (with aut
 </div>
 `;
 
-exports[`CompanyCard Snapshot > renders non-featured company correctly (without auth) 1`] = `
+exports[`companyCard Snapshot > renders non-featured company correctly (without auth) 1`] = `
 <div class="
   bg-default
   divide-dashed

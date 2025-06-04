@@ -5,40 +5,40 @@
 // 4. Update user password (@method updateUser)
 // 5. Delete used token (@method deletePasswordResetToken)
 
-import { z } from 'zod';
-import { validateBody } from '@serp/utils/server/utils/bodyValidation';
 import {
+  deletePasswordResetToken,
   findPasswordResetToken,
-  deletePasswordResetToken
-} from '@serp/db/server/database/queries/auth';
-import { updateUser } from '@serp/db/server/database/queries/users';
+} from '@serp/db/server/database/queries/auth'
+import { updateUser } from '@serp/db/server/database/queries/users'
+import { validateBody } from '@serp/utils/server/utils/bodyValidation'
+import { z } from 'zod'
 
 const resetPasswordSchema = z.object({
   token: z.string(),
-  password: z.string().min(8)
-});
+  password: z.string().min(8),
+})
 
 export default defineEventHandler(async (event) => {
   // 1. Validate input
-  const { token, password } = await validateBody(event, resetPasswordSchema);
+  const { token, password } = await validateBody(event, resetPasswordSchema)
 
   // 2. Find valid token
-  const resetToken = await findPasswordResetToken(token);
+  const resetToken = await findPasswordResetToken(token)
   if (!resetToken || resetToken.expiresAt < new Date()) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'This link has expired'
-    });
+      statusMessage: 'This link has expired',
+    })
   }
 
   // 3. Hash new password
-  const hashedPassword = await hashPassword(password);
+  const hashedPassword = await hashPassword(password)
 
   // 4. Update user password
-  await updateUser(resetToken.userId, { hashedPassword });
+  await updateUser(resetToken.userId, { hashedPassword })
 
   // 5. Delete used token
-  await deletePasswordResetToken(token);
+  await deletePasswordResetToken(token)
 
-  sendNoContent(event);
-});
+  sendNoContent(event)
+})

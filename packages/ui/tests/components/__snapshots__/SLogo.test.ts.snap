@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SLogo > renders default rendering correctly 1`] = `
+exports[`sLogo > renders default rendering correctly 1`] = `
 <div class="
   flex
   items-center

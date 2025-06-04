@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPill > renders with multiple items correctly 1`] = `
+exports[`sPill > renders with multiple items correctly 1`] = `
 <div class="
   flex
   flex-wrap
@@ -66,7 +66,7 @@ exports[`SPill > renders with multiple items correctly 1`] = `
 </div>
 `;
 
-exports[`SPill > renders with no items correctly 1`] = `
+exports[`sPill > renders with no items correctly 1`] = `
 <div class="
   flex
   flex-wrap
@@ -74,7 +74,7 @@ exports[`SPill > renders with no items correctly 1`] = `
 "></div>
 `;
 
-exports[`SPill > renders with one item correctly 1`] = `
+exports[`sPill > renders with one item correctly 1`] = `
 <div class="
   flex
   flex-wrap

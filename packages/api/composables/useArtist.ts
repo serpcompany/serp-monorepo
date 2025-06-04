@@ -1,7 +1,7 @@
-import type { Artist } from '@serp/types/types';
+import type { Artist } from '@serp/types/types'
 
-export const useArtist = async (slug: string) => {
+export async function useArtist(slug: string) {
   return await useFetchWithCache<Artist>(
-    `/entity/${slug}?module=music_artists`
-  );
-};
+    `/entity/${slug}?module=music_artists`,
+  )
+}

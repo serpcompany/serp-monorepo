@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPage/Users/Billing Snapshot > renders when user is logged in correctly 1`] = `
+exports[`sPage/Users/Billing Snapshot > renders when user is logged in correctly 1`] = `
 <div class="
   flex
   flex-col
@@ -127,7 +127,7 @@ exports[`SPage/Users/Billing Snapshot > renders when user is logged in correctly
 </div>
 `;
 
-exports[`SPage/Users/Billing Snapshot > renders when user is not logged in correctly 1`] = `
+exports[`sPage/Users/Billing Snapshot > renders when user is not logged in correctly 1`] = `
 <div class="
   flex
   flex-col

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`PostCard Snapshot > renders with complete post data correctly 1`] = `
+exports[`postCard Snapshot > renders with complete post data correctly 1`] = `
 <article class="
   gap-6
   grid
@@ -43,7 +43,7 @@ exports[`PostCard Snapshot > renders with complete post data correctly 1`] = `
         mr-1
         text-sm
       ">
-        SEP 30 2022
+        OCT 01 2022
       </span>
       <span>
         –
@@ -92,7 +92,7 @@ exports[`PostCard Snapshot > renders with complete post data correctly 1`] = `
 </article>
 `;
 
-exports[`PostCard Snapshot > renders with custom title prop overriding display title correctly 1`] = `
+exports[`postCard Snapshot > renders with custom title prop overriding display title correctly 1`] = `
 <article class="
   gap-6
   grid
@@ -135,7 +135,7 @@ exports[`PostCard Snapshot > renders with custom title prop overriding display t
         mr-1
         text-sm
       ">
-        FEB 28 2023
+        MAR 01 2023
       </span>
       <span>
         –
@@ -184,7 +184,7 @@ exports[`PostCard Snapshot > renders with custom title prop overriding display t
 </article>
 `;
 
-exports[`PostCard Snapshot > renders without featured image and author correctly 1`] = `
+exports[`postCard Snapshot > renders without featured image and author correctly 1`] = `
 <article class="
   gap-6
   grid

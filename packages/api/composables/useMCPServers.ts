@@ -1,6 +1,6 @@
-import type { Entities, MCPServers } from '@serp/types/types';
+import type { Entities, MCPServers } from '@serp/types/types'
 
-export const useMCPServers = async (
+export async function useMCPServers(
   page = 1,
   limit = 50,
   tag = '',
@@ -8,17 +8,17 @@ export const useMCPServers = async (
   owner = '',
   categorySlug = '',
   name = '',
-  sort = ''
-) => {
+  sort = '',
+) {
   const data = await useFetchWithCache<Entities>(
-    `/entities?page=${page}&limit=${limit}&name=${name}&tag=${tag}&topic=${topic}&owner=${owner}&categorySlug=${categorySlug}&sort=${sort}&module=mcp_server`
-  );
+    `/entities?page=${page}&limit=${limit}&name=${name}&tag=${tag}&topic=${topic}&owner=${owner}&categorySlug=${categorySlug}&sort=${sort}&module=mcp_server`,
+  )
   if (!data) {
-    return data;
+    return data
   }
-  const { entities, ...rest } = data;
+  const { entities, ...rest } = data
   return {
     ...rest,
-    servers: entities
-  } as MCPServers;
-};
+    servers: entities,
+  } as MCPServers
+}

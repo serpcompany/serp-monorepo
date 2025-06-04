@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  const router = useRouter();
-  router.replace({ path: '/products/', replace: true });
+const router = useRouter()
+router.replace({ path: '/products/', replace: true })
 </script>
 
 <template>
-  <div></div>
+  <div />
 </template>

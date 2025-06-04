@@ -12,29 +12,29 @@
 // - server/api/auth/oauth/google.ts
 // - server/api/auth/oauth/github.ts
 
+import type { H3Event } from 'h3'
 import {
-  findUserByEmail,
   createUserWithOAuth,
+  findUserByEmail,
+  linkOAuthAccount,
   updateUser,
-  linkOAuthAccount
-} from '@serp/db/server/database/queries/users';
-import { sanitizeUser, sendLoginNotification } from './auth';
-import type { H3Event } from 'h3';
+} from '@serp/db/server/database/queries/users'
+import { sanitizeUser, sendLoginNotification } from './auth'
 
 export interface OAuthUserData {
-  email: string;
-  name: string;
-  avatarUrl: string;
-  provider: 'google' | 'github';
-  providerUserId: string;
+  email: string
+  name: string
+  avatarUrl: string
+  provider: 'google' | 'github'
+  providerUserId: string
 }
 
-export const handleOAuthSuccess = async (
+export async function handleOAuthSuccess(
   event: H3Event,
-  oauthUser: OAuthUserData
-) => {
+  oauthUser: OAuthUserData,
+): Promise<void> {
   // 2. Check if user exists
-  let dbUser = await findUserByEmail(oauthUser.email);
+  let dbUser = await findUserByEmail(oauthUser.email)
 
   // 3. If new user, create user with OAuth data
   if (!dbUser) {
@@ -42,42 +42,42 @@ export const handleOAuthSuccess = async (
       email: oauthUser.email,
       name: oauthUser.name,
       avatarUrl: oauthUser.avatarUrl,
-      emailVerified: true
-    });
+      emailVerified: true,
+    })
   }
 
   // 4. Update avatar if not set
   if (!dbUser.avatarUrl && oauthUser.avatarUrl) {
     dbUser = await updateUser(dbUser.id, {
-      avatarUrl: oauthUser.avatarUrl
-    });
+      avatarUrl: oauthUser.avatarUrl,
+    })
   }
 
   // 5. Link OAuth account to user
   await linkOAuthAccount(
     dbUser.id,
     oauthUser.provider,
-    oauthUser.providerUserId
-  );
+    oauthUser.providerUserId,
+  )
 
   // 6. Check if user is banned
   if (dbUser.banned) {
     throw createError({
       statusCode: 403,
-      statusMessage: 'Your account has been banned'
-    });
+      statusMessage: 'Your account has been banned',
+    })
   }
 
   // 7. Sanitize user data
-  const sanitizedUser = sanitizeUser(dbUser);
+  const sanitizedUser = sanitizeUser(dbUser)
 
   // 8. Set user session and redirect to dashboard
-  await setUserSession(event, { user: sanitizedUser });
+  await setUserSession(event, { user: sanitizedUser })
 
   // Send login notification
   await sendLoginNotification({
     name: sanitizedUser.name,
-    email: sanitizedUser.email
-  });
-  return sendRedirect(event, '/dashboard');
-};
+    email: sanitizedUser.email,
+  })
+  return sendRedirect(event, '/dashboard')
+}

@@ -8,47 +8,47 @@
     Img,
     Link,
     Preview,
-    Text
-  } from '@vue-email/components';
+    Text,
+  } from '@vue-email/components'
 
-  interface FeedbackReplyProps {
-    userName?: string;
-    originalMessage?: string;
-    replyMessage?: string;
+interface FeedbackReplyProps {
+    userName?: string
+    originalMessage?: string
+    replyMessage?: string
   }
 
   withDefaults(defineProps<FeedbackReplyProps>(), {
     userName: '',
     originalMessage: '',
-    replyMessage: ''
-  });
+    replyMessage: '',
+  })
 
-  const main = {
-    backgroundColor: '#ffffff'
+const main = {
+    backgroundColor: '#ffffff',
   };
 
   const container = {
     paddingLeft: '12px',
     paddingRight: '12px',
-    margin: '0 auto'
+    margin: '0 auto',
   };
 
   const h1 = {
     color: '#333',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     fontSize: '24px',
     fontWeight: 'bold',
     margin: '40px 0',
-    padding: '0'
+    padding: '0',
   };
 
   const text = {
     color: '#333',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     fontSize: '14px',
-    margin: '24px 0'
+    margin: '24px 0',
   };
 
   const messageBox = {
@@ -56,20 +56,20 @@
     borderRadius: '5px',
     border: '1px solid #eee',
     padding: '16px',
-    margin: '16px 0'
+    margin: '16px 0',
   };
 
   const footer = {
     color: '#898989',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     fontSize: '12px',
     lineHeight: '22px',
     marginTop: '12px',
-    marginBottom: '24px'
+    marginBottom: '24px',
   };
 
-  const runtimeConfig = useRuntimeConfig();
+  const runtimeConfig = useRuntimeConfig()
 </script>
 
 <template>
@@ -79,12 +79,16 @@
 
     <Body :style="main">
       <Container :style="container">
-        <Heading :style="h1">Response to your feedback</Heading>
-        <Text :style="text">Hello {{ userName }},</Text>
-        <Text :style="text"
-          >We appreciate you taking the time to share your thoughts. Here's our
-          response:</Text
-        >
+        <Heading :style="h1">
+          Response to your feedback
+        </Heading>
+        <Text :style="text">
+          Hello {{ userName }},
+        </Text>
+        <Text :style="text">
+          We appreciate you taking the time to share your thoughts. Here's our
+          response:
+        </Text>
 
         <div :style="messageBox">
           <Text :style="{ ...text, margin: '0 0 8px 0', fontWeight: 'bold' }">
@@ -110,7 +114,8 @@
         </Text>
 
         <Text :style="text">
-          Thanks,<br />
+          Thanks,
+          <br />
           {{ runtimeConfig.public.siteName }} team
         </Text>
 
@@ -126,8 +131,9 @@
             target="_blank"
             :style="{ ...link, color: '#898989' }"
           >
-            {{ runtimeConfig.public.siteName }} </Link
-          >{{
+            {{ runtimeConfig.public.siteName }}
+          </Link>
+          {{
             runtimeConfig.public.APP_DESCRIPTION
               ? `, ${runtimeConfig.public.APP_DESCRIPTION}`
               : ''

@@ -1,7 +1,7 @@
-import '@nuxthub/core';
+import '@nuxthub/core'
 
 declare module '@nuxthub/core' {
   interface ModuleOptions {
-    databaseMigrationsDirs?: string[];
+    databaseMigrationsDirs?: string[]
   }
 }

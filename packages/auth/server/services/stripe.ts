@@ -1,16 +1,16 @@
-import Stripe from 'stripe';
+import Stripe from 'stripe'
 
 export const stripe = new Stripe(
-  process.env.STRIPE_SECRET_KEY ||
-    process.env.STRIPE_SECRET_KEY ||
-    'development'
-);
+  process.env.STRIPE_SECRET_KEY
+  || process.env.STRIPE_SECRET_KEY
+  || 'development',
+)
 
 export interface CreateCheckoutSessionParams {
-  customerId: string;
-  priceId: string;
-  teamSlug: string;
-  metadata?: Record<string, unknown>;
+  customerId: string
+  priceId: string
+  teamSlug: string
+  metadata?: Record<string, unknown>
 }
 
 export const stripeService = {
@@ -18,14 +18,15 @@ export const stripeService = {
     try {
       const customer = await stripe.customers.create({
         email,
-        metadata: { teamId }
-      });
-      return customer.id;
-    } catch {
+        metadata: { teamId },
+      })
+      return customer.id
+    }
+    catch {
       throw createError({
         statusCode: 500,
-        statusMessage: 'Failed to create Stripe customer'
-      });
+        statusMessage: 'Failed to create Stripe customer',
+      })
     }
   },
 
@@ -33,14 +34,14 @@ export const stripeService = {
     customerId,
     priceId,
     teamSlug,
-    metadata
+    metadata,
   }: CreateCheckoutSessionParams) {
     try {
       return await stripe.checkout.sessions.create({
         customer: customerId,
         billing_address_collection: 'required',
         customer_update: {
-          address: 'auto'
+          address: 'auto',
         },
         allow_promotion_codes: true,
         success_url: teamSlug
@@ -52,60 +53,64 @@ export const stripeService = {
         line_items: [
           {
             price: priceId,
-            quantity: 1
-          }
+            quantity: 1,
+          },
         ],
         mode: 'subscription',
         metadata: metadata || {},
         subscription_data: metadata
           ? {
-              metadata: metadata
+              metadata,
             }
-          : undefined
-      });
-    } catch {
+          : undefined,
+      })
+    }
+    catch {
       throw createError({
         statusCode: 500,
-        statusMessage: 'Failed to create checkout session'
-      });
+        statusMessage: 'Failed to create checkout session',
+      })
     }
   },
 
   async getCheckoutSession(sessionId: string) {
     try {
-      const session = await stripe.checkout.sessions.retrieve(sessionId);
-      return session;
-    } catch {
+      const session = await stripe.checkout.sessions.retrieve(sessionId)
+      return session
+    }
+    catch {
       throw createError({
         statusCode: 500,
-        statusMessage: 'Failed to get checkout session'
-      });
+        statusMessage: 'Failed to get checkout session',
+      })
     }
   },
 
   async getSubscription(subscriptionId: string) {
     try {
-      const subscription = await stripe.subscriptions.retrieve(subscriptionId);
-      return subscription;
-    } catch {
+      const subscription = await stripe.subscriptions.retrieve(subscriptionId)
+      return subscription
+    }
+    catch {
       throw createError({
         statusCode: 500,
-        statusMessage: 'Failed to get subscription'
-      });
+        statusMessage: 'Failed to get subscription',
+      })
     }
   },
 
   async createBillingPortalSession(customerId: string) {
     try {
       const session = await stripe.billingPortal.sessions.create({
-        customer: customerId
-      });
-      return session;
-    } catch {
+        customer: customerId,
+      })
+      return session
+    }
+    catch {
       throw createError({
         statusCode: 500,
-        statusMessage: 'Failed to create billing portal session'
-      });
+        statusMessage: 'Failed to create billing portal session',
+      })
     }
-  }
-};
+  },
+}

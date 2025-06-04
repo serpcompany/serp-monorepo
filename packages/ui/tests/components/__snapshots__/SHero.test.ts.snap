@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SHero Snapshot Tests > renders with custom all props correctly 1`] = `
+exports[`sHero Snapshot Tests > renders with custom all props correctly 1`] = `
 <div class="py-20">
   <div class="
     lg:px-8
@@ -39,7 +39,7 @@ exports[`SHero Snapshot Tests > renders with custom all props correctly 1`] = `
 </div>
 `;
 
-exports[`SHero Snapshot Tests > renders with default props correctly 1`] = `
+exports[`sHero Snapshot Tests > renders with default props correctly 1`] = `
 <div class="py-20">
   <div class="
     lg:px-8
@@ -153,7 +153,7 @@ exports[`SHero Snapshot Tests > renders with default props correctly 1`] = `
 </div>
 `;
 
-exports[`SHero Snapshot Tests > renders with headline and subheadline correctly 1`] = `
+exports[`sHero Snapshot Tests > renders with headline and subheadline correctly 1`] = `
 <div class="py-20">
   <div class="
     lg:px-8
@@ -275,7 +275,7 @@ exports[`SHero Snapshot Tests > renders with headline and subheadline correctly 
 </div>
 `;
 
-exports[`SHero Snapshot Tests > renders with headline only correctly 1`] = `
+exports[`sHero Snapshot Tests > renders with headline only correctly 1`] = `
 <div class="py-20">
   <div class="
     lg:px-8
@@ -391,7 +391,7 @@ exports[`SHero Snapshot Tests > renders with headline only correctly 1`] = `
 </div>
 `;
 
-exports[`SHero Snapshot Tests > renders without buttons correctly 1`] = `
+exports[`sHero Snapshot Tests > renders without buttons correctly 1`] = `
 <div class="py-20">
   <div class="
     lg:px-8
@@ -424,7 +424,7 @@ exports[`SHero Snapshot Tests > renders without buttons correctly 1`] = `
 </div>
 `;
 
-exports[`SHero Snapshot Tests > renders without search bar correctly 1`] = `
+exports[`sHero Snapshot Tests > renders without search bar correctly 1`] = `
 <div class="py-20">
   <div class="
     lg:px-8

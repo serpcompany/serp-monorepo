@@ -1,7 +1,7 @@
-import type { Comment } from '@serp/types/types';
+import type { Comment } from '@serp/types/types'
 
-export const useServiceProviderComments = async (id: number) => {
+export async function useServiceProviderComments(id: number) {
   return useFetchWithCache<{ comments: Comment[] }>(
-    `/comments/${id}?module=service_provider`
-  );
-};
+    `/comments/${id}?module=service_provider`,
+  )
+}

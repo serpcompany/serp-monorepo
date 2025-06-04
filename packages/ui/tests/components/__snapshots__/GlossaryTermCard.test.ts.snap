@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`GlossaryTermCard Snapshot > renders with keyword provided correctly 1`] = `
+exports[`glossaryTermCard Snapshot > renders with keyword provided correctly 1`] = `
 <div>
   <a
     class="
@@ -28,7 +28,7 @@ exports[`GlossaryTermCard Snapshot > renders with keyword provided correctly 1`]
 </div>
 `;
 
-exports[`GlossaryTermCard Snapshot > renders without keyword (fallback to title) correctly 1`] = `
+exports[`glossaryTermCard Snapshot > renders without keyword (fallback to title) correctly 1`] = `
 <div>
   <a
     class="
