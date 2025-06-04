@@ -8,23 +8,18 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "eslint": "turbo run eslint",
-    "//": "--- Development Commands ---",
-    "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "lint:windows": "turbo run lint",
-    "//ci": "--- CI Commands (check-only, no auto-fix) ---",
-    "ci:lint": "turbo run ci:lint",
+    "lint": "turbo run lint",
     "prepare": "husky install",
-    "test": "turbo run test",
-    "test:update": "turbo run test:update",
     "test:update:windows": "turbo run test:update",
+    "test:update": "turbo run test:update",
     "test:watch": "turbo run test:watch",
     "test:windows": "turbo run test",
+    "test": "turbo run test",
     "typecheck": "turbo run typecheck 2>&1 | tee reports/typecheck-errors.txt",
-    "typecheck:phase1": "turbo run typecheck 2>&1 | grep -E 'TS7006|TS7053|TS7034|TS7005' && exit 1 || exit 0",
-    "typecheck:ts7006": "turbo run typecheck 2>&1 | grep 'TS7006' && echo 'TS7006 errors found' && exit 1 || echo 'No TS7006 errors found - build passed!'",
-    "lint:return-types": "turbo run ci:lint 2>&1 | grep 'ts/explicit-function-return-type' && echo 'ts/explicit-function-return-type errors found' && exit 1 || echo 'No ts/explicit-function-return-type errors found'"
+    "//ci": "--- CI Commands (check-only, no auto-fix) ---",
+    "ci:lint": "turbo run ci:lint"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.13.2",
