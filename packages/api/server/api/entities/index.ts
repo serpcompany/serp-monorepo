@@ -91,7 +91,7 @@ export default defineEventHandler(async (event) => {
     const pageNumber = Number(page)
     const limitNumber = Math.min(Number(limit), 100)
 
-    if (isNaN(pageNumber) || pageNumber < 1 || !Number.isInteger(pageNumber)) {
+    if (Number.isNaN(pageNumber) || pageNumber < 1 || !Number.isInteger(pageNumber)) {
       throw createError({
         statusCode: 400,
         message: 'Page must be a positive integer.',
@@ -99,7 +99,7 @@ export default defineEventHandler(async (event) => {
     }
 
     if (
-      isNaN(limitNumber)
+      Number.isNaN(limitNumber)
       || limitNumber < 1
       || !Number.isInteger(limitNumber)
     ) {

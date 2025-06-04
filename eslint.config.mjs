@@ -120,7 +120,7 @@ export default antfu({
       '../../packages/api/**'
     ],
     rules: {
-      'unicorn/prefer-number-properties': 'warn',
+      'unicorn/prefer-number-properties': 'error',
     }
   },
   // Overrides: /server/ routes
