@@ -3,7 +3,6 @@
  * Centralized ESLint configuration for all Nuxt projects
  */
 
-// Suppress Node.js experimental warnings
 import antfu from '@antfu/eslint-config'
 
 process.noDeprecation = true
@@ -113,16 +112,6 @@ export default antfu({
       'vue/no-required-prop-with-default': 'warn'
     }
   },
-  // Overrides: /packges/api/ routes
-  {
-    files: [
-      '**/packages/api/**',
-      '../../packages/api/**'
-    ],
-    rules: {
-      'unicorn/prefer-number-properties': 'error',
-    }
-  },
   // Overrides: /server/ routes
   {
     files: [
@@ -153,6 +142,52 @@ export default antfu({
     rules: {
       'node/prefer-global/process': 'warn', // allow 'process.env' in some /server/ routes & config files bc Nuxt provides the Node.js context
       'ts/strict-boolean-expressions': 'off'
+    }
+  },
+  // Package-specific overrides: packages/api
+  {
+    files: [
+      '**/packages/api/**',
+      '../../packages/api/**'
+    ],
+    rules: {
+      // Now that isNaN errors are fixed, enforce the rule to prevent new occurrences
+      'unicorn/prefer-number-properties': 'error'
+    }
+  },
+  // Package-specific overrides: packages/ui
+  {
+    files: [
+      '**/packages/ui/**',
+      '../../packages/ui/**'
+    ],
+    rules: {
+      '@typescript-eslint/no-extraneous-class': 'warn',
+      '@typescript-eslint/no-unsafe-function-type': 'warn',
+      '@typescript-eslint/no-unused-vars': 'warn',
+      'eqeqeq': 'warn',
+      'format/prettier': 'warn',
+      'no-alert': 'warn',
+      'no-restricted-globals': 'warn',
+      'node/prefer-global/process': 'warn',
+      'regexp/no-misleading-capturing-group': 'warn',
+      'ts/explicit-function-return-type': 'warn',
+      'ts/no-unused-vars': 'warn',
+      'ts/no-use-before-define': 'warn',
+      'unused-imports/no-unused-vars': 'warn',
+      'vue-a11y/alt-text': 'warn',
+      'vue-a11y/anchor-has-content': 'warn',
+      'vue-a11y/click-events-have-key-events': 'warn',
+      'vue-a11y/form-control-has-label': 'warn',
+      'vue-a11y/heading-has-content': 'warn',
+      'vue-a11y/iframe-has-title': 'warn',
+      'vue-a11y/label-has-for': 'warn',
+      'vue-a11y/mouse-events-have-key-events': 'warn',
+      'vue-a11y/no-static-element-interactions': 'warn',
+      'vue/custom-event-name-casing': 'warn',
+      'vue/eqeqeq': 'warn',
+      'vue/no-unused-refs': 'warn',
+      'vue/prop-name-casing': 'warn',
     }
   },
   // Overrides: Test files (MUST be last to take precedence)
