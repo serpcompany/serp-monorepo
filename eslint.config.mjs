@@ -16,7 +16,7 @@ export default antfu({
   },
   typescript: true,
   formatters: true,
-  jsdoc: true, // Enable JSDoc support
+  jsdoc: true,
   stylistic: true,
   ignores: [
     // Common directories to ignore
@@ -77,8 +77,6 @@ export default antfu({
 
       // Node.js rules - allow process usage in Nuxt projects
       'node/prefer-global/buffer': 'warn',
-
-      // Import/export rules - FORCE override antfu defaults
       'perfectionist/sort-named-imports': 'warn',
       'unused-imports/no-unused-vars': 'warn',
       'unused-imports/no-unused-imports': 'warn',
