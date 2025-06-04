@@ -1,4 +1,4 @@
-name: ci_1
+name: ci_1_pr
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  ci_1:
+  ci_1_pr:
     runs-on: ${{ matrix.os }}
 
     strategy:
