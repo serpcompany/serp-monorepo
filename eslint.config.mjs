@@ -88,19 +88,15 @@ export default antfu({
       // General rules
       'no-console': 'warn',
       'prefer-const': 'warn',
+      'no-restricted-globals': 'warn',
 
       // style rules
       'style/indent': 'warn',
       'style/semi': 'warn'
     }
 }).append(
+  // Vue-specific overrides
   {
-    rules: {
-      'no-restricted-globals': 'warn'
-    }
-  },
-  {
-    // Vue-specific overrides
     files: ['**/*.vue'],
     rules: {
       'max-lines': ['warn', 250], // Stricter for Vue files
@@ -117,8 +113,18 @@ export default antfu({
       'vue/no-required-prop-with-default': 'warn'
     }
   },
+   // API Server routes specific
   {
-    // Configuration files - allow process usage
+    files: [
+      '**/server/**/*.ts',
+      'server/**/*.ts'
+    ],
+    rules: {
+      'node/prefer-global/process': 'warn',
+    }
+  },
+  // Configuration files - allow process usage
+  {
     files: [
       '**/nuxt.config.ts',
       'nuxt.config.ts',
@@ -132,11 +138,10 @@ export default antfu({
       'vitest.config.ts',
       '**/tailwindcss.config.ts',
       'tailwindcss.config.ts',
-      '**/server/**/*.ts',
-      'server/**/*.ts'
+
     ],
     rules: {
-      'node/prefer-global/process': 'off', // allow 'process.env' in some /server/ routes & config files bc Nuxt provides the Node.js context
+      'node/prefer-global/process': 'warn', // allow 'process.env' in some /server/ routes & config files bc Nuxt provides the Node.js context
       'ts/strict-boolean-expressions': 'off'
     }
   }
