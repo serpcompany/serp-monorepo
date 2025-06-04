@@ -45,13 +45,16 @@ const props = defineProps({
   },
 })
 
-const ratingCounts = computed(() => ({
-  1: props.totalOneStarReviews,
-  2: props.totalTwoStarReviews,
-  3: props.totalThreeStarReviews,
-  4: props.totalFourStarReviews,
-  5: props.totalFiveStarReviews,
-}))
+const ratingCounts = computed(
+    () =>
+      ({
+      1: props.totalOneStarReviews,
+      2: props.totalTwoStarReviews,
+      3: props.totalThreeStarReviews,
+        4: props.totalFourStarReviews,
+      5: props.totalFiveStarReviews,
+    }) as Record<number, number>,
+);
 </script>
 
 <template>
@@ -125,7 +128,7 @@ const ratingCounts = computed(() => ({
                         : 0
                     }%`,
                   }"
-                />
+                ></div>
               </div>
 
               <span class="ml-4 text-sm">{{ ratingCounts[star] || 0 }}</span>

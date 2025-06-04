@@ -96,6 +96,10 @@ export default antfu({
       'antfu/if-newline': 'warn',
       'style/quotes': 'warn',
       'style/no-trailing-spaces': 'warn',
+      'style/member-delimiter-style': 'warn',
+      'style/operator-linebreak': 'warn',
+      'style/arrow-parens': 'warn',
+      'vue/operator-linebreak': 'warn',
     }
   },
   // Overrides: Vue
@@ -113,7 +117,11 @@ export default antfu({
       // Vue stylistic rules to match prettier vueIndentScriptAndStyle: true
       'vue/script-indent': ['warn', 2, { baseIndent: 1 }],
       'vue/html-indent': ['warn', 2],
-      'vue/no-required-prop-with-default': 'warn'
+      'vue/no-required-prop-with-default': 'warn',
+      // Disable operator-linebreak rules for Vue files to prevent auto-fix issues
+      'style/operator-linebreak': 'off',
+      'vue/operator-linebreak': 'off',
+      'style/indent-binary-ops': 'off'
     }
   },
   // Overrides: /server/ routes

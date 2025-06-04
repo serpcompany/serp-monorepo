@@ -42,5 +42,11 @@ jobs:
       - name: Lint
         run: pnpm ci:lint
 
+      - name: Type Check
+        run: pnpm typecheck
+
+      - name: Type Check - No Fixed Errors
+        run: pnpm typecheck:fixed
+
       - name: Test
         run: pnpm test

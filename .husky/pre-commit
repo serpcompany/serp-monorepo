@@ -26,6 +26,11 @@ npx lint-staged
 echo "[husky]: Running command: pnpm infisical scan git-changes --staged --verbose --baseline-path .reports/secrets-report.json"
 pnpm infisical scan git-changes --staged --verbose --baseline-path .reports/secrets-report.json
 
+# Check for fixed TypeScript errors
+echo "[husky]: Checking for fixed TypeScript errors..."
+pnpm typecheck:fixed
+
 # Run tests
 echo "[husky]: Running script: pnpm test"
 pnpm test
+

@@ -255,15 +255,15 @@ export default defineEventHandler(async (event) => {
       'name:asc': asc(entity.name),
       'name:desc': desc(entity.name),
       'createdAt:desc': desc(entity.createdAt),
-    }
+    } as const
 
     const orderByList = [
       sql`CASE WHEN ${subscription.status} IN ('active', 'trialing') THEN 0 ELSE 1 END`,
       sql`CAST(${subscription.metadata}->>'placement' AS INTEGER)`,
     ]
 
-    if (sort && sorts[sort]) {
-      orderByList.push(sorts[sort])
+    if (sort && typeof sort === 'string' && sort in sorts) {
+      orderByList.push(sorts[sort as keyof typeof sorts])
     }
 
     baseQuery = baseQuery
