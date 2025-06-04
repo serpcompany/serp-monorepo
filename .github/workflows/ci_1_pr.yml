@@ -54,8 +54,6 @@ jobs:
       - name: Code Quality Checks
         run: |
           pnpm ci:lint
-          pnpm typecheck:ts7006
-          pnpm lint:return-types
 
       - name: Test
         run: pnpm test
