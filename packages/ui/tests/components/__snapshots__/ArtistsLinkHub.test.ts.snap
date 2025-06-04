@@ -1,17 +1,71 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ArtistsLinkHub Snapshot > renders with multiple artists correctly 1`] = `
-"<div class="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-  <div><span><a href="/artists/artist-1/" aria-label="artist name">Artist 1</a></span></div>
-  <div><span><a href="/artists/artist-2/" aria-label="artist name">Artist 2</a></span></div>
-  <div><span><a href="/artists/artist-3/" aria-label="artist name">Artist 3</a></span></div>
-</div>"
+exports[`artistsLinkHub Snapshot > renders with multiple artists correctly 1`] = `
+<div class="
+  gap-2
+  grid
+  grid-cols-1
+  lg:grid-cols-3
+  md:grid-cols-2
+  mt-2
+  xl:grid-cols-4
+">
+  <div>
+    <span>
+      <a
+        aria-label="artist name"
+        href="/artists/artist-1/"
+      >Artist 1</a>
+    </span>
+  </div>
+  <div>
+    <span>
+      <a
+        aria-label="artist name"
+        href="/artists/artist-2/"
+      >Artist 2</a>
+    </span>
+  </div>
+  <div>
+    <span>
+      <a
+        aria-label="artist name"
+        href="/artists/artist-3/"
+      >Artist 3</a>
+    </span>
+  </div>
+</div>
 `;
 
-exports[`ArtistsLinkHub Snapshot > renders with no artists correctly 1`] = `"<div class="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>"`;
+exports[`artistsLinkHub Snapshot > renders with no artists correctly 1`] = `
+<div class="
+  gap-2
+  grid
+  grid-cols-1
+  lg:grid-cols-3
+  md:grid-cols-2
+  mt-2
+  xl:grid-cols-4
+"></div>
+`;
 
-exports[`ArtistsLinkHub Snapshot > renders with one artist correctly 1`] = `
-"<div class="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-  <div><span><a href="/artists/artist-1/" aria-label="artist name">Artist 1</a></span></div>
-</div>"
+exports[`artistsLinkHub Snapshot > renders with one artist correctly 1`] = `
+<div class="
+  gap-2
+  grid
+  grid-cols-1
+  lg:grid-cols-3
+  md:grid-cols-2
+  mt-2
+  xl:grid-cols-4
+">
+  <div>
+    <span>
+      <a
+        aria-label="artist name"
+        href="/artists/artist-1/"
+      >Artist 1</a>
+    </span>
+  </div>
+</div>
 `;

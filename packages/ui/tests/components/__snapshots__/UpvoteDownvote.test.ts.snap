@@ -1,11 +1,75 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`UpvoteDownvote > renders correctly 1`] = `
-"<div class="flex flex-col items-center justify-center">
-  <div class="mb-2 flex flex-col items-center"><button class="p-1 text-neutral-500" type="button"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-      </svg></button><span class="mx-1 text-sm font-bold">#</span><button class="p-1 text-neutral-500" type="button"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-      </svg></button></div>
-</div>"
+exports[`upvoteDownvote > renders correctly 1`] = `
+<div class="
+  flex
+  flex-col
+  items-center
+  justify-center
+">
+  <div class="
+    flex
+    flex-col
+    items-center
+    mb-2
+  ">
+    <button
+      class="
+        p-1
+        text-neutral-500
+      "
+      type="button"
+    >
+      <svg
+        class="
+          h-5
+          w-5
+        "
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5 15l7-7 7 7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+        />
+      </svg>
+    </button>
+    <span class="
+      font-bold
+      mx-1
+      text-sm
+    ">
+      #
+    </span>
+    <button
+      class="
+        p-1
+        text-neutral-500
+      "
+      type="button"
+    >
+      <svg
+        class="
+          h-5
+          w-5
+        "
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M19 9l-7 7-7-7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
 `;

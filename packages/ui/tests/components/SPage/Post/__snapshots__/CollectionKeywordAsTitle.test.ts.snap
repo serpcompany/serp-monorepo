@@ -1,321 +1,2103 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with no categories (with auth) correctly 1`] = `
-"<div>
+exports[`sPagePostCollectionKeywordAsTitle Snapshot > renders with no categories (with auth) correctly 1`] = `
+<div>
   <section class="py-20">
-    <h1 class="md:text-center">Posts</h1>
-    <!--v-if-->
+    <h1 class="md:text-center">
+      Posts
+    </h1>
+    <!-- v-if -->
   </section>
   <div class="pb-20">
     <!-- rows:  posts -->
     <div class="space-y-4">
-      <article class="py-16 grid grid-cols-1 gap-6 lg:grid-cols-12">
-        <div class="lg:col-span-8"><a href="/posts/post-one/">
-            <!--v-if-->
-            <!-- Title -->
-            <h2 class="mb-4 text-4xl font-extrabold hover:underline">One</h2>
+      <article class="
+        gap-6
+        grid
+        grid-cols-1
+        lg:grid-cols-12
+        py-16
+      ">
+        <div class="lg:col-span-8">
+          <a href="/posts/post-one/">
+            
+          <!-- v-if -->
+            
+          <!-- Title -->
+            <h2 class="
+            font-extrabold
+            hover:underline
+            mb-4
+            text-4xl
+          ">One</h2>
           </a>
-          <p class="mb-4 text-xl"><span></span></p>
-          <!--v-if-->
-          <div class="flex flex-wrap gap-2 mt-4"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+          <p class="
+            mb-4
+            text-xl
+          ">
+            <span></span>
+          </p>
+          <!-- v-if -->
+          <div class="
+            flex
+            flex-wrap
+            gap-2
+            mt-4
+          ">
+            <a
+              class="
+                bg-blue-50
+                border
+                border-blue-300
+                dark:bg-blue-900/30
+                dark:border-blue-700
+                dark:hover:bg-blue-800/50
+                dark:text-blue-300
+                font-medium
+                hover:bg-blue-100
+                px-3
+                py-1
+                rounded-full
+                text-blue-600
+                text-sm
+              "
+              href="/posts/category/tech/"
+            >Tech</a>
+          </div>
         </div>
-        <div class="lg:col-span-3 lg:col-start-8">
+        <div class="
+          lg:col-span-3
+          lg:col-start-8
+        ">
           <!-- Right column (30%) -->
         </div>
       </article>
-      <article class="py-16 grid grid-cols-1 gap-6 lg:grid-cols-12">
-        <div class="lg:col-span-8"><a href="/posts/post-two/">
-            <!--v-if-->
-            <!-- Title -->
-            <h2 class="mb-4 text-4xl font-extrabold hover:underline">Two</h2>
+      <article class="
+        gap-6
+        grid
+        grid-cols-1
+        lg:grid-cols-12
+        py-16
+      ">
+        <div class="lg:col-span-8">
+          <a href="/posts/post-two/">
+            
+          <!-- v-if -->
+            
+          <!-- Title -->
+            <h2 class="
+            font-extrabold
+            hover:underline
+            mb-4
+            text-4xl
+          ">Two</h2>
           </a>
-          <p class="mb-4 text-xl"><span>Test excerpt</span></p>
-          <!--v-if-->
-          <div class="flex flex-wrap gap-2 mt-4"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+          <p class="
+            mb-4
+            text-xl
+          ">
+            <span>
+              Test excerpt
+            </span>
+          </p>
+          <!-- v-if -->
+          <div class="
+            flex
+            flex-wrap
+            gap-2
+            mt-4
+          ">
+            <a
+              class="
+                bg-blue-50
+                border
+                border-blue-300
+                dark:bg-blue-900/30
+                dark:border-blue-700
+                dark:hover:bg-blue-800/50
+                dark:text-blue-300
+                font-medium
+                hover:bg-blue-100
+                px-3
+                py-1
+                rounded-full
+                text-blue-600
+                text-sm
+              "
+              href="/posts/category/tech/"
+            >Tech</a>
+          </div>
         </div>
-        <div class="lg:col-span-3 lg:col-start-8">
+        <div class="
+          lg:col-span-3
+          lg:col-start-8
+        ">
           <!-- Right column (30%) -->
         </div>
       </article>
     </div>
-    <nav class="mt-20 flex justify-center overflow-x-auto rounded-none" aria-label="pagination">
-      <div class="flex items-center gap-1"><button type="button" disabled="" aria-label="First Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevrons-left shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" disabled="" aria-label="Previous Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevron-left shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" data-type="page" aria-label="Page 1" aria-current="page" data-selected="true" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) p-1.5" value="1">
-          <!--v-if--><span class="truncate min-w-5 text-center">1</span>
-          <!--v-if-->
-        </button><button type="button" data-type="page" aria-label="Page 2" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5" value="2">
-          <!--v-if--><span class="truncate min-w-5 text-center">2</span>
-          <!--v-if-->
-        </button><button type="button" aria-label="Next Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevron-right shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" aria-label="Last Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevrons-right shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button></div>
+    <nav
+      aria-label="pagination"
+      class="
+        flex
+        justify-center
+        mt-20
+        overflow-x-auto
+        rounded-none
+      "
+    >
+      <div class="
+        flex
+        gap-1
+        items-center
+      ">
+        <button
+          aria-label="First Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevrons-left
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Previous Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevron-left
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-current="page"
+          aria-label="Page 1"
+          class="
+            aria-disabled:bg-primary
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-primary
+            disabled:bg-primary
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:outline-2
+            focus-visible:outline-offset-2
+            focus-visible:outline-primary
+            font-medium
+            gap-1.5
+            hover:bg-primary/75
+            inline-flex
+            items-center
+            p-1.5
+            rounded-md
+            text-inverted
+            text-sm
+            transition-colors
+          "
+          data-selected="true"
+          data-type="page"
+          type="button"
+          value="1"
+        >
+          <!-- v-if -->
+          <span class="
+            min-w-5
+            text-center
+            truncate
+          ">
+            1
+          </span>
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Page 2"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          data-type="page"
+          type="button"
+          value="2"
+        >
+          <!-- v-if -->
+          <span class="
+            min-w-5
+            text-center
+            truncate
+          ">
+            2
+          </span>
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Next Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevron-right
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Last Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevrons-right
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+      </div>
     </nav>
-    <!--v-if-->
+    <!-- v-if -->
   </div>
-</div>"
+</div>
 `;
 
-exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with no categories (without auth) correctly 1`] = `
-"<div>
+exports[`sPagePostCollectionKeywordAsTitle Snapshot > renders with no categories (without auth) correctly 1`] = `
+<div>
   <section class="py-20">
-    <h1 class="md:text-center">Posts</h1>
-    <!--v-if-->
+    <h1 class="md:text-center">
+      Posts
+    </h1>
+    <!-- v-if -->
   </section>
   <div class="pb-20">
     <!-- rows:  posts -->
     <div class="space-y-4">
-      <article class="py-16 grid grid-cols-1 gap-6 lg:grid-cols-12">
-        <div class="lg:col-span-8"><a href="/posts/post-one/">
-            <!--v-if-->
-            <!-- Title -->
-            <h2 class="mb-4 text-4xl font-extrabold hover:underline">One</h2>
+      <article class="
+        gap-6
+        grid
+        grid-cols-1
+        lg:grid-cols-12
+        py-16
+      ">
+        <div class="lg:col-span-8">
+          <a href="/posts/post-one/">
+            
+          <!-- v-if -->
+            
+          <!-- Title -->
+            <h2 class="
+            font-extrabold
+            hover:underline
+            mb-4
+            text-4xl
+          ">One</h2>
           </a>
-          <p class="mb-4 text-xl"><span></span></p>
-          <!--v-if-->
-          <div class="flex flex-wrap gap-2 mt-4"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+          <p class="
+            mb-4
+            text-xl
+          ">
+            <span></span>
+          </p>
+          <!-- v-if -->
+          <div class="
+            flex
+            flex-wrap
+            gap-2
+            mt-4
+          ">
+            <a
+              class="
+                bg-blue-50
+                border
+                border-blue-300
+                dark:bg-blue-900/30
+                dark:border-blue-700
+                dark:hover:bg-blue-800/50
+                dark:text-blue-300
+                font-medium
+                hover:bg-blue-100
+                px-3
+                py-1
+                rounded-full
+                text-blue-600
+                text-sm
+              "
+              href="/posts/category/tech/"
+            >Tech</a>
+          </div>
         </div>
-        <div class="lg:col-span-3 lg:col-start-8">
+        <div class="
+          lg:col-span-3
+          lg:col-start-8
+        ">
           <!-- Right column (30%) -->
         </div>
       </article>
-      <article class="py-16 grid grid-cols-1 gap-6 lg:grid-cols-12">
-        <div class="lg:col-span-8"><a href="/posts/post-two/">
-            <!--v-if-->
-            <!-- Title -->
-            <h2 class="mb-4 text-4xl font-extrabold hover:underline">Two</h2>
+      <article class="
+        gap-6
+        grid
+        grid-cols-1
+        lg:grid-cols-12
+        py-16
+      ">
+        <div class="lg:col-span-8">
+          <a href="/posts/post-two/">
+            
+          <!-- v-if -->
+            
+          <!-- Title -->
+            <h2 class="
+            font-extrabold
+            hover:underline
+            mb-4
+            text-4xl
+          ">Two</h2>
           </a>
-          <p class="mb-4 text-xl"><span>Test excerpt</span></p>
-          <!--v-if-->
-          <div class="flex flex-wrap gap-2 mt-4"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+          <p class="
+            mb-4
+            text-xl
+          ">
+            <span>
+              Test excerpt
+            </span>
+          </p>
+          <!-- v-if -->
+          <div class="
+            flex
+            flex-wrap
+            gap-2
+            mt-4
+          ">
+            <a
+              class="
+                bg-blue-50
+                border
+                border-blue-300
+                dark:bg-blue-900/30
+                dark:border-blue-700
+                dark:hover:bg-blue-800/50
+                dark:text-blue-300
+                font-medium
+                hover:bg-blue-100
+                px-3
+                py-1
+                rounded-full
+                text-blue-600
+                text-sm
+              "
+              href="/posts/category/tech/"
+            >Tech</a>
+          </div>
         </div>
-        <div class="lg:col-span-3 lg:col-start-8">
+        <div class="
+          lg:col-span-3
+          lg:col-start-8
+        ">
           <!-- Right column (30%) -->
         </div>
       </article>
     </div>
-    <nav class="mt-20 flex justify-center overflow-x-auto rounded-none" aria-label="pagination">
-      <div class="flex items-center gap-1"><button type="button" disabled="" aria-label="First Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevrons-left shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" disabled="" aria-label="Previous Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevron-left shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" data-type="page" aria-label="Page 1" aria-current="page" data-selected="true" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) p-1.5" value="1">
-          <!--v-if--><span class="truncate min-w-5 text-center">1</span>
-          <!--v-if-->
-        </button><button type="button" data-type="page" aria-label="Page 2" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5" value="2">
-          <!--v-if--><span class="truncate min-w-5 text-center">2</span>
-          <!--v-if-->
-        </button><button type="button" aria-label="Next Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevron-right shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" aria-label="Last Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevrons-right shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button></div>
+    <nav
+      aria-label="pagination"
+      class="
+        flex
+        justify-center
+        mt-20
+        overflow-x-auto
+        rounded-none
+      "
+    >
+      <div class="
+        flex
+        gap-1
+        items-center
+      ">
+        <button
+          aria-label="First Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevrons-left
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Previous Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevron-left
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-current="page"
+          aria-label="Page 1"
+          class="
+            aria-disabled:bg-primary
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-primary
+            disabled:bg-primary
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:outline-2
+            focus-visible:outline-offset-2
+            focus-visible:outline-primary
+            font-medium
+            gap-1.5
+            hover:bg-primary/75
+            inline-flex
+            items-center
+            p-1.5
+            rounded-md
+            text-inverted
+            text-sm
+            transition-colors
+          "
+          data-selected="true"
+          data-type="page"
+          type="button"
+          value="1"
+        >
+          <!-- v-if -->
+          <span class="
+            min-w-5
+            text-center
+            truncate
+          ">
+            1
+          </span>
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Page 2"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          data-type="page"
+          type="button"
+          value="2"
+        >
+          <!-- v-if -->
+          <span class="
+            min-w-5
+            text-center
+            truncate
+          ">
+            2
+          </span>
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Next Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevron-right
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Last Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevrons-right
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+      </div>
     </nav>
-    <!--v-if-->
+    <!-- v-if -->
   </div>
-</div>"
+</div>
 `;
 
-exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with no posts (with auth) correctly 1`] = `
-"<div>
+exports[`sPagePostCollectionKeywordAsTitle Snapshot > renders with no posts (with auth) correctly 1`] = `
+<div>
   <section class="py-20">
-    <h1 class="md:text-center">Posts</h1>
-    <!--v-if-->
+    <h1 class="md:text-center">
+      Posts
+    </h1>
+    <!-- v-if -->
   </section>
   <div class="pb-20">
     <!-- rows:  posts -->
     <div class="space-y-4"></div>
-    <nav class="mt-20 flex justify-center overflow-x-auto rounded-none" aria-label="pagination">
-      <div class="flex items-center gap-1"><button type="button" disabled="" aria-label="First Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevrons-left shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" disabled="" aria-label="Previous Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevron-left shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" data-type="page" aria-label="Page 1" aria-current="page" data-selected="true" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) p-1.5" value="1">
-          <!--v-if--><span class="truncate min-w-5 text-center">1</span>
-          <!--v-if-->
-        </button><button type="button" disabled="" aria-label="Next Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevron-right shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" disabled="" aria-label="Last Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevrons-right shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button></div>
+    <nav
+      aria-label="pagination"
+      class="
+        flex
+        justify-center
+        mt-20
+        overflow-x-auto
+        rounded-none
+      "
+    >
+      <div class="
+        flex
+        gap-1
+        items-center
+      ">
+        <button
+          aria-label="First Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevrons-left
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Previous Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevron-left
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-current="page"
+          aria-label="Page 1"
+          class="
+            aria-disabled:bg-primary
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-primary
+            disabled:bg-primary
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:outline-2
+            focus-visible:outline-offset-2
+            focus-visible:outline-primary
+            font-medium
+            gap-1.5
+            hover:bg-primary/75
+            inline-flex
+            items-center
+            p-1.5
+            rounded-md
+            text-inverted
+            text-sm
+            transition-colors
+          "
+          data-selected="true"
+          data-type="page"
+          type="button"
+          value="1"
+        >
+          <!-- v-if -->
+          <span class="
+            min-w-5
+            text-center
+            truncate
+          ">
+            1
+          </span>
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Next Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevron-right
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Last Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevrons-right
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+      </div>
     </nav>
-    <!--v-if-->
+    <!-- v-if -->
   </div>
-</div>"
+</div>
 `;
 
-exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with no posts (without auth) correctly 1`] = `
-"<div>
+exports[`sPagePostCollectionKeywordAsTitle Snapshot > renders with no posts (without auth) correctly 1`] = `
+<div>
   <section class="py-20">
-    <h1 class="md:text-center">Posts</h1>
-    <!--v-if-->
+    <h1 class="md:text-center">
+      Posts
+    </h1>
+    <!-- v-if -->
   </section>
   <div class="pb-20">
     <!-- rows:  posts -->
     <div class="space-y-4"></div>
-    <nav class="mt-20 flex justify-center overflow-x-auto rounded-none" aria-label="pagination">
-      <div class="flex items-center gap-1"><button type="button" disabled="" aria-label="First Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevrons-left shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" disabled="" aria-label="Previous Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevron-left shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" data-type="page" aria-label="Page 1" aria-current="page" data-selected="true" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) p-1.5" value="1">
-          <!--v-if--><span class="truncate min-w-5 text-center">1</span>
-          <!--v-if-->
-        </button><button type="button" disabled="" aria-label="Next Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevron-right shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" disabled="" aria-label="Last Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevrons-right shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button></div>
+    <nav
+      aria-label="pagination"
+      class="
+        flex
+        justify-center
+        mt-20
+        overflow-x-auto
+        rounded-none
+      "
+    >
+      <div class="
+        flex
+        gap-1
+        items-center
+      ">
+        <button
+          aria-label="First Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevrons-left
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Previous Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevron-left
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-current="page"
+          aria-label="Page 1"
+          class="
+            aria-disabled:bg-primary
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-primary
+            disabled:bg-primary
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:outline-2
+            focus-visible:outline-offset-2
+            focus-visible:outline-primary
+            font-medium
+            gap-1.5
+            hover:bg-primary/75
+            inline-flex
+            items-center
+            p-1.5
+            rounded-md
+            text-inverted
+            text-sm
+            transition-colors
+          "
+          data-selected="true"
+          data-type="page"
+          type="button"
+          value="1"
+        >
+          <!-- v-if -->
+          <span class="
+            min-w-5
+            text-center
+            truncate
+          ">
+            1
+          </span>
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Next Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevron-right
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Last Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevrons-right
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+      </div>
     </nav>
-    <!--v-if-->
+    <!-- v-if -->
   </div>
-</div>"
+</div>
 `;
 
-exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with posts and categories (with auth) correctly 1`] = `
-"<div>
+exports[`sPagePostCollectionKeywordAsTitle Snapshot > renders with posts and categories (with auth) correctly 1`] = `
+<div>
   <section class="py-20">
-    <h1 class="md:text-center">Posts</h1>
-    <!--v-if-->
+    <h1 class="md:text-center">
+      Posts
+    </h1>
+    <!-- v-if -->
   </section>
   <div class="pb-20">
     <!-- rows:  posts -->
     <div class="space-y-4">
-      <article class="py-16 grid grid-cols-1 gap-6 lg:grid-cols-12">
-        <div class="lg:col-span-8"><a href="/posts/post-one/">
-            <!--v-if-->
-            <!-- Title -->
-            <h2 class="mb-4 text-4xl font-extrabold hover:underline">One</h2>
+      <article class="
+        gap-6
+        grid
+        grid-cols-1
+        lg:grid-cols-12
+        py-16
+      ">
+        <div class="lg:col-span-8">
+          <a href="/posts/post-one/">
+            
+          <!-- v-if -->
+            
+          <!-- Title -->
+            <h2 class="
+            font-extrabold
+            hover:underline
+            mb-4
+            text-4xl
+          ">One</h2>
           </a>
-          <p class="mb-4 text-xl"><span></span></p>
-          <!--v-if-->
-          <div class="flex flex-wrap gap-2 mt-4"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+          <p class="
+            mb-4
+            text-xl
+          ">
+            <span></span>
+          </p>
+          <!-- v-if -->
+          <div class="
+            flex
+            flex-wrap
+            gap-2
+            mt-4
+          ">
+            <a
+              class="
+                bg-blue-50
+                border
+                border-blue-300
+                dark:bg-blue-900/30
+                dark:border-blue-700
+                dark:hover:bg-blue-800/50
+                dark:text-blue-300
+                font-medium
+                hover:bg-blue-100
+                px-3
+                py-1
+                rounded-full
+                text-blue-600
+                text-sm
+              "
+              href="/posts/category/tech/"
+            >Tech</a>
+          </div>
         </div>
-        <div class="lg:col-span-3 lg:col-start-8">
+        <div class="
+          lg:col-span-3
+          lg:col-start-8
+        ">
           <!-- Right column (30%) -->
         </div>
       </article>
-      <article class="py-16 grid grid-cols-1 gap-6 lg:grid-cols-12">
-        <div class="lg:col-span-8"><a href="/posts/post-two/">
-            <!--v-if-->
-            <!-- Title -->
-            <h2 class="mb-4 text-4xl font-extrabold hover:underline">Two</h2>
+      <article class="
+        gap-6
+        grid
+        grid-cols-1
+        lg:grid-cols-12
+        py-16
+      ">
+        <div class="lg:col-span-8">
+          <a href="/posts/post-two/">
+            
+          <!-- v-if -->
+            
+          <!-- Title -->
+            <h2 class="
+            font-extrabold
+            hover:underline
+            mb-4
+            text-4xl
+          ">Two</h2>
           </a>
-          <p class="mb-4 text-xl"><span>Test excerpt</span></p>
-          <!--v-if-->
-          <div class="flex flex-wrap gap-2 mt-4"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+          <p class="
+            mb-4
+            text-xl
+          ">
+            <span>
+              Test excerpt
+            </span>
+          </p>
+          <!-- v-if -->
+          <div class="
+            flex
+            flex-wrap
+            gap-2
+            mt-4
+          ">
+            <a
+              class="
+                bg-blue-50
+                border
+                border-blue-300
+                dark:bg-blue-900/30
+                dark:border-blue-700
+                dark:hover:bg-blue-800/50
+                dark:text-blue-300
+                font-medium
+                hover:bg-blue-100
+                px-3
+                py-1
+                rounded-full
+                text-blue-600
+                text-sm
+              "
+              href="/posts/category/tech/"
+            >Tech</a>
+          </div>
         </div>
-        <div class="lg:col-span-3 lg:col-start-8">
+        <div class="
+          lg:col-span-3
+          lg:col-start-8
+        ">
           <!-- Right column (30%) -->
         </div>
       </article>
     </div>
-    <nav class="mt-20 flex justify-center overflow-x-auto rounded-none" aria-label="pagination">
-      <div class="flex items-center gap-1"><button type="button" disabled="" aria-label="First Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevrons-left shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" disabled="" aria-label="Previous Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevron-left shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" data-type="page" aria-label="Page 1" aria-current="page" data-selected="true" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) p-1.5" value="1">
-          <!--v-if--><span class="truncate min-w-5 text-center">1</span>
-          <!--v-if-->
-        </button><button type="button" data-type="page" aria-label="Page 2" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5" value="2">
-          <!--v-if--><span class="truncate min-w-5 text-center">2</span>
-          <!--v-if-->
-        </button><button type="button" aria-label="Next Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevron-right shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" aria-label="Last Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevrons-right shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button></div>
+    <nav
+      aria-label="pagination"
+      class="
+        flex
+        justify-center
+        mt-20
+        overflow-x-auto
+        rounded-none
+      "
+    >
+      <div class="
+        flex
+        gap-1
+        items-center
+      ">
+        <button
+          aria-label="First Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevrons-left
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Previous Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevron-left
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-current="page"
+          aria-label="Page 1"
+          class="
+            aria-disabled:bg-primary
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-primary
+            disabled:bg-primary
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:outline-2
+            focus-visible:outline-offset-2
+            focus-visible:outline-primary
+            font-medium
+            gap-1.5
+            hover:bg-primary/75
+            inline-flex
+            items-center
+            p-1.5
+            rounded-md
+            text-inverted
+            text-sm
+            transition-colors
+          "
+          data-selected="true"
+          data-type="page"
+          type="button"
+          value="1"
+        >
+          <!-- v-if -->
+          <span class="
+            min-w-5
+            text-center
+            truncate
+          ">
+            1
+          </span>
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Page 2"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          data-type="page"
+          type="button"
+          value="2"
+        >
+          <!-- v-if -->
+          <span class="
+            min-w-5
+            text-center
+            truncate
+          ">
+            2
+          </span>
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Next Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevron-right
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Last Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevrons-right
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+      </div>
     </nav>
-    <!--v-if-->
+    <!-- v-if -->
   </div>
-</div>"
+</div>
 `;
 
-exports[`SPagePostCollectionKeywordAsTitle Snapshot > renders with posts and categories (without auth) correctly 1`] = `
-"<div>
+exports[`sPagePostCollectionKeywordAsTitle Snapshot > renders with posts and categories (without auth) correctly 1`] = `
+<div>
   <section class="py-20">
-    <h1 class="md:text-center">Posts</h1>
-    <!--v-if-->
+    <h1 class="md:text-center">
+      Posts
+    </h1>
+    <!-- v-if -->
   </section>
   <div class="pb-20">
     <!-- rows:  posts -->
     <div class="space-y-4">
-      <article class="py-16 grid grid-cols-1 gap-6 lg:grid-cols-12">
-        <div class="lg:col-span-8"><a href="/posts/post-one/">
-            <!--v-if-->
-            <!-- Title -->
-            <h2 class="mb-4 text-4xl font-extrabold hover:underline">One</h2>
+      <article class="
+        gap-6
+        grid
+        grid-cols-1
+        lg:grid-cols-12
+        py-16
+      ">
+        <div class="lg:col-span-8">
+          <a href="/posts/post-one/">
+            
+          <!-- v-if -->
+            
+          <!-- Title -->
+            <h2 class="
+            font-extrabold
+            hover:underline
+            mb-4
+            text-4xl
+          ">One</h2>
           </a>
-          <p class="mb-4 text-xl"><span></span></p>
-          <!--v-if-->
-          <div class="flex flex-wrap gap-2 mt-4"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+          <p class="
+            mb-4
+            text-xl
+          ">
+            <span></span>
+          </p>
+          <!-- v-if -->
+          <div class="
+            flex
+            flex-wrap
+            gap-2
+            mt-4
+          ">
+            <a
+              class="
+                bg-blue-50
+                border
+                border-blue-300
+                dark:bg-blue-900/30
+                dark:border-blue-700
+                dark:hover:bg-blue-800/50
+                dark:text-blue-300
+                font-medium
+                hover:bg-blue-100
+                px-3
+                py-1
+                rounded-full
+                text-blue-600
+                text-sm
+              "
+              href="/posts/category/tech/"
+            >Tech</a>
+          </div>
         </div>
-        <div class="lg:col-span-3 lg:col-start-8">
+        <div class="
+          lg:col-span-3
+          lg:col-start-8
+        ">
           <!-- Right column (30%) -->
         </div>
       </article>
-      <article class="py-16 grid grid-cols-1 gap-6 lg:grid-cols-12">
-        <div class="lg:col-span-8"><a href="/posts/post-two/">
-            <!--v-if-->
-            <!-- Title -->
-            <h2 class="mb-4 text-4xl font-extrabold hover:underline">Two</h2>
+      <article class="
+        gap-6
+        grid
+        grid-cols-1
+        lg:grid-cols-12
+        py-16
+      ">
+        <div class="lg:col-span-8">
+          <a href="/posts/post-two/">
+            
+          <!-- v-if -->
+            
+          <!-- Title -->
+            <h2 class="
+            font-extrabold
+            hover:underline
+            mb-4
+            text-4xl
+          ">Two</h2>
           </a>
-          <p class="mb-4 text-xl"><span>Test excerpt</span></p>
-          <!--v-if-->
-          <div class="flex flex-wrap gap-2 mt-4"><a href="/posts/category/tech/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Tech</a></div>
+          <p class="
+            mb-4
+            text-xl
+          ">
+            <span>
+              Test excerpt
+            </span>
+          </p>
+          <!-- v-if -->
+          <div class="
+            flex
+            flex-wrap
+            gap-2
+            mt-4
+          ">
+            <a
+              class="
+                bg-blue-50
+                border
+                border-blue-300
+                dark:bg-blue-900/30
+                dark:border-blue-700
+                dark:hover:bg-blue-800/50
+                dark:text-blue-300
+                font-medium
+                hover:bg-blue-100
+                px-3
+                py-1
+                rounded-full
+                text-blue-600
+                text-sm
+              "
+              href="/posts/category/tech/"
+            >Tech</a>
+          </div>
         </div>
-        <div class="lg:col-span-3 lg:col-start-8">
+        <div class="
+          lg:col-span-3
+          lg:col-start-8
+        ">
           <!-- Right column (30%) -->
         </div>
       </article>
     </div>
-    <nav class="mt-20 flex justify-center overflow-x-auto rounded-none" aria-label="pagination">
-      <div class="flex items-center gap-1"><button type="button" disabled="" aria-label="First Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevrons-left shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" disabled="" aria-label="Previous Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevron-left shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" data-type="page" aria-label="Page 1" aria-current="page" data-selected="true" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) p-1.5" value="1">
-          <!--v-if--><span class="truncate min-w-5 text-center">1</span>
-          <!--v-if-->
-        </button><button type="button" data-type="page" aria-label="Page 2" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5" value="2">
-          <!--v-if--><span class="truncate min-w-5 text-center">2</span>
-          <!--v-if-->
-        </button><button type="button" aria-label="Next Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevron-right shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button><button type="button" aria-label="Last Page" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors text-sm gap-1.5 ring ring-inset ring-(--ui-border-accented) text-(--ui-text) bg-(--ui-bg) hover:bg-(--ui-bg-elevated) disabled:bg-(--ui-bg) aria-disabled:bg-(--ui-bg) focus-visible:ring-2 focus-visible:ring-(--ui-border-inverted) p-1.5"><span class="iconify i-lucide:chevrons-right shrink-0 size-5" aria-hidden="true"></span>
-          <!--v-if-->
-          <!--v-if-->
-        </button></div>
+    <nav
+      aria-label="pagination"
+      class="
+        flex
+        justify-center
+        mt-20
+        overflow-x-auto
+        rounded-none
+      "
+    >
+      <div class="
+        flex
+        gap-1
+        items-center
+      ">
+        <button
+          aria-label="First Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevrons-left
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Previous Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          disabled=""
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevron-left
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-current="page"
+          aria-label="Page 1"
+          class="
+            aria-disabled:bg-primary
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-primary
+            disabled:bg-primary
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:outline-2
+            focus-visible:outline-offset-2
+            focus-visible:outline-primary
+            font-medium
+            gap-1.5
+            hover:bg-primary/75
+            inline-flex
+            items-center
+            p-1.5
+            rounded-md
+            text-inverted
+            text-sm
+            transition-colors
+          "
+          data-selected="true"
+          data-type="page"
+          type="button"
+          value="1"
+        >
+          <!-- v-if -->
+          <span class="
+            min-w-5
+            text-center
+            truncate
+          ">
+            1
+          </span>
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Page 2"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          data-type="page"
+          type="button"
+          value="2"
+        >
+          <!-- v-if -->
+          <span class="
+            min-w-5
+            text-center
+            truncate
+          ">
+            2
+          </span>
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Next Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevron-right
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+        <button
+          aria-label="Last Page"
+          class="
+            aria-disabled:bg-default
+            aria-disabled:cursor-not-allowed
+            aria-disabled:opacity-75
+            bg-default
+            disabled:bg-default
+            disabled:cursor-not-allowed
+            disabled:opacity-75
+            focus-visible:ring-2
+            focus-visible:ring-inverted
+            focus:outline-none
+            font-medium
+            gap-1.5
+            hover:bg-elevated
+            inline-flex
+            items-center
+            p-1.5
+            ring
+            ring-accented
+            ring-inset
+            rounded-md
+            text-default
+            text-sm
+            transition-colors
+          "
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+            class="
+              i-lucide:chevrons-right
+              iconify
+              shrink-0
+              size-5
+            "
+          ></span>
+          <!-- v-if -->
+          <!-- v-if -->
+        </button>
+      </div>
     </nav>
-    <!--v-if-->
+    <!-- v-if -->
   </div>
-</div>"
+</div>
 `;

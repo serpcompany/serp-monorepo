@@ -1,42 +1,363 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`FirstCharacterJumpLinkNav Snapshot > renders with all buttons disabled correctly 1`] = `
-"<nav class="mx-auto flex justify-between overflow-x-scroll"><a aria-disabled="true" role="link" tabindex="-1" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-    <!--v-if-->A
-    <!--v-if-->
-  </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-    <!--v-if-->B
-    <!--v-if-->
-  </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-    <!--v-if-->C
-    <!--v-if-->
-  </a></nav>"
+exports[`firstCharacterJumpLinkNav Snapshot > renders with all buttons disabled correctly 1`] = `
+<nav class="
+  flex
+  justify-between
+  mx-auto
+  overflow-x-scroll
+">
+  <a
+    aria-disabled="true"
+    class="
+      aria-disabled:bg-primary
+      aria-disabled:cursor-not-allowed
+      aria-disabled:opacity-75
+      bg-none
+      bg-primary
+      disabled:bg-primary
+      disabled:cursor-not-allowed
+      disabled:opacity-75
+      focus-visible:outline-2
+      focus-visible:outline-offset-2
+      focus-visible:outline-primary
+      font-medium
+      gap-1.5
+      h-10
+      hover:bg-primary/75
+      inline-flex
+      items-center
+      lg:justify-center
+      px-2.5
+      py-1.5
+      rounded-md
+      text-2xl
+      text-inverted
+      transition-colors
+      w-10
+    "
+    role="link"
+    tabindex="-1"
+  >
+    
+  <!-- v-if -->A
+    
+  <!-- v-if -->
+  </a>
+  <a
+    aria-disabled="true"
+    class="
+      aria-disabled:bg-primary
+      aria-disabled:cursor-not-allowed
+      aria-disabled:opacity-75
+      bg-none
+      bg-primary
+      disabled:bg-primary
+      disabled:cursor-not-allowed
+      disabled:opacity-75
+      focus-visible:outline-2
+      focus-visible:outline-offset-2
+      focus-visible:outline-primary
+      font-medium
+      gap-1.5
+      h-10
+      hover:bg-primary/75
+      inline-flex
+      items-center
+      lg:justify-center
+      px-2.5
+      py-1.5
+      rounded-md
+      text-2xl
+      text-inverted
+      transition-colors
+      w-10
+    "
+    role="link"
+    tabindex="-1"
+  >
+    
+  <!-- v-if -->B
+    
+  <!-- v-if -->
+  </a>
+  <a
+    aria-disabled="true"
+    class="
+      aria-disabled:bg-primary
+      aria-disabled:cursor-not-allowed
+      aria-disabled:opacity-75
+      bg-none
+      bg-primary
+      disabled:bg-primary
+      disabled:cursor-not-allowed
+      disabled:opacity-75
+      focus-visible:outline-2
+      focus-visible:outline-offset-2
+      focus-visible:outline-primary
+      font-medium
+      gap-1.5
+      h-10
+      hover:bg-primary/75
+      inline-flex
+      items-center
+      lg:justify-center
+      px-2.5
+      py-1.5
+      rounded-md
+      text-2xl
+      text-inverted
+      transition-colors
+      w-10
+    "
+    role="link"
+    tabindex="-1"
+  >
+    
+  <!-- v-if -->C
+    
+  <!-- v-if -->
+  </a>
+</nav>
 `;
 
-exports[`FirstCharacterJumpLinkNav Snapshot > renders with all buttons enabled correctly 1`] = `
-"<nav class="mx-auto flex justify-between overflow-x-scroll"><a href="#A" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-    <!--v-if-->A
-    <!--v-if-->
-  </a><a href="#B" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-    <!--v-if-->B
-    <!--v-if-->
-  </a><a href="#C" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-    <!--v-if-->C
-    <!--v-if-->
-  </a></nav>"
+exports[`firstCharacterJumpLinkNav Snapshot > renders with all buttons enabled correctly 1`] = `
+<nav class="
+  flex
+  justify-between
+  mx-auto
+  overflow-x-scroll
+">
+  <a
+    class="
+      aria-disabled:bg-primary
+      aria-disabled:cursor-not-allowed
+      aria-disabled:opacity-75
+      bg-none
+      bg-primary
+      disabled:bg-primary
+      disabled:cursor-not-allowed
+      disabled:opacity-75
+      focus-visible:outline-2
+      focus-visible:outline-offset-2
+      focus-visible:outline-primary
+      font-medium
+      gap-1.5
+      h-10
+      hover:bg-primary/75
+      inline-flex
+      items-center
+      lg:justify-center
+      px-2.5
+      py-1.5
+      rounded-md
+      text-2xl
+      text-inverted
+      transition-colors
+      w-10
+    "
+    href="#A"
+  >
+    
+  <!-- v-if -->A
+    
+  <!-- v-if -->
+  </a>
+  <a
+    class="
+      aria-disabled:bg-primary
+      aria-disabled:cursor-not-allowed
+      aria-disabled:opacity-75
+      bg-none
+      bg-primary
+      disabled:bg-primary
+      disabled:cursor-not-allowed
+      disabled:opacity-75
+      focus-visible:outline-2
+      focus-visible:outline-offset-2
+      focus-visible:outline-primary
+      font-medium
+      gap-1.5
+      h-10
+      hover:bg-primary/75
+      inline-flex
+      items-center
+      lg:justify-center
+      px-2.5
+      py-1.5
+      rounded-md
+      text-2xl
+      text-inverted
+      transition-colors
+      w-10
+    "
+    href="#B"
+  >
+    
+  <!-- v-if -->B
+    
+  <!-- v-if -->
+  </a>
+  <a
+    class="
+      aria-disabled:bg-primary
+      aria-disabled:cursor-not-allowed
+      aria-disabled:opacity-75
+      bg-none
+      bg-primary
+      disabled:bg-primary
+      disabled:cursor-not-allowed
+      disabled:opacity-75
+      focus-visible:outline-2
+      focus-visible:outline-offset-2
+      focus-visible:outline-primary
+      font-medium
+      gap-1.5
+      h-10
+      hover:bg-primary/75
+      inline-flex
+      items-center
+      lg:justify-center
+      px-2.5
+      py-1.5
+      rounded-md
+      text-2xl
+      text-inverted
+      transition-colors
+      w-10
+    "
+    href="#C"
+  >
+    
+  <!-- v-if -->C
+    
+  <!-- v-if -->
+  </a>
+</nav>
 `;
 
-exports[`FirstCharacterJumpLinkNav Snapshot > renders with no characters correctly 1`] = `"<nav class="mx-auto flex justify-between overflow-x-scroll"></nav>"`;
+exports[`firstCharacterJumpLinkNav Snapshot > renders with no characters correctly 1`] = `
+<nav class="
+  flex
+  justify-between
+  mx-auto
+  overflow-x-scroll
+"></nav>
+`;
 
-exports[`FirstCharacterJumpLinkNav Snapshot > renders with some buttons disabled correctly 1`] = `
-"<nav class="mx-auto flex justify-between overflow-x-scroll"><a href="#A" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-    <!--v-if-->A
-    <!--v-if-->
-  </a><a aria-disabled="true" role="link" tabindex="-1" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-    <!--v-if-->B
-    <!--v-if-->
-  </a><a href="#C" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-2.5 py-1.5 gap-1.5 text-(--ui-bg) bg-(--ui-primary) hover:bg-(--ui-primary)/75 disabled:bg-(--ui-primary) aria-disabled:bg-(--ui-primary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-primary) h-10 w-10 items-center bg-none text-2xl lg:justify-center">
-    <!--v-if-->C
-    <!--v-if-->
-  </a></nav>"
+exports[`firstCharacterJumpLinkNav Snapshot > renders with some buttons disabled correctly 1`] = `
+<nav class="
+  flex
+  justify-between
+  mx-auto
+  overflow-x-scroll
+">
+  <a
+    class="
+      aria-disabled:bg-primary
+      aria-disabled:cursor-not-allowed
+      aria-disabled:opacity-75
+      bg-none
+      bg-primary
+      disabled:bg-primary
+      disabled:cursor-not-allowed
+      disabled:opacity-75
+      focus-visible:outline-2
+      focus-visible:outline-offset-2
+      focus-visible:outline-primary
+      font-medium
+      gap-1.5
+      h-10
+      hover:bg-primary/75
+      inline-flex
+      items-center
+      lg:justify-center
+      px-2.5
+      py-1.5
+      rounded-md
+      text-2xl
+      text-inverted
+      transition-colors
+      w-10
+    "
+    href="#A"
+  >
+    
+  <!-- v-if -->A
+    
+  <!-- v-if -->
+  </a>
+  <a
+    aria-disabled="true"
+    class="
+      aria-disabled:bg-primary
+      aria-disabled:cursor-not-allowed
+      aria-disabled:opacity-75
+      bg-none
+      bg-primary
+      disabled:bg-primary
+      disabled:cursor-not-allowed
+      disabled:opacity-75
+      focus-visible:outline-2
+      focus-visible:outline-offset-2
+      focus-visible:outline-primary
+      font-medium
+      gap-1.5
+      h-10
+      hover:bg-primary/75
+      inline-flex
+      items-center
+      lg:justify-center
+      px-2.5
+      py-1.5
+      rounded-md
+      text-2xl
+      text-inverted
+      transition-colors
+      w-10
+    "
+    role="link"
+    tabindex="-1"
+  >
+    
+  <!-- v-if -->B
+    
+  <!-- v-if -->
+  </a>
+  <a
+    class="
+      aria-disabled:bg-primary
+      aria-disabled:cursor-not-allowed
+      aria-disabled:opacity-75
+      bg-none
+      bg-primary
+      disabled:bg-primary
+      disabled:cursor-not-allowed
+      disabled:opacity-75
+      focus-visible:outline-2
+      focus-visible:outline-offset-2
+      focus-visible:outline-primary
+      font-medium
+      gap-1.5
+      h-10
+      hover:bg-primary/75
+      inline-flex
+      items-center
+      lg:justify-center
+      px-2.5
+      py-1.5
+      rounded-md
+      text-2xl
+      text-inverted
+      transition-colors
+      w-10
+    "
+    href="#C"
+  >
+    
+  <!-- v-if -->C
+    
+  <!-- v-if -->
+  </a>
+</nav>
 `;

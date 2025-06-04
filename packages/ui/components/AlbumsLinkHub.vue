@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import type { ReleaseGroupIndex } from '@serp/types/types';
+import type { ReleaseGroupIndex } from '@serp/types/types'
 
-  defineProps({
-    albums: {
-      type: Array as () => ReleaseGroupIndex[],
-      required: true
-    }
-  });
+defineProps({
+  albums: {
+    type: Array as () => ReleaseGroupIndex[],
+    required: true,
+  },
+})
 </script>
 
 <template>
@@ -16,11 +16,7 @@
         :to="`/albums/${encodeURIComponent(album.slug)}/`"
         aria-label="album name"
       >
-        {{ album.name }} -
-        <span v-for="artist in album.artists" :key="artist.slug">
-          {{ artist.credit_name }}
-          <span v-if="artist.join_phrase">{{ artist.join_phrase }}</span>
-        </span>
+        <span>{{ album.name }} - {{ album.artistCreditName }}</span>
       </NuxtLink>
     </div>
   </div>

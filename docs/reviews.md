@@ -1,6 +1,7 @@
 # Review System Enhancement Specifications
 
 ## Overview
+
 This document outlines the specifications for enhancing our existing review system with additional features inspired by TrustPilot, focusing on user review management, dedicated review URLs, and company growth tools.
 
 ## New Feature Set
@@ -10,6 +11,7 @@ This document outlines the specifications for enhancing our existing review syst
 **Objective:** Add a "Reviews" card/view in the user's logged-in dashboard area to display their review history.
 
 #### Specifications:
+
 - **Location:** New tab in the user dashboard sidebar menu
 - **URL Route:** `/dashboard/my-reviews`
 - **Component Structure:**
@@ -17,6 +19,7 @@ This document outlines the specifications for enhancing our existing review syst
   - `UserReviewItem.vue` - Individual review display component
 
 #### Functionality:
+
 - Display all reviews submitted by the logged-in user
 - Show review status (pending, approved, rejected, marked as spam)
 - Allow filtering by status (All, Pending, Approved, Rejected)
@@ -26,6 +29,7 @@ This document outlines the specifications for enhancing our existing review syst
 - Enable users to delete their own reviews (with confirmation)
 
 #### UI Elements:
+
 - Status badges with appropriate colors (yellow for pending, green for approved, red for rejected)
 - Company logo/avatar next to each review
 - Direct link to the company page
@@ -35,6 +39,7 @@ This document outlines the specifications for enhancing our existing review syst
 - Empty state design for users with no reviews
 
 #### Data Requirements:
+
 - User ID
 - List of all reviews associated with user
 - Review status, creation date, last update date
@@ -47,12 +52,14 @@ This document outlines the specifications for enhancing our existing review syst
 **Objective:** [Move the 'leave a review modal' to a URL route](https://www.f6s.com/software/review?product=serp-blocks) so companies can share [a LINK to the leaving of a review directly with customers](https://www.f6s.com/software/review?product=serp-blocks).
 
 #### Specifications:
+
 - **URL Structure:** `/reviews/write?company=[company-slug]` (similar to the reference example: [https://www.f6s.com/software/review?product=serp-blocks](https://www.f6s.com/software/review?product=serp-blocks))
 - **Component Structure:**
   - `WriteReviewPage.vue` - Standalone page component
   - `ReviewForm.vue` - Form component (shared with modal)
 
 #### Functionality:
+
 - Accept company identifier via URL parameter
 - Pre-load company information
 - Same form fields as current modal (title, rating, review, date of experience)
@@ -61,6 +68,7 @@ This document outlines the specifications for enhancing our existing review syst
 - Authentication check with redirect to login if needed (preserving return URL)
 
 #### UI Elements:
+
 - Company header with logo and name
 - Progress indicator showing form completion steps
 - Star rating widget
@@ -71,6 +79,7 @@ This document outlines the specifications for enhancing our existing review syst
 - Mobile-responsive layout
 
 #### Technical Requirements:
+
 - Server-side rendering support for SEO
 - Query parameter processing for company identification
 - Authentication state preservation through redirects
@@ -85,12 +94,14 @@ This document outlines the specifications for enhancing our existing review syst
 #### 3.1. Reviews Widget Generator
 
 **Specifications:**
+
 - **Location:** `/dashboard/company/[company-id]/growth-tools`
 - **Component Structure:**
   - `ReviewsWidgetGenerator.vue` - Widget configuration and preview
   - `WidgetPreview.vue` - Live preview component
 
 **Functionality:**
+
 - Generate embeddable HTML/JavaScript code
 - Preview widget appearance in real-time
 - Copy code to clipboard functionality
@@ -103,6 +114,7 @@ This document outlines the specifications for enhancing our existing review syst
 - Analytics tracking for widget impressions and clicks
 
 **Widget Requirements:**
+
 - Responsive design that works on any website
 - Displays company's star rating
 - Shows number of reviews
@@ -115,6 +127,7 @@ This document outlines the specifications for enhancing our existing review syst
 #### 3.2. Ask for Reviews Tool
 
 **Specifications:**
+
 - **Location:** Same page as widget generator, tabbed interface
 - **Component Structure:**
   - `ReviewRequestManager.vue` - Main container
@@ -122,6 +135,7 @@ This document outlines the specifications for enhancing our existing review syst
   - `CustomerImportForm.vue` - For adding recipients
 
 **Functionality:**
+
 - Input box for entering customer email addresses
 - Bulk import via CSV/Excel upload
 - Email template customization
@@ -132,6 +146,7 @@ This document outlines the specifications for enhancing our existing review syst
 - Rate limiting to prevent spam (max 100 emails per day)
 
 **Email Template Requirements:**
+
 - Customizable subject line
 - Personalization tokens (customer name, company name)
 - Branded email template with company logo
@@ -140,6 +155,7 @@ This document outlines the specifications for enhancing our existing review syst
 - Plain text alternative version
 
 **Technical Requirements:**
+
 - Queue system for processing emails
 - Tracking pixel for open rate statistics
 - Unique tokens for tracking conversions
@@ -152,6 +168,7 @@ This document outlines the specifications for enhancing our existing review syst
 ## Technical Implementation Details
 
 ### Frontend Components
+
 - Vue Router configuration for new routes
 - Vuex/Pinia store modules for managing review state
 - Form validation using Vuelidate or similar
@@ -159,6 +176,7 @@ This document outlines the specifications for enhancing our existing review syst
 - Widget preview using iframes or dynamic rendering
 
 ### Backend Requirements
+
 - API endpoints for retrieving user's reviews
 - Authentication middleware for protected routes
 - Email sending service integration
@@ -167,11 +185,13 @@ This document outlines the specifications for enhancing our existing review syst
 - Validation rules for all inputs
 
 ### Database Changes
+
 - New fields for tracking review invitations
 - Analytics tables for widget impressions/clicks
 - User permissions for company growth tools access
 
 ### Third-party Integrations
+
 - Email service provider (Sendgrid, Mailgun, etc.)
 - Analytics tracking (optional)
 - CSV parsing library
@@ -179,24 +199,28 @@ This document outlines the specifications for enhancing our existing review syst
 ## Implementation Phases
 
 ### Phase 1: User Reviews Dashboard
+
 - Create dashboard view component
 - Implement review listing and pagination
 - Add filtering and sorting functionality
 - Implement edit/delete capabilities
 
 ### Phase 2: Dedicated Review URL
+
 - Create standalone review page
 - Implement company pre-loading from URL
 - Ensure authentication flow works with redirects
 - Test sharing functionality
 
 ### Phase 3: Company Growth Tools
+
 - Implement widget generator
 - Create widget embed code
 - Develop email invitation system
 - Add analytics tracking
 
 ## Future Considerations
+
 - A/B testing for email templates
 - Advanced widget customization options
 - Review invitation reminder system

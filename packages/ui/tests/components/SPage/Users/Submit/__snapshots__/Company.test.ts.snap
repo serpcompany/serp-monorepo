@@ -1,295 +1,1563 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPage/Users/Submit/Company Snapshot > renders Existing Submission (with id) correctly 1`] = `
-"<div data-v-8dd619f3="" class="flex-col lg:grid lg:grid-cols-10 lg:gap-10 flex min-h-screen items-center justify-center">
-  <!--v-if-->
+exports[`sPage/Users/Submit/Company Snapshot > renders Existing Submission (with id) correctly 1`] = `
+<div class="
+  flex
+  flex-col
+  items-center
+  justify-center
+  lg:gap-10
+  lg:grid
+  lg:grid-cols-10
+  min-h-screen
+">
+  <!-- v-if -->
   <div class="lg:col-span-10">
-    <main data-v-8dd619f3="" class="min-h-[calc(100vh-var(--ui-header-height))] py-20">
-      <div data-v-8dd619f3="" class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border) mx-auto max-w-2xl p-8">
-        <!--v-if-->
-        <div class="p-4 sm:p-6">
-          <uheading data-v-8dd619f3="" level="2" class="mb-6 text-center text-2xl font-semibold"> Submit Company </uheading>
-          <!--v-if-->
-          <form data-v-8dd619f3="" id="v-0-0-0" class="space-y-6">
-            <div data-v-8dd619f3="" class="text-sm mt-6">
+    <main class="
+      min-h-[calc(100vh-var(--ui-header-height))]
+      py-20
+    ">
+      <div class="
+        bg-default
+        divide-default
+        divide-y
+        max-w-2xl
+        mx-auto
+        p-8
+        ring
+        ring-default
+        rounded-lg
+      ">
+        <!-- v-if -->
+        <div class="
+          p-4
+          sm:p-6
+        ">
+          <uheading
+            class="
+              font-semibold
+              mb-6
+              text-2xl
+              text-center
+            "
+            level="2"
+          >
+            Submit Company
+          </uheading>
+          <div class="
+            mb-6
+            text-center
+          ">
+            <p class="
+              text-gray-500
+              text-sm
+            ">
+              Your company is already submitted. You can edit the details below.
+            </p>
+            <div>
+              <span class="
+                bg-error
+                font-medium
+                gap-1
+                inline-flex
+                items-center
+                px-2
+                py-1
+                rounded-md
+                text-inverted
+                text-xs
+              ">
+                <!-- v-if -->
+                Not Verified
+                <!-- v-if -->
+              </span>
+              <button
+                class="
+                  aria-disabled:bg-primary
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-primary
+                  disabled:bg-primary
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:outline-2
+                  focus-visible:outline-offset-2
+                  focus-visible:outline-primary
+                  font-medium
+                  gap-1.5
+                  hover:bg-primary/75
+                  inline-flex
+                  items-center
+                  px-2.5
+                  py-1.5
+                  rounded-md
+                  text-inverted
+                  text-sm
+                  transition-colors
+                "
+                type="button"
+              >
+                <!-- v-if -->
+                Check Backlink
+                <!-- v-if -->
+              </button>
+              <span>
+                (must have a
+                <bold>
+                  do follow
+                </bold>
+                backlink to current site on the submission domain homepage, if not working, ensure you have \`SERPVerificationBot/1.0\` user-agent whitelisted)
+              </span>
+            </div>
+          </div>
+          <form
+            class="space-y-6"
+            id="v-0-0-0"
+          >
+            <div class="
+              mt-6
+              text-sm
+            ">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-1" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Company Name</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      after:content-['*']
+                      after:ms-0.5
+                      after:text-error
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-1"
+                  >
+                    Company Name
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
-                <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-1" type="text" name="name" placeholder="SERP AI" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" aria-describedby="" aria-invalid="false" value="">
-                  <!--v-if-->
-                  <!--v-if-->
+              <div class="
+                mt-1
+                relative
+              ">
+                <div class="
+                  inline-flex
+                  items-center
+                  relative
+                  w-full
+                ">
+                  <input
+                    aria-describedby=""
+                    aria-invalid="false"
+                    autocomplete="off"
+                    class="
+                      bg-default
+                      border-0
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus-visible:ring-2
+                      focus-visible:ring-inset
+                      focus-visible:ring-primary
+                      focus:outline-none
+                      gap-1.5
+                      placeholder:text-dimmed
+                      px-2.5
+                      py-1.5
+                      ring
+                      ring-accented
+                      ring-inset
+                      rounded-md
+                      text-highlighted
+                      text-sm
+                      transition-colors
+                      w-full
+                    "
+                    id="v-0-0-1"
+                    name="name"
+                    placeholder="SERP AI"
+                    type="text"
+                  />
+                  <!-- v-if -->
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-sm">
+            <div class="text-sm">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-2" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Domain</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      after:content-['*']
+                      after:ms-0.5
+                      after:text-error
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-2"
+                  >
+                    Domain
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
-                <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-2" type="text" name="domain" placeholder="serp.ai" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" aria-describedby="" aria-invalid="false" value="">
-                  <!--v-if-->
-                  <!--v-if-->
+              <div class="
+                mt-1
+                relative
+              ">
+                <div class="
+                  inline-flex
+                  items-center
+                  relative
+                  w-full
+                ">
+                  <input
+                    aria-describedby=""
+                    aria-invalid="false"
+                    autocomplete="off"
+                    class="
+                      bg-default
+                      border-0
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus-visible:ring-2
+                      focus-visible:ring-inset
+                      focus-visible:ring-primary
+                      focus:outline-none
+                      gap-1.5
+                      placeholder:text-dimmed
+                      px-2.5
+                      py-1.5
+                      ring
+                      ring-accented
+                      ring-inset
+                      rounded-md
+                      text-highlighted
+                      text-sm
+                      transition-colors
+                      w-full
+                    "
+                    id="v-0-0-2"
+                    name="domain"
+                    placeholder="serp.ai"
+                    type="text"
+                  />
+                  <!-- v-if -->
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-sm">
+            <div class="text-sm">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-3" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Description</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      after:content-['*']
+                      after:ms-0.5
+                      after:text-error
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-3"
+                  >
+                    Description
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
-                <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><textarea id="v-0-0-3" name="description" rows="5" placeholder="A detailed overview of your company" class="rounded-[calc(var(--ui-radius)*1.5)] w-full border-0 placeholder:text-[var(--ui-text-dimmed)] focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" aria-describedby="" aria-invalid="false" value=""></textarea></div>
-                <!--v-if-->
+              <div class="
+                mt-1
+                relative
+              ">
+                <div class="
+                  inline-flex
+                  items-center
+                  relative
+                  w-full
+                ">
+                  <textarea
+                    aria-describedby=""
+                    aria-invalid="false"
+                    class="
+                      bg-default
+                      border-0
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus-visible:ring-2
+                      focus-visible:ring-inset
+                      focus-visible:ring-primary
+                      focus:outline-none
+                      gap-1.5
+                      placeholder:text-dimmed
+                      px-2.5
+                      py-1.5
+                      ring
+                      ring-accented
+                      ring-inset
+                      rounded-md
+                      text-highlighted
+                      text-sm
+                      transition-colors
+                      w-full
+                    "
+                    id="v-0-0-3"
+                    name="description"
+                    placeholder="A detailed overview of your company"
+                    rows="5"
+                  ></textarea>
+                  <!-- v-if -->
+                  <!-- v-if -->
+                </div>
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-sm">
+            <div class="text-sm">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-4" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Pricing Options</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      after:content-['*']
+                      after:ms-0.5
+                      after:text-error
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-4"
+                  >
+                    Pricing Options
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
+              <div class="
+                mt-1
+                relative
+              ">
                 <!---->
-                <div dir="ltr" id="v-0-0-4" class="relative inline-flex items-center flex-wrap w-full rounded-[calc(var(--ui-radius)*1.5)] transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) has-focus-visible:ring-2 has-focus-visible:ring-(--ui-primary) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary) pe-9"><input type="text" autocomplete="false" autocorrect="off" autocapitalize="off" aria-describedby="" aria-invalid="false" class="border-0 bg-transparent placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75" aria-disabled="false" aria-expanded="false" aria-controls="" aria-autocomplete="list" role="combobox" dir="ltr" value="">
+                <div
+                  class="
+                    bg-default
+                    flex-wrap
+                    focus-visible:ring-2
+                    focus-visible:ring-inset
+                    focus-visible:ring-primary
+                    gap-1.5
+                    has-focus-visible:ring-2
+                    has-focus-visible:ring-primary
+                    inline-flex
+                    items-center
+                    pe-9
+                    px-2.5
+                    py-1.5
+                    relative
+                    ring
+                    ring-accented
+                    ring-inset
+                    rounded-md
+                    text-highlighted
+                    text-sm
+                    transition-colors
+                    w-full
+                  "
+                  dir="ltr"
+                  id="v-0-0-4"
+                >
+                  <input
+                    aria-autocomplete="list"
+                    aria-controls=""
+                    aria-describedby=""
+                    aria-disabled="false"
+                    aria-expanded="false"
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="false"
+                    autocorrect="off"
+                    class="
+                      bg-transparent
+                      border-0
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus:outline-none
+                      placeholder:text-dimmed
+                    "
+                    dir="ltr"
+                    role="combobox"
+                    type="text"
+                    value=""
+                  />
                   <!---->
-                  <!--v-if--><button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" aria-disabled="false" class="group absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pe-2.5"><span class="iconify i-lucide:chevron-down shrink-0 text-(--ui-text-dimmed) size-5" aria-hidden="true"></span></button>
+                  <!-- v-if -->
+                  <button
+                    aria-controls=""
+                    aria-disabled="false"
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-label="Show popup"
+                    class="
+                      absolute
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      end-0
+                      flex
+                      group
+                      inset-y-0
+                      items-center
+                      pe-2.5
+                    "
+                    data-state="closed"
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="
+                        i-lucide:chevron-down
+                        iconify
+                        shrink-0
+                        size-5
+                        text-dimmed
+                      "
+                    ></span>
+                  </button>
                 </div>
-                <!--teleport start-->
-                <!--teleport end--><input data-hidden="" tabindex="-1" style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; word-wrap: normal;" name="pricing" value="">
-                <!--v-if-->
+                <!-- teleport start -->
+                <!-- teleport end -->
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-sm">
+            <div class="text-sm">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-5" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Tagline</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      after:content-['*']
+                      after:ms-0.5
+                      after:text-error
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-5"
+                  >
+                    Tagline
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
-                <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-5" type="text" name="oneLiner" placeholder="A short company tagline (max 75 characters)" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" maxlength="75" aria-describedby="" aria-invalid="false" value="">
-                  <!--v-if-->
-                  <!--v-if-->
+              <div class="
+                mt-1
+                relative
+              ">
+                <div class="
+                  inline-flex
+                  items-center
+                  relative
+                  w-full
+                ">
+                  <input
+                    aria-describedby=""
+                    aria-invalid="false"
+                    autocomplete="off"
+                    class="
+                      bg-default
+                      border-0
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus-visible:ring-2
+                      focus-visible:ring-inset
+                      focus-visible:ring-primary
+                      focus:outline-none
+                      gap-1.5
+                      placeholder:text-dimmed
+                      px-2.5
+                      py-1.5
+                      ring
+                      ring-accented
+                      ring-inset
+                      rounded-md
+                      text-highlighted
+                      text-sm
+                      transition-colors
+                      w-full
+                    "
+                    id="v-0-0-5"
+                    maxlength="75"
+                    name="oneLiner"
+                    placeholder="A short company tagline (max 75 characters)"
+                    type="text"
+                  />
+                  <!-- v-if -->
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-sm">
+            <div class="text-sm">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-6" class="block font-medium text-(--ui-text)">Category(s)</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-6"
+                  >
+                    Category(s)
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
+              <div class="
+                mt-1
+                relative
+              ">
                 <!---->
-                <div dir="ltr" id="v-0-0-6" class="relative inline-flex items-center flex-wrap w-full rounded-[calc(var(--ui-radius)*1.5)] transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) has-focus-visible:ring-2 has-focus-visible:ring-(--ui-primary) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary) pe-9"><input type="text" autocomplete="false" autocorrect="off" autocapitalize="off" aria-describedby="" aria-invalid="false" class="border-0 bg-transparent placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75" aria-disabled="false" aria-expanded="false" aria-controls="" aria-autocomplete="list" role="combobox" dir="ltr" value="">
+                <div
+                  class="
+                    bg-default
+                    flex-wrap
+                    focus-visible:ring-2
+                    focus-visible:ring-inset
+                    focus-visible:ring-primary
+                    gap-1.5
+                    has-focus-visible:ring-2
+                    has-focus-visible:ring-primary
+                    inline-flex
+                    items-center
+                    pe-9
+                    px-2.5
+                    py-1.5
+                    relative
+                    ring
+                    ring-accented
+                    ring-inset
+                    rounded-md
+                    text-highlighted
+                    text-sm
+                    transition-colors
+                    w-full
+                  "
+                  dir="ltr"
+                  id="v-0-0-6"
+                >
+                  <input
+                    aria-autocomplete="list"
+                    aria-controls=""
+                    aria-describedby=""
+                    aria-disabled="false"
+                    aria-expanded="false"
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="false"
+                    autocorrect="off"
+                    class="
+                      bg-transparent
+                      border-0
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus:outline-none
+                      placeholder:text-dimmed
+                    "
+                    dir="ltr"
+                    role="combobox"
+                    type="text"
+                    value=""
+                  />
                   <!---->
-                  <!--v-if--><button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" aria-disabled="false" class="group absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pe-2.5"><span class="iconify i-lucide:chevron-down shrink-0 text-(--ui-text-dimmed) size-5" aria-hidden="true"></span></button>
+                  <!-- v-if -->
+                  <button
+                    aria-controls=""
+                    aria-disabled="false"
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-label="Show popup"
+                    class="
+                      absolute
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      end-0
+                      flex
+                      group
+                      inset-y-0
+                      items-center
+                      pe-2.5
+                    "
+                    data-state="closed"
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="
+                        i-lucide:chevron-down
+                        iconify
+                        shrink-0
+                        size-5
+                        text-dimmed
+                      "
+                    ></span>
+                  </button>
                 </div>
-                <!--teleport start-->
-                <!--teleport end-->
-                <!--v-if-->
+                <!-- teleport start -->
+                <!-- teleport end -->
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-sm">
+            <div class="text-sm">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-7" class="block font-medium text-(--ui-text)">Tags</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-7"
+                  >
+                    Tags
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
-                <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-7" type="text" name="tags" placeholder="e.g. AI, SEO, Marketing" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" aria-describedby="" aria-invalid="false" value="">
-                  <!--v-if-->
-                  <!--v-if-->
+              <div class="
+                mt-1
+                relative
+              ">
+                <div class="
+                  inline-flex
+                  items-center
+                  relative
+                  w-full
+                ">
+                  <input
+                    aria-describedby=""
+                    aria-invalid="false"
+                    autocomplete="off"
+                    class="
+                      bg-default
+                      border-0
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus-visible:ring-2
+                      focus-visible:ring-inset
+                      focus-visible:ring-primary
+                      focus:outline-none
+                      gap-1.5
+                      placeholder:text-dimmed
+                      px-2.5
+                      py-1.5
+                      ring
+                      ring-accented
+                      ring-inset
+                      rounded-md
+                      text-highlighted
+                      text-sm
+                      transition-colors
+                      w-full
+                    "
+                    id="v-0-0-7"
+                    name="tags"
+                    placeholder="e.g. AI, SEO, Marketing"
+                    type="text"
+                    value=""
+                  />
+                  <!-- v-if -->
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-sm">
+            <div class="text-sm">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-8" class="block font-medium text-(--ui-text)">Company Logo</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-8"
+                  >
+                    Company Logo
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
-                <div data-v-8dd619f3="" class="rounded border border-dashed border-gray-300 p-4"><input data-v-8dd619f3="" type="file" accept="image/*" class="w-full text-sm">
-                  <!--v-if-->
+              <div class="
+                mt-1
+                relative
+              ">
+                <div class="
+                  border
+                  border-dashed
+                  border-gray-300
+                  p-4
+                  rounded
+                ">
+                  <input
+                    accept="image/*"
+                    class="
+                      text-sm
+                      w-full
+                    "
+                    type="file"
+                  />
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-center"><button type="submit" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-3 py-2 text-base gap-2 text-(--ui-bg) bg-(--ui-secondary) hover:bg-(--ui-secondary)/75 disabled:bg-(--ui-secondary) aria-disabled:bg-(--ui-secondary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-secondary)">
-                <!--v-if--> Submit
-                <!--v-if-->
-              </button></div>
+            <div class="text-center">
+              <button
+                class="
+                  aria-disabled:bg-secondary
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-secondary
+                  disabled:bg-secondary
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:outline-2
+                  focus-visible:outline-offset-2
+                  focus-visible:outline-secondary
+                  font-medium
+                  gap-2
+                  hover:bg-secondary/75
+                  inline-flex
+                  items-center
+                  px-3
+                  py-2
+                  rounded-md
+                  text-base
+                  text-inverted
+                  transition-colors
+                "
+                type="submit"
+              >
+                <!-- v-if -->
+                Submit
+                <!-- v-if -->
+              </button>
+            </div>
           </form>
         </div>
-        <!--v-if-->
+        <!-- v-if -->
       </div>
     </main>
   </div>
-  <!--v-if-->
-</div>"
+  <!-- v-if -->
+</div>
 `;
 
-exports[`SPage/Users/Submit/Company Snapshot > renders New Submission (no id) correctly 1`] = `
-"<div data-v-8dd619f3="" class="flex-col lg:grid lg:grid-cols-10 lg:gap-10 flex min-h-screen items-center justify-center">
-  <!--v-if-->
+exports[`sPage/Users/Submit/Company Snapshot > renders New Submission (no id) correctly 1`] = `
+<div class="
+  flex
+  flex-col
+  items-center
+  justify-center
+  lg:gap-10
+  lg:grid
+  lg:grid-cols-10
+  min-h-screen
+">
+  <!-- v-if -->
   <div class="lg:col-span-10">
-    <main data-v-8dd619f3="" class="min-h-[calc(100vh-var(--ui-header-height))] py-20">
-      <div data-v-8dd619f3="" class="rounded-[calc(var(--ui-radius)*2)] bg-(--ui-bg) ring ring-(--ui-border) divide-y divide-(--ui-border) mx-auto max-w-2xl p-8">
-        <!--v-if-->
-        <div class="p-4 sm:p-6">
-          <uheading data-v-8dd619f3="" level="2" class="mb-6 text-center text-2xl font-semibold"> Submit Company </uheading>
-          <!--v-if-->
-          <form data-v-8dd619f3="" id="v-0-0-0" class="space-y-6">
-            <div data-v-8dd619f3="" class="text-sm mt-6">
+    <main class="
+      min-h-[calc(100vh-var(--ui-header-height))]
+      py-20
+    ">
+      <div class="
+        bg-default
+        divide-default
+        divide-y
+        max-w-2xl
+        mx-auto
+        p-8
+        ring
+        ring-default
+        rounded-lg
+      ">
+        <!-- v-if -->
+        <div class="
+          p-4
+          sm:p-6
+        ">
+          <uheading
+            class="
+              font-semibold
+              mb-6
+              text-2xl
+              text-center
+            "
+            level="2"
+          >
+            Submit Company
+          </uheading>
+          <!-- v-if -->
+          <form
+            class="space-y-6"
+            id="v-0-0-0"
+          >
+            <div class="
+              mt-6
+              text-sm
+            ">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-1" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Company Name</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      after:content-['*']
+                      after:ms-0.5
+                      after:text-error
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-1"
+                  >
+                    Company Name
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
-                <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-1" type="text" name="name" placeholder="SERP AI" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" aria-describedby="" aria-invalid="false" value="">
-                  <!--v-if-->
-                  <!--v-if-->
+              <div class="
+                mt-1
+                relative
+              ">
+                <div class="
+                  inline-flex
+                  items-center
+                  relative
+                  w-full
+                ">
+                  <input
+                    aria-describedby=""
+                    aria-invalid="false"
+                    autocomplete="off"
+                    class="
+                      bg-default
+                      border-0
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus-visible:ring-2
+                      focus-visible:ring-inset
+                      focus-visible:ring-primary
+                      focus:outline-none
+                      gap-1.5
+                      placeholder:text-dimmed
+                      px-2.5
+                      py-1.5
+                      ring
+                      ring-accented
+                      ring-inset
+                      rounded-md
+                      text-highlighted
+                      text-sm
+                      transition-colors
+                      w-full
+                    "
+                    id="v-0-0-1"
+                    name="name"
+                    placeholder="SERP AI"
+                    type="text"
+                    value=""
+                  />
+                  <!-- v-if -->
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-sm">
+            <div class="text-sm">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-2" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Domain</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      after:content-['*']
+                      after:ms-0.5
+                      after:text-error
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-2"
+                  >
+                    Domain
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
-                <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-2" type="text" name="domain" placeholder="serp.ai" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" aria-describedby="" aria-invalid="false" value="">
-                  <!--v-if-->
-                  <!--v-if-->
+              <div class="
+                mt-1
+                relative
+              ">
+                <div class="
+                  inline-flex
+                  items-center
+                  relative
+                  w-full
+                ">
+                  <input
+                    aria-describedby=""
+                    aria-invalid="false"
+                    autocomplete="off"
+                    class="
+                      bg-default
+                      border-0
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus-visible:ring-2
+                      focus-visible:ring-inset
+                      focus-visible:ring-primary
+                      focus:outline-none
+                      gap-1.5
+                      placeholder:text-dimmed
+                      px-2.5
+                      py-1.5
+                      ring
+                      ring-accented
+                      ring-inset
+                      rounded-md
+                      text-highlighted
+                      text-sm
+                      transition-colors
+                      w-full
+                    "
+                    id="v-0-0-2"
+                    name="domain"
+                    placeholder="serp.ai"
+                    type="text"
+                    value=""
+                  />
+                  <!-- v-if -->
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-sm">
+            <div class="text-sm">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-3" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Description</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      after:content-['*']
+                      after:ms-0.5
+                      after:text-error
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-3"
+                  >
+                    Description
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
-                <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><textarea id="v-0-0-3" name="description" rows="5" placeholder="A detailed overview of your company" class="rounded-[calc(var(--ui-radius)*1.5)] w-full border-0 placeholder:text-[var(--ui-text-dimmed)] focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" aria-describedby="" aria-invalid="false" value=""></textarea></div>
-                <!--v-if-->
+              <div class="
+                mt-1
+                relative
+              ">
+                <div class="
+                  inline-flex
+                  items-center
+                  relative
+                  w-full
+                ">
+                  <textarea
+                    aria-describedby=""
+                    aria-invalid="false"
+                    class="
+                      bg-default
+                      border-0
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus-visible:ring-2
+                      focus-visible:ring-inset
+                      focus-visible:ring-primary
+                      focus:outline-none
+                      gap-1.5
+                      placeholder:text-dimmed
+                      px-2.5
+                      py-1.5
+                      ring
+                      ring-accented
+                      ring-inset
+                      rounded-md
+                      text-highlighted
+                      text-sm
+                      transition-colors
+                      w-full
+                    "
+                    id="v-0-0-3"
+                    name="description"
+                    placeholder="A detailed overview of your company"
+                    rows="5"
+                    value=""
+                  ></textarea>
+                  <!-- v-if -->
+                  <!-- v-if -->
+                </div>
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-sm">
+            <div class="text-sm">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-4" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Pricing Options</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      after:content-['*']
+                      after:ms-0.5
+                      after:text-error
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-4"
+                  >
+                    Pricing Options
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
+              <div class="
+                mt-1
+                relative
+              ">
                 <!---->
-                <div dir="ltr" id="v-0-0-4" class="relative inline-flex items-center flex-wrap w-full rounded-[calc(var(--ui-radius)*1.5)] transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) has-focus-visible:ring-2 has-focus-visible:ring-(--ui-primary) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary) pe-9"><input type="text" autocomplete="false" autocorrect="off" autocapitalize="off" aria-describedby="" aria-invalid="false" class="border-0 bg-transparent placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75" aria-disabled="false" aria-expanded="false" aria-controls="" aria-autocomplete="list" role="combobox" dir="ltr" value="">
+                <div
+                  class="
+                    bg-default
+                    flex-wrap
+                    focus-visible:ring-2
+                    focus-visible:ring-inset
+                    focus-visible:ring-primary
+                    gap-1.5
+                    has-focus-visible:ring-2
+                    has-focus-visible:ring-primary
+                    inline-flex
+                    items-center
+                    pe-9
+                    px-2.5
+                    py-1.5
+                    relative
+                    ring
+                    ring-accented
+                    ring-inset
+                    rounded-md
+                    text-highlighted
+                    text-sm
+                    transition-colors
+                    w-full
+                  "
+                  dir="ltr"
+                  id="v-0-0-4"
+                >
+                  <input
+                    aria-autocomplete="list"
+                    aria-controls=""
+                    aria-describedby=""
+                    aria-disabled="false"
+                    aria-expanded="false"
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="false"
+                    autocorrect="off"
+                    class="
+                      bg-transparent
+                      border-0
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus:outline-none
+                      placeholder:text-dimmed
+                    "
+                    dir="ltr"
+                    role="combobox"
+                    type="text"
+                    value=""
+                  />
                   <!---->
-                  <!--v-if--><button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" aria-disabled="false" class="group absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pe-2.5"><span class="iconify i-lucide:chevron-down shrink-0 text-(--ui-text-dimmed) size-5" aria-hidden="true"></span></button>
+                  <!-- v-if -->
+                  <button
+                    aria-controls=""
+                    aria-disabled="false"
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-label="Show popup"
+                    class="
+                      absolute
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      end-0
+                      flex
+                      group
+                      inset-y-0
+                      items-center
+                      pe-2.5
+                    "
+                    data-state="closed"
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="
+                        i-lucide:chevron-down
+                        iconify
+                        shrink-0
+                        size-5
+                        text-dimmed
+                      "
+                    ></span>
+                  </button>
                 </div>
-                <!--teleport start-->
-                <!--teleport end--><input data-hidden="" tabindex="-1" style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; word-wrap: normal;" name="pricing" value="">
-                <!--v-if-->
+                <!-- teleport start -->
+                <!-- teleport end -->
+                <input
+                  data-hidden=""
+                  name="pricing"
+                  style="
+                    position: absolute;
+                    border: 0px;
+                    width: 1px;
+                    height: 1px;
+                    padding: 0px;
+                    margin: -1px;
+                    overflow: hidden;
+                    clip: rect(0, 0, 0, 0);
+                    clip-path: inset(50%);
+                    white-space: nowrap;
+                    word-wrap: normal;
+                  "
+                  tabindex="-1"
+                  value=""
+                />
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-sm">
+            <div class="text-sm">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-5" class="block font-medium text-(--ui-text) after:content-['*'] after:ms-0.5 after:text-(--ui-error)">Tagline</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      after:content-['*']
+                      after:ms-0.5
+                      after:text-error
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-5"
+                  >
+                    Tagline
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
-                <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-5" type="text" name="oneLiner" placeholder="A short company tagline (max 75 characters)" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" maxlength="75" aria-describedby="" aria-invalid="false" value="">
-                  <!--v-if-->
-                  <!--v-if-->
+              <div class="
+                mt-1
+                relative
+              ">
+                <div class="
+                  inline-flex
+                  items-center
+                  relative
+                  w-full
+                ">
+                  <input
+                    aria-describedby=""
+                    aria-invalid="false"
+                    autocomplete="off"
+                    class="
+                      bg-default
+                      border-0
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus-visible:ring-2
+                      focus-visible:ring-inset
+                      focus-visible:ring-primary
+                      focus:outline-none
+                      gap-1.5
+                      placeholder:text-dimmed
+                      px-2.5
+                      py-1.5
+                      ring
+                      ring-accented
+                      ring-inset
+                      rounded-md
+                      text-highlighted
+                      text-sm
+                      transition-colors
+                      w-full
+                    "
+                    id="v-0-0-5"
+                    maxlength="75"
+                    name="oneLiner"
+                    placeholder="A short company tagline (max 75 characters)"
+                    type="text"
+                    value=""
+                  />
+                  <!-- v-if -->
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-sm">
+            <div class="text-sm">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-6" class="block font-medium text-(--ui-text)">Category(s)</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-6"
+                  >
+                    Category(s)
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
+              <div class="
+                mt-1
+                relative
+              ">
                 <!---->
-                <div dir="ltr" id="v-0-0-6" class="relative inline-flex items-center flex-wrap w-full rounded-[calc(var(--ui-radius)*1.5)] transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) has-focus-visible:ring-2 has-focus-visible:ring-(--ui-primary) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary) pe-9"><input type="text" autocomplete="false" autocorrect="off" autocapitalize="off" aria-describedby="" aria-invalid="false" class="border-0 bg-transparent placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75" aria-disabled="false" aria-expanded="false" aria-controls="" aria-autocomplete="list" role="combobox" dir="ltr" value="">
+                <div
+                  class="
+                    bg-default
+                    flex-wrap
+                    focus-visible:ring-2
+                    focus-visible:ring-inset
+                    focus-visible:ring-primary
+                    gap-1.5
+                    has-focus-visible:ring-2
+                    has-focus-visible:ring-primary
+                    inline-flex
+                    items-center
+                    pe-9
+                    px-2.5
+                    py-1.5
+                    relative
+                    ring
+                    ring-accented
+                    ring-inset
+                    rounded-md
+                    text-highlighted
+                    text-sm
+                    transition-colors
+                    w-full
+                  "
+                  dir="ltr"
+                  id="v-0-0-6"
+                >
+                  <input
+                    aria-autocomplete="list"
+                    aria-controls=""
+                    aria-describedby=""
+                    aria-disabled="false"
+                    aria-expanded="false"
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="false"
+                    autocorrect="off"
+                    class="
+                      bg-transparent
+                      border-0
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus:outline-none
+                      placeholder:text-dimmed
+                    "
+                    dir="ltr"
+                    role="combobox"
+                    type="text"
+                    value=""
+                  />
                   <!---->
-                  <!--v-if--><button type="button" tabindex="-1" aria-label="Show popup" aria-haspopup="listbox" aria-expanded="false" aria-controls="" data-state="closed" aria-disabled="false" class="group absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75 pe-2.5"><span class="iconify i-lucide:chevron-down shrink-0 text-(--ui-text-dimmed) size-5" aria-hidden="true"></span></button>
+                  <!-- v-if -->
+                  <button
+                    aria-controls=""
+                    aria-disabled="false"
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-label="Show popup"
+                    class="
+                      absolute
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      end-0
+                      flex
+                      group
+                      inset-y-0
+                      items-center
+                      pe-2.5
+                    "
+                    data-state="closed"
+                    tabindex="-1"
+                    type="button"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="
+                        i-lucide:chevron-down
+                        iconify
+                        shrink-0
+                        size-5
+                        text-dimmed
+                      "
+                    ></span>
+                  </button>
                 </div>
-                <!--teleport start-->
-                <!--teleport end-->
-                <!--v-if-->
+                <!-- teleport start -->
+                <!-- teleport end -->
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-sm">
+            <div class="text-sm">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-7" class="block font-medium text-(--ui-text)">Tags</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-7"
+                  >
+                    Tags
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
-                <div data-v-8dd619f3="" class="relative inline-flex items-center w-full"><input id="v-0-0-7" type="text" name="tags" placeholder="e.g. AI, SEO, Marketing" class="w-full rounded-[calc(var(--ui-radius)*1.5)] border-0 placeholder:text-(--ui-text-dimmed) focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors px-2.5 py-1.5 text-sm gap-1.5 text-(--ui-text-highlighted) bg-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-(--ui-primary)" autocomplete="off" aria-describedby="" aria-invalid="false" value="">
-                  <!--v-if-->
-                  <!--v-if-->
+              <div class="
+                mt-1
+                relative
+              ">
+                <div class="
+                  inline-flex
+                  items-center
+                  relative
+                  w-full
+                ">
+                  <input
+                    aria-describedby=""
+                    aria-invalid="false"
+                    autocomplete="off"
+                    class="
+                      bg-default
+                      border-0
+                      disabled:cursor-not-allowed
+                      disabled:opacity-75
+                      focus-visible:ring-2
+                      focus-visible:ring-inset
+                      focus-visible:ring-primary
+                      focus:outline-none
+                      gap-1.5
+                      placeholder:text-dimmed
+                      px-2.5
+                      py-1.5
+                      ring
+                      ring-accented
+                      ring-inset
+                      rounded-md
+                      text-highlighted
+                      text-sm
+                      transition-colors
+                      w-full
+                    "
+                    id="v-0-0-7"
+                    name="tags"
+                    placeholder="e.g. AI, SEO, Marketing"
+                    type="text"
+                    value=""
+                  />
+                  <!-- v-if -->
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-sm">
+            <div class="text-sm">
               <div class="">
-                <div class="flex content-center items-center justify-between"><label for="v-0-0-8" class="block font-medium text-(--ui-text)">Company Logo</label>
-                  <!--v-if-->
+                <div class="
+                  content-center
+                  flex
+                  items-center
+                  justify-between
+                ">
+                  <label
+                    class="
+                      block
+                      font-medium
+                      text-default
+                    "
+                    for="v-0-0-8"
+                  >
+                    Company Logo
+                  </label>
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
-              <div class="mt-1 relative">
-                <div data-v-8dd619f3="" class="rounded border border-dashed border-gray-300 p-4"><input data-v-8dd619f3="" type="file" accept="image/*" class="w-full text-sm">
-                  <!--v-if-->
+              <div class="
+                mt-1
+                relative
+              ">
+                <div class="
+                  border
+                  border-dashed
+                  border-gray-300
+                  p-4
+                  rounded
+                ">
+                  <input
+                    accept="image/*"
+                    class="
+                      text-sm
+                      w-full
+                    "
+                    type="file"
+                  />
+                  <!-- v-if -->
                 </div>
-                <!--v-if-->
+                <!-- v-if -->
               </div>
             </div>
-            <div data-v-8dd619f3="" class="text-center"><button type="submit" class="rounded-[calc(var(--ui-radius)*1.5)] font-medium inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors px-3 py-2 text-base gap-2 text-(--ui-bg) bg-(--ui-secondary) hover:bg-(--ui-secondary)/75 disabled:bg-(--ui-secondary) aria-disabled:bg-(--ui-secondary) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ui-secondary)">
-                <!--v-if--> Submit
-                <!--v-if-->
-              </button></div>
+            <div class="text-center">
+              <button
+                class="
+                  aria-disabled:bg-secondary
+                  aria-disabled:cursor-not-allowed
+                  aria-disabled:opacity-75
+                  bg-secondary
+                  disabled:bg-secondary
+                  disabled:cursor-not-allowed
+                  disabled:opacity-75
+                  focus-visible:outline-2
+                  focus-visible:outline-offset-2
+                  focus-visible:outline-secondary
+                  font-medium
+                  gap-2
+                  hover:bg-secondary/75
+                  inline-flex
+                  items-center
+                  px-3
+                  py-2
+                  rounded-md
+                  text-base
+                  text-inverted
+                  transition-colors
+                "
+                type="submit"
+              >
+                <!-- v-if -->
+                Submit
+                <!-- v-if -->
+              </button>
+            </div>
           </form>
         </div>
-        <!--v-if-->
+        <!-- v-if -->
       </div>
     </main>
   </div>
-  <!--v-if-->
-</div>"
+  <!-- v-if -->
+</div>
 `;

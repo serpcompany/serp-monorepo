@@ -1,54 +1,55 @@
 <script setup lang="ts">
-  const config = useRuntimeConfig();
-  const appConfig = useAppConfig();
-  const router = useRouter();
+const config = useRuntimeConfig()
+const appConfig = useAppConfig()
+const router = useRouter()
 
-  const submitOptions_ =
-    appConfig.site?.submitOptions ||
-    (config.public.submitOptions as Array<{
-      label: string;
-      to: string;
-    }>) ||
-    [];
+const submitOptions_: Array<{ label: string, to: string }>
+    = appConfig.site?.submitOptions
+      || (config.public.submitOptions as Array<{
+        label: string
+        to: string
+      }>)
+      || []
 
-  const submitOptions = submitOptions_.map((item) => ({
-    label: item.label,
-    onSelect(e: Event) {
-      e.preventDefault();
-      handleSubmitOptionSelect(item);
-    }
-  }));
+const submitOptions = submitOptions_.map(item => ({
+  label: item.label,
+  onSelect(e: Event) {
+    e.preventDefault()
+    handleSubmitOptionSelect(item)
+  },
+}))
 
-  const { loggedIn } = useUserSession();
+const { loggedIn } = useUserSession()
 
-  // Set a default selected item display text
-  const addYourText = ref('Add your');
+// Set a default selected item display text
+const addYourText = ref('Add your')
 
-  const toast = useToast();
+const toast = useToast()
 
-  const handleSubmitOptionSelect = (item) => {
-    if (!loggedIn.value) {
-      toast.add({
-        id: 'login-err',
-        title: 'Login Error',
-        color: 'error',
-        description: 'You must login to make a submission.',
-        icon: 'exclamation-circle'
-      });
-    } else {
-      router.push(item.to);
-    }
-  };
+function handleSubmitOptionSelect(item: { label: string, to: string }) {
+  if (!loggedIn.value) {
+    toast.add({
+      id: 'login-err',
+      title: 'Login Error',
+      color: 'error',
+      description: 'You must login to make a submission.',
+      icon: 'exclamation-circle',
+    })
+  }
+  else {
+    router.push(item.to)
+  }
+}
 
-  // Use headerNavItems from app config with fallback to runtime config
-  const headerNavItems =
-    appConfig.site?.headerNavItems || config.public.headerNavItems;
-  const useAuth = config.public.useAuth;
+// Use headerNavItems from app config with fallback to runtime config
+const headerNavItems
+    = appConfig.site?.headerNavItems || config.public.headerNavItems
+const useAuth = config.public.useAuth
 
-  const mobileMenuOpen = ref(false);
-  const toggleMobileMenu = () => {
-    mobileMenuOpen.value = !mobileMenuOpen.value;
-  };
+const mobileMenuOpen = ref(false)
+function toggleMobileMenu() {
+  mobileMenuOpen.value = !mobileMenuOpen.value
+}
 </script>
 
 <template>
@@ -81,7 +82,7 @@
               childList:
                 'flex flex-col bg-white dark:bg-gray-800 justify-center',
               childLink:
-                'px-4 py-2 hover:bg-gray-200  dark:hover:bg-gray-600 dark:hover:text-gray-300 rounded-md transition-colors duration-200'
+                'px-4 py-2 hover:bg-gray-200  dark:hover:bg-gray-600 dark:hover:text-gray-300 rounded-md transition-colors duration-200',
             }"
           />
         </div>
@@ -130,7 +131,7 @@
               item: 'text-primary px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200',
               content:
                 'dark:bg-gray-800 rounded-md p-1 shadow-lg border border-neutral-300 dark:border-gray-700',
-              arrow: 'fill-white dark:fill-gray-800'
+              arrow: 'fill-white dark:fill-gray-800',
             }"
             @select="handleSubmitOptionSelect"
           >

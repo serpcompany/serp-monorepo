@@ -1,7 +1,7 @@
-import { describe, expect, it } from 'vitest';
-import { defineComponent } from 'vue';
-import CompanyCardList from '../../components/CompanyCardList.vue';
-import ComponentRender from '../componentRender';
+import { describe, expect, it } from 'vitest'
+import { defineComponent } from 'vue'
+import CompanyCardList from '../../components/CompanyCardList.vue'
+import ComponentRender from '../componentRender'
 
 // Minimal stub for the external CompanyCard dependency
 const CompanyCardStub = defineComponent({
@@ -10,54 +10,54 @@ const CompanyCardStub = defineComponent({
     'showReadMore',
     'showProsAndCons',
     'showFeatures',
-    'showExpandedContent'
+    'showExpandedContent',
   ],
-  template: '<div class="company-card-stub">{{ company.name }}</div>'
-});
+  template: '<div class="company-card-stub">{{ company.name }}</div>',
+})
 
-describe('CompanyCardList Snapshot', () => {
+describe('companyCardList Snapshot', () => {
   const scenarios = [
     [
       'with an empty companies list',
       {
-        props: { companies: [] },
-        global: { stubs: { CompanyCard: CompanyCardStub } }
-      }
+        props: { items: [] },
+        global: { stubs: { CompanyCard: CompanyCardStub } },
+      },
     ],
     [
       'with a single company and default props',
       {
-        props: { companies: [{ id: 1, name: 'Test Company' }] },
-        global: { stubs: { CompanyCard: CompanyCardStub } }
-      }
+        props: { items: [{ id: 1, name: 'Test Company' }] },
+        global: { stubs: { CompanyCard: CompanyCardStub } },
+      },
     ],
     [
       'with multiple companies and all toggles enabled',
       {
         props: {
-          companies: [
+          items: [
             { id: 1, name: 'Company One' },
-            { id: 2, name: 'Company Two' }
+            { id: 2, name: 'Company Two' },
           ],
           showReadMore: true,
           showProsAndCons: true,
           showFeatures: true,
-          showExpandedContent: true
+          showExpandedContent: true,
         },
-        global: { stubs: { CompanyCard: CompanyCardStub } }
-      }
-    ]
-  ];
+        global: { stubs: { CompanyCard: CompanyCardStub } },
+      },
+    ],
+  ]
 
   it.each(scenarios)(
     'renders %s correctly',
-    async (desc: string, options: { props: unknown; global?: unknown }) => {
+    async (desc: string, options: { props: unknown, global?: unknown }) => {
       const html = await ComponentRender(
         `CompanyCardList ${desc}`,
         options,
-        CompanyCardList
-      );
-      expect(html).toMatchSnapshot();
-    }
-  );
-});
+        CompanyCardList,
+      )
+      expect(html).toMatchSnapshot()
+    },
+  )
+})

@@ -5,23 +5,27 @@
     baseSlug?: string;
     categoryBaseSlug?: string;
   }>();
+
+const toast = useToast()
+
   const typeofValue = typeof props.value;
-  const itemsAreObjects = computed(
+const itemsAreObjects = computed(
     () =>
       Array.isArray(props.value) &&
       props.value.length > 0 &&
       props.value.every(
-        (v) => v !== null && typeof v === 'object' && !Array.isArray(v)
-      )
+        (v) => v !== null && typeof v === 'object' && !Array.isArray(v),
+      ),
   );
   const columns = computed(() => {
-    if (!itemsAreObjects.value) return [];
+    if (!itemsAreObjects.value)
+    return []
     const keySet = new Set<string>();
     (props.value as Record<string, unknown>[]).forEach((obj) =>
-      Object.keys(obj).forEach((k) => keySet.add(k))
+      Object.keys(obj).forEach((k) => keySet.add(k)),
     );
-    return [...keySet];
-  });
+  return [...keySet]
+});
   // remove these from showing on the frontend
   const blacklistKeys = [
     'id',
@@ -37,68 +41,87 @@
     'title',
     'excerpt',
     'serplyLink',
-    'type'
+    'type',
+    'module',
+    'hotScore',
+    'hotScoreHour',
+    'hotScoreDay',
+    'hotScoreWeek',
+    'hotScoreMonth',
+    'hotScoreYear',
+    'usersCurrentVote',
+    'verification',
+    'numDownvotes',
+    'numUpvotes',
+    'numReviews',
+    'numOneStarReviews',
+    'numTwoStarReviews',
+    'numThreeStarReviews',
+    'numFourStarReviews',
+    'numFiveStarReviews',
+    'averageRating',
+    'entityId',
   ];
   // rename these keys to show on the frontend
-  const renameKeysMapping = {
-    basicInfo: 'Overview'
+  const renameKeysMapping: Record<string, string> = {
+    basicInfo: "Overview",
   };
 
   // Convert camelCase/PascalCase to human-readable format
-  const formatKey = (key: string): string => {
+  function formatKey(key: string): string {
     // Check if there's a manual mapping first
     if (renameKeysMapping[key]) {
       return renameKeysMapping[key];
-    }
+  }
 
     // Handle camelCase and PascalCase
     return (
       key
         // Insert space before capital letters (for camelCase)
-        .replace(/([a-z])([A-Z])/g, '$1 $2')
-        // Insert space before numbers that follow letters
-        .replace(/([a-zA-Z])(\d)/g, '$1 $2')
-        // Handle consecutive capitals (e.g., "ID" or "URL")
-        .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
-        // Handle snake_case
-        .replace(/_/g, ' ')
+        .replace(/([a-z])([A-Z])/g, "$1 $2")
+      // Insert space before numbers that follow letters
+        .replace(/([a-z])(\d)/gi, "$1 $2")
+      // Handle consecutive capitals (e.g., "ID" or "URL")
+        .replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2")
+      // Handle snake_case
+        .replace(/_/g, " ")
         // Handle kebab-case
-        .replace(/-/g, ' ')
+        .replace(/-/g, " ")
         // Capitalize first letter of each word
         .replace(/\b\w/g, (letter) => letter.toUpperCase())
-        // Special cases
-        .replace(/\bId\b/g, 'ID')
-        .replace(/\bUrl\b/g, 'URL')
-        .replace(/\bApi\b/g, 'API')
-        .replace(/\bCeo\b/g, 'CEO')
-        .replace(/\bCto\b/g, 'CTO')
-        .replace(/\bUi\b/g, 'UI')
-        .replace(/\bUx\b/g, 'UX')
+      // Special cases
+        .replace(/\bId\b/g, "ID")
+        .replace(/\bUrl\b/g, "URL")
+        .replace(/\bApi\b/g, "API")
+        .replace(/\bCeo\b/g, "CEO")
+        .replace(/\bCto\b/g, "CTO")
+        .replace(/\bUi\b/g, "UI")
+        .replace(/\bUx\b/g, "UX")
     );
-  };
+  }
 
   // Track nesting level for proper heading hierarchy
-  const nestingLevel = inject('jsonNestingLevel', 0);
-  provide('jsonNestingLevel', nestingLevel + 1);
+  const nestingLevel = inject("jsonNestingLevel", 0);
+provide('jsonNestingLevel', nestingLevel + 1)
 
-  const getHeadingTag = (level: number) => {
-    const tags = ['h2', 'h3', 'h4', 'h5', 'h6'];
+  function getHeadingTag(level: number) {
+    const tags = ["h2", "h3", "h4", "h5", "h6"];
     return tags[Math.min(level, tags.length - 1)];
-  };
+}
 
-  const getHeadingClass = (level: number) => {
+  function getHeadingClass(level: number) {
     const classes = [
       'text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4', // h2
       'text-xl font-semibold text-gray-800 dark:text-gray-200 mb-3', // h3
       'text-lg font-medium text-gray-700 dark:text-gray-300 mb-2', // h4
       'text-base font-medium text-gray-600 dark:text-gray-400 mb-2', // h5
-      'text-sm font-medium text-gray-500 dark:text-gray-400 mb-1' // h6
+      'text-sm font-medium text-gray-500 dark:text-gray-400 mb-1', // h6
     ];
     return classes[Math.min(level, classes.length - 1)];
-  };
+}
 
   // Determine if a key should be wrapped in a card (top-level sections)
-  const shouldWrapInCard = (key: string, level: number) => {
+  function shouldWrapInCard(key: string, level: number) {
     // Only wrap top-level keys in cards
     return (
       level === 0 &&
@@ -106,10 +129,10 @@
       !Array.isArray(props.value) &&
       !blacklistKeys.includes(key)
     );
-  };
+  }
 
   // Add a helper to check if a value is a primitive
-  const isPrimitive = (val: unknown): boolean => {
+  function isPrimitive(val: unknown): boolean {
     return (
       val === null ||
       val === undefined ||
@@ -117,18 +140,64 @@
       typeof val === 'number' ||
       typeof val === 'boolean'
     );
-  };
+}
 
   // Check if we should display key-value on the same line
-  const shouldDisplayInline = (value: unknown, level: number): boolean => {
+  function shouldDisplayInline(value: unknown, level: number): boolean {
     return isPrimitive(value) && level >= 2; // Only inline for h3+ level content
-  };
+}
+
+  // Copy to clipboard function
+  async function copyToClipboard(sectionId: string) {
+    const jumpLink = `#${sectionId}`;
+  const link = `${window.location.href.split('#')[0]}${jumpLink}`
+
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(link);
+    }
+ else {
+        // Fallback for unsupported environments
+        const el = document.createElement("textarea");
+        el.value = link;
+      document.body.appendChild(el)
+        el.select();
+      document.execCommand('copy')
+      document.body.removeChild(el);
+    }
+
+      toast.add({
+        id: "copy-link",
+        title: "Link copied to clipboard",
+        description: `Link to ${sectionId} section copied successfully`,
+        icon: "check-circle",
+      });
+  }
+ catch (error) {
+      console.error("Failed to copy text to clipboard:", error);
+    toast.add({
+        id: "copy-link-error",
+        title: "Failed to copy link",
+        description: `Could not copy link to ${sectionId} section`,
+        icon: "error-circle",
+      });
+  }
+  }
 </script>
+
 <template>
   <div>
-    <HTMLRenderer v-if="key_ === 'readme'" :value="value" />
+    <HTMLRenderer
+      v-if="key_ === 'readme' || key_ === 'content' || key_ === 'article'"
+      :value="value"
+    />
+    <TableRenderer
+      v-else-if="key_ === 'bouts'"
+      :value="value"
+      :base-slug="baseSlug"
+    />
     <CategoryRenderer
-      v-if="key_ === 'categories'"
+      v-else-if="key_ === 'categories'"
       :value="value"
       :base-slug="categoryBaseSlug"
     />
@@ -210,7 +279,8 @@
               </h2>
               <UIcon
                 name="i-heroicons-link"
-                class="ml-2 h-4 w-4 text-gray-400"
+                class="ml-2 h-4 w-4 text-gray-400 hover:cursor-pointer"
+                @click="copyToClipboard(k)"
               />
             </div>
           </template>

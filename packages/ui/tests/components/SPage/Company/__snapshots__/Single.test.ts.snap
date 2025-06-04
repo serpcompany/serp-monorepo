@@ -1,9 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPageCompanySingle Snapshot > renders complete company data (with auth) correctly 1`] = `"<!--v-if-->"`;
+exports[`sPageCompanySingle Snapshot > renders complete company data (with auth) correctly 1`] = `<!-- v-if -->`;
 
-exports[`SPageCompanySingle Snapshot > renders complete company data (without auth) correctly 1`] = `"<!--v-if-->"`;
+exports[`sPageCompanySingle Snapshot > renders complete company data (without auth) correctly 1`] = `<!-- v-if -->`;
 
-exports[`SPageCompanySingle Snapshot > renders minimal company data (with auth) correctly 1`] = `"<!--v-if-->"`;
+exports[`sPageCompanySingle Snapshot > renders minimal company data (with auth) correctly 1`] = `<!-- v-if -->`;
 
-exports[`SPageCompanySingle Snapshot > renders minimal company data (without auth) correctly 1`] = `"<!--v-if-->"`;
+exports[`sPageCompanySingle Snapshot > renders minimal company data (without auth) correctly 1`] = `<!-- v-if -->`;

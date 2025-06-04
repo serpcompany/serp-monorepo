@@ -1,19 +1,82 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ProfileDropdown Snapshot > renders when logged in correctly 1`] = `
-"<div class="relative">
+exports[`profileDropdown Snapshot > renders when logged in correctly 1`] = `
+<div class="relative">
   <!-- Avatar trigger -->
-  <div><span class="inline-flex items-center justify-center shrink-0 select-none overflow-hidden rounded-full align-middle bg-(--ui-bg-elevated) size-10 text-xl cursor-pointer transition-opacity hover:opacity-80"><img width="40" height="40" data-nuxt-img="" srcset="https://example.com/test.jpg 1x, https://example.com/test.jpg 2x" role="button" class="h-full w-full rounded-[inherit] object-cover" src="https://example.com/test.jpg"></span></div><!-- Slideover menu -->
-  <!--v-if-->
-  <!--teleport start-->
-  <!--teleport end-->
-</div>"
+  <div>
+    <span class="
+      align-middle
+      bg-elevated
+      cursor-pointer
+      hover:opacity-80
+      inline-flex
+      items-center
+      justify-center
+      overflow-hidden
+      rounded-full
+      select-none
+      shrink-0
+      size-10
+      text-xl
+      transition-opacity
+    ">
+      <img
+        class="
+          h-full
+          object-cover
+          rounded-[inherit]
+          w-full
+        "
+        data-nuxt-img=""
+        height="40"
+        role="button"
+        src="https://example.com/test.jpg"
+        srcset="https://example.com/test.jpg 1x, https://example.com/test.jpg 2x"
+        width="40"
+      />
+    </span>
+  </div>
+  <!-- Slideover menu -->
+  <!-- v-if -->
+  <!-- teleport start -->
+  <!-- teleport end -->
+</div>
 `;
 
-exports[`ProfileDropdown Snapshot > renders when not logged in correctly 1`] = `
-"<!-- Login button for logged-out users -->
-<a href="/login" class="inline-flex items-center focus:outline-hidden disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75 transition-colors py-1.5 gap-1.5 text-(--ui-primary) hover:bg-(--ui-primary)/10 focus-visible:bg-(--ui-primary)/10 disabled:bg-transparent aria-disabled:bg-transparent dark:disabled:bg-transparent dark:aria-disabled:bg-transparent dark:text-primary-100 text-md rounded-md border border-neutral-300 px-6 font-medium">
-  <!--v-if--> Login
-  <!--v-if-->
-</a>"
+exports[`profileDropdown Snapshot > renders when not logged in correctly 1`] = `
+<!-- Login button for logged-out users -->
+<a
+  class="
+    aria-disabled:bg-transparent
+    aria-disabled:cursor-not-allowed
+    aria-disabled:opacity-75
+    border
+    border-neutral-300
+    dark:aria-disabled:bg-transparent
+    dark:disabled:bg-transparent
+    dark:text-primary-100
+    disabled:bg-transparent
+    disabled:cursor-not-allowed
+    disabled:opacity-75
+    focus-visible:bg-primary/10
+    focus:outline-none
+    font-medium
+    gap-1.5
+    hover:bg-primary/10
+    inline-flex
+    items-center
+    px-6
+    py-1.5
+    rounded-md
+    text-md
+    text-primary
+    transition-colors
+  "
+  href="/login"
+>
+  
+<!-- v-if --> Login
+  
+<!-- v-if -->
+</a>
 `;

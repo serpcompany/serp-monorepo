@@ -1,0 +1,3 @@
+<template>
+  <SPageUsersPurchase />
+</template>

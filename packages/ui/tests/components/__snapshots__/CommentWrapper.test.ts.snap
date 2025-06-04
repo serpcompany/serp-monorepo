@@ -1,244 +1,1099 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CommentWrapper Snapshot > renders comment with nested replies correctly 1`] = `
-"<div data-v-d830712d="" class="comment-wrapper">
-  <div data-v-d830712d="" class="wrapper">
-    <div data-v-d830712d="" class="w-12 rounded-t-full"><img data-v-d830712d="" alt="Avatar" data-nuxt-img="" srcset="https://example.com/avatar.jpg 1x, https://example.com/avatar.jpg 2x" class="h-12 w-12 rounded-full p-1" src="https://example.com/avatar.jpg"></div>
-    <div data-v-d830712d="" class="comment-wrapper">
-      <div data-v-d830712d="" class="name-wrapper">
-        <div data-v-d830712d="" class="name text-(--ui-primary)">Test User</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Thursday, January 1, 1970 at 9:00:01 AM">just now</span>
-        <!--v-if-->
-        <div data-v-d830712d="" class="expand hover:text-(--ui-primary)" style="display: none;"><span data-v-d830712d="" title="Hide Comment">−</span></div>
+exports[`commentWrapper Snapshot > renders comment with nested replies correctly 1`] = `
+<div class="comment-wrapper">
+  <div class="wrapper">
+    <div class="
+      rounded-t-full
+      w-12
+    ">
+      <img
+        alt="Avatar"
+        class="
+          h-12
+          p-1
+          rounded-full
+          w-12
+        "
+        data-nuxt-img=""
+        src="https://example.com/avatar.jpg"
+        srcset="https://example.com/avatar.jpg 1x, https://example.com/avatar.jpg 2x"
+      />
+    </div>
+    <div class="comment-wrapper">
+      <div class="name-wrapper">
+        <div class="
+          name
+          text-(--ui-primary)
+        ">
+          Test User
+        </div>
+        <span class="dot">
+          •
+        </span>
+        <span
+          class="time"
+          title="Thursday, January 1, 1970 at 9:00:01 AM"
+        >
+          just now
+        </span>
+        <!-- v-if -->
+        <div
+          class="
+            expand
+            hover:text-(--ui-primary)
+          "
+          style="display: none;"
+        >
+          <span title="Hide Comment">
+            −
+          </span>
+        </div>
       </div>
-      <div data-v-d830712d="" class="comment bg-white text-black dark:bg-neutral-800 dark:text-white">This is a test comment.
-        It has two lines.</div>
-      <div data-v-d830712d="" class="comment-box text-black dark:text-white" style="display: none;">
-        <div data-v-d830712d="" class="user-name text-(--ui-primary)">Test User</div><textarea data-v-d830712d="" name="addUpdate" class="add-comment bg-white dark:bg-neutral-800" placeholder="Update message" spellcheck="false" aria-label="Add Comment"></textarea><button data-v-d830712d="" aria-label="Update" class="bg-primary hover:bg-primary-800"><span data-v-d830712d="">Update</span></button>
-        <div data-v-d830712d="" class="remaining-letter bg-primary"><span data-v-d830712d="">1000</span></div>
+      <div class="
+        bg-white
+        comment
+        dark:bg-neutral-800
+        dark:text-white
+        text-black
+      ">
+        This is a test comment.
+        It has two lines.
       </div>
-      <div data-v-d830712d="" class="reply hover:text-(--ui-primary)" style="display: none;">
-        <div data-v-d830712d="">Never mind</div>
+      <div
+        class="
+          comment-box
+          dark:text-white
+          text-black
+        "
+        style="display: none;"
+      >
+        <div class="
+          text-(--ui-primary)
+          user-name
+        ">
+          Test User
+        </div>
+        <textarea
+          aria-label="Add Comment"
+          class="
+            add-comment
+            bg-white
+            dark:bg-neutral-800
+          "
+          name="addUpdate"
+          placeholder="Update message"
+          spellcheck="false"
+        ></textarea>
+        <button
+          aria-label="Update"
+          class="
+            bg-primary
+            hover:bg-primary-800
+          "
+        >
+          <span>
+            Update
+          </span>
+        </button>
+        <div class="
+          bg-primary
+          remaining-letter
+        ">
+          <span>
+            1000
+          </span>
+        </div>
       </div>
-      <div data-v-d830712d="" class="reply">
-        <div data-v-d830712d="" class="hover:text-(--ui-primary)">Reply</div><span data-v-d830712d="" class="dot">•</span>
-        <div data-v-d830712d="" class="hover:text-(--ui-primary)">Hide replies</div>
-        <!--v-if-->
+      <div
+        class="
+          hover:text-(--ui-primary)
+          reply
+        "
+        style="display: none;"
+      >
+        <div>
+          Never mind
+        </div>
       </div>
-      <!--v-if-->
-      <transition-group-stub data-v-d830712d="" name="fade" tag="div" appear="true" persisted="false" css="true">
-        <div data-v-d830712d="" class="comment-wrapper">
-          <div data-v-d830712d="" class="wrapper">
-            <div data-v-d830712d="" class="w-12 rounded-t-full"><img data-v-d830712d="" alt="Avatar" data-nuxt-img="" srcset="https://example.com/reply-avatar.jpg 1x, https://example.com/reply-avatar.jpg 2x" class="h-12 w-12 rounded-full p-1" src="https://example.com/reply-avatar.jpg"></div>
-            <div data-v-d830712d="" class="comment-wrapper">
-              <div data-v-d830712d="" class="name-wrapper">
-                <div data-v-d830712d="" class="name text-(--ui-primary)">Reply User</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Thursday, January 1, 1970 at 9:00:01 AM">just now</span>
-                <!--v-if-->
-                <div data-v-d830712d="" class="expand hover:text-(--ui-primary)" style="display: none;"><span data-v-d830712d="" title="Hide Comment">−</span></div>
+      <div class="reply">
+        <div class="hover:text-(--ui-primary)">
+          Reply
+        </div>
+        <span class="dot">
+          •
+        </span>
+        <div class="hover:text-(--ui-primary)">
+          Hide replies
+        </div>
+        <!-- v-if -->
+      </div>
+      <!-- v-if -->
+      <transition-group-stub
+        appear="true"
+        css="true"
+        name="fade"
+        persisted="false"
+        tag="div"
+      >
+        <div class="comment-wrapper">
+          <div class="wrapper">
+            <div class="
+              rounded-t-full
+              w-12
+            ">
+              <img
+                alt="Avatar"
+                class="
+                  h-12
+                  p-1
+                  rounded-full
+                  w-12
+                "
+                data-nuxt-img=""
+                src="https://example.com/reply-avatar.jpg"
+                srcset="https://example.com/reply-avatar.jpg 1x, https://example.com/reply-avatar.jpg 2x"
+              />
+            </div>
+            <div class="comment-wrapper">
+              <div class="name-wrapper">
+                <div class="
+                  name
+                  text-(--ui-primary)
+                ">
+                  Reply User
+                </div>
+                <span class="dot">
+                  •
+                </span>
+                <span
+                  class="time"
+                  title="Thursday, January 1, 1970 at 9:00:01 AM"
+                >
+                  just now
+                </span>
+                <!-- v-if -->
+                <div
+                  class="
+                    expand
+                    hover:text-(--ui-primary)
+                  "
+                  style="display: none;"
+                >
+                  <span title="Hide Comment">
+                    −
+                  </span>
+                </div>
               </div>
-              <div data-v-d830712d="" class="comment bg-white text-black dark:bg-neutral-800 dark:text-white">This is a reply.</div>
-              <div data-v-d830712d="" class="comment-box text-black dark:text-white" style="display: none;">
-                <div data-v-d830712d="" class="user-name text-(--ui-primary)">Reply User</div><textarea data-v-d830712d="" name="addUpdate" class="add-comment bg-white dark:bg-neutral-800" placeholder="Update message" spellcheck="false" aria-label="Add Comment"></textarea><button data-v-d830712d="" aria-label="Update" class="bg-primary hover:bg-primary-800"><span data-v-d830712d="">Update</span></button>
-                <div data-v-d830712d="" class="remaining-letter bg-primary"><span data-v-d830712d="">1000</span></div>
+              <div class="
+                bg-white
+                comment
+                dark:bg-neutral-800
+                dark:text-white
+                text-black
+              ">
+                This is a reply.
               </div>
-              <div data-v-d830712d="" class="reply hover:text-(--ui-primary)" style="display: none;">
-                <div data-v-d830712d="">Never mind</div>
+              <div
+                class="
+                  comment-box
+                  dark:text-white
+                  text-black
+                "
+                style="display: none;"
+              >
+                <div class="
+                  text-(--ui-primary)
+                  user-name
+                ">
+                  Reply User
+                </div>
+                <textarea
+                  aria-label="Add Comment"
+                  class="
+                    add-comment
+                    bg-white
+                    dark:bg-neutral-800
+                  "
+                  name="addUpdate"
+                  placeholder="Update message"
+                  spellcheck="false"
+                ></textarea>
+                <button
+                  aria-label="Update"
+                  class="
+                    bg-primary
+                    hover:bg-primary-800
+                  "
+                >
+                  <span>
+                    Update
+                  </span>
+                </button>
+                <div class="
+                  bg-primary
+                  remaining-letter
+                ">
+                  <span>
+                    1000
+                  </span>
+                </div>
               </div>
-              <div data-v-d830712d="" class="reply">
-                <div data-v-d830712d="" class="hover:text-(--ui-primary)">Reply</div><span data-v-d830712d="" class="dot">•</span>
-                <div data-v-d830712d="" class="hover:text-(--ui-primary)">Hide replies</div>
-                <!--v-if-->
+              <div
+                class="
+                  hover:text-(--ui-primary)
+                  reply
+                "
+                style="display: none;"
+              >
+                <div>
+                  Never mind
+                </div>
               </div>
-              <!--v-if-->
-              <transition-group-stub data-v-d830712d="" name="fade" tag="div" appear="true" persisted="false" css="true">
-                <div data-v-d830712d="" class="comment-wrapper">
-                  <div data-v-d830712d="" class="wrapper">
-                    <div data-v-d830712d="" class="w-12 rounded-t-full"><img data-v-d830712d="" alt="Avatar" data-nuxt-img="" srcset="https://example.com/reply-avatar.jpg 1x, https://example.com/reply-avatar.jpg 2x" class="h-12 w-12 rounded-full p-1" src="https://example.com/reply-avatar.jpg"></div>
-                    <div data-v-d830712d="" class="comment-wrapper">
-                      <div data-v-d830712d="" class="name-wrapper">
-                        <div data-v-d830712d="" class="name text-(--ui-primary)">Reply User</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Thursday, January 1, 1970 at 9:00:01 AM">just now</span>
-                        <!--v-if-->
-                        <div data-v-d830712d="" class="expand hover:text-(--ui-primary)" style="display: none;"><span data-v-d830712d="" title="Hide Comment">−</span></div>
+              <div class="reply">
+                <div class="hover:text-(--ui-primary)">
+                  Reply
+                </div>
+                <span class="dot">
+                  •
+                </span>
+                <div class="hover:text-(--ui-primary)">
+                  Hide replies
+                </div>
+                <!-- v-if -->
+              </div>
+              <!-- v-if -->
+              <transition-group-stub
+                appear="true"
+                css="true"
+                name="fade"
+                persisted="false"
+                tag="div"
+              >
+                <div class="comment-wrapper">
+                  <div class="wrapper">
+                    <div class="
+                      rounded-t-full
+                      w-12
+                    ">
+                      <img
+                        alt="Avatar"
+                        class="
+                          h-12
+                          p-1
+                          rounded-full
+                          w-12
+                        "
+                        data-nuxt-img=""
+                        src="https://example.com/reply-avatar.jpg"
+                        srcset="https://example.com/reply-avatar.jpg 1x, https://example.com/reply-avatar.jpg 2x"
+                      />
+                    </div>
+                    <div class="comment-wrapper">
+                      <div class="name-wrapper">
+                        <div class="
+                          name
+                          text-(--ui-primary)
+                        ">
+                          Reply User
+                        </div>
+                        <span class="dot">
+                          •
+                        </span>
+                        <span
+                          class="time"
+                          title="Thursday, January 1, 1970 at 9:00:01 AM"
+                        >
+                          just now
+                        </span>
+                        <!-- v-if -->
+                        <div
+                          class="
+                            expand
+                            hover:text-(--ui-primary)
+                          "
+                          style="display: none;"
+                        >
+                          <span title="Hide Comment">
+                            −
+                          </span>
+                        </div>
                       </div>
-                      <div data-v-d830712d="" class="comment bg-white text-black dark:bg-neutral-800 dark:text-white">This is a reply.</div>
-                      <div data-v-d830712d="" class="comment-box text-black dark:text-white" style="display: none;">
-                        <div data-v-d830712d="" class="user-name text-(--ui-primary)">Reply User</div><textarea data-v-d830712d="" name="addUpdate" class="add-comment bg-white dark:bg-neutral-800" placeholder="Update message" spellcheck="false" aria-label="Add Comment"></textarea><button data-v-d830712d="" aria-label="Update" class="bg-primary hover:bg-primary-800"><span data-v-d830712d="">Update</span></button>
-                        <div data-v-d830712d="" class="remaining-letter bg-primary"><span data-v-d830712d="">1000</span></div>
+                      <div class="
+                        bg-white
+                        comment
+                        dark:bg-neutral-800
+                        dark:text-white
+                        text-black
+                      ">
+                        This is a reply.
                       </div>
-                      <div data-v-d830712d="" class="reply hover:text-(--ui-primary)" style="display: none;">
-                        <div data-v-d830712d="">Never mind</div>
+                      <div
+                        class="
+                          comment-box
+                          dark:text-white
+                          text-black
+                        "
+                        style="display: none;"
+                      >
+                        <div class="
+                          text-(--ui-primary)
+                          user-name
+                        ">
+                          Reply User
+                        </div>
+                        <textarea
+                          aria-label="Add Comment"
+                          class="
+                            add-comment
+                            bg-white
+                            dark:bg-neutral-800
+                          "
+                          name="addUpdate"
+                          placeholder="Update message"
+                          spellcheck="false"
+                        ></textarea>
+                        <button
+                          aria-label="Update"
+                          class="
+                            bg-primary
+                            hover:bg-primary-800
+                          "
+                        >
+                          <span>
+                            Update
+                          </span>
+                        </button>
+                        <div class="
+                          bg-primary
+                          remaining-letter
+                        ">
+                          <span>
+                            1000
+                          </span>
+                        </div>
                       </div>
-                      <div data-v-d830712d="" class="reply">
-                        <div data-v-d830712d="" class="hover:text-(--ui-primary)">Reply</div>
-                        <!--v-if-->
-                        <!--v-if-->
+                      <div
+                        class="
+                          hover:text-(--ui-primary)
+                          reply
+                        "
+                        style="display: none;"
+                      >
+                        <div>
+                          Never mind
+                        </div>
                       </div>
-                      <!--v-if-->
-                      <transition-group-stub data-v-d830712d="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
-                      <!--v-if-->
+                      <div class="reply">
+                        <div class="hover:text-(--ui-primary)">
+                          Reply
+                        </div>
+                        <!-- v-if -->
+                        <!-- v-if -->
+                      </div>
+                      <!-- v-if -->
+                      <transition-group-stub
+                        appear="true"
+                        css="true"
+                        name="fade"
+                        persisted="false"
+                        tag="div"
+                      ></transition-group-stub>
+                      <!-- v-if -->
                     </div>
                   </div>
                 </div>
-                <div data-v-d830712d="" class="comment-wrapper">
-                  <div data-v-d830712d="" class="wrapper">
-                    <div data-v-d830712d="" class="w-12 rounded-t-full"><img data-v-d830712d="" alt="Avatar" data-nuxt-img="" srcset="https://example.com/reply-avatar.jpg 1x, https://example.com/reply-avatar.jpg 2x" class="h-12 w-12 rounded-full p-1" src="https://example.com/reply-avatar.jpg"></div>
-                    <div data-v-d830712d="" class="comment-wrapper">
-                      <div data-v-d830712d="" class="name-wrapper">
-                        <div data-v-d830712d="" class="name text-(--ui-primary)">Reply User</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Thursday, January 1, 1970 at 9:00:01 AM">just now</span>
-                        <!--v-if-->
-                        <div data-v-d830712d="" class="expand hover:text-(--ui-primary)" style="display: none;"><span data-v-d830712d="" title="Hide Comment">−</span></div>
+                <div class="comment-wrapper">
+                  <div class="wrapper">
+                    <div class="
+                      rounded-t-full
+                      w-12
+                    ">
+                      <img
+                        alt="Avatar"
+                        class="
+                          h-12
+                          p-1
+                          rounded-full
+                          w-12
+                        "
+                        data-nuxt-img=""
+                        src="https://example.com/reply-avatar.jpg"
+                        srcset="https://example.com/reply-avatar.jpg 1x, https://example.com/reply-avatar.jpg 2x"
+                      />
+                    </div>
+                    <div class="comment-wrapper">
+                      <div class="name-wrapper">
+                        <div class="
+                          name
+                          text-(--ui-primary)
+                        ">
+                          Reply User
+                        </div>
+                        <span class="dot">
+                          •
+                        </span>
+                        <span
+                          class="time"
+                          title="Thursday, January 1, 1970 at 9:00:01 AM"
+                        >
+                          just now
+                        </span>
+                        <!-- v-if -->
+                        <div
+                          class="
+                            expand
+                            hover:text-(--ui-primary)
+                          "
+                          style="display: none;"
+                        >
+                          <span title="Hide Comment">
+                            −
+                          </span>
+                        </div>
                       </div>
-                      <div data-v-d830712d="" class="comment bg-white text-black dark:bg-neutral-800 dark:text-white">This is a reply.</div>
-                      <div data-v-d830712d="" class="comment-box text-black dark:text-white" style="display: none;">
-                        <div data-v-d830712d="" class="user-name text-(--ui-primary)">Reply User</div><textarea data-v-d830712d="" name="addUpdate" class="add-comment bg-white dark:bg-neutral-800" placeholder="Update message" spellcheck="false" aria-label="Add Comment"></textarea><button data-v-d830712d="" aria-label="Update" class="bg-primary hover:bg-primary-800"><span data-v-d830712d="">Update</span></button>
-                        <div data-v-d830712d="" class="remaining-letter bg-primary"><span data-v-d830712d="">1000</span></div>
+                      <div class="
+                        bg-white
+                        comment
+                        dark:bg-neutral-800
+                        dark:text-white
+                        text-black
+                      ">
+                        This is a reply.
                       </div>
-                      <div data-v-d830712d="" class="reply hover:text-(--ui-primary)" style="display: none;">
-                        <div data-v-d830712d="">Never mind</div>
+                      <div
+                        class="
+                          comment-box
+                          dark:text-white
+                          text-black
+                        "
+                        style="display: none;"
+                      >
+                        <div class="
+                          text-(--ui-primary)
+                          user-name
+                        ">
+                          Reply User
+                        </div>
+                        <textarea
+                          aria-label="Add Comment"
+                          class="
+                            add-comment
+                            bg-white
+                            dark:bg-neutral-800
+                          "
+                          name="addUpdate"
+                          placeholder="Update message"
+                          spellcheck="false"
+                        ></textarea>
+                        <button
+                          aria-label="Update"
+                          class="
+                            bg-primary
+                            hover:bg-primary-800
+                          "
+                        >
+                          <span>
+                            Update
+                          </span>
+                        </button>
+                        <div class="
+                          bg-primary
+                          remaining-letter
+                        ">
+                          <span>
+                            1000
+                          </span>
+                        </div>
                       </div>
-                      <div data-v-d830712d="" class="reply">
-                        <div data-v-d830712d="" class="hover:text-(--ui-primary)">Reply</div>
-                        <!--v-if-->
-                        <!--v-if-->
+                      <div
+                        class="
+                          hover:text-(--ui-primary)
+                          reply
+                        "
+                        style="display: none;"
+                      >
+                        <div>
+                          Never mind
+                        </div>
                       </div>
-                      <!--v-if-->
-                      <transition-group-stub data-v-d830712d="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
-                      <!--v-if-->
+                      <div class="reply">
+                        <div class="hover:text-(--ui-primary)">
+                          Reply
+                        </div>
+                        <!-- v-if -->
+                        <!-- v-if -->
+                      </div>
+                      <!-- v-if -->
+                      <transition-group-stub
+                        appear="true"
+                        css="true"
+                        name="fade"
+                        persisted="false"
+                        tag="div"
+                      ></transition-group-stub>
+                      <!-- v-if -->
                     </div>
                   </div>
                 </div>
               </transition-group-stub>
-              <!--v-if-->
+              <!-- v-if -->
             </div>
           </div>
         </div>
       </transition-group-stub>
-      <!--v-if-->
+      <!-- v-if -->
     </div>
   </div>
-</div>"
+</div>
 `;
 
-exports[`CommentWrapper Snapshot > renders comment with replies correctly 1`] = `
-"<div data-v-d830712d="" class="comment-wrapper">
-  <div data-v-d830712d="" class="wrapper">
-    <div data-v-d830712d="" class="w-12 rounded-t-full"><img data-v-d830712d="" alt="Avatar" data-nuxt-img="" srcset="https://example.com/avatar.jpg 1x, https://example.com/avatar.jpg 2x" class="h-12 w-12 rounded-full p-1" src="https://example.com/avatar.jpg"></div>
-    <div data-v-d830712d="" class="comment-wrapper">
-      <div data-v-d830712d="" class="name-wrapper">
-        <div data-v-d830712d="" class="name text-(--ui-primary)">Test User</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Thursday, January 1, 1970 at 9:00:01 AM">just now</span>
-        <!--v-if-->
-        <div data-v-d830712d="" class="expand hover:text-(--ui-primary)" style="display: none;"><span data-v-d830712d="" title="Hide Comment">−</span></div>
+exports[`commentWrapper Snapshot > renders comment with replies correctly 1`] = `
+<div class="comment-wrapper">
+  <div class="wrapper">
+    <div class="
+      rounded-t-full
+      w-12
+    ">
+      <img
+        alt="Avatar"
+        class="
+          h-12
+          p-1
+          rounded-full
+          w-12
+        "
+        data-nuxt-img=""
+        src="https://example.com/avatar.jpg"
+        srcset="https://example.com/avatar.jpg 1x, https://example.com/avatar.jpg 2x"
+      />
+    </div>
+    <div class="comment-wrapper">
+      <div class="name-wrapper">
+        <div class="
+          name
+          text-(--ui-primary)
+        ">
+          Test User
+        </div>
+        <span class="dot">
+          •
+        </span>
+        <span
+          class="time"
+          title="Thursday, January 1, 1970 at 9:00:01 AM"
+        >
+          just now
+        </span>
+        <!-- v-if -->
+        <div
+          class="
+            expand
+            hover:text-(--ui-primary)
+          "
+          style="display: none;"
+        >
+          <span title="Hide Comment">
+            −
+          </span>
+        </div>
       </div>
-      <div data-v-d830712d="" class="comment bg-white text-black dark:bg-neutral-800 dark:text-white">This is a test comment.
-        It has two lines.</div>
-      <div data-v-d830712d="" class="comment-box text-black dark:text-white" style="display: none;">
-        <div data-v-d830712d="" class="user-name text-(--ui-primary)">Test User</div><textarea data-v-d830712d="" name="addUpdate" class="add-comment bg-white dark:bg-neutral-800" placeholder="Update message" spellcheck="false" aria-label="Add Comment"></textarea><button data-v-d830712d="" aria-label="Update" class="bg-primary hover:bg-primary-800"><span data-v-d830712d="">Update</span></button>
-        <div data-v-d830712d="" class="remaining-letter bg-primary"><span data-v-d830712d="">1000</span></div>
+      <div class="
+        bg-white
+        comment
+        dark:bg-neutral-800
+        dark:text-white
+        text-black
+      ">
+        This is a test comment.
+        It has two lines.
       </div>
-      <div data-v-d830712d="" class="reply hover:text-(--ui-primary)" style="display: none;">
-        <div data-v-d830712d="">Never mind</div>
+      <div
+        class="
+          comment-box
+          dark:text-white
+          text-black
+        "
+        style="display: none;"
+      >
+        <div class="
+          text-(--ui-primary)
+          user-name
+        ">
+          Test User
+        </div>
+        <textarea
+          aria-label="Add Comment"
+          class="
+            add-comment
+            bg-white
+            dark:bg-neutral-800
+          "
+          name="addUpdate"
+          placeholder="Update message"
+          spellcheck="false"
+        ></textarea>
+        <button
+          aria-label="Update"
+          class="
+            bg-primary
+            hover:bg-primary-800
+          "
+        >
+          <span>
+            Update
+          </span>
+        </button>
+        <div class="
+          bg-primary
+          remaining-letter
+        ">
+          <span>
+            1000
+          </span>
+        </div>
       </div>
-      <div data-v-d830712d="" class="reply">
-        <div data-v-d830712d="" class="hover:text-(--ui-primary)">Reply</div><span data-v-d830712d="" class="dot">•</span>
-        <div data-v-d830712d="" class="hover:text-(--ui-primary)">Hide replies</div>
-        <!--v-if-->
+      <div
+        class="
+          hover:text-(--ui-primary)
+          reply
+        "
+        style="display: none;"
+      >
+        <div>
+          Never mind
+        </div>
       </div>
-      <!--v-if-->
-      <transition-group-stub data-v-d830712d="" name="fade" tag="div" appear="true" persisted="false" css="true">
-        <div data-v-d830712d="" class="comment-wrapper">
-          <div data-v-d830712d="" class="wrapper">
-            <div data-v-d830712d="" class="w-12 rounded-t-full"><img data-v-d830712d="" alt="Avatar" data-nuxt-img="" srcset="https://example.com/reply-avatar.jpg 1x, https://example.com/reply-avatar.jpg 2x" class="h-12 w-12 rounded-full p-1" src="https://example.com/reply-avatar.jpg"></div>
-            <div data-v-d830712d="" class="comment-wrapper">
-              <div data-v-d830712d="" class="name-wrapper">
-                <div data-v-d830712d="" class="name text-(--ui-primary)">Reply User</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Thursday, January 1, 1970 at 9:00:01 AM">just now</span>
-                <!--v-if-->
-                <div data-v-d830712d="" class="expand hover:text-(--ui-primary)" style="display: none;"><span data-v-d830712d="" title="Hide Comment">−</span></div>
+      <div class="reply">
+        <div class="hover:text-(--ui-primary)">
+          Reply
+        </div>
+        <span class="dot">
+          •
+        </span>
+        <div class="hover:text-(--ui-primary)">
+          Hide replies
+        </div>
+        <!-- v-if -->
+      </div>
+      <!-- v-if -->
+      <transition-group-stub
+        appear="true"
+        css="true"
+        name="fade"
+        persisted="false"
+        tag="div"
+      >
+        <div class="comment-wrapper">
+          <div class="wrapper">
+            <div class="
+              rounded-t-full
+              w-12
+            ">
+              <img
+                alt="Avatar"
+                class="
+                  h-12
+                  p-1
+                  rounded-full
+                  w-12
+                "
+                data-nuxt-img=""
+                src="https://example.com/reply-avatar.jpg"
+                srcset="https://example.com/reply-avatar.jpg 1x, https://example.com/reply-avatar.jpg 2x"
+              />
+            </div>
+            <div class="comment-wrapper">
+              <div class="name-wrapper">
+                <div class="
+                  name
+                  text-(--ui-primary)
+                ">
+                  Reply User
+                </div>
+                <span class="dot">
+                  •
+                </span>
+                <span
+                  class="time"
+                  title="Thursday, January 1, 1970 at 9:00:01 AM"
+                >
+                  just now
+                </span>
+                <!-- v-if -->
+                <div
+                  class="
+                    expand
+                    hover:text-(--ui-primary)
+                  "
+                  style="display: none;"
+                >
+                  <span title="Hide Comment">
+                    −
+                  </span>
+                </div>
               </div>
-              <div data-v-d830712d="" class="comment bg-white text-black dark:bg-neutral-800 dark:text-white">This is a reply.</div>
-              <div data-v-d830712d="" class="comment-box text-black dark:text-white" style="display: none;">
-                <div data-v-d830712d="" class="user-name text-(--ui-primary)">Reply User</div><textarea data-v-d830712d="" name="addUpdate" class="add-comment bg-white dark:bg-neutral-800" placeholder="Update message" spellcheck="false" aria-label="Add Comment"></textarea><button data-v-d830712d="" aria-label="Update" class="bg-primary hover:bg-primary-800"><span data-v-d830712d="">Update</span></button>
-                <div data-v-d830712d="" class="remaining-letter bg-primary"><span data-v-d830712d="">1000</span></div>
+              <div class="
+                bg-white
+                comment
+                dark:bg-neutral-800
+                dark:text-white
+                text-black
+              ">
+                This is a reply.
               </div>
-              <div data-v-d830712d="" class="reply hover:text-(--ui-primary)" style="display: none;">
-                <div data-v-d830712d="">Never mind</div>
+              <div
+                class="
+                  comment-box
+                  dark:text-white
+                  text-black
+                "
+                style="display: none;"
+              >
+                <div class="
+                  text-(--ui-primary)
+                  user-name
+                ">
+                  Reply User
+                </div>
+                <textarea
+                  aria-label="Add Comment"
+                  class="
+                    add-comment
+                    bg-white
+                    dark:bg-neutral-800
+                  "
+                  name="addUpdate"
+                  placeholder="Update message"
+                  spellcheck="false"
+                ></textarea>
+                <button
+                  aria-label="Update"
+                  class="
+                    bg-primary
+                    hover:bg-primary-800
+                  "
+                >
+                  <span>
+                    Update
+                  </span>
+                </button>
+                <div class="
+                  bg-primary
+                  remaining-letter
+                ">
+                  <span>
+                    1000
+                  </span>
+                </div>
               </div>
-              <div data-v-d830712d="" class="reply">
-                <div data-v-d830712d="" class="hover:text-(--ui-primary)">Reply</div>
-                <!--v-if-->
-                <!--v-if-->
+              <div
+                class="
+                  hover:text-(--ui-primary)
+                  reply
+                "
+                style="display: none;"
+              >
+                <div>
+                  Never mind
+                </div>
               </div>
-              <!--v-if-->
-              <transition-group-stub data-v-d830712d="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
-              <!--v-if-->
+              <div class="reply">
+                <div class="hover:text-(--ui-primary)">
+                  Reply
+                </div>
+                <!-- v-if -->
+                <!-- v-if -->
+              </div>
+              <!-- v-if -->
+              <transition-group-stub
+                appear="true"
+                css="true"
+                name="fade"
+                persisted="false"
+                tag="div"
+              ></transition-group-stub>
+              <!-- v-if -->
             </div>
           </div>
         </div>
       </transition-group-stub>
-      <!--v-if-->
+      <!-- v-if -->
     </div>
   </div>
-</div>"
+</div>
 `;
 
-exports[`CommentWrapper Snapshot > renders default comment correctly 1`] = `
-"<div data-v-d830712d="" class="comment-wrapper">
-  <div data-v-d830712d="" class="wrapper">
-    <div data-v-d830712d="" class="w-12 rounded-t-full"><img data-v-d830712d="" alt="Avatar" data-nuxt-img="" srcset="https://example.com/avatar.jpg 1x, https://example.com/avatar.jpg 2x" class="h-12 w-12 rounded-full p-1" src="https://example.com/avatar.jpg"></div>
-    <div data-v-d830712d="" class="comment-wrapper">
-      <div data-v-d830712d="" class="name-wrapper">
-        <div data-v-d830712d="" class="name text-(--ui-primary)">Test User</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Thursday, January 1, 1970 at 9:00:01 AM">just now</span>
-        <!--v-if-->
-        <div data-v-d830712d="" class="expand hover:text-(--ui-primary)" style="display: none;"><span data-v-d830712d="" title="Hide Comment">−</span></div>
+exports[`commentWrapper Snapshot > renders default comment correctly 1`] = `
+<div class="comment-wrapper">
+  <div class="wrapper">
+    <div class="
+      rounded-t-full
+      w-12
+    ">
+      <img
+        alt="Avatar"
+        class="
+          h-12
+          p-1
+          rounded-full
+          w-12
+        "
+        data-nuxt-img=""
+        src="https://example.com/avatar.jpg"
+        srcset="https://example.com/avatar.jpg 1x, https://example.com/avatar.jpg 2x"
+      />
+    </div>
+    <div class="comment-wrapper">
+      <div class="name-wrapper">
+        <div class="
+          name
+          text-(--ui-primary)
+        ">
+          Test User
+        </div>
+        <span class="dot">
+          •
+        </span>
+        <span
+          class="time"
+          title="Thursday, January 1, 1970 at 9:00:01 AM"
+        >
+          just now
+        </span>
+        <!-- v-if -->
+        <div
+          class="
+            expand
+            hover:text-(--ui-primary)
+          "
+          style="display: none;"
+        >
+          <span title="Hide Comment">
+            −
+          </span>
+        </div>
       </div>
-      <div data-v-d830712d="" class="comment bg-white text-black dark:bg-neutral-800 dark:text-white">This is a test comment.
-        It has two lines.</div>
-      <div data-v-d830712d="" class="comment-box text-black dark:text-white" style="display: none;">
-        <div data-v-d830712d="" class="user-name text-(--ui-primary)">Test User</div><textarea data-v-d830712d="" name="addUpdate" class="add-comment bg-white dark:bg-neutral-800" placeholder="Update message" spellcheck="false" aria-label="Add Comment"></textarea><button data-v-d830712d="" aria-label="Update" class="bg-primary hover:bg-primary-800"><span data-v-d830712d="">Update</span></button>
-        <div data-v-d830712d="" class="remaining-letter bg-primary"><span data-v-d830712d="">1000</span></div>
+      <div class="
+        bg-white
+        comment
+        dark:bg-neutral-800
+        dark:text-white
+        text-black
+      ">
+        This is a test comment.
+        It has two lines.
       </div>
-      <div data-v-d830712d="" class="reply hover:text-(--ui-primary)" style="display: none;">
-        <div data-v-d830712d="">Never mind</div>
+      <div
+        class="
+          comment-box
+          dark:text-white
+          text-black
+        "
+        style="display: none;"
+      >
+        <div class="
+          text-(--ui-primary)
+          user-name
+        ">
+          Test User
+        </div>
+        <textarea
+          aria-label="Add Comment"
+          class="
+            add-comment
+            bg-white
+            dark:bg-neutral-800
+          "
+          name="addUpdate"
+          placeholder="Update message"
+          spellcheck="false"
+        ></textarea>
+        <button
+          aria-label="Update"
+          class="
+            bg-primary
+            hover:bg-primary-800
+          "
+        >
+          <span>
+            Update
+          </span>
+        </button>
+        <div class="
+          bg-primary
+          remaining-letter
+        ">
+          <span>
+            1000
+          </span>
+        </div>
       </div>
-      <div data-v-d830712d="" class="reply">
-        <div data-v-d830712d="" class="hover:text-(--ui-primary)">Reply</div>
-        <!--v-if-->
-        <!--v-if-->
+      <div
+        class="
+          hover:text-(--ui-primary)
+          reply
+        "
+        style="display: none;"
+      >
+        <div>
+          Never mind
+        </div>
       </div>
-      <!--v-if-->
-      <transition-group-stub data-v-d830712d="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
-      <!--v-if-->
+      <div class="reply">
+        <div class="hover:text-(--ui-primary)">
+          Reply
+        </div>
+        <!-- v-if -->
+        <!-- v-if -->
+      </div>
+      <!-- v-if -->
+      <transition-group-stub
+        appear="true"
+        css="true"
+        name="fade"
+        persisted="false"
+        tag="div"
+      ></transition-group-stub>
+      <!-- v-if -->
     </div>
   </div>
-</div>"
+</div>
 `;
 
-exports[`CommentWrapper Snapshot > renders updated comment (with Updated badge) correctly 1`] = `
-"<div data-v-d830712d="" class="comment-wrapper">
-  <div data-v-d830712d="" class="wrapper">
-    <div data-v-d830712d="" class="w-12 rounded-t-full"><img data-v-d830712d="" alt="Avatar" data-nuxt-img="" srcset="https://example.com/avatar.jpg 1x, https://example.com/avatar.jpg 2x" class="h-12 w-12 rounded-full p-1" src="https://example.com/avatar.jpg"></div>
-    <div data-v-d830712d="" class="comment-wrapper">
-      <div data-v-d830712d="" class="name-wrapper">
-        <div data-v-d830712d="" class="name text-(--ui-primary)">Test User</div><span data-v-d830712d="" class="dot">•</span><span data-v-d830712d="" class="time" title="Thursday, January 1, 1970 at 9:00:01 AM">just now</span>
-        <!--v-if-->
-        <div data-v-d830712d="" class="expand hover:text-(--ui-primary)" style="display: none;"><span data-v-d830712d="" title="Hide Comment">−</span></div>
+exports[`commentWrapper Snapshot > renders updated comment (with Updated badge) correctly 1`] = `
+<div class="comment-wrapper">
+  <div class="wrapper">
+    <div class="
+      rounded-t-full
+      w-12
+    ">
+      <img
+        alt="Avatar"
+        class="
+          h-12
+          p-1
+          rounded-full
+          w-12
+        "
+        data-nuxt-img=""
+        src="https://example.com/avatar.jpg"
+        srcset="https://example.com/avatar.jpg 1x, https://example.com/avatar.jpg 2x"
+      />
+    </div>
+    <div class="comment-wrapper">
+      <div class="name-wrapper">
+        <div class="
+          name
+          text-(--ui-primary)
+        ">
+          Test User
+        </div>
+        <span class="dot">
+          •
+        </span>
+        <span
+          class="time"
+          title="Thursday, January 1, 1970 at 9:00:01 AM"
+        >
+          just now
+        </span>
+        <!-- v-if -->
+        <div
+          class="
+            expand
+            hover:text-(--ui-primary)
+          "
+          style="display: none;"
+        >
+          <span title="Hide Comment">
+            −
+          </span>
+        </div>
       </div>
-      <div data-v-d830712d="" class="comment bg-white text-black dark:bg-neutral-800 dark:text-white">This is a test comment.
-        It has two lines.</div>
-      <div data-v-d830712d="" class="comment-box text-black dark:text-white" style="display: none;">
-        <div data-v-d830712d="" class="user-name text-(--ui-primary)">Test User</div><textarea data-v-d830712d="" name="addUpdate" class="add-comment bg-white dark:bg-neutral-800" placeholder="Update message" spellcheck="false" aria-label="Add Comment"></textarea><button data-v-d830712d="" aria-label="Update" class="bg-primary hover:bg-primary-800"><span data-v-d830712d="">Update</span></button>
-        <div data-v-d830712d="" class="remaining-letter bg-primary"><span data-v-d830712d="">1000</span></div>
+      <div class="
+        bg-white
+        comment
+        dark:bg-neutral-800
+        dark:text-white
+        text-black
+      ">
+        This is a test comment.
+        It has two lines.
       </div>
-      <div data-v-d830712d="" class="reply hover:text-(--ui-primary)" style="display: none;">
-        <div data-v-d830712d="">Never mind</div>
+      <div
+        class="
+          comment-box
+          dark:text-white
+          text-black
+        "
+        style="display: none;"
+      >
+        <div class="
+          text-(--ui-primary)
+          user-name
+        ">
+          Test User
+        </div>
+        <textarea
+          aria-label="Add Comment"
+          class="
+            add-comment
+            bg-white
+            dark:bg-neutral-800
+          "
+          name="addUpdate"
+          placeholder="Update message"
+          spellcheck="false"
+        ></textarea>
+        <button
+          aria-label="Update"
+          class="
+            bg-primary
+            hover:bg-primary-800
+          "
+        >
+          <span>
+            Update
+          </span>
+        </button>
+        <div class="
+          bg-primary
+          remaining-letter
+        ">
+          <span>
+            1000
+          </span>
+        </div>
       </div>
-      <div data-v-d830712d="" class="reply">
-        <div data-v-d830712d="" class="hover:text-(--ui-primary)">Reply</div>
-        <!--v-if-->
-        <!--v-if-->
+      <div
+        class="
+          hover:text-(--ui-primary)
+          reply
+        "
+        style="display: none;"
+      >
+        <div>
+          Never mind
+        </div>
       </div>
-      <!--v-if-->
-      <transition-group-stub data-v-d830712d="" name="fade" tag="div" appear="true" persisted="false" css="true"></transition-group-stub>
-      <!--v-if-->
+      <div class="reply">
+        <div class="hover:text-(--ui-primary)">
+          Reply
+        </div>
+        <!-- v-if -->
+        <!-- v-if -->
+      </div>
+      <!-- v-if -->
+      <transition-group-stub
+        appear="true"
+        css="true"
+        name="fade"
+        persisted="false"
+        tag="div"
+      ></transition-group-stub>
+      <!-- v-if -->
     </div>
   </div>
-</div>"
+</div>
 `;

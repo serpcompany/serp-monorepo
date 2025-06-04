@@ -1,3 +1,9 @@
 {
-  "extends": ["@serp/configs/tsconfig", "./.nuxt/tsconfig.json"]
+  "extends": ["../../tsconfig.base.json", "./.nuxt/tsconfig.json"],
+  "include": [
+    "./**/*.ts",
+    "./**/*.vue",
+    "./.nuxt/**/*.ts",
+    "./.nuxt/ui-pro/**/*.ts"
+  ]
 }

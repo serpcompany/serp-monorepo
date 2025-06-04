@@ -1,0 +1,3 @@
+<template>
+  <SPageUsersBilling />
+</template>

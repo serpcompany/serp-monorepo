@@ -1,0 +1,70 @@
+version: '3.9'
+
+networks:
+  web_network:
+    external: true
+  central-auth-network:
+    external: true
+services:
+  dev-app-staging:
+    build:
+      context: ../..
+      args:
+        - NUXT_UI_PRO_LICENSE=${NUXT_UI_PRO_LICENSE}
+      dockerfile: ./apps/dev/Dockerfile
+    container_name: dev-app-staging
+    restart: unless-stopped
+    networks:
+      - web_network
+      - central-auth-network
+    environment:
+      - HOST=0.0.0.0
+      - NODE_ENV=production
+      - ROBOTS_ENV=staging
+      - NUXT_SITE_ENV=staging
+      - NUXT_PUBLIC_SITE_URL=https://dev.serp.co
+      - DATABASE_URL=${DATABASE_URL}
+      - AUTH_DATABASE_URL=${AUTH_DATABASE_URL}
+      - NUXT_PUBLIC_API_URL=${NUXT_PUBLIC_API_URL}
+      - NUXT_PUBLIC_DOMAIN=${NUXT_PUBLIC_DOMAIN}
+      - NUXT_PUBLIC_SITE_NAME=${NUXT_PUBLIC_SITE_NAME}
+      - NUXT_PUBLIC_URL=${NUXT_PUBLIC_URL}
+      - AUTH_ORIGIN=${NUXT_PUBLIC_URL}/api/auth
+      - AUTH_SECRET=${AUTH_SECRET}
+      - USE_AUTH=${USE_AUTH}
+      - NUXT_OAUTH_GITHUB_CLIENT_ID=${NUXT_OAUTH_GITHUB_CLIENT_ID}
+      - NUXT_OAUTH_GITHUB_CLIENT_SECRET=${NUXT_OAUTH_GITHUB_CLIENT_SECRET}
+      - NUXT_OAUTH_GOOGLE_CLIENT_ID=${NUXT_OAUTH_GOOGLE_CLIENT_ID}
+      - NUXT_OAUTH_GOOGLE_CLIENT_SECRET=${NUXT_OAUTH_GOOGLE_CLIENT_SECRET}
+      - NUXT_SESSION_PASSWORD=${NUXT_SESSION_PASSWORD}
+      - CLOUDFLARE_ACCOUNT_ID=${CLOUDFLARE_ACCOUNT_ID}
+      - CLOUDFLARE_AUTH_DATABASE_ID=${CLOUDFLARE_AUTH_DATABASE_ID}
+      - CLOUDFLARE_API_KEY=${CLOUDFLARE_API_KEY}
+      - NUXT_UI_PRO_LICENSE=${NUXT_UI_PRO_LICENSE}
+      - MAILGUN_API_KEY=${MAILGUN_API_KEY}
+      - MAILGUN_DOMAIN=${MAILGUN_DOMAIN}
+      - MAILGUN_FROM=${MAILGUN_FROM}
+      - CACHE_PURGE_API_KEY=${CACHE_PURGE_API_KEY}
+      - COMPANY_FEATURED_1_PRICE=${COMPANY_FEATURED_1_PRICE}
+      - COMPANY_FEATURED_2_PRICE=${COMPANY_FEATURED_2_PRICE}
+      - COMPANY_FEATURED_3_PRICE=${COMPANY_FEATURED_3_PRICE}
+      - COMPANY_FEATURED_4_PRICE=${COMPANY_FEATURED_4_PRICE}
+      - COMPANY_FEATURED_5_PRICE=${COMPANY_FEATURED_5_PRICE}
+      - COMPANY_FEATURED_1_PRICE_ID=${COMPANY_FEATURED_1_PRICE_ID}
+      - COMPANY_FEATURED_2_PRICE_ID=${COMPANY_FEATURED_2_PRICE_ID}
+      - COMPANY_FEATURED_3_PRICE_ID=${COMPANY_FEATURED_3_PRICE_ID}
+      - COMPANY_FEATURED_4_PRICE_ID=${COMPANY_FEATURED_4_PRICE_ID}
+      - COMPANY_FEATURED_5_PRICE_ID=${COMPANY_FEATURED_5_PRICE_ID}
+      - COMPANY_PRIORITY_QUEUE_PRICE=${COMPANY_PRIORITY_QUEUE_PRICE}
+      - STRIPE_API_KEY=${STRIPE_API_KEY}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+      - REDIS_URL=redis://dev-redis-staging:6379
+    depends_on:
+      - dev-redis-staging
+  dev-redis-staging:
+    image: redis:7.2.5
+    container_name: dev-redis-staging
+    restart: unless-stopped
+    networks:
+      - web_network

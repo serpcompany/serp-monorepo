@@ -1,15 +1,57 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`GlossaryTermCard Snapshot > renders with keyword provided correctly 1`] = `
-"<div><a href="/posts/example-term/" class="group hover:border-primary relative flex flex-col border-2 px-4 pt-4 pb-8">
-    <h2 class="text-sm font-medium">Example Keyword</h2>
-    <p class="mt-4 text-sm">A brief overview of the term.</p>
-  </a></div>"
+exports[`glossaryTermCard Snapshot > renders with keyword provided correctly 1`] = `
+<div>
+  <a
+    class="
+      border-2
+      flex
+      flex-col
+      group
+      hover:border-primary
+      pb-8
+      pt-4
+      px-4
+      relative
+    "
+    href="/posts/example-term/"
+  >
+    <h2 class="
+    font-medium
+    text-sm
+  ">Example Keyword</h2>
+    <p class="
+    mt-4
+    text-sm
+  ">A brief overview of the term.</p>
+  </a>
+</div>
 `;
 
-exports[`GlossaryTermCard Snapshot > renders without keyword (fallback to title) correctly 1`] = `
-"<div><a href="/posts/example-term/" class="group hover:border-primary relative flex flex-col border-2 px-4 pt-4 pb-8">
-    <h2 class="text-sm font-medium">Example Title</h2>
-    <p class="mt-4 text-sm">A brief overview of the term.</p>
-  </a></div>"
+exports[`glossaryTermCard Snapshot > renders without keyword (fallback to title) correctly 1`] = `
+<div>
+  <a
+    class="
+      border-2
+      flex
+      flex-col
+      group
+      hover:border-primary
+      pb-8
+      pt-4
+      px-4
+      relative
+    "
+    href="/posts/example-term/"
+  >
+    <h2 class="
+    font-medium
+    text-sm
+  ">Example Title</h2>
+    <p class="
+    mt-4
+    text-sm
+  ">A brief overview of the term.</p>
+  </a>
+</div>
 `;

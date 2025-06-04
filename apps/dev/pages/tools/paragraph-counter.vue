@@ -1,0 +1,3 @@
+<template>
+  <SPageToolParagraphCounter />
+</template>

@@ -1,97 +1,95 @@
 <script setup lang="ts">
-  import type {
-    Artist, // Import Artist type
-    ArtistReleaseGroup // Import ArtistReleaseGroup for typing
-  } from '@serp/types/types';
+import type {
+  Artist, // Import Artist type
+  ArtistReleaseGroup, // Import ArtistReleaseGroup for typing
+} from '@serp/types/types'
+import { useArtist } from '../../../../api/composables/useArtist'
 
-  // Add a data attribute to help AdSense crawler identify content sections
-  definePageMeta({
-    // This helps Google's crawler understand the content type better
-    pageType: 'album'
-  });
+// Add a data attribute to help AdSense crawler identify content sections
+definePageMeta({
+  // This helps Google's crawler understand the content type better
+  pageType: 'album',
+})
 
-  const sections = ['Overview', 'Songs'];
-  const route = useRoute();
-  const { slug } = route.params;
-  const album = await useAlbum(encodeURIComponent(slug));
+const sections = ['Overview', 'Songs']
+const route = useRoute()
+const { slug } = route.params
+const album = await useAlbum(encodeURIComponent(slug))
 
-  const config = useRuntimeConfig();
-  const useAuth = config.public.useAuth;
+const config = useRuntimeConfig()
+const useAuth = config.public.useAuth
 
-  // Get upvotes
-  const { upvotes } = (await useFetchWithCache<{ upvotes: string[] }>(
-    `/upvotes/${encodeURIComponent(album.slug)}?module=album`
-  )) || { upvotes: [] };
+const genres = computed(() => {
+  return album?.genres ? album.genres.join(', ') : ''
+})
 
-  const genres = computed(() => {
-    return album?.genres ? album.genres.join(', ') : '';
-  });
+const tags = computed(() => {
+  return album?.tags ? album.tags.join(', ') : ''
+})
 
-  const tags = computed(() => {
-    return album?.tags ? album.tags.join(', ') : '';
-  });
+// Format Date Helper (Year only)
+function formatDate(dateString: string | null) {
+  if (!dateString)
+    return 'N/A'
+  return dateString.split('-')[0] || dateString
+}
 
-  // Format Date Helper (Year only)
-  const formatDate = (dateString: string | null) => {
-    if (!dateString) return 'N/A';
-    return dateString.split('-')[0] || dateString;
-  };
+// Format Duration Helper (MM:SS)
+function formatDuration(lengthMs: number | null): string {
+  if (lengthMs === null || lengthMs === undefined) {
+    return '--:--'
+  }
+  const totalSeconds = Math.round(lengthMs / 1000)
+  const minutes = Math.floor(totalSeconds / 60)
+  const seconds = totalSeconds % 60
+  return `${minutes}:${seconds.toString().padStart(2, '0')}`
+}
 
-  // Format Duration Helper (MM:SS)
-  const formatDuration = (lengthMs: number | null): string => {
-    if (lengthMs === null || lengthMs === undefined) {
-      return '--:--';
+// Refined SEO Description
+const seoDescription = computed(
+  () =>
+    album?.seoDescription
+    || album?.overview?.substring(0, 160)
+    || `Details about the album ${album.name}.`,
+)
+
+// Primary artist for linking
+const primaryArtist = computed(() => {
+  if (album.artists && album.artists.length > 0) {
+    return album.artists[0]
+  }
+  return null
+})
+
+useSeoMeta({
+  // Add Artist to title if available
+  title: `${primaryArtist.value?.credit_name ? `${primaryArtist.value.credit_name} - ` : ''}${album.name} - Album Details`,
+  description: seoDescription,
+})
+
+// Ref for other albums by the same artist
+const otherArtistAlbums = ref<ArtistReleaseGroup[]>([])
+
+// Fetch the full ARTIST data, and filter out the current album
+watchEffect(async () => {
+  const artistSlug = primaryArtist.value?.slug
+  const currentAlbumSlug = album.slug // Get current album slug
+
+  if (artistSlug) {
+    try {
+      const fetchedArtistData = await useArtist(
+        encodeURIComponent(artistSlug),
+      )
+      // Filter the releaseGroups, excluding the current album
+      otherArtistAlbums.value = (
+        fetchedArtistData?.releaseGroups || []
+      ).filter((rg: ArtistReleaseGroup) => rg.slug !== currentAlbumSlug)
     }
-    const totalSeconds = Math.round(lengthMs / 1000);
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  };
-
-  // Refined SEO Description
-  const seoDescription = computed(
-    () =>
-      album?.seoDescription ||
-      album?.overview?.substring(0, 160) ||
-      `Details about the album ${album.name}.`
-  );
-
-  // Primary artist for linking
-  const primaryArtist = computed(() => {
-    if (album.artists && album.artists.length > 0) {
-      return album.artists[0];
+    catch (error) {
+      otherArtistAlbums.value = []
     }
-    return null;
-  });
-
-  useSeoMeta({
-    // Add Artist to title if available
-    title: `${primaryArtist.value?.credit_name ? primaryArtist.value.credit_name + ' - ' : ''}${album.name} - Album Details`,
-    description: seoDescription
-  });
-
-  // Ref for other albums by the same artist
-  const otherArtistAlbums = ref<ArtistReleaseGroup[]>([]);
-
-  // Fetch the full ARTIST data, and filter out the current album
-  watchEffect(async () => {
-    const artistSlug = primaryArtist.value?.slug;
-    const currentAlbumSlug = album.slug; // Get current album slug
-
-    if (artistSlug) {
-      try {
-        const fetchedArtistData = await useFetchWithCache<Artist>(
-          `/artists/${encodeURIComponent(artistSlug)}`
-        );
-        // Filter the releaseGroups, excluding the current album
-        otherArtistAlbums.value = (
-          fetchedArtistData?.releaseGroups || []
-        ).filter((rg: ArtistReleaseGroup) => rg.slug !== currentAlbumSlug);
-      } catch (error) {
-        otherArtistAlbums.value = [];
-      }
-    }
-  });
+  }
+})
 </script>
 
 <template>
@@ -106,16 +104,18 @@
       <template #subtitle>
         <NuxtLink
           v-if="primaryArtist"
-          :to="`/artists/${primaryArtist.slug}/`"
+          :to="`/artists/${encodeURIComponent(primaryArtist.slug)}/`"
           class="text-sm text-gray-500 hover:underline dark:text-gray-400"
         />
       </template>
       <template #upvote>
-        <UpvoteButton
+        <VoteButton
           v-if="useAuth"
-          :id="encodeURIComponent(album.slug)"
-          module="album"
-          :upvotes="upvotes"
+          :id="album.id"
+          module="music_albums"
+          :users-current-vote="album.usersCurrentVote"
+          :upvotes="album.numUpvotes"
+          :downvotes="album.numDownvotes"
         />
       </template>
     </MultipageHeaderMusic>
@@ -126,7 +126,7 @@
       <UBreadcrumb class="mb-6" :ui="{ container: 'flex px-1 py-2' }">
         <UBreadcrumbItem to="/home">Home</UBreadcrumbItem>
         <UBreadcrumbItem to="/albums">Albums</UBreadcrumbItem>
-        <UBreadcrumbItem :to="`/albums/${album.slug}`">{{
+        <UBreadcrumbItem :to="`/albums/${encodeURIComponent(album.slug)}`">{{
           album.name
         }}</UBreadcrumbItem>
       </UBreadcrumb>
@@ -141,7 +141,9 @@
             class="scroll-mt-24"
             data-adsense-content="album-tracklist"
           >
-            <h2 class="mb-4 text-2xl font-semibold">Tracklist</h2>
+            <h2 class="mb-4 text-2xl font-semibold">
+              Tracklist
+            </h2>
             <UCard :ui="{ body: { padding: 'px-2 sm:px-4 py-3' } }">
               <ol
                 v-if="album.recordings && album.recordings.length > 0"
@@ -155,12 +157,13 @@
                   <div class="flex min-w-0 items-center gap-3">
                     <span
                       class="w-5 text-right font-mono text-xs text-gray-500 dark:text-gray-400"
-                      >{{ index + 1 }}.</span
                     >
+                      {{ index + 1 }}.
+                    </span>
                     <div class="truncate">
                       <NuxtLink
                         v-if="song.has_lyrics"
-                        :to="`/songs/${song.slug}`"
+                        :to="`/songs/${encodeURIComponent(song.slug)}`"
                         class="text-primary-600 dark:text-primary-400 truncate text-sm font-medium hover:underline"
                         :title="song.name"
                       >
@@ -170,14 +173,16 @@
                         v-else
                         class="truncate text-sm text-gray-800 dark:text-gray-200"
                         :title="song.name"
-                        >{{ song.name }}</span
                       >
+                        {{ song.name }}
+                      </span>
                     </div>
                   </div>
                   <span
                     class="flex-shrink-0 font-mono text-xs text-gray-500 dark:text-gray-400"
-                    >{{ formatDuration(song.length) }}</span
                   >
+                    {{ formatDuration(song.length) }}
+                  </span>
                 </li>
               </ol>
               <p v-else class="text-sm text-gray-500 dark:text-gray-400">
@@ -192,12 +197,14 @@
             class="scroll-mt-24"
             data-adsense-content="album-overview"
           >
-            <h2 class="mb-4 text-2xl font-semibold">Overview</h2>
+            <h2 class="mb-4 text-2xl font-semibold">
+              Overview
+            </h2>
             <div
               v-if="album.overview"
               class="prose dark:prose-invert max-w-none"
               v-html="album.overview"
-            ></div>
+            />
             <p v-else class="text-gray-500 dark:text-gray-400">
               No overview available for this album.
             </p>
@@ -221,7 +228,7 @@
                 class="group relative"
               >
                 <NuxtLink
-                  :to="`/albums/${otherAlbum.slug}`"
+                  :to="`/albums/${encodeURIComponent(otherAlbum.slug)}`"
                   class="block space-y-1"
                 >
                   <div
@@ -278,36 +285,38 @@
           <!-- Album Info Card -->
           <UCard>
             <template #header>
-              <div class="font-medium">Album Info</div>
+              <div class="font-medium">
+                Album Info
+              </div>
             </template>
             <div class="space-y-2 text-sm">
               <!-- Artist Link -->
               <div v-if="primaryArtist">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >Artist:
+                <span class="font-medium text-gray-700 dark:text-gray-300">
+                  Artist:
                 </span>
                 <NuxtLink
-                  :to="`/artists/${primaryArtist.slug}`"
+                  :to="`/artists/${encodeURIComponent(primaryArtist.slug)}`"
                   class="text-primary hover:underline"
                 >
                   {{ primaryArtist.credit_name }}
                 </NuxtLink>
               </div>
               <div v-if="album.date">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >Released:
+                <span class="font-medium text-gray-700 dark:text-gray-300">
+                  Released:
                 </span>
-                <span class="text-gray-800 dark:text-gray-200">{{
-                  formatDate(album.date)
-                }}</span>
+                <span class="text-gray-800 dark:text-gray-200">
+                  {{ formatDate(album.date) }}
+                </span>
               </div>
               <div v-if="album.type">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >Type:
+                <span class="font-medium text-gray-700 dark:text-gray-300">
+                  Type:
                 </span>
-                <span class="text-gray-800 dark:text-gray-200">{{
-                  album.type
-                }}</span>
+                <span class="text-gray-800 dark:text-gray-200">
+                  {{ album.type }}
+                </span>
               </div>
             </div>
           </UCard>
@@ -315,20 +324,22 @@
           <!-- Stats Card -->
           <UCard v-if="genres || tags">
             <template #header>
-              <div class="font-medium">Stats</div>
+              <div class="font-medium">
+                Stats
+              </div>
             </template>
             <div class="space-y-2 text-sm">
               <div v-if="genres">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >Genres:
+                <span class="font-medium text-gray-700 dark:text-gray-300">
+                  Genres:
                 </span>
-                <span class="text-gray-800 dark:text-gray-200">{{
-                  genres
-                }}</span>
+                <span class="text-gray-800 dark:text-gray-200">
+                  {{ genres }}
+                </span>
               </div>
               <div v-if="tags">
-                <span class="font-medium text-gray-700 dark:text-gray-300"
-                  >Tags:
+                <span class="font-medium text-gray-700 dark:text-gray-300">
+                  Tags:
                 </span>
                 <span class="text-gray-800 dark:text-gray-200">{{ tags }}</span>
               </div>
@@ -338,7 +349,9 @@
           <!-- Links Card -->
           <UCard>
             <template #header>
-              <div class="font-medium">Listen On</div>
+              <div class="font-medium">
+                Listen On
+              </div>
             </template>
             <div class="p-1">
               <UButton

@@ -1,7 +1,8 @@
-export type Topic = {
-  id?: number;
-  name: string;
-  slug: string;
-  description?: string;
-  icon?: string;
-};
+export interface Topic {
+  id?: number
+  name: string
+  slug: string
+  description?: string
+  icon?: string
+  module?: string
+}

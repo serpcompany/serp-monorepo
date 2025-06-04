@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import type { RecordingIndex } from '@serp/types/types';
+import type { RecordingIndex } from '@serp/types/types'
 
-  defineProps({
-    songs: {
-      type: Array as () => RecordingIndex[],
-      required: true
-    }
-  });
+defineProps({
+  songs: {
+    type: Array as () => RecordingIndex[],
+    required: true,
+  },
+})
 </script>
 
 <template>
@@ -16,11 +16,7 @@
         :to="`/songs/${encodeURIComponent(song.slug)}/`"
         aria-label="song name"
       >
-        {{ song.name }} -
-        <span v-for="artist in song.artists" :key="artist.slug">
-          {{ artist.credit_name }}
-          <span v-if="artist.join_phrase">{{ artist.join_phrase }}</span>
-        </span>
+        <span>{{ song.name }} - {{ song.artistCreditName }}</span>
       </NuxtLink>
     </div>
   </div>

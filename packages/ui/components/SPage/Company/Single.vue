@@ -1,136 +1,152 @@
 <script setup lang="ts">
-  import type { Company, Comment } from '@serp/types/types';
+import type { Comment, Company } from '@serp/types/types'
 
-  const { user } = useUserSession();
+const props = defineProps<{
+  data: Company
+}>()
 
-  const props = defineProps<{
-    data: Company;
-  }>();
+const { user } = useUserSession()
 
-  const { data } = toRefs(props);
+const { data } = toRefs(props)
 
-  const isVerified = computed(() => {
-    return data.value?.verifiedEmail === user.value?.email;
-  });
+const isVerified = computed(() => {
+  return data.value?.verification === user.value?.id
+})
 
-  const config = useRuntimeConfig();
-  const useAuth = config.public.useAuth;
+const config = useRuntimeConfig()
+const useAuth = config.public.useAuth
 
-  const toast = useToast();
+const toast = useToast()
 
-  // @ts-expect-error: Auto-imported from another layer
-  const { upvotes, comments } = (await useCompanyUpvotesAndComments(
-    data.value?.id
-  )) as { upvotes: string[]; comments: Comment[] };
+const { comments } = (await useCompanyComments(data.value?.id)) as {
+  comments: Comment[]
+}
 
-  // @ts-expect-error: Auto-imported from another layer
-  const reviews = await useCompanyReviews(data.value?.id);
-  reviews.companyId = data.value?.id;
+const reviews = await useCompanyReviews(data.value?.id)
+reviews.companyId = data.value?.id
+reviews.entityId = data.value?.id
 
-  // State for review modal
-  const showReviewModal = ref(false);
+// State for review modal
+const showReviewModal = ref(false)
 
-  // Handle review submission - refresh reviews data
-  async function handleReviewSubmitted() {
-    // @ts-expect-error: Auto-imported from another layer
-    const updatedReviews = await useCompanyReviews(data.value?.id);
-    Object.assign(reviews, updatedReviews);
-    reviews.companyId = data.value?.id;
+// Handle review submission - refresh reviews data
+async function handleReviewSubmitted() {
+  const updatedReviews = await useCompanyReviews(data.value?.id)
+  Object.assign(reviews, updatedReviews)
+  reviews.companyId = data.value?.id
+  reviews.entityId = data.value?.id
+}
+
+const faqItems = computed(() => {
+  if (!data.value?.faqs)
+    return []
+
+  return data.value?.faqs.map(
+    (faq: { question: string, answer: string }) => ({
+      label: faq.question,
+      content: faq.answer,
+    }),
+  )
+})
+
+const sections = computed(() => {
+  const sectionTitles: string[] = []
+
+  sectionTitles.push('Overview')
+
+  if (data.value?.categories && data.value?.categories.length) {
+    sectionTitles.push('Categories')
   }
 
-  const faqItems = computed(() => {
-    if (!data.value?.faqs) return [];
-
-    return data.value?.faqs.map(
-      (faq: { question: string; answer: string }) => ({
-        label: faq.question,
-        content: faq.answer
-      })
-    );
-  });
-
-  const sections = computed(() => {
-    const sectionTitles: string[] = [];
-
-    sectionTitles.push('Overview');
-
-    if (data.value?.categories && data.value?.categories.length) {
-      sectionTitles.push('Categories');
-    }
-
-    if (data.value?.features) {
-      sectionTitles.push('Features');
-    }
-
-    if (data.value?.content) {
-      sectionTitles.push('Article');
-    }
-
-    if (data.value?.screenshots && data.value?.screenshots.length) {
-      sectionTitles.push('Media');
-    }
-
-    if (faqItems.value && faqItems.value.length) {
-      sectionTitles.push('FAQ');
-    }
-
-    if (data.value?.alternatives) {
-      sectionTitles.push('Alternatives');
-    }
-
-    // Always include Reviews section when reviews are available
-    if (data.value?.numReviews > 0 || reviews?.reviews?.length > 0) {
-      sectionTitles.push('Reviews');
-    }
-
-    // Add Comments section to navigation
-    sectionTitles.push('Discussion');
-
-    return sectionTitles;
-  });
-
-  // Copy to clipboard function
-  async function copyToClipboard(sectionId: string) {
-    const jumpLink = `#${sectionId}`;
-    const link = `${window.location.href.split('#')[0]}${jumpLink}`;
-
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        await navigator.clipboard.writeText(link);
-      } else {
-        // Fallback for unsupported environments
-        const el = document.createElement('textarea');
-        el.value = link;
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
-      }
-
-      toast.add({
-        id: 'copy-link',
-        title: 'Link copied to clipboard',
-        description: `Link to ${sectionId} section copied successfully`,
-        icon: 'check-circle'
-      });
-    } catch (error) {
-      console.error('Failed to copy text to clipboard:', error);
-      toast.add({
-        id: 'copy-link-error',
-        title: 'Failed to copy link',
-        description: `Could not copy link to ${sectionId} section`,
-        icon: 'error-circle'
-      });
-    }
+  if (data.value?.features) {
+    sectionTitles.push('Features')
   }
 
-  useSeoMeta({
-    title: computed(() =>
-      data.value?.name
-        ? `${data.value.name} - Reviews, Pricing, Features, Alternatives & Deals`
-        : 'Company Information'
-    )
-  });
+  if (data.value?.content) {
+    sectionTitles.push('Article')
+  }
+
+  if (data.value?.screenshots && data.value?.screenshots.length) {
+    sectionTitles.push('Media')
+  }
+
+  if (faqItems.value && faqItems.value.length) {
+    sectionTitles.push('FAQ')
+  }
+
+  if (data.value?.alternatives) {
+    sectionTitles.push('Alternatives')
+  }
+
+  // Always include Reviews section when reviews are available
+  if (data.value?.numReviews > 0 || reviews?.reviews?.length > 0) {
+    sectionTitles.push('Reviews')
+  }
+
+  // Add Comments section to navigation
+  sectionTitles.push('Discussion')
+
+  return sectionTitles
+})
+
+// Copy to clipboard function
+async function copyToClipboard(sectionId: string) {
+  const jumpLink = `#${sectionId}`
+  const link = `${window.location.href.split('#')[0]}${jumpLink}`
+
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(link)
+    }
+    else {
+      // Fallback for unsupported environments
+      const el = document.createElement('textarea')
+      el.value = link
+      document.body.appendChild(el)
+      el.select()
+      document.execCommand('copy')
+      document.body.removeChild(el)
+    }
+
+    toast.add({
+      id: 'copy-link',
+      title: 'Link copied to clipboard',
+      description: `Link to ${sectionId} section copied successfully`,
+      icon: 'check-circle',
+    })
+  }
+  catch (error) {
+    console.error('Failed to copy text to clipboard:', error)
+    toast.add({
+      id: 'copy-link-error',
+      title: 'Failed to copy link',
+      description: `Could not copy link to ${sectionId} section`,
+      icon: 'error-circle',
+    })
+  }
+}
+
+function companyMainImage(company: Company) {
+  if (!company)
+    return null
+  if (company.logo) {
+    return company.logo
+  }
+  else if (company.screenshots && company.screenshots.length) {
+    return company.screenshots[0]
+  }
+  else {
+    return null
+  }
+}
+
+useSeoMeta({
+  title: computed(() =>
+    data.value?.name
+      ? `${data.value.name} - Reviews, Pricing, Features, Alternatives & Deals`
+      : 'Company Information',
+  ),
+})
 </script>
 
 <template>
@@ -142,20 +158,24 @@
       class="bg-background sticky top-0 z-50 transition-all duration-300"
       :image="data.logo"
       :serply-link="data.serplyLink"
+      :verified="data.verified"
     >
-      <template #upvote>
-        <CompanyEditButton v-if="useAuth" :id="data.id" />
-        <CompanyVerificationButton
-          v-if="useAuth"
+      <template #name-trailing>
+        <CompanyVerification
           :id="data.id"
           :domain="data.slug"
-          :is-verified-prop="data.verified"
+          :verified="data.verification"
         />
-        <UpvoteButton
+      </template>
+      <template #upvote>
+        <CompanyEditButton v-if="useAuth" :id="data.id" />
+        <VoteButton
           v-if="useAuth"
           :id="data.id"
           module="company"
-          :upvotes="upvotes"
+          :users-current-vote="data.usersCurrentVote"
+          :upvotes="data.numUpvotes"
+          :downvotes="data.numDownvotes"
         />
       </template>
     </MultipageHeader>
@@ -255,11 +275,8 @@
           </div>
         </template>
         <UDivider class="my-0" />
-        <!-- eslint-disable-next-line vue/no-v-html-->
-        <div
-          class="prose dark:prose-invert max-w-none"
-          v-html="data.content"
-        ></div>
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div class="prose dark:prose-invert max-w-none" v-html="data.content" />
       </UCard>
 
       <!-- FAQs Section -->
@@ -294,12 +311,12 @@
                 header: {
                   base: 'flex justify-between w-full text-left',
                   inner: 'font-medium text-gray-900 dark:text-gray-100',
-                  icon: 'text-gray-400 dark:text-gray-500'
+                  icon: 'text-gray-400 dark:text-gray-500',
                 },
                 content: {
-                  base: 'text-gray-700 dark:text-gray-300 pt-2'
-                }
-              }
+                  base: 'text-gray-700 dark:text-gray-300 pt-2',
+                },
+              },
             }"
           />
         </div>
@@ -380,49 +397,35 @@
         </template>
         <UDivider class="my-0" />
         <div class="grid grid-cols-1 gap-4 p-4 sm:p-6 md:grid-cols-3">
-          <UCard
-            v-for="alternative in data.alternatives"
-            :key="alternative"
-            class="border border-gray-200 dark:border-gray-800"
-          >
-            <div class="mb-4 flex justify-center">
-              <div
-                class="flex h-16 w-16 items-center justify-center bg-gray-100 dark:bg-gray-800"
-              >
-                <UIcon name="i-heroicons-cube" class="h-8 w-8 text-gray-400" />
-              </div>
-            </div>
-            <h3 class="mb-2 text-center font-medium">
-              Alternatives Company Title
-            </h3>
-            <p
-              class="mb-4 text-center text-sm text-gray-600 dark:text-gray-400"
-            >
-              AI-based editing tool for effortless photo cleanup, creations, and
-              advanced photo refinement.
-            </p>
-            <p class="text-center text-sm text-gray-500">Starting from</p>
-            <p class="text-center text-lg font-bold">
-              $29.00
-              <span class="text-sm font-normal text-gray-500">per month</span>
-            </p>
-            <div class="mt-4 space-y-2">
-              <div class="flex items-start space-x-2">
-                <UIcon
-                  name="i-heroicons-check-circle"
-                  class="h-5 w-5 flex-shrink-0 text-green-500"
-                />
-                <span class="text-sm">Get two months free trial</span>
-              </div>
-              <div class="flex items-start space-x-2">
-                <UIcon
-                  name="i-heroicons-check-circle"
-                  class="h-5 w-5 flex-shrink-0 text-green-500"
-                />
-                <span class="text-sm">No free plan</span>
-              </div>
-            </div>
-          </UCard>
+          <div v-for="alternative in data.alternatives" :key="alternative.id">
+            <NuxtLink :to="`/products/${alternative.domain}/reviews/`">
+              <UCard class="border border-gray-200 dark:border-gray-800">
+                <div class="mb-4 flex justify-center">
+                  <div
+                    v-if="companyMainImage(alternative)"
+                    class="mr-5 flex-shrink-0"
+                  >
+                    <div class="h-28 w-28">
+                      <LazyNuxtImg
+                        :src="companyMainImage(alternative)"
+                        :alt="alternative.name"
+                        class="h-full w-full object-contain"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <h3 class="mb-2 text-center font-medium">
+                  {{ alternative.name }}
+                </h3>
+                <p
+                  v-if="alternative.excerpt"
+                  class="mb-4 text-center text-sm text-gray-600 dark:text-gray-400"
+                >
+                  {{ alternative.excerpt }}
+                </p>
+              </UCard>
+            </NuxtLink>
+          </div>
         </div>
       </UCard>
 
@@ -471,17 +474,13 @@
           />
 
           <!-- Display Reviews List -->
-          <CompanyReviews
-            :is-verified="isVerified"
-            :reviews="reviews"
-            class="mt-8"
-          />
+          <Reviews :is-verified="isVerified" :reviews="reviews" class="mt-8" />
         </div>
       </UCard>
 
-      <CompanyReviewModal
+      <ReviewModal
         v-model:open="showReviewModal"
-        :company-id="data.id"
+        :entity-id="data.id"
         :result="reviews"
         @close="showReviewModal = false"
         @review-submitted="handleReviewSubmitted"

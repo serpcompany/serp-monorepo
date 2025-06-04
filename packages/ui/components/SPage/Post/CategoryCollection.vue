@@ -1,36 +1,38 @@
 <script setup lang="ts">
-  const router = useRouter();
-  const route = useRoute();
+const router = useRouter()
+const route = useRoute()
 
-  const page = ref(Number(route.query.page) || 1);
-  const limit = ref(Number(route.query.limit) || 50);
-  const categories = await usePostCategories();
-  const slug = route.params.slug as string;
+const page = ref(Number(route.query.page) || 1)
+const limit = ref(Number(route.query.limit) || 50)
+const categories = await usePostCategories()
+const slug = route.params.slug as string
 
-  let data = await usePosts(page.value, limit.value, slug);
-  if (!data) {
-    router.push('/404');
+let data = await usePosts(page.value, limit.value, slug)
+if (!data) {
+  router.push('/404')
+}
+
+watch([page, limit], async ([newPage, newLimit]) => {
+  const query = { ...route.query }
+  if (newPage !== 1) {
+    query.page = String(newPage)
   }
+  else {
+    delete query.page
+  }
+  if (newLimit !== 50) {
+    query.limit = String(newLimit)
+  }
+  else {
+    delete query.limit
+  }
+  data = await usePosts(page.value, limit.value, slug)
+  router.push({ query })
+})
 
-  watch([page, limit], async ([newPage, newLimit]) => {
-    const query = { ...route.query };
-    if (newPage !== 1) {
-      query.page = String(newPage);
-    } else {
-      delete query.page;
-    }
-    if (newLimit !== 50) {
-      query.limit = String(newLimit);
-    } else {
-      delete query.limit;
-    }
-    data = await usePosts(page.value, limit.value, slug);
-    router.push({ query });
-  });
-
-  useSeoMeta({
-    title: () => `${data.categoryName} Posts`
-  });
+useSeoMeta({
+  title: () => `${data.category?.name} Posts`,
+})
 </script>
 
 <template>
@@ -38,8 +40,8 @@
     <SHero
       :headline="
         `
-    Category: ${data.categoryName}` ||
-        'If this is showing call 911, because something is very wrong.'
+    Category: ${data.category?.name}`
+          || 'If this is showing call 911, because something is very wrong.'
       "
       :show-search-bar="false"
       :show-buttons="false"

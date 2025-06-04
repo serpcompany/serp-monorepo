@@ -1,39 +1,40 @@
 <script setup lang="ts">
-  const jsonInput = ref('');
-  const csvOutput = ref<string>('');
+const jsonInput = ref('')
+const csvOutput = ref<string>('')
 
-  const toast = useToast();
+const toast = useToast()
 
-  const runFunction = () => {
-    try {
-      if (!jsonInput.value.trim()) {
-        throw new Error('Please enter JSON input');
-      }
+function runFunction() {
+  try {
+    if (!jsonInput.value.trim()) {
+      throw new Error('Please enter JSON input')
+    }
 
-      const result = convertJsonToCsv(jsonInput.value);
-      csvOutput.value = result ?? '';
+    const result = convertJsonToCsv(jsonInput.value)
+    csvOutput.value = result ?? ''
 
-      toast.add({
-        title: 'Success',
-        description: 'JSON successfully converted to CSV',
-        color: 'success'
-      });
-    } catch (error) {
-      csvOutput.value = '';
-      toast.add({
-        title: 'Error: Incorrect JSON Format',
-        description:
+    toast.add({
+      title: 'Success',
+      description: 'JSON successfully converted to CSV',
+      color: 'success',
+    })
+  }
+  catch (error) {
+    csvOutput.value = ''
+    toast.add({
+      title: 'Error: Incorrect JSON Format',
+      description:
           error instanceof Error
             ? error.message
             : 'Failed to convert JSON to CSV',
-        color: 'error'
-      });
-    }
-  };
+      color: 'error',
+    })
+  }
+}
 
-  useSeoMeta({
-    title: 'JSON to CSV Converter: Convert JSON to CSV format'
-  });
+useSeoMeta({
+  title: 'JSON to CSV Converter: Convert JSON to CSV format',
+})
 </script>
 
 <template>
@@ -44,7 +45,7 @@
         subtitle="Convert JSON to CSV format (comma separated list)."
       />
 
-      <!-- in box-->
+      <!-- in box -->
       <div class="flex justify-around gap-8">
         <ClientOnly>
           <UTextarea
@@ -55,14 +56,16 @@
           />
         </ClientOnly>
 
-        <!-- out box-->
+        <!-- out box -->
         <ClientOnly>
           <UTextarea v-model="csvOutput" :rows="15" class="mb-10 w-full" />
         </ClientOnly>
       </div>
 
       <!-- button -->
-      <UButton type="button" @click="runFunction">Submit</UButton>
+      <UButton type="button" @click="runFunction">
+        Submit
+      </UButton>
     </div>
   </div>
 </template>

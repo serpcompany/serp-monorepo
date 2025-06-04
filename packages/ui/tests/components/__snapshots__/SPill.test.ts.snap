@@ -1,7 +1,103 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPill > renders with multiple items correctly 1`] = `"<div class="flex flex-wrap gap-2"><a href="/category/item-1/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Item 1</a><a href="/category/item-2/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Item 2</a><a href="/category/item-3/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Item 3</a></div>"`;
+exports[`sPill > renders with multiple items correctly 1`] = `
+<div class="
+  flex
+  flex-wrap
+  gap-2
+">
+  <a
+    class="
+      bg-blue-50
+      border
+      border-blue-300
+      dark:bg-blue-900/30
+      dark:border-blue-700
+      dark:hover:bg-blue-800/50
+      dark:text-blue-300
+      font-medium
+      hover:bg-blue-100
+      px-3
+      py-1
+      rounded-full
+      text-blue-600
+      text-sm
+    "
+    href="/category/item-1/"
+  >Item 1</a>
+  <a
+    class="
+      bg-blue-50
+      border
+      border-blue-300
+      dark:bg-blue-900/30
+      dark:border-blue-700
+      dark:hover:bg-blue-800/50
+      dark:text-blue-300
+      font-medium
+      hover:bg-blue-100
+      px-3
+      py-1
+      rounded-full
+      text-blue-600
+      text-sm
+    "
+    href="/category/item-2/"
+  >Item 2</a>
+  <a
+    class="
+      bg-blue-50
+      border
+      border-blue-300
+      dark:bg-blue-900/30
+      dark:border-blue-700
+      dark:hover:bg-blue-800/50
+      dark:text-blue-300
+      font-medium
+      hover:bg-blue-100
+      px-3
+      py-1
+      rounded-full
+      text-blue-600
+      text-sm
+    "
+    href="/category/item-3/"
+  >Item 3</a>
+</div>
+`;
 
-exports[`SPill > renders with no items correctly 1`] = `"<div class="flex flex-wrap gap-2"></div>"`;
+exports[`sPill > renders with no items correctly 1`] = `
+<div class="
+  flex
+  flex-wrap
+  gap-2
+"></div>
+`;
 
-exports[`SPill > renders with one item correctly 1`] = `"<div class="flex flex-wrap gap-2"><a href="/category/item-1/" class="rounded-full border border-blue-300 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:border-blue-700 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-800/50">Item 1</a></div>"`;
+exports[`sPill > renders with one item correctly 1`] = `
+<div class="
+  flex
+  flex-wrap
+  gap-2
+">
+  <a
+    class="
+      bg-blue-50
+      border
+      border-blue-300
+      dark:bg-blue-900/30
+      dark:border-blue-700
+      dark:hover:bg-blue-800/50
+      dark:text-blue-300
+      font-medium
+      hover:bg-blue-100
+      px-3
+      py-1
+      rounded-full
+      text-blue-600
+      text-sm
+    "
+    href="/category/item-1/"
+  >Item 1</a>
+</div>
+`;

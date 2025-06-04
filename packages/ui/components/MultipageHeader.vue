@@ -1,49 +1,39 @@
 <script setup lang="ts">
-  defineProps({
-    name: {
-      type: String,
-      required: true
-    },
-    oneLiner: {
-      type: String,
-      required: false,
-      default: ''
-    },
-    image: {
-      type: String,
-      required: false,
-      default: ''
-    },
-    sections: {
-      type: Array as () => string[],
-      required: true
-    },
-    serplyLink: {
-      type: String,
-      required: true
-    }
-  });
+interface Props {
+  name: string
+  oneLiner?: string
+  image?: string
+  sections: string[]
+  serplyLink: string
+  verified?: boolean
+}
 
-  const header = ref(null);
-  const isScrolled = ref(false);
+withDefaults(defineProps<Props>(), {
+  image: '',
+  oneLiner: '',
+  verified: false,
+})
 
-  // // helps the multipage header to stick properly
-  // onMounted(() => {
-  //   const handleScroll = () => {
-  //     isScrolled.value = window.scrollY > 0;
+const header = useTemplateRef('header')
+const isScrolled = ref(false)
 
-  //     if (header.value) {
-  //       header.value.style.zIndex = isScrolled.value ? '10' : '0';
-  //     }
-  //   };
+// // helps the multipage header to stick properly
+// onMounted(() => {
+//   const handleScroll = () => {
+//     isScrolled.value = window.scrollY > 0;
 
-  //   window.addEventListener('scroll', handleScroll);
-  //   handleScroll(); // Initial check
+//     if (header.value) {
+//       header.value.style.zIndex = isScrolled.value ? '10' : '0';
+//     }
+//   };
 
-  //   onBeforeUnmount(() => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   });
-  // });
+//   window.addEventListener('scroll', handleScroll);
+//   handleScroll(); // Initial check
+
+//   onBeforeUnmount(() => {
+//     window.removeEventListener('scroll', handleScroll);
+//   });
+// });
 </script>
 
 <template>
@@ -54,32 +44,40 @@
       :class="{
         'py-2': isScrolled,
         'py-2 sm:py-4': !isScrolled,
-        'sticky top-0 left-0': isScrolled
+        'sticky top-0 left-0': isScrolled,
       }"
       style="z-index: 10"
     >
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <UContainer>
         <!-- When not scrolled: show the regular layout -->
         <div v-if="!isScrolled">
-          <div class="flex flex-col items-center justify-between sm:flex-row">
+          <div
+            class="flex flex-col items-center justify-between gap-8 sm:flex-row"
+          >
             <!-- Logo and title section -->
-            <div class="flex w-full items-start justify-between">
-              <NuxtImg
-                v-if="image"
-                :src="image"
-                :alt="`${name} logo`"
-                class="mr-2 h-16 object-contain"
-              />
-              <!-- Use flex-grow to allow this column to expand -->
-              <div class="flex-grow">
-                <h1
-                  class="text-xl font-bold text-gray-900 sm:text-3xl dark:text-gray-100"
-                >
-                  {{ name }}
-                </h1>
-                <!-- <span class="text-xs text-gray-700 dark:text-gray-300">{{
-                  oneLiner
-                }}</span> -->
+            <div class="flex w-full items-center justify-between gap-8">
+              <div
+                class="flex size-[152px] items-center justify-center border border-(--ui-border)"
+              >
+                <NuxtImg
+                  v-if="image"
+                  :src="image"
+                  :alt="`${name} logo`"
+                  class="size-full object-cover"
+                />
+              </div>
+              <div class="flex-1">
+                <div class="flex flex-col items-start justify-center gap-y-1">
+                  <div class="flex items-center gap-x-2">
+                    <h1 class="text-text text-xl font-semibold sm:text-3xl">
+                      {{ name }}
+                    </h1>
+                    <slot name="name-trailing" />
+                  </div>
+                  <p class="text-muted font-medium">
+                    {{ oneLiner }}
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -88,31 +86,17 @@
             <div
               class="flex flex-none flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0"
             >
-              <slot name="upvote"></slot>
-              <NuxtLink
+              <slot name="upvote" />
+              <UButton
                 v-if="serplyLink"
-                :href="serplyLink"
+                label="Website"
+                trailing-icon="lucide:external-link"
+                size="md"
+                external
+                color="neutral"
                 target="_blank"
-                class="flex h-[42px] w-auto items-center justify-center gap-2 rounded-md bg-black px-4 py-2 font-medium text-white transition-colors hover:bg-neutral-800 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-neutral-200"
-              >
-                Visit Website
-                <svg
-                  class="h-4 w-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                  />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
-              </NuxtLink>
+                :to="serplyLink"
+              />
             </div>
           </div>
 
@@ -125,7 +109,7 @@
               <NuxtLink
                 v-for="section in sections"
                 :key="section"
-                :href="'#' + section.toLowerCase()"
+                :href="`#${section.toLowerCase()}`"
                 class="sectionLinks flex-shrink-0 rounded-sm px-1 py-2 text-sm font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-600 sm:px-2 sm:text-base dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300"
               >
                 {{ section }}
@@ -159,7 +143,7 @@
               <NuxtLink
                 v-for="section in sections"
                 :key="section"
-                :href="'#' + section.toLowerCase()"
+                :href="`#${section.toLowerCase()}`"
                 class="sectionLinks flex-shrink-0 rounded-sm px-1 py-2 text-sm font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-600 sm:px-2 sm:text-base dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300"
               >
                 {{ section }}
@@ -192,7 +176,7 @@
             </svg>
           </NuxtLink>
         </div>
-      </div>
+      </UContainer>
     </header>
   </div>
 </template>

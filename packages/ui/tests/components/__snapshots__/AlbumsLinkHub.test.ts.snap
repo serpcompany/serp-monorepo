@@ -1,16 +1,54 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`AlbumsLinkHub Snapshot > renders with multiple albums and multiple artists correctly 1`] = `
-"<div class="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-2">
-  <div><a href="/albums/album-1/" aria-label="album name">Album One - <span>Artist One <span> &amp; </span></span><span>Artist Two <!--v-if--></span></a></div>
-  <div><a href="/albums/album-2/" aria-label="album name">Album Two - <span>Artist Three <!--v-if--></span></a></div>
-</div>"
+exports[`albumsLinkHub Snapshot > renders with multiple albums and multiple artists correctly 1`] = `
+<div class="
+  gap-2
+  grid
+  grid-cols-1
+  md:grid-cols-2
+  mt-2
+  xl:grid-cols-2
+">
+  <div>
+    <a
+      aria-label="album name"
+      href="/albums/album-1/"
+    ><span>Album One - </span></a>
+  </div>
+  <div>
+    <a
+      aria-label="album name"
+      href="/albums/album-2/"
+    ><span>Album Two - </span></a>
+  </div>
+</div>
 `;
 
-exports[`AlbumsLinkHub Snapshot > renders with no albums correctly 1`] = `"<div class="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-2"></div>"`;
+exports[`albumsLinkHub Snapshot > renders with no albums correctly 1`] = `
+<div class="
+  gap-2
+  grid
+  grid-cols-1
+  md:grid-cols-2
+  mt-2
+  xl:grid-cols-2
+"></div>
+`;
 
-exports[`AlbumsLinkHub Snapshot > renders with one album and one artist correctly 1`] = `
-"<div class="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-2">
-  <div><a href="/albums/album-1/" aria-label="album name">Album One - <span>Artist One <!--v-if--></span></a></div>
-</div>"
+exports[`albumsLinkHub Snapshot > renders with one album and one artist correctly 1`] = `
+<div class="
+  gap-2
+  grid
+  grid-cols-1
+  md:grid-cols-2
+  mt-2
+  xl:grid-cols-2
+">
+  <div>
+    <a
+      aria-label="album name"
+      href="/albums/album-1/"
+    ><span>Album One - </span></a>
+  </div>
+</div>
 `;

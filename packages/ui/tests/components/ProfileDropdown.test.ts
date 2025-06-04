@@ -1,22 +1,24 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { ref } from 'vue';
-import ProfileDropdown from '../../components/ProfileDropdown.client.vue';
-import ComponentRender from '../componentRender';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { ref } from 'vue'
+import ProfileDropdown from '../../components/ProfileDropdown.client.vue'
+import ComponentRender from '../componentRender'
 
 // Declare a mutable session_ variable.
-let session_: { loggedIn: unknown; user: unknown; clear: unknown };
-// Set the global mock once.
-(globalThis as unknown).useUserSession = () => session_;
+let session_: { loggedIn: unknown, user: unknown, clear: unknown }
 
-describe('ProfileDropdown Snapshot', () => {
+// Mock the useUserSession composable
+mockNuxtImport('useUserSession', () => () => session_)
+
+describe('profileDropdown Snapshot', () => {
   // Reset session_ before each test.
   beforeEach(() => {
-    session_ = { loggedIn: ref(false), user: ref(null), clear: vi.fn() };
-  });
+    session_ = { loggedIn: ref(false), user: ref(null), clear: vi.fn() }
+  })
 
   const scenarios: [
     string,
-    { session: { loggedIn: unknown; user: unknown; clear: unknown } }
+    { session: { loggedIn: unknown, user: unknown, clear: unknown } },
   ][] = [
     [
       'when logged in',
@@ -26,11 +28,11 @@ describe('ProfileDropdown Snapshot', () => {
           user: ref({
             name: 'Test User',
             email: 'test@test.com',
-            image: 'https://example.com/test.jpg'
+            image: 'https://example.com/test.jpg',
           }),
-          clear: vi.fn()
-        }
-      }
+          clear: vi.fn(),
+        },
+      },
     ],
     [
       'when not logged in',
@@ -38,22 +40,22 @@ describe('ProfileDropdown Snapshot', () => {
         session: {
           loggedIn: ref(false),
           user: ref(null),
-          clear: vi.fn()
-        }
-      }
-    ]
-  ];
+          clear: vi.fn(),
+        },
+      },
+    ],
+  ]
 
   it.each(scenarios)('renders %s correctly', async (desc, { session }) => {
-    // Update the global session for this scenario.
-    session_ = session;
+    // Update the session for this scenario.
+    session_ = session
 
     // Render the component and generate the snapshot.
     const html = await ComponentRender(
       `ProfileDropdown ${desc}`,
       {},
-      ProfileDropdown
-    );
-    expect(html).toMatchSnapshot();
-  });
-});
+      ProfileDropdown,
+    )
+    expect(html).toMatchSnapshot()
+  })
+})

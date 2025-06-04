@@ -1,77 +1,71 @@
 <script setup lang="ts">
-  import type { PostIndex } from '@serp/types/types';
+import type { PostIndex } from '@serp/types/types'
 
-  const router = useRouter();
+const letterRegex = /^[a-z]/i
+const noLetterCharacter = '&'
 
-  const data = await usePosts(1, 1000000, '', 'Glossary');
-  if (!data) {
-    router.push('/404');
+const { data: posts, status } = await useAsyncData(
+  'glossary',
+  () => usePosts(1, 1000000, '', 'Glossary'),
+  {
+    transform: input => input.posts,
+    default: () => [],
+    lazy: true,
+  },
+)
+
+const characters = Array.from({ length: 26 }, (_, i) =>
+  String.fromCharCode(65 + i)).concat(noLetterCharacter)
+
+function termsByFirstCharacter(character: string) {
+  if (character === noLetterCharacter) {
+    return posts.value.filter(
+      (term: PostIndex) =>
+        !letterRegex.test(term.keyword || term.title || term.name),
+    )
   }
 
-  const characters = Array.from({ length: 26 }, (_, i) =>
-    String.fromCharCode(65 + i)
-  );
-  characters.push('*');
+  return posts.value.filter((term: PostIndex) => {
+    const keyword = term.keyword && term.keyword.toLowerCase()
+    const title = term.title && term.title.toLowerCase()
+    const name = term.name.toLowerCase()
 
-  const getTermsByFirstChar = (character: string) => {
-    if (character === '*') {
-      return data.posts.filter(
-        (term: PostIndex) => !/^[a-z]/i.test(term.keyword || term.title)
-      );
-    }
-    return data.posts.filter((term: PostIndex) => {
-      return term.keyword
-        ? term.keyword.toLowerCase().startsWith(character.toLowerCase())
-        : term.title.toLowerCase().startsWith(character.toLowerCase());
-    });
-  };
+    return (keyword || title || name).startsWith(character.toLowerCase())
+  })
+}
 
-  // computed property to filter characters that have terms
-  const filteredCharacters = computed(() => {
-    return characters.filter(
-      (character) => getTermsByFirstChar(character).length > 0
-    );
-  });
+const filteredCharacters = computed(() => {
+  return characters.filter(character =>
+    Boolean(termsByFirstCharacter(character).length),
+  )
+})
 
-  useSeoMeta({
-    title: 'Glossary'
-  });
+useSeoMeta({
+  title: 'Glossary',
+})
 </script>
 
 <template>
   <div>
-    <section>
-      <SectionHeroOne title="Glossary" />
-      <FirstCharacterJumpLinkNav
-        :characters="characters"
-        :filtered-characters="filteredCharacters"
-      />
-    </section>
-
-    <!-- character section (character + cards) -->
+    <UPageHero title="Glossary" />
+    <CharacterNavigation
+      class="sticky top-8 z-20 rounded-md border border-(--ui-border) bg-white p-2"
+      :characters="characters"
+      :filtered-characters="filteredCharacters"
+    />
     <main>
-      <div class="px-6 lg:px-8">
-        <div
+      <template v-if="status === 'pending' || status === 'idle'">
+        <SkeletonGlossarySection />
+      </template>
+      <template v-else>
+        <GlossarySection
           v-for="character in filteredCharacters"
           :id="character"
           :key="character"
-          class="pt-12 lg:pt-24"
-        >
-          <div>
-            <!-- character section top (character) -->
-            <h2 class="text-4xl font-semibold">{{ character }}</h2>
-
-            <!-- character section bottom (cards) -->
-            <div class="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-              <GlossaryTermCard
-                v-for="term in getTermsByFirstChar(character)"
-                :key="term.slug"
-                :term="term"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+          :title="character"
+          :items="termsByFirstCharacter(character)"
+        />
+      </template>
     </main>
     <NewsletterSignupPageSection />
   </div>

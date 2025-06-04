@@ -1,38 +1,52 @@
 <script setup lang="ts">
-  import type { Company } from '@serp/types/types';
+import type { Company } from '@serp/types/types'
 
-  defineProps({
-    companies: {
-      type: Array as PropType<Company[]>,
-      required: true
-    },
-    showReadMore: {
-      type: Boolean,
-      default: false
-    },
-    showProsAndCons: {
-      type: Boolean,
-      default: false
-    },
-    showFeatures: {
-      type: Boolean,
-      default: false
-    },
-    showExpandedContent: {
-      type: Boolean,
-      default: false
-    }
-  });
+interface Props {
+  items: Company[]
+  paginationTotal?: number
+  paginationLimit?: number
+  loading?: boolean
+}
+
+defineProps<Props>()
+
+const page = defineModel<number>('page', {
+  default: 1,
+})
 </script>
 
 <template>
-  <div v-for="company in companies" :key="company.id" class="mb-4 border p-4">
-    <CompanyCard
-      :company="company"
-      :show-read-more="showReadMore"
-      :show-pros-and-cons="showProsAndCons"
-      :show-features="showFeatures"
-      :show-expanded-content="showExpandedContent"
-    />
+  <div class="flex flex-col gap-y-6">
+    <template v-if="loading">
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <SkeletonCompanyCard />
+        <SkeletonCompanyCard />
+      </div>
+    </template>
+    <template v-else-if="items.length">
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <CompanyCard
+          v-for="company in items"
+          :key="company.slug"
+          :company="company"
+        />
+      </div>
+      <div class="flex justify-center">
+        <UPagination
+          v-model:page="page"
+          :total="paginationTotal"
+          :items-per-page="paginationLimit"
+          :sibling-count="3"
+          aria-label="pagination"
+        />
+      </div>
+    </template>
+    <template v-else>
+      <UAlert
+        variant="outline"
+        color="neutral"
+        description="No items found for the given filters."
+      />
+    </template>
   </div>
 </template>

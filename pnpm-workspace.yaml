@@ -1,5 +1,6 @@
 packages:
-  - "apps/*"
-  - "packages/*"
-  - "packages/ui/*"
-  - "packages/ui/templates/*"
+  - 'apps/*'
+  - 'saas/*'
+  - 'packages/*'
+  - 'packages/ui/*'
+  - 'packages/ui/templates/*'

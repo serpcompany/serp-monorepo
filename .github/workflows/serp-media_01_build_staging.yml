@@ -11,7 +11,7 @@ on:
 
 jobs:
   build_staging_serp_media:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Add delay for staggering
         run: sleep 20

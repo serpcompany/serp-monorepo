@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars  */
+/* eslint-disable ts/no-unused-vars  */
 
 import { mockNuxtImport } from '@nuxt/test-utils/runtime';
 import { describe, expect, it } from 'vitest';
@@ -6,23 +6,23 @@ import { ref } from 'vue';
 import StripeCard from '../../components/StripeCard.vue';
 import ComponentRender from '../componentRender';
 
-(globalThis as unknown).useClientStripe = async () => ({
+mockNuxtImport('useClientStripe', () => async () => ({
   stripe: {
     elements: (options: unknown) => ({
       create: (type: string) => ({
-        mount: () => {}
-      })
+        mount: () => {},
+      }),
     }),
-    confirmPayment: async () => ({ error: null })
-  }
-});
+    confirmPayment: async () => ({ error: null }),
+  },
+}))
 
-mockNuxtImport('useColorMode', () => () => ref('light'));
+mockNuxtImport('useColorMode', () => () => ref('light'))
 
-describe('StripeCard Snapshot', () => {
+describe('stripeCard Snapshot', () => {
   const scenarios: [
     string,
-    { props: Record<string, unknown>; slots?: Record<string, unknown> }
+    { props: Record<string, unknown>, slots?: Record<string, unknown> },
   ][] = [
     ['with default props', { props: {} }],
     [
@@ -32,28 +32,28 @@ describe('StripeCard Snapshot', () => {
           type: 'subscription',
           id: '123',
           secondaryId: '456',
-          redirectTo: '/dashboard'
-        }
-      }
+          redirectTo: '/dashboard',
+        },
+      },
     ],
     [
       'with custom content slot',
       {
         props: {},
-        slots: { content: () => '<div>Custom Payment Intent Trigger</div>' }
-      }
-    ]
-  ];
+        slots: { content: () => '<div>Custom Payment Intent Trigger</div>' },
+      },
+    ],
+  ]
 
   it.each(scenarios)(
     'renders %s correctly',
-    async (desc: string, options: { props: unknown; slots?: unknown }) => {
+    async (desc: string, options: { props: unknown, slots?: unknown }) => {
       const html = await ComponentRender(
         `StripeCard ${desc}`,
         options,
-        StripeCard
-      );
-      expect(html).toMatchSnapshot();
-    }
-  );
+        StripeCard,
+      )
+      expect(html).toMatchSnapshot()
+    },
+  )
 });

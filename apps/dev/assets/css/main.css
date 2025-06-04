@@ -1,0 +1,2 @@
+/* Import from UI package only - all base styles are defined there */
+@import '@serp/ui/assets/css/main.css';

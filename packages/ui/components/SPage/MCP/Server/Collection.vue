@@ -1,142 +1,122 @@
 <script setup lang="ts">
-  import { useMCPServer } from '../../../../../utils/composables/useMCPServer';
+const route = useRoute()
+const { slug } = useRoute().params
 
-  const router = useRouter();
-  const route = useRoute();
-  const page = ref(Number(route.query.page) || 1);
-  const limit = ref(Number(route.query.limit) || 50);
-  const categorySlug = route.params.slug as string;
+const page = ref(Number(route.query.page) || 1)
 
-  const toast = useToast();
+const filters = computed(() => ({
+  page: page.value,
+  limit: Number(route.query.limit) || 50,
+  category: (route.query.category as string) || (slug as string),
+  q: route.query.q as string,
+  sort: route.query.sort as string,
+}))
 
-  const props = defineProps({
-    topic: {
-      type: String,
-      default: ''
-    },
-    tag: {
-      type: String,
-      default: ''
-    },
-    owner: {
-      type: String,
-      default: ''
-    }
-  });
+const { data, status } = await useAsyncData(
+  `mcp-server-${slug}`,
+  () =>
+    useMCPServers(
+      filters.value.page,
+      filters.value.limit,
+      '',
+      '',
+      '',
+      filters.value.category,
+      filters.value.q,
+      filters.value.sort,
+    ),
+  {
+    lazy: true,
+    watch: [filters],
+  },
+)
 
-  const { topic, tag, owner } = toRefs(props);
+const { data: categories } = await useAsyncData(
+  'mcp-server-categories',
+  () => useMCPServerCategories(),
+  {
+    default: () => [],
+  },
+)
 
-  // @ts-expect-error: auto‑imported from another layer
-  let data = await useMCPServers(
-    page.value,
-    limit.value,
-    tag.value,
-    topic.value,
-    owner.value,
-    categorySlug
-  );
-  if (!data) {
-    router.push('/404');
-  }
+const categoriesFilters = computed(() => {
+  return categories.value.map(category => ({
+    label: category.name,
+    value: category.slug,
+  }))
+})
 
-  const categories = await useMCPServerCategories();
+const subheadline = computed(() => {
+  if (slug)
+    return `Discover ${data.value?.category?.name} MCP Servers.`
+  return 'The largest collection of MCP Servers.'
+})
 
-  watch([page, limit], async ([newPage, newLimit]) => {
-    const query: Record<string, string> = {
-      ...(route.query as Record<string, string>)
-    };
+const metaTile = computed(() => {
+  if (slug)
+    return `${data.value?.category?.name} - MCP Servers.`
+  return 'MCP Servers'
+})
 
-    if (newPage !== 1) query.page = String(newPage);
-    else delete query.page;
-
-    if (newLimit !== 50) query.limit = String(newLimit);
-    else delete query.limit;
-
-    // @ts-expect-error: auto‑imported from another layer
-    data = await useMCPServers(page.value, limit.value);
-    router.push({ query });
-  });
-
-  const faqItems = computed(() => {
-    if (!data?.category?.faqs || !data?.category?.faqs.length) {
-      return [];
-    }
-    return data?.category?.faqs.map((faq) => ({
-      label: faq.question,
-      content: faq.answer
-    }));
-  });
-
-  useSeoMeta({
-    title: () => {
-      if (categorySlug) {
-        return `${data.category.name} - MCP Servers`;
-      }
-      return 'MCP Servers';
-    }
-  });
+useSeoMeta({
+  title: () => metaTile.value,
+})
 </script>
 
 <template>
-  <SHero
-    headline="MCP Servers"
-    :subheadline="
-      categorySlug
-        ? `Discover ${data.category.name} MCP Servers.`
-        : 'The largest collection of MCP Servers.'
-    "
-    :show-search-bar="false"
-    :show-buttons="false"
-  />
-  <main>
-    <div class="space-y-4">
-      <MCPServerCard
-        v-for="server in data.servers"
-        :key="server.slug"
-        :server="server"
+  <div>
+    <SHero
+      class="-mt-22"
+      headline="MCP Servers"
+      :subheadline="subheadline"
+      :show-search-bar="false"
+      :show-buttons="false"
+    />
+    <main>
+      <div class="flex flex-col gap-y-6">
+        <CollectionFilters
+          :loading="status === 'pending'"
+          :categories="slug ? undefined : categoriesFilters"
+        />
+        <MCPServerCardList
+          v-model:page="page"
+          :loading="status === 'pending'"
+          :items="data?.servers || []"
+          :pagination-limit="filters.limit"
+          :pagination-total="data?.pagination?.totalItems ?? 0"
+        />
+      </div>
+
+      <template v-if="data?.category?.data">
+        <CompanyArticleSection
+          v-if="data.category.data.buyers_guide"
+          :article="data.category.data.buyers_guide"
+        />
+
+        <UPageSection
+          v-if="data.category.data.faqs && data.category.data.faqs.length"
+          title="FAQs"
+          class="mx-auto max-w-5xl"
+        >
+          <UPageAccordion :items="data.category.data.faqs" label-key="question">
+            <template #body="{ item }">
+              <!-- eslint-disable vue/no-v-html -->
+              <div
+                class="prose dark:prose-invert max-w-full"
+                v-html="item.answer"
+              />
+            </template>
+          </UPageAccordion>
+        </UPageSection>
+      </template>
+
+      <SLinkHub
+        v-if="categories && categories.length"
+        :categories="categories"
+        headline="Categories"
+        base-slug="mcp/servers/category"
       />
-    </div>
-
-    <UPagination
-      v-model:page="page"
-      :total="data?.pagination?.totalItems"
-      :items-per-page="limit"
-      :sibling-count="3"
-      aria-label="pagination"
-      class="mt-20 flex justify-center overflow-x-auto rounded-none"
-    />
-
-    <!-- article -->
-    <section v-if="data?.category?.buyersGuide" class="mt-20">
-      <CompanyArticleSection :article="data?.category?.buyersGuide" />
-    </section>
-
-    <!-- faqs -->
-    <UPageSection
-      v-if="data?.category?.faqs"
-      title="FAQs"
-      class="mx-auto max-w-5xl"
-    >
-      <UPageAccordion
-        :items="faqItems"
-        :ui="{ body: { class: 'prose dark:prose-invert' } }"
-      >
-        <template #body="{ item }">
-          <div
-            class="prose dark:prose-invert max-w-full"
-            v-html="item.content"
-          ></div>
-        </template>
-      </UPageAccordion>
-    </UPageSection>
-
-    <SLinkHub
-      v-if="categories && categories.length"
-      :categories="categories"
-      headline="Categories"
-      class="mt-20"
-      base-slug="mcp/servers/category"
-    />
-  </main>
-  <NewsletterSignupPageSection />
+      <NewsletterSignupPageSection />
+    </main>
+  </div>
 </template>

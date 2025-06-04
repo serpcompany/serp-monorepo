@@ -10,14 +10,20 @@
     "lint": {
       "outputLogs": "new-only"
     },
-    "eslint": {},
-    "prettier": {},
+    "lint:fix": {
+      "outputLogs": "new-only"
+    },
+    "ci:lint": {
+      "outputLogs": "new-only"
+    },
     "test": {
-      "dependsOn": ["lint"],
-       "outputLogs": "new-only"
+      "outputLogs": "new-only"
     },
     "test:watch": {},
     "test:update": {},
+    "typecheck": {
+      "outputLogs": "new-only"
+    },
     "dev": {
       "cache": true,
       "persistent": true

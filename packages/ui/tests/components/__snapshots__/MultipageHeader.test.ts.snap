@@ -1,127 +1,682 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MultipageHeader Snapshot > renders default rendering correctly 1`] = `
-"<div serply_link="https://example.com">
-  <header class="w-full bg-[var(--ui-bg)] transition-all duration-300 py-2 sm:py-4" style="z-index: 10;">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+exports[`multipageHeader Snapshot > renders default rendering correctly 1`] = `
+<div serply_link="https://example.com">
+  <header
+    class="
+      bg-[var(--ui-bg)]
+      duration-300
+      py-2
+      sm:py-4
+      transition-all
+      w-full
+    "
+    style="z-index: 10;"
+  >
+    <div class="
+      lg:px-8
+      max-w-(--ui-container)
+      mx-auto
+      px-4
+      sm:px-6
+      w-full
+    ">
       <!-- When not scrolled: show the regular layout -->
       <div>
-        <div class="flex flex-col items-center justify-between sm:flex-row">
+        <div class="
+          flex
+          flex-col
+          gap-8
+          items-center
+          justify-between
+          sm:flex-row
+        ">
           <!-- Logo and title section -->
-          <div class="flex w-full items-start justify-between">
-            <!--v-if-->
-            <!-- Use flex-grow to allow this column to expand -->
-            <div class="flex-grow">
-              <h1 class="text-xl font-bold text-gray-900 sm:text-3xl dark:text-gray-100">Music Header</h1>
-              <!-- <span class="text-xs text-gray-700 dark:text-gray-300">{{
-                  oneLiner
-                }}</span> -->
+          <div class="
+            flex
+            gap-8
+            items-center
+            justify-between
+            w-full
+          ">
+            <div class="
+              border
+              border-(--ui-border)
+              flex
+              items-center
+              justify-center
+              size-[152px]
+            ">
+              <!-- v-if -->
             </div>
-          </div><!-- Action buttons -->
-          <!-- Change w-full to w-auto or remove width entirely so it only takes up the space it needs -->
-          <div class="flex flex-none flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0">
-            <!--v-if-->
+            <div class="flex-1">
+              <div class="
+                flex
+                flex-col
+                gap-y-1
+                items-start
+                justify-center
+              ">
+                <div class="
+                  flex
+                  gap-x-2
+                  items-center
+                ">
+                  <h1 class="
+                    font-semibold
+                    sm:text-3xl
+                    text-text
+                    text-xl
+                  ">
+                    Music Header
+                  </h1>
+                </div>
+                <p class="
+                  font-medium
+                  text-muted
+                "></p>
+              </div>
+            </div>
           </div>
-        </div><!-- Navigation for non-scrolled state -->
-        <div class="-mx-4 mt-4 overflow-x-auto px-4 sm:px-0">
-          <nav aria-label="page sections" class="flex space-x-4 whitespace-nowrap"><a href="#home" class="sectionLinks flex-shrink-0 rounded-sm px-1 py-2 text-sm font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-600 sm:px-2 sm:text-base dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300">Home</a><a href="#about" class="sectionLinks flex-shrink-0 rounded-sm px-1 py-2 text-sm font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-600 sm:px-2 sm:text-base dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300">About</a><a href="#contact" class="sectionLinks flex-shrink-0 rounded-sm px-1 py-2 text-sm font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-600 sm:px-2 sm:text-base dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300">Contact</a></nav>
+          <!-- Action buttons -->
+          <!-- Change w-full to w-auto or remove width entirely so it only takes up the space it needs -->
+          <div class="
+            flex
+            flex-col
+            flex-none
+            gap-3
+            items-center
+            justify-end
+            pt-4
+            sm:flex-row
+            sm:pt-0
+          ">
+            <!-- v-if -->
+          </div>
+        </div>
+        <!-- Navigation for non-scrolled state -->
+        <div class="
+          -mx-4
+          mt-4
+          overflow-x-auto
+          px-4
+          sm:px-0
+        ">
+          <nav
+            aria-label="page sections"
+            class="
+              flex
+              space-x-4
+              whitespace-nowrap
+            "
+          >
+            <a
+              class="
+                dark:hover:bg-gray-800
+                dark:hover:text-gray-300
+                dark:text-gray-100
+                duration-200
+                flex-shrink-0
+                font-medium
+                hover:bg-gray-50
+                hover:text-gray-600
+                px-1
+                py-2
+                rounded-sm
+                sectionLinks
+                sm:px-2
+                sm:text-base
+                text-gray-900
+                text-sm
+                transition-colors
+              "
+              href="#home"
+            >Home</a>
+            <a
+              class="
+                dark:hover:bg-gray-800
+                dark:hover:text-gray-300
+                dark:text-gray-100
+                duration-200
+                flex-shrink-0
+                font-medium
+                hover:bg-gray-50
+                hover:text-gray-600
+                px-1
+                py-2
+                rounded-sm
+                sectionLinks
+                sm:px-2
+                sm:text-base
+                text-gray-900
+                text-sm
+                transition-colors
+              "
+              href="#about"
+            >About</a>
+            <a
+              class="
+                dark:hover:bg-gray-800
+                dark:hover:text-gray-300
+                dark:text-gray-100
+                duration-200
+                flex-shrink-0
+                font-medium
+                hover:bg-gray-50
+                hover:text-gray-600
+                px-1
+                py-2
+                rounded-sm
+                sectionLinks
+                sm:px-2
+                sm:text-base
+                text-gray-900
+                text-sm
+                transition-colors
+              "
+              href="#contact"
+            >Contact</a>
+          </nav>
         </div>
       </div>
     </div>
   </header>
-</div>"
+</div>
 `;
 
-exports[`MultipageHeader Snapshot > renders with empty sections correctly 1`] = `
-"<div serply_link="https://example.com">
-  <header class="w-full bg-[var(--ui-bg)] transition-all duration-300 py-2 sm:py-4" style="z-index: 10;">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+exports[`multipageHeader Snapshot > renders with empty sections correctly 1`] = `
+<div serply_link="https://example.com">
+  <header
+    class="
+      bg-[var(--ui-bg)]
+      duration-300
+      py-2
+      sm:py-4
+      transition-all
+      w-full
+    "
+    style="z-index: 10;"
+  >
+    <div class="
+      lg:px-8
+      max-w-(--ui-container)
+      mx-auto
+      px-4
+      sm:px-6
+      w-full
+    ">
       <!-- When not scrolled: show the regular layout -->
       <div>
-        <div class="flex flex-col items-center justify-between sm:flex-row">
+        <div class="
+          flex
+          flex-col
+          gap-8
+          items-center
+          justify-between
+          sm:flex-row
+        ">
           <!-- Logo and title section -->
-          <div class="flex w-full items-start justify-between">
-            <!--v-if-->
-            <!-- Use flex-grow to allow this column to expand -->
-            <div class="flex-grow">
-              <h1 class="text-xl font-bold text-gray-900 sm:text-3xl dark:text-gray-100">Music Header</h1>
-              <!-- <span class="text-xs text-gray-700 dark:text-gray-300">{{
-                  oneLiner
-                }}</span> -->
+          <div class="
+            flex
+            gap-8
+            items-center
+            justify-between
+            w-full
+          ">
+            <div class="
+              border
+              border-(--ui-border)
+              flex
+              items-center
+              justify-center
+              size-[152px]
+            ">
+              <!-- v-if -->
             </div>
-          </div><!-- Action buttons -->
-          <!-- Change w-full to w-auto or remove width entirely so it only takes up the space it needs -->
-          <div class="flex flex-none flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0">
-            <!--v-if-->
+            <div class="flex-1">
+              <div class="
+                flex
+                flex-col
+                gap-y-1
+                items-start
+                justify-center
+              ">
+                <div class="
+                  flex
+                  gap-x-2
+                  items-center
+                ">
+                  <h1 class="
+                    font-semibold
+                    sm:text-3xl
+                    text-text
+                    text-xl
+                  ">
+                    Music Header
+                  </h1>
+                </div>
+                <p class="
+                  font-medium
+                  text-muted
+                "></p>
+              </div>
+            </div>
           </div>
-        </div><!-- Navigation for non-scrolled state -->
-        <div class="-mx-4 mt-4 overflow-x-auto px-4 sm:px-0">
-          <nav aria-label="page sections" class="flex space-x-4 whitespace-nowrap"></nav>
+          <!-- Action buttons -->
+          <!-- Change w-full to w-auto or remove width entirely so it only takes up the space it needs -->
+          <div class="
+            flex
+            flex-col
+            flex-none
+            gap-3
+            items-center
+            justify-end
+            pt-4
+            sm:flex-row
+            sm:pt-0
+          ">
+            <!-- v-if -->
+          </div>
+        </div>
+        <!-- Navigation for non-scrolled state -->
+        <div class="
+          -mx-4
+          mt-4
+          overflow-x-auto
+          px-4
+          sm:px-0
+        ">
+          <nav
+            aria-label="page sections"
+            class="
+              flex
+              space-x-4
+              whitespace-nowrap
+            "
+          ></nav>
         </div>
       </div>
     </div>
   </header>
-</div>"
+</div>
 `;
 
-exports[`MultipageHeader Snapshot > renders with oneLiner and image correctly 1`] = `
-"<div serply_link="https://example.com">
-  <header class="w-full bg-[var(--ui-bg)] transition-all duration-300 py-2 sm:py-4" style="z-index: 10;">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+exports[`multipageHeader Snapshot > renders with oneLiner and image correctly 1`] = `
+<div serply_link="https://example.com">
+  <header
+    class="
+      bg-[var(--ui-bg)]
+      duration-300
+      py-2
+      sm:py-4
+      transition-all
+      w-full
+    "
+    style="z-index: 10;"
+  >
+    <div class="
+      lg:px-8
+      max-w-(--ui-container)
+      mx-auto
+      px-4
+      sm:px-6
+      w-full
+    ">
       <!-- When not scrolled: show the regular layout -->
       <div>
-        <div class="flex flex-col items-center justify-between sm:flex-row">
+        <div class="
+          flex
+          flex-col
+          gap-8
+          items-center
+          justify-between
+          sm:flex-row
+        ">
           <!-- Logo and title section -->
-          <div class="flex w-full items-start justify-between"><img alt="Music Header logo" data-nuxt-img="" srcset="https://example.com/logo.png 1x, https://example.com/logo.png 2x" class="mr-2 h-16 object-contain" src="https://example.com/logo.png"><!-- Use flex-grow to allow this column to expand -->
-            <div class="flex-grow">
-              <h1 class="text-xl font-bold text-gray-900 sm:text-3xl dark:text-gray-100">Music Header</h1>
-              <!-- <span class="text-xs text-gray-700 dark:text-gray-300">{{
-                  oneLiner
-                }}</span> -->
+          <div class="
+            flex
+            gap-8
+            items-center
+            justify-between
+            w-full
+          ">
+            <div class="
+              border
+              border-(--ui-border)
+              flex
+              items-center
+              justify-center
+              size-[152px]
+            ">
+              <img
+                alt="Music Header logo"
+                class="
+                  object-cover
+                  size-full
+                "
+                data-nuxt-img=""
+                src="https://example.com/logo.png"
+                srcset="https://example.com/logo.png 1x, https://example.com/logo.png 2x"
+              />
             </div>
-          </div><!-- Action buttons -->
-          <!-- Change w-full to w-auto or remove width entirely so it only takes up the space it needs -->
-          <div class="flex flex-none flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0">
-            <!--v-if-->
+            <div class="flex-1">
+              <div class="
+                flex
+                flex-col
+                gap-y-1
+                items-start
+                justify-center
+              ">
+                <div class="
+                  flex
+                  gap-x-2
+                  items-center
+                ">
+                  <h1 class="
+                    font-semibold
+                    sm:text-3xl
+                    text-text
+                    text-xl
+                  ">
+                    Music Header
+                  </h1>
+                </div>
+                <p class="
+                  font-medium
+                  text-muted
+                ">
+                  One liner test
+                </p>
+              </div>
+            </div>
           </div>
-        </div><!-- Navigation for non-scrolled state -->
-        <div class="-mx-4 mt-4 overflow-x-auto px-4 sm:px-0">
-          <nav aria-label="page sections" class="flex space-x-4 whitespace-nowrap"><a href="#home" class="sectionLinks flex-shrink-0 rounded-sm px-1 py-2 text-sm font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-600 sm:px-2 sm:text-base dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300">Home</a><a href="#about" class="sectionLinks flex-shrink-0 rounded-sm px-1 py-2 text-sm font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-600 sm:px-2 sm:text-base dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300">About</a><a href="#contact" class="sectionLinks flex-shrink-0 rounded-sm px-1 py-2 text-sm font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-600 sm:px-2 sm:text-base dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300">Contact</a></nav>
+          <!-- Action buttons -->
+          <!-- Change w-full to w-auto or remove width entirely so it only takes up the space it needs -->
+          <div class="
+            flex
+            flex-col
+            flex-none
+            gap-3
+            items-center
+            justify-end
+            pt-4
+            sm:flex-row
+            sm:pt-0
+          ">
+            <!-- v-if -->
+          </div>
+        </div>
+        <!-- Navigation for non-scrolled state -->
+        <div class="
+          -mx-4
+          mt-4
+          overflow-x-auto
+          px-4
+          sm:px-0
+        ">
+          <nav
+            aria-label="page sections"
+            class="
+              flex
+              space-x-4
+              whitespace-nowrap
+            "
+          >
+            <a
+              class="
+                dark:hover:bg-gray-800
+                dark:hover:text-gray-300
+                dark:text-gray-100
+                duration-200
+                flex-shrink-0
+                font-medium
+                hover:bg-gray-50
+                hover:text-gray-600
+                px-1
+                py-2
+                rounded-sm
+                sectionLinks
+                sm:px-2
+                sm:text-base
+                text-gray-900
+                text-sm
+                transition-colors
+              "
+              href="#home"
+            >Home</a>
+            <a
+              class="
+                dark:hover:bg-gray-800
+                dark:hover:text-gray-300
+                dark:text-gray-100
+                duration-200
+                flex-shrink-0
+                font-medium
+                hover:bg-gray-50
+                hover:text-gray-600
+                px-1
+                py-2
+                rounded-sm
+                sectionLinks
+                sm:px-2
+                sm:text-base
+                text-gray-900
+                text-sm
+                transition-colors
+              "
+              href="#about"
+            >About</a>
+            <a
+              class="
+                dark:hover:bg-gray-800
+                dark:hover:text-gray-300
+                dark:text-gray-100
+                duration-200
+                flex-shrink-0
+                font-medium
+                hover:bg-gray-50
+                hover:text-gray-600
+                px-1
+                py-2
+                rounded-sm
+                sectionLinks
+                sm:px-2
+                sm:text-base
+                text-gray-900
+                text-sm
+                transition-colors
+              "
+              href="#contact"
+            >Contact</a>
+          </nav>
         </div>
       </div>
     </div>
   </header>
-</div>"
+</div>
 `;
 
-exports[`MultipageHeader Snapshot > renders with upvote slot correctly 1`] = `
-"<div serply_link="https://example.com">
-  <header class="w-full bg-[var(--ui-bg)] transition-all duration-300 py-2 sm:py-4" style="z-index: 10;">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+exports[`multipageHeader Snapshot > renders with upvote slot correctly 1`] = `
+<div serply_link="https://example.com">
+  <header
+    class="
+      bg-[var(--ui-bg)]
+      duration-300
+      py-2
+      sm:py-4
+      transition-all
+      w-full
+    "
+    style="z-index: 10;"
+  >
+    <div class="
+      lg:px-8
+      max-w-(--ui-container)
+      mx-auto
+      px-4
+      sm:px-6
+      w-full
+    ">
       <!-- When not scrolled: show the regular layout -->
       <div>
-        <div class="flex flex-col items-center justify-between sm:flex-row">
+        <div class="
+          flex
+          flex-col
+          gap-8
+          items-center
+          justify-between
+          sm:flex-row
+        ">
           <!-- Logo and title section -->
-          <div class="flex w-full items-start justify-between">
-            <!--v-if-->
-            <!-- Use flex-grow to allow this column to expand -->
-            <div class="flex-grow">
-              <h1 class="text-xl font-bold text-gray-900 sm:text-3xl dark:text-gray-100">Music Header</h1>
-              <!-- <span class="text-xs text-gray-700 dark:text-gray-300">{{
-                  oneLiner
-                }}</span> -->
+          <div class="
+            flex
+            gap-8
+            items-center
+            justify-between
+            w-full
+          ">
+            <div class="
+              border
+              border-(--ui-border)
+              flex
+              items-center
+              justify-center
+              size-[152px]
+            ">
+              <!-- v-if -->
             </div>
-          </div><!-- Action buttons -->
-          <!-- Change w-full to w-auto or remove width entirely so it only takes up the space it needs -->
-          <div class="flex flex-none flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0">&lt;button&gt;Upvote&lt;/button&gt;
-            <!--v-if-->
+            <div class="flex-1">
+              <div class="
+                flex
+                flex-col
+                gap-y-1
+                items-start
+                justify-center
+              ">
+                <div class="
+                  flex
+                  gap-x-2
+                  items-center
+                ">
+                  <h1 class="
+                    font-semibold
+                    sm:text-3xl
+                    text-text
+                    text-xl
+                  ">
+                    Music Header
+                  </h1>
+                </div>
+                <p class="
+                  font-medium
+                  text-muted
+                "></p>
+              </div>
+            </div>
           </div>
-        </div><!-- Navigation for non-scrolled state -->
-        <div class="-mx-4 mt-4 overflow-x-auto px-4 sm:px-0">
-          <nav aria-label="page sections" class="flex space-x-4 whitespace-nowrap"><a href="#home" class="sectionLinks flex-shrink-0 rounded-sm px-1 py-2 text-sm font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-600 sm:px-2 sm:text-base dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300">Home</a><a href="#about" class="sectionLinks flex-shrink-0 rounded-sm px-1 py-2 text-sm font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-600 sm:px-2 sm:text-base dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300">About</a><a href="#contact" class="sectionLinks flex-shrink-0 rounded-sm px-1 py-2 text-sm font-medium text-gray-900 transition-colors duration-200 hover:bg-gray-50 hover:text-gray-600 sm:px-2 sm:text-base dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300">Contact</a></nav>
+          <!-- Action buttons -->
+          <!-- Change w-full to w-auto or remove width entirely so it only takes up the space it needs -->
+          <div class="
+            flex
+            flex-col
+            flex-none
+            gap-3
+            items-center
+            justify-end
+            pt-4
+            sm:flex-row
+            sm:pt-0
+          ">
+            &lt;button&gt;Upvote&lt;/button&gt;
+            <!-- v-if -->
+          </div>
+        </div>
+        <!-- Navigation for non-scrolled state -->
+        <div class="
+          -mx-4
+          mt-4
+          overflow-x-auto
+          px-4
+          sm:px-0
+        ">
+          <nav
+            aria-label="page sections"
+            class="
+              flex
+              space-x-4
+              whitespace-nowrap
+            "
+          >
+            <a
+              class="
+                dark:hover:bg-gray-800
+                dark:hover:text-gray-300
+                dark:text-gray-100
+                duration-200
+                flex-shrink-0
+                font-medium
+                hover:bg-gray-50
+                hover:text-gray-600
+                px-1
+                py-2
+                rounded-sm
+                sectionLinks
+                sm:px-2
+                sm:text-base
+                text-gray-900
+                text-sm
+                transition-colors
+              "
+              href="#home"
+            >Home</a>
+            <a
+              class="
+                dark:hover:bg-gray-800
+                dark:hover:text-gray-300
+                dark:text-gray-100
+                duration-200
+                flex-shrink-0
+                font-medium
+                hover:bg-gray-50
+                hover:text-gray-600
+                px-1
+                py-2
+                rounded-sm
+                sectionLinks
+                sm:px-2
+                sm:text-base
+                text-gray-900
+                text-sm
+                transition-colors
+              "
+              href="#about"
+            >About</a>
+            <a
+              class="
+                dark:hover:bg-gray-800
+                dark:hover:text-gray-300
+                dark:text-gray-100
+                duration-200
+                flex-shrink-0
+                font-medium
+                hover:bg-gray-50
+                hover:text-gray-600
+                px-1
+                py-2
+                rounded-sm
+                sectionLinks
+                sm:px-2
+                sm:text-base
+                text-gray-900
+                text-sm
+                transition-colors
+              "
+              href="#contact"
+            >Contact</a>
+          </nav>
         </div>
       </div>
     </div>
   </header>
-</div>"
+</div>
 `;

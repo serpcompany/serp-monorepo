@@ -1,9 +1,0 @@
-{
-  "semi": true,
-  "singleQuote": true,
-  "trailingComma": "none",
-  "plugins": ["prettier-plugin-packagejson", "prettier-plugin-tailwindcss"],
-  "tailwindFunctions": ["cn", "clsx", "twMerge"],
-  "vueIndentScriptAndStyle": true,
-  "htmlWhitespaceSensitivity": "css"
-}
