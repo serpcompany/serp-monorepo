@@ -142,15 +142,11 @@ const tags = computed(() => {
     <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
       <!-- Breadcrumbs -->
       <UBreadcrumb class="mb-6" :ui="{ container: 'flex px-1 py-2' }">
-        <UBreadcrumbItem to="/home">
-          Home
-        </UBreadcrumbItem>
-        <UBreadcrumbItem to="/songs">
-          Songs
-        </UBreadcrumbItem>
-        <UBreadcrumbItem :to="`/songs/${song.slug}`">
-          {{ song.name }}
-        </UBreadcrumbItem>
+        <UBreadcrumbItem to="/home">Home</UBreadcrumbItem>
+        <UBreadcrumbItem to="/songs">Songs</UBreadcrumbItem>
+        <UBreadcrumbItem :to="`/songs/${encodeURIComponent(song.slug)}`">{{
+          song.name
+        }}</UBreadcrumbItem>
       </UBreadcrumb>
 
       <!-- Main Content (70) -->
@@ -191,7 +187,7 @@ const tags = computed(() => {
               <div v-if="artistData.name !== 'Unknown Artist'" class="mb-2">
                 <span class="font-medium">Artist:</span>
                 <NuxtLink
-                  :to="`/artists/${artistData.slug}`"
+                  :to="`/artists/${encodeURIComponent(artistData.slug)}`"
                   class="text-primary hover:underline"
                 >
                   {{ artistData.name }}
@@ -200,7 +196,7 @@ const tags = computed(() => {
               <div v-if="song.releaseGroup">
                 <span class="font-medium">Album:</span>
                 <NuxtLink
-                  :to="`/albums/${song.releaseGroup.slug}`"
+                  :to="`/albums/${encodeURIComponent(song.releaseGroup.slug)}`"
                   class="text-primary hover:underline"
                 >
                   {{ song.releaseGroup.name }}
@@ -234,7 +230,7 @@ const tags = computed(() => {
             <ol class="list-inside list-decimal space-y-2 pl-4">
               <li v-for="albumSong in albumSongs" :key="albumSong.slug">
                 <NuxtLink
-                  :to="`/songs/${albumSong.slug}`"
+                  :to="`/songs/${encodeURIComponent(albumSong.slug)}`"
                   class="text-primary hover:underline"
                 >
                   {{ albumSong.name }}
@@ -258,7 +254,11 @@ const tags = computed(() => {
               <NuxtLink
                 v-for="(album, index) in artistAlbums"
                 :key="index"
-                :to="album?.slug ? `/albums/${album.slug}` : '#'"
+                :to="
+                  album?.slug
+                    ? `/albums/${encodeURIComponent(album.slug)}`
+                    : '#'
+                "
                 class="flex items-center justify-between rounded p-2 hover:bg-gray-50 dark:hover:bg-gray-800"
               >
                 <span class="text-primary">

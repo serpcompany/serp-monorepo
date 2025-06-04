@@ -95,15 +95,11 @@ const artistImageUrl = computed(() => {
     <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
       <!-- Breadcrumbs -->
       <UBreadcrumb class="mb-6" :ui="{ container: 'flex px-1 py-2' }">
-        <UBreadcrumbItem to="/home">
-          Home
-        </UBreadcrumbItem>
-        <UBreadcrumbItem to="/artists">
-          Artists
-        </UBreadcrumbItem>
-        <UBreadcrumbItem :to="`/artists/${artist.slug}`">
-          {{ artist.name }}
-        </UBreadcrumbItem>
+        <UBreadcrumbItem to="/home">Home</UBreadcrumbItem>
+        <UBreadcrumbItem to="/artists">Artists</UBreadcrumbItem>
+        <UBreadcrumbItem :to="`/artists/${encodeURIComponent(artist.slug)}`">{{
+          artist.name
+        }}</UBreadcrumbItem>
       </UBreadcrumb>
 
       <!-- Grid Layout -->
@@ -124,7 +120,7 @@ const artistImageUrl = computed(() => {
                 <template #header>
                   <div class="flex items-center justify-between">
                     <NuxtLink
-                      :to="`/albums/${album.slug}`"
+                      :to="`/albums/${encodeURIComponent(album.slug)}`"
                       class="text-primary text-lg font-medium hover:underline"
                     >
                       {{ album.name }}
@@ -141,7 +137,7 @@ const artistImageUrl = computed(() => {
                     v-if="album.coverArt?.['250']"
                     class="flex-shrink-0 sm:w-1/4"
                   >
-                    <NuxtLink :to="`/albums/${album.slug}`">
+                    <NuxtLink :to="`/albums/${encodeURIComponent(album.slug)}`">
                       <LazyNuxtImg
                         :src="album.coverArt['250']"
                         :alt="`${album.name} cover`"
@@ -162,7 +158,7 @@ const artistImageUrl = computed(() => {
                       <li v-for="song in album.recordings" :key="song.slug">
                         <NuxtLink
                           v-if="song.has_lyrics"
-                          :to="`/songs/${song.slug}`"
+                          :to="`/songs/${encodeURIComponent(song.slug)}`"
                           class="text-primary-600 dark:text-primary-400 hover:underline"
                         >
                           {{ song.name }}
