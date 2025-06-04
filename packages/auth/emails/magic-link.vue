@@ -8,63 +8,63 @@
     Img,
     Link,
     Preview,
-    Text
-  } from '@vue-email/components';
+    Text,
+  } from '@vue-email/components'
 
-  interface EmailVerificationProps {
-    otp?: string;
-    verificationCode?: string;
+interface EmailVerificationProps {
+    otp?: string
+    verificationCode?: string
   }
 
   withDefaults(defineProps<EmailVerificationProps>(), {
     otp: '',
-    verificationCode: ''
-  });
+    verificationCode: '',
+  })
 
-  const main = {
-    backgroundColor: '#ffffff'
+const main = {
+    backgroundColor: '#ffffff',
   };
 
   const container = {
     paddingLeft: '12px',
     paddingRight: '12px',
-    margin: '0 auto'
+    margin: '0 auto',
   };
 
   const h1 = {
     color: '#333',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     fontSize: '24px',
     fontWeight: 'bold',
     margin: '40px 0',
-    padding: '0'
+    padding: '0',
   };
 
   const link = {
     color: '#2754C5',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     fontSize: '14px',
-    textDecoration: 'underline'
+    textDecoration: 'underline',
   };
 
   const text = {
     color: '#333',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     fontSize: '14px',
-    margin: '24px 0'
+    margin: '24px 0',
   };
 
   const footer = {
     color: '#898989',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     fontSize: '12px',
     lineHeight: '22px',
     marginTop: '12px',
-    marginBottom: '24px'
+    marginBottom: '24px',
   };
 
   const code = {
@@ -74,10 +74,10 @@
     backgroundColor: '#f4f4f4',
     borderRadius: '5px',
     border: '1px solid #eee',
-    color: '#333'
+    color: '#333',
   };
 
-  const runtimeConfig = useRuntimeConfig();
+  const runtimeConfig = useRuntimeConfig()
 </script>
 
 <template>
@@ -87,7 +87,9 @@
 
     <Body :style="main">
       <Container :style="container">
-        <Heading :style="h1"> Your login link </Heading>
+        <Heading :style="h1">
+          Your login link
+        </Heading>
         <Link
           :href="`${runtimeConfig.public.siteUrl}/auth/verify/magic-link?code=${verificationCode}`"
           target="_blank"
@@ -104,7 +106,7 @@
             ...text,
             color: '#ababab',
             marginTop: '14px',
-            marginBottom: '16px'
+            marginBottom: '16px',
           }"
         >
           If you didn't try to login, you can safely ignore this email.
@@ -114,7 +116,7 @@
             ...text,
             color: '#ababab',
             marginTop: '12px',
-            marginBottom: '38px'
+            marginBottom: '38px',
           }"
         />
         <Img
@@ -129,8 +131,9 @@
             target="_blank"
             :style="{ ...link, color: '#898989' }"
           >
-            {{ runtimeConfig.public.siteName }} </Link
-          >{{
+            {{ runtimeConfig.public.siteName }}
+          </Link>
+          {{
             runtimeConfig.public.APP_DESCRIPTION
               ? `, ${runtimeConfig.public.APP_DESCRIPTION}`
               : ''

@@ -1,5 +1,5 @@
-import type { Category } from '@serp/types/types';
+import type { Category } from '@serp/types/types'
 
-export const usePostCategories = async (module = '') => {
-  return await useFetchWithCache<Category[]>(`/categories?module=post`);
-};
+export async function usePostCategories(module = '') {
+  return await useFetchWithCache<Category[]>(`/categories?module=post`)
+}

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import type { PropType } from 'vue';
+import type { PropType } from 'vue'
 
-  const props = defineProps({
-    page: {
-      type: Object as PropType<unknown>,
-      required: true
-    }
-  });
+const props = defineProps({
+  page: {
+    type: Object as PropType<unknown>,
+    required: true,
+  },
+})
 </script>
 
 <template>
@@ -19,7 +19,7 @@
       <template #top>
         <div
           class="absolute left-1/2 size-60 -translate-x-1/2 -translate-y-80 transform rounded-full blur-[300px] sm:size-80 dark:bg-(--ui-primary)"
-        ></div>
+        />
         <LazyStarsBg />
       </template>
 
@@ -68,7 +68,7 @@
           :description="testimonial.quote"
           :ui="{
             description:
-              'before:content-[open-quote] after:content-[close-quote]'
+              'before:content-[open-quote] after:content-[close-quote]',
           }"
         >
           <template #footer>
@@ -88,7 +88,7 @@
     >
       <div
         class="absolute left-1/2 size-40 -translate-x-1/2 -translate-y-80 transform rounded-full blur-[250px] sm:size-50 dark:bg-(--ui-primary)"
-      ></div>
+      />
       <LazyStarsBg />
     </UPageCTA>
   </div>

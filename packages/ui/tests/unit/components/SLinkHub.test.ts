@@ -1,47 +1,47 @@
-import { renderSuspended } from '@nuxt/test-utils/runtime';
-import { describe, it } from 'vitest';
-import SLinkHub from '~/components/SLinkHub.vue';
+import { renderSuspended } from '@nuxt/test-utils/runtime'
+import { describe, it } from 'vitest'
+import SLinkHub from '~/components/SLinkHub.vue'
 
 const mockCategories = [
   {
     id: 1,
     name: 'Email Marketing',
-    slug: 'email-marketing'
+    slug: 'email-marketing',
   },
   {
     id: 2,
     name: 'Jello Fighting',
-    slug: 'jello-fighting'
+    slug: 'jello-fighting',
   },
   // Blank or invalid items
   {
     id: undefined,
     slug: '',
-    name: ''
+    name: '',
   },
   {
     id: 2,
     slug: null as unknown as string,
-    name: 'Invalid Category'
+    name: 'Invalid Category',
   },
   {
     id: 'banana',
     slug: 'category-5',
-    name: ''
-  }
-];
+    name: '',
+  },
+]
 
-describe('SLinkHub', () => {
+describe('sLinkHub', () => {
   it('displays the link hub headline', async () => {
     await renderSuspended(SLinkHub, {
       props: {
         headline: 'Categories',
-        categories: mockCategories
-      }
-    });
-  });
+        categories: mockCategories,
+      },
+    })
+  })
 
-  it('should render a link for each provided category', () => {});
+  it('should render a link for each provided category', () => {})
 
-  it('should not display blank items', () => {});
-});
+  it('should not display blank items', () => {})
+})

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPageAlbumSingle Snapshot > renders with auth disabled and minimal album data correctly 1`] = `
+exports[`sPageAlbumSingle Snapshot > renders with auth disabled and minimal album data correctly 1`] = `
 <div>
   <header class="
     bg-background
@@ -382,7 +382,7 @@ exports[`SPageAlbumSingle Snapshot > renders with auth disabled and minimal albu
 </div>
 `;
 
-exports[`SPageAlbumSingle Snapshot > renders with auth enabled and full album data correctly 1`] = `
+exports[`sPageAlbumSingle Snapshot > renders with auth enabled and full album data correctly 1`] = `
 <div>
   <header class="
     bg-background
@@ -1071,7 +1071,7 @@ exports[`SPageAlbumSingle Snapshot > renders with auth enabled and full album da
 </div>
 `;
 
-exports[`SPageAlbumSingle Snapshot > renders with auth enabled and no recordings correctly 1`] = `
+exports[`sPageAlbumSingle Snapshot > renders with auth enabled and no recordings correctly 1`] = `
 <div>
   <header class="
     bg-background

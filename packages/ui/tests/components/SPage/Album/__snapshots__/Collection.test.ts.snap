@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPageAlbumCollection Snapshot > renders custom query parameters correctly 1`] = `
+exports[`sPageAlbumCollection Snapshot > renders custom query parameters correctly 1`] = `
 <div class="
   container
   py-20
@@ -239,7 +239,7 @@ exports[`SPageAlbumCollection Snapshot > renders custom query parameters correct
 </div>
 `;
 
-exports[`SPageAlbumCollection Snapshot > renders default scenario with albums correctly 1`] = `
+exports[`sPageAlbumCollection Snapshot > renders default scenario with albums correctly 1`] = `
 <div class="
   container
   py-20
@@ -481,7 +481,7 @@ exports[`SPageAlbumCollection Snapshot > renders default scenario with albums co
 </div>
 `;
 
-exports[`SPageAlbumCollection Snapshot > renders empty albums correctly 1`] = `
+exports[`sPageAlbumCollection Snapshot > renders empty albums correctly 1`] = `
 <div class="
   container
   py-20

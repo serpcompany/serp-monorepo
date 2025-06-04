@@ -1,8 +1,8 @@
-import { describe, expect, it } from 'vitest';
-import PostCard from '../../components/PostCard.vue';
-import ComponentRender from '../componentRender';
+import { describe, expect, it } from 'vitest'
+import PostCard from '../../components/PostCard.vue'
+import ComponentRender from '../componentRender'
 
-describe('PostCard Snapshot', () => {
+describe('postCard Snapshot', () => {
   // Define test scenarios covering various valid prop combinations
   const scenarios: [string, { props: unknown }][] = [
     [
@@ -16,12 +16,12 @@ describe('PostCard Snapshot', () => {
             author: 'John Doe',
             createdAt: '2022-10-01',
             excerpt: 'This is a test excerpt for the post.',
-            categories: [{ id: 1, slug: 'tech', name: 'Tech' }]
+            categories: [{ id: 1, slug: 'tech', name: 'Tech' }],
           },
           baseSlug: 'posts/',
-          articleClass: 'py-16'
-        }
-      }
+          articleClass: 'py-16',
+        },
+      },
     ],
     [
       'without featured image and author',
@@ -32,12 +32,12 @@ describe('PostCard Snapshot', () => {
             module: 'Article',
             featuredImage: '',
             excerpt: 'Post without featured image and author info.',
-            categories: []
+            categories: [],
           },
           baseSlug: 'posts/',
-          articleClass: 'py-16'
-        }
-      }
+          articleClass: 'py-16',
+        },
+      },
     ],
     [
       'with custom title prop overriding display title',
@@ -50,21 +50,21 @@ describe('PostCard Snapshot', () => {
             author: 'Jane Doe',
             createdAt: '2023-03-01',
             excerpt: 'Post with custom title prop.',
-            categories: [{ id: 2, slug: 'news', name: 'News' }]
+            categories: [{ id: 2, slug: 'news', name: 'News' }],
           },
           baseSlug: 'posts/',
           articleClass: 'py-16',
-          title: 'Custom Title'
-        }
-      }
-    ]
-  ];
+          title: 'Custom Title',
+        },
+      },
+    ],
+  ]
 
   it.each(scenarios)(
     'renders %s correctly',
     async (desc: string, options: { props: unknown }) => {
-      const html = await ComponentRender(`PostCard ${desc}`, options, PostCard);
-      expect(html).toMatchSnapshot();
-    }
-  );
-});
+      const html = await ComponentRender(`PostCard ${desc}`, options, PostCard)
+      expect(html).toMatchSnapshot()
+    },
+  )
+})

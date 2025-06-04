@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPageCompanyCategoryCollection Snapshot > renders with complete data correctly 1`] = `
+exports[`sPageCompanyCategoryCollection Snapshot > renders with complete data correctly 1`] = `
 <div>
   <div class="
     -mt-22
@@ -1196,7 +1196,7 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with complete data co
 </div>
 `;
 
-exports[`SPageCompanyCategoryCollection Snapshot > renders with empty companies correctly 1`] = `
+exports[`sPageCompanyCategoryCollection Snapshot > renders with empty companies correctly 1`] = `
 <div>
   <div class="
     -mt-22
@@ -1299,7 +1299,7 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with empty companies 
               aria-hidden="true"
               class="
                 animate-spin
-                i-lucide:refresh-cw
+                i-lucide:loader-circle
                 iconify
                 shrink-0
                 size-5
@@ -1859,7 +1859,7 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with empty companies 
 </div>
 `;
 
-exports[`SPageCompanyCategoryCollection Snapshot > renders with no categories correctly 1`] = `
+exports[`sPageCompanyCategoryCollection Snapshot > renders with no categories correctly 1`] = `
 <div>
   <div class="
     -mt-22
@@ -1962,7 +1962,7 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with no categories co
               aria-hidden="true"
               class="
                 animate-spin
-                i-lucide:refresh-cw
+                i-lucide:loader-circle
                 iconify
                 shrink-0
                 size-5
@@ -2436,7 +2436,7 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders with no categories co
 </div>
 `;
 
-exports[`SPageCompanyCategoryCollection Snapshot > renders without category article correctly 1`] = `
+exports[`sPageCompanyCategoryCollection Snapshot > renders without category article correctly 1`] = `
 <div>
   <div class="
     -mt-22
@@ -2539,7 +2539,7 @@ exports[`SPageCompanyCategoryCollection Snapshot > renders without category arti
               aria-hidden="true"
               class="
                 animate-spin
-                i-lucide:refresh-cw
+                i-lucide:loader-circle
                 iconify
                 shrink-0
                 size-5

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SFooter Snapshot > renders full config correctly 1`] = `
+exports[`sFooter Snapshot > renders full config correctly 1`] = `
 <footer class="
   bg-primary-800
   dark:bg-primary-950
@@ -361,7 +361,7 @@ exports[`SFooter Snapshot > renders full config correctly 1`] = `
 </footer>
 `;
 
-exports[`SFooter Snapshot > renders minimal config with empty arrays correctly 1`] = `
+exports[`sFooter Snapshot > renders minimal config with empty arrays correctly 1`] = `
 <footer class="
   bg-primary-800
   dark:bg-primary-950

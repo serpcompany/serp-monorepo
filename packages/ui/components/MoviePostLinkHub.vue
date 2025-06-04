@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  const data = await usePosts(1, 50, '', 'movies', true);
+const data = await usePosts(1, 50, '', 'movies', true)
 </script>
 
 <template>

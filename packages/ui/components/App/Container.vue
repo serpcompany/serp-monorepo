@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-  const mobileMenu = useState('mobileMenu');
-  withDefaults(
-    defineProps<{
-      title: string;
-      description?: string;
-      padding?: boolean;
-    }>(),
-    {
-      padding: true
-    }
-  );
+withDefaults(
+  defineProps<{
+    title: string
+    description?: string
+    padding?: boolean
+  }>(),
+  {
+    padding: true,
+  },
+)
+const mobileMenu = useState('mobileMenu')
 </script>
 
 <template>
@@ -24,11 +24,13 @@
       @click="mobileMenu = !mobileMenu"
     />
     <div class="min-w-0 flex-1">
-      <h1 class="flex-1 truncate font-bold">{{ title }}</h1>
+      <h1 class="flex-1 truncate font-bold">
+        {{ title }}
+      </h1>
     </div>
-    <slot name="actions"></slot>
+    <slot name="actions" />
   </header>
   <div :class="{ 'p-4': padding }">
-    <slot></slot>
+    <slot />
   </div>
 </template>

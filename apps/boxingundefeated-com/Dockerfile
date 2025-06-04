@@ -4,7 +4,7 @@ RUN apt-get update -y && apt-get upgrade -y
 RUN apt-get install -y git make g++ python3
 
 # install pnpm
-RUN npm install -g pnpm
+RUN npm install -g pnpm@9.10.0
 
 ARG NUXT_UI_PRO_LICENSE
 

@@ -4,54 +4,54 @@
     Container,
     Head,
     Heading,
+    Hr,
     Html,
     Img,
     Link,
     Preview,
     Text,
-    Hr
-  } from '@vue-email/components';
+  } from '@vue-email/components'
 
-  interface ContactFormProps {
-    name: string;
-    email: string;
-    subject: string;
-    message: string;
+interface ContactFormProps {
+    name: string
+    email: string
+    subject: string
+    message: string
   }
 
   const props = withDefaults(defineProps<ContactFormProps>(), {
     name: '',
     email: '',
     subject: '',
-    message: ''
-  });
+    message: '',
+  })
 
-  const main = {
-    backgroundColor: '#ffffff'
+const main = {
+    backgroundColor: '#ffffff',
   };
 
   const container = {
     paddingLeft: '12px',
     paddingRight: '12px',
-    margin: '0 auto'
+    margin: '0 auto',
   };
 
   const h1 = {
     color: '#333',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     fontSize: '24px',
     fontWeight: 'bold',
     margin: '40px 0',
-    padding: '0'
+    padding: '0',
   };
 
   const text = {
     color: '#333',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     fontSize: '14px',
-    margin: '24px 0'
+    margin: '24px 0',
   };
 
   const messageBox = {
@@ -60,11 +60,11 @@
     borderRadius: '6px',
     padding: '16px',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     fontSize: '14px',
     lineHeight: '1.5',
     whiteSpace: 'pre-wrap',
-    color: '#333'
+    color: '#333',
   };
 
   const infoBox = {
@@ -72,7 +72,7 @@
     border: '1px solid #e9ecef',
     borderRadius: '6px',
     padding: '16px',
-    margin: '16px 0'
+    margin: '16px 0',
   };
 
   const label = {
@@ -80,33 +80,33 @@
     color: '#495057',
     fontSize: '14px',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
   };
 
   const value = {
     color: '#333',
     fontSize: '14px',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-    margin: '4px 0 12px 0'
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
+    margin: '4px 0 12px 0',
   };
 
   const footer = {
     color: '#898989',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
     fontSize: '12px',
     lineHeight: '22px',
     marginTop: '12px',
-    marginBottom: '24px'
+    marginBottom: '24px',
   };
 
   const link = {
     color: '#2754C5',
-    textDecoration: 'underline'
+    textDecoration: 'underline',
   };
 
-  const runtimeConfig = useRuntimeConfig();
+  const runtimeConfig = useRuntimeConfig()
 </script>
 
 <template>
@@ -116,7 +116,9 @@
 
     <Body :style="main">
       <Container :style="container">
-        <Heading :style="h1">📬 New Contact Form Submission</Heading>
+        <Heading :style="h1">
+          📬 New Contact Form Submission
+        </Heading>
 
         <Text :style="text">
           You've received a new message through the contact form on
@@ -124,15 +126,27 @@
         </Text>
 
         <div :style="infoBox">
-          <div :style="label">From:</div>
-          <div :style="value">{{ name }} ({{ email }})</div>
+          <div :style="label">
+            From:
+          </div>
+          <div :style="value">
+            {{ name }} ({{ email }})
+          </div>
 
-          <div :style="label">Subject:</div>
-          <div :style="value">{{ subject || '(No subject)' }}</div>
+          <div :style="label">
+            Subject:
+          </div>
+          <div :style="value">
+            {{ subject || '(No subject)' }}
+          </div>
         </div>
 
-        <div :style="label">Message:</div>
-        <div :style="messageBox">{{ message }}</div>
+        <div :style="label">
+          Message:
+        </div>
+        <div :style="messageBox">
+          {{ message }}
+        </div>
 
         <Hr
           style="margin: 24px 0; border: none; border-top: 1px solid #e9ecef"
@@ -155,8 +169,9 @@
             target="_blank"
             :style="{ ...link, color: '#898989' }"
           >
-            {{ runtimeConfig.public.siteName }} </Link
-          >{{
+            {{ runtimeConfig.public.siteName }}
+          </Link>
+          {{
             runtimeConfig.public.APP_DESCRIPTION
               ? `, ${runtimeConfig.public.APP_DESCRIPTION}`
               : ''

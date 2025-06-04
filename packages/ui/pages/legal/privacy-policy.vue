@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  const config = useRuntimeConfig();
-  const domain = config.public.domain;
-  const siteName = config.public.siteName;
+const config = useRuntimeConfig()
+const domain = config.public.domain
+const siteName = config.public.siteName
 
-  useSeoMeta({
-    title: 'Privacy Policy',
-    description: 'Information on how we collect, use, and protect your data.'
-  });
+useSeoMeta({
+  title: 'Privacy Policy',
+  description: 'Information on how we collect, use, and protect your data.',
+})
 </script>
 
 <template>

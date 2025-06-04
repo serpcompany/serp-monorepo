@@ -1,17 +1,26 @@
-import { getDb } from '../index';
-import { team, teamInvite, teamMember, user, entity } from '../schema';
-import { and, eq, or, max } from 'drizzle-orm';
+import { and, eq, max, or } from 'drizzle-orm'
+import { getDb } from '../index'
+import { entity, team, teamInvite, teamMember, user } from '../schema'
 
-type Team = typeof team.$inferSelect;
-type InsertTeam = typeof team.$inferInsert;
-type TeamInvite = typeof teamInvite.$inferSelect;
-type InsertTeamInvite = typeof teamInvite.$inferInsert;
+type Team = typeof team.$inferSelect
+type InsertTeam = typeof team.$inferInsert
+type TeamInvite = typeof teamInvite.$inferSelect
+type InsertTeamInvite = typeof teamInvite.$inferInsert
 
 // Define invite status types for better type safety
-type InviteStatus = (typeof INVALID_STATUSES)[number];
-const INVALID_STATUSES = ['accepted', 'rejected', 'cancelled'] as const;
+type InviteStatus = (typeof INVALID_STATUSES)[number]
+const INVALID_STATUSES = ['accepted', 'rejected', 'cancelled'] as const
 
-export const findUserTeams = async (userId: string) => {
+export async function findUserTeams(
+  userId: string,
+): Promise<
+    Array<
+      Team & {
+        role: string | null
+        entity: { id: number, name: string, module: string, slug: string } | null
+      }
+    >
+  > {
   try {
     const teams = await getDb()
       .select({
@@ -29,127 +38,139 @@ export const findUserTeams = async (userId: string) => {
           module: entity.module,
           slug: entity.slug,
           data: entity.data,
-          categories: entity.categories
-        }
+          categories: entity.categories,
+        },
       })
       .from(team)
       .leftJoin(
         teamMember,
-        and(eq(team.id, teamMember.teamId), eq(teamMember.userId, userId))
+        and(eq(team.id, teamMember.teamId), eq(teamMember.userId, userId)),
       )
       .leftJoin(entity, eq(team.entityId, entity.id))
       .where(or(eq(team.ownerId, userId), eq(teamMember.userId, userId)))
       .groupBy(team.id, entity.id)
-      .execute();
-    return teams;
-  } catch (error) {
-    console.error(error);
+      .execute()
+    return teams
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to find user teams'
-    });
+      statusMessage: 'Failed to find user teams',
+    })
   }
-};
+}
 
-export const getTeam = async (teamId: string) => {
+export async function getTeam(teamId: string): Promise<Team | null> {
   const [team_] = await getDb()
     .select()
     .from(team)
     .where(eq(team.id, teamId))
-    .execute();
-  return team_;
-};
+    .execute()
+  return team_
+}
 
-export const getTeamById = async (teamId: string) => {
+export async function getTeamById(teamId: string): Promise<Team | null> {
   const [team_] = await getDb()
     .select()
     .from(team)
     .where(eq(team.id, Number(teamId)))
-    .execute();
-  return team_;
-};
+    .execute()
+  return team_
+}
 
-export const getAllTeams = async (limit = 50, offset = 0) => {
+export async function getAllTeams(limit = 50, offset = 0): Promise<Team[]> {
   const teams = await getDb()
     .select()
     .from(team)
     .limit(limit)
     .offset(offset)
-    .execute();
-  return teams;
-};
+    .execute()
+  return teams
+}
 
-export const createTeam = async (payload: InsertTeam) => {
+export async function createTeam(payload: InsertTeam): Promise<Team> {
   try {
     const [team_] = await getDb()
       .insert(team)
       .values(payload)
       .returning()
-      .execute();
+      .execute()
 
     await getDb()
       .insert(teamMember)
       .values({
         teamId: team_.id,
         userId: payload.ownerId,
-        role: 'owner'
+        role: 'owner',
       })
-      .execute();
+      .execute()
 
-    return team_;
-  } catch (error) {
-    if (error instanceof Error) {
-      throw new Error(error.message);
-    }
-    throw new Error('Failed to create team');
+    return team_
   }
-};
+  catch (error) {
+    if (error instanceof Error) {
+      throw new TypeError(error.message)
+    }
+    throw new Error('Failed to create team')
+  }
+}
 
-export const updateTeam = async (teamId: string, payload: Partial<Team>) => {
+export async function updateTeam(
+  teamId: string,
+  payload: Partial<Team>,
+): Promise<Team> {
   try {
     const [record] = await getDb()
       .update(team)
       .set(payload)
       .where(eq(team.id, teamId))
       .returning()
-      .execute();
-    return record;
-  } catch {
+      .execute()
+    return record
+  }
+  catch {
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to update team'
-    });
+      statusMessage: 'Failed to update team',
+    })
   }
-};
+}
 
-export const deleteTeam = async (teamId: string) => {
+export async function deleteTeam(teamId: string): Promise<void> {
   try {
-    await getDb().delete(team).where(eq(team.id, teamId)).execute();
-  } catch {
+    await getDb().delete(team).where(eq(team.id, teamId)).execute()
+  }
+  catch {
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to delete team'
-    });
+      statusMessage: 'Failed to delete team',
+    })
   }
-};
+}
 
-export const inviteTeamMember = async (payload: InsertTeamInvite) => {
+export async function inviteTeamMember(
+  payload: InsertTeamInvite,
+): Promise<TeamInvite> {
   try {
     const [invite] = await getDb()
       .insert(teamInvite)
       .values(payload)
       .returning()
-      .execute();
-    return invite;
-  } catch {
+      .execute()
+    return invite
+  }
+  catch {
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to invite team member'
-    });
+      statusMessage: 'Failed to invite team member',
+    })
   }
-};
+}
 
-export const getActiveTeamMembers = async (teamId: string) => {
+export async function getActiveTeamMembers(
+  teamId: string,
+): Promise<Array<{ user: typeof user.$inferSelect, role: string }>> {
   const members = await getDb()
     .select({
       id: teamMember.id,
@@ -160,16 +181,16 @@ export const getActiveTeamMembers = async (teamId: string) => {
       name: user.name,
       avatarUrl: user.avatarUrl,
       lastLoginAt: user.lastActive,
-      createdAt: teamMember.createdAt
+      createdAt: teamMember.createdAt,
     })
     .from(teamMember)
     .leftJoin(user, eq(teamMember.userId, user.id))
     .where(eq(teamMember.teamId, teamId))
-    .execute();
-  return members;
-};
+    .execute()
+  return members
+}
 
-export const getTeamInvites = async (teamId: string) => {
+export async function getTeamInvites(teamId: string): Promise<TeamInvite[]> {
   const invites = await getDb()
     .select({
       id: teamInvite.id,
@@ -181,167 +202,188 @@ export const getTeamInvites = async (teamId: string) => {
       acceptedAt: teamInvite.acceptedAt,
       acceptedBy: teamInvite.acceptedBy,
       createdAt: teamInvite.createdAt,
-      acceptedByEmail: user.email
+      acceptedByEmail: user.email,
     })
     .from(teamInvite)
     .leftJoin(user, eq(teamInvite.acceptedBy, user.id))
     .where(eq(teamInvite.teamId, teamId))
-    .execute();
-  return invites;
-};
+    .execute()
+  return invites
+}
 
-export const cancelInvite = async (inviteId: string) => {
-  await getDb().delete(teamInvite).where(eq(teamInvite.id, inviteId)).execute();
-};
+export async function cancelInvite(inviteId: string): Promise<TeamInvite> {
+  await getDb().delete(teamInvite).where(eq(teamInvite.id, inviteId)).execute()
+}
 
 /**
+ * Get team invite by token
+ * @param token - The invitation token
+ * @returns Team invite record
  * @throws {H3Error}
  */
-export const getInvite = async (token: string): Promise<TeamInvite> => {
+export async function getInvite(token: string): Promise<TeamInvite> {
   const [invite] = await getDb()
     .select()
     .from(teamInvite)
     .where(eq(teamInvite.token, token))
-    .execute();
+    .execute()
 
   if (!invite) {
     throw createError({
       statusCode: 404,
-      statusMessage: 'Invite not found or invalid'
-    });
+      statusMessage: 'Invite not found or invalid',
+    })
   }
 
   if (invite.expiresAt < new Date()) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'Invite expired'
-    });
+      statusMessage: 'Invite expired',
+    })
   }
 
   if (INVALID_STATUSES.includes(invite.status as InviteStatus)) {
     throw createError({
       statusCode: 400,
-      statusMessage: `Invite already ${invite.status}`
-    });
+      statusMessage: `Invite already ${invite.status}`,
+    })
   }
-  return invite;
-};
+  return invite
+}
 
-export const updateInviteStatus = async (
+export async function updateInviteStatus(
   inviteId: string,
   status: string,
-  userId?: string
-) => {
-  const updateData: { status: string; acceptedAt?: Date; acceptedBy?: string } =
-    { status };
+  userId?: string,
+): Promise<{ success: boolean, message: string, invite?: TeamInvite }> {
+  const updateData: { status: string, acceptedAt?: Date, acceptedBy?: string }
+    = { status }
 
   // If the status is 'accepted', set the acceptedAt timestamp and acceptedBy user ID
   if (status === 'accepted' && userId) {
-    updateData.acceptedAt = new Date();
-    updateData.acceptedBy = userId;
+    updateData.acceptedAt = new Date()
+    updateData.acceptedBy = userId
   }
 
   await getDb()
     .update(teamInvite)
     .set(updateData)
     .where(eq(teamInvite.id, inviteId))
-    .execute();
-};
+    .execute()
+}
 
-export const acceptTeamInvite = async (invite: TeamInvite, userId: string) => {
+export async function acceptTeamInvite(
+  invite: TeamInvite,
+  userId: string,
+): Promise<void> {
   try {
     await getDb()
       .insert(teamMember)
       .values({ teamId: invite.teamId, userId, role: invite.role })
-      .execute();
-  } catch (error) {
-    console.error(error);
+      .execute()
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to add user to team'
-    });
+      statusMessage: 'Failed to add user to team',
+    })
   }
-};
+}
 
-export const isTeamMember = async (teamId: string, userId: string) => {
+export async function isTeamMember(
+  teamId: string,
+  userId: string,
+): Promise<boolean> {
   try {
     const [member] = await getDb()
       .select({ id: teamMember.id })
       .from(teamMember)
       .where(and(eq(teamMember.teamId, teamId), eq(teamMember.userId, userId)))
-      .execute();
+      .execute()
 
-    return !!member;
-  } catch (error) {
-    console.error(error);
+    return !!member
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to check if user is already in team'
-    });
+      statusMessage: 'Failed to check if user is already in team',
+    })
   }
-};
+}
 
-export const findTeamInvite = async (inviteId: string) => {
+export async function findTeamInvite(
+  inviteId: string,
+): Promise<TeamInvite | null> {
   const [invite] = await getDb()
     .select()
     .from(teamInvite)
     .where(eq(teamInvite.id, inviteId))
-    .execute();
-  return invite;
-};
+    .execute()
+  return invite
+}
 
-export const updateTeamInvite = async (
+export async function updateTeamInvite(
   inviteId: string,
-  payload: Partial<TeamInvite>
-) => {
+  payload: Partial<TeamInvite>,
+): Promise<TeamInvite> {
   await getDb()
     .update(teamInvite)
     .set(payload)
     .where(eq(teamInvite.id, inviteId))
-    .execute();
-};
+    .execute()
+}
 
-export const deleteTeamMember = async (teamId: string, memberId: string) => {
+export async function deleteTeamMember(
+  teamId: string,
+  memberId: string,
+): Promise<void> {
   try {
     await getDb()
       .delete(teamMember)
       .where(and(eq(teamMember.teamId, teamId), eq(teamMember.id, memberId)))
-      .execute();
-  } catch {
+      .execute()
+  }
+  catch {
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to delete team member'
-    });
+      statusMessage: 'Failed to delete team member',
+    })
   }
-};
+}
 
-export const checkSlugConflict = async (userId: string, slug: string) => {
+export async function checkSlugConflict(
+  userId: string,
+  slug: string,
+): Promise<boolean> {
   try {
     const [existingTeam] = await getDb()
       .select({
         id: team.id,
         name: team.name,
-        slug: team.slug
+        slug: team.slug,
       })
       .from(team)
       .leftJoin(
         teamMember,
-        and(eq(team.id, teamMember.teamId), eq(teamMember.userId, userId))
+        and(eq(team.id, teamMember.teamId), eq(teamMember.userId, userId)),
       )
       .where(
         and(
           eq(team.slug, slug),
-          or(eq(team.ownerId, userId), eq(teamMember.userId, userId))
-        )
+          or(eq(team.ownerId, userId), eq(teamMember.userId, userId)),
+        ),
       )
-      .execute();
+      .execute()
 
-    return existingTeam;
-  } catch (error) {
-    console.error(error);
+    return existingTeam
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to check slug conflict'
-    });
+      statusMessage: 'Failed to check slug conflict',
+    })
   }
-};
+}

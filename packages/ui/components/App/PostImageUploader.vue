@@ -1,30 +1,30 @@
 <script setup lang="ts">
-  import { useFileDialog, useObjectUrl } from '@vueuse/core';
+import { useFileDialog, useObjectUrl } from '@vueuse/core'
 
-  const model = defineModel<string | undefined>();
+const emit = defineEmits<{
+  'file-selected': [file: File | null]
+}>()
 
-  const { files, open, onChange } = useFileDialog({
-    accept: 'image/*',
-    multiple: false
-  });
+const model = defineModel<string | undefined>()
 
-  const emit = defineEmits<{
-    'file-selected': [file: File | null];
-  }>();
+const { files, open, onChange } = useFileDialog({
+  accept: 'image/*',
+  multiple: false,
+})
 
-  onChange(() => {
-    const file = files.value?.[0];
-    if (file) {
-      const objectUrl = useObjectUrl(file);
-      model.value = objectUrl.value;
-      emit('file-selected', file);
-    }
-  });
+onChange(() => {
+  const file = files.value?.[0]
+  if (file) {
+    const objectUrl = useObjectUrl(file)
+    model.value = objectUrl.value
+    emit('file-selected', file)
+  }
+})
 
-  const removeImage = () => {
-    model.value = undefined;
-    emit('file-selected', null);
-  };
+function removeImage() {
+  model.value = undefined
+  emit('file-selected', null)
+}
 </script>
 
 <template>
@@ -49,7 +49,7 @@
         name="i-lucide-image-plus"
         class="h-4 w-5 text-neutral-400"
       />
-      <img v-else :src="model" class="h-full w-full object-cover" />
+      <img v-else :src="model" class="h-full w-full object-cover">
     </button>
   </div>
 </template>

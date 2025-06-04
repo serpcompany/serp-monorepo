@@ -3,7 +3,7 @@
     <SHeader />
 
     <UMain>
-      <slot></slot>
+      <slot />
     </UMain>
 
     <LazySFooter />

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPage/Users/Submit/Company Snapshot > renders Existing Submission (with id) correctly 1`] = `
+exports[`sPage/Users/Submit/Company Snapshot > renders Existing Submission (with id) correctly 1`] = `
 <div class="
   flex
   flex-col
@@ -802,7 +802,7 @@ exports[`SPage/Users/Submit/Company Snapshot > renders Existing Submission (with
 </div>
 `;
 
-exports[`SPage/Users/Submit/Company Snapshot > renders New Submission (no id) correctly 1`] = `
+exports[`sPage/Users/Submit/Company Snapshot > renders New Submission (no id) correctly 1`] = `
 <div class="
   flex
   flex-col

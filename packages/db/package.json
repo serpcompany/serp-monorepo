@@ -1,15 +1,15 @@
 {
   "name": "@serp/db",
-  "version": "0.0.1",
   "type": "module",
+  "version": "0.0.1",
   "main": "./nuxt.config.ts",
   "scripts": {
     "build": "nuxt build .playground",
-    "eslint": "eslint . --fix",
     "generate": "nuxt generate .playground",
     "postinstall": "nuxt prepare",
-    "lint": "prettier . --write --log-level warn && eslint . --fix",
-    "prettier": "prettier . --write --log-level warn",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "ci:lint": "eslint .",
     "preview": "nuxt preview .playground",
     "test": "vitest run",
     "test:watch": "vitest"
@@ -27,7 +27,7 @@
     "eslint": "^9.14.0",
     "nuxt": "^3.17.3",
     "typescript": "^5.7.3",
-    "vitest": "^1.2.2",
-    "vue": "latest"
+    "vitest": "^2.1.9",
+    "vue": "3.5.14"
   }
 }

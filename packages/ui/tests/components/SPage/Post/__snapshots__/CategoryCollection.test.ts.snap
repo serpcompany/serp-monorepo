@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPagePostCategoryCollection Snapshot > renders with no posts (with auth) correctly 1`] = `
+exports[`sPagePostCategoryCollection Snapshot > renders with no posts (with auth) correctly 1`] = `
 <div>
   <div class="py-20">
     <div class="
@@ -384,7 +384,7 @@ exports[`SPagePostCategoryCollection Snapshot > renders with no posts (with auth
 </div>
 `;
 
-exports[`SPagePostCategoryCollection Snapshot > renders with no posts (without auth) correctly 1`] = `
+exports[`sPagePostCategoryCollection Snapshot > renders with no posts (without auth) correctly 1`] = `
 <div>
   <div class="py-20">
     <div class="
@@ -768,7 +768,7 @@ exports[`SPagePostCategoryCollection Snapshot > renders with no posts (without a
 </div>
 `;
 
-exports[`SPagePostCategoryCollection Snapshot > renders with posts and categories (with auth) correctly 1`] = `
+exports[`sPagePostCategoryCollection Snapshot > renders with posts and categories (with auth) correctly 1`] = `
 <div>
   <div class="py-20">
     <div class="
@@ -1316,7 +1316,7 @@ exports[`SPagePostCategoryCollection Snapshot > renders with posts and categorie
 </div>
 `;
 
-exports[`SPagePostCategoryCollection Snapshot > renders with posts and categories (without auth) correctly 1`] = `
+exports[`sPagePostCategoryCollection Snapshot > renders with posts and categories (without auth) correctly 1`] = `
 <div>
   <div class="py-20">
     <div class="

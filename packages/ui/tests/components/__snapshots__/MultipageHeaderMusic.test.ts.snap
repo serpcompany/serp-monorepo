@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MultipageHeaderMusic Snapshot > renders default rendering correctly 1`] = `
+exports[`multipageHeaderMusic Snapshot > renders default rendering correctly 1`] = `
 <header
   class="
     bg-background
@@ -202,7 +202,7 @@ exports[`MultipageHeaderMusic Snapshot > renders default rendering correctly 1`]
 </header>
 `;
 
-exports[`MultipageHeaderMusic Snapshot > renders with empty sections correctly 1`] = `
+exports[`multipageHeaderMusic Snapshot > renders with empty sections correctly 1`] = `
 <header
   class="
     bg-background
@@ -328,7 +328,7 @@ exports[`MultipageHeaderMusic Snapshot > renders with empty sections correctly 1
 </header>
 `;
 
-exports[`MultipageHeaderMusic Snapshot > renders with oneLiner and image correctly 1`] = `
+exports[`multipageHeaderMusic Snapshot > renders with oneLiner and image correctly 1`] = `
 <header
   class="
     bg-background
@@ -544,7 +544,7 @@ exports[`MultipageHeaderMusic Snapshot > renders with oneLiner and image correct
 </header>
 `;
 
-exports[`MultipageHeaderMusic Snapshot > renders with upvote slot correctly 1`] = `
+exports[`multipageHeaderMusic Snapshot > renders with upvote slot correctly 1`] = `
 <header
   class="
     bg-background

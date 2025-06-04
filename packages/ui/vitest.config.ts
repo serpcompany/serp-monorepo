@@ -1,5 +1,5 @@
 // vitest.config.ts
-import { defineVitestConfig } from '@nuxt/test-utils/config';
+import { defineVitestConfig } from '@nuxt/test-utils/config'
 
 export default defineVitestConfig({
   test: {
@@ -10,9 +10,9 @@ export default defineVitestConfig({
       reporter: ['text', 'json', 'html'],
       include: ['components/**/*.{js,ts,vue}', 'composables/**/*.{js,ts,vue}'],
       reportsDirectory: './coverage',
-      exclude: ['node_modules', 'tests']
+      exclude: ['node_modules', 'tests'],
     },
     snapshotSerializers: ['./node_modules/vue3-snapshot-serializer/index.js'],
-    setupFiles: ['./tests/setupTests.ts']
-  }
-});
+    setupFiles: ['./tests/setupTests.ts'],
+  },
+})

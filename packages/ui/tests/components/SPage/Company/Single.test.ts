@@ -1,20 +1,20 @@
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import SPageCompanySingle from '../../../../components/SPage/Company/Single.vue';
-import ComponentRender from '../../../componentRender';
-import '../../../mockUseUserSession';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import SPageCompanySingle from '../../../../components/SPage/Company/Single.vue'
+import ComponentRender from '../../../componentRender'
+import '../../../mockUseUserSession'
 
-mockNuxtImport('useSeoMeta', () => () => {});
+mockNuxtImport('useSeoMeta', () => () => {})
 
 let config_: Record<string, unknown> = {
   app: { baseURL: '/' },
   public: {
-    useAuth: false
-  }
-};
+    useAuth: false,
+  },
+}
 
-let companyData_: unknown = {};
-let commentsData_: unknown = { comments: [] };
+let companyData_: unknown = {}
+let commentsData_: unknown = { comments: [] }
 const reviewsData_: unknown = {
   reviews: [
     { id: 1, rating: 4, title: 'Good service', content: 'I liked it' },
@@ -22,28 +22,28 @@ const reviewsData_: unknown = {
       id: 2,
       rating: 5,
       title: 'Excellent',
-      content: 'The best service'
-    }
+      content: 'The best service',
+    },
   ],
-  userReview: null
-};
+  userReview: null,
+}
 
-mockNuxtImport('useRuntimeConfig', () => () => config_);
-mockNuxtImport('useCompany', () => () => Promise.resolve(companyData_));
+mockNuxtImport('useRuntimeConfig', () => () => config_)
+mockNuxtImport('useCompany', () => () => Promise.resolve(companyData_))
 mockNuxtImport(
   'useCompanyComments',
-  () => () => Promise.resolve(commentsData_)
-);
-mockNuxtImport('useCompanyReviews', () => () => Promise.resolve(reviewsData_));
+  () => () => Promise.resolve(commentsData_),
+)
+mockNuxtImport('useCompanyReviews', () => () => Promise.resolve(reviewsData_))
 
-describe('SPageCompanySingle Snapshot', () => {
+describe('sPageCompanySingle Snapshot', () => {
   const scenarios: [
     string,
     {
-      config: Record<string, unknown>;
-      companyData: Record<string, unknown>;
-      comments: { comments: unknown[] };
-    }
+      config: Record<string, unknown>
+      companyData: Record<string, unknown>
+      comments: { comments: unknown[] }
+    },
   ][] = [
     [
       'complete company data (with auth)',
@@ -59,7 +59,7 @@ describe('SPageCompanySingle Snapshot', () => {
           content: '<p>Company article content</p>',
           features: [{ item: 'Feature A', description: 'Description A' }],
           faqs: [
-            { question: 'What is this?', answer: 'This is a test company.' }
+            { question: 'What is this?', answer: 'This is a test company.' },
           ],
           alternatives: ['Alternative 1', 'Alternative 2'],
           screenshots: ['/screenshot1.png'],
@@ -70,12 +70,12 @@ describe('SPageCompanySingle Snapshot', () => {
           numThreeStarReviews: 3,
           numFourStarReviews: 2,
           numFiveStarReviews: 2,
-          averageRating: 4.2
+          averageRating: 4.2,
         },
         comments: {
-          comments: [{ id: 100, content: 'Great company!', replies: [] }]
-        }
-      }
+          comments: [{ id: 100, content: 'Great company!', replies: [] }],
+        },
+      },
     ],
     [
       'minimal company data (with auth)',
@@ -93,12 +93,12 @@ describe('SPageCompanySingle Snapshot', () => {
           faqs: null,
           alternatives: null,
           screenshots: null,
-          categories: null
+          categories: null,
         },
         comments: {
-          comments: []
-        }
-      }
+          comments: [],
+        },
+      },
     ],
     [
       'complete company data (without auth)',
@@ -114,16 +114,16 @@ describe('SPageCompanySingle Snapshot', () => {
           content: '<p>Company article content</p>',
           features: [{ item: 'Feature A', description: 'Description A' }],
           faqs: [
-            { question: 'What is this?', answer: 'This is a test company.' }
+            { question: 'What is this?', answer: 'This is a test company.' },
           ],
           alternatives: ['Alternative 1', 'Alternative 2'],
           screenshots: ['/screenshot1.png'],
-          categories: [{ id: 10, slug: 'cat-1', name: 'Category 1' }]
+          categories: [{ id: 10, slug: 'cat-1', name: 'Category 1' }],
         },
         comments: {
-          comments: [{ id: 100, content: 'Great company!', replies: [] }]
-        }
-      }
+          comments: [{ id: 100, content: 'Great company!', replies: [] }],
+        },
+      },
     ],
     [
       'minimal company data (without auth)',
@@ -141,28 +141,28 @@ describe('SPageCompanySingle Snapshot', () => {
           faqs: null,
           alternatives: null,
           screenshots: null,
-          categories: null
+          categories: null,
         },
         comments: {
-          comments: []
-        }
-      }
-    ]
-  ];
+          comments: [],
+        },
+      },
+    ],
+  ]
 
   it.each(scenarios)(
     'renders %s correctly',
     async (desc, { config, companyData, comments }) => {
-      config_ = config;
-      companyData_ = companyData;
-      commentsData_ = comments;
+      config_ = config
+      companyData_ = companyData
+      commentsData_ = comments
 
       const html = await ComponentRender(
         `SPageCompanySingle ${desc}`,
         {},
-        SPageCompanySingle
-      );
-      expect(html).toMatchSnapshot();
-    }
-  );
-});
+        SPageCompanySingle,
+      )
+      expect(html).toMatchSnapshot()
+    },
+  )
+})

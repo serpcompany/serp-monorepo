@@ -1,17 +1,17 @@
 <script setup lang="ts">
-  interface Props {
-    headline: string;
-    subheadline?: string;
-    showSearchBar?: boolean;
-    showButtons?: boolean;
-  }
+interface Props {
+  headline: string
+  subheadline?: string
+  showSearchBar?: boolean
+  showButtons?: boolean
+}
 
-  withDefaults(defineProps<Props>(), {
-    headline: '',
-    subheadline: undefined,
-    showSearchBar: true,
-    showButtons: true
-  });
+withDefaults(defineProps<Props>(), {
+  headline: '',
+  subheadline: undefined,
+  showSearchBar: true,
+  showButtons: true,
+})
 </script>
 
 <template>
@@ -41,8 +41,9 @@
               <UButton
                 label="Primary Button"
                 class="w-full cursor-pointer rounded-none text-lg sm:w-auto"
-                >Primary Button</UButton
               >
+                Primary Button
+              </UButton>
               <UButton
                 variant="outline"
                 class="w-full cursor-pointer rounded-none text-lg sm:w-auto"

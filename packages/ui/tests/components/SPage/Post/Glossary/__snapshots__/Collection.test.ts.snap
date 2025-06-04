@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPagePostGlossaryCollection Snapshot > renders with posts (with auth) correctly 1`] = `
+exports[`sPagePostGlossaryCollection Snapshot > renders with posts (with auth) correctly 1`] = `
 <div>
   <div
     class="
@@ -1453,7 +1453,7 @@ exports[`SPagePostGlossaryCollection Snapshot > renders with posts (with auth) c
 </div>
 `;
 
-exports[`SPagePostGlossaryCollection Snapshot > renders with posts (without auth) correctly 1`] = `
+exports[`sPagePostGlossaryCollection Snapshot > renders with posts (without auth) correctly 1`] = `
 <div>
   <div
     class="
@@ -2906,7 +2906,7 @@ exports[`SPagePostGlossaryCollection Snapshot > renders with posts (without auth
 </div>
 `;
 
-exports[`SPagePostGlossaryCollection Snapshot > renders without posts (with auth) correctly 1`] = `
+exports[`sPagePostGlossaryCollection Snapshot > renders without posts (with auth) correctly 1`] = `
 <div>
   <div
     class="
@@ -4100,7 +4100,7 @@ exports[`SPagePostGlossaryCollection Snapshot > renders without posts (with auth
 </div>
 `;
 
-exports[`SPagePostGlossaryCollection Snapshot > renders without posts (without auth) correctly 1`] = `
+exports[`sPagePostGlossaryCollection Snapshot > renders without posts (without auth) correctly 1`] = `
 <div>
   <div
     class="

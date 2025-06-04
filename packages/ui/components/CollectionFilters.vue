@@ -1,36 +1,36 @@
 <script setup lang="ts">
-  interface Props {
-    categories?: { label: string; value: string }[];
-    loading: boolean;
-  }
+interface Props {
+  categories?: { label: string, value: string }[]
+  loading: boolean
+}
 
-  defineProps<Props>();
-  const route = useRoute();
-  const state = reactive({
-    q: '',
-    category: '',
-    sort: ''
-  });
+defineProps<Props>()
+const route = useRoute()
+const state = reactive({
+  q: (route.query.q as string) || '',
+  category: (route.query.category as string) || '',
+  sort: (route.query.sort as string) || '',
+})
 
-  const sorts = [
-    {
-      label: 'Latest',
-      value: 'createdAt:desc'
-    },
-    {
-      label: 'Name (A to Z)',
-      value: 'name:asc'
-    },
-    {
-      label: 'Name (Z to A)',
-      value: 'name:desc'
-    }
-  ];
+const sorts = [
+  {
+    label: 'Latest',
+    value: 'createdAt:desc',
+  },
+  {
+    label: 'Name (A to Z)',
+    value: 'name:asc',
+  },
+  {
+    label: 'Name (Z to A)',
+    value: 'name:desc',
+  },
+]
 
-  watch(state, () => {
-    const query = Object.fromEntries(
-      Object.entries(state).filter(([_, value]) => value.length)
-    );
+watch(state, () => {
+  const query = Object.fromEntries(
+    Object.entries(state).filter(([_, value]) => value.length),
+  )
 
     return navigateTo({
       query,
@@ -45,6 +45,7 @@
     if (route.query.category) state.category = route.query.category.toString();
     if (route.query.sort) state.sort = route.query.sort.toString();
   });
+
 </script>
 
 <template>

@@ -1,91 +1,98 @@
 <script lang="ts" setup>
-  const loading = ref(false);
-  const toast = useToast();
-  const { data: plans, refresh: refreshPlans } = await useFetch(
-    '/api/super-admin/stripe/plans'
-  );
+const loading = ref(false)
+const toast = useToast()
+const { data: plans, refresh: refreshPlans } = await useFetch(
+  '/api/super-admin/stripe/plans',
+)
 
-  // Compute unique products from plans
-  const uniqueProducts = computed(() => {
-    if (!plans.value) return [];
+// Compute unique products from plans
+const uniqueProducts = computed(() => {
+  if (!plans.value)
+    return []
 
-    const productMap = new Map();
-    plans.value.forEach((plan) => {
-      if (plan.product && !productMap.has(plan.product.id)) {
-        productMap.set(plan.product.id, plan.product);
-      }
-    });
+  const productMap = new Map()
+  plans.value.forEach((plan) => {
+    if (plan.product && !productMap.has(plan.product.id)) {
+      productMap.set(plan.product.id, plan.product)
+    }
+  })
 
-    return Array.from(productMap.values());
-  });
+  return Array.from(productMap.values())
+})
 
-  // Get all plans for a specific product
-  const getProductPlans = (productId: string) => {
-    if (!plans.value) return [];
-    return plans.value.filter((plan) => plan.productId === productId);
-  };
+// Get all plans for a specific product
+function getProductPlans(productId: string) {
+  if (!plans.value)
+    return []
+  return plans.value.filter(plan => plan.productId === productId)
+}
 
-  const formatPrice = (price: number) => {
-    if (!price) return '$0';
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0
-    }).format(price / 100);
-  };
+function formatPrice(price: number) {
+  if (!price)
+    return '$0'
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+  }).format(price / 100)
+}
 
-  const syncStripeData = async () => {
-    try {
-      loading.value = true;
-      await $fetch('/api/super-admin/stripe/sync-products');
-      await refreshPlans();
-      toast.add({
-        title: 'Stripe data synced successfully',
-        icon: 'i-lucide-check-circle',
-        color: 'success'
-      });
-    } catch (error) {
-      toast.add({
-        title: 'Failed to sync Stripe data',
-        description:
+async function syncStripeData() {
+  try {
+    loading.value = true
+    await $fetch('/api/super-admin/stripe/sync-products')
+    await refreshPlans()
+    toast.add({
+      title: 'Stripe data synced successfully',
+      icon: 'i-lucide-check-circle',
+      color: 'success',
+    })
+  }
+  catch (error) {
+    toast.add({
+      title: 'Failed to sync Stripe data',
+      description:
           error instanceof Error
             ? error.message
             : 'An unexpected error occurred',
-        icon: 'i-lucide-alert-circle',
-        color: 'error'
-      });
-    } finally {
-      loading.value = false;
-    }
-  };
-  const deletingProduct = ref<string | null>(null);
-  const deleteProduct = async (productId: string) => {
-    try {
-      deletingProduct.value = productId;
-      await $fetch(`/api/super-admin/stripe/${productId}`, {
-        method: 'DELETE'
-      });
-      await refreshPlans();
-      toast.add({
-        title: 'Product deleted successfully',
-        icon: 'i-lucide-check-circle',
-        color: 'success'
-      });
-    } catch (error) {
-      console.error(error);
-      toast.add({
-        title: 'Failed to delete product',
-        description:
+      icon: 'i-lucide-alert-circle',
+      color: 'error',
+    })
+  }
+  finally {
+    loading.value = false
+  }
+}
+const deletingProduct = ref<string | null>(null)
+async function deleteProduct(productId: string) {
+  try {
+    deletingProduct.value = productId
+    await $fetch(`/api/super-admin/stripe/${productId}`, {
+      method: 'DELETE',
+    })
+    await refreshPlans()
+    toast.add({
+      title: 'Product deleted successfully',
+      icon: 'i-lucide-check-circle',
+      color: 'success',
+    })
+  }
+  catch (error) {
+    console.error(error)
+    toast.add({
+      title: 'Failed to delete product',
+      description:
           error instanceof Error
             ? error.message
             : 'An unexpected error occurred',
-        icon: 'i-lucide-alert-circle',
-        color: 'error'
-      });
-    } finally {
-      deletingProduct.value = null;
-    }
-  };
+      icon: 'i-lucide-alert-circle',
+      color: 'error',
+    })
+  }
+  finally {
+    deletingProduct.value = null
+  }
+}
 </script>
 
 <template>
@@ -129,7 +136,9 @@
               <UIcon name="i-lucide-package" class="h-5 w-5" />
             </div>
             <div class="flex-1">
-              <p class="text-sm font-medium capitalize">{{ plan.interval }}</p>
+              <p class="text-sm font-medium capitalize">
+                {{ plan.interval }}
+              </p>
               <p class="text-xs text-neutral-500 dark:text-white/50">
                 {{ plan.id }}
               </p>

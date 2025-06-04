@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  const error = useError();
-  const handleError = () => {
-    clearError({
-      redirect: '/'
-    });
-  };
+const error = useError()
+function handleError() {
+  clearError({
+    redirect: '/',
+  })
+}
 </script>
 
 <template>
@@ -12,15 +12,17 @@
     <div class="mt-40 flex h-full flex-col items-center justify-center">
       <template v-if="error.statusCode === 404">
         <h1>404</h1>
-        <p class="mb-12">Page Not Found</p>
+        <p class="mb-12">
+          Page Not Found
+        </p>
       </template>
       <template v-else>
         <h1>{{ error.statusCode }}</h1>
         <p>{{ error.message }}</p>
       </template>
-      <UButton class="cursor-pointer text-lg" @click="handleError"
-        >Go Home</UButton
-      >
+      <UButton class="cursor-pointer text-lg" @click="handleError">
+        Go Home
+      </UButton>
     </div>
   </NuxtLayout>
 </template>
