@@ -113,7 +113,17 @@ export default antfu({
       'vue/no-required-prop-with-default': 'warn'
     }
   },
-   // Overrides: /server/ routes
+  // Overrides: /packges/api/ routes
+  {
+    files: [
+      '**/packages/api/**',
+      '../../packages/api/**'
+    ],
+    rules: {
+      'unicorn/prefer-number-properties': 'warn',
+    }
+  },
+  // Overrides: /server/ routes
   {
     files: [
       '**/server/**/*.ts',
