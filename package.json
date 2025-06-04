@@ -20,6 +20,7 @@
     "typecheck": "turbo run typecheck 2>&1 | tee reports/typecheck-errors.txt",
     "typecheck:fixed": "turbo run typecheck 2>&1 | grep -E 'TS7006|TS7053|TS7034|TS7005' && echo 'Fixed TypeScript errors found!' && exit 1 || echo 'No fixed TypeScript errors found - build passed!'",
     "ts-baseline:generate": "node scripts/ts-error-baseline.mjs --generate",
+    "ts-baseline:update": "node scripts/ts-error-baseline.mjs --generate --error-codes",
     "ts-baseline:validate": "node scripts/ts-error-baseline.mjs --validate",
     "typecheck:baseline": "pnpm run typecheck && pnpm run ts-baseline:validate",
     "//ci": "--- CI Commands (check-only, no auto-fix) ---",

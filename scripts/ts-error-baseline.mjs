@@ -23,7 +23,7 @@ function countTypeScriptErrors(content) {
   return errorCounts;
 }
 
-function generateBaseline() {
+function generateBaseline(specificErrorCodes = null) {
   // Read the existing typecheck output
   if (!fs.existsSync(TYPECHECK_OUTPUT_FILE)) {
     console.error('Typecheck output file not found at:', TYPECHECK_OUTPUT_FILE);
@@ -34,23 +34,55 @@ function generateBaseline() {
   const content = fs.readFileSync(TYPECHECK_OUTPUT_FILE, 'utf8');
   const errorCounts = countTypeScriptErrors(content);
   
-  // Calculate total errors
-  const totalErrors = Object.values(errorCounts).reduce((sum, count) => sum + count, 0);
+  let baseline;
   
-  const baseline = {
-    generated: new Date().toISOString(),
-    totalErrors,
-    errorCounts,
-    errorTypes: Object.keys(errorCounts).sort()
-  };
+  if (specificErrorCodes && specificErrorCodes.length > 0) {
+    // Update only specific error codes
+    if (!fs.existsSync(BASELINE_FILE)) {
+      console.error('No baseline file found. Run with --generate first to create a full baseline.');
+      process.exit(1);
+    }
+    
+    baseline = JSON.parse(fs.readFileSync(BASELINE_FILE, 'utf8'));
+    
+    // Update only the specified error codes
+    specificErrorCodes.forEach(code => {
+      if (errorCounts[code] !== undefined) {
+        baseline.errorCounts[code] = errorCounts[code];
+        console.log(`Updated ${code}: ${errorCounts[code]}`);
+      } else {
+        // Remove from baseline if no longer present
+        delete baseline.errorCounts[code];
+        console.log(`Removed ${code} (no longer present)`);
+      }
+    });
+    
+    // Recalculate total and error types
+    baseline.totalErrors = Object.values(baseline.errorCounts).reduce((sum, count) => sum + count, 0);
+    baseline.errorTypes = Object.keys(baseline.errorCounts).sort();
+    baseline.generated = new Date().toISOString();
+    
+    console.log(`\nBaseline updated for specific error codes: ${specificErrorCodes.join(', ')}`);
+  } else {
+    // Generate full baseline
+    const totalErrors = Object.values(errorCounts).reduce((sum, count) => sum + count, 0);
+    
+    baseline = {
+      generated: new Date().toISOString(),
+      totalErrors,
+      errorCounts,
+      errorTypes: Object.keys(errorCounts).sort()
+    };
+    
+    console.log('\nBaseline generated successfully!');
+  }
   
   // Write baseline file
   fs.writeFileSync(BASELINE_FILE, JSON.stringify(baseline, null, 2));
   
-  console.log('\nBaseline generated successfully!');
-  console.log(`Total errors: ${totalErrors}`);
+  console.log(`Total errors: ${baseline.totalErrors}`);
   console.log('Error breakdown:');
-  Object.entries(errorCounts)
+  Object.entries(baseline.errorCounts)
     .sort(([, a], [, b]) => b - a)
     .forEach(([code, count]) => {
       console.log(`  ${code}: ${count}`);
@@ -141,14 +173,23 @@ function validateAgainstBaseline() {
 
 // Main execution
 const command = process.argv[2];
+const additionalArgs = process.argv.slice(3);
 
 if (command === '--generate') {
-  generateBaseline();
+  // Check if specific error codes were provided
+  const errorCodeIndex = additionalArgs.indexOf('--error-codes');
+  if (errorCodeIndex !== -1 && additionalArgs[errorCodeIndex + 1]) {
+    const errorCodes = additionalArgs[errorCodeIndex + 1].split(',').map(code => code.trim());
+    generateBaseline(errorCodes);
+  } else {
+    generateBaseline();
+  }
 } else if (command === '--validate') {
   validateAgainstBaseline();
 } else {
   console.log('Usage:');
-  console.log('  node scripts/ts-error-baseline.mjs --generate    Generate a new baseline');
-  console.log('  node scripts/ts-error-baseline.mjs --validate    Validate current errors against baseline');
+  console.log('  node scripts/ts-error-baseline.mjs --generate                          Generate a new baseline');
+  console.log('  node scripts/ts-error-baseline.mjs --generate --error-codes TS2339,TS2345  Update baseline for specific error codes');
+  console.log('  node scripts/ts-error-baseline.mjs --validate                          Validate current errors against baseline');
   process.exit(1);
 }
