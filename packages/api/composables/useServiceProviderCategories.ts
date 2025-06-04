@@ -1,7 +1,7 @@
-import type { Category } from '@serp/types/types';
+import type { Category } from '@serp/types/types'
 
-export const useServiceProviderCategories = async () => {
+export async function useServiceProviderCategories() {
   return await useFetchWithCache<Category[]>(
-    `/categories?module=service_provider`
-  );
-};
+    `/categories?module=service_provider`,
+  )
+}

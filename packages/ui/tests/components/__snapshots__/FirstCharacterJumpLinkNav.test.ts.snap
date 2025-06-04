@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`FirstCharacterJumpLinkNav Snapshot > renders with all buttons disabled correctly 1`] = `
+exports[`firstCharacterJumpLinkNav Snapshot > renders with all buttons disabled correctly 1`] = `
 <nav class="
   flex
   justify-between
@@ -121,7 +121,7 @@ exports[`FirstCharacterJumpLinkNav Snapshot > renders with all buttons disabled 
 </nav>
 `;
 
-exports[`FirstCharacterJumpLinkNav Snapshot > renders with all buttons enabled correctly 1`] = `
+exports[`firstCharacterJumpLinkNav Snapshot > renders with all buttons enabled correctly 1`] = `
 <nav class="
   flex
   justify-between
@@ -236,7 +236,7 @@ exports[`FirstCharacterJumpLinkNav Snapshot > renders with all buttons enabled c
 </nav>
 `;
 
-exports[`FirstCharacterJumpLinkNav Snapshot > renders with no characters correctly 1`] = `
+exports[`firstCharacterJumpLinkNav Snapshot > renders with no characters correctly 1`] = `
 <nav class="
   flex
   justify-between
@@ -245,7 +245,7 @@ exports[`FirstCharacterJumpLinkNav Snapshot > renders with no characters correct
 "></nav>
 `;
 
-exports[`FirstCharacterJumpLinkNav Snapshot > renders with some buttons disabled correctly 1`] = `
+exports[`firstCharacterJumpLinkNav Snapshot > renders with some buttons disabled correctly 1`] = `
 <nav class="
   flex
   justify-between

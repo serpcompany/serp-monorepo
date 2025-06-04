@@ -1,12 +1,12 @@
 // Export email service
-export { sendEmail } from './services/email';
+export { sendEmail } from './services/email'
+
+// Export body validation utilities
+export { validateBody } from './utils/bodyValidation'
 
 // Export nanoid utilities
 export {
-  generateNumericCode,
   generateAlphaNumericCode,
-  generateRandomId
-} from './utils/nanoid';
-
-// Export body validation utilities
-export { validateBody } from './utils/bodyValidation';
+  generateNumericCode,
+  generateRandomId,
+} from './utils/nanoid'

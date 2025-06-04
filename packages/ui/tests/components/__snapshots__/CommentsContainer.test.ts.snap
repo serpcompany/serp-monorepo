@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CommentsContainer Snapshot > renders default state with no comments correctly 1`] = `
+exports[`commentsContainer Snapshot > renders default state with no comments correctly 1`] = `
 <div
   class="comments"
   style="background: transparent;"
@@ -49,7 +49,7 @@ exports[`CommentsContainer Snapshot > renders default state with no comments cor
 </div>
 `;
 
-exports[`CommentsContainer Snapshot > renders with a single comment correctly 1`] = `
+exports[`commentsContainer Snapshot > renders with a single comment correctly 1`] = `
 <div
   class="comments"
   style="background: transparent;"
@@ -198,21 +198,7 @@ exports[`CommentsContainer Snapshot > renders with a single comment correctly 1`
                 Reply
               </div>
               <!-- v-if -->
-              <span class="dot">
-                •
-              </span>
-              <div class="hover:text-(--ui-primary)">
-                Update
-              </div>
-              <span class="dot">
-                •
-              </span>
-              <div class="delete">
-                <div class="delete-text">
-                  Delete
-                </div>
-                <!-- v-if -->
-              </div>
+              <!-- v-if -->
             </div>
             <!-- v-if -->
             <transition-group-stub
@@ -232,7 +218,7 @@ exports[`CommentsContainer Snapshot > renders with a single comment correctly 1`
 </div>
 `;
 
-exports[`CommentsContainer Snapshot > renders with multiple comments and custom styling correctly 1`] = `
+exports[`commentsContainer Snapshot > renders with multiple comments and custom styling correctly 1`] = `
 <div
   class="comments"
   style="background: #f0f0f0;"
@@ -392,21 +378,7 @@ exports[`CommentsContainer Snapshot > renders with multiple comments and custom 
                 Reply
               </div>
               <!-- v-if -->
-              <span class="dot">
-                •
-              </span>
-              <div class="hover:text-(--ui-primary)">
-                Update
-              </div>
-              <span class="dot">
-                •
-              </span>
-              <div class="delete">
-                <div class="delete-text">
-                  Delete
-                </div>
-                <!-- v-if -->
-              </div>
+              <!-- v-if -->
             </div>
             <!-- v-if -->
             <transition-group-stub
@@ -536,21 +508,7 @@ exports[`CommentsContainer Snapshot > renders with multiple comments and custom 
                 Reply
               </div>
               <!-- v-if -->
-              <span class="dot">
-                •
-              </span>
-              <div class="hover:text-(--ui-primary)">
-                Update
-              </div>
-              <span class="dot">
-                •
-              </span>
-              <div class="delete">
-                <div class="delete-text">
-                  Delete
-                </div>
-                <!-- v-if -->
-              </div>
+              <!-- v-if -->
             </div>
             <!-- v-if -->
             <transition-group-stub
@@ -570,7 +528,7 @@ exports[`CommentsContainer Snapshot > renders with multiple comments and custom 
 </div>
 `;
 
-exports[`CommentsContainer Snapshot > renders with nested comment correctly 1`] = `
+exports[`commentsContainer Snapshot > renders with nested comment correctly 1`] = `
 <div
   class="comments"
   style="background: transparent;"
@@ -735,21 +693,7 @@ exports[`CommentsContainer Snapshot > renders with nested comment correctly 1`] 
               <div class="hover:text-(--ui-primary)">
                 Hide replies
               </div>
-              <span class="dot">
-                •
-              </span>
-              <div class="hover:text-(--ui-primary)">
-                Update
-              </div>
-              <span class="dot">
-                •
-              </span>
-              <div class="delete">
-                <div class="delete-text">
-                  Delete
-                </div>
-                <!-- v-if -->
-              </div>
+              <!-- v-if -->
             </div>
             <!-- v-if -->
             <transition-group-stub
@@ -880,21 +824,7 @@ exports[`CommentsContainer Snapshot > renders with nested comment correctly 1`] 
                       <div class="hover:text-(--ui-primary)">
                         Hide replies
                       </div>
-                      <span class="dot">
-                        •
-                      </span>
-                      <div class="hover:text-(--ui-primary)">
-                        Update
-                      </div>
-                      <span class="dot">
-                        •
-                      </span>
-                      <div class="delete">
-                        <div class="delete-text">
-                          Delete
-                        </div>
-                        <!-- v-if -->
-                      </div>
+                      <!-- v-if -->
                     </div>
                     <!-- v-if -->
                     <transition-group-stub
@@ -1020,21 +950,7 @@ exports[`CommentsContainer Snapshot > renders with nested comment correctly 1`] 
                                 Reply
                               </div>
                               <!-- v-if -->
-                              <span class="dot">
-                                •
-                              </span>
-                              <div class="hover:text-(--ui-primary)">
-                                Update
-                              </div>
-                              <span class="dot">
-                                •
-                              </span>
-                              <div class="delete">
-                                <div class="delete-text">
-                                  Delete
-                                </div>
-                                <!-- v-if -->
-                              </div>
+                              <!-- v-if -->
                             </div>
                             <!-- v-if -->
                             <transition-group-stub
@@ -1164,21 +1080,7 @@ exports[`CommentsContainer Snapshot > renders with nested comment correctly 1`] 
                                 Reply
                               </div>
                               <!-- v-if -->
-                              <span class="dot">
-                                •
-                              </span>
-                              <div class="hover:text-(--ui-primary)">
-                                Update
-                              </div>
-                              <span class="dot">
-                                •
-                              </span>
-                              <div class="delete">
-                                <div class="delete-text">
-                                  Delete
-                                </div>
-                                <!-- v-if -->
-                              </div>
+                              <!-- v-if -->
                             </div>
                             <!-- v-if -->
                             <transition-group-stub

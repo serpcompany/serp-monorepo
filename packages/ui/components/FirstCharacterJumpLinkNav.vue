@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  defineProps<{
-    characters: string[];
-    filteredCharacters: string[];
-  }>();
+defineProps<{
+  characters: string[]
+  filteredCharacters: string[]
+}>()
 </script>
 
 <template>

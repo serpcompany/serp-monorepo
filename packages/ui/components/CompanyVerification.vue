@@ -1,28 +1,28 @@
 <script setup lang="ts">
-  import { useOverlay } from '#imports';
-  import { CompanyVerificationModal } from '#components';
+import { CompanyVerificationModal } from '#components'
+import { useOverlay } from '#imports'
 
-  interface Props {
-    id: number | string;
-    domain: string;
-    verified: boolean;
-  }
+interface Props {
+  id: number | string
+  domain: string
+  verified: boolean
+}
 
-  const props = defineProps<Props>();
-  const overlay = useOverlay();
-  const { id, domain } = toRefs(props);
+const props = defineProps<Props>()
+const overlay = useOverlay()
+const { id, domain } = toRefs(props)
 
-  const modal = overlay.create(CompanyVerificationModal, {
-    props: {
-      id: id.value,
-      domain: domain.value
-    }
-  });
+const modal = overlay.create(CompanyVerificationModal, {
+  props: {
+    id: id.value,
+    domain: domain.value,
+  },
+})
 
-  async function handleClaim() {
-    // Open modal programatically
-    modal.open();
-  }
+async function handleClaim() {
+  // Open modal programatically
+  modal.open()
+}
 </script>
 
 <template>
@@ -32,7 +32,7 @@
         :content="{
           align: 'center',
           side: 'top',
-          sideOffset: 8
+          sideOffset: 8,
         }"
         :delay-duration="0"
         text="Verified"
@@ -46,7 +46,7 @@
         :content="{
           align: 'center',
           side: 'top',
-          sideOffset: 8
+          sideOffset: 8,
         }"
         :delay-duration="0"
         text="Verified"

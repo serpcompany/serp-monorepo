@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPageArtistSingle Snapshot > renders complete artist with upvotes and auth enabled correctly 1`] = `
+exports[`sPageArtistSingle Snapshot > renders complete artist with upvotes and auth enabled correctly 1`] = `
 <div>
   <header class="
     bg-background
@@ -744,7 +744,7 @@ exports[`SPageArtistSingle Snapshot > renders complete artist with upvotes and a
 </div>
 `;
 
-exports[`SPageArtistSingle Snapshot > renders minimal artist without upvotes and auth disabled correctly 1`] = `
+exports[`sPageArtistSingle Snapshot > renders minimal artist without upvotes and auth disabled correctly 1`] = `
 <div>
   <header class="
     bg-background

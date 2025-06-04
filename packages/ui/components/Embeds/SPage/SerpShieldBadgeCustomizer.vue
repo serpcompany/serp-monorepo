@@ -1,67 +1,67 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+import { ref } from 'vue'
 
-  interface ShieldData {
-    categoryName: string;
-    productDomain: string;
-  }
+interface ShieldData {
+  categoryName: string
+  productDomain: string
+}
 
-  const config = useRuntimeConfig();
-  const baseUrl = config.public.siteUrl || '';
+const config = useRuntimeConfig()
+const baseUrl = config.public.siteUrl || ''
 
-  // Initial form data
-  const formData = ref({
-    categoryName: '',
-    productDomain: ''
-  });
+// Initial form data
+const formData = ref({
+  categoryName: '',
+  productDomain: '',
+})
 
-  // Final customizations that will be passed to the preview
-  const finalCustomizations = ref({
-    categoryName: '',
-    productDomain: ''
-  });
+// Final customizations that will be passed to the preview
+const finalCustomizations = ref({
+  categoryName: '',
+  productDomain: '',
+})
 
-  // Control whether to show embed code
-  const showEmbedCode = ref(false);
+// Control whether to show embed code
+const showEmbedCode = ref(false)
 
-  // Update the form data when inputs change (but don't update preview yet)
-  // @todo - improve the typesafety of this after implementing zod
-  function handleFormUpdate(updatedData: ShieldData) {
-    formData.value = { ...updatedData };
-  }
+// Update the form data when inputs change (but don't update preview yet)
+// @todo - improve the typesafety of this after implementing zod
+function handleFormUpdate(updatedData: ShieldData) {
+  formData.value = { ...updatedData }
+}
 
-  // Generate SVG with current form data
-  function generateSvg() {
-    // Update the final customizations to match form data
-    finalCustomizations.value = { ...formData.value };
-    // Show embed code after generation
-    showEmbedCode.value = true;
-  }
+// Generate SVG with current form data
+function generateSvg() {
+  // Update the final customizations to match form data
+  finalCustomizations.value = { ...formData.value }
+  // Show embed code after generation
+  showEmbedCode.value = true
+}
 
-  // Generate embed code for the customized SVG
-  function generateEmbedCode() {
-    const category = encodeURIComponent(
-      finalCustomizations.value.categorySlug || 'Select Category'
-    );
-    const domain = encodeURIComponent(
-      finalCustomizations.value.productDomain || 'Select Domain'
-    );
-    return `<a href="https://serp.co/products/${domain}/">
+// Generate embed code for the customized SVG
+function generateEmbedCode() {
+  const category = encodeURIComponent(
+    finalCustomizations.value.categorySlug || 'Select Category',
+  )
+  const domain = encodeURIComponent(
+    finalCustomizations.value.productDomain || 'Select Domain',
+  )
+  return `<a href="https://serp.co/products/${domain}/">
   <img src="${baseUrl}/api/svg/badge?category=${category}&domain=${domain}" alt="${finalCustomizations.value.categorySlug} Badge" width="250" height="242">
-</a>`;
-  }
+</a>`
+}
 
-  // Copy embed code to clipboard
-  function copyEmbedCode() {
-    navigator.clipboard
-      .writeText(generateEmbedCode())
-      .then(() => {
-        alert('Copied to clipboard!');
-      })
-      .catch((err) => {
-        console.error('Failed to copy text: ', err);
-      });
-  }
+// Copy embed code to clipboard
+function copyEmbedCode() {
+  navigator.clipboard
+    .writeText(generateEmbedCode())
+    .then(() => {
+      alert('Copied to clipboard!')
+    })
+    .catch((err) => {
+      console.error('Failed to copy text: ', err)
+    })
+}
 </script>
 
 <template>
@@ -87,12 +87,16 @@
 
       <!-- Preview Section -->
       <div class="rounded-lg p-6 shadow-md lg:w-2/3">
-        <h2 class="text-secondary-dark mb-4 text-xl font-semibold">Preview</h2>
+        <h2 class="text-secondary-dark mb-4 text-xl font-semibold">
+          Preview
+        </h2>
         <EmbedsSvgPreview :customizations="finalCustomizations" />
 
         <!-- Optional: Add a code section to show the embed code -->
         <div v-if="showEmbedCode" class="mt-6">
-          <h3 class="mb-2 text-lg font-medium">Embed Code</h3>
+          <h3 class="mb-2 text-lg font-medium">
+            Embed Code
+          </h3>
           <pre
             class="overflow-x-auto rounded-md p-4"
           ><code>{{ generateEmbedCode() }}</code></pre>

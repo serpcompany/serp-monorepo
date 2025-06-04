@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-  import { useDateFormat } from '@vueuse/core';
+import { useDateFormat } from '@vueuse/core'
 
-  const { data: teams } = useFetch('/api/super-admin/teams');
-  const columns = ['Name', 'Owner', 'Members', 'Subscription', 'Created At'];
+const { data: teams } = useFetch('/api/super-admin/teams')
+const columns = ['Name', 'Owner', 'Members', 'Subscription', 'Created At']
 </script>
 
 <template>
@@ -32,7 +32,9 @@
                 {{ team.name }}
               </div>
             </td>
-            <td class="p-2">{{ team.owner?.name }}</td>
+            <td class="p-2">
+              {{ team.owner?.name }}
+            </td>
             <td class="p-2">
               <SuperAdminTeamMembers :members="team.members" />
             </td>

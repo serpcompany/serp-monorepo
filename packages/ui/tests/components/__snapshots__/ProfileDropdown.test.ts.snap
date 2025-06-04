@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ProfileDropdown Snapshot > renders when logged in correctly 1`] = `
+exports[`profileDropdown Snapshot > renders when logged in correctly 1`] = `
 <div class="relative">
   <!-- Avatar trigger -->
   <div>
@@ -43,7 +43,7 @@ exports[`ProfileDropdown Snapshot > renders when logged in correctly 1`] = `
 </div>
 `;
 
-exports[`ProfileDropdown Snapshot > renders when not logged in correctly 1`] = `
+exports[`profileDropdown Snapshot > renders when not logged in correctly 1`] = `
 <!-- Login button for logged-out users -->
 <a
   class="

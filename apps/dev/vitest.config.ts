@@ -1,5 +1,5 @@
 // vitest.config.ts
-import { defineVitestConfig } from '@nuxt/test-utils/config';
+import { defineVitestConfig } from '@nuxt/test-utils/config'
 
 export default defineVitestConfig({
   test: {
@@ -13,11 +13,11 @@ export default defineVitestConfig({
         'composables/**/*.{js,ts,vue}',
         'middleware/**/*.{js,ts,vue}',
         'server/**/*.{js,ts,vue}',
-        'pages/**/*.{js,ts,vue}'
+        'pages/**/*.{js,ts,vue}',
       ],
       reportsDirectory: './coverage',
-      exclude: ['node_modules', 'tests']
+      exclude: ['node_modules', 'tests'],
     },
-    setupFiles: ['./tests/setupTests.ts']
-  }
-});
+    setupFiles: ['./tests/setupTests.ts'],
+  },
+})

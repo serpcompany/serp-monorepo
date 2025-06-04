@@ -12,33 +12,38 @@ export default defineNuxtConfig({
     'nuxt-multi-cache',
     'nuxt-security',
     '@nuxt/scripts',
-    'nuxt-link-checker'
+    'nuxt-link-checker',
   ],
   css: ['~/assets/css/main.css'],
   multiCache: {
     data: {
-      enabled: true
+      enabled: true,
     },
     api: {
       enabled: true,
       prefix: '/__nuxt_multi_cache',
-      authorization: process.env.CACHE_PURGE_API_KEY || 'xv12378asdfSDA123'
-    }
+      authorization: process.env.CACHE_PURGE_API_KEY || 'xv12378asdfSDA123',
+    },
+  },
+  eslint: {
+    config: {
+      standalone: false,
+    },
   },
   ui: {
-    colorMode: true
+    colorMode: true,
   },
   uiPro: {
-    license: process.env.NUXT_UI_PRO_LICENSE
+    license: process.env.NUXT_UI_PRO_LICENSE,
   },
   tsConfig: {
     compilerOptions: {
       baseUrl: '.',
       paths: {
-        '@/*': ['src/*']
+        '@/*': ['src/*'],
       },
-      types: ['vitest/globals', '']
-    }
+      types: ['vitest/globals', ''],
+    },
   },
   runtimeConfig: {
     public: {
@@ -48,58 +53,58 @@ export default defineNuxtConfig({
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
       forCloudflare: false,
       environment: process.env.NODE_ENV,
-      copyrightText: '© BOXING UNDEFEATED'
-    }
+      copyrightText: '© BOXING UNDEFEATED',
+    },
   },
   app: {
     head: {
       title: process.env.NUXT_PUBLIC_SITE_NAME,
       htmlAttrs: {
-        lang: 'en'
+        lang: 'en',
       },
       meta: [
         ...(process.env.ROBOTS_ENV === 'staging'
           ? [{ name: 'robots', content: 'noindex' }]
-          : [])
-      ]
-    }
+          : []),
+      ],
+    },
   },
   scripts: {
     registry: {
       googleTagManager: {
-        id: ''
-      }
-    }
+        id: '',
+      },
+    },
   },
   schemaOrg: {
     identity: 'Organization',
-    host: 'https://boxingundefeated.com'
+    url: 'https://boxingundefeated.com',
   },
   experimental: {
     defaults: {
-      nuxthref: {
-        trailingSlash: 'append'
-      }
-    }
+      nuxtLink: {
+        trailingSlash: 'append',
+      },
+    },
   },
   site: {
     url: process.env.NUXT_PUBLIC_URL,
     name: process.env.NUXT_PUBLIC_SITE_NAME,
-    trailingSlash: true
+    trailingSlash: true,
   },
   icon: {
     customCollections: [
       {
         prefix: 'custom',
-        dir: './assets/icons'
-      }
-    ]
+        dir: './assets/icons',
+      },
+    ],
   },
   image: {
-    format: ['webp']
+    format: ['webp'],
   },
   security: {
-    rateLimiter: false
+    rateLimiter: false,
   },
   htmlValidator: {
     usePrettier: false,
@@ -107,35 +112,35 @@ export default defineNuxtConfig({
     logLevel: 'verbose',
     options: {
       rules: {
-        'attribute-allowed-values': 'warn'
-      }
-    }
+        'attribute-allowed-values': 'warn',
+      },
+    },
   },
   linkChecker: {
     failOnError: true,
     report: {
-      html: true
-    }
+      html: true,
+    },
   },
   ogImage: {
-    enabled: false
+    enabled: false,
   },
   sitemap: {
     defaults: {
       lastmod: new Date().toISOString(),
       priority: 0.5,
-      changefreq: 'weekly'
+      changefreq: 'weekly',
     },
     sitemaps: {
-      modules: {
-        includeAppSources: true
+      'modules': {
+        includeAppSources: true,
       },
-      boxers: {
-        sources: ['/api/__sitemap__/boxers']
+      'boxers': {
+        sources: ['/api/__sitemap__/boxers'],
       },
-      ['weight-classes']: {
-        sources: ['/api/__sitemap__/weight-classes']
-      }
-    }
-  }
-});
+      'weight-classes': {
+        sources: ['/api/__sitemap__/weight-classes'],
+      },
+    },
+  },
+})

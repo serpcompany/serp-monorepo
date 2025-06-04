@@ -11,7 +11,7 @@ on:
 
 jobs:
   build_staging_daft_fm:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Add delay for staggering
         run: sleep 60

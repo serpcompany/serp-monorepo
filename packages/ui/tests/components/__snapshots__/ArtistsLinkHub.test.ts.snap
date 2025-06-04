@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ArtistsLinkHub Snapshot > renders with multiple artists correctly 1`] = `
+exports[`artistsLinkHub Snapshot > renders with multiple artists correctly 1`] = `
 <div class="
   gap-2
   grid
@@ -37,7 +37,7 @@ exports[`ArtistsLinkHub Snapshot > renders with multiple artists correctly 1`] =
 </div>
 `;
 
-exports[`ArtistsLinkHub Snapshot > renders with no artists correctly 1`] = `
+exports[`artistsLinkHub Snapshot > renders with no artists correctly 1`] = `
 <div class="
   gap-2
   grid
@@ -49,7 +49,7 @@ exports[`ArtistsLinkHub Snapshot > renders with no artists correctly 1`] = `
 "></div>
 `;
 
-exports[`ArtistsLinkHub Snapshot > renders with one artist correctly 1`] = `
+exports[`artistsLinkHub Snapshot > renders with one artist correctly 1`] = `
 <div class="
   gap-2
   grid

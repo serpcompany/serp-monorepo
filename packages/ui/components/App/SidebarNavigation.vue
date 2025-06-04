@@ -1,47 +1,47 @@
 <script lang="ts" setup>
-  const props = defineProps<{
-    isAccountSettings: boolean;
-    teamSlug?: string;
-  }>();
+const props = defineProps<{
+  isAccountSettings: boolean
+  teamSlug?: string
+}>()
 
-  const accountLinks = [
-    {
-      label: 'Account Settings',
-      icon: 'i-lucide-settings',
-      to: '/dashboard/account-settings'
-    }
-  ];
+const accountLinks = [
+  {
+    label: 'Account Settings',
+    icon: 'i-lucide-settings',
+    to: '/dashboard/account-settings',
+  },
+]
 
-  const teamNavLinks = computed(() => [
-    {
-      label: 'Home',
-      icon: 'i-lucide-home',
-      to: `/dashboard/${props.teamSlug}`
-    },
-    {
-      label: 'Posts',
-      icon: 'i-lucide-file-text',
-      to: `/dashboard/${props.teamSlug}/posts`
-    }
-  ]);
+const teamNavLinks = computed(() => [
+  {
+    label: 'Home',
+    icon: 'i-lucide-home',
+    to: `/dashboard/${props.teamSlug}`,
+  },
+  {
+    label: 'Posts',
+    icon: 'i-lucide-file-text',
+    to: `/dashboard/${props.teamSlug}/posts`,
+  },
+])
 
-  const teamSettingsLinks = computed(() => [
-    {
-      label: 'Workspace Settings',
-      icon: 'i-lucide-settings',
-      to: `/dashboard/${props.teamSlug}/settings`
-    },
-    {
-      label: 'Workspace Members',
-      icon: 'i-lucide-users',
-      to: `/dashboard/${props.teamSlug}/settings/members`
-    },
-    {
-      label: 'Billing',
-      icon: 'i-lucide-credit-card',
-      to: `/dashboard/${props.teamSlug}/settings/billing`
-    }
-  ]);
+const teamSettingsLinks = computed(() => [
+  {
+    label: 'Workspace Settings',
+    icon: 'i-lucide-settings',
+    to: `/dashboard/${props.teamSlug}/settings`,
+  },
+  {
+    label: 'Workspace Members',
+    icon: 'i-lucide-users',
+    to: `/dashboard/${props.teamSlug}/settings/members`,
+  },
+  {
+    label: 'Billing',
+    icon: 'i-lucide-credit-card',
+    to: `/dashboard/${props.teamSlug}/settings/billing`,
+  },
+])
 </script>
 
 <template>

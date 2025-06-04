@@ -1,19 +1,19 @@
-import { vi } from 'vitest';
+import { vi } from 'vitest'
 
 // Mock navigateTo function
-export const mockNavigateTo = vi.fn();
-vi.stubGlobal('navigateTo', mockNavigateTo);
+export const mockNavigateTo = vi.fn()
+vi.stubGlobal('navigateTo', mockNavigateTo)
 
 // Mock defineNuxtRouteMiddleware function
-export const mockDefineNuxtRouteMiddleware = vi.fn((handler) => handler);
-vi.stubGlobal('defineNuxtRouteMiddleware', mockDefineNuxtRouteMiddleware);
+export const mockDefineNuxtRouteMiddleware = vi.fn(handler => handler)
+vi.stubGlobal('defineNuxtRouteMiddleware', mockDefineNuxtRouteMiddleware)
 
 // Mock useAppConfig function
 export const mockUseAppConfig = vi.fn(() => ({
   redirects: {
     '/old-path': '/new-path',
     '/blog': '/posts',
-    '/about-us': '/about'
-  }
-}));
-vi.stubGlobal('useAppConfig', mockUseAppConfig);
+    '/about-us': '/about',
+  },
+}))
+vi.stubGlobal('useAppConfig', mockUseAppConfig)

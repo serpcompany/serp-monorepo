@@ -2,7 +2,7 @@
   <UPage>
     <SHeader />
     <UContainer>
-      <slot></slot>
+      <slot />
     </UContainer>
     <LazySFooter />
   </UPage>

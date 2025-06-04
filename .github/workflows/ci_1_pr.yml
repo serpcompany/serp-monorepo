@@ -1,0 +1,55 @@
+name: ci_1_pr
+
+on:
+  pull_request:
+    paths-ignore:
+      - '**/README.md'
+      - 'misc/**'
+  workflow_dispatch:
+
+jobs:
+  ci_1_pr:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [22.16.0]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run TruffleHog Secret Scan
+        uses: trufflesecurity/trufflehog@main
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.10.0
+
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint
+        run: pnpm ci:lint
+
+      - name: Type Check
+        run: pnpm typecheck
+
+      - name: Type Check - No Fixed Errors
+        run: pnpm typecheck:fixed
+
+      - name: Validate TypeScript Errors Against Baseline
+        run: pnpm ts-baseline:validate
+
+      - name: Test
+        run: pnpm test

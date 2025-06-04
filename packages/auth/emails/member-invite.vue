@@ -8,38 +8,38 @@
     Img,
     Link,
     Preview,
-    Text
-  } from '@vue-email/components';
+    Text,
+  } from '@vue-email/components'
 
-  interface MemberInviteProps {
-    inviterName?: string;
-    organizationName?: string;
-    inviteLink?: string;
+interface MemberInviteProps {
+    inviterName?: string
+    organizationName?: string
+    inviteLink?: string
   }
 
   withDefaults(defineProps<MemberInviteProps>(), {
     inviterName: '',
     organizationName: '',
-    inviteLink: ''
-  });
+    inviteLink: '',
+  })
 
-  const main = {
+const main = {
     backgroundColor: '#ffffff',
     fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
+      '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
   };
 
   const container = {
     padding: '40px 24px',
     margin: '0 auto',
-    maxWidth: '600px'
+    maxWidth: '600px',
   };
 
   const heading = {
     fontSize: '24px',
     fontWeight: 'bold',
     marginBottom: '24px',
-    color: '#333'
+    color: '#333',
   };
 
   const button = {
@@ -50,32 +50,32 @@
     textDecoration: 'none',
     borderRadius: '6px',
     marginTop: '24px',
-    marginBottom: '24px'
+    marginBottom: '24px',
   };
 
   const text = {
     fontSize: '16px',
     color: '#666',
     marginBottom: '24px',
-    lineHeight: '24px'
+    lineHeight: '24px',
   };
 
   const footer = {
     fontSize: '14px',
     color: '#898989',
-    marginTop: '32px'
+    marginTop: '32px',
   };
 
-  const runtimeConfig = useRuntimeConfig();
+  const runtimeConfig = useRuntimeConfig()
 </script>
 
 <template>
   <Html>
     <Head />
-    <Preview
-      >Join {{ organizationName }} on
-      {{ runtimeConfig.public.siteName }}</Preview
-    >
+    <Preview>
+      Join {{ organizationName }} on
+      {{ runtimeConfig.public.siteName }}
+    </Preview>
 
     <Body :style="main">
       <Container :style="container">

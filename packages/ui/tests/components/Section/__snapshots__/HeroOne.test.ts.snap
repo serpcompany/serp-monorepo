@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SectionHeroOne Snapshot > renders with title and subtitle correctly 1`] = `
+exports[`sectionHeroOne Snapshot > renders with title and subtitle correctly 1`] = `
 <section class="py-20">
   <h1 class="md:text-center">
     Welcome to HeroOne
@@ -16,7 +16,7 @@ exports[`SectionHeroOne Snapshot > renders with title and subtitle correctly 1`]
 </section>
 `;
 
-exports[`SectionHeroOne Snapshot > renders with title only correctly 1`] = `
+exports[`sectionHeroOne Snapshot > renders with title only correctly 1`] = `
 <section class="py-20">
   <h1 class="md:text-center">
     Welcome to HeroOne

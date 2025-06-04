@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SPageToolCollection Snapshot > renders the default snapshot correctly 1`] = `
+exports[`sPageToolCollection Snapshot > renders the default snapshot correctly 1`] = `
 <div class="container">
   <div class="
     md:px-8

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MoviePostLinkHub Snapshot > renders with no posts correctly 1`] = `
+exports[`moviePostLinkHub Snapshot > renders with no posts correctly 1`] = `
 <div
   class="
     *:not-last:after:absolute
@@ -16,7 +16,7 @@ exports[`MoviePostLinkHub Snapshot > renders with no posts correctly 1`] = `
 ></div>
 `;
 
-exports[`MoviePostLinkHub Snapshot > renders with posts correctly 1`] = `
+exports[`moviePostLinkHub Snapshot > renders with posts correctly 1`] = `
 <div
   class="
     *:not-last:after:absolute

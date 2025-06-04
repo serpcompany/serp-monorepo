@@ -10,25 +10,25 @@ export default defineNuxtConfig({
     'nuxt-multi-cache',
     'nuxt-security',
     'nuxt-link-checker',
-    '@bg-dev/nuxt-s3'
+    '@bg-dev/nuxt-s3',
   ],
   css: ['~/assets/css/main.css'],
   multiCache: {
     api: {
       enabled: true,
       prefix: '/__nuxt_multi_cache',
-      authorization: process.env.CACHE_PURGE_API_KEY || 'xv12378asdfSDA123'
-    }
+      authorization: process.env.CACHE_PURGE_API_KEY || 'xv12378asdfSDA123',
+    },
   },
   stripe: {
     server: {
       key: process.env.STRIPE_SECRET_KEY,
-      options: {}
+      options: {},
     },
     client: {
       key: process.env.STRIPE_API_KEY,
-      options: {}
-    }
+      options: {},
+    },
   },
   s3: {
     driver: 's3',
@@ -36,22 +36,22 @@ export default defineNuxtConfig({
     endpoint: process.env.CLOUDFLARE_R2_ENDPOINT,
     region: 'auto',
     accessKeyId: process.env.CLOUDFLARE_R2_ACCESS_ID,
-    secretAccessKey: process.env.CLOUDFLARE_R2_ACCESS_KEY
+    secretAccessKey: process.env.CLOUDFLARE_R2_ACCESS_KEY,
   },
   ui: {
-    colorMode: true
+    colorMode: true,
   },
   uiPro: {
-    license: process.env.NUXT_UI_PRO_LICENSE
+    license: process.env.NUXT_UI_PRO_LICENSE,
   },
   tsConfig: {
     compilerOptions: {
       baseUrl: '.',
       paths: {
-        '@/*': ['src/*']
+        '@/*': ['src/*'],
       },
-      types: ['vitest/globals', '']
-    }
+      types: ['vitest/globals', ''],
+    },
   },
   runtimeConfig: {
     public: {
@@ -70,130 +70,130 @@ export default defineNuxtConfig({
             label: 'Get Featured',
             icon: 'i-lucide-star',
             to: '/users/get-featured/',
-            color: 'success'
+            color: 'success',
           },
           {
             label: 'Submit',
             icon: 'i-lucide-plus',
-            to: '/users/submit/company/'
+            to: '/users/submit/company/',
           },
           {
             label: 'Billing',
             icon: 'i-lucide-credit-card',
-            to: '/users/manage/billing/'
-          }
-        ]
+            to: '/users/manage/billing/',
+          },
+        ],
       ],
-      copyrightText: '© SERP'
-    }
+      copyrightText: '© SERP',
+    },
   },
   app: {
     head: {
       title: process.env.NUXT_PUBLIC_SITE_NAME,
       htmlAttrs: {
-        lang: 'en'
+        lang: 'en',
       },
       meta: [
         ...(process.env.ROBOTS_ENV === 'staging'
           ? [{ name: 'robots', content: 'noindex' }]
-          : [])
-      ]
-    }
+          : []),
+      ],
+    },
   },
   security: {
-    rateLimiter: false
+    rateLimiter: false,
   },
   scripts: {
     registry: {
       googleTagManager: {
-        id: 'GTM-WVF43L4'
+        id: 'GTM-WVF43L4',
       },
       googleAdsense: {
         client: 'ca-pub-2343633734899216', // infisical-scan:ignore
-        autoAds: true
-      }
-    }
+        autoAds: true,
+      },
+    },
   },
   schemaOrg: {
     identity: 'Organization',
-    host: 'https://serp.co'
+    host: 'https://serp.co',
   },
   experimental: {
     defaults: {
       nuxthref: {
-        trailingSlash: 'append'
-      }
-    }
+        trailingSlash: 'append',
+      },
+    },
   },
   site: {
     url: process.env.NUXT_PUBLIC_URL,
     name: process.env.NUXT_PUBLIC_SITE_NAME,
-    trailingSlash: true
+    trailingSlash: true,
   },
   icon: {
     customCollections: [
       {
         prefix: 'custom',
-        dir: './assets/icons'
-      }
-    ]
+        dir: './assets/icons',
+      },
+    ],
   },
   image: {
-    format: ['webp']
+    format: ['webp'],
   },
 
   htmlValidator: {
     usePrettier: false,
     failOnError: true,
-    logLevel: 'verbose'
+    logLevel: 'verbose',
   },
   linkChecker: {
     failOnError: true,
     report: {
-      html: true
-    }
+      html: true,
+    },
   },
   ogImage: {
-    enabled: false
+    enabled: false,
   },
   sitemap: {
     defaults: {
       lastmod: new Date().toISOString(),
       priority: 0.5,
-      changefreq: 'weekly'
+      changefreq: 'weekly',
     },
     sitemaps: {
-      modules: {
+      'modules': {
         includeAppSources: true,
-        exclude: ['/users/**']
+        exclude: ['/users/**'],
       },
-      company: {
-        sources: ['/api/__sitemap__/company']
+      'company': {
+        sources: ['/api/__sitemap__/company'],
       },
-      ['company-categories']: {
-        sources: ['/api/__sitemap__/company-categories']
+      'company-categories': {
+        sources: ['/api/__sitemap__/company-categories'],
       },
-      ['service-providers']: {
-        sources: ['/api/__sitemap__/service-providers']
+      'service-providers': {
+        sources: ['/api/__sitemap__/service-providers'],
       },
-      posts: {
-        sources: ['/api/__sitemap__/posts']
+      'posts': {
+        sources: ['/api/__sitemap__/posts'],
       },
-      ['post-categories']: {
-        sources: ['/api/__sitemap__/post-categories']
+      'post-categories': {
+        sources: ['/api/__sitemap__/post-categories'],
       },
-      glossary: {
-        sources: ['/api/__sitemap__/glossary']
+      'glossary': {
+        sources: ['/api/__sitemap__/glossary'],
       },
-      blog: {
-        sources: ['/api/__sitemap__/blog']
+      'blog': {
+        sources: ['/api/__sitemap__/blog'],
       },
-      ['mcp-servers']: {
-        sources: ['/api/__sitemap__/mcp-servers']
+      'mcp-servers': {
+        sources: ['/api/__sitemap__/mcp-servers'],
       },
-      ['mcp-servers-categories']: {
-        sources: ['/api/__sitemap__/mcp-servers-categories']
-      }
-    }
-  }
-});
+      'mcp-servers-categories': {
+        sources: ['/api/__sitemap__/mcp-servers-categories'],
+      },
+    },
+  },
+})

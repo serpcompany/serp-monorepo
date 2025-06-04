@@ -1,14 +1,14 @@
 <script setup lang="ts">
-  const str = ref('');
-  const paragraphCount = ref();
+const str = ref('')
+const paragraphCount = ref()
 
-  const runFunction = () => {
-    paragraphCount.value = countParagraphs(str.value);
-  };
+function runFunction() {
+  paragraphCount.value = countParagraphs(str.value)
+}
 
-  useSeoMeta({
-    title: 'A Free Online Paragraph Counter'
-  });
+useSeoMeta({
+  title: 'A Free Online Paragraph Counter',
+})
 </script>
 
 <template>
@@ -32,10 +32,12 @@
       </div>
 
       <!-- button -->
-      <UButton type="button" @click="runFunction">Submit</UButton>
-      <span v-if="paragraphCount" class="ml-10 text-lg"
-        >{{ paragraphCount }} paragraphs</span
-      >
+      <UButton type="button" @click="runFunction">
+        Submit
+      </UButton>
+      <span v-if="paragraphCount" class="ml-10 text-lg">
+        {{ paragraphCount }} paragraphs
+      </span>
     </div>
   </div>
 </template>

@@ -1,11 +1,11 @@
 export enum UserRole {
   MEMBER = 'member',
   ADMIN = 'admin',
-  OWNER = 'owner'
+  OWNER = 'owner',
 }
 
 export enum OneTimePasswordTypes {
   signup = 'SIGNUP',
   login = 'LOGIN',
-  forgotPassword = 'FORGOT_PASSWORD'
+  forgotPassword = 'FORGOT_PASSWORD',
 }

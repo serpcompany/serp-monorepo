@@ -1,5 +1,5 @@
-import type { Comment } from '@serp/types/types';
+import type { Comment } from '@serp/types/types'
 
-export const useCompanyComments = async (id: number) => {
-  return useFetchWithCache<Comment[]>(`/comments/${id}?module=company`);
-};
+export async function useCompanyComments(id: number) {
+  return useFetchWithCache<Comment[]>(`/comments/${id}?module=company`)
+}

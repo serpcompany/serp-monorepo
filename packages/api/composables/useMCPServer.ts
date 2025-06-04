@@ -1,5 +1,5 @@
-import type { MCPServer } from '@serp/types/types';
+import type { MCPServer } from '@serp/types/types'
 
-export const useMCPServer = async (slug: string) => {
-  return useFetchWithCache<MCPServer>(`/entity/${slug}?module=mcp_server`);
-};
+export async function useMCPServer(slug: string) {
+  return useFetchWithCache<MCPServer>(`/entity/${slug}?module=mcp_server`)
+}

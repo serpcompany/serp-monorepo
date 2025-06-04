@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MultipageHeader Snapshot > renders default rendering correctly 1`] = `
+exports[`multipageHeader Snapshot > renders default rendering correctly 1`] = `
 <div serply_link="https://example.com">
   <header
     class="
@@ -184,7 +184,7 @@ exports[`MultipageHeader Snapshot > renders default rendering correctly 1`] = `
 </div>
 `;
 
-exports[`MultipageHeader Snapshot > renders with empty sections correctly 1`] = `
+exports[`multipageHeader Snapshot > renders with empty sections correctly 1`] = `
 <div serply_link="https://example.com">
   <header
     class="
@@ -301,7 +301,7 @@ exports[`MultipageHeader Snapshot > renders with empty sections correctly 1`] = 
 </div>
 `;
 
-exports[`MultipageHeader Snapshot > renders with oneLiner and image correctly 1`] = `
+exports[`multipageHeader Snapshot > renders with oneLiner and image correctly 1`] = `
 <div serply_link="https://example.com">
   <header
     class="
@@ -496,7 +496,7 @@ exports[`MultipageHeader Snapshot > renders with oneLiner and image correctly 1`
 </div>
 `;
 
-exports[`MultipageHeader Snapshot > renders with upvote slot correctly 1`] = `
+exports[`multipageHeader Snapshot > renders with upvote slot correctly 1`] = `
 <div serply_link="https://example.com">
   <header
     class="

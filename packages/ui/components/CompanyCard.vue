@@ -1,32 +1,33 @@
 <script setup lang="ts">
-  import type { Company } from '@serp/types/types';
+import type { Company } from '@serp/types/types'
 
-  interface Props {
-    company: Company;
-    showReadMore?: boolean;
-    showFeatures?: boolean;
-    showExpandedContent?: boolean;
-    baseSlug?: string;
+interface Props {
+  company: Company
+  showReadMore?: boolean
+  showFeatures?: boolean
+  showExpandedContent?: boolean
+  baseSlug?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  baseSlug: 'products/',
+})
+
+const featured = computed(() => props.company.featured)
+const companyHyperlink = computed(
+  () => `/${props.baseSlug}${props.company.slug}/reviews/`,
+)
+
+const mainImage = computed(() => {
+  if (props.company.logo) {
+    return props.company.logo
+  }
+  else if (props.company.screenshots && props.company.screenshots.length) {
+    return props.company.screenshots[0]
   }
 
-  const props = withDefaults(defineProps<Props>(), {
-    baseSlug: 'products/'
-  });
-
-  const featured = computed(() => props.company.featured);
-  const companyHyperlink = computed(
-    () => `/${props.baseSlug}${props.company.slug}/reviews/`
-  );
-
-  const mainImage = computed(() => {
-    if (props.company.logo) {
-      return props.company.logo;
-    } else if (props.company.screenshots && props.company.screenshots.length) {
-      return props.company.screenshots[0];
-    }
-
-    return null;
-  });
+  return null
+})
 </script>
 
 <template>
@@ -34,12 +35,12 @@
     :ui="{
       root: 'flex flex-col divide-dashed transition-all',
       body: 'p-5 sm:p-5 flex-grow',
-      footer: `px-5 py-4 sm:px-5 bg-gray-50 dark:bg-black/10 rounded-b-lg`
+      footer: `px-5 py-4 sm:px-5 bg-gray-50 dark:bg-black/10 rounded-b-lg`,
     }"
     :class="[
       featured
         ? 'ring-secondary-400 hover:ring-secondary-300 dark:ring-secondary-600 dark:hover:ring-secondary-500 ring-2 lg:col-span-2'
-        : 'hover:ring-(--ui-border-accented)'
+        : 'hover:ring-(--ui-border-accented)',
     ]"
     variant="outline"
   >
@@ -76,7 +77,9 @@
         </div>
       </div>
       <div class="flex flex-col gap-4">
-        <p class="text-muted text-sm">{{ company.excerpt }}</p>
+        <p class="text-muted text-sm">
+          {{ company.excerpt }}
+        </p>
         <div
           v-if="Boolean(company.categories?.length)"
           class="inline-flex flex-wrap items-center gap-2"

@@ -8,7 +8,6 @@ node_modules
 # testing
 coverage
 
-
 # build outputs
 .output/
 out/
@@ -28,7 +27,6 @@ yarn-error.log*
 .env
 .env.*
 !.env.example
-
 
 # turbo
 .turbo
@@ -59,8 +57,10 @@ gsc-service-account.json
 logs
 *.log
 dev-debug.log
+
 # Dependency directories
 node_modules/
+
 # Environment variables
 # Editor directories and files
 .idea
@@ -70,11 +70,12 @@ node_modules/
 *.njsproj
 *.sln
 *.sw?
+
 # OS specific
 # Task files
 tasks.json
 tasks/
-**/.claude/settings.local.json
-
 tsconfig.tsbuildinfo
 **/tsconfig.tsbuildinfo
+.claude/
+misc/ignore/

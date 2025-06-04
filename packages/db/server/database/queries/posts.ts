@@ -1,12 +1,25 @@
-import { getDb } from '../index';
-import { post, user } from '../schema';
-import { and, desc, eq } from 'drizzle-orm';
-import { H3Error } from 'h3';
+import { and, desc, eq } from 'drizzle-orm'
+import { H3Error } from 'h3'
+import { getDb } from '../index'
+import { post, user } from '../schema'
 
-type Post = typeof post.$inferSelect;
-type InsertPost = typeof post.$inferInsert;
+type Post = typeof post.$inferSelect
+type InsertPost = typeof post.$inferInsert
 
-export const getAllPosts = async (teamId: number) => {
+export async function getAllPosts(
+  teamId: number,
+): Promise<
+    Array<
+      Post & {
+        user: {
+          id: number
+          name: string | null
+          email: string
+          avatarUrl: string | null
+        } | null
+      }
+    >
+  > {
   try {
     const rows = await getDb()
       .select()
@@ -14,7 +27,7 @@ export const getAllPosts = async (teamId: number) => {
       .leftJoin(user, eq(user.id, post.userId))
       .where(eq(post.teamId, teamId))
       .orderBy(desc(post.createdAt))
-      .execute();
+      .execute()
 
     const posts = rows.map(({ post: p, user: u }) => ({
       ...p,
@@ -23,123 +36,130 @@ export const getAllPosts = async (teamId: number) => {
             id: u.id,
             name: u.name,
             email: u.email,
-            avatarUrl: u.avatarUrl
+            avatarUrl: u.avatarUrl,
           }
-        : null
-    }));
+        : null,
+    }))
 
-    return posts;
-  } catch (error) {
-    console.error(error);
+    return posts
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to get all posts'
-    });
+      statusMessage: 'Failed to get all posts',
+    })
   }
-};
+}
 
-export const createPost = async (postData: InsertPost) => {
+export async function createPost(postData: InsertPost): Promise<Post> {
   try {
     const [newPost] = await getDb()
       .insert(post)
       .values(postData)
       .returning()
-      .execute();
-    return newPost;
-  } catch {
+      .execute()
+    return newPost
+  }
+  catch {
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to create post'
-    });
+      statusMessage: 'Failed to create post',
+    })
   }
-};
+}
 
-export const getPostById = async (
+export async function getPostById(
   id: number,
   teamId: number,
-  userId: number
-) => {
+  userId: number,
+): Promise<Post | null> {
   try {
     const [postRecord] = await getDb()
       .select()
       .from(post)
       .where(
-        and(eq(post.id, id), eq(post.teamId, teamId), eq(post.userId, userId))
+        and(eq(post.id, id), eq(post.teamId, teamId), eq(post.userId, userId)),
       )
-      .execute();
-    return postRecord ?? null;
-  } catch {
+      .execute()
+    return postRecord ?? null
+  }
+  catch {
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to get post by ID'
-    });
+      statusMessage: 'Failed to get post by ID',
+    })
   }
-};
+}
 
-export const updatePost = async (
+export async function updatePost(
   id: number,
   teamId: number,
   userId: number,
-  postData: Partial<Post>
-) => {
+  postData: Partial<Post>,
+): Promise<Post> {
   try {
     const result = await getDb()
       .update(post)
       .set(postData)
       .where(
-        and(eq(post.id, id), eq(post.teamId, teamId), eq(post.userId, userId))
+        and(eq(post.id, id), eq(post.teamId, teamId), eq(post.userId, userId)),
       )
       .returning()
-      .execute();
+      .execute()
 
     if (!result.length) {
       throw createError({
         statusCode: 403,
         statusMessage:
-          'You are not authorized to update this post or it does not exist'
-      });
+          'You are not authorized to update this post or it does not exist',
+      })
     }
 
-    return result[0];
-  } catch (error) {
-    if (error instanceof H3Error && error.statusCode) throw error;
+    return result[0]
+  }
+  catch (error) {
+    if (error instanceof H3Error && error.statusCode)
+      throw error
 
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to update post'
-    });
+      statusMessage: 'Failed to update post',
+    })
   }
-};
+}
 
-export const deletePost = async (
+export async function deletePost(
   id: number,
   teamId: number,
-  userId: number
-) => {
+  userId: number,
+): Promise<Post> {
   try {
     const result = await getDb()
       .delete(post)
       .where(
-        and(eq(post.id, id), eq(post.teamId, teamId), eq(post.userId, userId))
+        and(eq(post.id, id), eq(post.teamId, teamId), eq(post.userId, userId)),
       )
       .returning()
-      .execute();
+      .execute()
 
     if (!result.length) {
       throw createError({
         statusCode: 403,
         statusMessage:
-          'You are not authorized to delete this post or it does not exist'
-      });
+          'You are not authorized to delete this post or it does not exist',
+      })
     }
 
-    return result[0];
-  } catch (error) {
-    if (error instanceof H3Error && error.statusCode) throw error;
+    return result[0]
+  }
+  catch (error) {
+    if (error instanceof H3Error && error.statusCode)
+      throw error
 
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to delete post'
-    });
+      statusMessage: 'Failed to delete post',
+    })
   }
-};
+}
