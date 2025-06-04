@@ -104,7 +104,7 @@ export default defineNuxtConfig({
     rateLimiter: false,
     headers: {
       contentSecurityPolicy: {
-        'img-src': ['\'self\'', 'data:', '*'],
+        'img-src': ['\'self\'', 'data:', '*', 'blob:'],
         'script-src-attr': ['\'unsafe-inline\''],
       },
     },
