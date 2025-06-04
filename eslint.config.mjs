@@ -168,6 +168,7 @@ export default antfu({
       'eqeqeq': 'warn',
       'format/prettier': 'warn',
       'no-alert': 'warn',
+      'no-extend-native': 'warn',
       'no-restricted-globals': 'warn',
       'node/prefer-global/process': 'warn',
       'regexp/no-misleading-capturing-group': 'warn',
