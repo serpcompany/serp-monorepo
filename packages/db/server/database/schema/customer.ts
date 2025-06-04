@@ -1,5 +1,5 @@
 import { integer, timestamp, varchar } from 'drizzle-orm/pg-core'
-import { stripeSchema } from './index'
+import { stripeSchema } from './schema'
 import { team } from './team'
 import { user } from './user'
 

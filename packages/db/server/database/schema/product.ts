@@ -6,7 +6,7 @@ import {
   timestamp,
   varchar,
 } from 'drizzle-orm/pg-core'
-import { stripeSchema } from './index'
+import { stripeSchema } from './schema'
 
 export const product = stripeSchema.table('product', {
   id: varchar('id', { length: 255 }).primaryKey(),
