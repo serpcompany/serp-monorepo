@@ -1,31 +1,25 @@
-import type { SlackNotificationOptions } from '../../../../../server/utils/providers/slack'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { mockSlackClient, mockWebClient } from '../../../../setup'
+import type { SlackNotificationOptions } from '../../../../../server/utils/providers/slack';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { mockSlackClient, mockWebClient } from '../../../../setup';
 
-describe('slack Provider', () => {
-  const originalEnv = { ...process.env }
-  const originalNodeEnv = process.env.NODE_ENV
+let sendSlackNotification: typeof import('../../../../../server/utils/providers/slack').sendSlackNotification;
 
-  beforeEach(() => {
-    vi.resetModules()
-    vi.clearAllMocks()
+describe('slack provider', () => {
+  beforeEach(async () => {
+    vi.resetModules();
+    vi.clearAllMocks();
 
-    process.env.SLACK_BOT_TOKEN = 'test-slack-token'
-    process.env.SLACK_CHANNEL_ID = 'test-channel-id'
-    process.env.NODE_ENV = 'production'
-  })
+    vi.stubEnv('SLACK_BOT_TOKEN', 'test-slack-token');
+    vi.stubEnv('SLACK_CHANNEL_ID', 'test-channel-id');
+    vi.stubEnv('NODE_ENV', 'production');
 
-  afterEach(() => {
-    process.env = { ...originalEnv }
-    process.env.NODE_ENV = originalNodeEnv
-  })
+    ({ sendSlackNotification } = await import(
+      '../../../../../server/utils/providers/slack'
+    ));
+  });
 
   describe('sendSlackNotification', () => {
     it('should send a message to Slack in production environment', async () => {
-      const { sendSlackNotification } = await import(
-        '../../../../../server/utils/providers/slack'
-      )
-
       const options: SlackNotificationOptions = {
         message: 'Test notification message',
       }
@@ -40,10 +34,6 @@ describe('slack Provider', () => {
     })
 
     it('should use the specified channel when provided', async () => {
-      const { sendSlackNotification } = await import(
-        '../../../../../server/utils/providers/slack'
-      )
-
       const options: SlackNotificationOptions = {
         message: 'Test notification message',
         channel: 'custom-channel',
@@ -58,12 +48,9 @@ describe('slack Provider', () => {
     })
 
     it('should log instead of sending in non-production environments', async () => {
-      process.env.NODE_ENV = 'development'
+      vi.stubEnv('NODE_ENV', 'development');
 
-      const consoleSpy = vi.spyOn(console, 'log')
-      const { sendSlackNotification } = await import(
-        '../../../../../server/utils/providers/slack'
-      )
+      const consoleSpy = vi.spyOn(console, 'log');
 
       const options: SlackNotificationOptions = {
         message: 'Test notification message',
@@ -81,10 +68,7 @@ describe('slack Provider', () => {
     it('should handle error if SLACK_BOT_TOKEN is missing', async () => {
       delete process.env.SLACK_BOT_TOKEN
 
-      const consoleSpy = vi.spyOn(console, 'error')
-      const { sendSlackNotification } = await import(
-        '../../../../../server/utils/providers/slack'
-      )
+      const consoleSpy = vi.spyOn(console, 'error');
 
       const options: SlackNotificationOptions = {
         message: 'Test notification message',
@@ -105,10 +89,7 @@ describe('slack Provider', () => {
         new Error('Slack API error'),
       )
 
-      const consoleSpy = vi.spyOn(console, 'error')
-      const { sendSlackNotification } = await import(
-        '../../../../../server/utils/providers/slack'
-      )
+      const consoleSpy = vi.spyOn(console, 'error');
 
       const options: SlackNotificationOptions = {
         message: 'Test notification message',
@@ -125,11 +106,7 @@ describe('slack Provider', () => {
     })
 
     it('should reuse the Slack client instance on subsequent calls', async () => {
-      const { sendSlackNotification } = await import(
-        '../../../../../server/utils/providers/slack'
-      )
-
-      await sendSlackNotification({ message: 'First message' })
+      await sendSlackNotification({ message: 'First message' });
 
       mockWebClient.mockClear()
 
