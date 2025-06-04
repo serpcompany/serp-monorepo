@@ -1,10 +1,10 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { SlackNotificationOptions } from '../../../../../server/utils/providers/slack';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { mockSlackClient, mockWebClient } from '../../../../setup';
 
 let sendSlackNotification: typeof import('../../../../../server/utils/providers/slack').sendSlackNotification;
 
-describe('Slack Provider', () => {
+describe('slack provider', () => {
   beforeEach(async () => {
     vi.resetModules();
     vi.clearAllMocks();
