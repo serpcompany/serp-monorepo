@@ -1,5 +1,5 @@
 import { jsonb, serial, timestamp, varchar } from 'drizzle-orm/pg-core'
-import { stripeSchema } from './index'
+import { stripeSchema } from './schema'
 
 export const payment = stripeSchema.table('payment', {
   id: serial('id').primaryKey(),

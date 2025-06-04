@@ -1,7 +1,7 @@
 import { relations } from 'drizzle-orm'
 import { integer, serial, timestamp, varchar } from 'drizzle-orm/pg-core'
 import { entity } from './entity'
-import { userSchema } from './index'
+import { userSchema } from './schema'
 import { user } from './user'
 
 export const team = userSchema.table('team', {
