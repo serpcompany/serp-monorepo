@@ -83,7 +83,7 @@ useSeoMeta({
           :loading="status === 'pending'"
           :items="data?.servers || []"
           :pagination-limit="filters.limit"
-          :pagination-total="data?.pagination?.totalItems"
+          :pagination-total="data?.pagination?.totalItems ?? 0"
         />
       </div>
 
