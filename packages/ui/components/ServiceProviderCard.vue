@@ -258,12 +258,6 @@ const serviceProviderMainImage = computed(() => {
     width: 100%;
   }
   .upvote-btn :deep(.flex) {
-    width: 1%; 
+    width: 1%;
   }
-
-  /* Override orange upvo color with be *  .upvote-btn :deep(.text-orange-500) {
-    cor: var(--ui-color-secondary-500, #0969d !important;
-  }
-  .upvote-btn :deep(.dark\:text-orange-40 {   color: var(--ui-color-secondary-400, #2f87) !important;
-  } */
 </style>
