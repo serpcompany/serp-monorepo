@@ -5,7 +5,7 @@ import {
   timestamp,
   varchar,
 } from 'drizzle-orm/pg-core'
-import { stripeSchema } from './index'
+import { stripeSchema } from './schema'
 
 export const featuredSubscription = stripeSchema.table(
   'featured_subscription',

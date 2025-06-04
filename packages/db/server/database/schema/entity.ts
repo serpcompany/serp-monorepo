@@ -9,7 +9,7 @@ import {
   varchar,
   vector,
 } from 'drizzle-orm/pg-core'
-import { cacheSchema } from './index'
+import { cacheSchema } from './schema'
 
 export const entity = cacheSchema.table('entity', {
   id: serial('id').primaryKey(),

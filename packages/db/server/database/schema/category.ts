@@ -5,7 +5,7 @@ import {
   timestamp,
   varchar,
 } from 'drizzle-orm/pg-core'
-import { cacheSchema } from './index'
+import { cacheSchema } from './schema'
 
 export const category = cacheSchema.table('category', {
   id: serial('id').primaryKey(),

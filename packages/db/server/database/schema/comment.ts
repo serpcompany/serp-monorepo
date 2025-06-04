@@ -1,5 +1,6 @@
 import { integer, serial, text, timestamp } from 'drizzle-orm/pg-core'
-import { ltree, userSchema } from './index'
+import { userSchema } from './schema'
+import { ltree } from './types'
 
 export const comment = userSchema.table('comment', {
   id: serial('id').primaryKey(),

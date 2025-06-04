@@ -1,6 +1,6 @@
 import { relations } from 'drizzle-orm'
 import { integer, serial, text, timestamp, varchar } from 'drizzle-orm/pg-core'
-import { userSchema } from './index'
+import { userSchema } from './schema'
 import { team } from './team'
 import { user } from './user'
 

@@ -100,6 +100,12 @@ export default defineNuxtConfig({
   },
   security: {
     rateLimiter: false,
+    headers: {
+      contentSecurityPolicy: {
+        'img-src': ['\'self\'', 'data:', '*', 'blob:'],
+        'script-src-attr': ['\'unsafe-inline\''],
+      },
+    },
   },
   htmlValidator: {
     usePrettier: false,

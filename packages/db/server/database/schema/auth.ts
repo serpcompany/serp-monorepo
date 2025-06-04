@@ -8,7 +8,7 @@ import {
   timestamp,
   varchar,
 } from 'drizzle-orm/pg-core'
-import { userSchema } from './index'
+import { userSchema } from './schema'
 import { user } from './user'
 
 export const emailVerificationCode = userSchema.table(

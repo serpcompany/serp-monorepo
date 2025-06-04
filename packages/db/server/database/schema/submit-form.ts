@@ -8,7 +8,7 @@ import {
   uuid,
   varchar,
 } from 'drizzle-orm/pg-core'
-import { userSchema } from './index'
+import { userSchema } from './schema'
 
 export const submitForm = userSchema.table('submit_form', {
   id: serial('id').primaryKey(),
