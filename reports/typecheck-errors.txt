@@ -3,16 +3,20 @@ turbo 2.5.4
 • Packages in scope: @boxingundefeated-com, @daft-fm, @dev, @serp-ai, @serp-co, @serp-media, @serp/api, @serp/auth, @serp/db, @serp/instrumentation, @serp/notifications, @serp/tools, @serp/types, @serp/ui, @serp/utils
 • Running typecheck in 15 packages
 • Remote caching disabled
-@serp-co:typecheck: cache miss, executing b38a6653b235d7b3
-@daft-fm:typecheck: cache miss, executing c70cac87f07a128b
-@serp-ai:typecheck: cache miss, executing 4404a31ee62b7fbc
-@boxingundefeated-com:typecheck: cache miss, executing ab7bd8bc9c4ad9ba
-@serp-media:typecheck: cache miss, executing 0c96fbf81e24d61d
 @dev:typecheck: cache miss, executing 26295fc12536aa69
-@daft-fm:typecheck: 
-@daft-fm:typecheck: > @daft-fm@ typecheck /Users/devin/repos/projects/serp-monorepo/apps/daft-fm
-@daft-fm:typecheck: > nuxt typecheck
-@daft-fm:typecheck: 
+@serp-co:typecheck: cache miss, executing b38a6653b235d7b3
+@boxingundefeated-com:typecheck: cache miss, executing ab7bd8bc9c4ad9ba
+@serp-ai:typecheck: cache miss, executing 4404a31ee62b7fbc
+@serp-media:typecheck: cache miss, executing 820937e6905ea1af
+@daft-fm:typecheck: cache miss, executing c70cac87f07a128b
+@boxingundefeated-com:typecheck: 
+@boxingundefeated-com:typecheck: > @boxingundefeated-com@ typecheck /Users/devin/repos/projects/serp-monorepo/apps/boxingundefeated-com
+@boxingundefeated-com:typecheck: > nuxt typecheck
+@boxingundefeated-com:typecheck: 
+@dev:typecheck: 
+@dev:typecheck: > @dev@ typecheck /Users/devin/repos/projects/serp-monorepo/apps/dev
+@dev:typecheck: > nuxt typecheck
+@dev:typecheck: 
 @serp-co:typecheck: 
 @serp-co:typecheck: > @serp-co@ typecheck /Users/devin/repos/projects/serp-monorepo/apps/serp-co
 @serp-co:typecheck: > nuxt typecheck
@@ -25,40 +29,36 @@ turbo 2.5.4
 @serp-media:typecheck: > @serp-media@ typecheck /Users/devin/repos/projects/serp-monorepo/apps/serp-media
 @serp-media:typecheck: > nuxt typecheck
 @serp-media:typecheck: 
-@boxingundefeated-com:typecheck: 
-@boxingundefeated-com:typecheck: > @boxingundefeated-com@ typecheck /Users/devin/repos/projects/serp-monorepo/apps/boxingundefeated-com
-@boxingundefeated-com:typecheck: > nuxt typecheck
-@boxingundefeated-com:typecheck: 
-@dev:typecheck: 
-@dev:typecheck: > @dev@ typecheck /Users/devin/repos/projects/serp-monorepo/apps/dev
-@dev:typecheck: > nuxt typecheck
-@dev:typecheck: 
-@daft-fm:typecheck: ℹ Using html-validate to validate server-rendered HTML
+@daft-fm:typecheck: 
+@daft-fm:typecheck: > @daft-fm@ typecheck /Users/devin/repos/projects/serp-monorepo/apps/daft-fm
+@daft-fm:typecheck: > nuxt typecheck
+@daft-fm:typecheck: 
 @boxingundefeated-com:typecheck: ℹ Using html-validate to validate server-rendered HTML
+@daft-fm:typecheck: ℹ Using html-validate to validate server-rendered HTML
 @serp-media:typecheck: ℹ Using html-validate to validate server-rendered HTML
 @serp-ai:typecheck: ℹ Using html-validate to validate server-rendered HTML
-@serp-co:typecheck: 
-@serp-co:typecheck: [@nuxt/content]  WARN  No content configuration found, falling back to default collection. In order to have full control over your collections, create the config file in project root. See: https://content.nuxt.com/docs/getting-started/installation
-@serp-co:typecheck: 
 @dev:typecheck: 
+@serp-co:typecheck: 
 @dev:typecheck: [@nuxt/content]  WARN  No content configuration found, falling back to default collection. In order to have full control over your collections, create the config file in project root. See: https://content.nuxt.com/docs/getting-started/installation
 @dev:typecheck: 
+@serp-co:typecheck: [@nuxt/content]  WARN  No content configuration found, falling back to default collection. In order to have full control over your collections, create the config file in project root. See: https://content.nuxt.com/docs/getting-started/installation
+@serp-co:typecheck: 
 @serp-ai:typecheck: ℹ Nuxt Icon server bundle mode is set to local
-@serp-media:typecheck: ℹ Nuxt Icon server bundle mode is set to local
 @daft-fm:typecheck: ℹ Nuxt Icon server bundle mode is set to local
+@serp-media:typecheck: ℹ Nuxt Icon server bundle mode is set to local
 @boxingundefeated-com:typecheck: ℹ Nuxt Icon server bundle mode is set to local
 @serp-co:typecheck: ℹ Using html-validate to validate server-rendered HTML
 @dev:typecheck: ℹ Using html-validate to validate server-rendered HTML
-@serp-co:typecheck: ℹ Nuxt Icon server bundle mode is set to local
 @dev:typecheck: ℹ Nuxt Icon server bundle mode is set to local
+@serp-co:typecheck: ℹ Nuxt Icon server bundle mode is set to local
 @serp-ai:typecheck: ✔ Nuxt Icon discovered local-installed 2 collections: lucide, simple-icons
 @serp-ai:typecheck: ✔ Nuxt Icon loaded local collection custom with 0 icons
-@serp-media:typecheck: ✔ Nuxt Icon discovered local-installed 2 collections: lucide, simple-icons
-@serp-media:typecheck: ✔ Nuxt Icon loaded local collection custom with 0 icons
 @daft-fm:typecheck: ✔ Nuxt Icon discovered local-installed 2 collections: lucide, simple-icons
 @daft-fm:typecheck: ✔ Nuxt Icon loaded local collection custom with 0 icons
 @boxingundefeated-com:typecheck: ✔ Nuxt Icon discovered local-installed 2 collections: lucide, simple-icons
 @boxingundefeated-com:typecheck: ✔ Nuxt Icon loaded local collection custom with 0 icons
+@serp-media:typecheck: ✔ Nuxt Icon discovered local-installed 2 collections: lucide, simple-icons
+@serp-media:typecheck: ✔ Nuxt Icon loaded local collection custom with 0 icons
 @serp-co:typecheck: ✔ Nuxt Icon discovered local-installed 2 collections: lucide, simple-icons
 @serp-co:typecheck: ✔ Nuxt Icon loaded local collection custom with 0 icons
 @dev:typecheck: ✔ Nuxt Icon discovered local-installed 2 collections: lucide, simple-icons
@@ -97,9 +97,6 @@ turbo 2.5.4
 @boxingundefeated-com:typecheck: ../../packages/api/server/api/comments/[id].get.ts(15,41): error TS2345: Argument of type 'string | number | boolean | Record<string, any> | QueryValue[] | null' is not assignable to parameter of type 'string'.
 @boxingundefeated-com:typecheck:   Type 'null' is not assignable to type 'string'.
 @boxingundefeated-com:typecheck: ../../packages/api/server/api/comments/[id].get.ts(66,26): error TS2532: Object is possibly 'undefined'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/comments/[id].get.ts(83,21): error TS2339: Property 'parent_id' does not exist on type 'Comment'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/comments/[id].get.ts(84,34): error TS2339: Property 'parent_id' does not exist on type 'Comment'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/comments/[id].get.ts(85,32): error TS2339: Property 'parent_id' does not exist on type 'Comment'.
 @boxingundefeated-com:typecheck: ../../packages/api/server/api/comments/[id].get.ts(100,41): error TS2345: Argument of type '{}' is not assignable to parameter of type 'Comment[]'.
 @boxingundefeated-com:typecheck:   Type '{}' is missing the following properties from type 'Comment[]': length, pop, push, concat, and 35 more.
 @boxingundefeated-com:typecheck: ../../packages/api/server/api/comments/[id].get.ts(112,36): error TS18046: 'error' is of type 'unknown'.
@@ -126,10 +123,7 @@ turbo 2.5.4
 @boxingundefeated-com:typecheck:     Argument of type 'PgColumn<{ name: "entity"; tableName: "comment"; dataType: "number"; columnType: "PgInteger"; data: number; driverParam: string | number; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, {}>' is not assignable to parameter of type 'never'.
 @boxingundefeated-com:typecheck: ../../packages/api/server/api/comments/[id].put.ts(51,36): error TS18046: 'error' is of type 'unknown'.
 @boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/all-for-category.ts(12,21): error TS2532: Object is possibly 'undefined'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/all-for-category.ts(20,19): error TS18047: 'module' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/all-for-category.ts(21,6): error TS2339: Property 'split' does not exist on type 'string | number | boolean | Record<string, any> | QueryValue[]'.
-@boxingundefeated-com:typecheck:   Property 'split' does not exist on type 'number'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/all-for-category.ts(51,22): error TS2769: No overload matches this call.
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/all-for-category.ts(52,22): error TS2769: No overload matches this call.
 @boxingundefeated-com:typecheck:   Overload 1 of 3, '(left: PgColumn<{ name: "slug"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>, right: string | SQLWrapper): SQL<...>', gave the following error.
 @boxingundefeated-com:typecheck:     Argument of type 'string | number | true | Record<string, any> | QueryValue[] | QueryValue[]' is not assignable to parameter of type 'string | SQLWrapper'.
 @boxingundefeated-com:typecheck:       Type 'number' is not assignable to type 'string | SQLWrapper'.
@@ -138,7 +132,7 @@ turbo 2.5.4
 @boxingundefeated-com:typecheck:       Type 'PgColumn<{ name: "slug"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>' is missing the following properties from type 'Aliased<string | number | true | Record<string, any> | QueryValue[] | QueryValue[]>': sql, fieldAlias
 @boxingundefeated-com:typecheck:   Overload 3 of 3, '(left: never, right: unknown): SQL<unknown>', gave the following error.
 @boxingundefeated-com:typecheck:     Argument of type 'PgColumn<{ name: "slug"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>' is not assignable to parameter of type 'never'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/all-for-category.ts(56,43): error TS2532: Object is possibly 'undefined'.
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/all-for-category.ts(57,43): error TS2532: Object is possibly 'undefined'.
 @boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(32,25): error TS2339: Property 'entities' does not exist on type '{}'.
 @boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(34,31): error TS2532: Object is possibly 'undefined'.
 @boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(57,32): error TS2532: Object is possibly 'undefined'.
@@ -150,12 +144,9 @@ turbo 2.5.4
 @boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(140,21): error TS2532: Object is possibly 'undefined'.
 @boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(176,17): error TS2339: Property 'id' does not exist on type 'User'.
 @boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(176,42): error TS2339: Property 'id' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(193,21): error TS18047: 'module' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(194,8): error TS2339: Property 'split' does not exist on type 'string | number | boolean | Record<string, any> | QueryValue[]'.
-@boxingundefeated-com:typecheck:   Property 'split' does not exist on type 'number'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(236,22): error TS2532: Object is possibly 'undefined'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(240,27): error TS2532: Object is possibly 'undefined'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(248,18): error TS2769: No overload matches this call.
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(237,22): error TS2532: Object is possibly 'undefined'.
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(241,27): error TS2532: Object is possibly 'undefined'.
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(249,18): error TS2769: No overload matches this call.
 @boxingundefeated-com:typecheck:   Overload 1 of 3, '(left: PgColumn<{ name: "slug"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>, right: string | SQLWrapper): SQL<...>', gave the following error.
 @boxingundefeated-com:typecheck:     Argument of type 'string | number | boolean | Record<string, any> | QueryValue[] | null' is not assignable to parameter of type 'string | SQLWrapper'.
 @boxingundefeated-com:typecheck:       Type 'null' is not assignable to type 'string | SQLWrapper'.
@@ -164,7 +155,7 @@ turbo 2.5.4
 @boxingundefeated-com:typecheck:       Type 'PgColumn<{ name: "slug"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>' is missing the following properties from type 'Aliased<string | number | boolean | Record<string, any> | QueryValue[] | null>': sql, fieldAlias
 @boxingundefeated-com:typecheck:   Overload 3 of 3, '(left: never, right: unknown): SQL<unknown>', gave the following error.
 @boxingundefeated-com:typecheck:     Argument of type 'PgColumn<{ name: "slug"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>' is not assignable to parameter of type 'never'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(248,51): error TS2769: No overload matches this call.
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(249,51): error TS2769: No overload matches this call.
 @boxingundefeated-com:typecheck:   Overload 1 of 3, '(left: PgColumn<{ name: "module"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>, right: string | SQLWrapper): SQL<...>', gave the following error.
 @boxingundefeated-com:typecheck:     Argument of type 'string | number | boolean | Record<string, any> | QueryValue[] | null' is not assignable to parameter of type 'string | SQLWrapper'.
 @boxingundefeated-com:typecheck:       Type 'null' is not assignable to type 'string | SQLWrapper'.
@@ -173,39 +164,23 @@ turbo 2.5.4
 @boxingundefeated-com:typecheck:       Type 'PgColumn<{ name: "module"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>' is missing the following properties from type 'Aliased<string | number | boolean | Record<string, any> | QueryValue[] | null>': sql, fieldAlias
 @boxingundefeated-com:typecheck:   Overload 3 of 3, '(left: never, right: unknown): SQL<unknown>', gave the following error.
 @boxingundefeated-com:typecheck:     Argument of type 'PgColumn<{ name: "module"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>' is not assignable to parameter of type 'never'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(251,5): error TS2741: Property 'where' is missing in type 'Omit<import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzle-orm@0.43.1_@opentelemetry+api@1.9.0_better-sqlite3@11.10.0_postgres@3.4.7/node_modules/drizzle-orm/pg-core/query-builders/select").PgSelectBase<"entity", { id: import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzl...' but required in type 'Omit<import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzle-orm@0.43.1_@opentelemetry+api@1.9.0_better-sqlite3@11.10.0_postgres@3.4.7/node_modules/drizzle-orm/pg-core/query-builders/select").PgSelectBase<"entity", { id: import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzl...'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(252,5): error TS2740: Type 'Omit<PgSelectBase<"entity", { count: SQL<number>; }, "partial", Record<"entity", "not-null">, false, "where", { count: number; }[], { count: DrizzleTypeError<"You cannot reference this field without assigning it an alias first - use `.as(<alias>)`">; }>, "where">' is missing the following properties from type 'PgSelectBase<"entity", { count: SQL<number>; }, "partial", Record<"entity", "not-null">, false, never, { count: number; }[], { count: DrizzleTypeError<"You cannot reference this field without assigning it an alias first - use `.as(<alias>)`">; }>': config, joinsNotNullableMap, tableName, isPartialSelect, and 5 more.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(265,17): error TS7053: Element implicitly has an 'any' type because expression of type 'string | number | true | Record<string, any> | QueryValue[]' can't be used to index type '{ 'name:asc': SQL<unknown>; 'name:desc': SQL<unknown>; 'createdAt:desc': SQL<unknown>; }'.
-@boxingundefeated-com:typecheck:   No index signature with a parameter of type 'string' was found on type '{ 'name:asc': SQL<unknown>; 'name:desc': SQL<unknown>; 'createdAt:desc': SQL<unknown>; }'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(265,23): error TS2538: Type 'QueryValue[]' cannot be used as an index type.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(265,23): error TS2538: Type 'Record<string, any>' cannot be used as an index type.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(265,23): error TS2538: Type 'true' cannot be used as an index type.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(266,24): error TS7053: Element implicitly has an 'any' type because expression of type 'string | number | true | Record<string, any> | QueryValue[]' can't be used to index type '{ 'name:asc': SQL<unknown>; 'name:desc': SQL<unknown>; 'createdAt:desc': SQL<unknown>; }'.
-@boxingundefeated-com:typecheck:   No index signature with a parameter of type 'string' was found on type '{ 'name:asc': SQL<unknown>; 'name:desc': SQL<unknown>; 'createdAt:desc': SQL<unknown>; }'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(266,30): error TS2538: Type 'QueryValue[]' cannot be used as an index type.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(266,30): error TS2538: Type 'Record<string, any>' cannot be used as an index type.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(266,30): error TS2538: Type 'true' cannot be used as an index type.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(269,5): error TS2739: Type 'Omit<PgSelectBase<"entity", { id: PgColumn<{ name: "id"; tableName: "entity"; dataType: "number"; columnType: "PgSerial"; data: number; driverParam: number; notNull: true; hasDefault: true; isPrimaryKey: true; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, {}>; ... 25 more ...; usersCurrentVote...' is missing the following properties from type 'Omit<PgSelectBase<"entity", { id: PgColumn<{ name: "id"; tableName: "entity"; dataType: "number"; columnType: "PgSerial"; data: number; driverParam: number; notNull: true; hasDefault: true; isPrimaryKey: true; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, {}>; ... 25 more ...; usersCurrentVote...': orderBy, limit, offset
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(288,33): error TS2352: Conversion of type '{ id: number; name: string; slug: string; data: unknown; categories: unknown; topics: unknown; createdAt: Date; updatedAt: Date; module: string; featured: boolean; featuredOrder: number; numReviews: number | null; ... 14 more ...; usersCurrentVote: number | null; }' to type 'Entity' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(252,5): error TS2741: Property 'where' is missing in type 'Omit<import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzle-orm@0.43.1_@opentelemetry+api@1.9.0_better-sqlite3@11.10.0_postgres@3.4.7/node_modules/drizzle-orm/pg-core/query-builders/select").PgSelectBase<"entity", { id: import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzl...' but required in type 'Omit<import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzle-orm@0.43.1_@opentelemetry+api@1.9.0_better-sqlite3@11.10.0_postgres@3.4.7/node_modules/drizzle-orm/pg-core/query-builders/select").PgSelectBase<"entity", { id: import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzl...'.
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(253,5): error TS2740: Type 'Omit<PgSelectBase<"entity", { count: SQL<number>; }, "partial", Record<"entity", "not-null">, false, "where", { count: number; }[], { count: DrizzleTypeError<"You cannot reference this field without assigning it an alias first - use `.as(<alias>)`">; }>, "where">' is missing the following properties from type 'PgSelectBase<"entity", { count: SQL<number>; }, "partial", Record<"entity", "not-null">, false, never, { count: number; }[], { count: DrizzleTypeError<"You cannot reference this field without assigning it an alias first - use `.as(<alias>)`">; }>': config, joinsNotNullableMap, tableName, isPartialSelect, and 5 more.
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(270,5): error TS2739: Type 'Omit<PgSelectBase<"entity", { id: PgColumn<{ name: "id"; tableName: "entity"; dataType: "number"; columnType: "PgSerial"; data: number; driverParam: number; notNull: true; hasDefault: true; isPrimaryKey: true; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, {}>; ... 25 more ...; usersCurrentVote...' is missing the following properties from type 'Omit<PgSelectBase<"entity", { id: PgColumn<{ name: "id"; tableName: "entity"; dataType: "number"; columnType: "PgSerial"; data: number; driverParam: number; notNull: true; hasDefault: true; isPrimaryKey: true; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, {}>; ... 25 more ...; usersCurrentVote...': orderBy, limit, offset
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/index.ts(289,33): error TS2352: Conversion of type '{ id: number; name: string; slug: string; data: unknown; categories: unknown; topics: unknown; createdAt: Date; updatedAt: Date; module: string; featured: boolean; featuredOrder: number; numReviews: number | null; ... 14 more ...; usersCurrentVote: number | null; }' to type 'Entity' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
 @boxingundefeated-com:typecheck:   Type '{ id: number; name: string; slug: string; data: unknown; categories: unknown; topics: unknown; createdAt: Date; updatedAt: Date; module: string; featured: boolean; featuredOrder: number; numReviews: number | null; ... 14 more ...; usersCurrentVote: number | null; }' is not comparable to type 'BaseEntity'.
 @boxingundefeated-com:typecheck:     Types of property 'usersCurrentVote' are incompatible.
 @boxingundefeated-com:typecheck:       Type 'number | null' is not comparable to type 'boolean | undefined'.
 @boxingundefeated-com:typecheck:         Type 'number' is not comparable to type 'boolean | undefined'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/search.ts(47,21): error TS18049: 'module' is possibly 'null' or 'undefined'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/search.ts(48,8): error TS2339: Property 'split' does not exist on type 'string | number | boolean | Record<string, any> | QueryValue[] | QueryValue[]'.
-@boxingundefeated-com:typecheck:   Property 'split' does not exist on type 'number'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/search.ts(62,40): error TS2345: Argument of type 'string | number | boolean | Record<string, any> | QueryValue[] | null' is not assignable to parameter of type 'string'.
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/search.ts(63,40): error TS2345: Argument of type 'string | number | boolean | Record<string, any> | QueryValue[] | null' is not assignable to parameter of type 'string'.
 @boxingundefeated-com:typecheck:   Type 'null' is not assignable to type 'string'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/search.ts(97,27): error TS2532: Object is possibly 'undefined'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/search.ts(122,29): error TS2352: Conversion of type 'Record<string, unknown>' to type 'EntitySearchResult' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/search.ts(98,27): error TS2532: Object is possibly 'undefined'.
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/search.ts(123,29): error TS2352: Conversion of type 'Record<string, unknown>' to type 'EntitySearchResult' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
 @boxingundefeated-com:typecheck:   Type 'Record<string, unknown>' is missing the following properties from type 'EntitySearchResult': id, name, slug, module
 @boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/verified.ts(8,35): error TS2339: Property 'id' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/verified.ts(15,21): error TS18047: 'module' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/verified.ts(16,8): error TS2339: Property 'split' does not exist on type 'string | number | boolean | Record<string, any> | QueryValue[]'.
-@boxingundefeated-com:typecheck:   Property 'split' does not exist on type 'number'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/verified.ts(27,36): error TS2532: Object is possibly 'undefined'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/verified.ts(44,15): error TS18046: 'err' is of type 'unknown'.
-@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/verified.ts(45,16): error TS18046: 'err' is of type 'unknown'.
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/verified.ts(28,36): error TS2532: Object is possibly 'undefined'.
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/verified.ts(45,15): error TS18046: 'err' is of type 'unknown'.
+@boxingundefeated-com:typecheck: ../../packages/api/server/api/entities/verified.ts(46,16): error TS18046: 'err' is of type 'unknown'.
 @boxingundefeated-com:typecheck: ../../packages/api/server/api/entity/[slug].ts(18,37): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
 @boxingundefeated-com:typecheck:   Type 'undefined' is not assignable to type 'string'.
 @boxingundefeated-com:typecheck: ../../packages/api/server/api/entity/[slug].ts(23,24): error TS2339: Property 'id' does not exist on type '{}'.
@@ -1119,83 +1094,46 @@ turbo 2.5.4
 @boxingundefeated-com:typecheck: ../../packages/ui/components/BookmarkButton.vue(65,24): error TS18046: 'response.value' is of type 'unknown'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/CategoryRenderer.vue(2,15): error TS7008: Member 'value' implicitly has an 'any' type.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/CategoryRenderer.vue(2,22): error TS7008: Member 'baseSlug' implicitly has an 'any' type.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(45,9): error TS2540: Cannot assign to 'value' because it is a read-only property.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(51,5): error TS18047: 'textarea' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(51,14): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(54,5): error TS18047: 'textarea' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(54,14): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(55,5): error TS18047: 'textarea' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(55,14): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(55,32): error TS18047: 'textarea' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(55,41): error TS2339: Property 'scrollHeight' does not exist on type 'EventTarget'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(61,3): error TS18047: 'textarea' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(61,12): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(62,3): error TS18047: 'textarea' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(62,12): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(62,39): error TS18047: 'textarea' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(62,48): error TS2339: Property 'scrollHeight' does not exist on type 'EventTarget'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(68,9): error TS18047: 'document.activeElement' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(75,9): error TS18047: 'textarea' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(75,18): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(86,14): error TS2339: Property 'style' does not exist on type 'Element'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(87,14): error TS2339: Property 'blur' does not exist on type 'Element'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(92,46): error TS18046: 'comment' is of type 'unknown'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(105,21): error TS2339: Property 'id' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(145,31): error TS2339: Property 'siteId' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(146,28): error TS2339: Property 'name' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(147,29): error TS2339: Property 'image' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(154,16): error TS2345: Argument of type '{ target: Element | null; }' is not assignable to parameter of type 'Event'.
-@boxingundefeated-com:typecheck:   Type '{ target: Element | null; }' is missing the following properties from type 'Event': bubbles, cancelBubble, cancelable, composed, and 17 more.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(165,22): error TS18046: 'error' is of type 'unknown'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(174,5): error TS2304: Cannot find name 'setAlert'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(184,25): error TS2531: Object is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(184,67): error TS2339: Property 'offsetWidth' does not exist on type 'Element'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(311,27): error TS2339: Property 'image' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(312,27): error TS2339: Property 'image' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(359,17): error TS18046: 'item' is of type 'unknown'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(360,12): error TS2322: Type 'unknown' is not assignable to type 'Record<string, any> | undefined'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(366,36): error TS18046: 'item' is of type 'unknown'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(38,5): error TS2322: Type 'any[]' is not assignable to type 'never[]'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(45,11): error TS2540: Cannot assign to 'value' because it is a read-only property.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(91,50): error TS18046: 'comment' is of type 'unknown'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(104,23): error TS2339: Property 'id' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(144,33): error TS2339: Property 'siteId' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(145,30): error TS2339: Property 'name' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(146,31): error TS2339: Property 'image' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(315,27): error TS2339: Property 'image' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(316,27): error TS2339: Property 'image' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(363,17): error TS18046: 'item' is of type 'unknown'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(364,12): error TS2322: Type 'unknown' is not assignable to type 'Record<string, any> | undefined'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentsContainer.vue(370,36): error TS18046: 'item' is of type 'unknown'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(38,7): error TS2322: Type 'any[]' is not assignable to type 'never[]'.
 @boxingundefeated-com:typecheck:   Type 'any' is not assignable to type 'never'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(46,58): error TS2339: Property 'id' does not exist on type 'never'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(70,22): error TS2339: Property 'id' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(70,67): error TS2339: Property 'isAdmin' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(137,23): error TS2339: Property 'focus' does not exist on type 'Element'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(148,22): error TS2339: Property 'focus' does not exist on type 'Element'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(149,14): error TS2345: Argument of type '{ target: Element; }' is not assignable to parameter of type 'Event'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(46,62): error TS2339: Property 'id' does not exist on type 'never'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(70,21): error TS2339: Property 'id' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(70,66): error TS2339: Property 'isAdmin' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(133,42): error TS2339: Property 'focus' does not exist on type 'Element'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(144,24): error TS2339: Property 'focus' does not exist on type 'Element'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(145,16): error TS2345: Argument of type '{ target: Element; }' is not assignable to parameter of type 'Event'.
 @boxingundefeated-com:typecheck:   Type '{ target: Element; }' is missing the following properties from type 'Event': bubbles, cancelBubble, cancelable, composed, and 17 more.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(155,15): error TS2540: Cannot assign to 'value' because it is a read-only property.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(178,20): error TS2339: Property 'id' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(178,66): error TS2339: Property 'isAdmin' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(222,7): error TS2322: Type 'number' is not assignable to type 'null'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(246,20): error TS18046: 'error' is of type 'unknown'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(266,20): error TS2339: Property 'id' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(266,66): error TS2339: Property 'isAdmin' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(295,58): error TS2339: Property 'message' does not exist on type 'Ref<FetchError<any> | null, FetchError<any> | null>'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(316,20): error TS18046: 'error' is of type 'unknown'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(336,9): error TS2540: Cannot assign to 'value' because it is a read-only property.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(341,3): error TS18047: 'textarea' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(341,12): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(342,3): error TS18047: 'textarea' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(342,12): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(342,30): error TS18047: 'textarea' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(342,39): error TS2339: Property 'scrollHeight' does not exist on type 'EventTarget'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(344,26): error TS18047: 'textarea' is possibly 'null'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(344,35): error TS2339: Property 'scrollHeight' does not exist on type 'EventTarget'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(349,40): error TS2339: Property 'id' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(395,29): error TS2339: Property 'siteId' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(396,26): error TS2339: Property 'name' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(397,27): error TS2339: Property 'image' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(404,31): error TS2345: Argument of type '{ id: any; user_id: any; name: any; image: any; content: string; created_at: string; updated_at: string; replies: never[]; }' is not assignable to parameter of type 'never'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(415,21): error TS2540: Cannot assign to 'value' because it is a read-only property.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(432,20): error TS18046: 'error' is of type 'unknown'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(479,36): error TS2365: Operator '<' cannot be applied to types 'string' and 'number'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(504,36): error TS2365: Operator '<' cannot be applied to types 'string' and 'number'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(609,29): error TS2339: Property 'image' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(609,44): error TS2339: Property 'avatarUrl' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(616,26): error TS2339: Property 'name' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(654,29): error TS2339: Property 'id' does not exist on type 'never'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(664,48): error TS2339: Property 'id' does not exist on type 'never'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(151,17): error TS2540: Cannot assign to 'value' because it is a read-only property.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(174,22): error TS2339: Property 'id' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(174,68): error TS2339: Property 'isAdmin' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(218,9): error TS2322: Type 'number' is not assignable to type 'null'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(259,22): error TS2339: Property 'id' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(259,68): error TS2339: Property 'isAdmin' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(326,11): error TS2540: Cannot assign to 'value' because it is a read-only property.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(339,42): error TS2339: Property 'id' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(385,31): error TS2339: Property 'siteId' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(386,28): error TS2339: Property 'name' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(387,29): error TS2339: Property 'image' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(394,33): error TS2345: Argument of type '{ id: any; user_id: any; name: any; image: any; content: string; created_at: string; updated_at: string; replies: never[]; }' is not assignable to parameter of type 'never'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(405,23): error TS2540: Cannot assign to 'value' because it is a read-only property.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(466,36): error TS2365: Operator '<' cannot be applied to types 'string' and 'number'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(489,36): error TS2365: Operator '<' cannot be applied to types 'string' and 'number'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(590,29): error TS2339: Property 'image' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(590,44): error TS2339: Property 'avatarUrl' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(597,26): error TS2339: Property 'name' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(635,29): error TS2339: Property 'id' does not exist on type 'never'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/CommentWrapper.vue(645,48): error TS2339: Property 'id' does not exist on type 'never'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/CompanyCard.vue(52,14): error TS2322: Type 'string | null' is not assignable to type 'string | undefined'.
 @boxingundefeated-com:typecheck:   Type 'null' is not assignable to type 'string | undefined'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/CompanyCard.vue(88,32): error TS18048: '__VLS_ctx.company.categories' is possibly 'undefined'.
@@ -1227,10 +1165,6 @@ turbo 2.5.4
 @boxingundefeated-com:typecheck: ../../packages/ui/components/Embeds/SvgBase/SerpShieldBadge.vue(72,48): error TS2339: Property 'categoryName' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, PublicProps, ... 16 more ..., {}>'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/EntityCard.vue(6,30): error TS2304: Cannot find name 'Company'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/EntityCard.vue(103,17): error TS2322: Type '"filled"' is not assignable to type '"solid" | "outline" | "soft" | "subtle" | undefined'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/JSONRenderer.vue(73,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ basicInfo: string; }'.
-@boxingundefeated-com:typecheck:   No index signature with a parameter of type 'string' was found on type '{ basicInfo: string; }'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/JSONRenderer.vue(74,12): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ basicInfo: string; }'.
-@boxingundefeated-com:typecheck:   No index signature with a parameter of type 'string' was found on type '{ basicInfo: string; }'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/JSONRenderer.vue(192,8): error TS2322: Type 'unknown' is not assignable to type 'string'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/JSONRenderer.vue(196,8): error TS2322: Type 'unknown' is not assignable to type 'Row[]'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/JSONRenderer.vue(197,8): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
@@ -1241,7 +1175,7 @@ turbo 2.5.4
 @boxingundefeated-com:typecheck:   Type 'undefined' is not assignable to type 'number'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/JSONRenderer.vue(209,61): error TS2322: Type '{} | undefined' is not assignable to type 'boolean'.
 @boxingundefeated-com:typecheck:   Type 'undefined' is not assignable to type 'boolean'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/JSONRenderer.vue(228,48): error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/JSONRenderer.vue(228,43): error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/JSONRenderer.vue(235,32): error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/JSONRenderer.vue(240,22): error TS2322: Type 'number' is not assignable to type 'string'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/JSONRenderer.vue(271,26): error TS2353: Object literal may only specify known properties, and 'padding' does not exist in type 'ClassNameArray'.
@@ -1256,11 +1190,7 @@ turbo 2.5.4
 @boxingundefeated-com:typecheck: ../../packages/ui/components/ProfileDropdown.client.vue(79,22): error TS2339: Property 'name' does not exist on type 'User'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/ProfileDropdown.client.vue(103,25): error TS2554: Expected 2 arguments, but got 1.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/ProfileDropdown.client.vue(118,21): error TS2322: Type '"xs"' is not assignable to type '"sm" | "md" | "lg" | undefined'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/ReviewDistributionCard.vue(60,15): error TS2353: Object literal may only specify known properties, and 'padding' does not exist in type 'ClassNameArray'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/ReviewDistributionCard.vue(124,28): error TS7053: Element implicitly has an 'any' type because expression of type 'number' can't be used to index type '{ 1: number; 2: number; 3: number; 4: number; 5: number; }'.
-@boxingundefeated-com:typecheck:   No index signature with a parameter of type 'number' was found on type '{ 1: number; 2: number; 3: number; 4: number; 5: number; }'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/ReviewDistributionCard.vue(131,45): error TS7053: Element implicitly has an 'any' type because expression of type 'number' can't be used to index type '{ 1: number; 2: number; 3: number; 4: number; 5: number; }'.
-@boxingundefeated-com:typecheck:   No index signature with a parameter of type 'number' was found on type '{ 1: number; 2: number; 3: number; 4: number; 5: number; }'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/ReviewDistributionCard.vue(63,15): error TS2353: Object literal may only specify known properties, and 'padding' does not exist in type 'ClassNameArray'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/ReviewForm.vue(62,15): error TS2322: Type 'string' is not assignable to type 'number'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/ReviewModal.vue(2,30): error TS2307: Cannot find module '@/serp/types/types' or its corresponding type declarations.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/ReviewModal.vue(38,5): error TS2353: Object literal may only specify known properties, and 'immediate' does not exist in type 'WatchEffectOptions'.
@@ -1535,48 +1465,44 @@ turbo 2.5.4
 @boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Companies.vue(73,35): error TS2339: Property 'reviewedBy' does not exist on type 'never'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Companies.vue(74,44): error TS2339: Property 'reviewedBy' does not exist on type 'never'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Companies.vue(77,43): error TS2339: Property 'createdAt' does not exist on type 'never'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(53,54): error TS2345: Argument of type 'string | LocationQueryValue[]' is not assignable to parameter of type 'string | undefined'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(50,56): error TS2345: Argument of type 'string | LocationQueryValue[]' is not assignable to parameter of type 'string | undefined'.
 @boxingundefeated-com:typecheck:   Type 'LocationQueryValue[]' is not assignable to type 'string'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(55,24): error TS2339: Property 'approved' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(56,46): error TS2339: Property 'domain' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(58,33): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(59,35): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(60,37): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(62,26): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(63,29): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(64,26): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(66,39): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(67,42): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(68,41): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(69,24): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(74,35): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(75,38): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(76,24): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(78,27): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(79,39): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(80,39): error TS2339: Property 'formData' does not exist on type '{}'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(106,14): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ id: null; name: string; domain: string; pricing: string; tags: string; oneLiner: string; description: string; categories: never[]; logo: string; }'.
-@boxingundefeated-com:typecheck:   No index signature with a parameter of type 'string' was found on type '{ id: null; name: string; domain: string; pricing: string; tags: string; oneLiner: string; description: string; categories: never[]; logo: string; }'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(106,54): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ id: null; name: string; domain: string; pricing: string; tags: string; oneLiner: string; description: string; categories: never[]; logo: string; }'.
-@boxingundefeated-com:typecheck:   No index signature with a parameter of type 'string' was found on type '{ id: null; name: string; domain: string; pricing: string; tags: string; oneLiner: string; description: string; categories: never[]; logo: string; }'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(115,11): error TS18048: 'category_' is possibly 'undefined'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(116,13): error TS18048: 'category_' is possibly 'undefined'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(117,13): error TS18048: 'category_' is possibly 'undefined'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(126,12): error TS2304: Cannot find name 'useS3Object'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(224,28): error TS18046: 'err' is of type 'unknown'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(256,22): error TS2339: Property 'email' does not exist on type 'User'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(295,20): error TS18046: 'error' is of type 'unknown'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(318,9): error TS2322: Type 'FetchError<any>' is not assignable to type 'StringOrVNode | undefined'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(323,42): error TS2339: Property 'verified' does not exist on type 'Simplify<SerializeObject<{ status: number; message: string; ok?: undefined; error?: undefined; verified?: undefined; }> | SerializeObject<{ ok: boolean; error: string; status?: undefined; message?: undefined; verified?: undefined; }> | SerializeObject<...>>'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(52,26): error TS2339: Property 'approved' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(53,48): error TS2339: Property 'domain' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(55,35): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(56,37): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(57,37): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(59,22): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(59,55): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(60,28): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(62,41): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(63,44): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(64,41): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(65,26): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(70,37): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(71,38): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(72,26): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(74,29): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(75,39): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(76,41): error TS2339: Property 'formData' does not exist on type '{}'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(109,13): error TS18048: 'category_' is possibly 'undefined'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(110,15): error TS18048: 'category_' is possibly 'undefined'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(111,15): error TS18048: 'category_' is possibly 'undefined'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(120,14): error TS2304: Cannot find name 'useS3Object'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(215,30): error TS18046: 'err' is of type 'unknown'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(247,24): error TS2339: Property 'email' does not exist on type 'User'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(284,22): error TS18046: 'error' is of type 'unknown'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(306,11): error TS2322: Type 'FetchError<any>' is not assignable to type 'StringOrVNode | undefined'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(311,44): error TS2339: Property 'verified' does not exist on type 'Simplify<SerializeObject<{ status: number; message: string; ok?: undefined; error?: undefined; verified?: undefined; }> | SerializeObject<{ ok: boolean; error: string; status?: undefined; message?: undefined; verified?: undefined; }> | SerializeObject<...>>'.
 @boxingundefeated-com:typecheck:   Property 'verified' does not exist on type '{ message: string; status: number; }'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(345,20): error TS18046: 'error' is of type 'unknown'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(373,60): error TS2345: Argument of type 'LocationQueryValue | LocationQueryValue[]' is not assignable to parameter of type 'string'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(331,22): error TS18046: 'error' is of type 'unknown'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(354,60): error TS2345: Argument of type 'LocationQueryValue | LocationQueryValue[]' is not assignable to parameter of type 'string'.
 @boxingundefeated-com:typecheck:   Type 'null' is not assignable to type 'string'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(387,12): error TS2322: Type '{ id: null; name: string; domain: string; pricing: string; tags: string; oneLiner: string; description: string; categories: never[]; logo: string; }' is not assignable to type 'Partial<{ name: string; domain: string; description: string; oneLiner: string; pricing: string[]; categories?: string[] | undefined; logo?: string | null | undefined; tags?: string | null | undefined; }>'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(368,12): error TS2322: Type '{ id: null; name: string; domain: string; pricing: string; tags: string; oneLiner: string; description: string; categories: never[]; logo: string; }' is not assignable to type 'Partial<{ name: string; domain: string; description: string; oneLiner: string; pricing: string[]; categories?: string[] | undefined; logo?: string | null | undefined; tags?: string | null | undefined; }>'.
 @boxingundefeated-com:typecheck:   Types of property 'pricing' are incompatible.
 @boxingundefeated-com:typecheck:     Type 'string' is not assignable to type 'string[]'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(410,15): error TS2322: Type 'string' is not assignable to type 'number'.
-@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(418,15): error TS2322: Type 'string' is not assignable to type 'string[]'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(394,15): error TS2322: Type 'string' is not assignable to type 'number'.
+@boxingundefeated-com:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(402,15): error TS2322: Type 'string' is not assignable to type 'string[]'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/SScriptYouTubePlayer.vue(18,18): error TS2503: Cannot find namespace 'YT'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/SScriptYouTubePlayer.vue(34,16): error TS2503: Cannot find namespace 'YT'.
 @boxingundefeated-com:typecheck: ../../packages/ui/components/SScriptYouTubePlayer.vue(35,23): error TS2503: Cannot find namespace 'YT'.
@@ -1691,9 +1617,6 @@ turbo 2.5.4
 @serp-ai:typecheck: ../../packages/api/server/api/comments/[id].get.ts(15,41): error TS2345: Argument of type 'string | number | boolean | Record<string, any> | QueryValue[] | null' is not assignable to parameter of type 'string'.
 @serp-ai:typecheck:   Type 'null' is not assignable to type 'string'.
 @serp-ai:typecheck: ../../packages/api/server/api/comments/[id].get.ts(66,26): error TS2532: Object is possibly 'undefined'.
-@serp-ai:typecheck: ../../packages/api/server/api/comments/[id].get.ts(83,21): error TS2339: Property 'parent_id' does not exist on type 'Comment'.
-@serp-ai:typecheck: ../../packages/api/server/api/comments/[id].get.ts(84,34): error TS2339: Property 'parent_id' does not exist on type 'Comment'.
-@serp-ai:typecheck: ../../packages/api/server/api/comments/[id].get.ts(85,32): error TS2339: Property 'parent_id' does not exist on type 'Comment'.
 @serp-ai:typecheck: ../../packages/api/server/api/comments/[id].get.ts(100,41): error TS2345: Argument of type '{}' is not assignable to parameter of type 'Comment[]'.
 @serp-ai:typecheck:   Type '{}' is missing the following properties from type 'Comment[]': length, pop, push, concat, and 35 more.
 @serp-ai:typecheck: ../../packages/api/server/api/comments/[id].get.ts(112,36): error TS18046: 'error' is of type 'unknown'.
@@ -1720,10 +1643,7 @@ turbo 2.5.4
 @serp-ai:typecheck:     Argument of type 'PgColumn<{ name: "entity"; tableName: "comment"; dataType: "number"; columnType: "PgInteger"; data: number; driverParam: string | number; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, {}>' is not assignable to parameter of type 'never'.
 @serp-ai:typecheck: ../../packages/api/server/api/comments/[id].put.ts(51,36): error TS18046: 'error' is of type 'unknown'.
 @serp-ai:typecheck: ../../packages/api/server/api/entities/all-for-category.ts(12,21): error TS2532: Object is possibly 'undefined'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/all-for-category.ts(20,19): error TS18047: 'module' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/all-for-category.ts(21,6): error TS2339: Property 'split' does not exist on type 'string | number | boolean | Record<string, any> | QueryValue[]'.
-@serp-ai:typecheck:   Property 'split' does not exist on type 'number'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/all-for-category.ts(51,22): error TS2769: No overload matches this call.
+@serp-ai:typecheck: ../../packages/api/server/api/entities/all-for-category.ts(52,22): error TS2769: No overload matches this call.
 @serp-ai:typecheck:   Overload 1 of 3, '(left: PgColumn<{ name: "slug"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>, right: string | SQLWrapper): SQL<...>', gave the following error.
 @serp-ai:typecheck:     Argument of type 'string | number | true | Record<string, any> | QueryValue[] | QueryValue[]' is not assignable to parameter of type 'string | SQLWrapper'.
 @serp-ai:typecheck:       Type 'number' is not assignable to type 'string | SQLWrapper'.
@@ -1732,7 +1652,7 @@ turbo 2.5.4
 @serp-ai:typecheck:       Type 'PgColumn<{ name: "slug"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>' is missing the following properties from type 'Aliased<string | number | true | Record<string, any> | QueryValue[] | QueryValue[]>': sql, fieldAlias
 @serp-ai:typecheck:   Overload 3 of 3, '(left: never, right: unknown): SQL<unknown>', gave the following error.
 @serp-ai:typecheck:     Argument of type 'PgColumn<{ name: "slug"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>' is not assignable to parameter of type 'never'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/all-for-category.ts(56,43): error TS2532: Object is possibly 'undefined'.
+@serp-ai:typecheck: ../../packages/api/server/api/entities/all-for-category.ts(57,43): error TS2532: Object is possibly 'undefined'.
 @serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(32,25): error TS2339: Property 'entities' does not exist on type '{}'.
 @serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(34,31): error TS2532: Object is possibly 'undefined'.
 @serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(57,32): error TS2532: Object is possibly 'undefined'.
@@ -1744,12 +1664,9 @@ turbo 2.5.4
 @serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(140,21): error TS2532: Object is possibly 'undefined'.
 @serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(176,17): error TS2339: Property 'id' does not exist on type 'User'.
 @serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(176,42): error TS2339: Property 'id' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(193,21): error TS18047: 'module' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(194,8): error TS2339: Property 'split' does not exist on type 'string | number | boolean | Record<string, any> | QueryValue[]'.
-@serp-ai:typecheck:   Property 'split' does not exist on type 'number'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(236,22): error TS2532: Object is possibly 'undefined'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(240,27): error TS2532: Object is possibly 'undefined'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(248,18): error TS2769: No overload matches this call.
+@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(237,22): error TS2532: Object is possibly 'undefined'.
+@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(241,27): error TS2532: Object is possibly 'undefined'.
+@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(249,18): error TS2769: No overload matches this call.
 @serp-ai:typecheck:   Overload 1 of 3, '(left: PgColumn<{ name: "slug"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>, right: string | SQLWrapper): SQL<...>', gave the following error.
 @serp-ai:typecheck:     Argument of type 'string | number | boolean | Record<string, any> | QueryValue[] | null' is not assignable to parameter of type 'string | SQLWrapper'.
 @serp-ai:typecheck:       Type 'null' is not assignable to type 'string | SQLWrapper'.
@@ -1758,7 +1675,7 @@ turbo 2.5.4
 @serp-ai:typecheck:       Type 'PgColumn<{ name: "slug"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>' is missing the following properties from type 'Aliased<string | number | boolean | Record<string, any> | QueryValue[] | null>': sql, fieldAlias
 @serp-ai:typecheck:   Overload 3 of 3, '(left: never, right: unknown): SQL<unknown>', gave the following error.
 @serp-ai:typecheck:     Argument of type 'PgColumn<{ name: "slug"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>' is not assignable to parameter of type 'never'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(248,51): error TS2769: No overload matches this call.
+@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(249,51): error TS2769: No overload matches this call.
 @serp-ai:typecheck:   Overload 1 of 3, '(left: PgColumn<{ name: "module"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>, right: string | SQLWrapper): SQL<...>', gave the following error.
 @serp-ai:typecheck:     Argument of type 'string | number | boolean | Record<string, any> | QueryValue[] | null' is not assignable to parameter of type 'string | SQLWrapper'.
 @serp-ai:typecheck:       Type 'null' is not assignable to type 'string | SQLWrapper'.
@@ -1767,39 +1684,23 @@ turbo 2.5.4
 @serp-ai:typecheck:       Type 'PgColumn<{ name: "module"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>' is missing the following properties from type 'Aliased<string | number | boolean | Record<string, any> | QueryValue[] | null>': sql, fieldAlias
 @serp-ai:typecheck:   Overload 3 of 3, '(left: never, right: unknown): SQL<unknown>', gave the following error.
 @serp-ai:typecheck:     Argument of type 'PgColumn<{ name: "module"; tableName: "category"; dataType: "string"; columnType: "PgVarchar"; data: string; driverParam: string; notNull: true; hasDefault: false; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, { ...; }>' is not assignable to parameter of type 'never'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(251,5): error TS2741: Property 'where' is missing in type 'Omit<import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzle-orm@0.43.1_@opentelemetry+api@1.9.0_better-sqlite3@11.10.0_postgres@3.4.7/node_modules/drizzle-orm/pg-core/query-builders/select").PgSelectBase<"entity", { id: import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzl...' but required in type 'Omit<import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzle-orm@0.43.1_@opentelemetry+api@1.9.0_better-sqlite3@11.10.0_postgres@3.4.7/node_modules/drizzle-orm/pg-core/query-builders/select").PgSelectBase<"entity", { id: import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzl...'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(252,5): error TS2740: Type 'Omit<PgSelectBase<"entity", { count: SQL<number>; }, "partial", Record<"entity", "not-null">, false, "where", { count: number; }[], { count: DrizzleTypeError<"You cannot reference this field without assigning it an alias first - use `.as(<alias>)`">; }>, "where">' is missing the following properties from type 'PgSelectBase<"entity", { count: SQL<number>; }, "partial", Record<"entity", "not-null">, false, never, { count: number; }[], { count: DrizzleTypeError<"You cannot reference this field without assigning it an alias first - use `.as(<alias>)`">; }>': config, joinsNotNullableMap, tableName, isPartialSelect, and 5 more.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(265,17): error TS7053: Element implicitly has an 'any' type because expression of type 'string | number | true | Record<string, any> | QueryValue[]' can't be used to index type '{ 'name:asc': SQL<unknown>; 'name:desc': SQL<unknown>; 'createdAt:desc': SQL<unknown>; }'.
-@serp-ai:typecheck:   No index signature with a parameter of type 'string' was found on type '{ 'name:asc': SQL<unknown>; 'name:desc': SQL<unknown>; 'createdAt:desc': SQL<unknown>; }'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(265,23): error TS2538: Type 'QueryValue[]' cannot be used as an index type.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(265,23): error TS2538: Type 'Record<string, any>' cannot be used as an index type.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(265,23): error TS2538: Type 'true' cannot be used as an index type.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(266,24): error TS7053: Element implicitly has an 'any' type because expression of type 'string | number | true | Record<string, any> | QueryValue[]' can't be used to index type '{ 'name:asc': SQL<unknown>; 'name:desc': SQL<unknown>; 'createdAt:desc': SQL<unknown>; }'.
-@serp-ai:typecheck:   No index signature with a parameter of type 'string' was found on type '{ 'name:asc': SQL<unknown>; 'name:desc': SQL<unknown>; 'createdAt:desc': SQL<unknown>; }'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(266,30): error TS2538: Type 'QueryValue[]' cannot be used as an index type.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(266,30): error TS2538: Type 'Record<string, any>' cannot be used as an index type.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(266,30): error TS2538: Type 'true' cannot be used as an index type.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(269,5): error TS2739: Type 'Omit<PgSelectBase<"entity", { id: PgColumn<{ name: "id"; tableName: "entity"; dataType: "number"; columnType: "PgSerial"; data: number; driverParam: number; notNull: true; hasDefault: true; isPrimaryKey: true; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, {}>; ... 25 more ...; usersCurrentVote...' is missing the following properties from type 'Omit<PgSelectBase<"entity", { id: PgColumn<{ name: "id"; tableName: "entity"; dataType: "number"; columnType: "PgSerial"; data: number; driverParam: number; notNull: true; hasDefault: true; isPrimaryKey: true; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, {}>; ... 25 more ...; usersCurrentVote...': limit, orderBy, offset
-@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(288,33): error TS2352: Conversion of type '{ id: number; name: string; slug: string; data: unknown; categories: unknown; topics: unknown; createdAt: Date; updatedAt: Date; module: string; featured: boolean; featuredOrder: number; numReviews: number | null; ... 14 more ...; usersCurrentVote: number | null; }' to type 'Entity' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(252,5): error TS2741: Property 'where' is missing in type 'Omit<import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzle-orm@0.43.1_@opentelemetry+api@1.9.0_better-sqlite3@11.10.0_postgres@3.4.7/node_modules/drizzle-orm/pg-core/query-builders/select").PgSelectBase<"entity", { id: import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzl...' but required in type 'Omit<import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzle-orm@0.43.1_@opentelemetry+api@1.9.0_better-sqlite3@11.10.0_postgres@3.4.7/node_modules/drizzle-orm/pg-core/query-builders/select").PgSelectBase<"entity", { id: import("/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/drizzl...'.
+@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(253,5): error TS2740: Type 'Omit<PgSelectBase<"entity", { count: SQL<number>; }, "partial", Record<"entity", "not-null">, false, "where", { count: number; }[], { count: DrizzleTypeError<"You cannot reference this field without assigning it an alias first - use `.as(<alias>)`">; }>, "where">' is missing the following properties from type 'PgSelectBase<"entity", { count: SQL<number>; }, "partial", Record<"entity", "not-null">, false, never, { count: number; }[], { count: DrizzleTypeError<"You cannot reference this field without assigning it an alias first - use `.as(<alias>)`">; }>': config, joinsNotNullableMap, tableName, isPartialSelect, and 5 more.
+@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(270,5): error TS2739: Type 'Omit<PgSelectBase<"entity", { id: PgColumn<{ name: "id"; tableName: "entity"; dataType: "number"; columnType: "PgSerial"; data: number; driverParam: number; notNull: true; hasDefault: true; isPrimaryKey: true; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, {}>; ... 25 more ...; usersCurrentVote...' is missing the following properties from type 'Omit<PgSelectBase<"entity", { id: PgColumn<{ name: "id"; tableName: "entity"; dataType: "number"; columnType: "PgSerial"; data: number; driverParam: number; notNull: true; hasDefault: true; isPrimaryKey: true; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, {}>; ... 25 more ...; usersCurrentVote...': limit, orderBy, offset
+@serp-ai:typecheck: ../../packages/api/server/api/entities/index.ts(289,33): error TS2352: Conversion of type '{ id: number; name: string; slug: string; data: unknown; categories: unknown; topics: unknown; createdAt: Date; updatedAt: Date; module: string; featured: boolean; featuredOrder: number; numReviews: number | null; ... 14 more ...; usersCurrentVote: number | null; }' to type 'Entity' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
 @serp-ai:typecheck:   Type '{ id: number; name: string; slug: string; data: unknown; categories: unknown; topics: unknown; createdAt: Date; updatedAt: Date; module: string; featured: boolean; featuredOrder: number; numReviews: number | null; ... 14 more ...; usersCurrentVote: number | null; }' is not comparable to type 'BaseEntity'.
 @serp-ai:typecheck:     Types of property 'usersCurrentVote' are incompatible.
 @serp-ai:typecheck:       Type 'number | null' is not comparable to type 'boolean | undefined'.
 @serp-ai:typecheck:         Type 'number' is not comparable to type 'boolean | undefined'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/search.ts(47,21): error TS18049: 'module' is possibly 'null' or 'undefined'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/search.ts(48,8): error TS2339: Property 'split' does not exist on type 'string | number | boolean | Record<string, any> | QueryValue[] | QueryValue[]'.
-@serp-ai:typecheck:   Property 'split' does not exist on type 'number'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/search.ts(62,40): error TS2345: Argument of type 'string | number | boolean | Record<string, any> | QueryValue[] | null' is not assignable to parameter of type 'string'.
+@serp-ai:typecheck: ../../packages/api/server/api/entities/search.ts(63,40): error TS2345: Argument of type 'string | number | boolean | Record<string, any> | QueryValue[] | null' is not assignable to parameter of type 'string'.
 @serp-ai:typecheck:   Type 'null' is not assignable to type 'string'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/search.ts(97,27): error TS2532: Object is possibly 'undefined'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/search.ts(122,29): error TS2352: Conversion of type 'Record<string, unknown>' to type 'EntitySearchResult' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+@serp-ai:typecheck: ../../packages/api/server/api/entities/search.ts(98,27): error TS2532: Object is possibly 'undefined'.
+@serp-ai:typecheck: ../../packages/api/server/api/entities/search.ts(123,29): error TS2352: Conversion of type 'Record<string, unknown>' to type 'EntitySearchResult' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
 @serp-ai:typecheck:   Type 'Record<string, unknown>' is missing the following properties from type 'EntitySearchResult': id, name, slug, module
 @serp-ai:typecheck: ../../packages/api/server/api/entities/verified.ts(8,35): error TS2339: Property 'id' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/verified.ts(15,21): error TS18047: 'module' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/verified.ts(16,8): error TS2339: Property 'split' does not exist on type 'string | number | boolean | Record<string, any> | QueryValue[]'.
-@serp-ai:typecheck:   Property 'split' does not exist on type 'number'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/verified.ts(27,36): error TS2532: Object is possibly 'undefined'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/verified.ts(44,15): error TS18046: 'err' is of type 'unknown'.
-@serp-ai:typecheck: ../../packages/api/server/api/entities/verified.ts(45,16): error TS18046: 'err' is of type 'unknown'.
+@serp-ai:typecheck: ../../packages/api/server/api/entities/verified.ts(28,36): error TS2532: Object is possibly 'undefined'.
+@serp-ai:typecheck: ../../packages/api/server/api/entities/verified.ts(45,15): error TS18046: 'err' is of type 'unknown'.
+@serp-ai:typecheck: ../../packages/api/server/api/entities/verified.ts(46,16): error TS18046: 'err' is of type 'unknown'.
 @serp-ai:typecheck: ../../packages/api/server/api/entity/[slug].ts(18,37): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
 @serp-ai:typecheck:   Type 'undefined' is not assignable to type 'string'.
 @serp-ai:typecheck: ../../packages/api/server/api/entity/[slug].ts(23,24): error TS2339: Property 'id' does not exist on type '{}'.
@@ -2474,6 +2375,20 @@ turbo 2.5.4
 @serp-ai:typecheck:       Type 'PgColumn<{ name: "id"; tableName: "team"; dataType: "number"; columnType: "PgSerial"; data: number; driverParam: number; notNull: true; hasDefault: true; isPrimaryKey: true; isAutoincrement: false; hasRuntimeDefault: false; enumValues: undefined; baseColumn: never; identity: undefined; generated: undefined; }, {}, {}>' is missing the following properties from type 'Aliased<string>': sql, fieldAlias
 @serp-ai:typecheck:   Overload 3 of 3, '(left: never, right: unknown): SQL<unknown>', gave the following error.
 @serp-ai:typecheck:     Argument of type 'PgColumn<{ name: "id"; tableName: "team"; dataType: "number"; columnType: "PgSerial"; data: number; driverParam: number; notNull: true; hasDefault: true; isPrimaryKey: true; isAutoincrement: false; hasRuntimeDefault: false; enumValues: undefined; baseColumn: never; identity: undefined; generated: undefined; }, {}, {}>' is not assignable to parameter of type 'never'.
+@boxingundefeated-com:typecheck: 
+@boxingundefeated-com:typecheck:  ERROR  Process exited with non-zero status (2)
+@boxingundefeated-com:typecheck: 
+@boxingundefeated-com:typecheck:     at R._waitForOutput (/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/tinyexec@1.0.1/node_modules/tinyexec/dist/main.js:530:13)
+@boxingundefeated-com:typecheck:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+@boxingundefeated-com:typecheck:     at async Object.run (/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/@nuxt+cli@3.25.1_magicast@0.3.5/node_modules/@nuxt/cli/dist/chunks/typecheck.mjs:70:9)
+@boxingundefeated-com:typecheck:     at async runCommand (/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/citty@0.1.6/node_modules/citty/dist/index.mjs:316:16)
+@boxingundefeated-com:typecheck:     at async runCommand (/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/citty@0.1.6/node_modules/citty/dist/index.mjs:307:11)
+@boxingundefeated-com:typecheck:     at async runMain (/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/citty@0.1.6/node_modules/citty/dist/index.mjs:445:7) 
+@boxingundefeated-com:typecheck: 
+@boxingundefeated-com:typecheck: 
+@boxingundefeated-com:typecheck: 
+@boxingundefeated-com:typecheck:  ERROR  Process exited with non-zero status (2)
+@boxingundefeated-com:typecheck: 
 @serp-ai:typecheck: ../../packages/db/server/database/queries/teams.ts(156,28): error TS2532: Object is possibly 'undefined'.
 @serp-ai:typecheck: ../../packages/db/server/database/queries/teams.ts(174,25): error TS2532: Object is possibly 'undefined'.
 @serp-ai:typecheck: ../../packages/db/server/database/queries/teams.ts(188,12): error TS2769: No overload matches this call.
@@ -2713,83 +2628,46 @@ turbo 2.5.4
 @serp-ai:typecheck: ../../packages/ui/components/BookmarkButton.vue(65,24): error TS18046: 'response.value' is of type 'unknown'.
 @serp-ai:typecheck: ../../packages/ui/components/CategoryRenderer.vue(2,15): error TS7008: Member 'value' implicitly has an 'any' type.
 @serp-ai:typecheck: ../../packages/ui/components/CategoryRenderer.vue(2,22): error TS7008: Member 'baseSlug' implicitly has an 'any' type.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(45,9): error TS2540: Cannot assign to 'value' because it is a read-only property.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(51,5): error TS18047: 'textarea' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(51,14): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(54,5): error TS18047: 'textarea' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(54,14): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(55,5): error TS18047: 'textarea' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(55,14): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(55,32): error TS18047: 'textarea' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(55,41): error TS2339: Property 'scrollHeight' does not exist on type 'EventTarget'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(61,3): error TS18047: 'textarea' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(61,12): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(62,3): error TS18047: 'textarea' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(62,12): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(62,39): error TS18047: 'textarea' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(62,48): error TS2339: Property 'scrollHeight' does not exist on type 'EventTarget'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(68,9): error TS18047: 'document.activeElement' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(75,9): error TS18047: 'textarea' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(75,18): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(86,14): error TS2339: Property 'style' does not exist on type 'Element'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(87,14): error TS2339: Property 'blur' does not exist on type 'Element'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(92,46): error TS18046: 'comment' is of type 'unknown'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(105,21): error TS2339: Property 'id' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(145,31): error TS2339: Property 'siteId' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(146,28): error TS2339: Property 'name' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(147,29): error TS2339: Property 'image' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(154,16): error TS2345: Argument of type '{ target: Element | null; }' is not assignable to parameter of type 'Event'.
-@serp-ai:typecheck:   Type '{ target: Element | null; }' is missing the following properties from type 'Event': bubbles, cancelBubble, cancelable, composed, and 17 more.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(165,22): error TS18046: 'error' is of type 'unknown'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(174,5): error TS2304: Cannot find name 'setAlert'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(184,25): error TS2531: Object is possibly 'null'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(184,67): error TS2339: Property 'offsetWidth' does not exist on type 'Element'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(311,27): error TS2339: Property 'image' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(312,27): error TS2339: Property 'image' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(359,17): error TS18046: 'item' is of type 'unknown'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(360,12): error TS2322: Type 'unknown' is not assignable to type 'Record<string, any> | undefined'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(366,36): error TS18046: 'item' is of type 'unknown'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(38,5): error TS2322: Type 'any[]' is not assignable to type 'never[]'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(45,11): error TS2540: Cannot assign to 'value' because it is a read-only property.
+@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(91,50): error TS18046: 'comment' is of type 'unknown'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(104,23): error TS2339: Property 'id' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(144,33): error TS2339: Property 'siteId' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(145,30): error TS2339: Property 'name' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(146,31): error TS2339: Property 'image' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(315,27): error TS2339: Property 'image' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(316,27): error TS2339: Property 'image' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(363,17): error TS18046: 'item' is of type 'unknown'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(364,12): error TS2322: Type 'unknown' is not assignable to type 'Record<string, any> | undefined'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentsContainer.vue(370,36): error TS18046: 'item' is of type 'unknown'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(38,7): error TS2322: Type 'any[]' is not assignable to type 'never[]'.
 @serp-ai:typecheck:   Type 'any' is not assignable to type 'never'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(46,58): error TS2339: Property 'id' does not exist on type 'never'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(70,22): error TS2339: Property 'id' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(70,67): error TS2339: Property 'isAdmin' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(137,23): error TS2339: Property 'focus' does not exist on type 'Element'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(148,22): error TS2339: Property 'focus' does not exist on type 'Element'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(149,14): error TS2345: Argument of type '{ target: Element; }' is not assignable to parameter of type 'Event'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(46,62): error TS2339: Property 'id' does not exist on type 'never'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(70,21): error TS2339: Property 'id' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(70,66): error TS2339: Property 'isAdmin' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(133,42): error TS2339: Property 'focus' does not exist on type 'Element'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(144,24): error TS2339: Property 'focus' does not exist on type 'Element'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(145,16): error TS2345: Argument of type '{ target: Element; }' is not assignable to parameter of type 'Event'.
 @serp-ai:typecheck:   Type '{ target: Element; }' is missing the following properties from type 'Event': bubbles, cancelBubble, cancelable, composed, and 17 more.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(155,15): error TS2540: Cannot assign to 'value' because it is a read-only property.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(178,20): error TS2339: Property 'id' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(178,66): error TS2339: Property 'isAdmin' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(222,7): error TS2322: Type 'number' is not assignable to type 'null'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(246,20): error TS18046: 'error' is of type 'unknown'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(266,20): error TS2339: Property 'id' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(266,66): error TS2339: Property 'isAdmin' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(295,58): error TS2339: Property 'message' does not exist on type 'Ref<FetchError<any> | null, FetchError<any> | null>'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(316,20): error TS18046: 'error' is of type 'unknown'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(336,9): error TS2540: Cannot assign to 'value' because it is a read-only property.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(341,3): error TS18047: 'textarea' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(341,12): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(342,3): error TS18047: 'textarea' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(342,12): error TS2339: Property 'style' does not exist on type 'EventTarget'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(342,30): error TS18047: 'textarea' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(342,39): error TS2339: Property 'scrollHeight' does not exist on type 'EventTarget'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(344,26): error TS18047: 'textarea' is possibly 'null'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(344,35): error TS2339: Property 'scrollHeight' does not exist on type 'EventTarget'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(349,40): error TS2339: Property 'id' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(395,29): error TS2339: Property 'siteId' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(396,26): error TS2339: Property 'name' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(397,27): error TS2339: Property 'image' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(404,31): error TS2345: Argument of type '{ id: any; user_id: any; name: any; image: any; content: string; created_at: string; updated_at: string; replies: never[]; }' is not assignable to parameter of type 'never'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(415,21): error TS2540: Cannot assign to 'value' because it is a read-only property.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(432,20): error TS18046: 'error' is of type 'unknown'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(479,36): error TS2365: Operator '<' cannot be applied to types 'string' and 'number'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(504,36): error TS2365: Operator '<' cannot be applied to types 'string' and 'number'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(609,29): error TS2339: Property 'image' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(609,44): error TS2339: Property 'avatarUrl' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(616,26): error TS2339: Property 'name' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(654,29): error TS2339: Property 'id' does not exist on type 'never'.
-@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(664,48): error TS2339: Property 'id' does not exist on type 'never'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(151,17): error TS2540: Cannot assign to 'value' because it is a read-only property.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(174,22): error TS2339: Property 'id' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(174,68): error TS2339: Property 'isAdmin' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(218,9): error TS2322: Type 'number' is not assignable to type 'null'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(259,22): error TS2339: Property 'id' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(259,68): error TS2339: Property 'isAdmin' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(326,11): error TS2540: Cannot assign to 'value' because it is a read-only property.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(339,42): error TS2339: Property 'id' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(385,31): error TS2339: Property 'siteId' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(386,28): error TS2339: Property 'name' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(387,29): error TS2339: Property 'image' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(394,33): error TS2345: Argument of type '{ id: any; user_id: any; name: any; image: any; content: string; created_at: string; updated_at: string; replies: never[]; }' is not assignable to parameter of type 'never'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(405,23): error TS2540: Cannot assign to 'value' because it is a read-only property.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(466,36): error TS2365: Operator '<' cannot be applied to types 'string' and 'number'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(489,36): error TS2365: Operator '<' cannot be applied to types 'string' and 'number'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(590,29): error TS2339: Property 'image' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(590,44): error TS2339: Property 'avatarUrl' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(597,26): error TS2339: Property 'name' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(635,29): error TS2339: Property 'id' does not exist on type 'never'.
+@serp-ai:typecheck: ../../packages/ui/components/CommentWrapper.vue(645,48): error TS2339: Property 'id' does not exist on type 'never'.
 @serp-ai:typecheck: ../../packages/ui/components/CompanyCard.vue(52,14): error TS2322: Type 'string | null' is not assignable to type 'string | undefined'.
 @serp-ai:typecheck:   Type 'null' is not assignable to type 'string | undefined'.
 @serp-ai:typecheck: ../../packages/ui/components/CompanyCard.vue(88,32): error TS18048: '__VLS_ctx.company.categories' is possibly 'undefined'.
@@ -2821,10 +2699,6 @@ turbo 2.5.4
 @serp-ai:typecheck: ../../packages/ui/components/Embeds/SvgBase/SerpShieldBadge.vue(72,48): error TS2339: Property 'categoryName' does not exist on type 'CreateComponentPublicInstanceWithMixins<ToResolvedProps<{}, {}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, PublicProps, ... 16 more ..., {}>'.
 @serp-ai:typecheck: ../../packages/ui/components/EntityCard.vue(6,30): error TS2304: Cannot find name 'Company'.
 @serp-ai:typecheck: ../../packages/ui/components/EntityCard.vue(103,17): error TS2322: Type '"filled"' is not assignable to type '"solid" | "outline" | "soft" | "subtle" | undefined'.
-@serp-ai:typecheck: ../../packages/ui/components/JSONRenderer.vue(73,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ basicInfo: string; }'.
-@serp-ai:typecheck:   No index signature with a parameter of type 'string' was found on type '{ basicInfo: string; }'.
-@serp-ai:typecheck: ../../packages/ui/components/JSONRenderer.vue(74,12): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ basicInfo: string; }'.
-@serp-ai:typecheck:   No index signature with a parameter of type 'string' was found on type '{ basicInfo: string; }'.
 @serp-ai:typecheck: ../../packages/ui/components/JSONRenderer.vue(192,8): error TS2322: Type 'unknown' is not assignable to type 'string'.
 @serp-ai:typecheck: ../../packages/ui/components/JSONRenderer.vue(196,8): error TS2322: Type 'unknown' is not assignable to type 'Row[]'.
 @serp-ai:typecheck: ../../packages/ui/components/JSONRenderer.vue(197,8): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
@@ -2835,7 +2709,7 @@ turbo 2.5.4
 @serp-ai:typecheck:   Type 'undefined' is not assignable to type 'number'.
 @serp-ai:typecheck: ../../packages/ui/components/JSONRenderer.vue(209,61): error TS2322: Type '{} | undefined' is not assignable to type 'boolean'.
 @serp-ai:typecheck:   Type 'undefined' is not assignable to type 'boolean'.
-@serp-ai:typecheck: ../../packages/ui/components/JSONRenderer.vue(228,48): error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.
+@serp-ai:typecheck: ../../packages/ui/components/JSONRenderer.vue(228,43): error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.
 @serp-ai:typecheck: ../../packages/ui/components/JSONRenderer.vue(235,32): error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.
 @serp-ai:typecheck: ../../packages/ui/components/JSONRenderer.vue(240,22): error TS2322: Type 'number' is not assignable to type 'string'.
 @serp-ai:typecheck: ../../packages/ui/components/JSONRenderer.vue(271,26): error TS2353: Object literal may only specify known properties, and 'padding' does not exist in type 'ClassNameArray'.
@@ -2850,11 +2724,7 @@ turbo 2.5.4
 @serp-ai:typecheck: ../../packages/ui/components/ProfileDropdown.client.vue(79,22): error TS2339: Property 'name' does not exist on type 'User'.
 @serp-ai:typecheck: ../../packages/ui/components/ProfileDropdown.client.vue(103,25): error TS2554: Expected 2 arguments, but got 1.
 @serp-ai:typecheck: ../../packages/ui/components/ProfileDropdown.client.vue(118,21): error TS2322: Type '"xs"' is not assignable to type '"sm" | "md" | "lg" | undefined'.
-@serp-ai:typecheck: ../../packages/ui/components/ReviewDistributionCard.vue(60,15): error TS2353: Object literal may only specify known properties, and 'padding' does not exist in type 'ClassNameArray'.
-@serp-ai:typecheck: ../../packages/ui/components/ReviewDistributionCard.vue(124,28): error TS7053: Element implicitly has an 'any' type because expression of type 'number' can't be used to index type '{ 1: number; 2: number; 3: number; 4: number; 5: number; }'.
-@serp-ai:typecheck:   No index signature with a parameter of type 'number' was found on type '{ 1: number; 2: number; 3: number; 4: number; 5: number; }'.
-@serp-ai:typecheck: ../../packages/ui/components/ReviewDistributionCard.vue(131,45): error TS7053: Element implicitly has an 'any' type because expression of type 'number' can't be used to index type '{ 1: number; 2: number; 3: number; 4: number; 5: number; }'.
-@serp-ai:typecheck:   No index signature with a parameter of type 'number' was found on type '{ 1: number; 2: number; 3: number; 4: number; 5: number; }'.
+@serp-ai:typecheck: ../../packages/ui/components/ReviewDistributionCard.vue(63,15): error TS2353: Object literal may only specify known properties, and 'padding' does not exist in type 'ClassNameArray'.
 @serp-ai:typecheck: ../../packages/ui/components/ReviewForm.vue(62,15): error TS2322: Type 'string' is not assignable to type 'number'.
 @serp-ai:typecheck: ../../packages/ui/components/ReviewModal.vue(2,30): error TS2307: Cannot find module '@/serp/types/types' or its corresponding type declarations.
 @serp-ai:typecheck: ../../packages/ui/components/ReviewModal.vue(38,5): error TS2353: Object literal may only specify known properties, and 'immediate' does not exist in type 'WatchEffectOptions'.
@@ -3045,6 +2915,7 @@ turbo 2.5.4
 @serp-ai:typecheck: ../../packages/ui/components/SPage/Post/CategoryCollection.vue(34,24): error TS2339: Property 'category' does not exist on type 'Posts'.
 @serp-ai:typecheck: ../../packages/ui/components/SPage/Post/CategoryCollection.vue(43,22): error TS2339: Property 'category' does not exist on type 'Posts'.
 @serp-ai:typecheck: ../../packages/ui/components/SPage/Post/Collection.vue(76,8): error TS2345: Argument of type '{ page: number; total: number; itemsPerPage: number; siblingCount: number; }' is not assignable to parameter of type '{ readonly totalItems: number; readonly limit: number; readonly siblingCount: number; readonly modelValue?: number | undefined; readonly "onUpdate:modelValue"?: ((value: number | undefined) => any) | undefined; } & VNodeProps & AllowedComponentProps & ComponentCustomProps & Record<...>'.
+@boxingundefeated-com:typecheck:  ELIFECYCLE  Command failed with exit code 1.
 @serp-ai:typecheck:   Type '{ page: number; total: number; itemsPerPage: number; siblingCount: number; }' is missing the following properties from type '{ readonly totalItems: number; readonly limit: number; readonly siblingCount: number; readonly modelValue?: number | undefined; readonly "onUpdate:modelValue"?: ((value: number | undefined) => any) | undefined; }': totalItems, limit
 @serp-ai:typecheck: ../../packages/ui/components/SPage/Post/CollectionKeywordAsTitle.vue(76,8): error TS2345: Argument of type '{ page: number; total: number; itemsPerPage: number; siblingCount: number; }' is not assignable to parameter of type '{ readonly totalItems: number; readonly limit: number; readonly siblingCount: number; readonly modelValue?: number | undefined; readonly "onUpdate:modelValue"?: ((value: number | undefined) => any) | undefined; } & VNodeProps & AllowedComponentProps & ComponentCustomProps & Record<...>'.
 @serp-ai:typecheck:   Type '{ page: number; total: number; itemsPerPage: number; siblingCount: number; }' is missing the following properties from type '{ readonly totalItems: number; readonly limit: number; readonly siblingCount: number; readonly modelValue?: number | undefined; readonly "onUpdate:modelValue"?: ((value: number | undefined) => any) | undefined; }': totalItems, limit
@@ -3128,48 +2999,44 @@ turbo 2.5.4
 @serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Companies.vue(73,35): error TS2339: Property 'reviewedBy' does not exist on type 'never'.
 @serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Companies.vue(74,44): error TS2339: Property 'reviewedBy' does not exist on type 'never'.
 @serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Companies.vue(77,43): error TS2339: Property 'createdAt' does not exist on type 'never'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(53,54): error TS2345: Argument of type 'string | LocationQueryValue[]' is not assignable to parameter of type 'string | undefined'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(50,56): error TS2345: Argument of type 'string | LocationQueryValue[]' is not assignable to parameter of type 'string | undefined'.
 @serp-ai:typecheck:   Type 'LocationQueryValue[]' is not assignable to type 'string'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(55,24): error TS2339: Property 'approved' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(56,46): error TS2339: Property 'domain' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(58,33): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(59,35): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(60,37): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(62,26): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(63,29): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(64,26): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(66,39): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(67,42): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(68,41): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(69,24): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(74,35): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(75,38): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(76,24): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(78,27): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(79,39): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(80,39): error TS2339: Property 'formData' does not exist on type '{}'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(106,14): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ id: null; name: string; domain: string; pricing: string; tags: string; oneLiner: string; description: string; categories: never[]; logo: string; }'.
-@serp-ai:typecheck:   No index signature with a parameter of type 'string' was found on type '{ id: null; name: string; domain: string; pricing: string; tags: string; oneLiner: string; description: string; categories: never[]; logo: string; }'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(106,54): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ id: null; name: string; domain: string; pricing: string; tags: string; oneLiner: string; description: string; categories: never[]; logo: string; }'.
-@serp-ai:typecheck:   No index signature with a parameter of type 'string' was found on type '{ id: null; name: string; domain: string; pricing: string; tags: string; oneLiner: string; description: string; categories: never[]; logo: string; }'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(115,11): error TS18048: 'category_' is possibly 'undefined'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(116,13): error TS18048: 'category_' is possibly 'undefined'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(117,13): error TS18048: 'category_' is possibly 'undefined'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(126,12): error TS2304: Cannot find name 'useS3Object'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(224,28): error TS18046: 'err' is of type 'unknown'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(256,22): error TS2339: Property 'email' does not exist on type 'User'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(295,20): error TS18046: 'error' is of type 'unknown'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(318,9): error TS2322: Type 'FetchError<any>' is not assignable to type 'StringOrVNode | undefined'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(323,42): error TS2339: Property 'verified' does not exist on type 'Simplify<SerializeObject<{ status: number; message: string; ok?: undefined; error?: undefined; verified?: undefined; }> | SerializeObject<{ ok: boolean; error: string; status?: undefined; message?: undefined; verified?: undefined; }> | SerializeObject<...>>'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(52,26): error TS2339: Property 'approved' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(53,48): error TS2339: Property 'domain' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(55,35): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(56,37): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(57,37): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(59,22): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(59,55): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(60,28): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(62,41): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(63,44): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(64,41): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(65,26): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(70,37): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(71,38): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(72,26): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(74,29): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(75,39): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(76,41): error TS2339: Property 'formData' does not exist on type '{}'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(109,13): error TS18048: 'category_' is possibly 'undefined'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(110,15): error TS18048: 'category_' is possibly 'undefined'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(111,15): error TS18048: 'category_' is possibly 'undefined'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(120,14): error TS2304: Cannot find name 'useS3Object'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(215,30): error TS18046: 'err' is of type 'unknown'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(247,24): error TS2339: Property 'email' does not exist on type 'User'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(284,22): error TS18046: 'error' is of type 'unknown'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(306,11): error TS2322: Type 'FetchError<any>' is not assignable to type 'StringOrVNode | undefined'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(311,44): error TS2339: Property 'verified' does not exist on type 'Simplify<SerializeObject<{ status: number; message: string; ok?: undefined; error?: undefined; verified?: undefined; }> | SerializeObject<{ ok: boolean; error: string; status?: undefined; message?: undefined; verified?: undefined; }> | SerializeObject<...>>'.
 @serp-ai:typecheck:   Property 'verified' does not exist on type '{ message: string; status: number; }'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(345,20): error TS18046: 'error' is of type 'unknown'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(373,60): error TS2345: Argument of type 'LocationQueryValue | LocationQueryValue[]' is not assignable to parameter of type 'string'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(331,22): error TS18046: 'error' is of type 'unknown'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(354,60): error TS2345: Argument of type 'LocationQueryValue | LocationQueryValue[]' is not assignable to parameter of type 'string'.
 @serp-ai:typecheck:   Type 'null' is not assignable to type 'string'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(387,12): error TS2322: Type '{ id: null; name: string; domain: string; pricing: string; tags: string; oneLiner: string; description: string; categories: never[]; logo: string; }' is not assignable to type 'Partial<{ name: string; domain: string; description: string; oneLiner: string; pricing: string[]; categories?: string[] | undefined; logo?: string | null | undefined; tags?: string | null | undefined; }>'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(368,12): error TS2322: Type '{ id: null; name: string; domain: string; pricing: string; tags: string; oneLiner: string; description: string; categories: never[]; logo: string; }' is not assignable to type 'Partial<{ name: string; domain: string; description: string; oneLiner: string; pricing: string[]; categories?: string[] | undefined; logo?: string | null | undefined; tags?: string | null | undefined; }>'.
 @serp-ai:typecheck:   Types of property 'pricing' are incompatible.
 @serp-ai:typecheck:     Type 'string' is not assignable to type 'string[]'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(410,15): error TS2322: Type 'string' is not assignable to type 'number'.
-@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(418,15): error TS2322: Type 'string' is not assignable to type 'string[]'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(394,15): error TS2322: Type 'string' is not assignable to type 'number'.
+@serp-ai:typecheck: ../../packages/ui/components/SPage/Users/Submit/Company.vue(402,15): error TS2322: Type 'string' is not assignable to type 'string[]'.
 @serp-ai:typecheck: ../../packages/ui/components/SScriptYouTubePlayer.vue(18,18): error TS2503: Cannot find namespace 'YT'.
 @serp-ai:typecheck: ../../packages/ui/components/SScriptYouTubePlayer.vue(34,16): error TS2503: Cannot find namespace 'YT'.
 @serp-ai:typecheck: ../../packages/ui/components/SScriptYouTubePlayer.vue(35,23): error TS2503: Cannot find namespace 'YT'.
@@ -3228,27 +3095,12 @@ turbo 2.5.4
 @serp-ai:typecheck: ../../packages/ui/components/VoteButton.vue(31,23): error TS2339: Property 'id' does not exist on type 'User'.
 @serp-ai:typecheck: ../../packages/utils/server/services/email.ts(1,15): error TS2614: Module '"@serp/types"' has no exported member 'SendEmailOptions'. Did you mean to use 'import SendEmailOptions from "@serp/types"' instead?
 @serp-ai:typecheck: ../../packages/utils/server/services/email.ts(6,31): error TS2345: Argument of type 'string' is not assignable to parameter of type 'EmailProvider'.
-@boxingundefeated-com:typecheck: 
-@boxingundefeated-com:typecheck:  ERROR  Process exited with non-zero status (2)
-@boxingundefeated-com:typecheck: 
-@boxingundefeated-com:typecheck:     at R._waitForOutput (/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/tinyexec@1.0.1/node_modules/tinyexec/dist/main.js:530:13)
-@boxingundefeated-com:typecheck:     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
-@boxingundefeated-com:typecheck:     at async Object.run (/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/@nuxt+cli@3.25.1_magicast@0.3.5/node_modules/@nuxt/cli/dist/chunks/typecheck.mjs:70:9)
-@boxingundefeated-com:typecheck:     at async runCommand (/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/citty@0.1.6/node_modules/citty/dist/index.mjs:316:16)
-@boxingundefeated-com:typecheck:     at async runCommand (/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/citty@0.1.6/node_modules/citty/dist/index.mjs:307:11)
-@boxingundefeated-com:typecheck:     at async runMain (/Users/devin/repos/projects/serp-monorepo/node_modules/.pnpm/citty@0.1.6/node_modules/citty/dist/index.mjs:445:7) 
-@boxingundefeated-com:typecheck: 
-@boxingundefeated-com:typecheck: 
-@boxingundefeated-com:typecheck: 
-@boxingundefeated-com:typecheck:  ERROR  Process exited with non-zero status (2)
-@boxingundefeated-com:typecheck: 
-@boxingundefeated-com:typecheck:  ELIFECYCLE  Command failed with exit code 1.
 @boxingundefeated-com:typecheck: ERROR: command finished with error: command (/Users/devin/repos/projects/serp-monorepo/apps/boxingundefeated-com) /Users/devin/Library/pnpm/pnpm run typecheck exited (1)
 @boxingundefeated-com#typecheck: command (/Users/devin/repos/projects/serp-monorepo/apps/boxingundefeated-com) /Users/devin/Library/pnpm/pnpm run typecheck exited (1)
 
  Tasks:    0 successful, 6 total
 Cached:    0 cached, 6 total
-  Time:    20.462s 
+  Time:    21.209s 
 Failed:    @boxingundefeated-com#typecheck
 
  ERROR  run failed: command  exited (1)

@@ -30,6 +30,10 @@ pnpm infisical scan git-changes --staged --verbose --baseline-path .reports/secr
 echo "[husky]: Checking for fixed TypeScript errors..."
 pnpm typecheck:fixed
 
+# Validate TypeScript errors against baseline
+echo "[husky]: Validating TypeScript errors against baseline..."
+pnpm typecheck:baseline
+
 # Run tests
 echo "[husky]: Running script: pnpm test"
 pnpm test

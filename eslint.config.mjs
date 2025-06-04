@@ -34,8 +34,10 @@ export default antfu({
     '.wrangler/',
     '.data/',
     '.git/',
+    'reports/',
     '.output/',
     '**/.output/',
+    'scripts/',
 
     // Package-specific patterns
     'packages/ui/templates/',
