@@ -1,9 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
-// Mock for Date.now() to always return a fixed timestamp
-
-import { mockNuxtImport } from '@nuxt/test-utils/runtime'
-import { computed } from 'vue'
+import { mockNuxtImport } from '@nuxt/test-utils/runtime';
+import { computed } from 'vue';
 
 const originalDate = global.Date
 class MockDate extends originalDate {
@@ -25,7 +21,7 @@ global.Date = MockDate as DateConstructor
 
 // Mock for Date.toLocaleString to return a consistent date string
 Date.prototype.toLocaleString = function (): string {
-  return 'Thursday, January 1, 1970 at 9:00:01 AM'
+  return 'Thursday, January 1, 1970 at 9:00:01 AM';
 }
 
 // Define date-related utility objects
@@ -40,16 +36,16 @@ const nuxtAppDateUtils = {
 
 const dateUtils = {
   format: (date: string | number, format?: string): string => {
-    return 'January 1, 1970'
+    return 'January 1, 1970';
   },
   formatDate: (date: string | number): string => {
-    return 'January 1, 1970'
+    return 'January 1, 1970';
   },
   formatTime: (date: string | number): string => {
-    return '9:00 AM'
+    return '9:00 AM';
   },
   formatDistance: (date: string | number): string => {
-    return '56 years ago'
+    return '56 years ago';
   },
 }
 

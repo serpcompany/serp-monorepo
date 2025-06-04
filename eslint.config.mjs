@@ -72,8 +72,7 @@ export default antfu({
       'vue/multi-word-component-names': 'off',
 
       // TypeScript rules
-      '@typescript-eslint/no-unused-vars': 'warn',
-      '@typescript-eslint/no-require-imports': 'warn',
+      // TypeScript rules are handled by ts/* prefixed rules below
 
       // Node.js rules - allow process usage in Nuxt projects
       'node/prefer-global/buffer': 'warn',
@@ -81,17 +80,24 @@ export default antfu({
       'unused-imports/no-unused-vars': 'warn',
       'unused-imports/no-unused-imports': 'warn',
       'ts/no-unused-vars': 'warn',
-
-      // General rules
       'no-console': 'warn',
       'prefer-const': 'warn',
       'no-restricted-globals': 'warn',
-
-      // style rules
       'style/indent': 'warn',
       'style/semi': 'warn'
     }
 }).append(
+  // Overrides: ALL ROUTES
+  {
+    rules: {
+      'vue-a11y/form-control-has-label': 'warn',
+      'no-alert': 'warn',
+      'style/brace-style': 'warn',
+      'antfu/if-newline': 'warn',
+      'style/quotes': 'warn',
+      'style/no-trailing-spaces': 'warn',
+    }
+  },
   // Overrides: Vue
   {
     files: ['**/*.vue'],
@@ -195,11 +201,14 @@ export default antfu({
       '**/*.test.ts',
       '**/*.spec.ts',
       '**/tests/**/*.ts',
-      '**/test/**/*.ts'
+      '**/test/**/*.ts',
+      'tests/**/*.ts',
+      'tests/*.ts',
     ],
     rules: {
-      'node/prefer-global/process': 'off', // Tests can use global process
-      'no-restricted-globals': 'off' // Tests may use global for mocking
+      'node/prefer-global/process': 'off',
+      'no-restricted-globals': 'off',
+      'ts/no-unused-vars': 'warn'
     }
   }
 )

@@ -1,7 +1,8 @@
 {
   "name": "@serp-co",
-  "private": true,
   "type": "module",
+  "private": true,
+  "packageManager": "pnpm@9.10.0",
   "scripts": {
     "build": "nuxt build",
     "ci:lint": "eslint .",
@@ -86,6 +87,5 @@
     "vue": "3.5.14",
     "vue-router": "latest",
     "zod": "^3.24.2"
-  },
-  "packageManager": "pnpm@9.10.0"
+  }
 }
