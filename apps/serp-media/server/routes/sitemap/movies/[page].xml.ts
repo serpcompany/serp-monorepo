@@ -1,5 +1,5 @@
 // server/routes/sitemap/wiki/[page].xml.ts
-import { defineEventHandler } from 'h3'
+import { defineEventHandler, getRouterParams } from 'h3'
 
 const NUXT_PUBLIC_SITE_URL = process.env.NUXT_PUBLIC_SITE_URL
 
@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const params = getRouterParams(event)
   const page = Number.parseInt(params['page.xml'].replace('.xml', ''))
 
-  const urls_ = await $fetch(`/api/__sitemap__/movies?page=${page}`)
+  const urls_ = await $fetch<string[]>(`/api/__sitemap__/movies?page=${page}`)
 
   const urls = urls_.map((slug: string) => ({
     loc: `${NUXT_PUBLIC_SITE_URL}${slug}`,
