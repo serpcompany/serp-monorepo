@@ -1,49 +1,49 @@
 <script setup lang="ts">
-defineProps({
-  name: {
-    type: String,
-    required: true,
-  },
-  subtitle: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  image: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  sections: {
-    type: Array as () => string[],
-    required: true,
-  },
-  serplyLink: {
-    type: String,
-    required: true,
-  },
-})
+  defineProps({
+    name: {
+      type: String,
+      required: true,
+    },
+    subtitle: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    image: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    sections: {
+      type: Array as () => string[],
+      required: true,
+    },
+    serplyLink: {
+      type: String,
+      required: true,
+    },
+  })
 
-const header = ref<HTMLElement | null>(null)
-const isScrolled = ref(false)
+  const header = ref<HTMLElement | null>(null)
+  const isScrolled = ref(false)
 
-function handleScroll() {
-  if (window.scrollY > 50) {
-    isScrolled.value = true
+  function handleScroll() {
+    if (window.scrollY > 50) {
+      isScrolled.value = true
+    }
+    else {
+      isScrolled.value = false
+    }
   }
-  else {
-    isScrolled.value = false
-  }
-}
 
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-  handleScroll()
-})
+  onMounted(() => {
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+  })
 
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+  })
 </script>
 
 <template>
@@ -70,7 +70,7 @@ onUnmounted(() => {
               {{ name }}
             </h1>
             <div class="truncate text-sm text-gray-500 dark:text-gray-400">
-              <slot name="subtitle" />
+              <slot name="subtitle"></slot>
             </div>
           </div>
         </div>
@@ -78,7 +78,7 @@ onUnmounted(() => {
         <div
           class="flex w-full flex-shrink-0 items-center justify-end gap-3 sm:w-auto"
         >
-          <slot name="upvote" />
+          <slot name="upvote"></slot>
 
           <UButton
             :to="serplyLink"

@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-withDefaults(
-  defineProps<{
-    title: string
-    description?: string
-    padding?: boolean
-  }>(),
-  {
-    padding: true,
-  },
-)
-const mobileMenu = useState('mobileMenu')
+  withDefaults(
+    defineProps<{
+      title: string
+      description?: string
+      padding?: boolean
+    }>(),
+    {
+      padding: true,
+    },
+  )
+  const mobileMenu = useState('mobileMenu')
 </script>
 
 <template>
@@ -28,9 +28,9 @@ const mobileMenu = useState('mobileMenu')
         {{ title }}
       </h1>
     </div>
-    <slot name="actions" />
+    <slot name="actions"></slot>
   </header>
   <div :class="{ 'p-4': padding }">
-    <slot />
+    <slot></slot>
   </div>
 </template>

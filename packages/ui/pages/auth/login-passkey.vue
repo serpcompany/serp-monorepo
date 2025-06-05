@@ -1,31 +1,31 @@
 <script setup lang="ts">
-import type { FormSubmitEvent } from '#ui/types'
-import type { z } from 'zod'
-import { emailSchema } from '@serp/db/validations/auth'
+  import type { FormSubmitEvent } from '#ui/types'
+  import type { z } from 'zod'
+  import { emailSchema } from '@serp/db/validations/auth'
 
-const toast = useToast()
-const { fetch: refreshSession } = useUserSession()
-const { authenticateWithPasskey } = usePasskeys()
-const loading = ref(false)
+  const toast = useToast()
+  const { fetch: refreshSession } = useUserSession()
+  const { authenticateWithPasskey } = usePasskeys()
+  const loading = ref(false)
 
   type LoginSchema = z.output<typeof emailSchema>
-const state = reactive<Partial<LoginSchema>>({
-  email: undefined,
-})
+  const state = reactive<Partial<LoginSchema>>({
+    email: undefined,
+  })
 
-async function onSubmit(event: FormSubmitEvent<LoginSchema>): Promise<void> {
-  loading.value = true
-  const success = await authenticateWithPasskey(event.data.email)
-  if (success) {
-    await refreshSession()
-    toast.add({
-      title: 'Logged in successfully',
-      color: 'success',
-    })
-    await navigateTo('/dashboard')
+  async function onSubmit(event: FormSubmitEvent<LoginSchema>): Promise<void> {
+    loading.value = true
+    const success = await authenticateWithPasskey(event.data.email)
+    if (success) {
+      await refreshSession()
+      toast.add({
+        title: 'Logged in successfully',
+        color: 'success',
+      })
+      await navigateTo('/dashboard')
+    }
+    loading.value = false
   }
-  loading.value = false
-}
 </script>
 
 <template>

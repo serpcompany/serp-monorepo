@@ -1,44 +1,44 @@
 <script setup lang="ts">
-import type { PostIndex } from '@serp/types/types'
+  import type { PostIndex } from '@serp/types/types'
 
-const props = withDefaults(
-  defineProps<{
-    post: PostIndex
-    baseSlug?: string
-    articleClass?: string
-    title?: string
-  }>(),
-  {
-    baseSlug: 'posts/',
-    articleClass: 'py-16',
-    title: undefined,
-  },
-)
+  const props = withDefaults(
+    defineProps<{
+      post: PostIndex
+      baseSlug?: string
+      articleClass?: string
+      title?: string
+    }>(),
+    {
+      baseSlug: 'posts/',
+      articleClass: 'py-16',
+      title: undefined,
+    },
+  )
 
-const displayTitle = computed(() => {
-  if (props.post.module === 'Glossary') {
-    return props.post.keyword || props.post.title || props.post.name
-  }
-  if (props.title) {
-    return props.title
-  }
-  return props.post.title || props.post.name
-})
+  const displayTitle = computed(() => {
+    if (props.post.module === 'Glossary') {
+      return props.post.keyword || props.post.title || props.post.name
+    }
+    if (props.title) {
+      return props.title
+    }
+    return props.post.title || props.post.name
+  })
 
-const formattedDate = computed(() => {
-  if (!props.post.createdAt)
-    return ''
+  const formattedDate = computed(() => {
+    if (!props.post.createdAt)
+      return ''
 
-  // Parse date string as UTC to ensure consistent behavior across timezones
-  const date = new Date(`${props.post.createdAt}T00:00:00.000Z`)
-  const month = date
-    .toLocaleString('en-US', { month: 'short', timeZone: 'UTC' })
-    .toUpperCase()
-  const day = date.getUTCDate().toString().padStart(2, '0')
-  const year = date.getUTCFullYear()
+    // Parse date string as UTC to ensure consistent behavior across timezones
+    const date = new Date(`${props.post.createdAt}T00:00:00.000Z`)
+    const month = date
+      .toLocaleString('en-US', { month: 'short', timeZone: 'UTC' })
+      .toUpperCase()
+    const day = date.getUTCDate().toString().padStart(2, '0')
+    const year = date.getUTCFullYear()
 
-  return `${month} ${day} ${year}`
-})
+    return `${month} ${day} ${year}`
+  })
 </script>
 
 <template>

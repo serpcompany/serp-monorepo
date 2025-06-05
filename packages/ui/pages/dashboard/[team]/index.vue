@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { currentTeam } = useTeam()
+  const { currentTeam } = useTeam()
 </script>
 
 <template>

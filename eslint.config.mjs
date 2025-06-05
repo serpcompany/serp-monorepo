@@ -53,7 +53,7 @@ export default antfu({
   rules: {
       // Component size limits
       'max-lines': ['warn', 300],
-      complexity: ['warn', 10],
+      'complexity': ['warn', 10],
 
       // Other helpful limits
       'max-lines-per-function': ['warn', 50],
@@ -73,9 +73,6 @@ export default antfu({
       ],
       'vue/multi-word-component-names': 'off',
 
-      // TypeScript rules
-      // TypeScript rules are handled by ts/* prefixed rules below
-
       // Node.js rules - allow process usage in Nuxt projects
       'node/prefer-global/buffer': 'warn',
       'perfectionist/sort-named-imports': 'warn',
@@ -85,7 +82,6 @@ export default antfu({
       'no-console': 'warn',
       'prefer-const': 'warn',
       'no-restricted-globals': 'warn',
-      'style/indent': 'warn',
       'style/semi': 'warn'
     }
 }).append(
@@ -99,9 +95,11 @@ export default antfu({
       'style/quotes': 'warn',
       'style/no-trailing-spaces': 'warn',
       'style/member-delimiter-style': 'warn',
-      'style/operator-linebreak': 'warn',
+      // Disable operator-linebreak globally to prevent double && formatting issues
+      'style/operator-linebreak': 'off',
       'style/arrow-parens': 'warn',
-      'vue/operator-linebreak': 'warn',
+      // Disable vue/operator-linebreak globally to prevent double && formatting issues
+      'vue/operator-linebreak': 'off',
     }
   },
   // Overrides: Vue
@@ -120,10 +118,8 @@ export default antfu({
       'vue/script-indent': ['warn', 2, { baseIndent: 1 }],
       'vue/html-indent': ['warn', 2],
       'vue/no-required-prop-with-default': 'warn',
-      // Disable operator-linebreak rules for Vue files to prevent auto-fix issues
-      'style/operator-linebreak': 'off',
-      'vue/operator-linebreak': 'off',
-      'style/indent-binary-ops': 'off'
+      // Disable style/indent for Vue files to prevent conflicts with vue/script-indent
+      'style/indent': 'off'
     }
   },
   // Overrides: /server/ routes
@@ -180,7 +176,7 @@ export default antfu({
       '@typescript-eslint/no-unsafe-function-type': 'warn',
       '@typescript-eslint/no-unused-vars': 'warn',
       'eqeqeq': 'warn',
-      'format/prettier': 'warn',
+      'format/prettier': 'off',
       'no-alert': 'warn',
       'no-extend-native': 'warn',
       'no-restricted-globals': 'warn',

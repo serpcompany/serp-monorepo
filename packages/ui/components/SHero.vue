@@ -1,17 +1,17 @@
 <script setup lang="ts">
-interface Props {
-  headline: string
-  subheadline?: string
-  showSearchBar?: boolean
-  showButtons?: boolean
-}
+  interface Props {
+    headline: string
+    subheadline?: string
+    showSearchBar?: boolean
+    showButtons?: boolean
+  }
 
-withDefaults(defineProps<Props>(), {
-  headline: '',
-  subheadline: undefined,
-  showSearchBar: true,
-  showButtons: true,
-})
+  withDefaults(defineProps<Props>(), {
+    headline: '',
+    subheadline: undefined,
+    showSearchBar: true,
+    showButtons: true,
+  })
 </script>
 
 <template>

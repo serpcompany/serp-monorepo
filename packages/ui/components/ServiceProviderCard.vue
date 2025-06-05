@@ -1,49 +1,49 @@
 <script setup lang="ts">
-import type { ServiceProvider } from '@serp/types/types'
-import { computed, ref } from 'vue'
+  import type { ServiceProvider } from '@serp/types/types'
+  import { computed, ref } from 'vue'
 
-const props = defineProps({
-  serviceProvider: {
-    type: Object as PropType<ServiceProvider>,
-    required: true,
-  },
-  showReadMore: {
-    type: Boolean,
-    default: false,
-  },
-  showFeatures: {
-    type: Boolean,
-    default: false,
-  },
-  showExpandedContent: {
-    type: Boolean,
-    default: false,
-  },
-  baseSlug: {
-    type: String,
-    default: 'service-providers/',
-  },
-})
-const config = useRuntimeConfig()
-const useAuth = config.public.useAuth
+  const props = defineProps({
+    serviceProvider: {
+      type: Object as PropType<ServiceProvider>,
+      required: true,
+    },
+    showReadMore: {
+      type: Boolean,
+      default: false,
+    },
+    showFeatures: {
+      type: Boolean,
+      default: false,
+    },
+    showExpandedContent: {
+      type: Boolean,
+      default: false,
+    },
+    baseSlug: {
+      type: String,
+      default: 'service-providers/',
+    },
+  })
+  const config = useRuntimeConfig()
+  const useAuth = config.public.useAuth
 
-const isExpanded = ref(false)
+  const isExpanded = ref(false)
 
-// Compute the main image, either the serviceProvider logo or the first screenshot
-const serviceProviderMainImage = computed(() => {
-  if (props.serviceProvider.logo) {
-    return props.serviceProvider.logo
-  }
-  else if (
-    props.serviceProvider.screenshots
-    && props.serviceProvider.screenshots.length
-  ) {
-    return props.serviceProvider.screenshots[0]
-  }
-  else {
-    return null
-  }
-})
+  // Compute the main image, either the serviceProvider logo or the first screenshot
+  const serviceProviderMainImage = computed(() => {
+    if (props.serviceProvider.logo) {
+      return props.serviceProvider.logo
+    }
+    else if (
+      props.serviceProvider.screenshots &&
+      props.serviceProvider.screenshots.length
+    ) {
+      return props.serviceProvider.screenshots[0]
+    }
+    else {
+      return null
+    }
+  })
 </script>
 
 <template>
@@ -60,7 +60,7 @@ const serviceProviderMainImage = computed(() => {
       v-if="serviceProvider.featured"
       class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-400 to-purple-400"
       aria-hidden="true"
-    />
+    ></div>
 
     <!-- card content -->
     <div class="flex items-start">
@@ -187,7 +187,12 @@ const serviceProviderMainImage = computed(() => {
                   d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
                 />
                 <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
+                <line
+                  x1="10"
+                  y1="14"
+                  x2="21"
+                  y2="3"
+                />
               </svg>
             </NuxtLink>
 
@@ -215,9 +220,9 @@ const serviceProviderMainImage = computed(() => {
     <!-- feature tags only for featured providers -->
     <div
       v-if="
-        serviceProvider.featured
-          && serviceProvider.features
-          && serviceProvider.features.length
+        serviceProvider.featured &&
+          serviceProvider.features &&
+          serviceProvider.features.length
       "
       class="mt-8"
     >
@@ -252,12 +257,12 @@ const serviceProviderMainImage = computed(() => {
 </template>
 
 <style scoped>
-  .upvote-btn :deep(button) {
-    font-size: 0.875rem;
-    padding: 0.5rem 1r;
-    width: 100%;
-  }
-  .upvote-btn :deep(.flex) {
-    width: 1%;
-  }
+.upvote-btn :deep(button) {
+  font-size: 0.875rem;
+  padding: 0.5rem 1r;
+  width: 100%;
+}
+.upvote-btn :deep(.flex) {
+  width: 1%;
+}
 </style>

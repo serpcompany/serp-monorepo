@@ -1,55 +1,52 @@
 <script setup lang="ts">
-import type { Category } from '@serp/types/types'
+  import type { Category } from '@serp/types/types'
 
-const route = useRoute()
-const { slug } = useRoute().params
+  const route = useRoute()
+  const { slug } = useRoute().params
 
-const { data: category } = await useAsyncData(
-  `category-${slug}`,
-  async () => {
+  const { data: category } = await useAsyncData(`category-${slug}`, async () => {
     const response = await useCompanies(1, 1, slug as string)
     const category = response.category as Category
     return category
-  },
-)
+  })
 
-const page = ref(Number(route.query.page) || 1)
+  const page = ref(Number(route.query.page) || 1)
 
-const filters = computed(() => ({
-  page: page.value,
-  limit: Number(route.query.limit) || 50,
-  category: slug as string,
-  name: route.query.q as string,
-  sort: route.query.sor as string,
-}))
+  const filters = computed(() => ({
+    page: page.value,
+    limit: Number(route.query.limit) || 50,
+    category: slug as string,
+    name: route.query.q as string,
+    sort: route.query.sor as string,
+  }))
 
-const { data, status } = await useAsyncData(
-  `companies-${slug}`,
-  () =>
-    useCompanies(
-      filters.value.page,
-      filters.value.limit,
-      filters.value.category,
-      filters.value.name,
-      filters.value.sort,
-    ),
-  {
-    lazy: true,
-    watch: [filters],
-  },
-)
+  const { data, status } = await useAsyncData(
+    `companies-${slug}`,
+    () =>
+      useCompanies(
+        filters.value.page,
+        filters.value.limit,
+        filters.value.category,
+        filters.value.name,
+        filters.value.sort,
+      ),
+    {
+      lazy: true,
+      watch: [filters],
+    },
+  )
 
-const { data: categories } = await useAsyncData(
-  'categories',
-  () => useCompanyCategories(),
-  {
-    default: () => [],
-  },
-)
+  const { data: categories } = await useAsyncData(
+    'categories',
+    () => useCompanyCategories(),
+    {
+      default: () => [],
+    },
+  )
 
-useSeoMeta({
-  title: () => `The Best ${category.value?.name} Providers`,
-})
+  useSeoMeta({
+    title: () => `The Best ${category.value?.name} Providers`,
+  })
 </script>
 
 <template>
@@ -90,7 +87,7 @@ useSeoMeta({
               <div
                 class="prose dark:prose-invert max-w-full"
                 v-html="item.answer"
-              />
+              ></div>
             </template>
           </UPageAccordion>
         </UPageSection>

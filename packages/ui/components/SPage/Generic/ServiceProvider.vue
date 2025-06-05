@@ -1,108 +1,106 @@
 <script setup lang="ts">
-import type { Comment, ServiceProvider } from '@serp/types/types'
+  import type { Comment, ServiceProvider } from '@serp/types/types'
 
-const props = defineProps<{
-  data: ServiceProvider
-}>()
-const { user } = useUserSession()
-const route = useRoute()
+  const props = defineProps<{
+    data: ServiceProvider
+  }>()
+  const { user } = useUserSession()
+  const route = useRoute()
 
-const { data } = toRefs(props)
+  const { data } = toRefs(props)
 
-const isVerified = computed(() => {
-  return data.value?.verification === user.value?.id
-})
+  const isVerified = computed(() => {
+    return data.value?.verification === user.value?.id
+  })
 
-const config = useRuntimeConfig()
-const useAuth = config.public.useAuth
+  const config = useRuntimeConfig()
+  const useAuth = config.public.useAuth
 
-// Create a consolidated object with all provider details
-const providerDetails = computed(() => {
-  return {
-    basic: data.value?.basicInfo || {},
-    contracts: data.value?.contracts || {},
-    pricing: data.value?.pricing || {},
-    services: data.value?.services || {},
-    industries: data.value?.industries || {},
-    businessesServed: data.value?.businessesServed || {},
-    supportSetup: data.value?.supportSetup || {},
-    ratings: data.value?.ratings || {},
-  }
-})
-
-// @ts-expect-error: Auto-imported from another layer
-const { comments } = (await useServiceProviderComments(data.value?.id)) as {
-  comments: Comment[]
-}
-
-// @ts-expect-error: Auto-imported from another layer
-const reviews = await useServiceProviderReviews(data.value?.id)
-reviews.serviceProviderId = data.value?.id
-
-// State for review modal
-const showReviewModal = ref(false)
-
-// Handle review submission - refresh reviews data
-async function handleReviewSubmitted() {
-  // @ts-expect-error: Auto-imported from another layer
-  const updatedReviews = await useServiceProviderReviews(data.value?.id)
-  Object.assign(reviews, updatedReviews)
-  reviews.serviceProviderId = data.value?.id
-}
-
-const faqItems = computed(() => {
-  if (!data.value?.faqs)
-    return []
-
-  return data.value?.faqs.map(
-    (faq: { question: string, answer: string }) => ({
-      label: faq.question,
-      content: faq.answer,
-    }),
-  )
-})
-
-// State for sections
-const sections = ref<string[]>([])
-// Extract sections from rendered H2 elements
-function extractSections() {
-  // Wait for next tick to ensure content is rendered
-  nextTick(() => {
-    // Get reference to the component's root element
-    const containerElement = getCurrentInstance()?.proxy?.$el
-
-    if (containerElement) {
-      // Only select h2 elements within this component
-      const h2Elements = containerElement.querySelectorAll('h2')
-      const sectionTitles = Array.from(h2Elements).map(
-        h2 => h2.textContent || '',
-      )
-      sections.value = sectionTitles.filter(title => title.trim() !== '')
+  // Create a consolidated object with all provider details
+  const providerDetails = computed(() => {
+    return {
+      basic: data.value?.basicInfo || {},
+      contracts: data.value?.contracts || {},
+      pricing: data.value?.pricing || {},
+      services: data.value?.services || {},
+      industries: data.value?.industries || {},
+      businessesServed: data.value?.businessesServed || {},
+      supportSetup: data.value?.supportSetup || {},
+      ratings: data.value?.ratings || {},
     }
   })
-}
 
-// Extract sections after component is mounted
-onMounted(() => {
-  extractSections()
-})
+  // @ts-expect-error: Auto-imported from another layer
+  const { comments } = (await useServiceProviderComments(data.value?.id)) as {
+    comments: Comment[]
+  }
 
-// Re-extract if data changes
-watch(
-  () => data,
-  () => {
+  // @ts-expect-error: Auto-imported from another layer
+  const reviews = await useServiceProviderReviews(data.value?.id)
+  reviews.serviceProviderId = data.value?.id
+
+  // State for review modal
+  const showReviewModal = ref(false)
+
+  // Handle review submission - refresh reviews data
+  async function handleReviewSubmitted() {
+    // @ts-expect-error: Auto-imported from another layer
+    const updatedReviews = await useServiceProviderReviews(data.value?.id)
+    Object.assign(reviews, updatedReviews)
+    reviews.serviceProviderId = data.value?.id
+  }
+
+  const faqItems = computed(() => {
+    if (!data.value?.faqs)
+      return []
+
+    return data.value?.faqs.map((faq: { question: string, answer: string }) => ({
+      label: faq.question,
+      content: faq.answer,
+    }))
+  })
+
+  // State for sections
+  const sections = ref<string[]>([])
+  // Extract sections from rendered H2 elements
+  function extractSections() {
+    // Wait for next tick to ensure content is rendered
+    nextTick(() => {
+      // Get reference to the component's root element
+      const containerElement = getCurrentInstance()?.proxy?.$el
+
+      if (containerElement) {
+        // Only select h2 elements within this component
+        const h2Elements = containerElement.querySelectorAll('h2')
+        const sectionTitles = Array.from(h2Elements).map(
+          h2 => h2.textContent || '',
+        )
+        sections.value = sectionTitles.filter(title => title.trim() !== '')
+      }
+    })
+  }
+
+  // Extract sections after component is mounted
+  onMounted(() => {
     extractSections()
-  },
-  { deep: true },
-)
+  })
 
-useSeoMeta({
-  title: computed(() =>
-    data.value?.name
-      ? `${data.value.name} - Reviews, Pricing, Features, Alternatives & Deals`
-      : 'Service Providers',
-  ),
-})
+  // Re-extract if data changes
+  watch(
+    () => data,
+    () => {
+      extractSections()
+    },
+    { deep: true },
+  )
+
+  useSeoMeta({
+    title: computed(() =>
+      data.value?.name
+        ? `${data.value.name} - Reviews, Pricing, Features, Alternatives & Deals`
+        : 'Service Providers',
+    ),
+  })
 </script>
 
 <template>

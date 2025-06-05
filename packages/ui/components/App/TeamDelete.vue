@@ -1,44 +1,44 @@
 <script lang="ts" setup>
-import { z } from 'zod'
+  import { z } from 'zod'
 
-const toast = useToast()
-const { currentTeam, deleteTeam, loading } = useTeam()
+  const toast = useToast()
+  const { currentTeam, deleteTeam, loading } = useTeam()
 
-const formSchema = z.object({
-  teamName: z
-    .string()
-    .min(1, 'Team name is required')
-    .refine(val => val === currentTeam.value.name, {
-      message: 'Team name does not match',
-    }),
-})
+  const formSchema = z.object({
+    teamName: z
+      .string()
+      .min(1, 'Team name is required')
+      .refine(val => val === currentTeam.value.name, {
+        message: 'Team name does not match',
+      }),
+  })
 
   type Schema = z.output<typeof formSchema>
 
-const formState = reactive<Partial<Schema>>({
-  teamName: '',
-})
+  const formState = reactive<Partial<Schema>>({
+    teamName: '',
+  })
 
-async function handleSubmit() {
-  try {
-    if (!currentTeam.value)
-      return
-    await deleteTeam(currentTeam.value.id)
-    toast.add({
-      title: 'Team deleted successfully',
-      color: 'success',
-    })
-    window.location.href = '/dashboard'
-  }
-  catch (error) {
-    toast.add({
-      title: 'Failed to delete team',
-      description:
+  async function handleSubmit() {
+    try {
+      if (!currentTeam.value)
+        return
+      await deleteTeam(currentTeam.value.id)
+      toast.add({
+        title: 'Team deleted successfully',
+        color: 'success',
+      })
+      window.location.href = '/dashboard'
+    }
+    catch (error) {
+      toast.add({
+        title: 'Failed to delete team',
+        description:
           error?.data?.message || 'An error occurred while deleting the team',
-      color: 'error',
-    })
+        color: 'error',
+      })
+    }
   }
-}
 </script>
 
 <template>

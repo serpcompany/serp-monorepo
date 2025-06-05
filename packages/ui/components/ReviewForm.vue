@@ -1,49 +1,49 @@
 <script setup lang="ts">
-const props = defineProps({
-  userReview: {
-    type: Object as PropType<{
-      title: string
-      content: string
-      rating: number
-      dateOfExperience: string
-    } | null>,
-    default: null,
-  },
-  loggedIn: {
-    type: Boolean,
-    required: true,
-  },
-  reviewForm: {
-    type: Object,
-    required: true,
-  },
-  loadingReview: {
-    type: Boolean,
-    default: false,
-  },
-  isReviewComplete: {
-    type: Boolean,
-    default: false,
-  },
-})
+  const props = defineProps({
+    userReview: {
+      type: Object as PropType<{
+        title: string
+        content: string
+        rating: number
+        dateOfExperience: string
+      } | null>,
+      default: null,
+    },
+    loggedIn: {
+      type: Boolean,
+      required: true,
+    },
+    reviewForm: {
+      type: Object,
+      required: true,
+    },
+    loadingReview: {
+      type: Boolean,
+      default: false,
+    },
+    isReviewComplete: {
+      type: Boolean,
+      default: false,
+    },
+  })
 
-const emit = defineEmits(['save-review', 'update:reviewForm'])
+  const emit = defineEmits(['save-review', 'update:reviewForm'])
 
-function updateReviewForm(field: string, value: string | number | Date) {
-  const updatedForm = { ...props.reviewForm, [field]: value }
-  emit('update:reviewForm', updatedForm)
-}
+  function updateReviewForm(field: string, value: string | number | Date) {
+    const updatedForm = { ...props.reviewForm, [field]: value }
+    emit('update:reviewForm', updatedForm)
+  }
 
-function saveReview() {
-  emit('save-review')
-}
+  function saveReview() {
+    emit('save-review')
+  }
 </script>
 
 <template>
   <div class="mt-8">
     <UCard class="mx-auto max-w-2xl p-8">
       <UHeading level="2" class="mb-6 text-center text-2xl font-semibold">
-        {{ userReview ? 'Edit Your Review' : 'Submit a New Review' }}
+        {{ userReview ? "Edit Your Review" : "Submit a New Review" }}
       </UHeading>
       <!-- If the user is logged in show the form, otherwise ask them to log in -->
       <div v-if="loggedIn">
@@ -92,7 +92,7 @@ function saveReview() {
               :loading="loadingReview"
               :disabled="!isReviewComplete"
             >
-              {{ userReview ? 'Update Review' : 'Submit Review' }}
+              {{ userReview ? "Update Review" : "Submit Review" }}
             </UButton>
           </div>
         </form>

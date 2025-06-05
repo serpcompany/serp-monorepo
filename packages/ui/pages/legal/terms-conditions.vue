@@ -1,13 +1,12 @@
 <script setup lang="ts">
-const config = useRuntimeConfig()
-const domain = config.public.domain
-const siteName = config.public.siteName
+  const config = useRuntimeConfig()
+  const domain = config.public.domain
+  const siteName = config.public.siteName
 
-useSeoMeta({
-  title: 'Terms & Conditions',
-  description:
-      'Rules and guidelines for using this website and its services.',
-})
+  useSeoMeta({
+    title: 'Terms & Conditions',
+    description: 'Rules and guidelines for using this website and its services.',
+  })
 </script>
 
 <template>

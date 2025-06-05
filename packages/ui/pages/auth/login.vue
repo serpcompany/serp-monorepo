@@ -1,33 +1,33 @@
 <script setup lang="ts">
-import type { FormSubmitEvent } from '#ui/types'
-import type { z } from 'zod'
-import { loginUserSchema } from '@serp/db/validations/auth'
+  import type { FormSubmitEvent } from '#ui/types'
+  import type { z } from 'zod'
+  import { loginUserSchema } from '@serp/db/validations/auth'
 
-definePageMeta({
-  middleware: ['invite-email'],
-})
+  definePageMeta({
+    middleware: ['invite-email'],
+  })
   type Schema = z.output<typeof loginUserSchema>
 
-const loading = ref(false)
-const { login } = useAuth()
-const inviteEmail = useState<string>('inviteEmail')
+  const loading = ref(false)
+  const { login } = useAuth()
+  const inviteEmail = useState<string>('inviteEmail')
 
-const state = reactive<Partial<Schema>>({
-  email: inviteEmail.value,
-  password: undefined,
-})
+  const state = reactive<Partial<Schema>>({
+    email: inviteEmail.value,
+    password: undefined,
+  })
 
-const runtimeConfig = useRuntimeConfig()
-const siteName = runtimeConfig.public.siteName || 'SERP'
+  const runtimeConfig = useRuntimeConfig()
+  const siteName = runtimeConfig.public.siteName || 'SERP'
 
-async function onSubmit(event: FormSubmitEvent<Schema>) {
-  loading.value = true
-  const { error } = await login(event.data)
-  if (!error) {
-    await navigateTo('/dashboard')
+  async function onSubmit(event: FormSubmitEvent<Schema>) {
+    loading.value = true
+    const { error } = await login(event.data)
+    if (!error) {
+      await navigateTo('/dashboard')
+    }
+    loading.value = false
   }
-  loading.value = false
-}
 </script>
 
 <template>
@@ -62,7 +62,12 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         @submit="onSubmit"
       >
         <UFormField label="Email" name="email">
-          <UInput v-model="state.email" class="w-full" size="lg" tabindex="1" />
+          <UInput
+            v-model="state.email"
+            class="w-full"
+            size="lg"
+            tabindex="1"
+          />
         </UFormField>
 
         <UFormField label="Password" name="password">

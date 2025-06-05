@@ -4,5 +4,5 @@ router.replace({ path: '/users/dashboard/', replace: true })
 </script>
 
 <template>
-  <div />
+  <div></div>
 </template>

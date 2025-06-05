@@ -1,457 +1,456 @@
 <script setup lang="ts">
-const props = defineProps({
-  module: { type: String, default: '' },
-  id: { type: Number, default: null },
-  comment: { type: Object, default: () => ({}) },
-  currentIndex: { type: Number, default: 0 },
-  initialMessageLimit: { type: String, default: '10' },
-  maxLineLimit: { type: String, default: '40' },
-  maxShowingDepth: { type: String, default: '5' },
-  maxCommentLength: { type: String, default: '1000' },
-  depthLength: { type: Number, default: 0 },
-  commentBackgroundColor: { type: String, default: 'white' },
-  commentTextColor: { type: String, default: '#1d2129' },
-  userNameColor: { type: String, default: 'rgb(6, 177, 183)' },
-  wrapperSize: { type: String, default: 'medium' },
-  parentIds: { type: Array, default: () => [] },
-  parentIndices: { type: Array, default: () => [] },
-})
-
-const emit = defineEmits([
-  'delete-row',
-  'update-comment',
-  'add-reply',
-  'delete-reply',
-])
-
-const { loggedIn, user } = useUserSession()
-
-const localState = reactive({
-  updated_at: null,
-  replies: [],
-  replyCount: 0,
-})
-
-watch(
-  () => props.comment,
-  (newComment) => {
-    localState.replies = [...newComment.replies]
-    localState.replyCount = newComment.replyCount || 0
-    localState.updated_at = newComment.updated_at
-  },
-  { immediate: true },
-)
-
-function getIndex(id: string) {
-  return localState.replies.findIndex(comment => comment.id === id)
-}
-
-const toast = useToast()
-
-const showHideBar = ref(false)
-const hideMessage = ref(false)
-const beforeReply = ref(false)
-const beforeUpdate = ref(false)
-const beforeDelete = ref(false)
-const showReplies = computed(
-  () => props.depthLength < Number.parseInt(props.maxShowingDepth),
-)
-const filteredComment = ref('')
-const updateMessage = ref('')
-const replyMessage = ref('')
-const updateHeight = ref(0)
-const limit = computed(() => Number.parseInt(props.initialMessageLimit))
-const requestLoading = ref(false)
-const requestDelete = ref(false)
-
-const isAuthorOrAdmin = computed(
-  () =>
-    loggedIn.value
-    && (user?.value?.id === props.comment.user_id || user?.value?.isAdmin),
-)
-
-const displayedReplies = computed(() =>
-  localState.replies.slice(0, limit.value),
-)
-
-const remainingUpdateLetter = computed(
-  () => Number.parseInt(props.maxCommentLength) - updateMessage.value.length,
-)
-
-const remainingLetter = computed(
-  () => Number.parseInt(props.maxCommentLength) - replyMessage.value.length,
-)
-
-const isDeleted = computed(() => filteredComment.value === '[deleted]')
-const isUpdated = computed(
-  () =>
-    localState.updated_at !== props.comment.created_at
-    && localState.updated_at,
-)
-
-const getTimeDiff = computed(() => {
-  const now = Date.now()
-  const commentTime = new Date(
-    `${localState.updated_at || props.comment.created_at}Z`,
-  ).getTime()
-  const diff = now - commentTime
-
-  const minutes = Math.floor(diff / 60000)
-  const hours = Math.floor(minutes / 60)
-  const days = Math.floor(hours / 24)
-  const months = Math.floor(days / 30)
-  const years = Math.floor(months / 12)
-
-  if (years > 0)
-    return years === 1 ? 'a year ago' : `${years} years ago`
-  if (months > 0)
-    return months === 1 ? 'a month ago' : `${months} months ago`
-  if (days > 0)
-    return days === 1 ? 'a day ago' : `${days} days ago`
-  if (hours > 0)
-    return hours === 1 ? 'an hour ago' : `${hours} hours ago`
-  if (minutes > 0)
-    return minutes === 1 ? 'a minute ago' : `${minutes} minutes ago`
-  return 'just now'
-})
-
-const getTime = computed(() => {
-  const date = new Date(Number.parseInt(props.comment.timestamp))
-  return date.toLocaleString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
+  const props = defineProps({
+    module: { type: String, default: '' },
+    id: { type: Number, default: null },
+    comment: { type: Object, default: () => ({}) },
+    currentIndex: { type: Number, default: 0 },
+    initialMessageLimit: { type: String, default: '10' },
+    maxLineLimit: { type: String, default: '40' },
+    maxShowingDepth: { type: String, default: '5' },
+    maxCommentLength: { type: String, default: '1000' },
+    depthLength: { type: Number, default: 0 },
+    commentBackgroundColor: { type: String, default: 'white' },
+    commentTextColor: { type: String, default: '#1d2129' },
+    userNameColor: { type: String, default: 'rgb(6, 177, 183)' },
+    wrapperSize: { type: String, default: 'medium' },
+    parentIds: { type: Array, default: () => [] },
+    parentIndices: { type: Array, default: () => [] },
   })
-})
 
-function handleBeforeReply() {
-  beforeReply.value = !beforeReply.value
-  if (beforeReply.value) {
-    nextTick(() => {
-      const replyTextarea = document.querySelector('[ref="addReply"]')
-      if (replyTextarea)
-        replyTextarea.focus()
-    })
+  const emit = defineEmits([
+    'delete-row',
+    'update-comment',
+    'add-reply',
+    'delete-reply',
+  ])
+
+  const { loggedIn, user } = useUserSession()
+
+  const localState = reactive({
+    updated_at: null,
+    replies: [],
+    replyCount: 0,
+  })
+
+  watch(
+    () => props.comment,
+    (newComment) => {
+      localState.replies = [...newComment.replies]
+      localState.replyCount = newComment.replyCount || 0
+      localState.updated_at = newComment.updated_at
+    },
+    { immediate: true },
+  )
+
+  function getIndex(id: string) {
+    return localState.replies.findIndex(comment => comment.id === id)
   }
-}
 
-function handleBeforeUpdate() {
-  beforeUpdate.value = true
-  updateMessage.value = filteredComment.value
-  nextTick(() => {
-    const updateTextarea = document.querySelector('[ref="addUpdate"]')
-    if (updateTextarea) {
-      updateTextarea.focus()
-      resize({ target: updateTextarea }, true)
+  const toast = useToast()
+
+  const showHideBar = ref(false)
+  const hideMessage = ref(false)
+  const beforeReply = ref(false)
+  const beforeUpdate = ref(false)
+  const beforeDelete = ref(false)
+  const showReplies = computed(
+    () => props.depthLength < Number.parseInt(props.maxShowingDepth),
+  )
+  const filteredComment = ref('')
+  const updateMessage = ref('')
+  const replyMessage = ref('')
+  const updateHeight = ref(0)
+  const limit = computed(() => Number.parseInt(props.initialMessageLimit))
+  const requestLoading = ref(false)
+  const requestDelete = ref(false)
+
+  const isAuthorOrAdmin = computed(
+    () =>
+      loggedIn.value &&
+      (user?.value?.id === props.comment.user_id || user?.value?.isAdmin),
+  )
+
+  const displayedReplies = computed(() =>
+    localState.replies.slice(0, limit.value),
+  )
+
+  const remainingUpdateLetter = computed(
+    () => Number.parseInt(props.maxCommentLength) - updateMessage.value.length,
+  )
+
+  const remainingLetter = computed(
+    () => Number.parseInt(props.maxCommentLength) - replyMessage.value.length,
+  )
+
+  const isDeleted = computed(() => filteredComment.value === '[deleted]')
+  const isUpdated = computed(
+    () =>
+      localState.updated_at !== props.comment.created_at && localState.updated_at,
+  )
+
+  const getTimeDiff = computed(() => {
+    const now = Date.now()
+    const commentTime = new Date(
+      `${localState.updated_at || props.comment.created_at}Z`,
+    ).getTime()
+    const diff = now - commentTime
+
+    const minutes = Math.floor(diff / 60000)
+    const hours = Math.floor(minutes / 60)
+    const days = Math.floor(hours / 24)
+    const months = Math.floor(days / 30)
+    const years = Math.floor(months / 12)
+
+    if (years > 0)
+      return years === 1 ? 'a year ago' : `${years} years ago`
+    if (months > 0)
+      return months === 1 ? 'a month ago' : `${months} months ago`
+    if (days > 0)
+      return days === 1 ? 'a day ago' : `${days} days ago`
+    if (hours > 0)
+      return hours === 1 ? 'an hour ago' : `${hours} hours ago`
+    if (minutes > 0)
+      return minutes === 1 ? 'a minute ago' : `${minutes} minutes ago`
+    return 'just now'
+  })
+
+  const getTime = computed(() => {
+    const date = new Date(Number.parseInt(props.comment.timestamp))
+    return date.toLocaleString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+    })
+  })
+
+  function handleBeforeReply() {
+    beforeReply.value = !beforeReply.value
+    if (beforeReply.value) {
+      nextTick(() => {
+        const replyTextarea = document.querySelector('[ref="addReply"]')
+        if (replyTextarea)
+          replyTextarea.focus()
+      })
     }
-  })
-}
-
-function showReply() {
-  showReplies.value = !showReplies.value
-}
-
-function handleBeforeDelete() {
-  beforeDelete.value = !beforeDelete.value
-  if (beforeDelete.value) {
-    setTimeout(() => {
-      beforeDelete.value = false
-    }, 5000)
   }
-}
 
-async function update() {
-  if (!loggedIn.value) {
-    toast.add({
-      id: 'update-comment-login',
-      title: 'Login required',
-      description: 'You need to login to update your comment',
-      icon: 'exclamation-circle',
+  function handleBeforeUpdate() {
+    beforeUpdate.value = true
+    updateMessage.value = filteredComment.value
+    nextTick(() => {
+      const updateTextarea = document.querySelector('[ref="addUpdate"]')
+      if (updateTextarea) {
+        updateTextarea.focus()
+        resize({ target: updateTextarea }, true)
+      }
     })
-    return
   }
 
-  if (user?.value?.id !== props.comment.user_id && !user?.value?.isAdmin) {
-    toast.add({
-      id: 'update-comment-author',
-      title: 'Permission denied',
-      description: 'You do not have permission to update this comment',
-      icon: 'exclamation-circle',
-    })
-    return
+  function showReply() {
+    showReplies.value = !showReplies.value
   }
 
-  requestLoading.value = true
-  try {
-    if (updateMessage.value.trim().length === 0) {
+  function handleBeforeDelete() {
+    beforeDelete.value = !beforeDelete.value
+    if (beforeDelete.value) {
+      setTimeout(() => {
+        beforeDelete.value = false
+      }, 5000)
+    }
+  }
+
+  async function update() {
+    if (!loggedIn.value) {
       toast.add({
-        id: 'update-comment-empty',
-        title: 'Empty comment',
-        description: 'You cannot send an empty comment',
+        id: 'update-comment-login',
+        title: 'Login required',
+        description: 'You need to login to update your comment',
         icon: 'exclamation-circle',
       })
       return
     }
-    const updated_at = Date.now()
-    const { data: response, error } = await useFetch(
-      `/api/comments/${props.id}`,
-      {
-        method: 'PUT',
-        headers: useRequestHeaders(['cookie']),
-        body: JSON.stringify({
-          commentId: props.comment.id,
-          commentIndex: props.currentIndex,
-          parentIds: props.parentIds,
-          parentIndices: props.parentIndices,
-          comment: updateMessage.value,
-          timestamp: updated_at.toString(),
-          module: props.module,
-        }),
-      },
-    )
-    if (error.value) {
-      throw new Error(`Failed to update comment - ${error.value.message}`)
-    }
 
-    if (response.value.message && response.value.message === 'success') {
-      filteredComment.value = updateMessage.value
-      localState.updated_at = updated_at
-      beforeUpdate.value = false
-
-      emit('update-comment', {
-        id: props.comment.id,
-        updated_at,
-        content: updateMessage.value,
-      })
-
+    if (user?.value?.id !== props.comment.user_id && !user?.value?.isAdmin) {
       toast.add({
-        id: 'update-comment-success',
-        title: 'Comment updated',
-        description: 'Your comment has been updated successfully',
-        icon: 'check-circle',
+        id: 'update-comment-author',
+        title: 'Permission denied',
+        description: 'You do not have permission to update this comment',
+        icon: 'exclamation-circle',
       })
-    }
-    else {
-      throw new Error(`Failed to update comment - ${response.value.message}`)
-    }
-  }
-  catch (error) {
-    toast.add({
-      id: 'update-comment-error',
-      title: 'Error updating comment',
-      description: error.message,
-      icon: 'exclamation-circle',
-    })
-  }
-  finally {
-    requestLoading.value = false
-  }
-}
-
-async function deleteComment() {
-  if (!loggedIn.value) {
-    toast.add({
-      id: 'delete-comment-login',
-      title: 'Login required',
-      description: 'You need to login to delete your comment',
-      icon: 'exclamation-circle',
-    })
-    return
-  }
-
-  if (user?.value?.id !== props.comment.user_id && !user?.value?.isAdmin) {
-    toast.add({
-      id: 'delete-comment-author',
-      title: 'Permission denied',
-      description: 'You do not have permission to delete this comment',
-      icon: 'exclamation-circle',
-    })
-    return
-  }
-
-  requestDelete.value = true
-  try {
-    const { data: response, error } = await useFetch(
-      `/api/comments/${props.id}`,
-      {
-        method: 'PUT',
-        headers: useRequestHeaders(['cookie']),
-        body: JSON.stringify({
-          commentId: props.comment.id,
-          commentIndex: props.currentIndex,
-          parentIds: props.parentIds,
-          parentIndices: props.parentIndices,
-          comment: '[deleted]',
-          timestamp: Date.now().toString(),
-          module: props.module,
-        }),
-      },
-    )
-    if (error.value) {
-      throw new Error(`Failed to delete comment: ${error.message}`)
+      return
     }
 
-    if (response.value.message && response.value.message === 'success') {
-      // emit('delete-row')
-      filteredComment.value = '[deleted]'
+    requestLoading.value = true
+    try {
+      if (updateMessage.value.trim().length === 0) {
+        toast.add({
+          id: 'update-comment-empty',
+          title: 'Empty comment',
+          description: 'You cannot send an empty comment',
+          icon: 'exclamation-circle',
+        })
+        return
+      }
+      const updated_at = Date.now()
+      const { data: response, error } = await useFetch(
+        `/api/comments/${props.id}`,
+        {
+          method: 'PUT',
+          headers: useRequestHeaders(['cookie']),
+          body: JSON.stringify({
+            commentId: props.comment.id,
+            commentIndex: props.currentIndex,
+            parentIds: props.parentIds,
+            parentIndices: props.parentIndices,
+            comment: updateMessage.value,
+            timestamp: updated_at.toString(),
+            module: props.module,
+          }),
+        },
+      )
+      if (error.value) {
+        throw new Error(`Failed to update comment - ${error.value.message}`)
+      }
+
+      if (response.value.message && response.value.message === 'success') {
+        filteredComment.value = updateMessage.value
+        localState.updated_at = updated_at
+        beforeUpdate.value = false
+
+        emit('update-comment', {
+          id: props.comment.id,
+          updated_at,
+          content: updateMessage.value,
+        })
+
+        toast.add({
+          id: 'update-comment-success',
+          title: 'Comment updated',
+          description: 'Your comment has been updated successfully',
+          icon: 'check-circle',
+        })
+      }
+      else {
+        throw new Error(`Failed to update comment - ${response.value.message}`)
+      }
+    }
+    catch (error) {
       toast.add({
-        id: 'delete-comment-success',
-        title: 'Comment deleted',
-        description: 'Your comment has been deleted successfully',
-        icon: 'check-circle',
+        id: 'update-comment-error',
+        title: 'Error updating comment',
+        description: error.message,
+        icon: 'exclamation-circle',
       })
     }
-    else {
-      throw new Error(`Failed to delete comment: ${response.value.message}`)
+    finally {
+      requestLoading.value = false
     }
   }
-  catch (error) {
-    toast.add({
-      id: 'delete-comment-error',
-      title: 'Error deleting comment',
-      description: error.message,
-      icon: 'exclamation-circle',
+
+  async function deleteComment() {
+    if (!loggedIn.value) {
+      toast.add({
+        id: 'delete-comment-login',
+        title: 'Login required',
+        description: 'You need to login to delete your comment',
+        icon: 'exclamation-circle',
+      })
+      return
+    }
+
+    if (user?.value?.id !== props.comment.user_id && !user?.value?.isAdmin) {
+      toast.add({
+        id: 'delete-comment-author',
+        title: 'Permission denied',
+        description: 'You do not have permission to delete this comment',
+        icon: 'exclamation-circle',
+      })
+      return
+    }
+
+    requestDelete.value = true
+    try {
+      const { data: response, error } = await useFetch(
+        `/api/comments/${props.id}`,
+        {
+          method: 'PUT',
+          headers: useRequestHeaders(['cookie']),
+          body: JSON.stringify({
+            commentId: props.comment.id,
+            commentIndex: props.currentIndex,
+            parentIds: props.parentIds,
+            parentIndices: props.parentIndices,
+            comment: '[deleted]',
+            timestamp: Date.now().toString(),
+            module: props.module,
+          }),
+        },
+      )
+      if (error.value) {
+        throw new Error(`Failed to delete comment: ${error.message}`)
+      }
+
+      if (response.value.message && response.value.message === 'success') {
+        // emit('delete-row')
+        filteredComment.value = '[deleted]'
+        toast.add({
+          id: 'delete-comment-success',
+          title: 'Comment deleted',
+          description: 'Your comment has been deleted successfully',
+          icon: 'check-circle',
+        })
+      }
+      else {
+        throw new Error(`Failed to delete comment: ${response.value.message}`)
+      }
+    }
+    catch (error) {
+      toast.add({
+        id: 'delete-comment-error',
+        title: 'Error deleting comment',
+        description: error.message,
+        icon: 'exclamation-circle',
+      })
+    }
+    finally {
+      requestDelete.value = false
+      beforeDelete.value = false
+    }
+  }
+
+  function deleteReply(index: number) {
+    localState.replies.splice(index, 1)
+
+    emit('delete-reply', {
+      commentId: props.comment.id,
+      replyIndex: index,
     })
   }
-  finally {
-    requestDelete.value = false
-    beforeDelete.value = false
+
+  function updateLimit() {
+    limit.value += Number.parseInt(props.initialMessageLimit)
   }
-}
 
-function deleteReply(index: number) {
-  localState.replies.splice(index, 1)
+  function resize(event: Event, isUpdate = false) {
+    const textarea = event.target
+    textarea.style.height = 'auto'
+    textarea.style.height = `${textarea.scrollHeight}px`
+    if (isUpdate) {
+      updateHeight.value = textarea.scrollHeight
+    }
+  }
 
-  emit('delete-reply', {
-    commentId: props.comment.id,
-    replyIndex: index,
+  async function reply() {
+    if (!loggedIn.value || !user?.value?.id) {
+      toast.add({
+        id: 'reply-comment-login',
+        title: 'Login required',
+        description: 'You need to login to reply to a comment',
+        icon: 'exclamation-circle',
+      })
+      return
+    }
+
+    if (replyMessage.value.trim().length === 0) {
+      toast.add({
+        id: 'reply-comment-empty',
+        title: 'Empty reply',
+        description: 'You cannot send an empty reply',
+        icon: 'exclamation-circle',
+      })
+      return
+    }
+
+    requestLoading.value = true
+    try {
+      const replyObj = {
+        comment: replyMessage.value,
+        timestamp: Date.now().toString(),
+        parentIds: [...props.parentIds, props.comment.id],
+        parentIndices: [...props.parentIndices, props.currentIndex],
+        module: props.module,
+      }
+
+      const { data: response, error } = await useFetch(
+        `/api/comments/${props.id}`,
+        {
+          method: 'POST',
+          headers: useRequestHeaders(['cookie']),
+          body: JSON.stringify(replyObj),
+        },
+      )
+
+      if (error.value) {
+        throw new Error(`Failed to add reply: ${error.value.message}`)
+      }
+
+      if (response.value.message && response.value.message === 'success') {
+        const newReply = {
+          id: response.value.id,
+          user_id: user.value.siteId,
+          name: user.value.name,
+          image: user.value.image,
+          content: replyMessage.value,
+          created_at: replyObj.timestamp,
+          updated_at: replyObj.timestamp,
+          replies: [],
+        }
+
+        localState.replies.push(newReply)
+        localState.replyCount++
+
+        emit('add-reply', {
+          commentId: props.comment.id,
+          reply: newReply,
+        })
+
+        replyMessage.value = ''
+        beforeReply.value = false
+        if (!showReplies.value) {
+          showReplies.value = true
+        }
+        toast.add({
+          id: 'reply-comment-success',
+          title: 'Reply added',
+          description: 'Your reply has been added successfully',
+          icon: 'check-circle',
+        })
+      }
+      else {
+        throw new Error(`Failed to add reply: ${response.value.message}`)
+      }
+    }
+    catch (error) {
+      toast.add({
+        id: 'reply-comment-error',
+        title: 'Error adding reply',
+        description: error.message,
+        icon: 'exclamation-circle',
+      })
+    }
+    finally {
+      requestLoading.value = false
+    }
+  }
+
+  onMounted(() => {
+    filteredComment.value = props.comment.content
+    if (props.comment.lineCount > Number.parseInt(props.maxLineLimit)) {
+      const lines = props.comment.content.split('\n')
+      filteredComment.value =
+        lines.slice(0, Number.parseInt(props.maxLineLimit)).join('\n') +
+        (lines.length > Number.parseInt(props.maxLineLimit) ? '...' : '')
+    }
+
+    const commentElement = document.querySelector('[ref="comment"]')
+    if (commentElement) {
+      updateHeight.value = commentElement.clientHeight + 13
+    }
   })
-}
-
-function updateLimit() {
-  limit.value += Number.parseInt(props.initialMessageLimit)
-}
-
-function resize(event: Event, isUpdate = false) {
-  const textarea = event.target
-  textarea.style.height = 'auto'
-  textarea.style.height = `${textarea.scrollHeight}px`
-  if (isUpdate) {
-    updateHeight.value = textarea.scrollHeight
-  }
-}
-
-async function reply() {
-  if (!loggedIn.value || !user?.value?.id) {
-    toast.add({
-      id: 'reply-comment-login',
-      title: 'Login required',
-      description: 'You need to login to reply to a comment',
-      icon: 'exclamation-circle',
-    })
-    return
-  }
-
-  if (replyMessage.value.trim().length === 0) {
-    toast.add({
-      id: 'reply-comment-empty',
-      title: 'Empty reply',
-      description: 'You cannot send an empty reply',
-      icon: 'exclamation-circle',
-    })
-    return
-  }
-
-  requestLoading.value = true
-  try {
-    const replyObj = {
-      comment: replyMessage.value,
-      timestamp: Date.now().toString(),
-      parentIds: [...props.parentIds, props.comment.id],
-      parentIndices: [...props.parentIndices, props.currentIndex],
-      module: props.module,
-    }
-
-    const { data: response, error } = await useFetch(
-      `/api/comments/${props.id}`,
-      {
-        method: 'POST',
-        headers: useRequestHeaders(['cookie']),
-        body: JSON.stringify(replyObj),
-      },
-    )
-
-    if (error.value) {
-      throw new Error(`Failed to add reply: ${error.value.message}`)
-    }
-
-    if (response.value.message && response.value.message === 'success') {
-      const newReply = {
-        id: response.value.id,
-        user_id: user.value.siteId,
-        name: user.value.name,
-        image: user.value.image,
-        content: replyMessage.value,
-        created_at: replyObj.timestamp,
-        updated_at: replyObj.timestamp,
-        replies: [],
-      }
-
-      localState.replies.push(newReply)
-      localState.replyCount++
-
-      emit('add-reply', {
-        commentId: props.comment.id,
-        reply: newReply,
-      })
-
-      replyMessage.value = ''
-      beforeReply.value = false
-      if (!showReplies.value) {
-        showReplies.value = true
-      }
-      toast.add({
-        id: 'reply-comment-success',
-        title: 'Reply added',
-        description: 'Your reply has been added successfully',
-        icon: 'check-circle',
-      })
-    }
-    else {
-      throw new Error(`Failed to add reply: ${response.value.message}`)
-    }
-  }
-  catch (error) {
-    toast.add({
-      id: 'reply-comment-error',
-      title: 'Error adding reply',
-      description: error.message,
-      icon: 'exclamation-circle',
-    })
-  }
-  finally {
-    requestLoading.value = false
-  }
-}
-
-onMounted(() => {
-  filteredComment.value = props.comment.content
-  if (props.comment.lineCount > Number.parseInt(props.maxLineLimit)) {
-    const lines = props.comment.content.split('\n')
-    filteredComment.value
-        = lines.slice(0, Number.parseInt(props.maxLineLimit)).join('\n')
-          + (lines.length > Number.parseInt(props.maxLineLimit) ? '...' : '')
-  }
-
-  const commentElement = document.querySelector('[ref="comment"]')
-  if (commentElement) {
-    updateHeight.value = commentElement.clientHeight + 13
-  }
-})
 </script>
 
 <template>
@@ -531,14 +530,14 @@ onMounted(() => {
             spellcheck="false"
             aria-label="Add Comment"
             @keyup="resize($event, true)"
-          />
+          ></textarea>
           <button
             aria-label="Update"
             :disabled="requestLoading"
             class="bg-primary hover:bg-primary-800"
             @click="update"
           >
-            <div v-if="requestLoading" class="request-loading" />
+            <div v-if="requestLoading" class="request-loading"></div>
             <span v-else>Update</span>
           </button>
           <div
@@ -558,14 +557,14 @@ onMounted(() => {
         </div>
         <div v-show="!beforeUpdate" class="reply">
           <div class="hover:text-(--ui-primary)" @click="handleBeforeReply">
-            {{ beforeReply ? 'Never mind' : 'Reply' }}
+            {{ beforeReply ? "Never mind" : "Reply" }}
           </div>
           <template v-if="localState.replies.length !== 0">
             <span class="dot">•</span>
             <div class="hover:text-(--ui-primary)" @click="showReply">
               {{
                 showReplies
-                  ? 'Hide replies'
+                  ? "Hide replies"
                   : `Show replies [${localState.replies.length}]`
               }}
             </div>
@@ -613,7 +612,7 @@ onMounted(() => {
             </div>
             <div class="comment-box text-black dark:text-white">
               <div class="user-name text-(--ui-primary)">
-                {{ user?.name || 'Unknown' }}
+                {{ user?.name || "Unknown" }}
               </div>
               <textarea
                 ref="addReply"
@@ -624,14 +623,14 @@ onMounted(() => {
                 spellcheck="false"
                 aria-label="Add Reply"
                 @keyup="resize($event)"
-              />
+              ></textarea>
               <button
                 aria-label="Reply"
                 :disabled="requestLoading"
                 class="bg-primary hover:bg-primary-800"
                 @click="reply"
               >
-                <div v-if="requestLoading" class="request-loading" />
+                <div v-if="requestLoading" class="request-loading"></div>
                 <span v-else>Reply</span>
               </button>
               <div
@@ -681,7 +680,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-  .comment-wrapper {
+.comment-wrapper {
   font-family: 'Roboto', sans-serif;
   overflow: hidden;
   border-radius: 4px;

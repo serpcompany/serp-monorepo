@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import type { Post } from '@serp/types/types'
+  import type { Post } from '@serp/types/types'
 
-const props = defineProps<{
-  data: Post
-  module: string
-}>()
-const config = useRuntimeConfig()
-const useAuth = config.public.useAuth
+  const props = defineProps<{
+    data: Post
+    module: string
+  }>()
+  const config = useRuntimeConfig()
+  const useAuth = config.public.useAuth
 
-const data = toRef(props, 'data')
+  const data = toRef(props, 'data')
 
-const isValidAuthor
-    = data.value.author !== undefined
-      && data.value.author !== null
-      && data.value.author !== 'None'
+  const isValidAuthor =
+    data.value.author !== undefined &&
+    data.value.author !== null &&
+    data.value.author !== 'None'
 
-let comments = data.value.comments || []
-if (useAuth) {
-  const commentsData = await usePostComments(data.value.id)
-  comments = commentsData.comments
-}
+  let comments = data.value.comments || []
+  if (useAuth) {
+    const commentsData = await usePostComments(data.value.id)
+    comments = commentsData.comments
+  }
 </script>
 
 <template>
@@ -40,7 +40,10 @@ if (useAuth) {
       <SLogo />
     </USeparator>
     <!-- eslint-disable-next-line vue/no-v-html -->
-    <article class="prose dark:prose-invert mb-20" v-html="data.content" />
+    <article
+      class="prose dark:prose-invert mb-20"
+      v-html="data.content"
+    ></article>
 
     <!-- link hub for other posts -->
     <UPageSection v-if="module === 'movies'" title="More Posts">
@@ -65,7 +68,7 @@ if (useAuth) {
 </template>
 
 <style>
-  .comments-github-style {
+.comments-github-style {
   border-radius: 6px;
   margin-top: 16px;
 }

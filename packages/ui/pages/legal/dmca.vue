@@ -1,12 +1,11 @@
 <script setup lang="ts">
-const config = useRuntimeConfig()
-const domain = config.public.domain
+  const config = useRuntimeConfig()
+  const domain = config.public.domain
 
-useSeoMeta({
-  title: 'DMCA',
-  description:
-      'Steps to report copyright infringement under our DMCA policy.',
-})
+  useSeoMeta({
+    title: 'DMCA',
+    description: 'Steps to report copyright infringement under our DMCA policy.',
+  })
 </script>
 
 <template>

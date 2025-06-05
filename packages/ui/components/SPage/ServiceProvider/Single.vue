@@ -1,118 +1,117 @@
 <script setup lang="ts">
-import type { Comment, ServiceProvider } from '@serp/types/types'
+  import type { Comment, ServiceProvider } from '@serp/types/types'
 
-const props = defineProps<{
-  data: ServiceProvider
-}>()
+  const props = defineProps<{
+    data: ServiceProvider
+  }>()
 
-const { user } = useUserSession()
+  const { user } = useUserSession()
 
-const { data } = toRefs(props)
+  const { data } = toRefs(props)
 
-const isVerified = computed(() => {
-  return data.value?.verification === user.value?.id
-})
+  const isVerified = computed(() => {
+    return data.value?.verification === user.value?.id
+  })
 
-const config = useRuntimeConfig()
-const useAuth = config.public.useAuth
+  const config = useRuntimeConfig()
+  const useAuth = config.public.useAuth
 
-// Create a consolidated object with all provider details
-const providerDetails = computed(() => {
-  return {
-    basic: data.value?.basicInfo || {},
-    contracts: data.value?.contracts || {},
-    pricing: data.value?.pricing || {},
-    services: data.value?.services || {},
-    industries: data.value?.industries || {},
-    businessesServed: data.value?.businessesServed || {},
-    supportSetup: data.value?.supportSetup || {},
-    ratings: data.value?.ratings || {},
-  }
-})
+  // Create a consolidated object with all provider details
+  const providerDetails = computed(() => {
+    return {
+      basic: data.value?.basicInfo || {},
+      contracts: data.value?.contracts || {},
+      pricing: data.value?.pricing || {},
+      services: data.value?.services || {},
+      industries: data.value?.industries || {},
+      businessesServed: data.value?.businessesServed || {},
+      supportSetup: data.value?.supportSetup || {},
+      ratings: data.value?.ratings || {},
+    }
+  })
 
-// @ts-expect-error: Auto-imported from another layer
-const { comments } = (await useServiceProviderComments(data.value?.id)) as {
-  comments: Comment[]
-}
-
-// @ts-expect-error: Auto-imported from another layer
-const reviews = await useServiceProviderReviews(data.value?.id)
-reviews.serviceProviderId = data.value?.id
-
-// State for review modal
-const showReviewModal = ref(false)
-
-// Handle review submission - refresh reviews data
-async function handleReviewSubmitted() {
   // @ts-expect-error: Auto-imported from another layer
-  const updatedReviews = await useServiceProviderReviews(data.value?.id)
-  Object.assign(reviews, updatedReviews)
+  const { comments } = (await useServiceProviderComments(data.value?.id)) as {
+    comments: Comment[]
+  }
+
+  // @ts-expect-error: Auto-imported from another layer
+  const reviews = await useServiceProviderReviews(data.value?.id)
   reviews.serviceProviderId = data.value?.id
-}
 
-const faqItems = computed(() => {
-  if (!data.value?.faqs)
-    return []
+  // State for review modal
+  const showReviewModal = ref(false)
 
-  return data.value?.faqs.map(
-    (faq: { question: string, answer: string }) => ({
+  // Handle review submission - refresh reviews data
+  async function handleReviewSubmitted() {
+    // @ts-expect-error: Auto-imported from another layer
+    const updatedReviews = await useServiceProviderReviews(data.value?.id)
+    Object.assign(reviews, updatedReviews)
+    reviews.serviceProviderId = data.value?.id
+  }
+
+  const faqItems = computed(() => {
+    if (!data.value?.faqs)
+      return []
+
+    return data.value?.faqs.map((faq: { question: string, answer: string }) => ({
       label: faq.question,
       content: faq.answer,
     }),
-  )
-})
+    )
+  })
 
-const sections = computed(() => {
-  const sectionTitles: string[] = []
+  const sections = computed(() => {
+    const sectionTitles: string[] = []
 
-  sectionTitles.push('Overview')
+    sectionTitles.push('Overview')
 
-  if (
-    data.value?.categories
-    && data.value?.categories.length
-    && data.value?.categories[0] !== undefined
-  ) {
-    sectionTitles.push('Categories')
-  }
+    if (
+      data.value?.categories &&
+      data.value?.categories.length &&
+      data.value?.categories[0] !== undefined
+    ) {
+      sectionTitles.push('Categories')
+    }
 
-  if (data.value?.features) {
-    sectionTitles.push('Features')
-  }
+    if (data.value?.features) {
+      sectionTitles.push('Features')
+    }
 
-  if (data.value?.content) {
-    sectionTitles.push('Article')
-  }
+    if (data.value?.content) {
+      sectionTitles.push('Article')
+    }
 
-  if (data.value?.screenshots && data.value?.screenshots.length) {
-    sectionTitles.push('Media')
-  }
+    if (data.value?.screenshots && data.value?.screenshots.length) {
+      sectionTitles.push('Media')
+    }
 
-  if (faqItems.value && faqItems.value.length) {
-    sectionTitles.push('FAQ')
-  }
+    if (faqItems.value && faqItems.value.length) {
+      sectionTitles.push('FAQ')
+    }
 
-  if (data.value?.alternatives) {
-    sectionTitles.push('Alternatives')
-  }
+    if (data.value?.alternatives) {
+      sectionTitles.push('Alternatives')
+    }
 
-  // Always include Reviews section when reviews are available
-  if (data.value?.numReviews > 0 || reviews?.reviews?.length > 0) {
-    sectionTitles.push('Reviews')
-  }
+    // Always include Reviews section when reviews are available
+    if (data.value?.numReviews > 0 || reviews?.reviews?.length > 0) {
+      sectionTitles.push('Reviews')
+    }
 
-  // Add Comments section to navigation
-  sectionTitles.push('Discussion')
+    // Add Comments section to navigation
+    sectionTitles.push('Discussion')
 
-  return sectionTitles
-})
+    return sectionTitles
+  })
 
-useSeoMeta({
-  title: computed(() =>
-    data.value?.name
-      ? `${data.value.name} - Reviews, Pricing, Features, Alternatives & Deals`
-      : 'Service Providers',
-  ),
-})
+  useSeoMeta({
+    title: computed(() =>
+      data.value?.name
+        ? `${data.value.name} - Reviews, Pricing, Features, Alternatives & Deals`
+        : 'Service Providers',
+    ),
+  })
 </script>
 
 <template>
@@ -196,7 +195,7 @@ useSeoMeta({
                 >
                   <span class="font-medium">{{ key }}:</span>
                   <span v-if="typeof value !== 'object' || value === null">
-                    {{ value || 'Unknown' }}
+                    {{ value || "Unknown" }}
                   </span>
                   <div v-else class="mt-1 ml-4 space-y-1">
                     <div
@@ -207,11 +206,11 @@ useSeoMeta({
                       <span class="mr-2 font-bold">{{ nestedKey }}:</span>
                       <span>
                         {{
-                          nestedValue === null
-                            || nestedValue === undefined
-                            || nestedValue === ''
-                            ? 'Unknown'
-                            : typeof nestedValue === 'object'
+                          nestedValue === null ||
+                            nestedValue === undefined ||
+                            nestedValue === ""
+                            ? "Unknown"
+                            : typeof nestedValue === "object"
                               ? JSON.stringify(nestedValue)
                               : nestedValue
                         }}
@@ -235,7 +234,7 @@ useSeoMeta({
                 >
                   <span class="font-medium">{{ key }}:</span>
                   <span v-if="typeof value !== 'object' || value === null">
-                    {{ value || 'Unknown' }}
+                    {{ value || "Unknown" }}
                   </span>
                   <div v-else class="mt-1 ml-4 space-y-1">
                     <div
@@ -246,11 +245,11 @@ useSeoMeta({
                       <span class="mr-2 font-bold">{{ nestedKey }}:</span>
                       <span>
                         {{
-                          nestedValue === null
-                            || nestedValue === undefined
-                            || nestedValue === ''
-                            ? 'Unknown'
-                            : typeof nestedValue === 'object'
+                          nestedValue === null ||
+                            nestedValue === undefined ||
+                            nestedValue === ""
+                            ? "Unknown"
+                            : typeof nestedValue === "object"
                               ? JSON.stringify(nestedValue)
                               : nestedValue
                         }}
@@ -274,7 +273,7 @@ useSeoMeta({
                 >
                   <span class="font-medium">{{ key }}:</span>
                   <span v-if="typeof value !== 'object' || value === null">
-                    {{ value || 'Unknown' }}
+                    {{ value || "Unknown" }}
                   </span>
                   <div v-else class="mt-1 ml-4 space-y-1">
                     <div
@@ -285,11 +284,11 @@ useSeoMeta({
                       <span class="mr-2 font-bold">{{ nestedKey }}:</span>
                       <span>
                         {{
-                          nestedValue === null
-                            || nestedValue === undefined
-                            || nestedValue === ''
-                            ? 'Unknown'
-                            : typeof nestedValue === 'object'
+                          nestedValue === null ||
+                            nestedValue === undefined ||
+                            nestedValue === ""
+                            ? "Unknown"
+                            : typeof nestedValue === "object"
                               ? JSON.stringify(nestedValue)
                               : nestedValue
                         }}
@@ -313,7 +312,7 @@ useSeoMeta({
                 >
                   <span class="font-medium">{{ key }}:</span>
                   <span v-if="typeof value !== 'object' || value === null">
-                    {{ value || 'Unknown' }}
+                    {{ value || "Unknown" }}
                   </span>
                   <div v-else class="mt-1 ml-4 space-y-1">
                     <div
@@ -324,11 +323,11 @@ useSeoMeta({
                       <span class="mr-2 font-bold">{{ nestedKey }}:</span>
                       <span>
                         {{
-                          nestedValue === null
-                            || nestedValue === undefined
-                            || nestedValue === ''
-                            ? 'Unknown'
-                            : typeof nestedValue === 'object'
+                          nestedValue === null ||
+                            nestedValue === undefined ||
+                            nestedValue === ""
+                            ? "Unknown"
+                            : typeof nestedValue === "object"
                               ? JSON.stringify(nestedValue)
                               : nestedValue
                         }}
@@ -352,7 +351,7 @@ useSeoMeta({
                 >
                   <span class="font-medium">{{ key }}:</span>
                   <span v-if="typeof value !== 'object' || value === null">
-                    {{ value || 'Unknown' }}
+                    {{ value || "Unknown" }}
                   </span>
                   <div v-else class="mt-1 ml-4 space-y-1">
                     <div
@@ -363,11 +362,11 @@ useSeoMeta({
                       <span class="mr-2 font-bold">{{ nestedKey }}:</span>
                       <span>
                         {{
-                          nestedValue === null
-                            || nestedValue === undefined
-                            || nestedValue === ''
-                            ? 'Unknown'
-                            : typeof nestedValue === 'object'
+                          nestedValue === null ||
+                            nestedValue === undefined ||
+                            nestedValue === ""
+                            ? "Unknown"
+                            : typeof nestedValue === "object"
                               ? JSON.stringify(nestedValue)
                               : nestedValue
                         }}
@@ -391,7 +390,7 @@ useSeoMeta({
                 >
                   <span class="font-medium">{{ key }}:</span>
                   <span v-if="typeof value !== 'object' || value === null">
-                    {{ value || 'Unknown' }}
+                    {{ value || "Unknown" }}
                   </span>
                   <div v-else class="mt-1 ml-4 space-y-1">
                     <div
@@ -402,11 +401,11 @@ useSeoMeta({
                       <span class="mr-2 font-bold">{{ nestedKey }}:</span>
                       <span>
                         {{
-                          nestedValue === null
-                            || nestedValue === undefined
-                            || nestedValue === ''
-                            ? 'Unknown'
-                            : typeof nestedValue === 'object'
+                          nestedValue === null ||
+                            nestedValue === undefined ||
+                            nestedValue === ""
+                            ? "Unknown"
+                            : typeof nestedValue === "object"
                               ? JSON.stringify(nestedValue)
                               : nestedValue
                         }}
@@ -430,7 +429,7 @@ useSeoMeta({
                 >
                   <span class="font-medium">{{ key }}:</span>
                   <span v-if="typeof value !== 'object' || value === null">
-                    {{ value || 'Unknown' }}
+                    {{ value || "Unknown" }}
                   </span>
                   <div v-else class="mt-1 ml-4 space-y-1">
                     <div
@@ -441,11 +440,11 @@ useSeoMeta({
                       <span class="mr-2 font-bold">{{ nestedKey }}:</span>
                       <span>
                         {{
-                          nestedValue === null
-                            || nestedValue === undefined
-                            || nestedValue === ''
-                            ? 'Unknown'
-                            : typeof nestedValue === 'object'
+                          nestedValue === null ||
+                            nestedValue === undefined ||
+                            nestedValue === ""
+                            ? "Unknown"
+                            : typeof nestedValue === "object"
                               ? JSON.stringify(nestedValue)
                               : nestedValue
                         }}
@@ -469,7 +468,7 @@ useSeoMeta({
                 >
                   <span class="font-medium">{{ key }}:</span>
                   <span v-if="typeof value !== 'object' || value === null">
-                    {{ value || 'Unknown' }}
+                    {{ value || "Unknown" }}
                   </span>
                   <div v-else class="mt-1 ml-4 space-y-1">
                     <div
@@ -480,11 +479,11 @@ useSeoMeta({
                       <span class="mr-2 font-bold">{{ nestedKey }}:</span>
                       <span>
                         {{
-                          nestedValue === null
-                            || nestedValue === undefined
-                            || nestedValue === ''
-                            ? 'Unknown'
-                            : typeof nestedValue === 'object'
+                          nestedValue === null ||
+                            nestedValue === undefined ||
+                            nestedValue === ""
+                            ? "Unknown"
+                            : typeof nestedValue === "object"
                               ? JSON.stringify(nestedValue)
                               : nestedValue
                         }}
@@ -555,7 +554,7 @@ useSeoMeta({
         </template>
         <UDivider class="my-0" />
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div class="prose dark:prose-invert max-w-none" v-html="data.content" />
+        <div class="prose dark:prose-invert max-w-none" v-html="data.content"></div>
       </UCard>
 
       <!-- FAQs Section -->

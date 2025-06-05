@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const { loading, updatePassword, passwordSchema } = useUserAccount()
-const state = ref({ password: '' })
+  const { loading, updatePassword, passwordSchema } = useUserAccount()
+  const state = ref({ password: '' })
 
-async function onSubmit() {
-  await updatePassword(state.value.password)
-  state.value.password = ''
-}
+  async function onSubmit() {
+    await updatePassword(state.value.password)
+    state.value.password = ''
+  }
 </script>
 
 <template>

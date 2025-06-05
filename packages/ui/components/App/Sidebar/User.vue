@@ -1,16 +1,16 @@
 <script lang="ts" setup>
-const teams = useState<unknown[]>('teams', () => [])
+  const teams = useState<unknown[]>('teams', () => [])
 
-// Fetch teams if not already loaded to show switch option
-if (!teams.value.length) {
-  try {
-    teams.value = await useTeam().getMemberships()
+  // Fetch teams if not already loaded to show switch option
+  if (!teams.value.length) {
+    try {
+      teams.value = await useTeam().getMemberships()
+    }
+    catch {
+      // User might not have teams or there might be an error
+      teams.value = []
+    }
   }
-  catch {
-    // User might not have teams or there might be an error
-    teams.value = []
-  }
-}
 </script>
 
 <template>

@@ -1,170 +1,166 @@
 <script lang="ts" setup>
-import type { Price, Subscription } from '@serp/db/types/database'
-import { useDateFormat } from '@vueuse/core'
+  import type { Price, Subscription } from '@serp/db/types/database'
+  import { useDateFormat } from '@vueuse/core'
 
-const { user } = useUserSession()
+  const { user } = useUserSession()
 
-// Fetch user-specific plans (no team context)
-const { data: plans } = await useFetch('/api/stripe/plans', {
-  query: {
-    userId: user.value?.id,
-  },
-})
-
-interface ExpandedSubscription extends Subscription {
-  expand: {
-    price_id: Price
-  }
-}
-
-// Fetch user-specific subscription (no team context)
-const { data: activeSubscription } = await useFetch<ExpandedSubscription>(
-  '/api/stripe/subscription',
-  {
+  // Fetch user-specific plans (no team context)
+  const { data: plans } = await useFetch('/api/stripe/plans', {
     query: {
       userId: user.value?.id,
     },
-  },
-)
+  })
 
-const toast = useToast()
-const loadingPriceId = ref<string | null>(null)
-const disabled = ref(false)
-const route = useRoute()
-const { fetch: refreshSession } = useUserSession()
-const loadingPortal = ref(false)
-
-interface BillingPlan {
-  id: string
-  name: string
-  description: string
-  status?: string
-  currentPeriodEnd?: Date
-  currentPeriodStart?: Date
-  amount: number
-  interval: string
-  priceId: string
-  cancelAt?: Date
-}
-
-const currentPlan = computed<BillingPlan>(() => {
-  if (!activeSubscription.value?.priceId || !plans.value) {
-    return {
-      id: '',
-      name: 'No active plan',
-      description: '',
-      amount: 0,
-      interval: '',
-      priceId: '',
-    } as BillingPlan
+  interface ExpandedSubscription extends Subscription {
+    expand: {
+      price_id: Price
+    }
   }
 
-  const plan = plans.value.find(
-    p => p.id === activeSubscription.value?.priceId,
+  // Fetch user-specific subscription (no team context)
+  const { data: activeSubscription } = await useFetch<ExpandedSubscription>(
+    '/api/stripe/subscription',
+    {
+      query: {
+        userId: user.value?.id,
+      },
+    },
   )
 
-  if (!plan) {
-    throw createError('Invalid plan configuration')
+  const toast = useToast()
+  const loadingPriceId = ref<string | null>(null)
+  const disabled = ref(false)
+  const route = useRoute()
+  const { fetch: refreshSession } = useUserSession()
+  const loadingPortal = ref(false)
+
+  interface BillingPlan {
+    id: string
+    name: string
+    description: string
+    status?: string
+    currentPeriodEnd?: Date
+    currentPeriodStart?: Date
+    amount: number
+    interval: string
+    priceId: string
+    cancelAt?: Date
   }
 
-  return {
-    id: plan.id,
-    name: plan.product.name || 'Unknown plan',
-    description: plan.product.description || 'No description',
-    status: activeSubscription.value.status,
-    currentPeriodEnd: activeSubscription.value.currentPeriodEnd,
-    currentPeriodStart: activeSubscription.value.currentPeriodStart,
-    amount: plan.unitAmount,
-    interval: plan.interval,
-    priceId: plan.id,
-    cancelAt: activeSubscription.value.cancelAt,
-  } as BillingPlan
-})
-
-async function handleSubscribe(priceId: string) {
-  try {
-    loadingPriceId.value = priceId
-    disabled.value = true
-
-    if (!user.value?.id) {
-      throw new Error('User information is missing')
+  const currentPlan = computed<BillingPlan>(() => {
+    if (!activeSubscription.value?.priceId || !plans.value) {
+      return {
+        id: '',
+        name: 'No active plan',
+        description: '',
+        amount: 0,
+        interval: '',
+        priceId: '',
+      } as BillingPlan
     }
 
-    const checkoutUrl = await $fetch('/api/stripe/checkout', {
-      method: 'POST',
-      body: {
-        priceId,
-        userId: user.value.id,
-      },
-    })
+    const plan = plans.value.find(
+      p => p.id === activeSubscription.value?.priceId,
+    )
 
-    if (!checkoutUrl) {
-      throw new Error('No checkout URL returned from the server')
+    if (!plan) {
+      throw createError('Invalid plan configuration')
     }
 
-    window.location.href = checkoutUrl
-  }
-  catch (error) {
-    toast.add({
-      title: 'Failed to create checkout session',
-      description:
-          error instanceof Error
-            ? error.message
-            : 'An unexpected error occurred',
-      color: 'error',
-    })
-    console.error('Stripe checkout error:', error)
-  }
-  finally {
-    loadingPriceId.value = null
-    disabled.value = false
-  }
-}
+    return {
+      id: plan.id,
+      name: plan.product.name || 'Unknown plan',
+      description: plan.product.description || 'No description',
+      status: activeSubscription.value.status,
+      currentPeriodEnd: activeSubscription.value.currentPeriodEnd,
+      currentPeriodStart: activeSubscription.value.currentPeriodStart,
+      amount: plan.unitAmount,
+      interval: plan.interval,
+      priceId: plan.id,
+      cancelAt: activeSubscription.value.cancelAt,
+    } as BillingPlan
+  })
 
-async function handleManageSubscription() {
-  try {
-    loadingPortal.value = true
+  async function handleSubscribe(priceId: string) {
+    try {
+      loadingPriceId.value = priceId
+      disabled.value = true
 
-    const portalUrl = await $fetch('/api/stripe/portal', {
-      method: 'POST',
-      body: {},
-    })
+      if (!user.value?.id) {
+        throw new Error('User information is missing')
+      }
 
-    if (!portalUrl) {
-      throw new Error('No portal URL returned from the server')
+      const checkoutUrl = await $fetch('/api/stripe/checkout', {
+        method: 'POST',
+        body: {
+          priceId,
+          userId: user.value.id,
+        },
+      })
+
+      if (!checkoutUrl) {
+        throw new Error('No checkout URL returned from the server')
+      }
+
+      window.location.href = checkoutUrl
     }
-
-    // Open in new tab
-    window.open(portalUrl, '_blank')
+    catch (error) {
+      toast.add({
+        title: 'Failed to create checkout session',
+        description:
+          error instanceof Error ? error.message : 'An unexpected error occurred',
+        color: 'error',
+      })
+      console.error('Stripe checkout error:', error)
+    }
+    finally {
+      loadingPriceId.value = null
+      disabled.value = false
+    }
   }
-  catch (error) {
-    toast.add({
-      title: 'Failed to access billing portal',
-      description:
-          error instanceof Error
-            ? error.message
-            : 'An unexpected error occurred',
-      color: 'error',
-    })
-    console.error('Billing portal error:', error)
-  }
-  finally {
-    loadingPortal.value = false
-  }
-}
 
-function formatPrice(price?: number): string {
-  if (!price)
-    return '$0'
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-  }).format(price / 100)
-}
+  async function handleManageSubscription() {
+    try {
+      loadingPortal.value = true
 
-function getStatusColor(status?: string) {
-  switch (status) {
+      const portalUrl = await $fetch('/api/stripe/portal', {
+        method: 'POST',
+        body: {},
+      })
+
+      if (!portalUrl) {
+        throw new Error('No portal URL returned from the server')
+      }
+
+      // Open in new tab
+      window.open(portalUrl, '_blank')
+    }
+    catch (error) {
+      toast.add({
+        title: 'Failed to access billing portal',
+        description:
+          error instanceof Error ? error.message : 'An unexpected error occurred',
+        color: 'error',
+      })
+      console.error('Billing portal error:', error)
+    }
+    finally {
+      loadingPortal.value = false
+    }
+  }
+
+  function formatPrice(price?: number): string {
+    if (!price)
+      return '$0'
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+    }).format(price / 100)
+  }
+
+  function getStatusColor(status?: string) {
+    switch (status) {
     case 'active':
       return 'success'
     case 'trialing':
@@ -178,24 +174,24 @@ function getStatusColor(status?: string) {
       return 'warning'
     default:
       return 'neutral'
+    }
   }
-}
 
-function getSubscriptionMessage(plan: BillingPlan) {
-  if (plan.cancelAt) {
-    return 'Cancels on'
+  function getSubscriptionMessage(plan: BillingPlan) {
+    if (plan.cancelAt) {
+      return 'Cancels on'
+    }
+    if (plan.status === 'trialing') {
+      return 'Trial ends on'
+    }
+    return 'Renews on'
   }
-  if (plan.status === 'trialing') {
-    return 'Trial ends on'
-  }
-  return 'Renews on'
-}
 
-onMounted(async () => {
-  if (route.query.success === 'true') {
-    await refreshSession()
-  }
-})
+  onMounted(async () => {
+    if (route.query.success === 'true') {
+      await refreshSession()
+    }
+  })
 </script>
 
 <template>
@@ -237,7 +233,7 @@ onMounted(async () => {
                   {{
                     useDateFormat(
                       currentPlan.cancelAt || currentPlan.currentPeriodEnd,
-                      'MMM DD, YYYY',
+                      "MMM DD, YYYY",
                     )
                   }}
                 </span>

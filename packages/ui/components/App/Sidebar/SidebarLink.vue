@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-defineProps<{
-  to: string
-  icon: string
-  label: string
-}>()
-const mobileMenu = useState('mobileMenu')
+  defineProps<{
+    to: string
+    icon: string
+    label: string
+  }>()
+  const mobileMenu = useState('mobileMenu')
 </script>
 
 <template>

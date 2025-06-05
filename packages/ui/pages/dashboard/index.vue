@@ -1,17 +1,17 @@
 <script setup lang="ts">
-const { user } = useUserSession()
-const teams = useState<unknown[]>('teams', () => [])
+  const { user } = useUserSession()
+  const teams = useState<unknown[]>('teams', () => [])
 
-// Fetch teams if not already loaded
-if (!teams.value.length) {
-  try {
-    teams.value = await useTeam().getMemberships()
+  // Fetch teams if not already loaded
+  if (!teams.value.length) {
+    try {
+      teams.value = await useTeam().getMemberships()
+    }
+    catch {
+      // User might not have teams or there might be an error
+      teams.value = []
+    }
   }
-  catch {
-    // User might not have teams or there might be an error
-    teams.value = []
-  }
-}
 </script>
 
 <template>
@@ -22,7 +22,7 @@ if (!teams.value.length) {
         class="rounded-lg border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
       >
         <h1 class="mb-2 text-2xl font-bold text-neutral-900 dark:text-white">
-          Welcome back, {{ user?.name || user?.email || 'User' }}
+          Welcome back, {{ user?.name || user?.email || "User" }}
         </h1>
         <p class="text-neutral-600 dark:text-neutral-400">
           Manage your account, billing, and personal workspace from your
@@ -114,7 +114,7 @@ if (!teams.value.length) {
               <div
                 class="bg-primary-500 flex h-10 w-10 items-center justify-center rounded-lg font-semibold text-white"
               >
-                {{ team.name?.charAt(0) || 'T' }}
+                {{ team.name?.charAt(0) || "T" }}
               </div>
               <div>
                 <h3 class="font-medium">

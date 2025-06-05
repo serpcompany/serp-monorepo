@@ -1,144 +1,144 @@
 <script setup lang="ts">
-import { useDateFormat } from '@vueuse/core'
+  import { useDateFormat } from '@vueuse/core'
 
-interface Category {
-  id: number
-  name: string
-  slug: string
-}
-
-interface FeaturedSubscription {
-  id: string
-  priceId: string
-  status: string
-  currentPeriodEnd?: Date
-  metadata?: {
-    placement?: number
-    categoryId?: number | string
-    type?: string
-  }
-}
-
-interface Props {
-  featuredPlans: unknown[]
-  activeFeaturedSubscriptions: FeaturedSubscription[]
-  availability: unknown[]
-  loadingPriceId: string | null
-  disabled: boolean
-  loadingPortal: boolean
-  module: string
-  categories?: Category[]
-}
-
-const props = defineProps<Props>()
-
-const emit = defineEmits<{
-  'subscribe': [priceId: string, categoryId: number | null]
-  'manage': []
-  'update:availability': [categoryId: number | null]
-}>()
-
-const selectedCategory = ref<number | null>(null)
-const siteCategories = ref<unknown[]>([])
-const loadingCategories = ref(false)
-
-// Fetch categories from site DB using slugs
-async function fetchSiteCategories() {
-  if (!props.module || !props.categories || props.categories.length === 0)
-    return
-
-  try {
-    loadingCategories.value = true
-    const slugs = props.categories.map(cat => cat.slug).join(',')
-    const data = await $fetch('/api/categories', {
-      query: {
-        module: props.module,
-        slugs,
-      },
-    })
-    siteCategories.value = data || []
-  }
-  catch (error) {
-    console.error('Failed to fetch categories:', error)
-    siteCategories.value = []
-  }
-  finally {
-    loadingCategories.value = false
-  }
-}
-
-// Category options for dropdown with actual site DB IDs
-const categoryOptions = computed(() => {
-  if (siteCategories.value.length === 0) {
-    return []
+  interface Category {
+    id: number
+    name: string
+    slug: string
   }
 
-  return siteCategories.value.map(cat => ({
-    label: cat.name,
-    value: cat.id,
-  }))
-})
+  interface FeaturedSubscription {
+    id: string
+    priceId: string
+    status: string
+    currentPeriodEnd?: Date
+    metadata?: {
+      placement?: number
+      categoryId?: number | string
+      type?: string
+    }
+  }
 
-onMounted(() => {
-  fetchSiteCategories()
-})
+  interface Props {
+    featuredPlans: unknown[]
+    activeFeaturedSubscriptions: FeaturedSubscription[]
+    availability: unknown[]
+    loadingPriceId: string | null
+    disabled: boolean
+    loadingPortal: boolean
+    module: string
+    categories?: Category[]
+  }
 
-const selectedCategoryLabel = computed(() => {
-  const option = categoryOptions.value.find(
-    opt => opt.value === selectedCategory.value,
-  )
-  return option?.label || 'All Categories'
-})
+  const props = defineProps<Props>()
 
-// Get active subscription for selected category
-const activeFeaturedForCategory = computed(() => {
-  if (!selectedCategory.value)
-    return null
+  const emit = defineEmits<{
+    'subscribe': [priceId: string, categoryId: number | null]
+    'manage': []
+    'update:availability': [categoryId: number | null]
+  }>()
 
-  const active = props.activeFeaturedSubscriptions.find((sub) => {
-    const subCategoryId = sub.metadata?.categoryId
+  const selectedCategory = ref<number | null>(null)
+  const siteCategories = ref<unknown[]>([])
+  const loadingCategories = ref(false)
 
-    // Handle both string and number comparisons
-    return subCategoryId == selectedCategory.value
+  // Fetch categories from site DB using slugs
+  async function fetchSiteCategories() {
+    if (!props.module || !props.categories || props.categories.length === 0)
+      return
+
+    try {
+      loadingCategories.value = true
+      const slugs = props.categories.map(cat => cat.slug).join(',')
+      const data = await $fetch('/api/categories', {
+        query: {
+          module: props.module,
+          slugs,
+        },
+      })
+      siteCategories.value = data || []
+    }
+    catch (error) {
+      console.error('Failed to fetch categories:', error)
+      siteCategories.value = []
+    }
+    finally {
+      loadingCategories.value = false
+    }
+  }
+
+  // Category options for dropdown with actual site DB IDs
+  const categoryOptions = computed(() => {
+    if (siteCategories.value.length === 0) {
+      return []
+    }
+
+    return siteCategories.value.map(cat => ({
+      label: cat.name,
+      value: cat.id,
+    }))
   })
 
-  return active
-})
+  onMounted(() => {
+    fetchSiteCategories()
+  })
 
-// Check if a position is active for the selected category
-function isActivePosition(position: number) {
-  const isActive = props.activeFeaturedSubscriptions.some(
-    sub =>
-      sub.metadata?.placement === position
-      && (sub.metadata?.categoryId || null) === selectedCategory.value,
-  )
-  return isActive
-}
+  const selectedCategoryLabel = computed(() => {
+    const option = categoryOptions.value.find(
+      opt => opt.value === selectedCategory.value,
+    )
+    return option?.label || 'All Categories'
+  })
 
-// Check if a position is available
-function isAvailable(position: number) {
-  const avail = props.availability.find(
-    a => a.position === position && a.categoryId === selectedCategory.value,
-  )
-  return !avail || avail.isAvailable
-}
+  // Get active subscription for selected category
+  const activeFeaturedForCategory = computed(() => {
+    if (!selectedCategory.value)
+      return null
 
-// Watch category changes to update availability
-watch(selectedCategory, (newCategory) => {
-  emit('update:availability', newCategory)
-})
+    const active = props.activeFeaturedSubscriptions.find((sub) => {
+      const subCategoryId = sub.metadata?.categoryId
 
-// Get category name by ID
-function getCategoryName(categoryId: number | string | null) {
-  if (!categoryId)
-    return null
-  const category = siteCategories.value.find(cat => cat.id == categoryId)
-  return category?.name || null
-}
+      // Handle both string and number comparisons
+      return subCategoryId == selectedCategory.value
+    })
 
-// Get status color for badges
-function getStatusColor(status?: string) {
-  switch (status) {
+    return active
+  })
+
+  // Check if a position is active for the selected category
+  function isActivePosition(position: number) {
+    const isActive = props.activeFeaturedSubscriptions.some(
+      sub =>
+        sub.metadata?.placement === position &&
+        (sub.metadata?.categoryId || null) === selectedCategory.value,
+    )
+    return isActive
+  }
+
+  // Check if a position is available
+  function isAvailable(position: number) {
+    const avail = props.availability.find(
+      a => a.position === position && a.categoryId === selectedCategory.value,
+    )
+    return !avail || avail.isAvailable
+  }
+
+  // Watch category changes to update availability
+  watch(selectedCategory, (newCategory) => {
+    emit('update:availability', newCategory)
+  })
+
+  // Get category name by ID
+  function getCategoryName(categoryId: number | string | null) {
+    if (!categoryId)
+      return null
+    const category = siteCategories.value.find(cat => cat.id == categoryId)
+    return category?.name || null
+  }
+
+  // Get status color for badges
+  function getStatusColor(status?: string) {
+    switch (status) {
     case 'active':
       return 'success'
     case 'trialing':
@@ -152,8 +152,8 @@ function getStatusColor(status?: string) {
       return 'warning'
     default:
       return 'neutral'
+    }
   }
-}
 </script>
 
 <template>
@@ -197,8 +197,8 @@ function getStatusColor(status?: string) {
         :price-id="plan.id"
         :features="plan.product.features"
         :active="
-          !!activeFeaturedForCategory
-            && activeFeaturedForCategory.priceId === plan.id
+          !!activeFeaturedForCategory &&
+            activeFeaturedForCategory.priceId === plan.id
         "
         :loading="loadingPriceId === plan.id"
         :disabled="
@@ -224,11 +224,11 @@ function getStatusColor(status?: string) {
           <div class="flex items-center gap-4">
             <div>
               <p class="font-medium">
-                Position {{ sub.metadata?.placement || 'Unknown' }}
+                Position {{ sub.metadata?.placement || "Unknown" }}
               </p>
               <p class="text-sm text-neutral-600 dark:text-neutral-400">
                 {{
-                  getCategoryName(sub.metadata?.categoryId) || 'All Categories'
+                  getCategoryName(sub.metadata?.categoryId) || "All Categories"
                 }}
               </p>
             </div>
@@ -241,7 +241,7 @@ function getStatusColor(status?: string) {
           </div>
           <div class="flex items-center gap-3">
             <span class="text-sm text-neutral-500">
-              Renews {{ useDateFormat(sub.currentPeriodEnd, 'MMM DD, YYYY') }}
+              Renews {{ useDateFormat(sub.currentPeriodEnd, "MMM DD, YYYY") }}
             </span>
             <UButton
               variant="outline"

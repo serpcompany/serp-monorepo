@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import type { FormSubmitEvent } from '#ui/types'
-import type { z } from 'zod'
-import { emailSchema } from '@serp/db/validations/auth'
+  import type { FormSubmitEvent } from '#ui/types'
+  import type { z } from 'zod'
+  import { emailSchema } from '@serp/db/validations/auth'
 
   type PasswordResetSchema = z.output<typeof emailSchema>
-const loading = ref(false)
-const { forgotPassword } = useAuth()
+  const loading = ref(false)
+  const { forgotPassword } = useAuth()
 
-const state = reactive<Partial<PasswordResetSchema>>({
-  email: undefined,
-})
+  const state = reactive<Partial<PasswordResetSchema>>({
+    email: undefined,
+  })
 
-async function onSubmit(event: FormSubmitEvent<PasswordResetSchema>) {
-  loading.value = true
-  await forgotPassword(event.data.email)
-  loading.value = false
-}
+  async function onSubmit(event: FormSubmitEvent<PasswordResetSchema>) {
+    loading.value = true
+    await forgotPassword(event.data.email)
+    loading.value = false
+  }
 </script>
 
 <template>
