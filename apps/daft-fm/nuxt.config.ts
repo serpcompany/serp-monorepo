@@ -70,6 +70,7 @@ export default defineNuxtConfig({
   },
   scripts: {
     registry: {
+      // Removed google ads from serving through GTM; was causing 2x script to load
       googleTagManager: {
         id: 'GTM-NC8CG9R',
       },
