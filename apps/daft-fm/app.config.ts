@@ -2,9 +2,6 @@ export default defineAppConfig({
   myLayer: {
     name: '@serp/ui',
   },
-  adsense: {
-    publisherId: 'ca-pub-2343633734899216',
-  },
   site: {
     socialLinks: [
       {

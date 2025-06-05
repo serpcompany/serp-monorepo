@@ -66,6 +66,7 @@ export default defineNuxtConfig({
   },
   scripts: {
     registry: {
+      // servicing google ads through GTM
       googleTagManager: {
         id: 'GTM-TXRPD22Q',
       },
