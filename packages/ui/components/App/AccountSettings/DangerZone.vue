@@ -1,50 +1,50 @@
 <script setup lang="ts">
-import type { FormSubmitEvent } from '@nuxt/ui'
-import * as z from 'zod'
+  import type { FormSubmitEvent } from '@nuxt/ui'
+  import * as z from 'zod'
 
-const { logout } = useAuth()
-const deleteAccountModal = ref(false)
-const isDeleting = ref(false)
-const toast = useToast()
+  const { logout } = useAuth()
+  const deleteAccountModal = ref(false)
+  const isDeleting = ref(false)
+  const toast = useToast()
 
-const schema = z.object({
-  confirmation: z.string().refine(val => val === 'delete', {
-    message: 'Please type \'delete\' to confirm',
-  }),
-})
+  const schema = z.object({
+    confirmation: z.string().refine(val => val === 'delete', {
+      message: 'Please type \'delete\' to confirm',
+    }),
+  })
 
   type Schema = z.output<typeof schema>
 
-const state = reactive<Partial<Schema>>({
-  confirmation: undefined,
-})
+  const state = reactive<Partial<Schema>>({
+    confirmation: undefined,
+  })
 
-async function onSubmit(_event: FormSubmitEvent<Schema>) {
-  try {
-    isDeleting.value = true
-    await $fetch('/api/me/delete-account', {
-      method: 'DELETE',
-    })
-    toast.add({
-      title: 'Account Deleted',
-      description: 'Your account has been successfully deleted.',
-      color: 'success',
-    })
-    await logout()
-    await navigateTo('/')
+  async function onSubmit(_event: FormSubmitEvent<Schema>) {
+    try {
+      isDeleting.value = true
+      await $fetch('/api/me/delete-account', {
+        method: 'DELETE',
+      })
+      toast.add({
+        title: 'Account Deleted',
+        description: 'Your account has been successfully deleted.',
+        color: 'success',
+      })
+      await logout()
+      await navigateTo('/')
+    }
+    catch {
+      toast.add({
+        title: 'Error',
+        description: 'Failed to delete account. Please try again.',
+        color: 'error',
+      })
+    }
+    finally {
+      isDeleting.value = false
+      deleteAccountModal.value = false
+    }
   }
-  catch {
-    toast.add({
-      title: 'Error',
-      description: 'Failed to delete account. Please try again.',
-      color: 'error',
-    })
-  }
-  finally {
-    isDeleting.value = false
-    deleteAccountModal.value = false
-  }
-}
 </script>
 
 <template>
@@ -71,7 +71,12 @@ async function onSubmit(_event: FormSubmitEvent<Schema>) {
     description="Please confirm your intent to delete your account."
   >
     <template #body>
-      <UForm :schema="schema" :state="state" class="mb-4" @submit="onSubmit">
+      <UForm
+        :schema="schema"
+        :state="state"
+        class="mb-4"
+        @submit="onSubmit"
+      >
         <UFormField label="Please type 'delete' to confirm" name="confirmation">
           <UInput
             v-model="state.confirmation"

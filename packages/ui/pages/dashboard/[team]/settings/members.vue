@@ -1,56 +1,56 @@
 <script lang="ts" setup>
-import type { FormSubmitEvent } from '#ui/types'
-import type { FetchError } from 'ofetch'
-import type { z } from 'zod'
-import { UserRole } from '@serp/auth/constants'
-import { inviteTeamMemberSchema } from '@serp/db/validations/team'
+  import type { FormSubmitEvent } from '#ui/types'
+  import type { FetchError } from 'ofetch'
+  import type { z } from 'zod'
+  import { UserRole } from '@serp/auth/constants'
+  import { inviteTeamMemberSchema } from '@serp/db/validations/team'
 
-const { currentTeam, inviteMember, loading } = useTeam()
-const toast = useToast()
+  const { currentTeam, inviteMember, loading } = useTeam()
+  const toast = useToast()
 
-const { user } = useUserSession()
-const newMemberModal = ref(false)
-const state = reactive({
-  email: '',
-  role: UserRole.MEMBER,
-})
+  const { user } = useUserSession()
+  const newMemberModal = ref(false)
+  const state = reactive({
+    email: '',
+    role: UserRole.MEMBER,
+  })
 
-const roleOptions = [
-  { label: 'Member', id: UserRole.MEMBER },
-  { label: 'Admin', id: UserRole.ADMIN },
-  { label: 'Owner', id: UserRole.OWNER },
-]
+  const roleOptions = [
+    { label: 'Member', id: UserRole.MEMBER },
+    { label: 'Admin', id: UserRole.ADMIN },
+    { label: 'Owner', id: UserRole.OWNER },
+  ]
 
-const schema = inviteTeamMemberSchema.refine(
-  data => data.email !== user.value?.email,
-  {
-    message: 'You cannot invite yourself',
-  },
-)
+  const schema = inviteTeamMemberSchema.refine(
+    data => data.email !== user.value?.email,
+    {
+      message: 'You cannot invite yourself',
+    },
+  )
 
-async function onSubmit(event: FormSubmitEvent<z.infer<typeof schema>>) {
-  loading.value = true
-  try {
-    await inviteMember(event.data.email, event.data.role)
-    toast.add({
-      title: 'Member invited successfully',
-      description: `We have sent an invitation to ${event.data.email}`,
-      color: 'success',
-    })
-    newMemberModal.value = false
-    await refreshNuxtData('team-invites')
+  async function onSubmit(event: FormSubmitEvent<z.infer<typeof schema>>) {
+    loading.value = true
+    try {
+      await inviteMember(event.data.email, event.data.role)
+      toast.add({
+        title: 'Member invited successfully',
+        description: `We have sent an invitation to ${event.data.email}`,
+        color: 'success',
+      })
+      newMemberModal.value = false
+      await refreshNuxtData('team-invites')
+    }
+    catch (error) {
+      toast.add({
+        title: 'Failed to invite member',
+        description: (error as FetchError).data.message,
+        color: 'error',
+      })
+    }
+    finally {
+      loading.value = false
+    }
   }
-  catch (error) {
-    toast.add({
-      title: 'Failed to invite member',
-      description: (error as FetchError).data.message,
-      color: 'error',
-    })
-  }
-  finally {
-    loading.value = false
-  }
-}
 </script>
 
 <template>

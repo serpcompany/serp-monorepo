@@ -1,7 +1,7 @@
 <script setup lang="ts">
-definePageMeta({
-  middleware: ['team-owner'],
-})
+  definePageMeta({
+    middleware: ['team-owner'],
+  })
 </script>
 
 <template>

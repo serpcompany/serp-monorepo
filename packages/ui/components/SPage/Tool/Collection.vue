@@ -1,8 +1,8 @@
 <script setup lang="ts">
-useSeoMeta({
-  title:
+  useSeoMeta({
+    title:
       'Free online tools and apps for combining, converting, compressing & convenience.',
-})
+  })
 </script>
 
 <template>

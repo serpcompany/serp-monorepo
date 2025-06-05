@@ -1,6 +1,6 @@
+import { editSubmissionSchema } from '@serp/db/schemas/edit-validation'
 import { getDb } from '@serp/db/server/database'
 import { category, edit, entity, topic } from '@serp/db/server/database/schema'
-import { editSubmissionSchema } from '@serp/db/schemas/edit-validation'
 import { eq, inArray } from 'drizzle-orm'
 import { ZodError } from 'zod'
 
@@ -29,9 +29,9 @@ export default defineEventHandler(async (event) => {
     }
     catch (error) {
       if (error instanceof ZodError) {
-        return { 
-          status: 400, 
-          message: `Validation error: ${error.errors.map(e => e.message).join(', ')}`
+        return {
+          status: 400,
+          message: `Validation error: ${error.errors.map(e => e.message).join(', ')}`,
         }
       }
       throw error

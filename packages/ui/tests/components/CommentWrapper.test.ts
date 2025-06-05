@@ -1,6 +1,5 @@
 import { mockNuxtImport } from '@nuxt/test-utils/runtime'
 import { afterAll, describe, expect, it, vi } from 'vitest'
-import { ref } from 'vue'
 // Then import components
 import CommentWrapper from '../../components/CommentWrapper.vue'
 import ComponentRender from '../componentRender'

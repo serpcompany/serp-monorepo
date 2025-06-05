@@ -1,9 +1,9 @@
 <script setup lang="ts">
-useSeoMeta({
-  title: 'Legal Information',
-  description:
+  useSeoMeta({
+    title: 'Legal Information',
+    description:
       'Links to various resources on our website about legal related items.',
-})
+  })
 </script>
 
 <template>

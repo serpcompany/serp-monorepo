@@ -1,105 +1,105 @@
 <script setup lang="ts">
-import type { Comment, Entity } from '@serp/types/types'
+  import type { Comment, Entity } from '@serp/types/types'
 
-const props = defineProps<{
-  module: string
-  baseSlug: string
-  categoryBaseSlug: string
-}>()
-const { user } = useUserSession()
-const route = useRoute()
-const router = useRouter()
-const slug = route.params.slug as string
+  const props = defineProps<{
+    module: string
+    baseSlug: string
+    categoryBaseSlug: string
+  }>()
+  const { user } = useUserSession()
+  const route = useRoute()
+  const router = useRouter()
+  const slug = route.params.slug as string
 
-const toast = useToast()
+  const toast = useToast()
 
-const { module, baseSlug, categoryBaseSlug } = toRefs(props)
+  const { module, baseSlug, categoryBaseSlug } = toRefs(props)
 
-const data = (await useEntity(slug, module.value)) as Entity
-if (!data) {
-  router.push('/404')
-}
-
-const isVerified = computed(() => {
-  return data.verification === user.value?.id
-})
-
-const config = useRuntimeConfig()
-const useAuth = config.public.useAuth
-
-// Create a consolidated object with all provider details
-const providerDetails = computed(() => {
-  return {
-    basic: data.basicInfo || {},
-    contracts: data.contracts || {},
-    pricing: data.pricing || {},
-    services: data.services || {},
-    industries: data.industries || {},
-    businessesServed: data.businessesServed || {},
-    supportSetup: data.supportSetup || {},
-    ratings: data.ratings || {},
+  const data = (await useEntity(slug, module.value)) as Entity
+  if (!data) {
+    router.push('/404')
   }
-})
 
-// @ts-expect-error: Auto-imported from another layer
-const { comments } = (await useEntityComments(data.id)) as {
-  comments: Comment[]
-}
+  const isVerified = computed(() => {
+    return data.verification === user.value?.id
+  })
 
-// @ts-expect-error: Auto-imported from another layer
-const reviews = await useEntityReviews(data.id)
-reviews.entityId = data.id
+  const config = useRuntimeConfig()
+  const useAuth = config.public.useAuth
 
-// State for review modal
-const showReviewModal = ref(false)
+  // Create a consolidated object with all provider details
+  const providerDetails = computed(() => {
+    return {
+      basic: data.basicInfo || {},
+      contracts: data.contracts || {},
+      pricing: data.pricing || {},
+      services: data.services || {},
+      industries: data.industries || {},
+      businessesServed: data.businessesServed || {},
+      supportSetup: data.supportSetup || {},
+      ratings: data.ratings || {},
+    }
+  })
 
-// Handle review submission - refresh reviews data
-async function handleReviewSubmitted() {
   // @ts-expect-error: Auto-imported from another layer
-  const updatedReviews = await useEntityReviews(data.id)
-  Object.assign(reviews, updatedReviews)
+  const { comments } = (await useEntityComments(data.id)) as {
+    comments: Comment[]
+  }
+
+  // @ts-expect-error: Auto-imported from another layer
+  const reviews = await useEntityReviews(data.id)
   reviews.entityId = data.id
-}
 
-async function copyToClipboard(sectionId: string) {
-  const jumpLink = `#${sectionId}`
-  const link = `${window.location.href.split('#')[0]}${jumpLink}`
+  // State for review modal
+  const showReviewModal = ref(false)
 
-  try {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      await navigator.clipboard.writeText(link)
-    }
-    else {
-      // Fallback for unsupported environments
-      const el = document.createElement('textarea')
-      el.value = link
-      document.body.appendChild(el)
-      el.select()
-      document.execCommand('copy')
-      document.body.removeChild(el)
-    }
-
-    toast.add({
-      id: 'copy-link',
-      title: 'Link copied to clipboard',
-      description: `Link to ${sectionId} section copied successfully`,
-      icon: 'check-circle',
-    })
+  // Handle review submission - refresh reviews data
+  async function handleReviewSubmitted() {
+    // @ts-expect-error: Auto-imported from another layer
+    const updatedReviews = await useEntityReviews(data.id)
+    Object.assign(reviews, updatedReviews)
+    reviews.entityId = data.id
   }
-  catch (error) {
-    console.error('Failed to copy text to clipboard:', error)
-    toast.add({
-      id: 'copy-link-error',
-      title: 'Failed to copy link',
-      description: `Could not copy link to ${sectionId} section`,
-      icon: 'error-circle',
-    })
-  }
-}
 
-useSeoMeta({
-  title: computed(() => (data.name ? `${data.name}` : 'Unknown')),
-})
+  async function copyToClipboard(sectionId: string) {
+    const jumpLink = `#${sectionId}`
+    const link = `${window.location.href.split('#')[0]}${jumpLink}`
+
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(link)
+      }
+      else {
+        // Fallback for unsupported environments
+        const el = document.createElement('textarea')
+        el.value = link
+        document.body.appendChild(el)
+        el.select()
+        document.execCommand('copy')
+        document.body.removeChild(el)
+      }
+
+      toast.add({
+        id: 'copy-link',
+        title: 'Link copied to clipboard',
+        description: `Link to ${sectionId} section copied successfully`,
+        icon: 'check-circle',
+      })
+    }
+    catch (error) {
+      console.error('Failed to copy text to clipboard:', error)
+      toast.add({
+        id: 'copy-link-error',
+        title: 'Failed to copy link',
+        description: `Could not copy link to ${sectionId} section`,
+        icon: 'error-circle',
+      })
+    }
+  }
+
+  useSeoMeta({
+    title: computed(() => (data.name ? `${data.name}` : 'Unknown')),
+  })
 </script>
 
 <template>

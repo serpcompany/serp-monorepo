@@ -1,72 +1,72 @@
 <script setup lang="ts">
-import type { Comment, MCPServer } from '@serp/types/types'
+  import type { Comment, MCPServer } from '@serp/types/types'
 
-const route = useRoute()
-const router = useRouter()
-const { slug } = route.params as { slug: string }
+  const route = useRoute()
+  const router = useRouter()
+  const { slug } = route.params as { slug: string }
 
-// @ts-expect-error: auto‑imported
-const data = (await useMCPServer(slug)) as MCPServer
-if (!data) {
-  router.push('/404')
-}
+  // @ts-expect-error: auto‑imported
+  const data = (await useMCPServer(slug)) as MCPServer
+  if (!data) {
+    router.push('/404')
+  }
 
-const useAuth = computed(() => useRuntimeConfig().public.useAuth)
+  const useAuth = computed(() => useRuntimeConfig().public.useAuth)
 
-// @ts-expect-error: auto‑imported
-const { comments } = (await useMCPServerComments(data.id)) as {
-  comments: Comment[]
-}
+  // @ts-expect-error: auto‑imported
+  const { comments } = (await useMCPServerComments(data.id)) as {
+    comments: Comment[]
+  }
 
-const showReadme = ref(true)
+  const showReadme = ref(true)
 
-const sections = computed(() => {
-  const s = ['Overview']
-  if (data.contributors?.length)
-    s.push('Contributors')
-  if (data.categories?.length)
-    s.push('Categories')
-  if (data.topics?.length)
-    s.push('Topics')
-  if (data.tags?.length)
-    s.push('Tags')
-  if (data.languages)
-    s.push('Languages')
-  if (data.readme)
-    s.push('Readme')
-  s.push('Discussion')
-  return s
-})
-
-const languageCounts = computed<Record<string, number>>(
-  () => data.languages || {},
-)
-const totalLines = computed(() =>
-  Object.values(languageCounts.value).reduce((sum, n) => sum + n, 0),
-)
-const languagesChartData = computed(() => {
-  // grab [name, count] entries and sort ascending by count
-  const entries = Object.entries(languageCounts.value).sort(
-    ([, a], [, b]) => a - b,
-  )
-
-  return entries.map(([name, count], i) => {
-    const pct = (count / totalLines.value) * 100
-    const hue = (i / entries.length) * 360
-    return {
-      name,
-      count,
-      percent: pct,
-      color: `hsl(${hue}, 70%, 50%)`,
-    }
+  const sections = computed(() => {
+    const s = ['Overview']
+    if (data.contributors?.length)
+      s.push('Contributors')
+    if (data.categories?.length)
+      s.push('Categories')
+    if (data.topics?.length)
+      s.push('Topics')
+    if (data.tags?.length)
+      s.push('Tags')
+    if (data.languages)
+      s.push('Languages')
+    if (data.readme)
+      s.push('Readme')
+    s.push('Discussion')
+    return s
   })
-})
 
-const llmsText = ref(data.llmsText)
+  const languageCounts = computed<Record<string, number>>(
+    () => data.languages || {},
+  )
+  const totalLines = computed(() =>
+    Object.values(languageCounts.value).reduce((sum, n) => sum + n, 0),
+  )
+  const languagesChartData = computed(() => {
+    // grab [name, count] entries and sort ascending by count
+    const entries = Object.entries(languageCounts.value).sort(
+      ([, a], [, b]) => a - b,
+    )
 
-useSeoMeta({
-  title: computed(() => `${data.owner}/${data.repo} · MCP Server Details`),
-})
+    return entries.map(([name, count], i) => {
+      const pct = (count / totalLines.value) * 100
+      const hue = (i / entries.length) * 360
+      return {
+        name,
+        count,
+        percent: pct,
+        color: `hsl(${hue}, 70%, 50%)`,
+      }
+    })
+  })
+
+  const llmsText = ref(data.llmsText)
+
+  useSeoMeta({
+    title: computed(() => `${data.owner}/${data.repo} · MCP Server Details`),
+  })
 </script>
 
 <template>
@@ -153,7 +153,7 @@ useSeoMeta({
         </template>
         <UDivider class="my-0" />
         <div class="mt-4 text-gray-700 dark:text-gray-300">
-          {{ data.contributors.join(', ') }}
+          {{ data.contributors.join(", ") }}
         </div>
       </UCard>
 
@@ -253,7 +253,7 @@ useSeoMeta({
                   backgroundColor: lang.color,
                 }"
                 :title="`${lang.name}: ${lang.percent.toFixed(1)}%`"
-              />
+              ></div>
             </div>
             <div class="mt-2 flex flex-wrap gap-4 text-sm">
               <div
@@ -264,7 +264,7 @@ useSeoMeta({
                 <span
                   class="block h-3 w-3 rounded"
                   :style="{ backgroundColor: lang.color }"
-                />
+                ></span>
                 <span>{{ lang.name }} ({{ lang.percent.toFixed(1) }}%)</span>
               </div>
             </div>
@@ -288,7 +288,7 @@ useSeoMeta({
               class="text-sm text-blue-600 dark:text-blue-400"
               @click="showReadme = !showReadme"
             >
-              {{ showReadme ? 'Hide' : 'Show' }}
+              {{ showReadme ? "Hide" : "Show" }}
             </button>
           </div>
         </template>
@@ -298,7 +298,7 @@ useSeoMeta({
           class="prose dark:prose-invert mt-4 max-w-none"
         >
           <!-- eslint-disable-next-line vue/no-v-html -->
-          <div v-html="data.readme" />
+          <div v-html="data.readme"></div>
         </div>
       </UCard>
 

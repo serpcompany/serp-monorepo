@@ -4,5 +4,5 @@ router.replace({ path: '/service-providers/', replace: true })
 </script>
 
 <template>
-  <div />
+  <div></div>
 </template>

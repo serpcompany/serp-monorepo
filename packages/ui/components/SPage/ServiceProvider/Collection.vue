@@ -1,47 +1,47 @@
 <script setup lang="ts">
-const router = useRouter()
-const route = useRoute()
+  const router = useRouter()
+  const route = useRoute()
 
-const page = ref(Number(route.query.page) || 1)
-const limit = ref(Number(route.query.limit) || 50)
+  const page = ref(Number(route.query.page) || 1)
+  const limit = ref(Number(route.query.limit) || 50)
 
-const slug = route.params.slug as string
-
-// @ts-expect-error: Auto-imported from another layer
-const categories = await useServiceProviderCategories()
-
-// @ts-expect-error: Auto-imported from another layer
-let data = await useServiceProviders(page.value, limit.value, slug)
-if (!data) {
-  router.push('/404')
-}
-
-watch([page, limit], async ([newPage, newLimit]) => {
-  const query = { ...route.query }
-  if (newPage !== 1) {
-    query.page = String(newPage)
-  }
-  else {
-    delete query.page
-  }
-  if (newLimit !== 50) {
-    query.limit = String(newLimit)
-  }
-  else {
-    delete query.limit
-  }
+  const slug = route.params.slug as string
 
   // @ts-expect-error: Auto-imported from another layer
-  data = await useServiceProviders(page.value, limit.value)
-  router.push({ query })
-})
+  const categories = await useServiceProviderCategories()
 
-useSeoMeta({
-  title: () =>
-    data.category
-      ? `Discover the best ${data.category.name} service providers on the internet.`
-      : 'Discover the best service providers on the internet.',
-})
+  // @ts-expect-error: Auto-imported from another layer
+  let data = await useServiceProviders(page.value, limit.value, slug)
+  if (!data) {
+    router.push('/404')
+  }
+
+  watch([page, limit], async ([newPage, newLimit]) => {
+    const query = { ...route.query }
+    if (newPage !== 1) {
+      query.page = String(newPage)
+    }
+    else {
+      delete query.page
+    }
+    if (newLimit !== 50) {
+      query.limit = String(newLimit)
+    }
+    else {
+      delete query.limit
+    }
+
+    // @ts-expect-error: Auto-imported from another layer
+    data = await useServiceProviders(page.value, limit.value)
+    router.push({ query })
+  })
+
+  useSeoMeta({
+    title: () =>
+      data.category
+        ? `Discover the best ${data.category.name} service providers on the internet.`
+        : 'Discover the best service providers on the internet.',
+  })
 </script>
 
 <template>
@@ -97,7 +97,7 @@ useSeoMeta({
             <div
               class="prose dark:prose-invert max-w-full"
               v-html="item.content"
-            />
+            ></div>
           </template>
         </UPageAccordion>
       </UPageSection>

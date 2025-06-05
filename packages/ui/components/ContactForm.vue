@@ -1,68 +1,68 @@
 <script setup lang="ts">
-const toast = useToast()
-const loading = ref(false)
+  const toast = useToast()
+  const loading = ref(false)
 
-const form = ref({
-  name: '',
-  email: '',
-  subject: '',
-  message: '',
-})
+  const form = ref({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  })
 
-const hasText = (v: string) => v.trim() !== ''
-function isValidEmail(e: string) {
-  return /^[^\s@]+@[^\s@][^\s.@]*\.[^\s@]+$/.test(e)
-}
-
-const isComplete = computed(
-  () =>
-    hasText(form.value.name)
-    && isValidEmail(form.value.email)
-    && hasText(form.value.message)
-    && hasText(form.value.subject),
-)
-
-async function submitContact() {
-  try {
-    loading.value = true
-    if (!isComplete.value) {
-      throw new Error(
-        'Fill in your name, a valid email, a subject, and a message',
-      )
-    }
-
-    const { error } = await useFetch('/api/contact', {
-      method: 'POST',
-      body: JSON.stringify(form.value),
-      headers: { 'Content-Type': 'application/json' },
-    })
-
-    if (error.value) {
-      throw new Error(error.value.message || 'Request failed')
-    }
-
-    toast.add({
-      id: 'contact-sent',
-      title: 'Message Sent!',
-      description: 'Thanks for reaching out — we’ll be in touch soon.',
-      icon: 'check-circle',
-    })
-
-    form.value = { name: '', email: '', subject: '', message: '' }
+  const hasText = (v: string) => v.trim() !== ''
+  function isValidEmail(e: string) {
+    return /^[^\s@]+@[^\s@][^\s.@]*\.[^\s@]+$/.test(e)
   }
-  catch (err: unknown) {
-    toast.add({
-      id: 'contact-error',
-      title: 'Oops!',
-      description:
+
+  const isComplete = computed(
+    () =>
+      hasText(form.value.name) &&
+      isValidEmail(form.value.email) &&
+      hasText(form.value.message) &&
+      hasText(form.value.subject),
+  )
+
+  async function submitContact() {
+    try {
+      loading.value = true
+      if (!isComplete.value) {
+        throw new Error(
+          'Fill in your name, a valid email, a subject, and a message',
+        )
+      }
+
+      const { error } = await useFetch('/api/contact', {
+        method: 'POST',
+        body: JSON.stringify(form.value),
+        headers: { 'Content-Type': 'application/json' },
+      })
+
+      if (error.value) {
+        throw new Error(error.value.message || 'Request failed')
+      }
+
+      toast.add({
+        id: 'contact-sent',
+        title: 'Message Sent!',
+        description: 'Thanks for reaching out — we’ll be in touch soon.',
+        icon: 'check-circle',
+      })
+
+      form.value = { name: '', email: '', subject: '', message: '' }
+    }
+    catch (err: unknown) {
+      toast.add({
+        id: 'contact-error',
+        title: 'Oops!',
+        description:
           err instanceof Error ? err.message : 'An unexpected error occurred',
-      icon: 'exclamation-circle',
-    })
+        icon: 'exclamation-circle',
+      })
+    }
+    finally {
+      loading.value = false
+    }
   }
-  finally {
-    loading.value = false
-  }
-}
 </script>
 
 <template>
@@ -121,7 +121,7 @@ async function submitContact() {
 </template>
 
 <style scoped>
-  .fade-enter-from,
+.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }

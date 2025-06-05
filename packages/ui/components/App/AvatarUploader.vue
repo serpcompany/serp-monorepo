@@ -1,39 +1,39 @@
 <script setup lang="ts">
-import { useFileDialog, useObjectUrl } from '@vueuse/core'
+  import { useFileDialog, useObjectUrl } from '@vueuse/core'
 
-withDefaults(
-  defineProps<{
-    avatarSize?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'
-  }>(),
-  {
-    avatarSize: '3xl',
-  },
-)
+  withDefaults(
+    defineProps<{
+      avatarSize?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'
+    }>(),
+    {
+      avatarSize: '3xl',
+    },
+  )
 
-const emit = defineEmits<{
-  'file-selected': [file: File | null]
-}>()
+  const emit = defineEmits<{
+    'file-selected': [file: File | null]
+  }>()
 
-const model = defineModel<string | undefined>()
+  const model = defineModel<string | undefined>()
 
-const { files, open, onChange } = useFileDialog({
-  accept: 'image/*',
-  multiple: false,
-})
+  const { files, open, onChange } = useFileDialog({
+    accept: 'image/*',
+    multiple: false,
+  })
 
-onChange(() => {
-  const file = files.value?.[0]
-  if (file) {
-    const objectUrl = useObjectUrl(file)
-    model.value = objectUrl.value
-    emit('file-selected', file)
+  onChange(() => {
+    const file = files.value?.[0]
+    if (file) {
+      const objectUrl = useObjectUrl(file)
+      model.value = objectUrl.value
+      emit('file-selected', file)
+    }
+  })
+
+  function removeImage() {
+    model.value = ''
+    emit('file-selected', null)
   }
-})
-
-function removeImage() {
-  model.value = ''
-  emit('file-selected', null)
-}
 </script>
 
 <template>

@@ -23,9 +23,9 @@ export const editProposedChangesSchema = z.object({
 }).strict().superRefine((data, ctx) => {
   // Check if at least one field is provided
   const hasValidField = Object.entries(data).some(([, value]) => {
-    if (typeof value === 'string') 
+    if (typeof value === 'string')
       return value.length > 0
-    if (Array.isArray(value)) 
+    if (Array.isArray(value))
       return value.length > 0
     return value !== undefined && value !== null
   })

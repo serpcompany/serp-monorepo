@@ -1,22 +1,22 @@
 <script lang="ts" setup>
-import { useDateFormat, useTimeAgo } from '@vueuse/core'
+  import { useDateFormat, useTimeAgo } from '@vueuse/core'
 
-const columns = ['Email', 'Referrer', 'Created At']
-const { data: subscribers } = await useFetch(
-  '/api/super-admin/newsletter-subscribers',
-)
+  const columns = ['Email', 'Referrer', 'Created At']
+  const { data: subscribers } = await useFetch(
+    '/api/super-admin/newsletter-subscribers',
+  )
 
-function formatDate(date: string | Date | undefined) {
-  if (!date)
-    return 'NA'
-  return useDateFormat(date, 'MMM D, YYYY HH:mm a').value
-}
+  function formatDate(date: string | Date | undefined) {
+    if (!date)
+      return 'NA'
+    return useDateFormat(date, 'MMM D, YYYY HH:mm a').value
+  }
 
-function referrerLogo(referrer: string | undefined) {
-  if (!referrer)
-    return undefined
-  return `https://logo.clearbit.com/${referrer}`
-}
+  function referrerLogo(referrer: string | undefined) {
+    if (!referrer)
+      return undefined
+    return `https://logo.clearbit.com/${referrer}`
+  }
 </script>
 
 <template>
@@ -54,7 +54,7 @@ function referrerLogo(referrer: string | undefined) {
                   size="3xs"
                   class="flex-shrink-0"
                 />
-                {{ subscriber.referrer || '--' }}
+                {{ subscriber.referrer || "--" }}
               </div>
             </td>
             <td class="p-2">

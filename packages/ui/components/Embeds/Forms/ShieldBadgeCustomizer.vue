@@ -1,56 +1,56 @@
 <script setup lang="ts">
-const props = defineProps<{
-  formData: {
-    categorySlug: string
-    productDomain: string
-  }
-}>()
+  const props = defineProps<{
+    formData: {
+      categorySlug: string
+      productDomain: string
+    }
+  }>()
 
-const emit = defineEmits(['update', 'submit'])
-const localFormData = ref({
-  categorySlug: '',
-  productDomain: '',
-})
+  const emit = defineEmits(['update', 'submit'])
+  const localFormData = ref({
+    categorySlug: '',
+    productDomain: '',
+  })
 
-const { formData } = toRefs(props)
+  const { formData } = toRefs(props)
 
-watch(
-  formData,
-  (newFormData) => {
-    localFormData.value.categorySlug = newFormData.categorySlug
-    localFormData.value.productDomain = newFormData.productDomain
-  },
-  { immediate: true },
-)
-
-const categories = await useCompanyCategories()
-
-const companyOptions = ref([] as Array<{ name: string, domain: string }>)
-
-if (localFormData.value.categorySlug) {
-  companyOptions.value = await useAllCompaniesForCategory(
-    localFormData.value.categorySlug,
+  watch(
+    formData,
+    (newFormData) => {
+      localFormData.value.categorySlug = newFormData.categorySlug
+      localFormData.value.productDomain = newFormData.productDomain
+    },
+    { immediate: true },
   )
-}
 
-watch(
-  () => localFormData.value.categorySlug,
-  async (newSlug) => {
-    if (newSlug) {
-      const companiesForCategory = await useAllCompaniesForCategory(newSlug)
-      companyOptions.value = companiesForCategory.companies
-    }
-    else {
-      companyOptions.value = []
-    }
-    localFormData.value.productDomain = ''
-    updateForm()
-  },
-)
+  const categories = await useCompanyCategories()
 
-function updateForm() {
-  emit('update', { ...localFormData.value })
-}
+  const companyOptions = ref([] as Array<{ name: string, domain: string }>)
+
+  if (localFormData.value.categorySlug) {
+    companyOptions.value = await useAllCompaniesForCategory(
+      localFormData.value.categorySlug,
+    )
+  }
+
+  watch(
+    () => localFormData.value.categorySlug,
+    async (newSlug) => {
+      if (newSlug) {
+        const companiesForCategory = await useAllCompaniesForCategory(newSlug)
+        companyOptions.value = companiesForCategory.companies
+      }
+      else {
+        companyOptions.value = []
+      }
+      localFormData.value.productDomain = ''
+      updateForm()
+    },
+  )
+
+  function updateForm() {
+    emit('update', { ...localFormData.value })
+  }
 </script>
 
 <template>
@@ -99,8 +99,8 @@ function updateForm() {
             <option value="" disabled>
               {{
                 companyOptions.length
-                  ? 'Select a domain'
-                  : 'Pick a category first'
+                  ? "Select a domain"
+                  : "Pick a category first"
               }}
             </option>
             <option

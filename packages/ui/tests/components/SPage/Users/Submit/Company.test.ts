@@ -1,10 +1,10 @@
 /* eslint-disable ts/no-unused-vars  */
 
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it, vi } from 'vitest';
-import { ref } from 'vue';
-import SubmitCompany from '../../../../../components/SPage/Users/Submit/Company.vue';
-import ComponentRender from '../../../../componentRender';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it, vi } from 'vitest'
+import { ref } from 'vue'
+import SubmitCompany from '../../../../../components/SPage/Users/Submit/Company.vue'
+import ComponentRender from '../../../../componentRender'
 
 // Module level variables for mutable state
 let routeMock_: Record<string, unknown> = { query: {} }
@@ -94,4 +94,4 @@ describe('sPage/Users/Submit/Company Snapshot', () => {
       expect(html).toMatchSnapshot()
     },
   )
-});
+})

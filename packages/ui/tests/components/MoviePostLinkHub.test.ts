@@ -1,9 +1,9 @@
 /* eslint-disable ts/no-unused-vars  */
 
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import MoviePostLinkHub from '../../components/MoviePostLinkHub.vue';
-import ComponentRender from '../componentRender';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import MoviePostLinkHub from '../../components/MoviePostLinkHub.vue'
+import ComponentRender from '../componentRender'
 
 // Mock data variable to be updated in each test case
 let postsData_: Array<{
@@ -52,5 +52,5 @@ describe('moviePostLinkHub Snapshot', () => {
       MoviePostLinkHub,
     )
     expect(html).toMatchSnapshot()
-  });
+  })
 })

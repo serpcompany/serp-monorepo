@@ -1,30 +1,30 @@
 <script lang="ts" setup>
-const route = useRoute()
+  const route = useRoute()
 
-const mobileMenu = useState('mobileMenu', () => false)
-const isTeamRoute = computed(() => {
-  return (
-    route.path.startsWith('/dashboard/')
-    && !route.path.startsWith('/dashboard/account')
-    && !route.path.startsWith('/dashboard/super-admin')
-    && !route.path.startsWith('/dashboard/billing')
-    && route.path !== '/dashboard/'
-    && route.path !== '/dashboard'
-    && route.path.includes('/') // Team routes have additional path segments
-  )
-})
+  const mobileMenu = useState('mobileMenu', () => false)
+  const isTeamRoute = computed(() => {
+    return (
+      route.path.startsWith('/dashboard/') &&
+      !route.path.startsWith('/dashboard/account') &&
+      !route.path.startsWith('/dashboard/super-admin') &&
+      !route.path.startsWith('/dashboard/billing') &&
+      route.path !== '/dashboard/' &&
+      route.path !== '/dashboard' &&
+      route.path.includes('/') // Team routes have additional path segments
+    )
+  })
 
-const isSuperAdminRoute = computed(() => {
-  return route.path.startsWith('/dashboard/super-admin')
-})
+  const isSuperAdminRoute = computed(() => {
+    return route.path.startsWith('/dashboard/super-admin')
+  })
 
-const isUserDashboardRoute = computed(() => {
-  return (
-    route.path === '/dashboard'
-    || route.path === '/dashboard/'
-    || route.path === '/dashboard/billing'
-  )
-})
+  const isUserDashboardRoute = computed(() => {
+    return (
+      route.path === '/dashboard' ||
+      route.path === '/dashboard/' ||
+      route.path === '/dashboard/billing'
+    )
+  })
 </script>
 
 <template>

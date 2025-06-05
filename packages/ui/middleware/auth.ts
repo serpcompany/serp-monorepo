@@ -1,8 +1,8 @@
 import type { Team } from '@serp/db/types/database'
 
 export default defineNuxtRouteMiddleware(async (to, _from) => {
-  const paramSlug
-    = (Array.isArray(to.params.team) ? to.params.team[0] : to.params.team) || ''
+  const paramSlug =
+    (Array.isArray(to.params.team) ? to.params.team[0] : to.params.team) || ''
   const toast = useToast()
   const { loggedIn } = useUserSession()
   const teams = useState<Team[]>('teams', () => [])
@@ -17,8 +17,8 @@ export default defineNuxtRouteMiddleware(async (to, _from) => {
       return navigateTo('/dashboard/onboard')
     }
     const lastTeamSlug = getLastUsedTeam()
-    const targetTeam
-      = memberships.find(team => team.slug === lastTeamSlug) || firstTeam
+    const targetTeam =
+      memberships.find(team => team.slug === lastTeamSlug) || firstTeam
 
     // Update last used team and redirect
     setLastUsedTeam(targetTeam.slug)
@@ -79,10 +79,10 @@ export default defineNuxtRouteMiddleware(async (to, _from) => {
   // Handle dashboard routing - allow individual dashboard or redirect to teams
   if (to.fullPath === '/dashboard' || to.fullPath === '/dashboard/') {
     // Check if user wants to use teams (has teams and came from team context)
-    const useTeams
-      = teams.value.length > 0
-        && (to.query.useTeams === 'true'
-          || useCookie('prefer-teams').value === 'true')
+    const useTeams =
+      teams.value.length > 0 &&
+      (to.query.useTeams === 'true' ||
+        useCookie('prefer-teams').value === 'true')
 
     if (useTeams) {
       return await handleTeamRedirect()

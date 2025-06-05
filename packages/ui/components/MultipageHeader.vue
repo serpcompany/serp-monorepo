@@ -1,21 +1,21 @@
 <script setup lang="ts">
-interface Props {
-  name: string
-  oneLiner?: string
-  image?: string
-  sections: string[]
-  serplyLink: string
-  verified?: boolean
-}
+  interface Props {
+    name: string
+    oneLiner?: string
+    image?: string
+    sections: string[]
+    serplyLink: string
+    verified?: boolean
+  }
 
-withDefaults(defineProps<Props>(), {
-  image: '',
-  oneLiner: '',
-  verified: false,
-})
+  withDefaults(defineProps<Props>(), {
+    image: '',
+    oneLiner: '',
+    verified: false,
+  })
 
-const header = useTemplateRef('header')
-const isScrolled = ref(false)
+  const header = useTemplateRef('header')
+  const isScrolled = ref(false)
 
 // // helps the multipage header to stick properly
 // onMounted(() => {
@@ -72,7 +72,7 @@ const isScrolled = ref(false)
                     <h1 class="text-text text-xl font-semibold sm:text-3xl">
                       {{ name }}
                     </h1>
-                    <slot name="name-trailing" />
+                    <slot name="name-trailing"></slot>
                   </div>
                   <p class="text-muted font-medium">
                     {{ oneLiner }}
@@ -86,7 +86,7 @@ const isScrolled = ref(false)
             <div
               class="flex flex-none flex-col items-center justify-end gap-3 pt-4 sm:flex-row sm:pt-0"
             >
-              <slot name="upvote" />
+              <slot name="upvote"></slot>
               <UButton
                 v-if="serplyLink"
                 label="Website"
@@ -172,7 +172,12 @@ const isScrolled = ref(false)
                 d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
               />
               <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
+              <line
+                x1="10"
+                y1="14"
+                x2="21"
+                y2="3"
+              />
             </svg>
           </NuxtLink>
         </div>

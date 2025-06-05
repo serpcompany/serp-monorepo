@@ -74,7 +74,6 @@ describe('entity Edit Post API', () => {
     })
   })
 
-
   it('should return 400 if invalid categories are provided', async () => {
     mockGetQuery.mockReturnValueOnce({ id: '123' })
     mockReadBody.mockResolvedValueOnce({
@@ -83,9 +82,9 @@ describe('entity Edit Post API', () => {
 
     const result = await handler({})
 
-    expect(result).toEqual({ 
-      status: 400, 
-      message: 'Validation error: Expected number, received string, Expected number, received string, Expected number, received string' 
+    expect(result).toEqual({
+      status: 400,
+      message: 'Validation error: Expected number, received string, Expected number, received string, Expected number, received string',
     })
   })
 
@@ -100,7 +99,6 @@ describe('entity Edit Post API', () => {
     expect(result).toEqual({ status: 400, message: 'Validation error: Expected array, received object' })
   })
 
-
   it('should return 400 if invalid topics are provided', async () => {
     mockGetQuery.mockReturnValueOnce({ id: '123' })
     mockReadBody.mockResolvedValueOnce({
@@ -109,9 +107,9 @@ describe('entity Edit Post API', () => {
 
     const result = await handler({})
 
-    expect(result).toEqual({ 
-      status: 400, 
-      message: 'Validation error: Expected number, received string, Expected number, received string, Expected number, received string' 
+    expect(result).toEqual({
+      status: 400,
+      message: 'Validation error: Expected number, received string, Expected number, received string, Expected number, received string',
     })
   })
 
@@ -280,12 +278,16 @@ describe('entity Edit Post API', () => {
 
       // Mock that categories exist
       mockDb.execute.mockResolvedValueOnce([
-        { id: 1 }, { id: 2 }, { id: 3 }
+        { id: 1 },
+        { id: 2 },
+        { id: 3 },
       ])
 
       // Mock that topics exist
       mockDb.execute.mockResolvedValueOnce([
-        { id: 4 }, { id: 5 }, { id: 6 }
+        { id: 4 },
+        { id: 5 },
+        { id: 6 },
       ])
 
       // Mock that entity exists

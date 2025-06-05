@@ -1,35 +1,35 @@
 <script setup lang="ts">
-const route = useRoute()
-const router = useRouter()
+  const route = useRoute()
+  const router = useRouter()
 
-const success = route.query.success
-const cancel = route.query.cancel
-const error = route.query.error
-const redirectUrl = route.query.redirectTo
-  ? String(route.query.redirectTo)
-  : '/'
+  const success = route.query.success
+  const cancel = route.query.cancel
+  const error = route.query.error
+  const redirectUrl = route.query.redirectTo
+    ? String(route.query.redirectTo)
+    : '/'
 
-const timeLeft = ref(10)
-let intervalId: ReturnType<typeof setInterval> | null = null
+  const timeLeft = ref(10)
+  let intervalId: ReturnType<typeof setInterval> | null = null
 
-function redirectNow() {
-  router.push(redirectUrl)
-}
+  function redirectNow() {
+    router.push(redirectUrl)
+  }
 
-onMounted(() => {
-  intervalId = setInterval(() => {
-    timeLeft.value--
-    if (timeLeft.value <= 0) {
-      clearInterval(intervalId!)
-      redirectNow()
-    }
-  }, 1000)
-})
+  onMounted(() => {
+    intervalId = setInterval(() => {
+      timeLeft.value--
+      if (timeLeft.value <= 0) {
+        clearInterval(intervalId!)
+        redirectNow()
+      }
+    }, 1000)
+  })
 
-onUnmounted(() => {
-  if (intervalId)
-    clearInterval(intervalId)
-})
+  onUnmounted(() => {
+    if (intervalId)
+      clearInterval(intervalId)
+  })
 </script>
 
 <template>
