@@ -1,6 +1,8 @@
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 
 import {
+  edit,
+  entity,
   oauthAccount,
   post,
   price,
@@ -51,3 +53,15 @@ export const selectSubscriptionSchema = createSelectSchema(subscription)
 
 export const insertPriceSchema = createInsertSchema(price)
 export const selectPriceSchema = createSelectSchema(price)
+
+export type Edit = typeof edit.$inferSelect
+export type InsertEdit = typeof edit.$inferInsert
+
+export type Entity = typeof entity.$inferSelect
+export type InsertEntity = typeof entity.$inferInsert
+
+export const insertEditSchema = createInsertSchema(edit)
+export const selectEditSchema = createSelectSchema(edit)
+
+export const insertEntitySchema = createInsertSchema(entity)
+export const selectEntitySchema = createSelectSchema(entity)
