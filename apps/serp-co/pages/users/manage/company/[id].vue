@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import type { ZodError } from 'zod'
+import { editSubmissionSchema } from '@serp/db/schemas/edit-validation'
+
 const { loggedIn, user } = useUserSession()
 if (!loggedIn.value)
   navigateTo('/')
@@ -246,8 +249,17 @@ async function submitNewEdit() {
         payload[key] = val
       }
     }
-    if (!Object.keys(payload).length) {
-      throw new Error('Change at least one field to submit.')
+    
+    // Validate payload before submission
+    try {
+      editSubmissionSchema.parse(payload)
+    }
+    catch (validationError) {
+      if (validationError instanceof Error && 'errors' in validationError) {
+        const zodError = validationError as ZodError
+        throw new Error(`Validation failed: ${zodError.errors.map(e => e.message).join(', ')}`)
+      }
+      throw validationError
     }
     const { data: response, error } = await useFetch(
       `/api/entity/edit?id=${companyId}`,
