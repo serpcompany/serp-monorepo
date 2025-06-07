@@ -17,7 +17,7 @@
     password: undefined,
   })
 
-  async function onSubmit(event: FormSubmitEvent<Schema>) {
+  async function onSubmit(event: FormSubmitEvent<Schema>): Promise<void> {
     loading.value = true
     const token = route.query.token as string
     const { error } = await resetPassword(event.data.password, token)
@@ -29,43 +29,40 @@
 </script>
 
 <template>
-  <main class="flex min-h-screen items-center justify-center">
-    <div class="mx-auto w-full max-w-sm space-y-4">
-      <SLogo />
-      <div class="text-center">
-        <p class="text-lg font-bold">
-          Reset your password
-        </p>
-        <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-          Enter your new password below.
-        </p>
-      </div>
-      <UForm
-        :schema="resetPasswordSchema"
-        :state="state"
-        class="mt-8 space-y-4"
-        @submit="onSubmit"
-      >
-        <UFormField label="New Password" name="password">
-          <UInput
-            v-model="state.password"
-            type="password"
-            class="w-full"
-            size="lg"
-          />
-        </UFormField>
-
-        <UButton
-          type="submit"
-          :loading="loading"
-          block
-          color="neutral"
-          class="cursor-pointer"
-          size="lg"
+  <main class="flex items-center justify-center">
+    <div class="mx-auto w-full max-w-sm">
+      <div class="flex flex-col gap-y-4 items-center">
+        <AuthHeading
+          title="Reset your password"
+          description="Enter your new password below."
+        />
+        <UForm
+          :schema="resetPasswordSchema"
+          :state="state"
+          class="w-full space-y-4"
+          @submit="onSubmit"
         >
-          Reset Password
-        </UButton>
-      </UForm>
+          <UFormField label="New Password" name="password">
+            <UInput
+              v-model="state.password"
+              type="password"
+              class="w-full"
+              size="lg"
+            />
+          </UFormField>
+
+          <UButton
+            type="submit"
+            :loading="loading"
+            block
+            color="neutral"
+            class="cursor-pointer"
+            size="lg"
+          >
+            Reset Password
+          </UButton>
+        </UForm>
+      </div>
     </div>
   </main>
 </template>

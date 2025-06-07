@@ -28,7 +28,7 @@
     },
   })
 
-  async function onLoginSubmit(event: FormSubmitEvent<LoginSchema>) {
+  async function onLoginSubmit(event: FormSubmitEvent<LoginSchema>): Promise<any> {
     try {
       loading.value = true
       await $fetch('/api/auth/magic-link/login', {
@@ -41,7 +41,7 @@
     catch (error) {
       toast.add({
         title: 'Failed to send verification code',
-        description: (error as unknown).data.message,
+        description: (error as any).data.message,
         color: 'error',
       })
     }
@@ -50,7 +50,7 @@
     }
   }
 
-  async function onOtpSubmit(event: FormSubmitEvent<OtpSchema>) {
+  async function onOtpSubmit(event: FormSubmitEvent<OtpSchema>): Promise<any> {
     try {
       loading.value = true
       await $fetch('/api/auth/magic-link/verify-otp', {
@@ -63,7 +63,7 @@
     catch (error) {
       toast.add({
         title: 'Failed to verify code',
-        description: (error as unknown).data.message,
+        description: (error as any).data.message,
         color: 'error',
       })
     }
@@ -74,77 +74,70 @@
 </script>
 
 <template>
-  <main class="flex min-h-screen items-center justify-center">
-    <div class="mx-auto w-full max-w-sm space-y-4">
-      <SLogo />
-      <template v-if="mode === 'login'">
-        <div class="text-center">
-          <p class="text-lg font-bold">
-            Sign in to your account
-          </p>
-          <p class="text-sm text-neutral-500">
-            Welcome back! Please sign in to continue.
-          </p>
-        </div>
-        <UForm
-          :schema="emailSchema"
-          :state="loginState"
-          class="mt-8 space-y-4"
-          @submit="onLoginSubmit"
-        >
-          <UFormField label="Email" name="email">
-            <UInput v-model="loginState.email" class="w-full" size="lg" />
-          </UFormField>
+  <main class="flex items-center justify-center">
+    <div class="mx-auto w-full max-w-sm">
+      <div class="flex flex-col gap-y-4 items-center">
+        <template v-if="mode === 'login'">
+          <AuthHeading
+            title="Sign in to your account"
+            description="Welcome back! Please sign in to continue."
+          />
+          <UForm
+            :schema="emailSchema"
+            :state="loginState"
+            class="w-full space-y-4"
+            @submit="onLoginSubmit"
+          >
+            <UFormField label="Email" name="email">
+              <UInput v-model="loginState.email" class="w-full" size="lg" />
+            </UFormField>
 
-          <UButton
-            type="submit"
-            :loading="loading"
-            block
-            color="neutral"
-            class="cursor-pointer"
-            size="lg"
-          >
-            Submit
-          </UButton>
-        </UForm>
-      </template>
-      <div v-else>
-        <div class="text-center">
-          <p class="text-lg font-bold">
-            We've sent you a 6-digit code
-          </p>
-          <p class="text-sm text-neutral-500">
-            Please check your email for the code and enter it below.
-          </p>
-        </div>
-        <UForm
-          :schema="otpLoginSchema"
-          :state="otpState"
-          class="mx-auto mt-8 max-w-max space-y-4"
-          @submit="onOtpSubmit"
-        >
-          <UFormField name="code">
-            <UPinInput
-              v-model="otpCode"
-              :length="6"
+            <UButton
+              type="submit"
+              :loading="loading"
+              block
+              color="neutral"
+              class="cursor-pointer"
               size="lg"
-              otp
-              type="number"
-              placeholder="○"
-              class="justify-center"
-            />
-          </UFormField>
-          <UButton
-            type="submit"
-            :loading="loading"
-            color="neutral"
-            class="cursor-pointer"
-            size="lg"
-            block
+            >
+              Submit
+            </UButton>
+          </UForm>
+        </template>
+        <div v-else>
+          <AuthHeading
+            title="We've sent you a 6-digit code"
+            description="Please check your email for the code and enter it below."
+          />
+          <UForm
+            :schema="otpLoginSchema"
+            :state="otpState"
+            class="mx-auto mt-8 max-w-max space-y-4"
+            @submit="onOtpSubmit"
           >
-            Verify Code
-          </UButton>
-        </UForm>
+            <UFormField name="code">
+              <UPinInput
+                v-model="otpCode"
+                :length="6"
+                size="lg"
+                otp
+                type="number"
+                placeholder="○"
+                class="justify-center"
+              />
+            </UFormField>
+            <UButton
+              type="submit"
+              :loading="loading"
+              color="neutral"
+              class="cursor-pointer"
+              size="lg"
+              block
+            >
+              Verify Code
+            </UButton>
+          </UForm>
+        </div>
       </div>
     </div>
   </main>

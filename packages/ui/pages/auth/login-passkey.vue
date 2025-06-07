@@ -29,39 +29,36 @@
 </script>
 
 <template>
-  <main class="flex min-h-screen items-center justify-center">
-    <div class="mx-auto w-full max-w-sm space-y-4">
-      <SLogo />
-      <div class="text-center">
-        <p class="text-lg font-bold">
-          Sign in to your account
-        </p>
-        <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-          Welcome back! Please sign in to continue.
-        </p>
-      </div>
-      <UForm
-        :schema="emailSchema"
-        :state="state"
-        class="mt-8 space-y-4"
-        @submit="onSubmit"
-      >
-        <UFormField label="Email" name="email">
-          <UInput v-model="state.email" class="w-full" size="lg" />
-        </UFormField>
-
-        <UButton
-          type="submit"
-          :loading="loading"
-          block
-          color="neutral"
-          class="cursor-pointer"
-          size="lg"
-          icon="i-lucide-fingerprint"
+  <main class="flex items-center justify-center">
+    <div class="mx-auto w-full max-w-sm">
+      <div class="flex flex-col gap-y-4 items-center">
+        <AuthHeading
+          title="Sign in to your account"
+          description="Welcome back! Please sign in to continue."
+        />
+        <UForm
+          :schema="emailSchema"
+          :state="state"
+          class="w-full space-y-4"
+          @submit="onSubmit"
         >
-          Sign in with Passkey
-        </UButton>
-      </UForm>
+          <UFormField label="Email" name="email">
+            <UInput v-model="state.email" class="w-full" size="lg" />
+          </UFormField>
+
+          <UButton
+            type="submit"
+            :loading="loading"
+            block
+            color="neutral"
+            class="cursor-pointer"
+            size="lg"
+            icon="i-lucide-fingerprint"
+          >
+            Sign in with Passkey
+          </UButton>
+        </UForm>
+      </div>
     </div>
   </main>
 </template>
