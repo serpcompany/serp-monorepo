@@ -1,86 +1,86 @@
 <script setup lang="ts">
-const { loggedIn } = useUserSession()
-if (!loggedIn.value) {
-  navigateTo('/login')
-}
+  const { loggedIn } = useUserSession()
+  if (!loggedIn.value) {
+    navigateTo('/login')
+  }
 
-// fetch submissions
-const submissions = await useCompanySubmissions()
+  // fetch submissions
+  const submissions = await useCompanySubmissions()
 
-// fetch verified companies
-const {
-  data: verifiedData,
-  pending: verifiedPending,
-  error: verifiedError,
-} = await useFetch<{
-  companies: Array<{
-    id: number
-    name: string
-    domain: string
-    verifiedAt: string
-  }>
-}>('/api/entities/verified?module=company', {
-  method: 'GET',
-})
+  // fetch verified companies
+  const {
+    data: verifiedData,
+    pending: verifiedPending,
+    error: verifiedError,
+  } = await useFetch<{
+    companies: Array<{
+      id: number
+      name: string
+      domain: string
+      verifiedAt: string
+    }>
+  }>('/api/entities/verified?module=company', {
+    method: 'GET',
+  })
 
-useSeoMeta({
-  title: 'My Companies',
-})
+  useSeoMeta({
+    title: 'My Companies',
+  })
 
-const toast = useToast()
-const loading = ref(false)
-async function verifyCompanyBacklink(submissionId: string) {
-  try {
-    loading.value = true
-    const { data: response, error } = await useFetch(
-      `/api/entity/submit-verify-backlink?id=${submissionId}`,
-      {
-        method: 'POST',
-        headers: useRequestHeaders(['cookie']),
-      },
-    )
-    if (error.value) {
+  const toast = useToast()
+  const loading = ref(false)
+  async function verifyCompanyBacklink(submissionId: string) {
+    try {
+      loading.value = true
+      const { data: response, error } = await useFetch(
+        `/api/entity/submit-verify-backlink?id=${submissionId}`,
+        {
+          method: 'POST',
+          headers: useRequestHeaders(['cookie']),
+        },
+      )
+      if (error.value) {
+        toast.add({
+          id: 'verify-backlink-error',
+          title: 'Error Verifying Backlink',
+          description: error.value,
+          icon: 'exclamation-circle',
+        })
+        return
+      }
+      if (response.value && response.value.verified) {
+        const submission = submissions.find(s => s.id === submissionId)
+        if (submission) {
+          submission.backlinkVerified = true
+        }
+        toast.add({
+          id: 'verify-backlink-success',
+          title: 'Backlink Verified',
+          description: 'The backlink has been verified successfully.',
+          icon: 'check-circle',
+        })
+      }
+      else {
+        toast.add({
+          id: 'verify-backlink-failure',
+          title: 'Backlink Verification Failed',
+          description: 'The backlink could not be verified.',
+          icon: 'exclamation-circle',
+        })
+      }
+    }
+    catch (error) {
       toast.add({
         id: 'verify-backlink-error',
         title: 'Error Verifying Backlink',
-        description: error.value,
-        icon: 'exclamation-circle',
-      })
-      return
-    }
-    if (response.value && response.value.verified) {
-      const submission = submissions.find(s => s.id === submissionId)
-      if (submission) {
-        submission.backlinkVerified = true
-      }
-      toast.add({
-        id: 'verify-backlink-success',
-        title: 'Backlink Verified',
-        description: 'The backlink has been verified successfully.',
-        icon: 'check-circle',
-      })
-    }
-    else {
-      toast.add({
-        id: 'verify-backlink-failure',
-        title: 'Backlink Verification Failed',
-        description: 'The backlink could not be verified.',
+        description: error.message,
         icon: 'exclamation-circle',
       })
     }
+    finally {
+      loading.value = false
+    }
   }
-  catch (error) {
-    toast.add({
-      id: 'verify-backlink-error',
-      title: 'Error Verifying Backlink',
-      description: error.message,
-      icon: 'exclamation-circle',
-    })
-  }
-  finally {
-    loading.value = false
-  }
-}
 </script>
 
 <template>

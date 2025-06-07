@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const error = useError()
-function handleError() {
-  clearError({
-    redirect: '/',
-  })
-}
+  const error = useError()
+  function handleError() {
+    clearError({
+      redirect: '/',
+    })
+  }
 </script>
 
 <template>
