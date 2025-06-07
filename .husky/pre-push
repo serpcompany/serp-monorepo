@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Start
+echo "[husky]: Running pre-push hook..."
+
+# Check for fixed TypeScript errors
+echo "[husky]: Checking for fixed TypeScript errors..."
+pnpm typecheck:fixed
+
+# Validate TypeScript errors against baseline
+echo "[husky]: Validating TypeScript errors against baseline..."
+pnpm typecheck:baseline
+
+echo "[husky]: Pre-push checks complete!"

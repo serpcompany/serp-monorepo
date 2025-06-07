@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useRouter } from 'vue-router'
+  import { computed } from 'vue'
+  import { useRouter } from 'vue-router'
 
-const { user } = useUserSession()
-const router = useRouter()
+  const { user } = useUserSession()
+  const router = useRouter()
 
-// Helper function to navigate to other pages.
-function navigateTo(path: string) {
-  router.push(path)
-}
+  // Helper function to navigate to other pages.
+  function navigateTo(path: string) {
+    router.push(path)
+  }
 
-// Use computed properties to safely get user information.
-const userName = computed(() => user.value?.name || 'User')
-const userEmail = computed(() => user.value?.email || 'user@example.com')
+  // Use computed properties to safely get user information.
+  const userName = computed(() => user.value?.name || 'User')
+  const userEmail = computed(() => user.value?.email || 'user@example.com')
 </script>
 
 <template>

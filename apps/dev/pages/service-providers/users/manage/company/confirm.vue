@@ -1,24 +1,24 @@
 <script setup lang="ts">
-const { loggedIn } = useUserSession()
-const route = useRoute()
+  const { loggedIn } = useUserSession()
+  const route = useRoute()
 
-if (!loggedIn.value) {
-  navigateTo(`/login?redirectTo=${route.fullPath}`)
-}
+  if (!loggedIn.value) {
+    navigateTo(`/login?redirectTo=${route.fullPath}`)
+  }
 
-const requestId = route.query.requestId as string
-const code = route.query.code as string
+  const requestId = route.query.requestId as string
+  const code = route.query.code as string
 
-const {
-  data: res,
-  pending,
-  error,
-} = await useFetch('/api/entity/verify/email', {
-  method: 'POST',
-  body: { requestId: Number(requestId), code },
-})
+  const {
+    data: res,
+    pending,
+    error,
+  } = await useFetch('/api/entity/verify/email', {
+    method: 'POST',
+    body: { requestId: Number(requestId), code },
+  })
 
-const success = res.value?.ok
+  const success = res.value?.ok
 </script>
 
 <template>

@@ -1,121 +1,121 @@
 <script setup lang="ts">
-const router = useRouter()
-const route = useRoute()
+  const router = useRouter()
+  const route = useRoute()
 
-const page = ref(Number(route.query.page) || 1)
-const limit = ref(Number(route.query.limit) || 50)
-const categories = await useCompanyCategories()
+  const page = ref(Number(route.query.page) || 1)
+  const limit = ref(Number(route.query.limit) || 50)
+  const categories = await useCompanyCategories()
 
-const heroLinks = ref([
-  {
-    label: 'Explore',
-    to: '/products/',
-    icon: 'i-lucide-search',
-    class: 'rounded-lg',
-  },
-  {
-    label: 'Solutions',
-    to: 'https://solutions.serp.co',
-    color: 'neutral' as const,
-    variant: 'subtle' as const,
-    trailingIcon: 'i-lucide-arrow-right',
-    class: 'rounded-lg',
-  },
-])
+  const heroLinks = ref([
+    {
+      label: 'Explore',
+      to: '/products/',
+      icon: 'i-lucide-search',
+      class: 'rounded-lg',
+    },
+    {
+      label: 'Solutions',
+      to: 'https://solutions.serp.co',
+      color: 'neutral' as const,
+      variant: 'subtle' as const,
+      trailingIcon: 'i-lucide-arrow-right',
+      class: 'rounded-lg',
+    },
+  ])
 
-const logos = [
-  'i-simple-icons-google',
-  'i-simple-icons-amazon',
-  'i-simple-icons-meta',
-  'i-simple-icons-microsoft',
-  'i-simple-icons-apple',
-  'i-simple-icons-adobe',
-  'i-simple-icons-slack',
-  'i-simple-icons-shopify',
-]
+  const logos = [
+    'i-simple-icons-google',
+    'i-simple-icons-amazon',
+    'i-simple-icons-meta',
+    'i-simple-icons-microsoft',
+    'i-simple-icons-apple',
+    'i-simple-icons-adobe',
+    'i-simple-icons-slack',
+    'i-simple-icons-shopify',
+  ]
 
-let data = await useCompanies(page.value, limit.value)
+  let data = await useCompanies(page.value, limit.value)
 
-// Testimonial video data
-// const testimonialVideoData = [
-//   {
-//     personName: 'Anne Peterson',
-//     businessName: 'Anne Peterson',
-//     businessWebsite: 'https://fullmoonrisingfarm.com/',
-//     positionAtCompany: 'Founder',
-//     avatarImage:
-//       'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/anne-peterson.png',
-//     videoId: 'LeAIQzMG6uc'
-//   },
-//   {
-//     personName: 'Dr. Emanuela Corielli',
-//     businessName: 'Bright Healthy Smiles',
-//     businessWebsite: 'https://brighthealthysmiles.com/',
-//     positionAtCompany: 'Owner',
-//     avatarImage:
-//       'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/emanuela-corielli.png',
-//     videoId: 'rr-BoZzJ-3g'
-//   },
-//   {
-//     personName: 'Dr. Jamie Osorio',
-//     businessName: 'Buckner Family Dental',
-//     businessWebsite: 'https://bucknerfamilydental.com/',
-//     positionAtCompany: 'Owner',
-//     avatarImage:
-//       'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/jamie-osorio.png',
-//     videoId: '9gpg2qyfQUs'
-//   },
-//   {
-//     personName: 'Jeremy Castro',
-//     businessName: 'Castro Law Offices',
-//     businessWebsite: 'https://castrolawoffices.com/',
-//     positionAtCompany: 'Founder',
-//     avatarImage:
-//       'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/jeremy-castro.png',
-//     videoId: 'ZFlLyNBravs'
-//   },
-//   {
-//     personName: 'Blake Baumgartner',
-//     businessName: 'Chess Pathways',
-//     businessWebsite: 'https://chesspathways.com/',
-//     positionAtCompany: 'Founder',
-//     avatarImage:
-//       'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/blake-baumgartner.png',
-//     videoId: 'aoYoUjFq-js'
-//   },
-//   {
-//     personName: 'Blake Baumgartner',
-//     businessName: 'Chess Pathways',
-//     businessWebsite: 'https://chesspathways.com/',
-//     positionAtCompany: 'Founder',
-//     avatarImage:
-//       'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/blake-baumgartner.png',
-//     videoId: 'Mg9iL_591Y0'
-//   }
-//   // ... rest of the testimonialVideoData array remains the same
-// ];
+  // Testimonial video data
+  // const testimonialVideoData = [
+  //   {
+  //     personName: 'Anne Peterson',
+  //     businessName: 'Anne Peterson',
+  //     businessWebsite: 'https://fullmoonrisingfarm.com/',
+  //     positionAtCompany: 'Founder',
+  //     avatarImage:
+  //       'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/anne-peterson.png',
+  //     videoId: 'LeAIQzMG6uc'
+  //   },
+  //   {
+  //     personName: 'Dr. Emanuela Corielli',
+  //     businessName: 'Bright Healthy Smiles',
+  //     businessWebsite: 'https://brighthealthysmiles.com/',
+  //     positionAtCompany: 'Owner',
+  //     avatarImage:
+  //       'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/emanuela-corielli.png',
+  //     videoId: 'rr-BoZzJ-3g'
+  //   },
+  //   {
+  //     personName: 'Dr. Jamie Osorio',
+  //     businessName: 'Buckner Family Dental',
+  //     businessWebsite: 'https://bucknerfamilydental.com/',
+  //     positionAtCompany: 'Owner',
+  //     avatarImage:
+  //       'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/jamie-osorio.png',
+  //     videoId: '9gpg2qyfQUs'
+  //   },
+  //   {
+  //     personName: 'Jeremy Castro',
+  //     businessName: 'Castro Law Offices',
+  //     businessWebsite: 'https://castrolawoffices.com/',
+  //     positionAtCompany: 'Founder',
+  //     avatarImage:
+  //       'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/jeremy-castro.png',
+  //     videoId: 'ZFlLyNBravs'
+  //   },
+  //   {
+  //     personName: 'Blake Baumgartner',
+  //     businessName: 'Chess Pathways',
+  //     businessWebsite: 'https://chesspathways.com/',
+  //     positionAtCompany: 'Founder',
+  //     avatarImage:
+  //       'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/blake-baumgartner.png',
+  //     videoId: 'aoYoUjFq-js'
+  //   },
+  //   {
+  //     personName: 'Blake Baumgartner',
+  //     businessName: 'Chess Pathways',
+  //     businessWebsite: 'https://chesspathways.com/',
+  //     positionAtCompany: 'Founder',
+  //     avatarImage:
+  //       'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/blake-baumgartner.png',
+  //     videoId: 'Mg9iL_591Y0'
+  //   }
+  //   // ... rest of the testimonialVideoData array remains the same
+  // ];
 
-watch([page, limit], async ([newPage, newLimit]) => {
-  const query = { ...route.query }
-  if (newPage !== 1) {
-    query.page = String(newPage)
-  }
-  else {
-    delete query.page
-  }
-  if (newLimit !== 50) {
-    query.limit = String(newLimit)
-  }
-  else {
-    delete query.limit
-  }
-  data = await useCompanies(page.value, limit.value)
-  router.push({ query })
-})
+  watch([page, limit], async ([newPage, newLimit]) => {
+    const query = { ...route.query }
+    if (newPage !== 1) {
+      query.page = String(newPage)
+    }
+    else {
+      delete query.page
+    }
+    if (newLimit !== 50) {
+      query.limit = String(newLimit)
+    }
+    else {
+      delete query.limit
+    }
+    data = await useCompanies(page.value, limit.value)
+    router.push({ query })
+  })
 
-useSeoMeta({
-  title: 'Home',
-})
+  useSeoMeta({
+    title: 'Home',
+  })
 </script>
 
 <template>
