@@ -1,4 +1,4 @@
-import { eq, inArray } from 'drizzle-orm'
+import { eq } from 'drizzle-orm'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { mockDb, mockGetQuery, mockReadBody } from '../../../../setup'
 
@@ -56,7 +56,7 @@ describe('entity Edit Post API', () => {
 
     expect(result).toEqual({
       status: 400,
-      message: 'No valid fields to update',
+      message: 'Validation error: At least one field must be provided for edit',
     })
   })
 
@@ -70,59 +70,22 @@ describe('entity Edit Post API', () => {
 
     expect(result).toEqual({
       status: 400,
-      message: 'Categories must be an array',
+      message: 'Validation error: Expected array, received object',
     })
-  })
-
-  it('should convert categories string to array', async () => {
-    mockGetQuery.mockReturnValueOnce({ id: '123' })
-    mockReadBody.mockResolvedValueOnce({
-      categories: 'cat1, cat2, cat3',
-      name: 'Test Entity',
-    })
-
-    // Mock that all categories exist by returning correct number of results
-    mockDb.execute.mockResolvedValueOnce([
-      { id: 'cat1' },
-      { id: 'cat2' },
-      { id: 'cat3' },
-    ])
-
-    // Mock that entity exists
-    mockDb.execute.mockResolvedValueOnce([{ id: 123 }])
-
-    // Mock insert
-    mockDb.execute.mockResolvedValueOnce([{ id: 'new-edit-id' }])
-
-    await handler({})
-
-    expect(mockDb.insert).toHaveBeenCalled()
-    const insertCallValues = mockDb.values.mock.calls[0][0]
-
-    // Values will be stringified, parse them back
-    const proposedChanges = JSON.parse(insertCallValues.proposedChanges)
-    expect(proposedChanges.categories).toContain('cat1')
-    expect(proposedChanges.categories).toContain('cat2')
-    expect(proposedChanges.categories).toContain('cat3')
   })
 
   it('should return 400 if invalid categories are provided', async () => {
     mockGetQuery.mockReturnValueOnce({ id: '123' })
     mockReadBody.mockResolvedValueOnce({
-      categories: ['cat1', 'cat2', 'cat3'],
-    })
-
-    // Mock that not all categories exist (only returning 2 of 3)
-    mockDb.execute.mockImplementationOnce(() => {
-      return Promise.resolve([{ id: 'cat1' }, { id: 'cat2' }])
+      categories: ['cat1', 'cat2', 'cat3'], // Strings instead of numbers
     })
 
     const result = await handler({})
 
-    expect(result).toEqual({ status: 400, message: 'Invalid categories' })
-    expect(mockDb.where).toHaveBeenCalledWith(
-      inArray(expect.anything(), ['cat1', 'cat2', 'cat3']),
-    )
+    expect(result).toEqual({
+      status: 400,
+      message: 'Validation error: Expected number, received string, Expected number, received string, Expected number, received string',
+    })
   })
 
   it('should return 400 if topics is not an array', async () => {
@@ -133,53 +96,21 @@ describe('entity Edit Post API', () => {
 
     const result = await handler({})
 
-    expect(result).toEqual({ status: 400, message: 'Topics must be an array' })
-  })
-
-  it('should convert topics string to array', async () => {
-    mockGetQuery.mockReturnValueOnce({ id: '123' })
-    mockReadBody.mockResolvedValueOnce({
-      topics: 'topic1, topic2',
-      name: 'Test Entity',
-    })
-
-    // Mock that all topics exist
-    mockDb.execute.mockResolvedValueOnce([{ id: 'topic1' }, { id: 'topic2' }])
-
-    // Mock that entity exists
-    mockDb.execute.mockResolvedValueOnce([{ id: 123 }])
-
-    // Mock insert
-    mockDb.execute.mockResolvedValueOnce([{ id: 'new-edit-id' }])
-
-    await handler({})
-
-    expect(mockDb.insert).toHaveBeenCalled()
-    const insertCallValues = mockDb.values.mock.calls[0][0]
-
-    // Values will be stringified, parse them back
-    const proposedChanges = JSON.parse(insertCallValues.proposedChanges)
-    expect(proposedChanges.topics).toContain('topic1')
-    expect(proposedChanges.topics).toContain('topic2')
+    expect(result).toEqual({ status: 400, message: 'Validation error: Expected array, received object' })
   })
 
   it('should return 400 if invalid topics are provided', async () => {
     mockGetQuery.mockReturnValueOnce({ id: '123' })
     mockReadBody.mockResolvedValueOnce({
-      topics: ['topic1', 'topic2', 'topic3'],
-    })
-
-    // Mock that not all topics exist (only returning 2 of 3)
-    mockDb.execute.mockImplementationOnce(() => {
-      return Promise.resolve([{ id: 'topic1' }, { id: 'topic2' }])
+      topics: ['topic1', 'topic2', 'topic3'], // Strings instead of numbers
     })
 
     const result = await handler({})
 
-    expect(result).toEqual({ status: 400, message: 'Invalid topics' })
-    expect(mockDb.where).toHaveBeenCalledWith(
-      inArray(expect.anything(), ['topic1', 'topic2', 'topic3']),
-    )
+    expect(result).toEqual({
+      status: 400,
+      message: 'Validation error: Expected number, received string, Expected number, received string, Expected number, received string',
+    })
   })
 
   it('should return 400 if entity does not exist', async () => {
@@ -189,7 +120,7 @@ describe('entity Edit Post API', () => {
     })
 
     // Mock that entity doesn't exist
-    mockDb.execute.mockImplementationOnce(() => Promise.resolve([]))
+    mockDb.execute.mockResolvedValueOnce([]) // First call for entity check
 
     const result = await handler({})
 
@@ -201,10 +132,10 @@ describe('entity Edit Post API', () => {
   })
 
   it('should successfully create an edit request', async () => {
-    const editId = 123
+    const entityId = 123
     const userId = 'user-123'
 
-    mockGetQuery.mockReturnValueOnce({ id: editId.toString() })
+    mockGetQuery.mockReturnValueOnce({ id: entityId.toString() })
     const requestData = {
       name: 'Updated Name',
       description: 'Updated Description',
@@ -212,7 +143,7 @@ describe('entity Edit Post API', () => {
     mockReadBody.mockResolvedValueOnce(requestData)
 
     // Mock that entity exists
-    mockDb.execute.mockResolvedValueOnce([{ id: editId }])
+    mockDb.execute.mockResolvedValueOnce([{ id: entityId }])
 
     // Mock insert
     mockDb.execute.mockResolvedValueOnce([{ id: 'new-edit-id' }])
@@ -223,7 +154,7 @@ describe('entity Edit Post API', () => {
     expect(mockDb.insert).toHaveBeenCalled()
     expect(mockDb.values).toHaveBeenCalledWith({
       user: userId,
-      entity: editId,
+      entity: entityId,
       proposedChanges: JSON.stringify(requestData),
       status: 'pending',
     })
@@ -234,16 +165,140 @@ describe('entity Edit Post API', () => {
     mockGetQuery.mockReturnValueOnce({ id: '123' })
     mockReadBody.mockResolvedValueOnce({ name: 'Test Entity' })
 
-    // Simulate a database error
-    mockDb.execute.mockImplementationOnce(() => {
-      throw new Error('Database error')
-    })
+    // Simulate a database error when checking entity exists
+    mockDb.execute.mockRejectedValueOnce(new Error('Database error'))
 
     const result = await handler({})
 
     expect(result).toEqual({
       status: 500,
       message: 'Database error',
+    })
+  })
+
+  describe('validation Tests', () => {
+    it('should reject invalid field types', async () => {
+      mockGetQuery.mockReturnValueOnce({ id: '123' })
+      mockReadBody.mockResolvedValueOnce({
+        name: 123, // Should be string
+        description: true, // Should be string
+      })
+
+      const result = await handler({})
+
+      expect(result.status).toBe(400)
+      expect(result.message).toContain('Validation error')
+    })
+
+    it('should reject empty strings for required fields', async () => {
+      mockGetQuery.mockReturnValueOnce({ id: '123' })
+      mockReadBody.mockResolvedValueOnce({
+        name: '', // Empty string
+      })
+
+      const result = await handler({})
+
+      expect(result.status).toBe(400)
+      expect(result.message).toContain('String must contain at least 1 character')
+    })
+
+    it('should reject fields that exceed max length', async () => {
+      mockGetQuery.mockReturnValueOnce({ id: '123' })
+      mockReadBody.mockResolvedValueOnce({
+        name: 'a'.repeat(256), // Exceeds 255 char limit
+      })
+
+      const result = await handler({})
+
+      expect(result.status).toBe(400)
+      expect(result.message).toContain('String must contain at most 255 character')
+    })
+
+    it('should reject invalid URLs', async () => {
+      mockGetQuery.mockReturnValueOnce({ id: '123' })
+      mockReadBody.mockResolvedValueOnce({
+        website: 'not-a-url',
+        logo: 'also-not-a-url',
+      })
+
+      const result = await handler({})
+
+      expect(result.status).toBe(400)
+      expect(result.message).toContain('Invalid url')
+    })
+
+    it('should reject invalid email format', async () => {
+      mockGetQuery.mockReturnValueOnce({ id: '123' })
+      mockReadBody.mockResolvedValueOnce({
+        email: 'invalid-email',
+      })
+
+      const result = await handler({})
+
+      expect(result.status).toBe(400)
+      expect(result.message).toContain('Invalid email')
+    })
+
+    it('should reject non-positive category IDs', async () => {
+      mockGetQuery.mockReturnValueOnce({ id: '123' })
+      mockReadBody.mockResolvedValueOnce({
+        categories: [0, -1, 2], // 0 and negative not allowed
+      })
+
+      const result = await handler({})
+
+      expect(result.status).toBe(400)
+      expect(result.message).toContain('Number must be greater than 0')
+    })
+
+    it('should reject unknown fields', async () => {
+      mockGetQuery.mockReturnValueOnce({ id: '123' })
+      mockReadBody.mockResolvedValueOnce({
+        name: 'Valid Name',
+        unknownField: 'should not be here',
+      })
+
+      const result = await handler({})
+
+      expect(result.status).toBe(400)
+      expect(result.message).toContain('Unrecognized key')
+    })
+
+    it('should accept valid edit data', async () => {
+      mockGetQuery.mockReturnValueOnce({ id: '123' })
+      mockReadBody.mockResolvedValueOnce({
+        name: 'Valid Company Name',
+        description: 'A valid description',
+        website: 'https://example.com',
+        email: 'contact@example.com',
+        logo: 'https://example.com/logo.png',
+        categories: [1, 2, 3],
+        topics: [4, 5, 6],
+      })
+
+      // Mock that categories exist
+      mockDb.execute.mockResolvedValueOnce([
+        { id: 1 },
+        { id: 2 },
+        { id: 3 },
+      ])
+
+      // Mock that topics exist
+      mockDb.execute.mockResolvedValueOnce([
+        { id: 4 },
+        { id: 5 },
+        { id: 6 },
+      ])
+
+      // Mock that entity exists
+      mockDb.execute.mockResolvedValueOnce([{ id: 123 }])
+
+      // Mock insert
+      mockDb.execute.mockResolvedValueOnce([{ id: 'new-edit-id' }])
+
+      const result = await handler({})
+
+      expect(result).toEqual({ message: 'success' })
     })
   })
 })

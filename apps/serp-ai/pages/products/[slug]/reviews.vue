@@ -79,7 +79,7 @@ useSeoMeta({
             class="prose dark:prose-invert mt-[-25px]"
           >
             <!-- eslint-disable-next-line vue/no-v-html -->
-            <div id="article" class="mb-8" v-html="data.content" />
+            <div id="article" class="mb-8" v-html="data.content"></div>
           </section>
 
           <!-- Features Section -->

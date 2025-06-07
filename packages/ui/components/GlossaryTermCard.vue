@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { PostIndex } from '@serp/types/types'
+  import type { PostIndex } from '@serp/types/types'
 
-defineProps<{
-  term: PostIndex
-}>()
+  defineProps<{
+    term: PostIndex
+  }>()
 </script>
 
 <template>

@@ -1,36 +1,34 @@
 <script setup lang="ts">
-import type { Entity } from '@serp/types/types'
+  const props = defineProps({
+    entity: {
+      type: Object as PropType<Company>,
+      required: true,
+    },
+    baseSlug: {
+      type: String,
+      required: true,
+    },
+    baseCategorySlug: {
+      type: String,
+      required: true,
+    },
+  })
 
-const props = defineProps({
-  entity: {
-    type: Object as PropType<Company>,
-    required: true,
-  },
-  baseSlug: {
-    type: String,
-    required: true,
-  },
-  baseCategorySlug: {
-    type: String,
-    required: true,
-  },
-})
-
-// Compute the main image, either the entity logo or the first screenshot
-const entityMainImage = computed(() => {
-  if (props.entity.image) {
-    return props.entity.image
-  }
-  else if (props.entity.logo) {
-    return props.entity.logo
-  }
-  else if (props.entity.screenshots && props.entity.screenshots.length) {
-    return props.entity.screenshots[0]
-  }
-  else {
-    return null
-  }
-})
+  // Compute the main image, either the entity logo or the first screenshot
+  const entityMainImage = computed(() => {
+    if (props.entity.image) {
+      return props.entity.image
+    }
+    else if (props.entity.logo) {
+      return props.entity.logo
+    }
+    else if (props.entity.screenshots && props.entity.screenshots.length) {
+      return props.entity.screenshots[0]
+    }
+    else {
+      return null
+    }
+  })
 </script>
 
 <template>
@@ -47,7 +45,7 @@ const entityMainImage = computed(() => {
       v-if="entity.featured"
       class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-400 to-purple-400"
       aria-hidden="true"
-    />
+    ></div>
 
     <!-- card content -->
     <div class="flex items-start">
@@ -163,7 +161,12 @@ const entityMainImage = computed(() => {
                   d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
                 />
                 <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
+                <line
+                  x1="10"
+                  y1="14"
+                  x2="21"
+                  y2="3"
+                />
               </svg>
             </NuxtLink>
 
@@ -205,7 +208,7 @@ const entityMainImage = computed(() => {
 </template>
 
 <style scoped>
-  .upvote-btn :deep(button) {
+.upvote-btn :deep(button) {
   font-size: 0.875rem;
   padding: 0.5rem 1rem;
   width: 100%;

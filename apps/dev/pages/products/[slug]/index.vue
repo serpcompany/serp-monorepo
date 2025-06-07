@@ -8,5 +8,5 @@ router.replace({ path: fullRoute, replace: true })
 </script>
 
 <template>
-  <div />
+  <div></div>
 </template>

@@ -1,54 +1,54 @@
 <script lang="ts" setup>
-import type { Team } from '@serp/db/types/database'
+  import type { Team } from '@serp/db/types/database'
 
-const newTeamModal = ref(false)
-const { currentTeam } = useTeam()
-const teams = useState<Team[]>('teams')
-const { setLastUsedTeam } = useTeamPreferences()
+  const newTeamModal = ref(false)
+  const { currentTeam } = useTeam()
+  const teams = useState<Team[]>('teams')
+  const { setLastUsedTeam } = useTeamPreferences()
 
-function getAvatarProps(team?: Team) {
-  return {
-    src: team?.logo || team?.entity?.data?.logo || undefined,
-    size: 'xs' as const,
+  function getAvatarProps(team?: Team) {
+    return {
+      src: team?.logo || team?.entity?.data?.logo || undefined,
+      size: 'xs' as const,
+    }
   }
-}
 
-async function onTeamCreated(team: Team) {
-  newTeamModal.value = false
-  await navigateTo(`/dashboard/${team.slug}`)
-}
+  async function onTeamCreated(team: Team) {
+    newTeamModal.value = false
+    await navigateTo(`/dashboard/${team.slug}`)
+  }
 
-const items = computed(() => {
-  if (!teams.value)
-    return []
+  const items = computed(() => {
+    if (!teams.value)
+      return []
 
-  const allTeams = teams.value.map(team => ({
-    label: team.name,
-    avatar: {
-      src: team.logo!,
-      size: '2xs' as const,
-    },
-    type: 'checkbox' as const,
-    checked: team.slug === currentTeam.value.slug,
-    onSelect: async (_e: Event) => {
-      setLastUsedTeam(team.slug)
-      await navigateTo(`/dashboard/${team.slug}`, { replace: true })
-    },
-  }))
-
-  return [
-    [...allTeams],
-    [
-      {
-        label: 'Create a new team',
-        icon: 'i-lucide-plus-circle',
-        onSelect: () => {
-          newTeamModal.value = true
-        },
+    const allTeams = teams.value.map(team => ({
+      label: team.name,
+      avatar: {
+        src: team.logo!,
+        size: '2xs' as const,
       },
-    ],
-  ]
-})
+      type: 'checkbox' as const,
+      checked: team.slug === currentTeam.value.slug,
+      onSelect: async (_e: Event) => {
+        setLastUsedTeam(team.slug)
+        await navigateTo(`/dashboard/${team.slug}`, { replace: true })
+      },
+    }))
+
+    return [
+      [...allTeams],
+      [
+        {
+          label: 'Create a new team',
+          icon: 'i-lucide-plus-circle',
+          onSelect: () => {
+            newTeamModal.value = true
+          },
+        },
+      ],
+    ]
+  })
 </script>
 
 <template>

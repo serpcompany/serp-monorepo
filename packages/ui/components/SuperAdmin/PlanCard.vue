@@ -1,8 +1,8 @@
 <script setup lang="ts">
-defineProps<{
-  title: string
-  description?: string
-}>()
+  defineProps<{
+    title: string
+    description?: string
+  }>()
 </script>
 
 <template>
@@ -14,10 +14,10 @@ defineProps<{
         <p class="text-sm text-neutral-500">
           {{ title }}
         </p>
-        <slot name="actions" />
+        <slot name="actions"></slot>
       </header>
       <div class="p-4">
-        <slot />
+        <slot></slot>
         <p v-if="description" class="text-sm text-neutral-500">
           {{ description }}
         </p>
@@ -27,7 +27,7 @@ defineProps<{
 </template>
 
 <style scoped>
-  .card-shadow {
+.card-shadow {
   box-shadow:
     0 1px 2px #5f4a2e14,
     0 4px 6px #5f4a2e0a,

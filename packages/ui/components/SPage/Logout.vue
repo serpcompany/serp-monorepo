@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const { loggedIn, clear } = useUserSession()
+  const { loggedIn, clear } = useUserSession()
 
-if (!loggedIn.value) {
-  navigateTo('/login')
-}
+  if (!loggedIn.value) {
+    navigateTo('/login')
+  }
 </script>
 
 <template>

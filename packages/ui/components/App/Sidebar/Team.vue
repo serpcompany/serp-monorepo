@@ -1,38 +1,38 @@
 <script lang="ts" setup>
-import { useTeam } from '@serp/auth/composables/useTeam'
+  import { useTeam } from '@serp/auth/composables/useTeam'
 
-const { isTeamOwner, currentTeam } = useTeam()
+  const { isTeamOwner, currentTeam } = useTeam()
 
-const links = computed(() => [
-  {
-    label: 'Home',
-    icon: 'i-lucide-home',
-    to: `/dashboard/${currentTeam.value.slug}`,
-  },
-  {
-    label: 'Posts',
-    icon: 'i-lucide-file-text',
-    to: `/dashboard/${currentTeam.value.slug}/posts`,
-  },
-])
+  const links = computed(() => [
+    {
+      label: 'Home',
+      icon: 'i-lucide-home',
+      to: `/dashboard/${currentTeam.value.slug}`,
+    },
+    {
+      label: 'Posts',
+      icon: 'i-lucide-file-text',
+      to: `/dashboard/${currentTeam.value.slug}/posts`,
+    },
+  ])
 
-const settings = computed(() => [
-  {
-    label: 'Workspace Settings',
-    icon: 'i-lucide-settings',
-    to: `/dashboard/${currentTeam.value.slug}/settings`,
-  },
-  {
-    label: 'Workspace Members',
-    icon: 'i-lucide-users',
-    to: `/dashboard/${currentTeam.value.slug}/settings/members`,
-  },
-  {
-    label: 'Billing',
-    icon: 'i-lucide-credit-card',
-    to: `/dashboard/${currentTeam.value.slug}/settings/billing`,
-  },
-])
+  const settings = computed(() => [
+    {
+      label: 'Workspace Settings',
+      icon: 'i-lucide-settings',
+      to: `/dashboard/${currentTeam.value.slug}/settings`,
+    },
+    {
+      label: 'Workspace Members',
+      icon: 'i-lucide-users',
+      to: `/dashboard/${currentTeam.value.slug}/settings/members`,
+    },
+    {
+      label: 'Billing',
+      icon: 'i-lucide-credit-card',
+      to: `/dashboard/${currentTeam.value.slug}/settings/billing`,
+    },
+  ])
 </script>
 
 <template>

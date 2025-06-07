@@ -1,21 +1,21 @@
 <script setup lang="ts">
-const route = useRoute()
+  const route = useRoute()
 
-const items = computed(() => [
-  {
-    label: 'Docs',
-    to: '/docs',
-    active: route.path.startsWith('/docs'),
-  },
-  {
-    label: 'Pricing',
-    to: '/pricing',
-  },
-  {
-    label: 'Blog',
-    to: '/blog',
-  },
-])
+  const items = computed(() => [
+    {
+      label: 'Docs',
+      to: '/docs',
+      active: route.path.startsWith('/docs'),
+    },
+    {
+      label: 'Pricing',
+      to: '/pricing',
+    },
+    {
+      label: 'Blog',
+      to: '/blog',
+    },
+  ])
 </script>
 
 <template>
@@ -70,7 +70,12 @@ const items = computed(() => [
         block
         class="mb-3"
       />
-      <UButton label="Sign up" color="neutral" to="/signup" block />
+      <UButton
+        label="Sign up"
+        color="neutral"
+        to="/signup"
+        block
+      />
     </template>
   </UHeader>
 </template>

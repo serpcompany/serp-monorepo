@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import type { Team } from '@serp/db/types/database'
+  import type { Team } from '@serp/db/types/database'
 
-const { user } = useUserSession()
-const { logout } = useAuth()
+  const { user } = useUserSession()
+  const { logout } = useAuth()
 
-async function onTeamCreated(team: Team) {
-  await navigateTo(`/dashboard/${team.slug}`)
-}
+  async function onTeamCreated(team: Team) {
+    await navigateTo(`/dashboard/${team.slug}`)
+  }
 
-async function signOut() {
-  await logout()
-  await navigateTo('/')
-}
+  async function signOut() {
+    await logout()
+    await navigateTo('/')
+  }
 </script>
 
 <template>

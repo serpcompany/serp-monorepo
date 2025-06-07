@@ -1,31 +1,31 @@
 <script setup lang="ts">
   const props = defineProps<{
-    value: unknown;
-    key_?: string;
-    baseSlug?: string;
-    categoryBaseSlug?: string;
-  }>();
+    value: unknown
+    key_?: string
+    baseSlug?: string
+    categoryBaseSlug?: string
+  }>()
 
-const toast = useToast()
+  const toast = useToast()
 
-  const typeofValue = typeof props.value;
-const itemsAreObjects = computed(
+  const typeofValue = typeof props.value
+  const itemsAreObjects = computed(
     () =>
       Array.isArray(props.value) &&
       props.value.length > 0 &&
       props.value.every(
-        (v) => v !== null && typeof v === 'object' && !Array.isArray(v),
+        v => v !== null && typeof v === 'object' && !Array.isArray(v),
       ),
-  );
+  )
   const columns = computed(() => {
     if (!itemsAreObjects.value)
-    return []
+      return []
     const keySet = new Set<string>();
-    (props.value as Record<string, unknown>[]).forEach((obj) =>
-      Object.keys(obj).forEach((k) => keySet.add(k)),
-    );
-  return [...keySet]
-});
+    (props.value as Record<string, unknown>[]).forEach(obj =>
+      Object.keys(obj).forEach(k => keySet.add(k)),
+    )
+    return [...keySet]
+  })
   // remove these from showing on the frontend
   const blacklistKeys = [
     'id',
@@ -61,53 +61,53 @@ const itemsAreObjects = computed(
     'numFiveStarReviews',
     'averageRating',
     'entityId',
-  ];
+  ]
   // rename these keys to show on the frontend
   const renameKeysMapping: Record<string, string> = {
-    basicInfo: "Overview",
-  };
+    basicInfo: 'Overview',
+  }
 
   // Convert camelCase/PascalCase to human-readable format
   function formatKey(key: string): string {
     // Check if there's a manual mapping first
     if (renameKeysMapping[key]) {
-      return renameKeysMapping[key];
-  }
+      return renameKeysMapping[key]
+    }
 
     // Handle camelCase and PascalCase
     return (
       key
         // Insert space before capital letters (for camelCase)
-        .replace(/([a-z])([A-Z])/g, "$1 $2")
-      // Insert space before numbers that follow letters
-        .replace(/([a-z])(\d)/gi, "$1 $2")
-      // Handle consecutive capitals (e.g., "ID" or "URL")
-        .replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2")
-      // Handle snake_case
-        .replace(/_/g, " ")
+        .replace(/([a-z])([A-Z])/g, '$1 $2')
+        // Insert space before numbers that follow letters
+        .replace(/([a-z])(\d)/gi, '$1 $2')
+        // Handle consecutive capitals (e.g., "ID" or "URL")
+        .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+        // Handle snake_case
+        .replace(/_/g, ' ')
         // Handle kebab-case
-        .replace(/-/g, " ")
+        .replace(/-/g, ' ')
         // Capitalize first letter of each word
-        .replace(/\b\w/g, (letter) => letter.toUpperCase())
-      // Special cases
-        .replace(/\bId\b/g, "ID")
-        .replace(/\bUrl\b/g, "URL")
-        .replace(/\bApi\b/g, "API")
-        .replace(/\bCeo\b/g, "CEO")
-        .replace(/\bCto\b/g, "CTO")
-        .replace(/\bUi\b/g, "UI")
-        .replace(/\bUx\b/g, "UX")
-    );
+        .replace(/\b\w/g, letter => letter.toUpperCase())
+        // Special cases
+        .replace(/\bId\b/g, 'ID')
+        .replace(/\bUrl\b/g, 'URL')
+        .replace(/\bApi\b/g, 'API')
+        .replace(/\bCeo\b/g, 'CEO')
+        .replace(/\bCto\b/g, 'CTO')
+        .replace(/\bUi\b/g, 'UI')
+        .replace(/\bUx\b/g, 'UX')
+    )
   }
 
   // Track nesting level for proper heading hierarchy
-  const nestingLevel = inject("jsonNestingLevel", 0);
-provide('jsonNestingLevel', nestingLevel + 1)
+  const nestingLevel = inject('jsonNestingLevel', 0)
+  provide('jsonNestingLevel', nestingLevel + 1)
 
   function getHeadingTag(level: number) {
-    const tags = ["h2", "h3", "h4", "h5", "h6"];
-    return tags[Math.min(level, tags.length - 1)];
-}
+    const tags = ['h2', 'h3', 'h4', 'h5', 'h6']
+    return tags[Math.min(level, tags.length - 1)]
+  }
 
   function getHeadingClass(level: number) {
     const classes = [
@@ -116,9 +116,9 @@ provide('jsonNestingLevel', nestingLevel + 1)
       'text-lg font-medium text-gray-700 dark:text-gray-300 mb-2', // h4
       'text-base font-medium text-gray-600 dark:text-gray-400 mb-2', // h5
       'text-sm font-medium text-gray-500 dark:text-gray-400 mb-1', // h6
-    ];
-    return classes[Math.min(level, classes.length - 1)];
-}
+    ]
+    return classes[Math.min(level, classes.length - 1)]
+  }
 
   // Determine if a key should be wrapped in a card (top-level sections)
   function shouldWrapInCard(key: string, level: number) {
@@ -128,7 +128,7 @@ provide('jsonNestingLevel', nestingLevel + 1)
       typeof props.value === 'object' &&
       !Array.isArray(props.value) &&
       !blacklistKeys.includes(key)
-    );
+    )
   }
 
   // Add a helper to check if a value is a primitive
@@ -139,49 +139,49 @@ provide('jsonNestingLevel', nestingLevel + 1)
       typeof val === 'string' ||
       typeof val === 'number' ||
       typeof val === 'boolean'
-    );
-}
+    )
+  }
 
   // Check if we should display key-value on the same line
   function shouldDisplayInline(value: unknown, level: number): boolean {
-    return isPrimitive(value) && level >= 2; // Only inline for h3+ level content
-}
+    return isPrimitive(value) && level >= 2 // Only inline for h3+ level content
+  }
 
   // Copy to clipboard function
   async function copyToClipboard(sectionId: string) {
-    const jumpLink = `#${sectionId}`;
-  const link = `${window.location.href.split('#')[0]}${jumpLink}`
+    const jumpLink = `#${sectionId}`
+    const link = `${window.location.href.split('#')[0]}${jumpLink}`
 
     try {
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        await navigator.clipboard.writeText(link);
-    }
- else {
+        await navigator.clipboard.writeText(link)
+      }
+      else {
         // Fallback for unsupported environments
-        const el = document.createElement("textarea");
-        el.value = link;
-      document.body.appendChild(el)
-        el.select();
-      document.execCommand('copy')
-      document.body.removeChild(el);
-    }
+        const el = document.createElement('textarea')
+        el.value = link
+        document.body.appendChild(el)
+        el.select()
+        document.execCommand('copy')
+        document.body.removeChild(el)
+      }
 
       toast.add({
-        id: "copy-link",
-        title: "Link copied to clipboard",
+        id: 'copy-link',
+        title: 'Link copied to clipboard',
         description: `Link to ${sectionId} section copied successfully`,
-        icon: "check-circle",
-      });
-  }
- catch (error) {
-      console.error("Failed to copy text to clipboard:", error);
-    toast.add({
-        id: "copy-link-error",
-        title: "Failed to copy link",
+        icon: 'check-circle',
+      })
+    }
+    catch (error) {
+      console.error('Failed to copy text to clipboard:', error)
+      toast.add({
+        id: 'copy-link-error',
+        title: 'Failed to copy link',
         description: `Could not copy link to ${sectionId} section`,
-        icon: "error-circle",
-      });
-  }
+        icon: 'error-circle',
+      })
+    }
   }
 </script>
 
@@ -224,8 +224,8 @@ provide('jsonNestingLevel', nestingLevel + 1)
               <div
                 v-if="
                   itemValue !== null &&
-                  itemValue !== undefined &&
-                  !blacklistKeys.includes(itemKey)
+                    itemValue !== undefined &&
+                    !blacklistKeys.includes(itemKey)
                 "
               >
                 <component
@@ -299,9 +299,9 @@ provide('jsonNestingLevel', nestingLevel + 1)
         <div
           v-else-if="
             v !== null &&
-            v !== undefined &&
-            !blacklistKeys.includes(k) &&
-            shouldDisplayInline(v, nestingLevel)
+              v !== undefined &&
+              !blacklistKeys.includes(k) &&
+              shouldDisplayInline(v, nestingLevel)
           "
           class="mb-2 flex items-baseline gap-2"
         >

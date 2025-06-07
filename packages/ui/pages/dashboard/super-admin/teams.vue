@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { useDateFormat } from '@vueuse/core'
+  import { useDateFormat } from '@vueuse/core'
 
-const { data: teams } = useFetch('/api/super-admin/teams')
-const columns = ['Name', 'Owner', 'Members', 'Subscription', 'Created At']
+  const { data: teams } = useFetch('/api/super-admin/teams')
+  const columns = ['Name', 'Owner', 'Members', 'Subscription', 'Created At']
 </script>
 
 <template>
@@ -39,10 +39,10 @@ const columns = ['Name', 'Owner', 'Members', 'Subscription', 'Created At']
               <SuperAdminTeamMembers :members="team.members" />
             </td>
             <td class="p-2">
-              {{ team.subscription?.status ?? '-' }}
+              {{ team.subscription?.status ?? "-" }}
             </td>
             <td class="p-2">
-              {{ useDateFormat(team.createdAt, 'DD/MM/YYYY').value }}
+              {{ useDateFormat(team.createdAt, "DD/MM/YYYY").value }}
             </td>
           </tr>
         </tbody>

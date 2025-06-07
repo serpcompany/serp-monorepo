@@ -1,6 +1,8 @@
+import { editSubmissionSchema } from '@serp/db/schemas/edit-validation'
 import { getDb } from '@serp/db/server/database'
 import { category, edit, entity, topic } from '@serp/db/server/database/schema'
 import { eq, inArray } from 'drizzle-orm'
+import { ZodError } from 'zod'
 
 export default defineEventHandler(async (event) => {
   try {
@@ -18,26 +20,25 @@ export default defineEventHandler(async (event) => {
       return { status: 400, message: 'Invalid edit ID' }
     }
 
-    const data = await readBody(event)
+    const rawData = await readBody(event)
 
-    if (Object.keys(data).length === 0) {
-      return { status: 400, message: 'No valid fields to update' }
+    // Validate the data using Zod schema
+    let data
+    try {
+      data = editSubmissionSchema.parse(rawData)
+    }
+    catch (error) {
+      if (error instanceof ZodError) {
+        return {
+          status: 400,
+          message: `Validation error: ${error.errors.map(e => e.message).join(', ')}`,
+        }
+      }
+      throw error
     }
 
     // Ensure categories is an array of ids and that all exist in category table
-    if (data.categories) {
-      if (typeof data.categories === 'string') {
-        data.categories = data.categories
-          .split(',')
-          .map((cat: string) => cat.trim())
-      }
-      if (!Array.isArray(data.categories)) {
-        return {
-          status: 400,
-          message: 'Categories must be an array',
-        }
-      }
-
+    if (data.categories && data.categories.length > 0) {
       const categories = await getDb()
         .select()
         .from(category)
@@ -48,22 +49,13 @@ export default defineEventHandler(async (event) => {
       if (categories.length !== data.categories.length) {
         return {
           status: 400,
-          message: 'Invalid categories',
+          message: 'Invalid categories: some category IDs do not exist',
         }
       }
     }
 
     // Ensure topics is an array of ids and that all exist in topic table
-    if (data.topics) {
-      if (typeof data.topics === 'string') {
-        data.topics = data.topics.split(',').map((cat: string) => cat.trim())
-      }
-      if (!Array.isArray(data.topics)) {
-        return {
-          status: 400,
-          message: 'Topics must be an array',
-        }
-      }
+    if (data.topics && data.topics.length > 0) {
       const topics = await getDb()
         .select()
         .from(topic)
@@ -73,7 +65,7 @@ export default defineEventHandler(async (event) => {
       if (topics.length !== data.topics.length) {
         return {
           status: 400,
-          message: 'Invalid topics',
+          message: 'Invalid topics: some topic IDs do not exist',
         }
       }
     }

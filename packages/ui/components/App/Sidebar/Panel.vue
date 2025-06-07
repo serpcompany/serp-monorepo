@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+  import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 
-const model = defineModel<boolean>({ required: true })
-const breakpoints = useBreakpoints(breakpointsTailwind)
-const smallerThanLg = breakpoints.smaller('lg')
+  const model = defineModel<boolean>({ required: true })
+  const breakpoints = useBreakpoints(breakpointsTailwind)
+  const smallerThanLg = breakpoints.smaller('lg')
 </script>
 
 <template>
@@ -11,7 +11,7 @@ const smallerThanLg = breakpoints.smaller('lg')
     v-if="!smallerThanLg"
     class="relative hidden w-0 flex-col items-stretch overflow-hidden border-r border-neutral-200 bg-neutral-100 p-2 md:flex md:w-64 dark:border-neutral-900 dark:bg-black"
   >
-    <slot />
+    <slot></slot>
   </div>
   <USlideover
     v-else
@@ -21,7 +21,7 @@ const smallerThanLg = breakpoints.smaller('lg')
   >
     <template #content>
       <div class="flex h-full flex-col p-2">
-        <slot />
+        <slot></slot>
       </div>
     </template>
   </USlideover>

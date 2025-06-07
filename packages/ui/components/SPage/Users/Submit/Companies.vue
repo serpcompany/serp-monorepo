@@ -1,14 +1,14 @@
 <script setup lang="ts">
-const { loggedIn, user } = useUserSession()
-if (!loggedIn.value) {
-  navigateTo('/login')
-}
+  const { loggedIn, user } = useUserSession()
+  if (!loggedIn.value) {
+    navigateTo('/login')
+  }
 
-const data = await useCompanySubmissions()
+  const data = await useCompanySubmissions()
 
-useSeoMeta({
-  title: 'Submissions',
-})
+  useSeoMeta({
+    title: 'Submissions',
+  })
 </script>
 
 <template>
@@ -58,10 +58,10 @@ useSeoMeta({
                 Status:
                 {{
                   submission.approved
-                    ? 'Approved'
+                    ? "Approved"
                     : submission.reviewedAt
-                      ? 'Denied'
-                      : 'Pending'
+                      ? "Denied"
+                      : "Pending"
                 }}
               </p>
               <p v-if="submission.reviewedAt" class="text-neutral-500">

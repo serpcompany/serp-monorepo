@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const props = defineProps<{
-  id: number | string
-}>()
-const { loggedIn } = useUserSession()
-const toast = useToast()
+  const props = defineProps<{
+    id: number | string
+  }>()
+  const { loggedIn } = useUserSession()
+  const toast = useToast()
 </script>
 
 <template>

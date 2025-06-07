@@ -1,139 +1,138 @@
 <script setup lang="ts">
-const props = defineProps({
-  review: {
-    type: Object,
-    required: true,
-  },
-  isVerified: {
-    type: Boolean,
-    default: false,
-  },
-})
-
-const review = toRef(props, 'review')
-
-const localReview = reactive({ ...review.value })
-
-const toast = useToast()
-
-const formattedExperienceDate = computed(() => {
-  if (
-    !props.review.dateOfExperience
-    && !props.review.review?.dateOfExperience
-  ) {
-    return 'Unknown'
-  }
-
-  return new Date(
-    props.review.dateOfExperience || props.review.review?.dateOfExperience,
-  ).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
+  const props = defineProps({
+    review: {
+      type: Object,
+      required: true,
+    },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
   })
-})
 
-const formattedReviewDate = computed(() => {
-  if (!props.review.createdAt && !props.review.review?.createdAt)
-    return 'Unknown'
+  const review = toRef(props, 'review')
 
-  return new Date(
-    props.review.createdAt || props.review.review?.createdAt,
-  ).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
+  const localReview = reactive({ ...review.value })
+
+  const toast = useToast()
+
+  const formattedExperienceDate = computed(() => {
+    if (
+      !props.review.dateOfExperience &&
+      !props.review.review?.dateOfExperience
+    ) {
+      return 'Unknown'
+    }
+
+    return new Date(
+      props.review.dateOfExperience || props.review.review?.dateOfExperience,
+    ).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
   })
-})
 
-const isModalOpen = ref(false)
-const notes = ref('')
+  const formattedReviewDate = computed(() => {
+    if (!props.review.createdAt && !props.review.review?.createdAt)
+      return 'Unknown'
 
-// detect flagged state
-const isFlagged = computed(() => {
-  if (Object.prototype.hasOwnProperty.call(localReview, 'isFlagged')) {
-    return localReview.isFlagged
-  }
-
-  if (
-    localReview.review
-    && Object.prototype.hasOwnProperty.call(localReview.review, 'isFlagged')
-  ) {
-    return localReview.review.isFlagged
-  }
-
-  return undefined
-})
-
-// open modal for flagging
-function onFlagClick() {
-  notes.value = '' // clear old notes
-  isModalOpen.value = true
-}
-
-// cancel/close modal
-function onCancel() {
-  isModalOpen.value = false
-}
-
-// send flag request
-async function onAccept() {
-  try {
-    await $fetch(
-      `/api/entity/flag-review?id=${props.review.id || props.review.review.id}`,
-      {
-        method: 'POST',
-        body: { notes: notes.value },
-      },
-    )
-    // reflect UI
-    localReview.isFlagged = true
-    localReview.flaggedReason = notes.value
-    toast.add({
-      id: 'flag-review',
-      title: 'Review flagged',
-      description: 'The review has been flagged successfully.',
+    return new Date(
+      props.review.createdAt || props.review.review?.createdAt,
+    ).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
     })
+  })
+
+  const isModalOpen = ref(false)
+  const notes = ref('')
+
+  // detect flagged state
+  const isFlagged = computed(() => {
+    if (Object.prototype.hasOwnProperty.call(localReview, 'isFlagged')) {
+      return localReview.isFlagged
+    }
+
+    if (
+      localReview.review &&
+      Object.prototype.hasOwnProperty.call(localReview.review, 'isFlagged')
+    ) {
+      return localReview.review.isFlagged
+    }
+
+    return undefined
+  })
+
+  // open modal for flagging
+  function onFlagClick() {
+    notes.value = '' // clear old notes
+    isModalOpen.value = true
   }
-  catch (err) {
-    toast.add({
-      id: 'flag-review-error',
-      title: 'Error flagging review',
-      description:
-          'There was an error flagging the review. Please try again.',
-    })
-  }
-  finally {
+
+  // cancel/close modal
+  function onCancel() {
     isModalOpen.value = false
   }
-}
 
-// send unflag/accept request
-async function onUnflag() {
-  try {
-    await $fetch(
-      `/api/entity/flag-review?id=${props.review.id || props.review.review.id}`,
-      {
-        method: 'DELETE',
-      },
-    )
-    localReview.isFlagged = false
-    localReview.flaggedReason = undefined
-    toast.add({
-      id: 'accept-review',
-      title: 'Review accepted',
-      description: 'The review has been marked as accepted.',
-    })
+  // send flag request
+  async function onAccept() {
+    try {
+      await $fetch(
+        `/api/entity/flag-review?id=${props.review.id || props.review.review.id}`,
+        {
+          method: 'POST',
+          body: { notes: notes.value },
+        },
+      )
+      // reflect UI
+      localReview.isFlagged = true
+      localReview.flaggedReason = notes.value
+      toast.add({
+        id: 'flag-review',
+        title: 'Review flagged',
+        description: 'The review has been flagged successfully.',
+      })
+    }
+    catch (err) {
+      toast.add({
+        id: 'flag-review-error',
+        title: 'Error flagging review',
+        description: 'There was an error flagging the review. Please try again.',
+      })
+    }
+    finally {
+      isModalOpen.value = false
+    }
   }
-  catch (err) {
-    toast.add({
-      id: 'accept-review-error',
-      title: 'Error accepting review',
-      description:
+
+  // send unflag/accept request
+  async function onUnflag() {
+    try {
+      await $fetch(
+        `/api/entity/flag-review?id=${props.review.id || props.review.review.id}`,
+        {
+          method: 'DELETE',
+        },
+      )
+      localReview.isFlagged = false
+      localReview.flaggedReason = undefined
+      toast.add({
+        id: 'accept-review',
+        title: 'Review accepted',
+        description: 'The review has been marked as accepted.',
+      })
+    }
+    catch (err) {
+      toast.add({
+        id: 'accept-review-error',
+        title: 'Error accepting review',
+        description:
           'There was an error marking the review as accepted. Please try again.',
-    })
+      })
+    }
   }
-}
 </script>
 
 <template>
@@ -167,7 +166,7 @@ async function onUnflag() {
                 ? review.user.name
                 : review.review?.user
                   ? review.review.user.name
-                  : 'Anonymous'
+                  : "Anonymous"
             }}
           </p>
           <div class="mt-3 flex items-center">
@@ -179,7 +178,7 @@ async function onUnflag() {
                     opacity:
                       i <= (review.rating || review.review?.rating) ? 1 : 0.3,
                   }"
-                />
+                ></span>
               </div>
             </div>
           </div>
@@ -200,7 +199,7 @@ async function onUnflag() {
             class="text-gray-500 hover:text-gray-700"
             @click="isFlagged ? onUnflag() : onFlagClick()"
           >
-            {{ isFlagged ? 'Unflag Review' : 'Flag Review' }}
+            {{ isFlagged ? "Unflag Review" : "Flag Review" }}
           </UButton>
         </div>
         <div
@@ -208,7 +207,7 @@ async function onUnflag() {
           class="ml-auto flex items-center space-x-2 text-sm text-gray-500"
         >
           <p class="text-xs text-neutral-400">
-            Flagged: {{ localReview.flaggedReason || 'No reason provided' }}
+            Flagged: {{ localReview.flaggedReason || "No reason provided" }}
           </p>
         </div>
         <div
@@ -224,7 +223,7 @@ async function onUnflag() {
 
     <div class="p-4">
       <p class="whitespace-pre-line text-gray-700 dark:text-gray-300">
-        {{ review.content || review.review?.content || review.body || '' }}
+        {{ review.content || review.review?.content || review.body || "" }}
       </p>
     </div>
 

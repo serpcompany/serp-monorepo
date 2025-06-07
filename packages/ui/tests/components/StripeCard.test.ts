@@ -1,10 +1,10 @@
 /* eslint-disable ts/no-unused-vars  */
 
-import { mockNuxtImport } from '@nuxt/test-utils/runtime';
-import { describe, expect, it } from 'vitest';
-import { ref } from 'vue';
-import StripeCard from '../../components/StripeCard.vue';
-import ComponentRender from '../componentRender';
+import { mockNuxtImport } from '@nuxt/test-utils/runtime'
+import { describe, expect, it } from 'vitest'
+import { ref } from 'vue'
+import StripeCard from '../../components/StripeCard.vue'
+import ComponentRender from '../componentRender'
 
 mockNuxtImport('useClientStripe', () => async () => ({
   stripe: {
@@ -56,4 +56,4 @@ describe('stripeCard Snapshot', () => {
       expect(html).toMatchSnapshot()
     },
   )
-});
+})

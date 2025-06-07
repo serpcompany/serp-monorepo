@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Company } from '@serp/types/types'
+  import type { Company } from '@serp/types/types'
 
-defineProps<{
-  company: Company
-}>()
+  defineProps<{
+    company: Company
+  }>()
 </script>
 
 <template>

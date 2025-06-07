@@ -1,55 +1,55 @@
 <script setup lang="ts">
-const config = useRuntimeConfig()
-const appConfig = useAppConfig()
-const router = useRouter()
+  const config = useRuntimeConfig()
+  const appConfig = useAppConfig()
+  const router = useRouter()
 
-const submitOptions_: Array<{ label: string, to: string }>
-    = appConfig.site?.submitOptions
-      || (config.public.submitOptions as Array<{
-        label: string
-        to: string
-      }>)
-      || []
+  const submitOptions_: Array<{ label: string, to: string }> =
+    appConfig.site?.submitOptions ||
+    (config.public.submitOptions as Array<{
+      label: string
+      to: string
+    }>) ||
+    []
 
-const submitOptions = submitOptions_.map(item => ({
-  label: item.label,
-  onSelect(e: Event) {
-    e.preventDefault()
-    handleSubmitOptionSelect(item)
-  },
-}))
+  const submitOptions = submitOptions_.map(item => ({
+    label: item.label,
+    onSelect(e: Event) {
+      e.preventDefault()
+      handleSubmitOptionSelect(item)
+    },
+  }))
 
-const { loggedIn } = useUserSession()
+  const { loggedIn } = useUserSession()
 
-// Set a default selected item display text
-const addYourText = ref('Add your')
+  // Set a default selected item display text
+  const addYourText = ref('Add your')
 
-const toast = useToast()
+  const toast = useToast()
 
-function handleSubmitOptionSelect(item: { label: string, to: string }) {
-  if (!loggedIn.value) {
-    toast.add({
-      id: 'login-err',
-      title: 'Login Error',
-      color: 'error',
-      description: 'You must login to make a submission.',
-      icon: 'exclamation-circle',
-    })
+  function handleSubmitOptionSelect(item: { label: string, to: string }) {
+    if (!loggedIn.value) {
+      toast.add({
+        id: 'login-err',
+        title: 'Login Error',
+        color: 'error',
+        description: 'You must login to make a submission.',
+        icon: 'exclamation-circle',
+      })
+    }
+    else {
+      router.push(item.to)
+    }
   }
-  else {
-    router.push(item.to)
+
+  // Use headerNavItems from app config with fallback to runtime config
+  const headerNavItems =
+    appConfig.site?.headerNavItems || config.public.headerNavItems
+  const useAuth = config.public.useAuth
+
+  const mobileMenuOpen = ref(false)
+  function toggleMobileMenu() {
+    mobileMenuOpen.value = !mobileMenuOpen.value
   }
-}
-
-// Use headerNavItems from app config with fallback to runtime config
-const headerNavItems
-    = appConfig.site?.headerNavItems || config.public.headerNavItems
-const useAuth = config.public.useAuth
-
-const mobileMenuOpen = ref(false)
-function toggleMobileMenu() {
-  mobileMenuOpen.value = !mobileMenuOpen.value
-}
 </script>
 
 <template>

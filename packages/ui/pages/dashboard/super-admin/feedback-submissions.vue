@@ -1,181 +1,181 @@
 <script lang="ts" setup>
-import { useDateFormat, useTimeAgo } from '@vueuse/core'
+  import { useDateFormat, useTimeAgo } from '@vueuse/core'
 
-interface Feedback {
-  id: string
-  message: string
-  status: string
-  createdAt: string
-  user: {
+  interface Feedback {
     id: string
-    name: string
-    email: string
-    avatarUrl?: string
+    message: string
+    status: string
+    createdAt: string
+    user: {
+      id: string
+      name: string
+      email: string
+      avatarUrl?: string
+    }
+    meta?: {
+      url?: string
+      browser?: string
+      platform?: string
+      screenResolution?: string
+      language?: string
+      timezone?: string
+      colorScheme?: string
+    }
   }
-  meta?: {
-    url?: string
-    browser?: string
-    platform?: string
-    screenResolution?: string
-    language?: string
-    timezone?: string
-    colorScheme?: string
+
+  const { data: feedback, refresh } = await useFetch<Feedback[]>(
+    '/api/super-admin/feedback',
+  )
+  const toast = useToast()
+
+  const columns = ['User', 'Email', 'Status', 'Message', 'Date', '']
+  const loadingFeedbackId = ref<string | null>(null)
+  const selectedFeedback = ref<Feedback | null>(null)
+  const replyModal = ref(false)
+  const showDeleteConfirmation = ref(false)
+  const isSubmitting = ref(false)
+  const isDeleting = ref(false)
+
+  const replyFormState = ref({
+    message: '',
+  })
+
+  const actions = computed(() => [
+    {
+      label: 'Details & Reply',
+      onSelect: () => {
+        if (selectedFeedback.value) {
+          replyModal.value = true
+        }
+      },
+    },
+    {
+      label: 'Mark as Closed',
+      onSelect: () => {
+        if (selectedFeedback.value) {
+          void handleMarkAsClosed(selectedFeedback.value)
+        }
+      },
+    },
+    {
+      label: 'Delete',
+      color: 'error' as const,
+      onSelect: () => {
+        if (selectedFeedback.value) {
+          showDeleteConfirmation.value = true
+        }
+      },
+    },
+  ])
+
+  function formatDate(date: string | Date | undefined) {
+    if (!date)
+      return 'NA'
+    return useDateFormat(date, 'MMM D, YYYY HH:mm a').value
   }
-}
 
-const { data: feedback, refresh } = await useFetch<Feedback[]>(
-  '/api/super-admin/feedback',
-)
-const toast = useToast()
-
-const columns = ['User', 'Email', 'Status', 'Message', 'Date', '']
-const loadingFeedbackId = ref<string | null>(null)
-const selectedFeedback = ref<Feedback | null>(null)
-const replyModal = ref(false)
-const showDeleteConfirmation = ref(false)
-const isSubmitting = ref(false)
-const isDeleting = ref(false)
-
-const replyFormState = ref({
-  message: '',
-})
-
-const actions = computed(() => [
-  {
-    label: 'Details & Reply',
-    onSelect: () => {
-      if (selectedFeedback.value) {
-        replyModal.value = true
-      }
-    },
-  },
-  {
-    label: 'Mark as Closed',
-    onSelect: () => {
-      if (selectedFeedback.value) {
-        void handleMarkAsClosed(selectedFeedback.value)
-      }
-    },
-  },
-  {
-    label: 'Delete',
-    color: 'error' as const,
-    onSelect: () => {
-      if (selectedFeedback.value) {
-        showDeleteConfirmation.value = true
-      }
-    },
-  },
-])
-
-function formatDate(date: string | Date | undefined) {
-  if (!date)
-    return 'NA'
-  return useDateFormat(date, 'MMM D, YYYY HH:mm a').value
-}
-
-function getFeedbackStatusColor(status: string) {
-  switch (status) {
+  function getFeedbackStatusColor(status: string) {
+    switch (status) {
     case 'replied':
       return 'info'
     case 'closed':
       return 'neutral'
     default:
       return 'warning'
+    }
   }
-}
 
-async function handleReply() {
-  if (!selectedFeedback.value)
-    return
+  async function handleReply() {
+    if (!selectedFeedback.value)
+      return
 
-  try {
-    isSubmitting.value = true
-    await $fetch('/api/super-admin/feedback/reply', {
-      method: 'POST',
-      body: {
-        id: selectedFeedback.value.id,
-        message: replyFormState.value.message,
-        email: selectedFeedback.value.user.email,
-      },
-    })
-    toast.add({
-      title: 'Reply sent',
-      description: 'Your response has been sent to the user',
-      color: 'success',
-    })
-    replyModal.value = false
-    replyFormState.value.message = ''
-    await refresh()
+    try {
+      isSubmitting.value = true
+      await $fetch('/api/super-admin/feedback/reply', {
+        method: 'POST',
+        body: {
+          id: selectedFeedback.value.id,
+          message: replyFormState.value.message,
+          email: selectedFeedback.value.user.email,
+        },
+      })
+      toast.add({
+        title: 'Reply sent',
+        description: 'Your response has been sent to the user',
+        color: 'success',
+      })
+      replyModal.value = false
+      replyFormState.value.message = ''
+      await refresh()
+    }
+    catch {
+      toast.add({
+        title: 'Error',
+        description: 'Failed to send reply',
+        color: 'error',
+      })
+    }
+    finally {
+      isSubmitting.value = false
+    }
   }
-  catch {
-    toast.add({
-      title: 'Error',
-      description: 'Failed to send reply',
-      color: 'error',
-    })
-  }
-  finally {
-    isSubmitting.value = false
-  }
-}
 
-async function handleMarkAsClosed(feedbackItem: Feedback) {
-  try {
-    loadingFeedbackId.value = feedbackItem.id
-    await $fetch(`/api/super-admin/feedback/${feedbackItem.id}`, {
-      method: 'PATCH',
-      body: {
-        status: 'closed',
-      },
-    })
-    toast.add({
-      title: 'Feedback marked as closed',
-      description: 'The feedback has been marked as closed',
-      color: 'success',
-    })
-    await refresh()
+  async function handleMarkAsClosed(feedbackItem: Feedback) {
+    try {
+      loadingFeedbackId.value = feedbackItem.id
+      await $fetch(`/api/super-admin/feedback/${feedbackItem.id}`, {
+        method: 'PATCH',
+        body: {
+          status: 'closed',
+        },
+      })
+      toast.add({
+        title: 'Feedback marked as closed',
+        description: 'The feedback has been marked as closed',
+        color: 'success',
+      })
+      await refresh()
+    }
+    catch {
+      toast.add({
+        title: 'Error',
+        description: 'Failed to mark feedback as closed',
+        color: 'error',
+      })
+    }
+    finally {
+      loadingFeedbackId.value = null
+    }
   }
-  catch {
-    toast.add({
-      title: 'Error',
-      description: 'Failed to mark feedback as closed',
-      color: 'error',
-    })
-  }
-  finally {
-    loadingFeedbackId.value = null
-  }
-}
 
-async function handleDelete() {
-  if (!selectedFeedback.value)
-    return
+  async function handleDelete() {
+    if (!selectedFeedback.value)
+      return
 
-  try {
-    isDeleting.value = true
-    await $fetch(`/api/super-admin/feedback/${selectedFeedback.value.id}`, {
-      method: 'DELETE',
-    })
-    toast.add({
-      title: 'Feedback deleted',
-      description: 'The feedback has been deleted',
-      color: 'success',
-    })
-    showDeleteConfirmation.value = false
-    await refresh()
+    try {
+      isDeleting.value = true
+      await $fetch(`/api/super-admin/feedback/${selectedFeedback.value.id}`, {
+        method: 'DELETE',
+      })
+      toast.add({
+        title: 'Feedback deleted',
+        description: 'The feedback has been deleted',
+        color: 'success',
+      })
+      showDeleteConfirmation.value = false
+      await refresh()
+    }
+    catch {
+      toast.add({
+        title: 'Error',
+        description: 'Failed to delete feedback',
+        color: 'error',
+      })
+    }
+    finally {
+      isDeleting.value = false
+    }
   }
-  catch {
-    toast.add({
-      title: 'Error',
-      description: 'Failed to delete feedback',
-      color: 'error',
-    })
-  }
-  finally {
-    isDeleting.value = false
-  }
-}
 </script>
 
 <template>
@@ -295,7 +295,7 @@ async function handleDelete() {
                 Browser:
               </span>
               <span class="ml-2 text-neutral-500 dark:text-neutral-400">
-                {{ selectedFeedback.meta.browser.split(' ')[0] }}
+                {{ selectedFeedback.meta.browser.split(" ")[0] }}
               </span>
             </div>
             <div v-if="selectedFeedback?.meta?.platform">

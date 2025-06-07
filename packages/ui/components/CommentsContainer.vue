@@ -1,192 +1,190 @@
 <script setup lang="ts">
-const props = defineProps({
-  module: { type: String, required: true },
-  id: { type: Number, required: true },
-  maxCommentLength: { type: String, default: '1000' },
-  initialMessageLimit: { type: String, default: '10' },
-  background: { type: String, default: 'transparent' },
-  commentBackgroundColor: { type: String, default: 'white' },
-  commentTextColor: { type: String, default: '#1d2129' },
-  userNameColor: { type: String, default: 'rgb(6, 177, 183)' },
-  comments: { type: Array, default: () => [] },
-})
+  const props = defineProps({
+    module: { type: String, required: true },
+    id: { type: Number, required: true },
+    maxCommentLength: { type: String, default: '1000' },
+    initialMessageLimit: { type: String, default: '10' },
+    background: { type: String, default: 'transparent' },
+    commentBackgroundColor: { type: String, default: 'white' },
+    commentTextColor: { type: String, default: '#1d2129' },
+    userNameColor: { type: String, default: 'rgb(6, 177, 183)' },
+    comments: { type: Array, default: () => [] },
+  })
 
-const emit = defineEmits(['loading-finished'])
+  const emit = defineEmits(['loading-finished'])
 
-const toast = useToast()
+  const toast = useToast()
 
-const { loggedIn, user } = useUserSession()
+  const { loggedIn, user } = useUserSession()
 
-const loading = ref(true)
-const comments = toRef(props, 'comments')
-const newComment = ref('')
-const limit = computed(() => Number.parseInt(props.initialMessageLimit))
-const alertMessage = ref('')
-const alertClass = ref('')
-const alert = ref(false)
-const wrapperSize = ref('')
-const requestLoading = ref(false)
-const isExpanded = ref(false)
+  const loading = ref(true)
+  const comments = toRef(props, 'comments')
+  const newComment = ref('')
+  const limit = computed(() => Number.parseInt(props.initialMessageLimit))
+  const alertMessage = ref('')
+  const alertClass = ref('')
+  const alert = ref(false)
+  const wrapperSize = ref('')
+  const requestLoading = ref(false)
+  const isExpanded = ref(false)
 
-const displayedComments = computed(() =>
-  comments.value.slice(0, limit.value),
-)
+  const displayedComments = computed(() => comments.value.slice(0, limit.value))
 
-const filterNewComment = computed(() => {
-  return newComment.value
-    .replace(/^\n+/, '')
-    .replace(/(\n{2,})+/g, '\n\n')
-    .replace(/\n+$/, '')
-    .replace(/( {30,})+/g, ' ')
-    .replace(/ +$/, '')
-})
+  const filterNewComment = computed(() => {
+    return newComment.value
+      .replace(/^\n+/, '')
+      .replace(/(\n{2,})+/g, '\n\n')
+      .replace(/\n+$/, '')
+      .replace(/( {30,})+/g, ' ')
+      .replace(/ +$/, '')
+  })
 
-function updateLimit() {
-  limit.value += Number.parseInt(props.initialMessageLimit)
-}
-
-function resize(event: Event) {
-  const textarea = event.target
-  if (newComment.value === '') {
-    textarea.style.height = '32px'
+  function updateLimit() {
+    limit.value += Number.parseInt(props.initialMessageLimit)
   }
-  else {
+
+  function resize(event: Event) {
+    const textarea = event.target
+    if (newComment.value === '') {
+      textarea.style.height = '32px'
+    }
+    else {
+      textarea.style.height = 'auto'
+      textarea.style.height = `${textarea.scrollHeight}px`
+    }
+  }
+
+  function expandTextarea(event: Event) {
+    const textarea = event.target
     textarea.style.height = 'auto'
-    textarea.style.height = `${textarea.scrollHeight}px`
+    textarea.style.height = `${Math.max(textarea.scrollHeight, 60)}px`
+    isExpanded.value = true
   }
-}
 
-function expandTextarea(event: Event) {
-  const textarea = event.target
-  textarea.style.height = 'auto'
-  textarea.style.height = `${Math.max(textarea.scrollHeight, 60)}px`
-  isExpanded.value = true
-}
-
-function handleBlur(event: Event) {
-  setTimeout(() => {
-    if (document.activeElement.closest('.action-buttons')) {
-      return
-    }
-
-    if (!isExpanded.value) {
-      const textarea = event.target
-      if (newComment.value === '') {
-        textarea.style.height = '32px'
-      }
-    }
-  }, 100)
-}
-
-function cancelComment() {
-  isExpanded.value = false
-  newComment.value = ''
-  const textarea = document.querySelector('textarea.addComment')
-  if (textarea) {
-    textarea.style.height = '32px'
-    textarea.blur()
-  }
-}
-
-function getIndex(id: string) {
-  return props.comments.findIndex(comment => comment.id === id)
-}
-
-async function addComment() {
-  if (!loggedIn.value) {
-    toast.add({
-      id: 'comment-login',
-      title: 'Login required',
-      description: 'You need to login to comment',
-      icon: 'exclamation-circle',
-    })
-    return
-  }
-  if (!user?.value?.id) {
-    toast.add({
-      id: 'comment-login',
-      title: 'Login required',
-      description: 'You need to login to comment',
-      icon: 'exclamation-circle',
-    })
-    return
-  }
-  if (filterNewComment.value.length > 0) {
-    requestLoading.value = true
-    const commentObj = {
-      comment: filterNewComment.value,
-      timestamp: Date.now().toString(),
-      module: props.module,
-    }
-
-    try {
-      const { data: response, error } = await useFetch(
-        `/api/comments/${props.id}`,
-        {
-          method: 'POST',
-          headers: useRequestHeaders(['cookie']),
-          body: JSON.stringify(commentObj),
-        },
-      )
-
-      if (error.value) {
-        throw new Error(`Failed to add comment - ${error.value.message}`)
+  function handleBlur(event: Event) {
+    setTimeout(() => {
+      if (document.activeElement.closest('.action-buttons')) {
+        return
       }
 
-      if (response.value.message && response.value.message === 'success') {
-        toast.add({
-          id: 'comment-success',
-          title: 'Comment added',
-          description: 'Your comment has been added successfully',
-          icon: 'check-circle',
-        })
-        comments.value.push({
-          id: response.value.id,
-          user_id: user.value.siteId,
-          name: user.value.name,
-          image: user.value.image,
-          content: commentObj.comment,
-          created_at: commentObj.timestamp,
-          updated_at: commentObj.timestamp,
-          replies: [],
-        })
-        newComment.value = ''
-        resize({ target: document.querySelector('textarea.addComment') })
-        isExpanded.value = false
+      if (!isExpanded.value) {
+        const textarea = event.target
+        if (newComment.value === '') {
+          textarea.style.height = '32px'
+        }
       }
-      else {
-        throw new Error(`Failed to add comment - ${response.value.message}`)
-      }
+    }, 100)
+  }
+
+  function cancelComment() {
+    isExpanded.value = false
+    newComment.value = ''
+    const textarea = document.querySelector('textarea.addComment')
+    if (textarea) {
+      textarea.style.height = '32px'
+      textarea.blur()
     }
-    catch (error) {
+  }
+
+  function getIndex(id: string) {
+    return props.comments.findIndex(comment => comment.id === id)
+  }
+
+  async function addComment() {
+    if (!loggedIn.value) {
       toast.add({
-        id: 'comment-error',
-        title: 'Error adding comment',
-        description: error.message,
+        id: 'comment-login',
+        title: 'Login required',
+        description: 'You need to login to comment',
         icon: 'exclamation-circle',
       })
+      return
     }
-    finally {
-      requestLoading.value = false
+    if (!user?.value?.id) {
+      toast.add({
+        id: 'comment-login',
+        title: 'Login required',
+        description: 'You need to login to comment',
+        icon: 'exclamation-circle',
+      })
+      return
+    }
+    if (filterNewComment.value.length > 0) {
+      requestLoading.value = true
+      const commentObj = {
+        comment: filterNewComment.value,
+        timestamp: Date.now().toString(),
+        module: props.module,
+      }
+
+      try {
+        const { data: response, error } = await useFetch(
+          `/api/comments/${props.id}`,
+          {
+            method: 'POST',
+            headers: useRequestHeaders(['cookie']),
+            body: JSON.stringify(commentObj),
+          },
+        )
+
+        if (error.value) {
+          throw new Error(`Failed to add comment - ${error.value.message}`)
+        }
+
+        if (response.value.message && response.value.message === 'success') {
+          toast.add({
+            id: 'comment-success',
+            title: 'Comment added',
+            description: 'Your comment has been added successfully',
+            icon: 'check-circle',
+          })
+          comments.value.push({
+            id: response.value.id,
+            user_id: user.value.siteId,
+            name: user.value.name,
+            image: user.value.image,
+            content: commentObj.comment,
+            created_at: commentObj.timestamp,
+            updated_at: commentObj.timestamp,
+            replies: [],
+          })
+          newComment.value = ''
+          resize({ target: document.querySelector('textarea.addComment') })
+          isExpanded.value = false
+        }
+        else {
+          throw new Error(`Failed to add comment - ${response.value.message}`)
+        }
+      }
+      catch (error) {
+        toast.add({
+          id: 'comment-error',
+          title: 'Error adding comment',
+          description: error.message,
+          icon: 'exclamation-circle',
+        })
+      }
+      finally {
+        requestLoading.value = false
+      }
+    }
+    else {
+      setAlert('You can\'t send an empty comment!', 'fail')
     }
   }
-  else {
-    setAlert('You can\'t send an empty comment!', 'fail')
-  }
-}
 
-function deleteComment(index: number) {
-  comments.value.splice(index, 1)
-}
-
-onMounted(async () => {
-  if (document.querySelector('[ref="wrapper"]')) {
-    wrapperSize.value = document.querySelector('[ref="wrapper"]').offsetWidth
+  function deleteComment(index: number) {
+    comments.value.splice(index, 1)
   }
 
-  loading.value = false
-  emit('loading-finished')
-})
+  onMounted(async () => {
+    if (document.querySelector('[ref="wrapper"]')) {
+      wrapperSize.value = document.querySelector('[ref="wrapper"]').offsetWidth
+    }
+
+    loading.value = false
+    emit('loading-finished')
+  })
 </script>
 
 <template>
@@ -325,7 +323,7 @@ onMounted(async () => {
               @keyup="resize"
               @focus="expandTextarea"
               @blur="handleBlur"
-            />
+            ></textarea>
             <div
               v-if="isExpanded"
               class="action-buttons flex justify-end gap-2"
@@ -342,7 +340,7 @@ onMounted(async () => {
                 :disabled="!filterNewComment.length || requestLoading"
                 @click="addComment"
               >
-                <div v-if="requestLoading" class="request-loading" />
+                <div v-if="requestLoading" class="request-loading"></div>
                 <span v-else>Comment</span>
               </UButton>
             </div>
@@ -379,7 +377,7 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-  .loader {
+.loader {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: minmax(150px, auto);

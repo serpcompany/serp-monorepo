@@ -1,7 +1,7 @@
 <script setup lang="ts">
-defineProps<{
-  article: string
-}>()
+  defineProps<{
+    article: string
+  }>()
 </script>
 
 <template>
@@ -12,7 +12,7 @@ defineProps<{
         role="document"
         class="prose dark:prose-invert mx-auto max-w-full"
         v-html="article"
-      />
+      ></div>
     </article>
   </UPageSection>
 </template>

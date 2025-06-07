@@ -1,102 +1,102 @@
 <script setup lang="ts">
-import type { DropdownMenuItem } from '@nuxt/ui'
+  import type { DropdownMenuItem } from '@nuxt/ui'
 
-const { user } = useUserSession()
-const { logout } = useAuth()
-const mobileMenu = useState('mobileMenu')
-const isSuperAdmin = computed(() => user.value?.superAdmin)
-const feedbackModal = ref(false)
-async function signOut() {
-  await logout()
-  await navigateTo('/')
-}
-const items = ref([
-  [
-    {
-      slot: 'profile',
-      label: user.value?.name,
-      avatar: {
-        src: user.value?.avatarUrl || '',
-        alt: user.value?.name,
+  const { user } = useUserSession()
+  const { logout } = useAuth()
+  const mobileMenu = useState('mobileMenu')
+  const isSuperAdmin = computed(() => user.value?.superAdmin)
+  const feedbackModal = ref(false)
+  async function signOut() {
+    await logout()
+    await navigateTo('/')
+  }
+  const items = ref([
+    [
+      {
+        slot: 'profile',
+        label: user.value?.name,
+        avatar: {
+          src: user.value?.avatarUrl || '',
+          alt: user.value?.name,
+        },
+        type: 'label',
+        onSelect: () => {
+          mobileMenu.value = false
+        },
       },
-      type: 'label',
-      onSelect: () => {
-        mobileMenu.value = false
+    ],
+    [
+      {
+        label: 'Dashboard',
+        icon: 'i-lucide-user-cog',
+        to: '/dashboard',
+        onSelect: () => {
+          mobileMenu.value = false
+        },
       },
-    },
-  ],
-  [
-    {
-      label: 'Dashboard',
-      icon: 'i-lucide-user-cog',
-      to: '/dashboard',
-      onSelect: () => {
-        mobileMenu.value = false
+    ],
+    [
+      {
+        label: 'Account Settings',
+        icon: 'i-lucide-user-cog',
+        to: '/dashboard/account-settings',
+        onSelect: () => {
+          mobileMenu.value = false
+        },
       },
-    },
-  ],
-  [
-    {
-      label: 'Account Settings',
-      icon: 'i-lucide-user-cog',
-      to: '/dashboard/account-settings',
-      onSelect: () => {
-        mobileMenu.value = false
-      },
-    },
-  ],
-  [
-    {
-      label: 'Theme',
-      icon: 'i-lucide-moon',
-      children: [
-        [
-          {
-            label: 'Light',
-            icon: 'i-lucide-sun',
-            onSelect: () => {
-              setColorMode('light')
-              mobileMenu.value = false
+    ],
+    [
+      {
+        label: 'Theme',
+        icon: 'i-lucide-moon',
+        children: [
+          [
+            {
+              label: 'Light',
+              icon: 'i-lucide-sun',
+              onSelect: () => {
+                setColorMode('light')
+                mobileMenu.value = false
+              },
             },
-          },
-          {
-            label: 'Dark',
-            icon: 'i-lucide-moon',
-            onSelect: () => {
-              setColorMode('dark')
-              mobileMenu.value = false
+            {
+              label: 'Dark',
+              icon: 'i-lucide-moon',
+              onSelect: () => {
+                setColorMode('dark')
+                mobileMenu.value = false
+              },
             },
-          },
+          ],
+          [
+            {
+              label: 'System',
+              icon: 'i-lucide-monitor',
+              onSelect: () => {
+                setColorMode('system')
+                mobileMenu.value = false
+              },
+            },
+          ],
         ],
-        [
-          {
-            label: 'System',
-            icon: 'i-lucide-monitor',
-            onSelect: () => {
-              setColorMode('system')
-              mobileMenu.value = false
-            },
-          },
-        ],
-      ],
-    },
-  ],
-  [
-    {
-      label: 'Support',
-      icon: 'i-lucide-life-buoy',
-      onSelect: () => {
-        feedbackModal.value = true
-        mobileMenu.value = false
       },
-    },
-    {
-      label: 'Docs',
-      icon: 'i-lucide-cloud',
-    },
-  ],
-  ...(isSuperAdmin.value
-    ? [
+    ],
+    [
+      {
+        label: 'Support',
+        icon: 'i-lucide-life-buoy',
+        onSelect: () => {
+          feedbackModal.value = true
+          mobileMenu.value = false
+        },
+      },
+      {
+        label: 'Docs',
+        icon: 'i-lucide-cloud',
+      },
+    ],
+    ...(isSuperAdmin.value
+      ? [
         [
           {
             label: 'Super Admin',
@@ -105,22 +105,22 @@ const items = ref([
           },
         ],
       ]
-    : []),
-  [
-    {
-      label: 'Logout',
-      icon: 'i-lucide-log-out',
-      onSelect: signOut,
-      color: 'error' as const,
-    },
-  ],
-])
+      : []),
+    [
+      {
+        label: 'Logout',
+        icon: 'i-lucide-log-out',
+        onSelect: signOut,
+        color: 'error' as const,
+      },
+    ],
+  ])
 
-const colorMode = useColorMode()
+  const colorMode = useColorMode()
 
-function setColorMode(mode: string) {
-  colorMode.preference = mode
-}
+  function setColorMode(mode: string) {
+    colorMode.preference = mode
+  }
 </script>
 
 <template>

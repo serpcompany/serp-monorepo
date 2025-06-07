@@ -1,95 +1,92 @@
 <script setup lang="ts">
-import type {
-  Artist, // Import Artist type
-  ArtistReleaseGroup, // Import ArtistReleaseGroup for typing
-} from '@serp/types/types'
-import { useArtist } from '../../../../api/composables/useArtist'
+  import type { // Import Artist type
+    ArtistReleaseGroup, // Import ArtistReleaseGroup for typing
+  } from '@serp/types/types'
+  import { useArtist } from '../../../../api/composables/useArtist'
 
-// Add a data attribute to help AdSense crawler identify content sections
-definePageMeta({
-  // This helps Google's crawler understand the content type better
-  pageType: 'album',
-})
+  // Add a data attribute to help AdSense crawler identify content sections
+  definePageMeta({
+    // This helps Google's crawler understand the content type better
+    pageType: 'album',
+  })
 
-const sections = ['Overview', 'Songs']
-const route = useRoute()
-const { slug } = route.params
-const album = await useAlbum(encodeURIComponent(slug))
+  const sections = ['Overview', 'Songs']
+  const route = useRoute()
+  const { slug } = route.params
+  const album = await useAlbum(encodeURIComponent(slug))
 
-const config = useRuntimeConfig()
-const useAuth = config.public.useAuth
+  const config = useRuntimeConfig()
+  const useAuth = config.public.useAuth
 
-const genres = computed(() => {
-  return album?.genres ? album.genres.join(', ') : ''
-})
+  const genres = computed(() => {
+    return album?.genres ? album.genres.join(', ') : ''
+  })
 
-const tags = computed(() => {
-  return album?.tags ? album.tags.join(', ') : ''
-})
+  const tags = computed(() => {
+    return album?.tags ? album.tags.join(', ') : ''
+  })
 
-// Format Date Helper (Year only)
-function formatDate(dateString: string | null) {
-  if (!dateString)
-    return 'N/A'
-  return dateString.split('-')[0] || dateString
-}
-
-// Format Duration Helper (MM:SS)
-function formatDuration(lengthMs: number | null): string {
-  if (lengthMs === null || lengthMs === undefined) {
-    return '--:--'
+  // Format Date Helper (Year only)
+  function formatDate(dateString: string | null) {
+    if (!dateString)
+      return 'N/A'
+    return dateString.split('-')[0] || dateString
   }
-  const totalSeconds = Math.round(lengthMs / 1000)
-  const minutes = Math.floor(totalSeconds / 60)
-  const seconds = totalSeconds % 60
-  return `${minutes}:${seconds.toString().padStart(2, '0')}`
-}
 
-// Refined SEO Description
-const seoDescription = computed(
-  () =>
-    album?.seoDescription
-    || album?.overview?.substring(0, 160)
-    || `Details about the album ${album.name}.`,
-)
-
-// Primary artist for linking
-const primaryArtist = computed(() => {
-  if (album.artists && album.artists.length > 0) {
-    return album.artists[0]
-  }
-  return null
-})
-
-useSeoMeta({
-  // Add Artist to title if available
-  title: `${primaryArtist.value?.credit_name ? `${primaryArtist.value.credit_name} - ` : ''}${album.name} - Album Details`,
-  description: seoDescription,
-})
-
-// Ref for other albums by the same artist
-const otherArtistAlbums = ref<ArtistReleaseGroup[]>([])
-
-// Fetch the full ARTIST data, and filter out the current album
-watchEffect(async () => {
-  const artistSlug = primaryArtist.value?.slug
-  const currentAlbumSlug = album.slug // Get current album slug
-
-  if (artistSlug) {
-    try {
-      const fetchedArtistData = await useArtist(
-        encodeURIComponent(artistSlug),
-      )
-      // Filter the releaseGroups, excluding the current album
-      otherArtistAlbums.value = (
-        fetchedArtistData?.releaseGroups || []
-      ).filter((rg: ArtistReleaseGroup) => rg.slug !== currentAlbumSlug)
+  // Format Duration Helper (MM:SS)
+  function formatDuration(lengthMs: number | null): string {
+    if (lengthMs === null || lengthMs === undefined) {
+      return '--:--'
     }
-    catch (error) {
-      otherArtistAlbums.value = []
-    }
+    const totalSeconds = Math.round(lengthMs / 1000)
+    const minutes = Math.floor(totalSeconds / 60)
+    const seconds = totalSeconds % 60
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`
   }
-})
+
+  // Refined SEO Description
+  const seoDescription = computed(
+    () =>
+      album?.seoDescription ||
+      album?.overview?.substring(0, 160) ||
+      `Details about the album ${album.name}.`,
+  )
+
+  // Primary artist for linking
+  const primaryArtist = computed(() => {
+    if (album.artists && album.artists.length > 0) {
+      return album.artists[0]
+    }
+    return null
+  })
+
+  useSeoMeta({
+    // Add Artist to title if available
+    title: `${primaryArtist.value?.credit_name ? `${primaryArtist.value.credit_name} - ` : ''}${album.name} - Album Details`,
+    description: seoDescription,
+  })
+
+  // Ref for other albums by the same artist
+  const otherArtistAlbums = ref<ArtistReleaseGroup[]>([])
+
+  // Fetch the full ARTIST data, and filter out the current album
+  watchEffect(async () => {
+    const artistSlug = primaryArtist.value?.slug
+    const currentAlbumSlug = album.slug // Get current album slug
+
+    if (artistSlug) {
+      try {
+        const fetchedArtistData = await useArtist(encodeURIComponent(artistSlug))
+        // Filter the releaseGroups, excluding the current album
+        otherArtistAlbums.value = (fetchedArtistData?.releaseGroups || []).filter(
+          (rg: ArtistReleaseGroup) => rg.slug !== currentAlbumSlug,
+        )
+      }
+      catch (error) {
+        otherArtistAlbums.value = []
+      }
+    }
+  })
 </script>
 
 <template>
@@ -124,11 +121,17 @@ watchEffect(async () => {
     <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
       <!-- Breadcrumbs -->
       <UBreadcrumb class="mb-6" :ui="{ container: 'flex px-1 py-2' }">
-        <UBreadcrumbItem to="/home">Home</UBreadcrumbItem>
-        <UBreadcrumbItem to="/albums">Albums</UBreadcrumbItem>
-        <UBreadcrumbItem :to="`/albums/${encodeURIComponent(album.slug)}`">{{
-          album.name
-        }}</UBreadcrumbItem>
+        <UBreadcrumbItem to="/home">
+          Home
+        </UBreadcrumbItem>
+        <UBreadcrumbItem to="/albums">
+          Albums
+        </UBreadcrumbItem>
+        <UBreadcrumbItem :to="`/albums/${encodeURIComponent(album.slug)}`">
+          {{
+            album.name
+          }}
+        </UBreadcrumbItem>
       </UBreadcrumb>
 
       <!-- Grid Layout -->
@@ -204,7 +207,7 @@ watchEffect(async () => {
               v-if="album.overview"
               class="prose dark:prose-invert max-w-none"
               v-html="album.overview"
-            />
+            ></div>
             <p v-else class="text-gray-500 dark:text-gray-400">
               No overview available for this album.
             </p>

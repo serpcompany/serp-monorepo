@@ -1,12 +1,12 @@
 <script setup lang="ts">
-const props = defineProps({
-  customizations: {
-    type: Object,
-    required: true,
-  },
-})
-const config = useRuntimeConfig()
-const baseUrl = config.public.baseURL || ''
+  const props = defineProps({
+    customizations: {
+      type: Object,
+      required: true,
+    },
+  })
+  const config = useRuntimeConfig()
+  const baseUrl = config.public.baseURL || ''
 </script>
 
 <template>
@@ -17,13 +17,13 @@ const baseUrl = config.public.baseURL || ''
         :alt="`${customizations.categorySlug || 'Category'} Badge`"
         width="250"
         height="242"
-      >
+      />
     </div>
   </div>
 </template>
 
 <style scoped>
-  .svg-preview-wrapper {
+.svg-preview-wrapper {
   max-width: 100%;
   overflow: hidden;
 }
