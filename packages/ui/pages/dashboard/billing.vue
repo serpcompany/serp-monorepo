@@ -1,6 +1,5 @@
 <script lang="ts" setup>
   import type { Price, Subscription } from '@serp/db/types/database'
-  import { useDateFormat } from '@vueuse/core'
 
   const { user } = useUserSession()
 
@@ -81,7 +80,7 @@
     } as BillingPlan
   })
 
-  async function handleSubscribe(priceId: string) {
+  async function handleSubscribe(priceId: string): Promise<void> {
     try {
       loadingPriceId.value = priceId
       disabled.value = true
@@ -119,7 +118,7 @@
     }
   }
 
-  async function handleManageSubscription() {
+  async function handleManageSubscription(): Promise<void> {
     try {
       loadingPortal.value = true
 
@@ -149,121 +148,25 @@
     }
   }
 
-  function formatPrice(price?: number): string {
-    if (!price)
-      return '$0'
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0,
-    }).format(price / 100)
-  }
-
-  function getStatusColor(status?: string) {
-    switch (status) {
-    case 'active':
-      return 'success'
-    case 'trialing':
-      return 'primary'
-    case 'canceled':
-    case 'incomplete_expired':
-    case 'unpaid':
-      return 'error'
-    case 'past_due':
-    case 'incomplete':
-      return 'warning'
-    default:
-      return 'neutral'
-    }
-  }
-
-  function getSubscriptionMessage(plan: BillingPlan) {
-    if (plan.cancelAt) {
-      return 'Cancels on'
-    }
-    if (plan.status === 'trialing') {
-      return 'Trial ends on'
-    }
-    return 'Renews on'
-  }
-
   onMounted(async () => {
     if (route.query.success === 'true') {
       await refreshSession()
     }
   })
+
+  definePageMeta({
+    layout: 'dashboard',
+  })
 </script>
 
 <template>
-  <AppContainer
-    title="Billing"
-    description="Manage your personal billing information and subscription plans."
-  >
-    <div
-      class="flex h-full flex-col rounded-xl border border-neutral-200 bg-neutral-50 p-6 dark:border-neutral-800 dark:bg-neutral-900"
-    >
-      <div class="flex flex-col space-y-4">
-        <div
-          class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
-        >
-          <div class="space-y-2">
-            <template v-if="activeSubscription">
-              <h3 class="text-lg font-medium">
-                You are on
-                <span class="font-bold">{{ currentPlan.name }}</span>
-                plan
-              </h3>
-              <div class="flex flex-wrap items-center gap-3">
-                <div class="flex items-center gap-2">
-                  <span class="text-xl font-semibold">
-                    {{ formatPrice(currentPlan.amount) }}
-                  </span>
-                  <span class="text-neutral-500">
-                    every {{ currentPlan.interval }}
-                  </span>
-                </div>
-                <UBadge
-                  :label="currentPlan.status"
-                  :color="getStatusColor(currentPlan.status)"
-                  variant="subtle"
-                  class="capitalize"
-                />
-                <span class="text-sm text-neutral-500">
-                  {{ getSubscriptionMessage(currentPlan) }}
-                  {{
-                    useDateFormat(
-                      currentPlan.cancelAt || currentPlan.currentPeriodEnd,
-                      "MMM DD, YYYY",
-                    )
-                  }}
-                </span>
-              </div>
-            </template>
-            <template v-else>
-              <h3 class="text-lg font-medium">
-                You are on the
-                <span class="font-bold">Free</span>
-                plan
-              </h3>
-              <p class="text-sm text-neutral-500">
-                Upgrade to a paid plan to unlock more features and higher usage
-                limits.
-              </p>
-            </template>
-          </div>
-          <UButton
-            v-if="activeSubscription"
-            color="neutral"
-            variant="outline"
-            label="Manage Billing"
-            icon="i-lucide-external-link"
-            :loading="loadingPortal"
-            :disabled="loadingPortal"
-            @click="handleManageSubscription"
-          />
-        </div>
-      </div>
-    </div>
+  <AppContainer title="Billing">
+    <template v-if="!activeSubscription">
+      <DashboardBillingFreePlan />
+    </template>
+    <template v-else>
+      <DashboardBillingActivePlan :current-plan="currentPlan" />
+    </template>
     <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
       <AppPricingCard
         v-for="plan in plans"
