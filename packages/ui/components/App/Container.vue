@@ -14,7 +14,7 @@
 
 <template>
   <header
-    class="sticky top-0 z-40 flex h-12 items-center gap-2 bg-white px-4 dark:bg-neutral-900"
+    class="sticky top-0 z-40 flex h-12 items-center gap-2 bg-default px-4 border-b border-default"
   >
     <UButton
       icon="i-lucide-panel-left"
@@ -24,7 +24,7 @@
       @click="mobileMenu = !mobileMenu"
     />
     <div class="min-w-0 flex-1">
-      <h1 class="flex-1 truncate font-bold">
+      <h1 class="flex-1 truncate text-base font-bold">
         {{ title }}
       </h1>
     </div>

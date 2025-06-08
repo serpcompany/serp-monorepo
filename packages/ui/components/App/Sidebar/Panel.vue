@@ -9,7 +9,7 @@
 <template>
   <div
     v-if="!smallerThanLg"
-    class="relative hidden w-0 flex-col items-stretch overflow-hidden border-r border-neutral-200 bg-neutral-100 p-2 md:flex md:w-64 dark:border-neutral-900 dark:bg-black"
+    class="relative hidden w-0 flex-col items-stretch overflow-hidden bg-elevated/25 border-r border-default p-2 md:flex md:w-64"
   >
     <slot></slot>
   </div>
