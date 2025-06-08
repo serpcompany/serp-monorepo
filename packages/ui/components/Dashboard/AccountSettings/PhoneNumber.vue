@@ -61,7 +61,7 @@
       console.error(error)
       toast.add({
         title: 'Failed to send verification code',
-        description: (error as any)?.data?.message || 'An error occurred',
+        description: (error as unknown)?.data?.message || 'An error occurred',
         color: 'error',
       })
     }
@@ -95,7 +95,7 @@
       console.error(error)
       toast.add({
         title: 'Failed to verify code',
-        description: (error as any)?.data?.message || 'An error occurred',
+        description: (error as unknown)?.data?.message || 'An error occurred',
         color: 'error',
       })
     }
@@ -126,7 +126,7 @@
       console.error(error)
       toast.add({
         title: 'Failed to remove phone number',
-        description: (error as any)?.data?.message || 'An error occurred',
+        description: (error as unknown)?.data?.message || 'An error occurred',
         color: 'error',
       })
     }
