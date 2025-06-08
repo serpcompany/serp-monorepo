@@ -1,93 +1,156 @@
 <script setup lang="ts">
   const { user } = useUserSession()
-  const teams = useState<unknown[]>('teams', () => [])
+  // const teams = useState<unknown[]>('teams', () => [])
 
-  // Fetch teams if not already loaded
-  if (!teams.value.length) {
-    try {
-      teams.value = await useTeam().getMemberships()
-    }
-    catch {
-      // User might not have teams or there might be an error
-      teams.value = []
-    }
-  }
+  // // Fetch teams if not already loaded
+  // if (!teams.value.length) {
+  //   try {
+  //     teams.value = await useTeam().getMemberships()
+  //   }
+  //   catch {
+  //     // User might not have teams or there might be an error
+  //     teams.value = []
+  //   }
+  // }
+
+  const featuresCards = [
+    {
+      title: 'Get Featured',
+      description: 'Learn how to get featured on our platform.',
+      icon: 'lucide:search',
+      to: '/dashboard/get-featured',
+    },
+    {
+      title: 'Companies',
+      description: 'Review or edit your companies.',
+      icon: 'lucide:list',
+      to: '/dashboard/companies',
+    },
+    {
+      title: 'Submit Company',
+      description: 'Submit or update your company details.',
+      icon: 'lucide:pencil-ruler',
+      to: '/dashboard/submit-company',
+    },
+  ]
+
+  const accountManagementCards = [
+    {
+      title: 'Settings',
+      description: 'Update profile and preferences.',
+      icon: 'lucide:user',
+      to: '/dashboard/account-settings',
+    },
+    {
+      title: 'Security',
+      description: 'Password and security settings.',
+      icon: 'lucide:shield',
+      to: '/dashboard/account-security',
+    },
+    {
+      title: 'Billing',
+      description: 'Manage your billing information and subscriptions.',
+      icon: 'lucide:credit-card',
+      to: '/dashboard/billing',
+    },
+  ]
+
+  definePageMeta({
+    layout: 'dashboard',
+  })
 </script>
 
 <template>
-  <AppContainer>
+  <AppContainer title="Dashboard">
     <div class="space-y-8">
-      <!-- Welcome Section -->
-      <div
-        class="rounded-lg border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
-      >
-        <h1 class="mb-2 text-2xl font-bold text-neutral-900 dark:text-white">
+      <UCard>
+        <h1 class="text-2xl font-bold text-highlighted">
           Welcome back, {{ user?.name || user?.email || "User" }}
         </h1>
-        <p class="text-neutral-600 dark:text-neutral-400">
-          Manage your account, billing, and personal workspace from your
-          dashboard.
+        <p class="text-default">
+          Manage your account, billing, and personal workspace from your dashboard.
         </p>
-      </div>
+      </UCard>
 
-      <!-- Quick Actions -->
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <UCard
-          class="cursor-pointer p-4 transition-shadow hover:shadow-md"
-          @click="navigateTo('/dashboard/billing')"
-        >
-          <div class="flex items-center gap-3">
+      <UPageGrid class="lg:grid-cols-2">
+        <UCard>
+          <template #header>
+            <div class="flex items-center gap-2">
+              <UIcon name="lucide:bookmark" class="text-primary size-5" />
+              <h2 class="text-base font-semibold text-highlighted">
+                Bookmarks
+              </h2>
+            </div>
+          </template>
+
+          <div class="text-center">
             <UIcon
-              name="i-lucide-credit-card"
-              class="text-primary-500 text-2xl"
+              name="lucide:bookmark"
+              class="mx-auto mb-2 text-3xl text-muted"
             />
-            <div>
-              <h3 class="font-medium">
-                Billing
-              </h3>
-              <p class="text-sm text-neutral-600 dark:text-neutral-400">
-                Manage subscription and payments
-              </p>
-            </div>
+            <p class="text-dimmed">
+              Coming soon
+            </p>
           </div>
         </UCard>
 
-        <UCard
-          class="cursor-pointer p-4 transition-shadow hover:shadow-md"
-          @click="navigateTo('/dashboard/account-settings')"
-        >
-          <div class="flex items-center gap-3">
-            <UIcon name="i-lucide-user" class="text-primary-500 text-2xl" />
-            <div>
-              <h3 class="font-medium">
-                Account Settings
-              </h3>
-              <p class="text-sm text-neutral-600 dark:text-neutral-400">
-                Update profile and preferences
-              </p>
+        <UCard>
+          <template #header>
+            <div class="flex items-center gap-2">
+              <UIcon name="lucide:activity" class="text-primary size-5" />
+              <h2 class="text-base font-semibold text-highlighted">
+                Recent Activity
+              </h2>
             </div>
-          </div>
-        </UCard>
+          </template>
 
-        <UCard
-          class="cursor-pointer p-4 transition-shadow hover:shadow-md"
-          @click="navigateTo('/dashboard/account-security')"
-        >
-          <div class="flex items-center gap-3">
-            <UIcon name="i-lucide-shield" class="text-primary-500 text-2xl" />
-            <div>
-              <h3 class="font-medium">
-                Security
-              </h3>
-              <p class="text-sm text-neutral-600 dark:text-neutral-400">
-                Password and security settings
-              </p>
-            </div>
+          <div class="text-center">
+            <UIcon
+              name="lucide:activity"
+              class="mx-auto mb-2 text-3xl text-muted"
+            />
+            <p class="text-dimmed">
+              Coming soon
+            </p>
           </div>
         </UCard>
+      </UPageGrid>
+
+      <div class="space-y-4">
+        <h2 class="text-lg font-semibold text-highlighted">
+          Features
+        </h2>
+
+        <UPageGrid>
+          <UPageCard
+            v-for="card in featuresCards"
+            :key="card.title"
+            :to="card.to"
+            :title="card.title"
+            :description="card.description"
+            :icon="card.icon"
+          />
+        </UPageGrid>
       </div>
 
-      <!-- Teams Section -->
+      <div class="space-y-4">
+        <h2 class="text-lg font-semibold text-highlighted">
+          Account Management
+        </h2>
+
+        <UPageGrid>
+          <UPageCard
+            v-for="card in accountManagementCards"
+            :key="card.title"
+            :to="card.to"
+            :title="card.title"
+            :description="card.description"
+            :icon="card.icon"
+          />
+        </UPageGrid>
+      </div>
+
+      <!--
       <div
         v-if="teams?.length > 0"
         class="rounded-lg border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
@@ -129,7 +192,6 @@
         </div>
       </div>
 
-      <!-- Create Team Option -->
       <div
         v-else
         class="rounded-lg border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
@@ -150,45 +212,7 @@
           </UButton>
         </div>
       </div>
-
-      <!-- Coming Soon Sections -->
-      <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <div
-          class="rounded-lg border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
-        >
-          <h2 class="mb-4 flex items-center gap-2 text-lg font-semibold">
-            <UIcon name="i-lucide-bookmark" class="text-primary-500" />
-            Bookmarks
-          </h2>
-          <div class="py-8 text-center">
-            <UIcon
-              name="i-lucide-bookmark"
-              class="mx-auto mb-2 text-3xl text-neutral-400"
-            />
-            <p class="text-neutral-600 dark:text-neutral-400">
-              Coming soon
-            </p>
-          </div>
-        </div>
-
-        <div
-          class="rounded-lg border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
-        >
-          <h2 class="mb-4 flex items-center gap-2 text-lg font-semibold">
-            <UIcon name="i-lucide-activity" class="text-primary-500" />
-            Recent Activity
-          </h2>
-          <div class="py-8 text-center">
-            <UIcon
-              name="i-lucide-activity"
-              class="mx-auto mb-2 text-3xl text-neutral-400"
-            />
-            <p class="text-neutral-600 dark:text-neutral-400">
-              Coming soon
-            </p>
-          </div>
-        </div>
-      </div>
+       -->
     </div>
   </AppContainer>
 </template>
